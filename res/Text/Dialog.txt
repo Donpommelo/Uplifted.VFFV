@@ -1,0 +1,269 @@
+67
+Pen Pal
+Player-5.png
+1
+There you are, Operator! What took you so long?/
+Operator
+Player-1.png
+0
+Sorry. I must have dozed off./
+Pen Pal
+Player-5.png
+1
+Never mind that. We should be going./
+Operator
+Player-1.png
+0
+Absolutely!/
+Operator
+Player-1.png
+0
+. . .Erm. Could you refresh my memory?  Where exactly are we going?/
+Pen Pal
+Player-5.png
+1
+You forgot already?/
+Pen Pal
+Player-5.png
+1
+You were delivering me to Suite 521. We've been looking for it for days now./
+Operator
+Player-1.png
+0
+Well, okay. If you say so. /
+Pen Pal
+Player-5.png
+1
+You really should stop taking your sleeping tablets./
+Operator
+Player-1.png
+0
+. . .But . . . I have trouble sleeping without them./
+Pen Pal
+Player-5.png
+1
+All the more reason to abstain./This mission is too urgent for you to be getting any sleep./
+Operator
+Player-1.png
+0
+. . ./
+Pen Pal
+Player-5.png
+1
+Well, what are you standing around for? We really should be going./Remember, we're looking for Suite 521./
+Receptionist
+3rdSouthOffices-3.png
+1
+Welcome to the company's Violence Department. Can I help you with anything?/
+Operator
+Player-1.png
+0
+Violence Department? Why does this company have a Violence Department?/
+Receptionist
+3rdSouthOffices-3.png
+1
+The Violence Department was founded by the late Figmous Werbeunroy with the/intention of creating a safer, more peaceful working environment for us employees./
+Operator
+Player-1.png
+0
+Peaceful? That doesn't sound right. . ./
+Receptionist
+3rdSouthOffices-3.png
+1
+Figmous believed that violence was an integral part of human nature./To attempt to eradicate violence would be to make the company and its employees/less human. 
+Pen Pal
+Player-5.png
+0
+Well. . ./
+Receptionist
+3rdSouthOffices-3.png
+1
+That is why we instead choose to sequester all the violence in the building into one place./This way, The rest of the building is made more peaceful./
+Receptionist
+3rdSouthOffices-3.png
+1
+Thanks to us, Operator, you've never been assaulted in your elevator by a disgruntled/passenger. He or she would have come here and assaulted one of us instead./
+Operator
+Player-1.png
+0
+Thanks . . .I guess. . ./
+Receptionist
+3rdSouthOffices-3.png
+1
+Have an intemperate day./
+Employee
+3rdSouthOffices-1.png
+1
+Something about this floor makes me angry. I'm not very expressive when I'm angry./
+Operator
+Player-1.png
+1
+So, what floor for you?/
+Employee
+3rdSouthOffices-1.png
+1
+The place to the East of here; man, that's the place to go to release some pent-up/aggression. But violence is pretty strenuous, so make sure you're ready first./
+Operator
+Player-1.png
+0
+Why don't we go to the Ground Floor?/
+Pen Pal
+Player-5.png
+1
+I'm afraid the 1st floor is currently unavailable. I hear they're getting new carpeting/or something like that./
+Operator
+Player-1.png
+0
+Maybe we should try the Second Floor./
+Pen Pal
+Player-5.png
+1
+Unfortunately, the entire Second Floor has been reserved for a special occasion./One that we are not invited to./
+Operator
+Player-1.png
+0
+Lets go back to the 3rd Floor./
+Pen Pal
+Player-5.png
+1
+Perhaps later. The Offices are currently undergoing renovations and I don't like/the smell of paint./
+Operator
+Player-1.png
+0
+Do you think we should search the Fourth Floor?/
+Pen Pal
+Player-5.png
+1
+Hmm. I hear one of the Aquarium tanks broke and flooded the whole floor. Maybe we/should go there some other time./
+Operator
+Player-1.png
+0
+We haven't looked at the Fifth Floor yet, right?/
+Pen Pal
+Player-5.png
+1
+I don't think management lets normal employees to go there. We would need to find/an alternate route./
+Operator
+Player-1.png
+0
+Whatabout the Sixth Floor?/
+Pen Pal
+Player-5.png
+1
+I think that floor is closed right now. One of the ovens in the Food Servery/caught fire this morning./
+Operator
+Player-1.png
+0
+How does the Seventh Floor sound to you?/
+Pen Pal
+Player-5.png
+1
+I think the Seventh Floor is currently undergoing its monthly dose of/sanitizing radiation. Y'know, to kill germs./
+Operator
+Player-1.png
+0
+I think the Eighth Floor is worth a try./
+Pen Pal
+Player-5.png
+1
+I think the Orchestral Chamber is currently hosting a special concert./
+Operator
+Player-1.png
+0
+Oh. That sounds nice./
+Pen Pal
+Player-5.png
+1
+But we can't go. We don't have any nice clothes./
+Operator
+Player-1.png
+0
+Erm, is the Ninth Floor available?/
+Pen Pal
+Player-5.png
+1
+Lets try to avoid Little America right now. I think they're holding some sort of/demonstration./
+Operator
+Player-1.png
+0
+Maybe we should go to the Tenth Floor./
+Pen Pal
+Player-5.png
+1
+Tenth Floor? What's a Tenth Floor? I didn't know we had a Tenth Floor in this building./
+Operator
+Player-1.png
+0
+Oh. My mistake. I meant to say "Eleventh"./
+Pen Pal
+Player-5.png
+1
+Ah. That makes more sense. But I'm afraid Justice Park is currently victim to an hornet/infestation.And I'm not fond of hornets./
+Operator
+Player-1.png
+0
+Surely the Twelfth Floor is open./
+Pen Pal
+Player-5.png
+1
+Unless I am mistaken, the Gallery of Lights just opened a new exhibit on Minimalism./
+Operator
+Player-1.png
+0
+I we should go investigate it then./
+Pen Pal
+Player-5.png
+1
+Unfortunately, the exhibit is so minimalistic it phased out of existence./Along with the rest of the/floor.
+Operator
+Player-1.png
+0
+Hmm? What's this? Is this a new floor?/
+Pen Pal
+Player-5.png
+1
+I've never seen this one before."Violence"?/Sounds promising./
+Operator
+Player-1.png
+0
+I'll take us there then./
+Employee
+Jack1small.png
+1
+The Violence Department was one of the Four Original Departments of/this company./
+Operator
+Player-1.png
+0
+What were the other Three?/
+Employee
+Jack1small.png
+1
+Well, nobody knows for sure, But I think the Departments of Passivity,/Apathy and Suffering were the ones./
+Operator
+Player-1.png
+0
+Those sound terrible! What were our Founders thinking?/
+Employee
+Jack1small.png
+1
+Hmm. It makes sense if you think about it. We couldn't have a department of Happiness/because Happiness is a nice thing that the whole company should experience,/not just one department./
+Employee
+Jack1small.png
+1
+Management only isolates things into their own department if the rest of the/building wants nothing to do with them./
+Employee
+Jack1small.png
+1
+Remember, departmentalization is for the unwanted./
+Operator
+Player-1.png
+0
+Excuse me, could you tell us where Suite 521 is?/
+Employee
+3rdWestOffices-3.png
+1
+No. I've never been to any other floor of this building./
+Operator
+Player-1.png
+0
+Oh. . . Sorry to bother you./
