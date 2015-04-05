@@ -3,12 +3,16 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.party.Operator;
+import dev.zt.UpliftedVFFV.inventory.InventoryManager;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.PartyManager;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
@@ -20,16 +24,17 @@ public class GameState extends State {
 	StateManager statemanager;
 	WorldManager worldmanager;
 	static EventManager eventmanager;
+	public PartyManager partymanager;
+	public InventoryManager inventorymanager;
 	Event ugh;
-	ArrayList<Character> party= new ArrayList<Character>();
-	public Character Operator;
 	public GameState(Game game, StateManager sm){
 		super(game,sm);
-		ugh = new Event(game, sm);
+		ugh = new Event(game, sm,this);
+		partymanager = new PartyManager(game);
+		inventorymanager = new InventoryManager(game);
 		world = new World(game, "res/Worlds/backroom.txt","Home Sweet Home");
-		eventmanager=new EventManager(game,"res/Worlds/backroom.txt");
+		eventmanager = new EventManager(game,"res/Worlds/backroom.txt");
 		player = new Player(game, 128, 128);
-		
 	}
 
 	
@@ -57,17 +62,18 @@ public class GameState extends State {
 		world.tick();
 		eventmanager.tick();
 		player.tick();
+		if(game.getKeyManager().z){
+			StateManager.states.push(new MenuState(game,statemanager,this));
+		}
 	}
 	
 	public void render(Graphics g) {
 		world.render(g);
 		eventmanager.render(g);
 		player.render(g);
-		if(game.getKeyManager().z){
-//			StateManager.states.push(new MenuState(game,statemanager));
-			StateManager.states.push(new BattleState(game,statemanager));
+		
+//			StateManager.states.push(new BattleState(game,statemanager));
 			
-		}
 		
 	}
 

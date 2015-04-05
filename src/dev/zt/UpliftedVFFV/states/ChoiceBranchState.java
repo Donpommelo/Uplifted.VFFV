@@ -23,7 +23,7 @@ public class ChoiceBranchState extends State {
 	public int EventId;
 	public String[] num;
 	public int currentchoice, choicelocation,firstchoice;
-	public boolean selected;
+	public boolean selected,exit;
 	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
 		this.EventId=eventId;
@@ -32,9 +32,18 @@ public class ChoiceBranchState extends State {
 		choicelocation=0;
 		firstchoice=0;
 		selected=false;
+		exit=false;
 	}
 
 	public void tick() {
+		if(game.getKeyManager().x){
+			exit=true;
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		if(game.getKeyManager().space){
 			selected=true;
 			try {
@@ -82,9 +91,15 @@ public class ChoiceBranchState extends State {
 			
 
 	public void render(Graphics g) {
+	
 		statemanager.states.pop();
 		statemanager.states.peek().render(g);
 		statemanager.states.push(this);
+		if(exit==true){
+			statemanager.states.pop();
+			statemanager.states.pop();
+			exit=false;
+		}
 		if(selected==true){
 			statemanager.states.pop();
 			statemanager.states.pop();

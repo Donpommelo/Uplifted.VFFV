@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.party.PenPal;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -36,6 +37,7 @@ public class EventPenPal extends Event {
 		}
 		if(selfswitch1==false){
 			super.Dialog(0, 11);
+			super.recruit(new PenPal());
 			selfswitch1=true;
 		}
 		else{

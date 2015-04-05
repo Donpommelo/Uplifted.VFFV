@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.party;
 
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 
-public class PenPal extends Character{
+public class PenPal extends Schmuck{
 
 	
 	

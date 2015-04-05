@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.*;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -21,7 +22,42 @@ public class EventElevatorPanel extends Event {
 	
 	public void run(){	
 		super.Dialog(24, 24);
-		
+		super.loot(new MedPak(),3);
+		super.loot(new CaffeinePatch(),3);
+		super.loot(new AngryBeef(),99);
+		super.loot(new BeefBoyle(),3);
+		super.loot(new BeefUnwell(),5);
+		super.loot(new BossMug(),1);
+		super.loot(new CarrotJuice(),6);
+		super.loot(new CoffeeBean(),1);
+		super.loot(new CoffeedIce(),13);
+		super.loot(new DeploreApp(),1);
+		super.loot(new EightBall(),1);
+		super.loot(new EnvenomEarth(),1);
+		super.loot(new FadedSash(),1);
+		super.loot(new FennelDonut(),1);
+		super.loot(new Fishbones(),1);
+		super.loot(new Lachiplatre(),999);
+		super.loot(new LemonyFresh(),10);
+		super.loot(new LetterOpener(),1);
+		super.loot(new MeltedIcecream(),3);
+		super.loot(new MentalLeakage(),1);
+		super.loot(new MidgeBlood(),5);
+		super.loot(new MidgeProboscis(),1);
+		super.loot(new NewtonCradle(),1);
+		super.loot(new Paperweight(),1);
+		super.loot(new SeeingEye(),1);
+		super.loot(new SleepingPills(),8);
+		super.loot(new SummonSauce(),1);
+		super.loot(new Unbeef(),1);
+		super.loot(new ZDrug(),12);
+		super.loot(new PostageStamp(),12);
+		super.loot(new BucketBattery(),1);
+		super.loot(new SmellingSalt(),1);
+		super.loot(new SimmerResent(),1);
+		super.loot(new SummonConch(),1);
+		super.loot(new SummonTwofish(),1);
+		super.loot(new SummonLotus(),1);
 		super.ChoiceBranch(this.getId(), Choices);
 		
 		

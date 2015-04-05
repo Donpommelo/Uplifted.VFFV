@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
@@ -22,6 +24,7 @@ public class Event{
 	static EventManager eventmanager;
 	static StateManager statemanager;
 	static Game game;
+	static GameState gamestate;
 	float x;
 	float y;
 	public static Event[] events = new Event[256];
@@ -53,9 +56,10 @@ public class Event{
 	public static Event eventemployee4 = new EventEmployee4(4,26,28);
 	
 	
-	public Event(Game g, StateManager sm) {
+	public Event(Game g, StateManager sm,GameState gamestate) {
 		this.game=g;
 		this.statemanager=sm;
+		this.gamestate=gamestate;
 //		this.id=idnum;
 //		this.x=x;
 //		this.y=y;
@@ -130,6 +134,7 @@ public class Event{
 		}
 
 	}
+	
 	public static void ChoiceBranch(int EventId,String[] choices){
 		
 		try {
@@ -139,6 +144,30 @@ public class Event{
 		}
 		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices));
 
+	}
+	
+	public void recruit(Schmuck recruit){
+		if(gamestate.partymanager.party.size()<5){
+		gamestate.partymanager.party.add(recruit);
+		}
+	}
+	
+
+
+	public void unrecruit(Schmuck unrecruit){
+		if(gamestate.partymanager.party.contains(unrecruit)){
+			gamestate.partymanager.party.remove(unrecruit);
+		}
+	}
+	
+	public void loot(Item i,int num){
+		if(gamestate.inventorymanager.backpack.containsKey(i)){
+			int temp = gamestate.inventorymanager.backpack.get(i);
+			gamestate.inventorymanager.backpack.put(i, temp += num);
+		}
+		else{
+			gamestate.inventorymanager.backpack.put(i, num);
+		}
 	}
 	
 	public int getId() {
