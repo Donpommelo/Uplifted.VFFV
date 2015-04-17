@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 public class EventEmployee3 extends Event {
 
 	public boolean selfswitch1=false;
-	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeM1);
+	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM1);
 	public EventEmployee3(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		
@@ -35,11 +35,11 @@ public class EventEmployee3 extends Event {
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM1));
 		}
 		if(selfswitch1==false){
-			super.Dialog(57, 62);
+			super.Dialog(57, 61,this.getId());
 			selfswitch1=true;
 		}
 		else{
-			super.Dialog(63, 63);
+			super.Dialog(62, 62,this.getId());
 		}
 
 	}

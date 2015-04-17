@@ -1,5 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
+
 public class FennelDonut extends Item{
 
 	static String descr="Mick always had the worst taste in donuts.";
@@ -8,8 +10,8 @@ public class FennelDonut extends Item{
 
 	}
 	
-	public void use(Character c){
-		
+	public void use(Schmuck perp, Schmuck vic){
+		vic.hpChange(20);
 	}
 
 }

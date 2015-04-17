@@ -36,12 +36,11 @@ public class EventPenPal extends Event {
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
 		}
 		if(selfswitch1==false){
-			super.Dialog(0, 11);
-			super.recruit(new PenPal());
+			super.Dialog(12, 26,this.getId());
 			selfswitch1=true;
 		}
 		else{
-			super.Dialog(12, 12);
+			super.Dialog(27, 27,this.getId());
 		}
 
 	}

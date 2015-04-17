@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
+import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
@@ -19,54 +20,52 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class DialogState extends State {
 	
-	private BufferedImage Char;
-	private boolean position, complete, dialogscrolling;
 	private StateManager statemanager;
 	private int linenum,endline;
-	private GameState gamestate;
-	private Dialog[] chatlog;
 	private Dialog current;
+	public int EventId;
 	
-	public DialogState(Game game, StateManager sm, int start, int end){
+	public DialogState(Game game, StateManager sm, int start, int end,int eventId){
 		super(game,sm);
 		this.linenum=start;
 		this.endline=end;
-		complete=false;
-		dialogscrolling=false;
+		this.EventId=eventId;
 	}
 
 	public void tick() {
 		
-/*		if(dialogscrolling==true){
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			dialogscrolling=false;
-		}
-	else*/if(game.getKeyManager().space){
+		if(game.getKeyManager().space){
 			if(Dialog.scrolling==false){
-		//		Dialog.charIndex=1;
-		//		Dialog.lastIndex=0;
-		//		Dialog.currentLine=1;
-		//		Dialog.Line1="";Dialog.Line2="";Dialog.Line3="";
-		//		dialogscrolling=true;
+				try {
+					Thread.sleep(300);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				if(linenum==endline){
-					statemanager.states.pop();
-					try {
-						Thread.sleep(300);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+					if (current!=null){
+						current.charIndex=0;
 					}
+					statemanager.states.pop();
+					if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
+						Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
+						Event.events[this.EventId].run();
+					}
+					
 					}
 				else{
 					linenum++;
+					
 				}
 			}
 			else{
-		//		Dialog.charIndex+=5;
-					
+				if(current!=null){
+					current.charIndex+=10;
+				}
+				try {
+					Thread.sleep(40);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				}
 			
 		}	
@@ -75,12 +74,8 @@ public class DialogState extends State {
 			
 
 	public void render(Graphics g) {
-	//	if(complete==true){
-	//		System.out.print("meep");
-			
-			
-	//	}
-//		else {
+
+
 		current = Assets.dialog[linenum];
 			statemanager.states.pop();
 			statemanager.states.peek().render(g);
@@ -89,7 +84,6 @@ public class DialogState extends State {
 				current.render(g);
 			}
 		
-//		}
 		
 		
 		

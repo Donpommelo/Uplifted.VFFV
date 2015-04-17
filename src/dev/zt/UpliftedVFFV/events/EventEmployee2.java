@@ -34,7 +34,13 @@ public class EventEmployee2 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
 		}
-		super.Dialog(25,25);
+		if(selfswitch1==false){
+			super.Dialog(43, 49,this.getId());
+			selfswitch1=true;
+		}
+		else{
+			super.Dialog(50, 50,this.getId());
+		}
 
 	}
 

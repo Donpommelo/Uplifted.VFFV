@@ -1,21 +1,25 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
+
 public class Skills {
 	
 	public Skills(int index){
 		
 	}
 	
-	public void target(Character targ){
-		
+	public void run(Schmuck user, Schmuck target){
+
 	}
 	
-	public void target(){
-		
+	public String useText(){
+		return "";
 	}
 	
-	public void target(Boolean team){
-		
+	public String resultText(){
+		return "";
 	}
+	
+
 
 }

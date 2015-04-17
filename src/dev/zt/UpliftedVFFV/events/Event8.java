@@ -17,7 +17,7 @@ public class Event8 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/GlassWalk.txt", 4, 21,"");
+		super.transport("res/Worlds/GlassWalk.txt", 19, 15,"");
 	}
 
 	public static void main(String[] args) {

@@ -72,7 +72,7 @@ public class Assets {
 		Uparrow=arrows.crop(90,12,12,12);
 		Downarrow=arrows.crop(90,40,12,12);
 		
-		String file = Utils.loadFileAsString("res/Text/Dialog.txt");
+		String file = Utils.loadFileAsString("res/Text/DialogV2.txt");
 		String[] tokens = file.split("\\r?\\n");
 		dialog=new Dialog[Utils.parseInt(tokens[0])];
 		for(int i = 0;i<Utils.parseInt(tokens[0]);i++){

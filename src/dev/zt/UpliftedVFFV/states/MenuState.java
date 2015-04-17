@@ -49,7 +49,7 @@ public class MenuState extends State {
 			if(game.getKeyManager().space){
 				optionChosen=true;
 				try {
-					Thread.sleep(100);
+					Thread.sleep(200);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -65,7 +65,7 @@ public class MenuState extends State {
 				}
 			}
 			if(game.getKeyManager().down){
-				if(optionSelected<2){
+				if(optionSelected<3){
 					optionSelected++;
 					try {
 						Thread.sleep(100);
@@ -81,7 +81,7 @@ public class MenuState extends State {
 				if(game.getKeyManager().space){
 					characterChosen=true;
 					try {
-						Thread.sleep(100);
+						Thread.sleep(200);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -111,7 +111,7 @@ public class MenuState extends State {
 				if(game.getKeyManager().space){
 					itemChosen=true;
 					try {
-						Thread.sleep(100);
+						Thread.sleep(200);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -223,7 +223,8 @@ public class MenuState extends State {
 		g.setColor(new Color(0, 0,0));
 		g.drawString("Party", 10, 25);
 		g.drawString("Inventory", 10, 50);
-		g.drawString("Iunno", 10, 75);
+		g.drawString("Map", 10, 75);
+		g.drawString("Directory", 10, 100);
 			switch(optionSelected){
 			case 0:
 				if(optionChosen==false){
@@ -233,7 +234,7 @@ public class MenuState extends State {
 					g.setColor(new Color(255, 255,51));
 				}
 				g.fillRect(135, 5,500,160);
-				g.fillRect(135, 170, 500, 240);
+				g.fillRect(135, 170, 500, 241);
 				for(int i=0;i<gamestate.partymanager.party.size();i++){
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.setColor(new Color(0, 0,0));
@@ -241,8 +242,23 @@ public class MenuState extends State {
 				g.drawImage(gamestate.partymanager.party.get(i).getBattleSprite(),130+100*i,15,100,150,null);
 				}
 				g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
+				g.setColor(new Color(102, 178,255));
+				g.fillRect(140, 175, 150, 225);
+				Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
+				g.drawImage(tempSchmuck.getBattleSprite(), 140, 175,150,225, null);
+				g.setColor(new Color(0, 0,0));
+				g.drawString(tempSchmuck.getName(),300,190);
+				g.drawString("Hp:"+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
+				g.drawString("Bp:"+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
+				g.drawString("Pow:"+tempSchmuck.getBasePow(),300,265);
+				g.drawString("Def:"+tempSchmuck.getBaseDef(),300,290);
+				g.drawString("Spd:"+tempSchmuck.getBaseSpd(),300,315);
+				g.drawString("Skl:"+tempSchmuck.getBaseSkl(),300,340);
+				g.drawString("Int:"+tempSchmuck.getBaseInt(),300,365);
+				g.drawString("Luk:"+tempSchmuck.getBaseLuk(),300,390);
 				if(characterChosen==true){
-					
+//					g.setColor(new Color(255, 255,51));
+//					g.fillRect(135, 5,500,406);
 				}
 				
 				break;
@@ -262,7 +278,7 @@ public class MenuState extends State {
 				g.fillRect(136+166*(itemPointer%3), 180+25*(itemPointer/3), 166, 25);
 				}
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				itemnum=0;
+				itemnum=0;                                                                                                                                                                                                                                                                                       
 //				for(Item current : temp){
 				for(int i=backpackLocation;i<=backpackLocation+26 && i<gamestate.inventorymanager.backpack.size();i++){			
 					g.setColor(new Color(0, 0,0));
@@ -296,7 +312,9 @@ public class MenuState extends State {
 					g.drawImage(Assets.Uparrow,385,165,null);
 				}
 				if((backpackLocation+27)/3!=(gamestate.inventorymanager.backpack.size()+2)/3){
-					g.drawImage(Assets.Downarrow,385,405,null);
+					if(gamestate.inventorymanager.backpack.size()!=0){
+						g.drawImage(Assets.Downarrow,385,405,null);
+					}
 				}
 				
 				break;

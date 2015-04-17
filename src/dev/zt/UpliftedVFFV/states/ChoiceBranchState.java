@@ -22,7 +22,7 @@ public class ChoiceBranchState extends State {
 	
 	public int EventId;
 	public String[] num;
-	public int currentchoice, choicelocation,firstchoice;
+	public int currentchoice, choicelocation,firstchoice, boxsize;
 	public boolean selected,exit;
 	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
@@ -33,6 +33,12 @@ public class ChoiceBranchState extends State {
 		firstchoice=0;
 		selected=false;
 		exit=false;
+		if(num.length>5){
+			boxsize=5;
+		}
+		else{
+			boxsize=num.length;
+		}
 	}
 
 	public void tick() {
@@ -72,7 +78,7 @@ public class ChoiceBranchState extends State {
 		if(game.getKeyManager().down){
 			if(currentchoice<num.length-1){
 				currentchoice++;
-				if(choicelocation==4){
+				if(choicelocation==boxsize-1){
 					firstchoice++;
 				}
 				else{
@@ -97,6 +103,11 @@ public class ChoiceBranchState extends State {
 		statemanager.states.push(this);
 		if(exit==true){
 			statemanager.states.pop();
+			Event.events[this.EventId].ChoiceMade(currentchoice);
+/*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
+				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
+				Event.events[this.EventId].run();
+			}*/
 			statemanager.states.pop();
 			exit=false;
 		}
@@ -104,16 +115,20 @@ public class ChoiceBranchState extends State {
 			statemanager.states.pop();
 			statemanager.states.pop();
 			Event.events[this.EventId].ChoiceMade(currentchoice);
+/*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
+				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
+				Event.events[this.EventId].run();
+			}*/
 
 		}
 		else{
 			g.setColor(new Color(102, 178,255, 200));
-			g.fillRect(5, 30, 100, 125);
+			g.fillRect(5, 30, 100, 25*boxsize);
 			g.setColor(new Color(200, 200,200, 200));
 			g.fillRect(5, 30+25*choicelocation, 100, 25);
 			g.setFont(new Font("Chewy", Font.PLAIN, 18));
 			g.setColor(Color.BLACK);
-			for(int i=0;i<5;i++){
+			for(int i=0;i<boxsize;i++){
 				g.drawString(num[firstchoice+i], 5, 50+25*i);
 			}
 
@@ -121,8 +136,8 @@ public class ChoiceBranchState extends State {
 		if(firstchoice!=0){
 			g.drawImage(Assets.Uparrow,50,25,null);
 		}
-		if(firstchoice!=num.length-5){
-			g.drawImage(Assets.Downarrow,50,145,null);
+		if(firstchoice!=num.length-boxsize){
+			g.drawImage(Assets.Downarrow,50,20+25*boxsize,null);
 		}
 	
 	}

@@ -21,11 +21,11 @@ public class EventReceptionistDesk extends Event {
 	
 	public void run(){
 		if(selfswitch1==false){
-			super.Dialog(13, 21);
+			super.Dialog(32, 36,this.getId());
 			selfswitch1=true;
 		}
 		else{
-			super.Dialog(22, 22);
+			super.Dialog(37, 37,this.getId());
 		}
 	}
 

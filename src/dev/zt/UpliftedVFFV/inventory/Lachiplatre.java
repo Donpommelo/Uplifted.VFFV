@@ -1,5 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
+
 public class Lachiplatre extends Item{
 
 	static String descr="A stale, bun-like object stuffed with dry paste. You assume it is edible.";
@@ -8,8 +10,8 @@ public class Lachiplatre extends Item{
 
 	}
 	
-	public void use(Character c){
-		
+	public void use(Schmuck perp, Schmuck vic){
+		vic.hpChange(5);
 	}
 
 }

@@ -1,5 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
+
 public class BucketBattery extends Item{
 
 	static String descr="A bucket filled with old, bulging batteries floating in some sort of\nacidic solution.";
@@ -8,8 +10,8 @@ public class BucketBattery extends Item{
 
 	}
 	
-	public void use(Character c){
-		
+	public void use(Schmuck perp, Schmuck vic){
+		vic.CurrentHp-=50;
 	}
 
 }

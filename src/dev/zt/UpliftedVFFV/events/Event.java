@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
@@ -39,22 +40,54 @@ public class Event{
 	public static Event event8 = new Event8(0,23,8);
 	public static Event event9 = new Event9(0,7,9);
 	public static Event event10 = new Event10(2,5,10);
-	public static Event event11 = new Event11(5,21,11);
+	public static Event event11 = new Event11(0,15,11);
 	public static Event event12 = new Event12(5,4,12);
 	public static Event event13 = new Event13(2,7,13);
 	public static Event event14 = new Event14(0,8,14);
+	public static Event event15 = new Event15(6,8,15);
+	public static Event event16 = new Event16(19 ,4,16);
+	public static Event event17 = new Event17(3 ,1,17);
+	public static Event event18 = new Event18(3 ,15,18);
+	public static Event event19 = new Event19(3 ,1,19);
+	public static Event event20 = new Event20(3, 14,20);
+	public static Event event21 = new Event21(38, 42,21);
+	public static Event event22 = new Event22(0, 8,22);
+	public static Event event23 = new Event23(0, 17,23);
+	public static Event event24 = new Event24(6, 17,24);
+	public static Event event25 = new Event25(10, 7,25);
+	public static Event event26 = new Event26(10, 30,26);
+	public static Event event27 = new Event27(20, 7,27);
+	public static Event event28 = new Event28(18, 0,28);
+	public static Event event29 = new Event29(26, 0,29);
+	public static Event event30 = new Event30(6, 10,30);
+	public static Event event31 = new Event31(23, 10,31);
 	
+	public static Event eventpenpal = new EventPenPal(2,4,40);
+	public static Event eventreceptionist = new EventReceptionist(7,4,41);
+	public static Event eventreceptionistdesk = new EventReceptionistDesk(7,5,42);
 	
-	public static Event eventpenpal = new EventPenPal(2,4,21);
-	public static Event eventreceptionist = new EventReceptionist(7,4,22);
-	public static Event eventreceptionistdesk = new EventReceptionistDesk(7,5,23);
+	public static Event eventemployee1 = new EventEmployee1(3,7,43);
+	public static Event eventemployee2 = new EventEmployee2(11,3,44);
+	public static Event eventelevatorpanel = new EventElevatorPanel(4,3,45);
+	public static Event eventemployee3 = new EventEmployee3(8,19,46);
+	public static Event eventemployee4 = new EventEmployee4(4,26,47);
+	public static Event eventemployee5 = new EventEmployee5(3,30,48);
+	public static Event eventemployee6 = new EventEmployee6(6,9,49);
 	
-	public static Event eventemployee1 = new EventEmployee1(3,7,24);
-	public static Event eventemployee2 = new EventEmployee2(11,3,25);
-	public static Event eventelevatorpanel = new EventElevatorPanel(4,3,26);
-	public static Event eventemployee3 = new EventEmployee3(8,19,27);
-	public static Event eventemployee4 = new EventEmployee4(4,26,28);
+	public static Event eventemployee10 = new EventEmployee10(12,12,53);
+	public static Event eventemployee11 = new EventEmployee11(12,8,54);
+	public static Event eventemployee12 = new EventEmployee12(12,4,55);
+	public static Event eventemployee13 = new EventEmployee13(16,4,56);
+	public static Event eventemployee14 = new EventEmployee14(16,8,57);
+	public static Event eventemployee15 = new EventEmployee15(8,12,58);
+	public static Event eventemployee16 = new EventEmployee16(8,8,59);
+	public static Event eventemployee17 = new EventEmployee17(8,8,60);
+	public static Event eventemployee18 = new EventEmployee18(8,8,61);
+	public static Event eventemployee19 = new EventEmployee19(8,4,62);
+	public static Event eventemployee20 = new EventEmployee20(8,21,63);
+	public static Event eventemployee21 = new EventEmployee21(12,21,64);
 	
+	public static Event fitemeh = new EventTestBattle(0,0,100);
 	
 	public Event(Game g, StateManager sm,GameState gamestate) {
 		this.game=g;
@@ -124,9 +157,17 @@ public class Event{
 		
 	}
 	
-	public static void Dialog(int firstline, int lastline){
-		
-		StateManager.states.push(new DialogState(game,statemanager,firstline,lastline));
+	public static void fite(int enemyId){
+		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,gamestate));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void Dialog(int firstline, int lastline,int eventId){
+		StateManager.states.push(new DialogState(game,statemanager,firstline,lastline,eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -183,6 +224,19 @@ public class Event{
 	public void ChoiceMade(int i) {
 		
 		
+	}
+	
+	public int getfinalstage() {
+		return 1;
+		
+	}
+	
+	public int getstage() {
+		return 1;		
+	}
+	
+	public void setstage(int i) {
+				
 	}
 
 

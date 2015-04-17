@@ -14,7 +14,6 @@ public class Dialog {
 	public BufferedImage speaker;
 	public Color myColor;
 	public int charIndex;
-	public String Line1,Line2,Line3;
 	public String SpeakerName;
 	public int currentLine, lastIndex;
 	public static boolean scrolling;
@@ -22,10 +21,9 @@ public class Dialog {
 		this.speaker = img;
 		this.position = pos;
 		this.text = text;
-		this.charIndex=1;
+		this.charIndex=0;
 		this.lastIndex=0;
 		this.currentLine=1;
-		this.Line1="";this.Line2="";this.Line3="";
 		scrolling=false;
 		this.SpeakerName=name;
 		if(position!=0){
@@ -54,51 +52,20 @@ public class Dialog {
 		g.setColor(new Color(102, 178,255, 200));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g.fillRect(0, 316, 640, 100);
-		g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
-		g.setColor(Color.BLACK);
-		g.drawString(SpeakerName, 8, 304);
-		for(int i=1;i<charIndex;i++){
-			if(text.charAt(i)=='/'){
-				switch(currentLine){
-				case 1:Line1=text.substring(0,i);
-					currentLine++;
-					lastIndex=i+1;
-					break;
-				case 2:if(i>lastIndex){
-						Line2=text.substring(lastIndex,i);	
-						currentLine++;
-						lastIndex=i+1;
-						}
-					
-					break;
-	/*			case 3:Line3=text.substring(lastIndex, i+1);
-					currentLine++;
-					lastIndex=i+1;
-					break;*/
-					}
-			}
-			else {
-				switch(currentLine){
-				case 1:
-					Line1=text.substring(0,i+1);
-					break;
-				case 2:
-					if(i>lastIndex){
-						Line2=text.substring(lastIndex,i);	}
-					break;
-				case 3:
-					if(i>lastIndex){
-						Line3=text.substring(lastIndex,i+1);}
-					break;
-					}
-			}
-				
-		}
 		
-//		g.drawString(text,8, 340);
-		g.drawString(Line1, 8, 345);
-		g.drawString(Line2, 8, 370);
-		g.drawString(Line3, 8, 395);
+		if(!SpeakerName.equals("meep"))
+		{
+			g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
+			g.setColor(Color.BLACK);
+			g.drawString(SpeakerName, 8, 304);
+		}
+		g.setColor(Color.BLACK);
+		for(int i=1;i<charIndex;i++){
+			int y=320;
+			String temp=text.substring(0,i);
+			for (String line : temp.split("/"))
+		        g.drawString(line, 6, y += g.getFontMetrics().getHeight());
+		}
 		if(charIndex<text.length()){
 			scrolling=true;
 			charIndex++;

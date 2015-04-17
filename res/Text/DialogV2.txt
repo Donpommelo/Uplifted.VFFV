@@ -1,0 +1,382 @@
+95
+meep
+Arturo.png
+0
+You couldn't sleep right now if you tried./
+meep
+Arturo.png
+0
+An unremarkable writing desk. You have nothing to write and nobody/to write to./
+meep
+Arturo.png
+0
+Display cases filled with various elevator memorabilia./
+meep
+Arturo.png
+0
+A nail in the wall. You vaguely remember a calendar hanging here./
+meep
+Arturo.png
+0
+An poster of an elevator./
+Employee
+3rdSouthOffices-1.png
+1
+Good morning Operator./
+Operator
+Player-1.png
+0
+Good morning! What floor for you today?/
+Employee
+3rdSouthOffices-1.png
+1
+Six. As usual/
+Operator
+Player-1.png
+0
+Right away./
+Employee
+3rdSouthOffices-1.png
+1
+Take me to floor six, please. I need to get to work, and you¡¦re/the only one who knows how to use this thing./
+Employee
+3rdSouthOffices-1.png
+1
+Thank you./
+Operator
+Player-1.png
+0
+Have a nice day./
+Operator
+Player-1.png
+0
+Good morning¡K er¡K mam. What floor for you?./
+???
+Player-5.png
+1
+. . ./
+Operator
+Player-1.png
+0
+Are those . . . envelopes?/
+???
+Player-5.png
+1
+Dear Operator. I come to you in times of dire need!/It is imperative that I be delivered to Suite 521 immediately./Sincerely, your Pen Pal./
+Operator
+Player-1.png
+0
+Er¡K I¡¦m afraid I don¡¦t know where that is . . ./
+Pen Pal
+Player-5.png
+1
+Drat! We must find the location of Suite 521. Take me to Floor 3./I use to work there, so its a good place to start looking./
+Operator
+Player-1.png
+0
+Very well. I hope this won¡¦t take long./
+Operator
+Player-1.png
+0
+Wait! How are these letters responding to everything I say?/Can you hear me?/
+Pen Pal
+Player-5.png
+1
+We mustn't squander time. Every second wasted on silly questions is one less/for preventing the unspeakable calamity that would occur if we fail in this endeavor./
+Operator
+Player-1.png
+0
+Um. I don¡¦t think I can follow you. I¡¦m supposed to stay here and do my job./
+Pen Pal
+Player-5.png
+1
+Your job is to help people get to where they need, No?/Well, I need to get to Suite 521, so its your job to get me there./
+Operator
+Player-1.png
+0
+Well I suppose. . ./
+Pen Pal
+Player-5.png
+1
+And besides, as you may have noticed, I have no legs./
+Operator
+Player-1.png
+0
+. . ./
+Pen Pal
+Player-5.png
+1
+Don¡¦t worry. I trust that this whole affair will be either very short or very fulfilling!/
+Pen Pal
+Player-5.png
+1
+Well, are we going to Room 521 or not?/
+Operator
+Player-1.png
+1
+I don't think that's the floor that was asked for./
+Operator
+Player-1.png
+0
+Well, we're here./
+Pen Pal
+Player-5.png
+1
+ Floor 3! This place certainly seems familiar!/We should ask around to see if anyone can help us find Suite 521./
+Operator
+Player-1.png
+0
+I'll try and look around for someone knowledgable./
+Receptionist
+3rdSouthOffices-3.png
+1
+Welcome to the South Wing Offices. What can I help you with?/
+Operator
+Player-1.png
+0
+Could you help me find Suite 521?/
+Receptionist
+3rdSouthOffices-3.png
+1
+Gee, that's awfully specific. I normally just help with more general stuff like/"Where am I?"./
+Operator
+Player-1.png
+0
+Oh. Thanks anyways./
+Receptionist
+3rdSouthOffices-3.png
+1
+No problem. You should go see George in the mailroom if you still remember your/question. I know I don't./
+Receptionist
+3rdSouthOffices-3.png
+1
+Welcome to the South Wing Offices.//Wait, did I already say that to you?/
+Employee
+3rdSouthOffices-1.png
+1
+Say, are you new to this office? You should take a Pocket Map./ This building can really be a maze sometimes./
+Operator
+Player-1.png
+0
+Thank you sir!./
+Operator
+Player-1.png
+0
+Hey, wait! This is just a blank sheet of paper!/
+Employee
+3rdSouthOffices-1.png
+1
+You're supposed to fill it in yourself as you explore. Saves us the effort of making/new maps whenever we renovate./
+Employee
+3rdSouthOffices-1.png
+1
+If this building was well designed, its employees wouldn't need maps./
+Mover
+3rdSouthOffices-7.png
+1
+Arrrh. Darn thing won't fit through the door./
+Operator
+Player-1.png
+0
+Sir . . . do you need any help with that?/
+Mover
+3rdSouthOffices-7.png
+1
+Just go the other way. I can handle this./
+Operator
+Player-1.png
+0
+If you're trying to move that sofa, maybe you should try turning it . . . /
+Mover
+3rdSouthOffices-7.png
+1
+Bugger off! Who d'ya think you are? Some kinda furniture moving expert?/That's MY job! Y'hear me? That's what they PAY me for! Moving furniture!/
+Operator
+Player-1.png
+0
+. . . Say, perhaps you could help me move this potted plant. . ./I really need to get back to my elevator./
+Pen Pal
+Player-5.png
+0
+No! Absolutely not! I forbid it! Operator, this job can be done by you and no one else./
+Mover
+3rdSouthOffices-7.png
+1
+Arrrgh. Maybe I should try pushing it from the other direction./
+meep
+Arturo.png
+0
+Some guy gave you! Some sort of Donut!/It seems to be one of those strange, niche flavors./
+Employee
+Emily1small.png
+1
+Oh. Its you. I wasn't expecting to see you./
+Operator
+Player-1.png
+0
+Good morning. Is something wrong?/
+Employee
+Emily1small.png
+1
+Oh, no. Not at all. Its just that. . . I didn't know you ever left your elevator./Seeing you out here just came to me as a bit of a shock./
+Employee
+Emily1small.png
+1
+Things are harder to find when you never leave your elevator./
+Employee
+Jack1small.png
+1
+Hey there! Are you looking for something./
+Operator
+Player-1.png
+0
+I was looking for Suite 521. Could you tell me where that is?/
+Employee
+Jack1small.png
+1
+Oh. I'm sorry. I don't know what that is./
+Employee
+Jack1small.png
+1
+That means it probably isn't in this office. I would know if it were in this office./
+Operator
+Player-1.png
+0
+Oh. Thanks anyways./
+Employee
+Jack1small.png
+1
+Maybe it is in a different office. There are plenty of offices in these offices./ Ain't much else besides offices as a matter of fact. All sorts of offices here, really./That's why they call this floor "The Offices."/
+Employee
+Jack1small.png
+1
+Howdy./
+Operator
+Player-1.png
+1
+To which floor?/
+Employee
+Gerome1small.png
+1
+Hello there. Which offices do you come from?/
+Operator
+Player-1.png
+0
+What do you mean?/
+Employee
+Gerome1small.png
+1
+Which offices? South, East, West or. . . Er. . .whatever the Fourth one was?/
+Employee
+Gerome1small.png
+1
+I woulda wagered you were a West Office Employee, but you seemed a little too/. . . excited, y'know? But you looked too nice to be from East Wing./And I haven't seen you around South./
+Operator
+Player-1.png
+0
+Oh. I'm not from any of the offices. I am the Operator. I work in the Elevators./
+Employee
+Gerome1small.png
+1
+Elevators? We have elevators in this building? To think I've been taking the stairs in all/my however many years of working here. . ./
+Operator
+Player-1.png
+0
+Stairs . . . /
+Employee
+Gerome1small.png
+1
+Remind me to try that elevator thing some time./
+Operator
+Player-1.png
+0
+Hello. Could you tell me where Room 521 is?/
+Employee
+AndreThe1.png
+1
+Hello. I am here to test arbitrarily large sprites./
+Employee
+3rdSouthOffices-1.png
+1
+Hey, today was my day to get breakfast for the office, but Mick isn't here because of a/kidney stone or whatever./You can have his donut if you want./
+meep
+Arturo.png
+0
+Some guy gave you a Donut!/It seems to be one of those strange, niche flavors./
+Employee
+3rdSouthOffices-1.png
+1
+Mick always had the worse taste in donuts./
+Employee
+3rdSouthOffices-3.png
+1
+Are you the exterminator?/That's a shame. This monster infestation is the most interesting thing that has ever/happened in this office./
+Employee
+3rdSouthOffices-3.png
+1
+Room 521? I dunno. I'm only here because of family connections./
+Employee
+3rdSouthOffices-1.png
+1
+Ever since I got a job here, I've started to think I just might not be the main/character in this story./
+Employee
+3rdSouthOffices-1.png
+1
+Maybe if I feign illness, George will let me take the day off and let me go to/the aquarium instead. That would be pretty nice./
+Employee
+3rdSouthOffices-1.png
+1
+Drat. Why does this office block all the good websites?/
+Employee
+3rdSouthOffices-1.png
+1
+Are you the guy George hired to see if we were doing any work?/
+Employee
+3rdSouthOffices-3.png
+1
+Man, it weren't for this job this job I'd probably be famous by now./
+Employee
+3rdSouthOffices-3.png
+1
+Or at the very least, happy./
+Employee
+3rdSouthOffices-3.png
+1
+Sometimes we have contests between the four wings of the Offices. Or so I hear./I've never shown up to one. No one else from South Wing has either for that matter./
+Employee
+3rdSouthOffices-3.png
+1
+I guess that means we lose./
+Employee
+3rdSouthOffices-3.png
+1
+Which of these makes it seem like I'm doing more work?/
+Employee
+3rdSouthOffices-1.png
+1
+Splash. Splash./
+Operator
+Player-1.png
+0
+Why is your cubical filled with water?/
+Employee
+3rdSouthOffices-1.png
+1
+I got it as a souvenir from the Aquarium. Want some?/
+Employee
+3rdSouthOffices-1.png
+1
+Here you go. Enjoy./
+meep
+Arturo.png
+0
+You Obtained Fishwater!/Fresh from the Fourth Floor Aquarium!./
+Employee
+3rdSouthOffices-1.png
+1
+Suite yourself./
+Employee
+3rdSouthOffices-1.png
+1
+Why does nobody else seem to notice all the monsters in this office? This is really/freaking me out./
+

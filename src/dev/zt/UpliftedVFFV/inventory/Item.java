@@ -2,6 +2,8 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
+
 public class Item implements Comparable<Item>{
 	public BufferedImage ItemSprite;
 	public String name,descr;
@@ -31,8 +33,8 @@ public class Item implements Comparable<Item>{
 		this.usefromBattle=false;
 	}
 	
-	public void use(){
-		
+	public void use(Schmuck perp, Schmuck vic){
+
 	}
 	
 	public String getName() {

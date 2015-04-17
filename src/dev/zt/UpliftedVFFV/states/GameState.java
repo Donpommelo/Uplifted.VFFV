@@ -34,6 +34,8 @@ public class GameState extends State {
 		inventorymanager = new InventoryManager(game);
 		world = new World(game, "res/Worlds/backroom.txt","Home Sweet Home");
 		eventmanager = new EventManager(game,"res/Worlds/backroom.txt");
+//		world = new World(game, "res/Worlds/GlassWalk.txt","Home Sweet Home");
+//		eventmanager = new EventManager(game,"res/Worlds/GlassWalk.txt");
 		player = new Player(game, 128, 128);
 	}
 

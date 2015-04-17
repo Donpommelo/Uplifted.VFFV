@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV;
 
 
-
 public class Launcher {
 	
 	public static void main(String[] args){

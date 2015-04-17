@@ -98,6 +98,20 @@ public class Tile {
 	public static Tile GlassTile9 = new GlassTile(89,9);
 	public static Tile GlassTile10 = new GlassTile(90,10);
 	
+	public static Tile DiagCarpet1 = new DiagCarpet(91,0);
+	public static Tile DiagCarpet2 = new DiagCarpet(92,1);
+	
+	public static Tile AquaTile0 = new AquaTile(93,0);
+	public static Tile AquaTile1 = new AquaTile(94,1);
+	public static Tile AquaTile2 = new AquaTile(95,2);
+	public static Tile AquaTile3 = new AquaTile(96,3);
+	public static Tile AquaTile4 = new AquaTile(97,4);
+	public static Tile AquaTile5 = new AquaTile(98,5);
+	public static Tile AquaTile6 = new AquaTile(99,6);
+	public static Tile AquaTile7 = new AquaTile(100,7);
+	public static Tile AquaTile8 = new AquaTile(101,8);
+	public static Tile AquaTile9 = new AquaTile(102,9);
+	public static Tile AquaTile10 = new AquaTile(103,10);
 	
 	public static Tile Wall10 = new Wall1(113,0);
 	public static Tile Wall11 = new Wall1(114,1);

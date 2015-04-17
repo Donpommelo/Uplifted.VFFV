@@ -14,6 +14,8 @@ public class PartyManager {
 		this.game=game;
 		Schmuck operator=new Operator();
 		party.add(operator);
+		Schmuck penpal=new PenPal();
+		party.add(penpal);
 		
 	}
 	
