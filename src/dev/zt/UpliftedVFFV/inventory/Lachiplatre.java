@@ -13,5 +13,13 @@ public class Lachiplatre extends Item{
 	public void use(Schmuck perp, Schmuck vic){
 		vic.hpChange(5);
 	}
+	
+	public String useText(Schmuck perp, Schmuck vic){
+		return vic.getName()+" eats the Lachiplatre.";
+	}
+	
+	public String resultText(Schmuck perp, Schmuck vic){
+		return "A little Hp was restored.";
+	}
 
 }

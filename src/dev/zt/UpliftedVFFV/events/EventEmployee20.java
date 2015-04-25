@@ -10,12 +10,14 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 
 
+//This is commented as an example of slightly more complex event processing.
+//This contains a choicebranch that branches into different dialog and event running
 public class EventEmployee20 extends Event {
 
-	public boolean selfswitch1=false;
-	public String[] Choices={"Yes","No"};
-	public static int stage=0;
-	public static int finalstage=2;
+	public boolean selfswitch1=false;				//selfswitches do exactly what they did in rpgmaker. except i can name them funny things if i want
+	public String[] Choices={"Yes","No"};			//list of choices used in the choicebranch
+	public static int stage=0;						//stage is the variable that determines which stage the event is in
+	public static int finalstage=2;					//finalstage determines the maximum amount of stages
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeM1);
 	public EventEmployee20(float x, float y, int idnum) {
 		super(img,idnum,x, y);
@@ -39,9 +41,14 @@ public class EventEmployee20 extends Event {
 		}
 		if(selfswitch1==false){
 			switch(stage){
+			
+			//This is the dialog that first occurs when the npc is spoken to
 			case 0: 
 				super.Dialog(88, 89,this.getId());
 				break;
+				
+			//when a dialogstate is done running, it will increment the event stage if possible, the rerun the event.
+			//this allow for the event to consist of many different parts.
 			case 1:
 				super.Dialog(90, 90,this.getId());
 				super.ChoiceBranch(this.getId(), Choices);
@@ -53,6 +60,7 @@ public class EventEmployee20 extends Event {
 		}
 		else{
 			super.Dialog(88, 88,this.getId());
+			stage=2;
 		}
 			
 			

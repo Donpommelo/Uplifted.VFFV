@@ -17,7 +17,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
-
+//State for when the player must choose an option from a list of any size
 public class ChoiceBranchState extends State {
 	
 	public int EventId;
@@ -28,12 +28,12 @@ public class ChoiceBranchState extends State {
 		super(game,sm);
 		this.EventId=eventId;
 		this.num=choices;
-		currentchoice=0;
-		choicelocation=0;
-		firstchoice=0;
-		selected=false;
-		exit=false;
-		if(num.length>5){
+		currentchoice=0;				//which item is selected
+		choicelocation=0;				//where does the item show up on the menu
+		firstchoice=0;					//where out of all the options is the list currently looking at
+		selected=false;					
+		exit=false;						//pressed when exiting. back button
+		if(num.length>5){				//list is 5 items long. Any longer and the list will scroll
 			boxsize=5;
 		}
 		else{
@@ -42,6 +42,8 @@ public class ChoiceBranchState extends State {
 	}
 
 	public void tick() {
+		
+		//pressing x goes back
 		if(game.getKeyManager().x){
 			exit=true;
 			try {
@@ -50,6 +52,8 @@ public class ChoiceBranchState extends State {
 				e.printStackTrace();
 			}
 		}
+		
+		//pressing space runs the currently selected option
 		if(game.getKeyManager().space){
 			selected=true;
 			try {
@@ -58,6 +62,8 @@ public class ChoiceBranchState extends State {
 				e.printStackTrace();
 			}
 		}
+		
+		//up and down choose options
 		if(game.getKeyManager().up){
 			if(currentchoice>0){
 				currentchoice--;
@@ -97,10 +103,13 @@ public class ChoiceBranchState extends State {
 			
 
 	public void render(Graphics g) {
-	
+		
+		//ChoiceBranches do not take up the entire screen. The state underneath it should be rendered as well
 		statemanager.states.pop();
 		statemanager.states.peek().render(g);
 		statemanager.states.push(this);
+		
+		//if x is pressed, the state is popped
 		if(exit==true){
 			statemanager.states.pop();
 			Event.events[this.EventId].ChoiceMade(currentchoice);
@@ -108,9 +117,12 @@ public class ChoiceBranchState extends State {
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
 				Event.events[this.EventId].run();
 			}*/
-			statemanager.states.pop();
+			statemanager.states.pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
 			exit=false;
 		}
+		
+		//if space is pressed, the states are exited and the event that called the ChoiceBranch receives the selected int
+		
 		if(selected==true){
 			statemanager.states.pop();
 			statemanager.states.pop();

@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.ablities.DillyDally;
 import dev.zt.UpliftedVFFV.ablities.ItemNothing;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -13,6 +14,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
+import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class BattleProcessor {
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
@@ -23,13 +26,16 @@ public class BattleProcessor {
 	public int currentlySelected;
 	public boolean selected;
 	public boolean fightEnd;
+	public boolean pauseTOQ;
 	public Game game;
 	public BattleMenu bm;
 	public StateManager sm;
+	public StatusManager stm;
 	public BattleState bs;
+	public BattleText bt;
 	public GameState gs;
+	public EffectManager em;
 	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
-//	public Action[] TurnOrderQueue;
 	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy,GameState gs,BattleState bs){
 		this.game=game;
 		this.sm=sm;
@@ -39,10 +45,12 @@ public class BattleProcessor {
 		this.enemy = enemy;
 		phase=1;
 		currentlySelected=0;
-		selected=false;
+		
 		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
-//		TurnOrderQueue = new Action[allies.size()+enemy.size()];
-		TurnOrderQueue = new ArrayList<Action>(5);
+		bt = new BattleText(game,sm,allies,enemy);
+		stm = new StatusManager(game,bs,gs);
+		em = new EffectManager(game,bs,gs);
+		TurnOrderQueue = new ArrayList<Action>();
 //		initiate();
 		for(int i=0 ; i<enemy.size()+allies.size();i++){
 			TurnOrderQueue.add(null);
@@ -52,144 +60,178 @@ public class BattleProcessor {
 	
 	public void tick() {
 		
-		switch(phase){
-		case 0:
-			
-		case 1:
-			if(selected==true){
-				bm.tick();
-			}
-			else{
-				
-				if(game.getKeyManager().right){
-					if(currentlySelected<allies.size()-1){
-						currentlySelected++;
+		if(!bt.textList.isEmpty()){
+			bt.tick();
+		}
+		else{
+			switch(phase){
+			case 0:
+				for(int i=0 ; i<enemy.size()+allies.size();i++){
+					TurnOrderQueue.add(null);
+				}
+				phase++;
+			case 1:
+				if(selected==true){
+					bm.tick();
+				}
+				else{
+					
+					if(game.getKeyManager().right){
+						if(currentlySelected<allies.size()-1){
+							currentlySelected++;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(game.getKeyManager().left){
+						if(currentlySelected>0){
+							currentlySelected--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(game.getKeyManager().space){
+						if(!allies.get(currentlySelected).statuses.contains(allies.get(currentlySelected).i)){	
+							selected=true;
+							bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
+						}
+						else{
+							bt.textList.add("he ded");
+						}
 						try {
-							Thread.sleep(100);
+							Thread.sleep(200);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
-				}
-				if(game.getKeyManager().left){
-					if(currentlySelected>0){
-						currentlySelected--;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+					if(game.getKeyManager().enter){
+//						if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){
+							for(int i=0 ; i<enemy.size();i++){
+								if(!enemy.get(i).statuses.contains(enemy.get(i).i)){
+									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new StandardAttack(0),bs));
+								}
+							}
+							sort(TurnOrderQueue);
+							phase++;
+//						}
+						
+						
 					}
 				}
+				break;
+			case 2:
+				if(pauseTOQ == true){ 				//for the purpose of dillydallying
+					bm.tick();
+				}				
 				if(game.getKeyManager().space){
-					selected=true;
-					bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
 					try {
 						Thread.sleep(200);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				if(game.getKeyManager().enter){
-					if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){
-						for(int i=0 ; i<enemy.size();i++){
-							TurnOrderQueue.add(allies.size()+i,new Action(enemy.get(i),allies.get(0),new StandardAttack(0)));
+				if(!TurnOrderQueue.isEmpty()){
+					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
+						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
+							if(TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target)!=""){
+								bt.textList.add(TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target));
+							}
+							TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+							if(TurnOrderQueue.get(0).skill.resultText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target)!=""){
+								bt.textList.add(TurnOrderQueue.get(0).skill.resultText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target));
+							}
 						}
-						phase++;
+						else{
+							pauseTOQ = true;
+							currentlySelected=allies.indexOf(TurnOrderQueue.get(0).user);
+							bm = new BattleMenu(game,sm,allies,enemy,bs,TurnOrderQueue.get(0).user,gs);
+			
+						}
 					}
-					
-					
+					if(pauseTOQ == false){
+						TurnOrderQueue.remove(0);
+						sort(TurnOrderQueue);
+					}
 				}
-			}
-			break;
-		case 2:
-
-			if(game.getKeyManager().space){
+				else{
+					phase++;
+				}
+				break;
+				
+			case 3:
+					phase=0;
 				try {
-					Thread.sleep(200);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-			if(TurnOrderQueue.get(0)!=null){
-				System.out.print("meep");
-				TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target);
-				TurnOrderQueue.remove(0);
-			}
-			else{
-				phase++;
-			}
-			break;
-			
-		case 3:
-			if(game.getKeyManager().space){
-				for (int i = 0; i < TurnOrderQueue.size(); i++) {
-					TurnOrderQueue.set(i,null);
-					currentlySelected=0;
-				}
-				phase=1;
-				}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			}
 		}
+	}
 
 		
 		
 
 	public void render(Graphics g) {
-		switch(phase){
-		case 0:
-			
-		case 1:
-			if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){ 
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(0, 0,120,40);
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
-				g.setColor(new Color(255, 255,255));
-				g.drawString("Ready (Enter)",0,25);
+		
+		if(!bt.textList.isEmpty()){
+			bt.render(g);
+		}
+		else{
+			switch(phase){
+			case 0:
+				
+			case 1:
+//				if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){ 
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(0, 0,120,40);
+					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.setColor(new Color(255, 255,255));
+					g.drawString("Ready (Enter)",0,25);
+//				}
+				if(selected==true){
+					bm.render(g);
+				}
+				break;
+				
+			case 2:
+				if(pauseTOQ == true){
+					bm.render(g);
+				}	
+				break;
+			case 3:
+				
+				break;
 			}
-			if(selected==true){
-				bm.render(g);
-			}
-			break;
-			
-		case 2:
-			
-			break;
-		case 3:
-			
-			break;
 		}
 	}
 	
-	public void initiate(){
-		
-		
-		phase++;
-		prePhase();
-	}
+
 	
-	public void prePhase(){
-		phase++;
-		BattlePhase();
-	}
-	
-	public void BattlePhase(){
-		phase++;
-		transition();
-	}
-	
-	public void transition(){
+	public void sort(ArrayList<Action> a){
+		int j;
+		boolean flag = true;
+		Action temp;
+		while (flag){
+			flag=false;
+			for(j=0; j<a.size()-1; j++){
+				if(a.get(j) != null && a.get(j+1) != null){
+					if(a.get(j).user.BuffedSpd < a.get(j+1).user.BuffedSpd){
+						temp = a.get(j);
+						a.set(j,a.get(j+1));
+						a.set(j+1,temp);
+						flag = true;
+					}
+				}
+			}
+		}
 		
-		phase=0;
-		prePhase();
-	}
-	
-	public void sort(){
-		
+
 	}
 }

@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 
-
+//First state ran. This is a title screen
 public class TitleState extends State {
 	
 	private BufferedImage testImage;
@@ -23,6 +23,7 @@ public class TitleState extends State {
 		
 	}
 
+	//receives input command to either begin or exit the game
 	public void tick() {
 		if(game.getKeyManager().left){
 			updown=true;
@@ -53,12 +54,10 @@ public class TitleState extends State {
 		}
 		if(button==true){
 			if(updown==true){
-//				gameState = new GameState(game);
-//				State.setState(gameState);
-				StateManager.states.push(new GameState(game,statemanager));
+				StateManager.states.push(new GameState(game,statemanager));		//This pushes on a gamestate. The game begins.
 			}
 			if(updown==false){
-				System.exit(0);
+				System.exit(0);													//this exits the game
 			}
 		}
 	}

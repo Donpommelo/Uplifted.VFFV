@@ -13,7 +13,8 @@ import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
-
+//This is the menu state that is called up by pressing z during the game state.
+//This displays info about party, inventory and everything else later.
 public class MenuState extends State {
 	
 	private BufferedImage testImage;
@@ -25,7 +26,7 @@ public class MenuState extends State {
 	ArrayList<Character> party= new ArrayList<Character>();
 	public MenuState(Game game, StateManager sm, GameState gs){
 		super(game, sm);
-		testImage = ImageLoader.loadImage("/textures/title.png");
+		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
 		this.gamestate=gs;
 		optionSelected=0;
 		optionChosen=false;
@@ -37,6 +38,8 @@ public class MenuState extends State {
 	}
 
 	public void tick() {
+		
+		//pressing exit will move back one screen or deselect stuff
 		if(game.getKeyManager().x){
 			exit=true;
 			try {
@@ -45,6 +48,8 @@ public class MenuState extends State {
 				e.printStackTrace();
 			}
 		}
+		
+		//if you havent selected a subcategory yet, space, up and down will control that.
 		if(optionChosen==false){
 			if(game.getKeyManager().space){
 				optionChosen=true;
@@ -65,7 +70,7 @@ public class MenuState extends State {
 				}
 			}
 			if(game.getKeyManager().down){
-				if(optionSelected<3){
+				if(optionSelected<3){			//4 options currently. change this number later wen more are added
 					optionSelected++;
 					try {
 						Thread.sleep(100);
@@ -75,8 +80,14 @@ public class MenuState extends State {
 				}
 			}
 		}
+		
+		//if you've selected an option, the space to the right displays whatever you've selected
 		else{
 			switch(optionSelected){
+			
+			//The party option. This navigates through your current party with the left, right and space keys
+			//This is used for viewing infor about your party.
+			//Eventually, selecting a character with space will bring up more information
 			case 0: 
 				if(game.getKeyManager().space){
 					characterChosen=true;
@@ -107,6 +118,9 @@ public class MenuState extends State {
 					}
 				}
 				break;
+				
+			//Option 2 is inventory. This displays a 3*9 grid of your inventor and uses all directions to navigate.
+			//Eventually, space will be used to select an item and use if possible.
 			case 1:
 				if(game.getKeyManager().space){
 					itemChosen=true;
@@ -192,6 +206,8 @@ public class MenuState extends State {
 
 
 	public void render(Graphics g) {
+		
+		//if x is pressed, the menu will go back one screen
 		if(exit==true){
 			if(characterChosen==true){
 				characterChosen=false;
@@ -207,9 +223,13 @@ public class MenuState extends State {
 			}
 			exit=false;
 		}
+		
+		//ackground consists of black with an image in front. Def change this later
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 640, 416);
 		g.drawImage(testImage, 48, 0, null);
+		
+		//Color of sidebar chnages depending on whether it is selected or not
 		if(optionChosen==true){
 			g.setColor(new Color(160,160,160));
 		}

@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class Utils {
 	
+	//this is used to turn strings into files
 	public static String loadFileAsString(String path){
 		StringBuilder builder = new StringBuilder();
 		

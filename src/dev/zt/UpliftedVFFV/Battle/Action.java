@@ -2,20 +2,23 @@ package dev.zt.UpliftedVFFV.Battle;
 
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Action {
 	
 	public Skills skill;
 	public Schmuck user;
 	public Schmuck target;
-	public Action(Schmuck user,Schmuck target,Skills skill){
+	public BattleState bs;
+	public Action(Schmuck user,Schmuck target,Skills skill, BattleState bs){
 		this.skill=skill;
 		this.user=user;
 		this.target=target;
+		this.bs=bs;
 	}
 	
 	public void run(){
-		skill.run(user,target);
+		skill.run(user,target,bs);
 	}
 
 }

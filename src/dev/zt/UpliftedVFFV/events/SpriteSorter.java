@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 
+//this is pretty much tilesorter except with a different cutting pattern meant for processing character sprite sheets
 public class SpriteSorter {
 	
 	static SpriteSheet meep;

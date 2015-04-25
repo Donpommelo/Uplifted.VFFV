@@ -3,10 +3,10 @@ package dev.zt.UpliftedVFFV.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyManager implements KeyListener {
+public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	private boolean[] keys;
-	public boolean up, down, left, right, space, z,x,enter;
+	public boolean up, down, left, right, space, z,x,enter; //whether this button is currently being pressed
 	public boolean held;
 	
 	public KeyManager(){
@@ -14,7 +14,7 @@ public class KeyManager implements KeyListener {
 		held=false;
 	}
 	
-	public void tick(){
+	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
 		up = keys[KeyEvent.VK_W];
 		down = keys[KeyEvent.VK_S];
 		left = keys[KeyEvent.VK_A];

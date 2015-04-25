@@ -19,7 +19,7 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 
 public class Game implements Runnable{
 	
-	private Display display;
+	private Display display;			
 	private int width, height;
 	public String title;
 	
@@ -31,10 +31,6 @@ public class Game implements Runnable{
 	
 	private StateManager statemanager;
 
-	//States
-//	private State gameState;
-//	private State menuState;
-//	private State titleState;
 	
 	//Input
 	private KeyManager keyManager;
@@ -42,54 +38,48 @@ public class Game implements Runnable{
 	
 	private GameCamera gameCamera;
 	
-	public Game(String title, int width, int height){
+	public Game(String title, int width, int height){			//created by launcher. automatically runs init(), then tick and render
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		keyManager = new KeyManager();
+		keyManager = new KeyManager();							//controls keyboard inputs
 
 	}
 	
 	private void init(){
 	
-		display =new Display(title, width, height);
-		display.getFrame().addKeyListener(keyManager);
-		Assets.init();
+		display =new Display(title, width, height);				//creates canvas. Stuff is drawn in this window
+		display.getFrame().addKeyListener(keyManager);			//this makes window respond to keyboard commands set up in keymanager
+		Assets.init();											//preloads all textures and other art assets
 		
-		gameCamera = new GameCamera(this,0,0);
+		gameCamera = new GameCamera(this,0,0);					//creates a gameCamera. This tracks movement of player to center the screen
 		
-	//	gameState = new GameState(this, statemanager);
-	//	menuState = new MenuState(this, statemanager);
-	//	titleState = new TitleState(this, statemanager);
+		statemanager=new StateManager(this);							//creates statemanager. This managees the states of the game
+		statemanager.states.push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 
 		
-	//	State.setState(gameState);
-	//	State.setState(titleState);
-		statemanager=new StateManager(this);
-		statemanager.states.push(new TitleState(this,statemanager));
-		
-		worldmanager=new WorldManager(this);
+		worldmanager=new WorldManager(this);					//creates a worldmanager. This manages the world.
 	//	statemanager.init();
 		
 	}
 	
 	
 
-	int x=0;
-	
-	private void tick(){
+	int x=0;													
+																
+	private void tick(){										//Every tick, the game runs the tick() of the current state
 		keyManager.tick();
 		
 		if(statemanager.states.peek() != null)
 			statemanager.states.peek().tick();
 	}
 	
-	private void render(){
-		bs = display.getCanvas().getBufferStrategy();
+	private void render(){										//Every render, the game runs the render() of the current state
+		bs = display.getCanvas().getBufferStrategy();			//bufferStrategy used to load smoother.
 		if(bs == null){
-			display.getCanvas().createBufferStrategy(3);
+			display.getCanvas().createBufferStrategy(3);		//Sorta an assembly line of 3 images. This way, they'll always be ready to display
 			return;
 		}
-		g = bs.getDrawGraphics();
+		g = bs.getDrawGraphics();								
 		g.clearRect(0, 0, width, height);
 		
 		
@@ -101,11 +91,11 @@ public class Game implements Runnable{
 		
 	}
 	
-	public void run(){
+	public void run(){											//first thing run after launching
 		
-		init();
+		init();													//runs own init() method
 		
-		int fps = 60;
+		int fps = 60;											//all this stuff controls tick intervals
 		double timePerTick = 1000000000 / fps;
 		double delta = 0;
 		long now;
@@ -161,7 +151,7 @@ public class Game implements Runnable{
 		return height;
 	}
 	
-	public synchronized void start(){
+	public synchronized void start(){					
 		if(running)
 			return;
 		running = true;

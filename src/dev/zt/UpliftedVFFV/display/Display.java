@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 
-public class Display {
+public class Display {				//everything shows up here. consists of a canvas where stuff is drawn and a frame where the canvas is drawn
 
 	private JFrame frame;
 	private Canvas canvas;
@@ -22,12 +22,12 @@ public class Display {
 	}
 
 	private void createDisplay() {
-		frame=new JFrame(title);
-		frame.setSize(width, height);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		frame=new JFrame(title);								//controls name displayed in top left corner	
+		frame.setSize(width, height);							//controls size of frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//makes frame exit when x-ed out
+		frame.setResizable(false);								//makes frame size permanent
+		frame.setLocationRelativeTo(null);						
+		frame.setVisible(true);									//makes frame visible
 		
 		canvas=new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height));

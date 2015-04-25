@@ -1,16 +1,22 @@
 package dev.zt.UpliftedVFFV.party;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Schmuck {
 	
 	public int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
+	public int Lvl;
 	public BufferedImage BattleSprite;
-	public Skills[] skills;
+	public ArrayList<Skills> skills;
+	public ArrayList<status> statuses;
 	public String name;
+	public incapacitate i = new incapacitate();
 	public Schmuck(String name,int hp,int bp,int pow,int def,int spd, int skl, int smart, int luk,BufferedImage sprite){
 		this.MaxHp=hp;this.CurrentHp=hp;
 		this.MaxBp=bp;this.CurrentBp=bp;
@@ -22,12 +28,16 @@ public class Schmuck {
 		this.BaseLuk=luk;this.BuffedLuk=luk;
 		this.BattleSprite=sprite;
 		this.name=name;
+		this.skills = new ArrayList<Skills>();
+		this.statuses = new ArrayList<status>();
 	}
 	
 	public void hpChange(int hp){
 		CurrentHp+=hp;
 		if(CurrentHp<0){
 			CurrentHp=0;
+			statuses.add(i);
+			
 		}
 		if(CurrentHp>MaxHp){
 			CurrentHp=MaxHp;
@@ -35,7 +45,7 @@ public class Schmuck {
 	}
 	
 	public void bpChange(int bp){
-		CurrentHp=bp;
+		CurrentBp+=bp;
 		if(CurrentBp<0){
 			CurrentBp=0;
 		}
@@ -74,6 +84,10 @@ public class Schmuck {
 
 	public void setCurrentBp(int currentBp) {
 		CurrentBp = currentBp;
+	}
+	
+	public void learnSkill(Skills s){
+		skills.add(s);
 	}
 
 	public int getBasePow() {

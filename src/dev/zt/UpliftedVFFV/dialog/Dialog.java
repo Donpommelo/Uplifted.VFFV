@@ -7,6 +7,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
+//Dialog. Every time someone says a thing, that's a dialog. Pressing space moves on to the next dialog
+//each dialog consists of the name of the speaker, the text, the character bust, and the direction faced
 public class Dialog {
 
 	public String text;
@@ -26,6 +28,7 @@ public class Dialog {
 		this.currentLine=1;
 		scrolling=false;
 		this.SpeakerName=name;
+		//if the person is facing the right, this mirrors and flips the image
 		if(position!=0){
 			AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
 			tx.translate(-speaker.getWidth(null), 0);
@@ -39,12 +42,13 @@ public class Dialog {
 	
 	}
 	
+	//dialog is rendered here. 
 	public void render(Graphics g){
-		if(charIndex>text.length()){
-			charIndex=text.length();
+		if(charIndex>text.length()){				//controls how much of the dialog is rendered. 
+			charIndex=text.length();				//charIndex increases as time passes, causing text to scroll
 		}
 		if(position==0){
-			g.drawImage(speaker, 0, 416-speaker.getHeight(), null);
+			g.drawImage(speaker, 0, 416-speaker.getHeight(), null);			//
 		}
 		else{		
 			g.drawImage(speaker, 640-speaker.getWidth(), 416-speaker.getHeight(), null);
@@ -53,25 +57,25 @@ public class Dialog {
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g.fillRect(0, 316, 640, 100);
 		
-		if(!SpeakerName.equals("meep"))
+		if(!SpeakerName.equals("meep"))				//displays speaker's name in a box.
 		{
 			g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
 			g.setColor(Color.BLACK);
 			g.drawString(SpeakerName, 8, 304);
 		}
-		g.setColor(Color.BLACK);
+		g.setColor(Color.BLACK);					//displays text. / indicates a new line
 		for(int i=1;i<charIndex;i++){
 			int y=320;
 			String temp=text.substring(0,i);
 			for (String line : temp.split("/"))
-		        g.drawString(line, 6, y += g.getFontMetrics().getHeight());
+		        g.drawString(line, 6, y += g.getFontMetrics().getHeight());		//causes text to form new lines
 		}
-		if(charIndex<text.length()){
+		if(charIndex<text.length()){			//charIndex increases each time it is rendered so text scrolls
 			scrolling=true;
 			charIndex++;
 		}
-		else{
-			scrolling=false;
+		else{					
+			scrolling=false;					//if the text is done scrolling, charIndex stops increasing
 		}
 		
 	}

@@ -10,6 +10,7 @@ public class WorldManager {
 	
 	public static World world;
 	
+	//manages world. Very straightforwards
 	public WorldManager(Game g){
 //		world=new World(g, "res/Worlds/SouthElevator.txt");
 //		setWorld(world);

@@ -5,6 +5,9 @@ import java.util.Stack;
 
 import dev.zt.UpliftedVFFV.Game;
 
+
+//this manages all the states of the game. states are kept in a stack with the state on top being the active one
+//This active state is the one that is ticked and rendered. when states are pushed, the states underneath will be paused
 public class StateManager {
 	
 	public static Stack<State> states;

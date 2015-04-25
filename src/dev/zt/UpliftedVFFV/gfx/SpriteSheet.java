@@ -6,6 +6,7 @@ public class SpriteSheet {
 	
 	private BufferedImage sheet;
 	
+	//This is pretty much a bufferedimage that can be cropped.
 	public SpriteSheet(BufferedImage sheet){
 		this.sheet = sheet;
 	}

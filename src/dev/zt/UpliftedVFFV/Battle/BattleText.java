@@ -16,7 +16,7 @@ public class BattleText {
 	public Game game;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
-	
+	public ArrayList<String> textList=new ArrayList<String>();
 	public BattleText(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy){
 		this.game=game;
 		this.sm=sm;
@@ -26,13 +26,25 @@ public class BattleText {
 	}
 	
 	public void tick() {
-		
+		if(game.getKeyManager().space){
+			if(!textList.isEmpty()){
+			textList.remove(0);
+			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 			
 
 	public void render(Graphics g) {
-		
-		
+			g.setColor(new Color(160, 160,160, 200));
+			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g.fillRect(0, 0, 640, 25);
+			g.setColor(new Color(0,0,0));
+			g.drawString(textList.get(0),0,20);	
 
 	}
 

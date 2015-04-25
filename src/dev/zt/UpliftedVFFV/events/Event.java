@@ -18,6 +18,10 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
 
+
+//This manages all events. it can be compared to the Tile class. 
+//instead of taking an id and a Tilesorter number, events contain 3 variables, an x-y location and an id number
+//besides that, the process of loading in all the events is just like the Tile class.
 public class Event{
 
 	int id;
@@ -147,6 +151,10 @@ public class Event{
 		return false;
 	}
 	
+	//Below this is all the stuff that events can call.
+	//This includes transporting, opening up dialog, combat and literally everything else.
+	
+	//If an events running calls this, the player is transported to the given x-y location of the world corresponding to the path name
 	public static void transport(String path, int x, int y,String name){
 		world = new World(game, path,name);
 		eventmanager = new EventManager(game, path);
@@ -157,6 +165,7 @@ public class Event{
 		
 	}
 	
+	//when ran, this opens combat with a given troop corresponding with the enemyId
 	public static void fite(int enemyId){
 		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,gamestate));
 		try {
@@ -166,6 +175,8 @@ public class Event{
 		}
 	}
 	
+	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.
+	//consider adding multiple text files later that will need to be specified
 	public static void Dialog(int firstline, int lastline,int eventId){
 		StateManager.states.push(new DialogState(game,statemanager,firstline,lastline,eventId));
 		try {
@@ -176,14 +187,15 @@ public class Event{
 
 	}
 	
+	//opens up a choice branch state with the list of string choices.
 	public static void ChoiceBranch(int EventId,String[] choices){
-		
+		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices));
+		
 
 	}
 	
@@ -218,9 +230,14 @@ public class Event{
 		this.id = id;
 	}
 	
+	//overrode by individual events. This is called whenever the event is interacted with
 	public void run() {
 		
 	}
+	
+	//overrode by individual events. This is called when a choicebranch is called and a choice is made.
+	//The choice will be made and, if thevent is not done running, will increment the event stage
+	//This was sorta poorly explained. look at EventEmployee20 for an example
 	public void ChoiceMade(int i) {
 		
 		

@@ -3,8 +3,16 @@ package dev.zt.UpliftedVFFV.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+
+//Controls tiles. Sets up every tile in the game. Tiles consist of an image and a id that is called whenever we want to use that tile
+//each individual type of tile extends this class.
+//tiles are all 32 x 32 pixels, but most of the images are 64 x 96.
+//This is why each tile in the list below takes 2 variables. The first is the aforementioned id and the second is region of the larger 
+//image that we actually want. This is done through the TileSorter.
 public class Tile {
 	
+	//When each of these tiles are created, they each run super(their image,their id)
+	//This not only creates them, but also adds them to the list of tiles
 	public static Tile[] tiles = new Tile[512];
 	public static Tile white = new White(0);
 	public static Tile black = new Black(1);
@@ -196,6 +204,7 @@ public class Tile {
 	protected BufferedImage texture;
 	protected final int id;
 	
+	//this is run every time a type of tile is created. They are added to the tiles array. Their index in the list=their id
 	public Tile(BufferedImage texture, int id){
 		this.texture = texture;
 		this.id = id;
@@ -211,6 +220,7 @@ public class Tile {
 		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
 	}
 	
+	//determines if a tile can be walked through or not. default is no.
 	public boolean isSolid(){
 		return false;
 	}

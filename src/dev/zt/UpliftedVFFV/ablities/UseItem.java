@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class UseItem extends Skills {
@@ -15,19 +16,34 @@ public GameState gs;
 
 	}
 	
-	public void run(Schmuck perp, Schmuck vic){
-		thing.use(perp,vic);
+	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		if(thing.usedfromMenu==true){			//Replace usedfromMenu w/ consummable
 			if(gs.inventorymanager.backpack.containsKey(thing)){
-				int temp = gs.inventorymanager.backpack.get(thing);
-				gs.inventorymanager.backpack.put(thing, temp-1);
+				if(gs.inventorymanager.backpack.get(thing)!=0){
+					thing.use(perp,vic);
+					int temp = gs.inventorymanager.backpack.get(thing);
+					gs.inventorymanager.backpack.put(thing, temp-1);
+					if(gs.inventorymanager.backpack.get(thing)==0){
+						gs.inventorymanager.backpack.remove(thing);
+					}
+				}
+				else{
+					//running out of planned-to-use item
+				}
+
+				
+				
 			}
 				
 			
 		}
 		}
-	public String runText(Schmuck perp, Schmuck vic){
-		return "meep";
+	public String useText(Schmuck perp, Schmuck vic){
+		return thing.useText(perp, vic);
+	}
+	
+	public String resultText(Schmuck perp, Schmuck vic){
+		return thing.resultText(perp, vic);
 	}
 	
 

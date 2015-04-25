@@ -13,5 +13,13 @@ public class FennelDonut extends Item{
 	public void use(Schmuck perp, Schmuck vic){
 		vic.hpChange(20);
 	}
+	
+	public String useText(Schmuck perp, Schmuck vic){
+		return vic.getName()+" eats the donut.";
+	}
+	
+	public String resultText(Schmuck perp, Schmuck vic){
+		return "20 Hp was restored.";
+	}
 
 }
