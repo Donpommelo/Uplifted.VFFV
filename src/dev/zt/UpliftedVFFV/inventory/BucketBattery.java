@@ -6,12 +6,12 @@ public class BucketBattery extends Item{
 
 	static String descr="A bucket filled with old, bulging batteries floating in some sort of\nacidic solution.";
 	public BucketBattery() {
-		super(2, "Bucket-o-Batteries", true, true,descr);
+		super(2, "Bucket-o-Batteries",false, true, false,descr);
 
 	}
 	
 	public void use(Schmuck perp, Schmuck vic){
-		vic.CurrentHp-=50;
+		vic.tempStats[0]-=50;
 	}
 
 }

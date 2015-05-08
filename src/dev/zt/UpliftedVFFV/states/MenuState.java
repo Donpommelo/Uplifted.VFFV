@@ -245,6 +245,7 @@ public class MenuState extends State {
 		g.drawString("Inventory", 10, 50);
 		g.drawString("Map", 10, 75);
 		g.drawString("Directory", 10, 100);
+		g.drawString(gamestate.Script+" Script", 10, 400);
 			switch(optionSelected){
 			case 0:
 				if(optionChosen==false){
@@ -267,7 +268,15 @@ public class MenuState extends State {
 				Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
 				g.drawImage(tempSchmuck.getBattleSprite(), 140, 175,150,225, null);
 				g.setColor(new Color(0, 0,0));
-				g.drawString(tempSchmuck.getName(),300,190);
+				g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
+				g.setFont(new Font("Chewy", Font.PLAIN, 12));
+				g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
+				g.setColor(new Color(102, 178,255));
+				g.fillRect(410, 180, 160, 5);
+				g.setColor(new Color(0,204,0));
+				g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+				g.setColor(new Color(0, 0,0));
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.drawString("Hp:"+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
 				g.drawString("Bp:"+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
 				g.drawString("Pow:"+tempSchmuck.getBasePow(),300,265);
@@ -277,8 +286,8 @@ public class MenuState extends State {
 				g.drawString("Int:"+tempSchmuck.getBaseInt(),300,365);
 				g.drawString("Luk:"+tempSchmuck.getBaseLuk(),300,390);
 				if(characterChosen==true){
-//					g.setColor(new Color(255, 255,51));
-//					g.fillRect(135, 5,500,406);
+					g.setColor(new Color(255, 255,51));
+					g.fillRect(135, 5,500,406);
 				}
 				
 				break;
@@ -336,7 +345,13 @@ public class MenuState extends State {
 						g.drawImage(Assets.Downarrow,385,405,null);
 					}
 				}
-				
+				if(itemChosen==true){
+					if(itemDisplay[itemSelected].usedfromMenu){
+						g.setColor(new Color(255, 255,51));
+						g.fillRect(135, 5,500,406);
+						
+					}
+				}
 				break;
 			}
 

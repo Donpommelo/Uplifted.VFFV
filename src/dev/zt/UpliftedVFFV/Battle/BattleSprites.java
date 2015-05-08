@@ -33,6 +33,7 @@ public class BattleSprites {
 			
 
 	public void render(Graphics g) {
+//		System.out.println(enemy.get(0).baseStats[0]);
 		g.setColor(new Color(200,200,0));
 		g.fillOval(60+bs.bp.currentlySelected*100,295,75,75);
 		for(int i=0;i<allies.size();i++){
@@ -40,14 +41,15 @@ public class BattleSprites {
 			g.setColor(new Color(204,0,0));
 			g.fillRect(58+i*100, 260, 80, 5);
 			g.setColor(new Color(0,204,0));
-			g.fillRect(58+i*100, 260, 80*allies.get(i).CurrentHp/allies.get(i).MaxHp, 5);
+			g.fillRect(58+i*100, 260, 80*allies.get(i).getCurrentHp()/allies.get(i).getMaxHp(), 5);
 		}
 		for(int i=0;i<enemy.size();i++){
 			g.drawImage(enemy.get(i).getBattleSprite(), 440-i*150,10,200,150,null);
 			g.setColor(new Color(204,0,0));
 			g.fillRect(490-i*150, 30, 80, 5);
 			g.setColor(new Color(0,204,0));
-			g.fillRect(490-i*150, 30, 80*enemy.get(i).CurrentHp/enemy.get(i).MaxHp, 5);
+			g.fillRect(490-i*150, 30, 80*enemy.get(i).getCurrentHp()/enemy.get(i).getMaxHp(), 5);
+//			System.out.print(enemy.get(i).getCurrentHp());
 		
 		}
 

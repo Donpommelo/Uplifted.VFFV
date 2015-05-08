@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -30,6 +31,8 @@ public class GameState extends State {
 	static EventManager eventmanager;
 	public PartyManager partymanager;
 	public InventoryManager inventorymanager;
+	public AudioManager audiomanager;
+	public int Script=0;												//starting currency. Change later for save stuff
 	Event ugh;
 	
 	//Upon creation, the gamestate will load the starting World and events. Other worlds are loaded through events and such
@@ -40,11 +43,13 @@ public class GameState extends State {
 		ugh = new Event(game, sm,this);												//creates a new Event class that controls all events
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
+		audiomanager = new AudioManager(game);
 		world = new World(game, "res/Worlds/backroom.txt","Home Sweet Home");		
 		eventmanager = new EventManager(game,"res/Worlds/backroom.txt");
 //		world = new World(game, "res/Worlds/GlassWalk.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"res/Worlds/GlassWalk.txt");
-		player = new Player(game, 128, 128);										//creates player
+		player = new Player(game, 128, 128, this);										//creates player
+//		audiomanager.playSound();
 	}
 
 	
@@ -67,6 +72,18 @@ public class GameState extends State {
 		eventmanager = e;
 	}
 	
+	public PartyManager getPartymanager() {
+		return partymanager;
+	}
+
+
+	public void setPartymanager(PartyManager partymanager) {
+		this.partymanager = partymanager;
+	}
+
+
+
+
 	public void tick() {
 
 		world.tick();

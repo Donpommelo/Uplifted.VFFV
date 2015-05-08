@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.TimeUnit;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -17,6 +18,7 @@ import dev.zt.UpliftedVFFV.states.MenuState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
+import dev.zt.UpliftedVFFV.world.WorldManager;
 
 
 //This manages all events. it can be compared to the Tile class. 
@@ -92,11 +94,13 @@ public class Event{
 	public static Event eventemployee21 = new EventEmployee21(12,21,64);
 	
 	public static Event fitemeh = new EventTestBattle(0,0,100);
+	public static Event eventemployeeMovingtest = new EventEmployeeMovingTest(3,7,101,game);
 	
 	public Event(Game g, StateManager sm,GameState gamestate) {
 		this.game=g;
 		this.statemanager=sm;
 		this.gamestate=gamestate;
+		
 //		this.id=idnum;
 //		this.x=x;
 //		this.y=y;
@@ -107,24 +111,46 @@ public class Event{
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	BufferedImage tex;
+	Creature test;
 	
 
 	public Event(BufferedImage texture, int idnum, float x, float y) {
 		this.tex = texture;
+		if(idnum==101){
+//			this.test = new Creature(game, x ,y, 32, 32, texture);
+//			System.out.print(idnum);
+		}
+		if(game==null){
+//			System.out.print("meep");
+		}
 		this.id = idnum;
-		this.x=x;
-		this.y=y;
+		this.x = x;
+		this.y = y;
 		events[id] = this;
 		
 	}
+ 	public Event(Creature test, int idnum, float x, float y){
+ 		this.test = test;
+ 		this.id = idnum;
+ 		this.x = x;
+ 		this.y = y;
+ 		events[id] = this;
+ 	}
+	
 	public void tick() {
 		
 		
 	}
 
 	public void render(Graphics g, int x, int y) {
+		if(tex!=null){
+			g.drawImage(tex,x, y, TILEWIDTH, TILEHEIGHT, null);
+		}
 		
-		g.drawImage(tex,x, y, TILEWIDTH, TILEHEIGHT, null);
+		if(test!=null){
+//			g.drawImage(test.img, x, y, TILEWIDTH, TILEHEIGHT, null);
+			test.render(g);
+		}
 	}
 	
 
@@ -205,8 +231,6 @@ public class Event{
 		}
 	}
 	
-
-
 	public void unrecruit(Schmuck unrecruit){
 		if(gamestate.partymanager.party.contains(unrecruit)){
 			gamestate.partymanager.party.remove(unrecruit);
@@ -236,7 +260,7 @@ public class Event{
 	}
 	
 	//overrode by individual events. This is called when a choicebranch is called and a choice is made.
-	//The choice will be made and, if thevent is not done running, will increment the event stage
+	//The choice will be made and, if the event is not done running, will increment the event stage
 	//This was sorta poorly explained. look at EventEmployee20 for an example
 	public void ChoiceMade(int i) {
 		
@@ -252,9 +276,42 @@ public class Event{
 		return 1;		
 	}
 	
+	public Game getGame(){
+		return game;
+	}
+	
 	public void setstage(int i) {
 				
 	}
 
+	
+	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
+	public void moveUp(){
+//		if(!WorldManager.getWorld().getTile((int)((this.getX()+31/2+9)/32),(int)((this.getY()+31/2+9)/32)).isSolid()&&!EventManager.getEvent((int)((this.getX()+31/2+9)/32),(int)((this.getY()+31/2+9)/32)).isSolid()){
+			eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+			eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
+			this.setX(this.getX());this.setY(this.getY()-1);
+//		}
+		
+	}
 
+	public void moveDown(){
+		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+		eventmanager.events[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
+		this.setX(this.getX());this.setY(this.getY()+1);
+		if(test!=null){
+			this.test.getMove(1);
+		}
+	}
+
+	public void moveLeft(){
+		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+		eventmanager.events[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
+		this.setX(this.getX()-1);this.setY(this.getY());
+	}
+	public void moveRight(){
+		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+		eventmanager.events[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
+		this.setX(this.getX()+1);this.setY(this.getY());
+	}
 }

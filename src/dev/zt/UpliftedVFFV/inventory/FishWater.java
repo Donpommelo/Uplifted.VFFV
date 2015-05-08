@@ -6,7 +6,7 @@ public class FishWater extends Item{
 	
 	static String descr="Water from the Fourth Floor Aquarium. It smells fishy.";
 	public FishWater() {
-		super(2, "Fish Water", true, true,descr);
+		super(2, "Fish Water",false, true, true,descr);
 
 	}
 	

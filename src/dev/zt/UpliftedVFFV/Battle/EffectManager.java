@@ -23,24 +23,31 @@ public class EffectManager {
 	}
 	
 	public void hpChange(int hp, Schmuck s){
-		s.CurrentHp+=hp;
-		if(s.CurrentHp<0){
-			s.CurrentHp=0;
+		s.tempStats[0]+=hp;
+		if(s.tempStats[0]<0){
+			s.tempStats[0]=0;
 			bs.bp.stm.addStatus(s,s.i);
-			
+			for(Action a : bs.bp.TurnOrderQueue){
+				if(a!=null){
+					if(a.user==s){
+						bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
+					}
+				}
+				
+			}
 		}
-		if(s.CurrentHp>s.MaxHp){
-			s.CurrentHp=s.MaxHp;
+		if(s.tempStats[0]>s.baseStats[0]){
+			s.tempStats[0]=s.baseStats[0];
 		}
 	}
 	
 	public void bpChange(int bp, Schmuck s){
-		s.CurrentBp+=bp;
-		if(s.CurrentBp<0){
-			s.CurrentBp=0;
+		s.tempStats[1]+=bp;
+		if(s.tempStats[1]<0){
+			s.tempStats[1]=0;
 		}
-		if(s.CurrentBp>s.MaxBp){
-			s.CurrentBp=s.MaxBp;
+		if(s.tempStats[1]>s.baseStats[1]){
+			s.tempStats[1]=s.baseStats[1];
 		}
 	}
 

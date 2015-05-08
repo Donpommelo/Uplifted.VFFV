@@ -15,11 +15,11 @@ public class incapacitate extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" looks pretty dead.";
+		return s.getName()+" was incapacitated.";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" suddenly looks alot less dead.";
+		return s.getName()+" looks ok again.";
 	}
 
 }

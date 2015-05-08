@@ -13,15 +13,15 @@ public class DoorsofClosure extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(perp.BuffedPow*perp.BuffedPow)/(vic.BuffedDef*2),vic);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),vic);
 		if(bs.bp.bm.enemy.contains(vic)){
 			for(Schmuck s : bs.bp.bm.enemy){
-				bs.bp.em.hpChange(-(perp.BuffedPow*perp.BuffedPow)/(vic.BuffedDef*2),s);
+				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),s);
 			}
 		}
 		else{
 			for(Schmuck s : bs.bp.bm.allies){
-				bs.bp.em.hpChange(-(perp.BuffedPow*perp.BuffedPow)/(vic.BuffedDef*2),s);
+				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),s);
 			}
 		}
 

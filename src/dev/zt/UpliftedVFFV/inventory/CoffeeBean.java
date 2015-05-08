@@ -4,7 +4,7 @@ public class CoffeeBean extends Item{
 
 	static String descr="A fragrant, roasted coffee bean.";
 	public CoffeeBean() {
-		super(2, "Coffee Bean", true, true,descr);
+		super(2, "Coffee Bean",true,  true, true,descr);
 
 	}
 	

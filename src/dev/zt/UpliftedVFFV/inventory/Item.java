@@ -10,21 +10,23 @@ public class Item implements Comparable<Item>{
 	public BufferedImage ItemSprite;
 	public String name,descr;
 	public int Id;
-	public Boolean usedfromMenu,usefromBattle;
+	public Boolean usedfromMenu,usefromBattle, consummable;
 	
-	public Item(int id,String name,Boolean menu, Boolean battle){
+	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
 		this.usefromBattle=battle;
+		this.consummable = consume;
 	}
 	
-	public Item(int id,String name,Boolean menu, Boolean battle,String description){
+	public Item(int id,String name,Boolean menu, Boolean battle,Boolean consume, String description){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
 		this.usefromBattle=battle;
 		this.descr=description;
+		this.consummable = consume;
 	}
 	
 

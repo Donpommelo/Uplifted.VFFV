@@ -31,5 +31,10 @@ public abstract class State {
 	public abstract void render(Graphics g);
 	
 	public abstract void init();
+
+	public Object getPartymanager() {
+
+		return null;
+	}
 	
 }

@@ -28,7 +28,7 @@ public void tick(){
 	public void render(Graphics g){
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				if(events[x][y]!=0&&getEvent(x,y)!=null){
+				if(events[x][y] != 0 && getEvent(x,y) != null){
 					getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
 				}
 			}
@@ -58,7 +58,7 @@ public void tick(){
 			}
 		}
 		for(int i=0;i<numevents;i++){
-			events[Utils.parseInt(tokens[(height*width)+6+3*i])][Utils.parseInt(tokens[(height*width)+7+3*i])]=Utils.parseInt(tokens[(height*width)+5+3*i]);
+			events[Utils.parseInt(tokens[(height*width)+8+3*i])][Utils.parseInt(tokens[(height*width)+9+3*i])]=Utils.parseInt(tokens[(height*width)+7+3*i]);
 		}
 		
 

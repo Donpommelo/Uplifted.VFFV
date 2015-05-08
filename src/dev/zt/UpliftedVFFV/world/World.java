@@ -3,8 +3,11 @@ package dev.zt.UpliftedVFFV.world;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -13,15 +16,18 @@ public class World {
 	private Game game;
 	private int width, height;					//size of world 
 	private int spawnX, spawnY;					//default start location of player. Only used for testing
+	private int numEvents;
 	private int[][] tiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
 	public String Worldname;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
-	
+	public int enemyrate, enemynum;
+//	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
+	public static TreeMap<Integer, Integer> enemy= new TreeMap<Integer, Integer>();
+	public Troop troop = new Troop(0);
 	public World(Game game, String path, String name){
 		this.game = game;
 		this.Worldname=name;
 		loadWorld(path);
-		
 	}
 	
 	public void tick(){
@@ -82,13 +88,23 @@ public class World {
 		height = Utils.parseInt(tokens[1]);
 		spawnX = Utils.parseInt(tokens[2]);
 		spawnY = Utils.parseInt(tokens[3]);
+		numEvents = Utils.parseInt(tokens[4]);
+		enemyrate = Utils.parseInt(tokens[5]);
+		enemynum = Utils.parseInt(tokens[6]);
 		tiles = new int[width][height];
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				tiles[x][y] = Utils.parseInt(tokens[(x+y*width)+5]);
+				tiles[x][y] = Utils.parseInt(tokens[(x+y*width)+7]);
 				
 			}
 		}
+		
+	//enemy encounters are loaded. Each troop consists of a pair of numbers, their id and relative frequency respectively
+	//this fills a treemap with these pairs of integers which is checked in the player class when moving
+		
+		for(int i=0; i<enemynum; i++){
+			enemy.put(Utils.parseInt(tokens[height*width+7+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+8+3*numEvents+2*i]));
+		}		
 
 		
 	}

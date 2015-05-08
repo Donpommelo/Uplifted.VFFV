@@ -6,12 +6,10 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.ablities.DillyDally;
-import dev.zt.UpliftedVFFV.ablities.ItemNothing;
+import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
@@ -56,6 +54,13 @@ public class BattleProcessor {
 			TurnOrderQueue.add(null);
 		}
 		
+		if(enemy.size()>1){
+			bt.textList.add(enemy.get(0).getName()+" and co attack.");
+		}
+		else{
+			bt.textList.add(enemy.get(0).getName()+"attacks you.");
+		}
+		
 	}
 	
 	public void tick() {
@@ -97,6 +102,14 @@ public class BattleProcessor {
 						}
 					}
 					if(game.getKeyManager().space){
+						if(fightlost() || enemyded()){
+							sm.states.pop();
+							try {
+								Thread.sleep(200);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
 						if(!allies.get(currentlySelected).statuses.contains(allies.get(currentlySelected).i)){	
 							selected=true;
 							bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
@@ -112,9 +125,20 @@ public class BattleProcessor {
 					}
 					if(game.getKeyManager().enter){
 //						if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){
+						if(fightlost() || enemyded()){
+							sm.states.pop();
+							try {
+								Thread.sleep(200);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
 							for(int i=0 ; i<enemy.size();i++){
 								if(!enemy.get(i).statuses.contains(enemy.get(i).i)){
 									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new StandardAttack(0),bs));
+								}
+								else{
+									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new ActuallyNothing(0),bs));
 								}
 							}
 							sort(TurnOrderQueue);
@@ -136,7 +160,11 @@ public class BattleProcessor {
 						e.printStackTrace();
 					}
 				}
-				if(!TurnOrderQueue.isEmpty()){
+				if(fightlost() || enemyded()){
+					phase++;
+				}
+
+				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
 							if(TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target)!=""){
@@ -159,13 +187,35 @@ public class BattleProcessor {
 						sort(TurnOrderQueue);
 					}
 				}
-				else{
+				else{					
 					phase++;
 				}
 				break;
 				
 			case 3:
-					phase=0;
+				if(fightlost()){
+					bt.textList.add("Everything goes black.");
+				}
+				if(enemyded()){
+					bt.textList.add("You won");
+					int exp = 0;
+					int script = 0;
+					for(Schmuck s : enemy){
+						exp += s.getExpDrop();
+						script += s.getScrDrop();
+					}
+					for(Schmuck s : allies){
+						bt.textList.add(s.getName()+" gains "+exp/allies.size()+" exp!");
+						s.expGain(s.getStartStats(),s.getStatGrowths(),exp/allies.size());
+						if(exp>=Math.pow(s.Lvl,2)*10){
+							bt.textList.add(s.getName()+" received a raise!");
+							bt.textList.add(s.getName()+" is now level "+ s.Lvl+"!");
+							}
+					}
+					bt.textList.add(script+" Company Script looted!");
+					gs.Script += script;
+				}
+				phase=0;
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -222,7 +272,7 @@ public class BattleProcessor {
 			flag=false;
 			for(j=0; j<a.size()-1; j++){
 				if(a.get(j) != null && a.get(j+1) != null){
-					if(a.get(j).user.BuffedSpd < a.get(j+1).user.BuffedSpd){
+					if(a.get(j).user.buffedStats[4] < a.get(j+1).user.buffedStats[4]){
 						temp = a.get(j);
 						a.set(j,a.get(j+1));
 						a.set(j+1,temp);
@@ -232,6 +282,25 @@ public class BattleProcessor {
 			}
 		}
 		
-
+	}
+	
+	public Boolean fightlost(){
+		Boolean teamdead=true;
+		for(Schmuck s : allies){
+			if(s.getCurrentHp()!=0){
+				teamdead=false;
+			}
+		}
+		return teamdead;
+	}
+	
+	public Boolean enemyded(){
+		Boolean theydead=true;
+		for(Schmuck s : enemy){
+			if(s.getCurrentHp()!=0){
+				theydead=false;
+			}
+		}
+		return theydead;
 	}
 }

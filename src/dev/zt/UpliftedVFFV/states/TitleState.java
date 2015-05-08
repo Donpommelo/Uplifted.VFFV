@@ -20,7 +20,6 @@ public class TitleState extends State {
 		testImage = ImageLoader.loadImage("/textures/title.png");
 		button=false;
 		updown=true;
-		
 	}
 
 	//receives input command to either begin or exit the game

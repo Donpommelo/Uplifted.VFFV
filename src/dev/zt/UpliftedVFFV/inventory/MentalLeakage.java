@@ -4,7 +4,7 @@ public class MentalLeakage extends Item{
 
 	static String descr="A handful of loose thoughts. You doubt it contains anything useful.";
 	public MentalLeakage() {
-		super(2, "Mental Leakage", true, true,descr);
+		super(2, "Mental Leakage",true, true, true,descr);
 
 	}
 	

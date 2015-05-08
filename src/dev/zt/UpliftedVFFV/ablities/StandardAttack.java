@@ -11,7 +11,7 @@ public class StandardAttack extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(perp.BuffedPow*perp.BuffedPow)/vic.BuffedDef,vic);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],vic);
 	}
 	
 	public String useText(Schmuck perp, Schmuck vic){
@@ -19,7 +19,7 @@ public class StandardAttack extends Skills {
 	}
 	
 	public String resultText(Schmuck perp, Schmuck vic){
-		return perp.BuffedPow*perp.BuffedPow/vic.BuffedDef+" damage is dealt!";
+		return perp.buffedStats[2]*perp.buffedStats[2]/vic.buffedStats[3]+" damage is dealt!";
 	}
 
 }

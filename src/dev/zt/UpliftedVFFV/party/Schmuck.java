@@ -2,188 +2,261 @@ package dev.zt.UpliftedVFFV.party;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
+import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Schmuck {
 	
-	public int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
+//	public int startHp=0,startBp=0,startPow=0, startDef=0, startSpd=0, startSkl=0, startLuk=0, startInt=0;
+	public int[] startStats;
+//	public static double hpGrowth=0, bpGrowth=0, powGrowth=0, defGrowth=0, spdGrowth=0, sklGrowth=0, intGrowth=0, lukGrowth=0;
+	public double[] statGrowths;
+//	public int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
+	public int[] baseStats = {0,0,0,0,0,0,0,0};
+	public int[] buffedStats;
+	public int[] tempStats = {10,10};
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public int Lvl;
+	public int Lvl,exp,expCurrent;
+	public int expDrop;
+	public int scrDrop;
 	public BufferedImage BattleSprite;
 	public ArrayList<Skills> skills;
+	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
 	public ArrayList<status> statuses;
 	public String name;
 	public incapacitate i = new incapacitate();
-	public Schmuck(String name,int hp,int bp,int pow,int def,int spd, int skl, int smart, int luk,BufferedImage sprite){
-		this.MaxHp=hp;this.CurrentHp=hp;
-		this.MaxBp=bp;this.CurrentBp=bp;
-		this.BasePow=pow;this.BuffedPow=pow;
-		this.BaseDef=def;this.BuffedDef=def;
-		this.BaseSpd=spd;this.BuffedSpd=spd;
-		this.BaseSkl=skl;this.BuffedSkl=skl;
-		this.BaseInt=smart;this.BuffedInt=smart;
-		this.BaseLuk=luk;this.BuffedLuk=luk;
+	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths){	
 		this.BattleSprite=sprite;
 		this.name=name;
 		this.skills = new ArrayList<Skills>();
 		this.statuses = new ArrayList<status>();
+		this.Lvl=lvl;
+		this.startStats=start;
+		this.statGrowths=growths;
+//		this.baseStats=start;
+		this.buffedStats=start;
+		this.exp=0;
+//		calcStats(startStats,statGrowths,lvl);
 	}
 	
 	public void hpChange(int hp){
-		CurrentHp+=hp;
-		if(CurrentHp<0){
-			CurrentHp=0;
+		tempStats[0]+=hp;
+		if(tempStats[0]<0){
+			tempStats[0]=0;
 			statuses.add(i);
-			
 		}
-		if(CurrentHp>MaxHp){
-			CurrentHp=MaxHp;
+		if(tempStats[0]>baseStats[0]){
+			tempStats[0]=baseStats[0];
 		}
 	}
 	
 	public void bpChange(int bp){
-		CurrentBp+=bp;
-		if(CurrentBp<0){
-			CurrentBp=0;
+		tempStats[1]+=bp;
+		if(tempStats[1]<0){
+			tempStats[1]=0;
 		}
-		if(CurrentBp>MaxBp){
-			CurrentBp=MaxBp;
+		if(tempStats[1]>baseStats[1]){
+			tempStats[1]=baseStats[1];
+		}
+		
+	}
+	
+	public void expGain(int[] start,double[] growth, int xp){
+		exp+=xp;
+		while(exp>=Math.pow(Lvl,2)*10){
+//		if(exp>=Lvl*100){
+			Lvl++;
+			lvlUp(Lvl);
+		}
+	}
+	
+	public void calcStats(int lvl){
+		lvl--;
+		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getMaxHp());
+		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getMaxBp());
+		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
+		setBaseDef(startStats[3]+(int)(lvl*statGrowths[3]));setBuffedDef(getBaseDef());
+		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
+		setBaseSkl(startStats[5]+(int)(lvl*statGrowths[5]));setBuffedSkl(getBaseSkl());
+		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
+		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
+	}
+	
+
+	public int getLvl() {
+		return Lvl;
+	}
+	
+	public int getExp() {
+		return exp;
+	}
+	
+	public int[] getStartStats() {
+		return startStats;
+	}
+
+	public double[] getStatGrowths() {
+		return statGrowths;
+	}
+	
+	public void lvlUp(int lvl){
+		lvl--;
+		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getCurrentHp()+(int)(lvl*statGrowths[0]));
+		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getCurrentBp()+(int)(lvl*statGrowths[1]));
+		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
+		setBaseDef(startStats[3]+(int)(lvl*statGrowths[3]));setBuffedDef(getBaseDef());
+		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
+		setBaseSkl(startStats[5]+(int)(lvl*statGrowths[5]));setBuffedSkl(getBaseSkl());
+		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
+		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
+		if(levelSkills.containsKey(Lvl)){
+			learnSkill(levelSkills.get(Lvl));
 		}
 	}
 	
 	public int getMaxHp() {
-		return MaxHp;
+		return baseStats[0];
 	}
 
 	public void setMaxHp(int maxHp) {
-		MaxHp = maxHp;
+		baseStats[0] = maxHp;
 	}
 
 	public int getCurrentHp() {
-		return CurrentHp;
+		return tempStats[0];
 	}
 
 	public void setCurrentHp(int currentHp) {
-		CurrentHp = currentHp;
+		tempStats[0] = currentHp;
 	}
 
 	public int getMaxBp() {
-		return MaxBp;
+		return baseStats[1];
 	}
 
 	public void setMaxBp(int maxBp) {
-		MaxBp = maxBp;
+		baseStats[1] = maxBp;
 	}
 
 	public int getCurrentBp() {
-		return CurrentBp;
+		return tempStats[1];
 	}
 
 	public void setCurrentBp(int currentBp) {
-		CurrentBp = currentBp;
+		tempStats[1] = currentBp;
 	}
 	
 	public void learnSkill(Skills s){
 		skills.add(s);
 	}
+	
+	public int getExpDrop() {
+		return expDrop;
+	}
 
+	public int getScrDrop() {
+		return scrDrop;
+	}
+	
 	public int getBasePow() {
-		return BasePow;
+		return baseStats[2];
 	}
 
 	public void setBasePow(int basePow) {
-		BasePow = basePow;
+		baseStats[2] = basePow;
 	}
 
 	public int getBuffedPow() {
-		return BuffedPow;
+		return buffedStats[2];
 	}
 
 	public void setBuffedPow(int buffedPow) {
-		BuffedPow = buffedPow;
+		buffedStats[2] = buffedPow;
 	}
 
 	public int getBaseDef() {
-		return BaseDef;
+		return baseStats[3];
 	}
 
 	public void setBaseDef(int baseDef) {
-		BaseDef = baseDef;
+		baseStats[3] = baseDef;
 	}
 
 	public int getBuffedDef() {
-		return BuffedDef;
+		return buffedStats[3];
 	}
 
 	public void setBuffedDef(int buffedDef) {
-		BuffedDef = buffedDef;
+		buffedStats[3] = buffedDef;
 	}
 
 	public int getBaseSpd() {
-		return BaseSpd;
+		return baseStats[4];
 	}
 
 	public void setBaseSpd(int baseSpd) {
-		BaseSpd = baseSpd;
+		baseStats[4] = baseSpd;
 	}
 
 	public int getBuffedSpd() {
-		return BuffedSpd;
+		return buffedStats[4];
 	}
 
 	public void setBuffedSpd(int buffedSpd) {
-		BuffedSpd = buffedSpd;
+		buffedStats[4] = buffedSpd;
 	}
 
 	public int getBaseSkl() {
-		return BaseSkl;
+		return baseStats[5];
 	}
 
 	public void setBaseSkl(int baseSkl) {
-		BaseSkl = baseSkl;
+		baseStats[5] = baseSkl;
 	}
 
 	public int getBuffedSkl() {
-		return BuffedSkl;
+		return buffedStats[5];
 	}
 
 	public void setBuffedSkl(int buffedSkl) {
-		BuffedSkl = buffedSkl;
+		buffedStats[5] = buffedSkl;
 	}
 
 	public int getBaseInt() {
-		return BaseInt;
+		return baseStats[6];
 	}
 
 	public void setBaseInt(int baseInt) {
-		BaseInt = baseInt;
+		baseStats[6] = baseInt;
 	}
 
 	public int getBuffedInt() {
-		return BuffedInt;
+		return buffedStats[6];
 	}
 
 	public void setBuffedInt(int buffedInt) {
-		BuffedInt = buffedInt;
+		buffedStats[6] = buffedInt;
 	}
 
 	public int getBaseLuk() {
-		return BaseLuk;
+		return baseStats[7];
 	}
 
 	public void setBaseLuk(int baseLuk) {
-		BaseLuk = baseLuk;
+		baseStats[7] = baseLuk;
 	}
 
 	public int getBuffedLuk() {
-		return BuffedLuk;
+		return buffedStats[7];
 	}
 
 	public void setBuffedLuk(int buffedLuk) {
-		BuffedLuk = buffedLuk;
+		buffedStats[7] = buffedLuk;
 	}
 
 	public String getName() {
@@ -196,7 +269,7 @@ public class Schmuck {
 
 
 	public void attack(Schmuck victim){
-		victim.CurrentHp-=this.BuffedPow*this.BuffedPow/victim.BaseDef;
+		victim.tempStats[0]-=this.buffedStats[2]*this.buffedStats[2]/victim.buffedStats[3];
 		
 	}
 	

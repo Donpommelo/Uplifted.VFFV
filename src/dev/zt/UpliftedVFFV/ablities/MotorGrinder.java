@@ -13,7 +13,7 @@ public class MotorGrinder extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(perp.BuffedPow*perp.BuffedPow)/vic.BuffedDef,vic);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],vic);
 
 	}
 	

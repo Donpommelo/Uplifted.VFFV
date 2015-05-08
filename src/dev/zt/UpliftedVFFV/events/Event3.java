@@ -56,7 +56,7 @@ public class Event3 extends Event {
 
 	
 	public void run(){
-		super.recruit(new PenPal());
+//		super.recruit(new PenPal());
 		super.loot(new MedPak(),3);
 		super.loot(new CaffeinePatch(),3);
 		super.loot(new AngryBeef(),99);

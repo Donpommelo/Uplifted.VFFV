@@ -1,11 +1,17 @@
 package dev.zt.UpliftedVFFV.entities.creatures;
 
 import java.awt.Graphics;
+import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Troop;
+import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.WorldManager;
 
@@ -17,10 +23,13 @@ public class Player extends Creature{
 	protected boolean runup,runleft,runright,rundown=false;
 	protected int rightleft;
 	protected int step=0;
+	public static int enemyCalc=0;
 	public static int runlast=1;
-
-	public Player(Game game, float x, float y) {
-		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+	public GameState gamestate;
+	
+	public Player(Game game, float x, float y, GameState gs) {
+		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator);
+		this.gamestate = gs;
 	} 
 
 	public void tick() {
@@ -36,14 +45,47 @@ public class Player extends Creature{
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
 			getInput();			
-			if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
-				move();			
-			}
+//			if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
+				move();
+//			}
 		}
 		
 
 		game.getGameCamera().centerOnEntity(this);			//centers the gameCamera object so that the player is constantly in the center of the screen
 	
+	}
+	
+	private void encounter(){
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		int troop=0;
+		Set<Integer> temp= WorldManager.getWorld().enemy.keySet();
+		Integer[] troops= temp.toArray(new Integer[WorldManager.getWorld().enemynum]);	
+		// Compute the total weight of all items together
+		double totalWeight = 0.0d;
+		for (int t : troops)
+		{
+			if(Troop.troops[t]!=null){
+				totalWeight += WorldManager.getWorld().enemy.get(t);
+		    }
+		}
+		// Now choose a random item
+		int randomIndex = -1;
+		double random = Math.random() * totalWeight;
+		for (int i = 0; i < troops.length; ++i)
+		{
+		    random -= WorldManager.getWorld().enemy.get(troops[i]);
+		    if (random <= 0.0d)
+		    {
+		        randomIndex = i;
+		        break;
+		    }
+		}
+		troop = troops[randomIndex];
+		StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,gamestate));
 	}
 	
 	//this is run every tick, provided the player is not running an event
@@ -56,6 +98,10 @@ public class Player extends Creature{
 		if(step==16){
 			runup=false; runleft=false; runright=false; rundown=false;
 			step=0;
+			double temp = Math.random();
+			if(temp<(double)(WorldManager.getWorld().enemyrate)/100){			//enemy stuff
+				encounter();
+			}
 		}
 		
 		//if the player is running in any direction, xMove and yMove are changed and the player begins moving, thus increasing step
@@ -142,18 +188,19 @@ public class Player extends Creature{
 	//renders the player sprite
 	//if the player is not currently walking, a sprite is chosen based on the which direction the player is facing
 	public void render(Graphics g) {
-		if(runup==false && rundown==false && runleft==false && runright==false){
+//		super.render(g);
+				if(runup==false && rundown==false && runleft==false && runright==false){
 			if(runlast==0){
-				g.drawImage(SpriteSorter.SpriteSort(10,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==1){
-				g.drawImage(SpriteSorter.SpriteSort(1,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==2){
-				g.drawImage(SpriteSorter.SpriteSort(4,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==3){
-				g.drawImage(SpriteSorter.SpriteSort(7,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 		}
 		
@@ -161,51 +208,51 @@ public class Player extends Creature{
 		//consider adding a separate animationmanager later for all animations
 		if(runup==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(10,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(9,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(9,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(11,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}				
 		}
 		if(rundown==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(1,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(0,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(0,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(2,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(2,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 				
 		}
 		if(runleft==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(4,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(3,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(3,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(5,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 		}
 		if(runright==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(7,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(6,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(6,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(8,Assets.Operator), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(8,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 		}
 					
