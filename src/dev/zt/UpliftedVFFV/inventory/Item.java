@@ -36,7 +36,8 @@ public class Item implements Comparable<Item>{
 		this.usedfromMenu=false;
 		this.usefromBattle=false;
 	}
-	
+
+
 	//ran when an item is used. Every item will override this method with whatever effect it has,
 	public void use(Schmuck perp, Schmuck vic){
 
@@ -62,6 +63,23 @@ public class Item implements Comparable<Item>{
 	
 	public String resultText(Schmuck perp, Schmuck vic){
 		return "";
+	}
+	
+	public boolean startTeamTarget(){
+		return true;
+	}
+	
+	public Boolean getUsedfromMenu() {
+		return usedfromMenu;
+	}
+
+	public Boolean getUsefromBattle() {
+		return usefromBattle;
+	}
+
+
+	public Boolean getConsummable() {
+		return consummable;
 	}
 
 }

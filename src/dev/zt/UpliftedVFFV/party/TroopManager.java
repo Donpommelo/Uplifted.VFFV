@@ -26,10 +26,11 @@ public class TroopManager {
 	}
 	
 	public ArrayList<Schmuck> Troop(int index){
-/*		for(Schmuck s : Troop.troops[index].troop){
+		for(Schmuck s : Troop.troops[index].troop){
 			s.calcStats(s.getLvl());
-			s.skills.clear();
-		}*/
+			s.statuses.clear();
+//			s.skills.clear();
+		}
 		return Troop.troops[index].troop;
 //		return troop.findTroop(index);
 	}

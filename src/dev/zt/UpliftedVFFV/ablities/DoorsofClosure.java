@@ -13,7 +13,8 @@ public class DoorsofClosure extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),vic);
+		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),vic);	
 		if(bs.bp.bm.enemy.contains(vic)){
 			for(Schmuck s : bs.bp.bm.enemy){
 				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),s);
@@ -26,16 +27,7 @@ public class DoorsofClosure extends Skills {
 		}
 
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return perp.getName()+" closes doors on enemies!";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-//		return "All targets are damaged.";
-		return "";
-	}
-	
+		
 	public String getName(){
 		return name;
 	}
@@ -43,5 +35,6 @@ public class DoorsofClosure extends Skills {
 	public int getCost(){
 		return cost;
 	}
+	
 
 }

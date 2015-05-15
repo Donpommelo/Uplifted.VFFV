@@ -3,6 +3,11 @@ package dev.zt.UpliftedVFFV.party;
 
 import java.util.ArrayList;
 
+import dev.zt.UpliftedVFFV.ablities.BoxCutter;
+import dev.zt.UpliftedVFFV.ablities.Ennervate;
+import dev.zt.UpliftedVFFV.ablities.LifeDrain;
+import dev.zt.UpliftedVFFV.ablities.Pounce;
+import dev.zt.UpliftedVFFV.ablities.Query;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -25,8 +30,15 @@ public class PenPal extends Schmuck{
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
 	public PenPal() {
-		super("Pen Pal",1,ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths);
+		super("Pen Pal",1,ImageLoader.loadImage("/BattleSprites/PenPal.png"), startStats, statGrowths);
 		calcStats(1);
+		super.learnSkill(new BoxCutter(0));
+		super.learnSkill(new Ennervate(0));
+		super.learnSkill(new Query(0));
+		super.learnSkill(new LifeDrain(0));
+		super.learnSkill(new Pounce(0));
+		
+
 
 
 	}

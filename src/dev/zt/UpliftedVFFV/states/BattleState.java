@@ -65,9 +65,9 @@ public class BattleState extends State {
 			
 
 	public void render(Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 640, 416);
-		g.drawImage(testImage, 48, 0, null);
+//		g.drawImage(testImage, 48, 0, null);
 		bs.render(g);
 		bp.render(g);
 //		bm.render(g);

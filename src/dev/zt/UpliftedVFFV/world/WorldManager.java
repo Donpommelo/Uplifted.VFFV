@@ -30,8 +30,8 @@ public class WorldManager {
 	
 
 	public static void setLoc(int x, int y) {
-		Player.setX(x);
-		Player.setY(y);
+//		Player.setX(x);
+//		Player.setY(y);
 	}
 
 

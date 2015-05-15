@@ -21,4 +21,8 @@ public class FishWater extends Item{
 	public String resultText(Schmuck perp, Schmuck vic){
 		return vic.getName()+" looks grossed out.";
 	}
+	
+	public boolean startTeamTarget(){
+		return false;
+	}
 }

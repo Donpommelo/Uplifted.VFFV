@@ -13,5 +13,5 @@ public class BucketBattery extends Item{
 	public void use(Schmuck perp, Schmuck vic){
 		vic.tempStats[0]-=50;
 	}
-
+		
 }

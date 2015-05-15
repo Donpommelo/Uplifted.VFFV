@@ -26,10 +26,14 @@ public class Player extends Creature{
 	public static int enemyCalc=0;
 	public static int runlast=1;
 	public GameState gamestate;
+//	public static float x,y;
 	
 	public Player(Game game, float x, float y, GameState gs) {
 		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator);
 		this.gamestate = gs;
+		this.x = x;
+		this.y = y;
+		
 	} 
 
 	public void tick() {
@@ -45,14 +49,19 @@ public class Player extends Creature{
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
 			getInput();			
-//			if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
-				move();
-//			}
+			if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
+				this.move();
+			}
 		}
 		
 
 		game.getGameCamera().centerOnEntity(this);			//centers the gameCamera object so that the player is constantly in the center of the screen
 	
+	}
+	
+	public void move(){
+			setX(getX() + xMove);
+			setY(getY() + yMove);
 	}
 	
 	private void encounter(){
@@ -77,7 +86,8 @@ public class Player extends Creature{
 		double random = Math.random() * totalWeight;
 		for (int i = 0; i < troops.length; ++i)
 		{
-		    random -= WorldManager.getWorld().enemy.get(troops[i]);
+//		    System.out.print(random+" ");
+			random -= WorldManager.getWorld().enemy.get(troops[i]);
 		    if (random <= 0.0d)
 		    {
 		        randomIndex = i;
@@ -259,5 +269,13 @@ public class Player extends Creature{
 		
 		
 	}
+	
+	
+	
+	public String toString(){
+		return "player";
+	}
+	
+
 	
 }

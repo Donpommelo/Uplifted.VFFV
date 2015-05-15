@@ -6,16 +6,19 @@ import dev.zt.UpliftedVFFV.Game;
 public abstract class Entity {
 	
 	protected Game game;
-	protected static float x;
-	protected static float y;
+	protected static float x,y;
 	protected int width, height;
 	
 	public Entity(Game game, float x, float y, int width, int height){
 		this.game = game;
-		Entity.x = x;
-		Entity.y = y;
+		this.x = x;
+		this.y = y;
 		this.width = width;
 		this.height = height;
+	}
+	
+	public Game getGame(){
+		return game;
 	}
 	
 	public float getX() {

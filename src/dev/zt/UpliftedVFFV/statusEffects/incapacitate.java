@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class incapacitate extends status{
 	
+	
 	public incapacitate(){
 		
 	}

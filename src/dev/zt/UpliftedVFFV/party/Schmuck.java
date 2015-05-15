@@ -4,9 +4,13 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -24,11 +28,14 @@ public class Schmuck {
 	public int Lvl,exp,expCurrent;
 	public int expDrop;
 	public int scrDrop;
+	public int x = 0;
+	public int y = 0;
 	public BufferedImage BattleSprite;
 	public ArrayList<Skills> skills;
 	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
 	public ArrayList<status> statuses;
 	public String name;
+	public String bio;
 	public incapacitate i = new incapacitate();
 	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths){	
 		this.BattleSprite=sprite;
@@ -49,6 +56,7 @@ public class Schmuck {
 		if(tempStats[0]<0){
 			tempStats[0]=0;
 			statuses.add(i);
+			
 		}
 		if(tempStats[0]>baseStats[0]){
 			tempStats[0]=baseStats[0];
@@ -87,7 +95,13 @@ public class Schmuck {
 		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
 	}
 	
-
+	public Action getAction(BattleState bs){
+		return new Action(bs.bp.allies.get(0),bs.bp.allies.get(0),new StandardAttack(0),bs);
+	
+	}
+	
+	
+	
 	public int getLvl() {
 		return Lvl;
 	}
@@ -114,8 +128,21 @@ public class Schmuck {
 		setBaseSkl(startStats[5]+(int)(lvl*statGrowths[5]));setBuffedSkl(getBaseSkl());
 		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
 		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
-		if(levelSkills.containsKey(Lvl)){
-			learnSkill(levelSkills.get(Lvl));
+		if(this.getLevelSkills().containsKey(Lvl)){
+			learnSkill(this.getLevelSkills().get(Lvl));	
+		}
+	}
+	
+	public TreeMap<Integer, Skills> getLevelSkills() {
+		return levelSkills;
+	}
+
+	public void calcBuffs(){
+		for(int i=0; i <8; i++){
+			buffedStats[i] = baseStats[i];
+		}
+		for(status s : statuses){
+			s.statchanges(this);
 		}
 	}
 	
@@ -262,6 +289,10 @@ public class Schmuck {
 	public String getName() {
 		return name;
 	}
+	
+	public String getBio() {
+		return bio;
+	}
 
 	public BufferedImage getBattleSprite() {
 		return BattleSprite;
@@ -276,6 +307,24 @@ public class Schmuck {
 	public void cast(int skillindex){
 		
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	
 	
 	
 	

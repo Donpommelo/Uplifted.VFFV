@@ -17,15 +17,9 @@ public GameState gs;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-	
+		bs.bp.bt.textList.add(perp.getName()+" did nothing in "+vic.getName()+"'s general direction.");
+		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return perp.getName()+" did nothing in "+vic.getName()+"'s general direction.";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return vic.getName()+" doesn't seem impressed.";
-	}
+
 
 }

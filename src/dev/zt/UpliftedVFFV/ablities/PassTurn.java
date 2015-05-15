@@ -15,15 +15,7 @@ public Item thing;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-	
+		bs.bp.bt.textList.add(perp.getName()+" does absolutely nothing.");
 	}
 	
-	public String useText(Schmuck perp, Schmuck vic){
-		return perp.getName()+" does absolutely nothing.";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 }

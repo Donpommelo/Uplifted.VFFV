@@ -22,11 +22,12 @@ public class World {
 	private int nameplate=0;					//controls location of nameplate
 	public int enemyrate, enemynum;
 //	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
-	public static TreeMap<Integer, Integer> enemy= new TreeMap<Integer, Integer>();
+	public static TreeMap<Integer, Integer> enemy;//= new TreeMap<Integer, Integer>();
 	public Troop troop = new Troop(0);
 	public World(Game game, String path, String name){
 		this.game = game;
 		this.Worldname=name;
+		enemy = new TreeMap<Integer, Integer>();
 		loadWorld(path);
 	}
 	

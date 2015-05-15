@@ -17,6 +17,8 @@ public GameState gs;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(thing.useText(perp, vic));
+		bs.bp.bt.textList.add(thing.resultText(perp, vic));
 		if(thing.usedfromMenu==true){			//Replace usedfromMenu w/ consummable
 			if(gs.inventorymanager.backpack.containsKey(thing)){
 				if(gs.inventorymanager.backpack.get(thing)!=0){
@@ -30,21 +32,17 @@ public GameState gs;
 				else{
 					//running out of planned-to-use item
 				}
-
 				
-				
+				}
 			}
-				
-			
 		}
+	public boolean startTarget(){
+		if(thing!=null){
+			return thing.startTeamTarget();
 		}
-	public String useText(Schmuck perp, Schmuck vic){
-		return thing.useText(perp, vic);
+		else{
+			return false;
+		}
 	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return thing.resultText(perp, vic);
-	}
-	
 
 }

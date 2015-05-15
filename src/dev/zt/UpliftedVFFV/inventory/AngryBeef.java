@@ -21,5 +21,6 @@ public class AngryBeef extends Item{
 	public String resultText(Schmuck perp, Schmuck vic){
 		return "The steak fills "+vic.getName()+" with a palpable rage!";
 	}
+	
 
 }

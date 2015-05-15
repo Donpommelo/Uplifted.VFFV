@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.display.Display;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.GameCamera;
@@ -30,11 +31,12 @@ public class Game implements Runnable{
 	private Graphics g;
 	
 	private StateManager statemanager;
-
+	private AudioManager audiomanager;
 	
 	//Input
 	private KeyManager keyManager;
 	private WorldManager worldmanager;
+	
 	
 	private GameCamera gameCamera;
 	
@@ -54,7 +56,10 @@ public class Game implements Runnable{
 		
 		gameCamera = new GameCamera(this,0,0);					//creates a gameCamera. This tracks movement of player to center the screen
 		
-		statemanager=new StateManager(this);							//creates statemanager. This managees the states of the game
+		audiomanager = new AudioManager(this);
+//		audiomanager.playSound();
+		
+		statemanager=new StateManager(this);							//creates statemanager. This manages the states of the game
 		statemanager.states.push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 
 		
 		worldmanager=new WorldManager(this);					//creates a worldmanager. This manages the world.
@@ -142,7 +147,15 @@ public class Game implements Runnable{
 	public WorldManager getWorldManager(){
 		return worldmanager;
 	}
-	
+		
+	public AudioManager getAudiomanager() {
+		return audiomanager;
+	}
+
+	public void setAudiomanager(AudioManager audiomanager) {
+		this.audiomanager = audiomanager;
+	}
+
 	public int getWidth(){
 		return width;
 	}

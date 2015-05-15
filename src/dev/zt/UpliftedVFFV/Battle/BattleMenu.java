@@ -69,7 +69,7 @@ public class BattleMenu{
 		currentlyTargeted=0;
 		actionSelected=0;
 		TurnOrderQueue=0;
-
+		
 	}
 
 	public void tick() {
@@ -84,29 +84,6 @@ public class BattleMenu{
 		}
 		
 		if(itemChosen==true || attackChosen==true || skillChosen==true){
-			if(game.getKeyManager().left){
-				if(teamTargeted==false){
-					if(currentlyTargeted<enemy.size()-1){
-						currentlyTargeted++;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				else{
-					if(currentlyTargeted>0){
-						currentlyTargeted--;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				
-			}
 			if(game.getKeyManager().right){
 				if(teamTargeted==false){
 					if(currentlyTargeted>0){
@@ -117,11 +94,35 @@ public class BattleMenu{
 							e.printStackTrace();
 						}
 					}
+				}
+				else{
+					if(currentlyTargeted<allies.size()-1){
+						currentlyTargeted++;
+					}
+				}
+				
+			}
+			if(game.getKeyManager().left){
+				if(teamTargeted==false){
+					if(currentlyTargeted<enemy.size()-1){
+						currentlyTargeted++;
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					
 					
 					}
 				else {
-					if(currentlyTargeted<allies.size()-1){
-						currentlyTargeted++;
+					if(currentlyTargeted>0){
+						currentlyTargeted--;
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
 					
 				}
@@ -230,6 +231,9 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().space){
 					skillChosen=true;
+					if(!currentSchmuck.skills.isEmpty()){
+						teamTargeted =  currentSchmuck.skills.get(itemSelected).startTarget();; // do to other stuff
+					}
 //					moveSelected=false;
 					try {
 						Thread.sleep(100);
@@ -280,8 +284,7 @@ public class BattleMenu{
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-
-						Set<Item> temp= gs.inventorymanager.backpack.keySet();
+						Set<Item> temp = gs.inventorymanager.battleItem().keySet();
 						Item[] itemDisplay= temp.toArray(new Item[999]);
 						if(gs.inventorymanager.backpack.size()==0){
 							if(teamTargeted==false){
@@ -318,6 +321,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().space){
 					itemChosen=true;
+					teamTargeted =  new UseItem(1,gs.inventorymanager.backpack.keySet().toArray(new Item[999])[itemSelected],gs).startTarget();
 //					moveSelected=false;									
 					try {
 						Thread.sleep(100);
@@ -382,6 +386,7 @@ public class BattleMenu{
 					actionSelected=0;
 					playerSelected=false;
 					moveSelected=false;
+					bs.bp.stm.endofFite();
 					sm.states.pop();
 					break;
 			}
@@ -435,6 +440,7 @@ public class BattleMenu{
 
 	public void render(Graphics g) {
 		if(exit==true){
+			currentlyTargeted = 0;
 			if(attackChosen==true){
 				attackChosen=false;
 				moveSelected=false;
@@ -508,7 +514,7 @@ public class BattleMenu{
 			case 2:	
 				g.setColor(new Color(102, 178,255));
 				g.fillRect(500, 210, 140, 206);
-				Set<Item> temp = gs.inventorymanager.backpack.keySet();
+				Set<Item> temp = gs.inventorymanager.battleItem().keySet();
 				Item[] itemDisplay = temp.toArray(new Item[999]);
 				g.setColor(new Color(255, 255,51));
 				g.fillRect(500, 216+25*itemPointer, 140, 25);
@@ -539,14 +545,27 @@ public class BattleMenu{
 		}
 		if(itemChosen==true || attackChosen==true || skillChosen==true){
 			if(teamTargeted){
-				g.drawImage(Assets.Downarrow,98+currentlyTargeted*100,245,null);
+				g.drawImage(Assets.Downarrow,50+allies.get(currentlyTargeted).getX(),allies.get(currentlyTargeted).getY(),null);
 			}
 			else{
-				g.drawImage(Assets.Downarrow,515-currentlyTargeted*150, 27,null);
+				g.drawImage(Assets.Downarrow,50+enemy.get(currentlyTargeted).getX(), enemy.get(currentlyTargeted).getY(),null);
 			}
+			
+			g.setColor(new Color(102, 178,255));
+			g.fillRect(520, 0,140,25);
+			if(teamTargeted){
+				g.setColor(new Color(0, 0,0));
+				g.drawString(allies.get(currentlyTargeted).getName()+" ",520,20);
+			}
+			else{
+				g.setColor(new Color(0, 0,0));
+				g.drawString(enemy.get(currentlyTargeted).getName()+" ",520,20);
+			}
+			
+			itemnum++;
 		}
 	
-
+		
 
 		
 	}

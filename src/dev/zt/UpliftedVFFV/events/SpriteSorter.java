@@ -18,6 +18,9 @@ public class SpriteSorter {
 	
 	public static BufferedImage SpriteSort(int num, BufferedImage img){
 		meep=new SpriteSheet(img);
+		if(meep == null){
+			System.out.print("gofuckurself");
+		}
 		switch(num){
 		case 0:
 			merp=meep.crop(0,0,32,32);

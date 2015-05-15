@@ -32,6 +32,7 @@ public class Event{
 	static StateManager statemanager;
 	static Game game;
 	static GameState gamestate;
+	static Player killme;
 	float x;
 	float y;
 	public static Event[] events = new Event[256];
@@ -94,16 +95,19 @@ public class Event{
 	public static Event eventemployee21 = new EventEmployee21(12,21,64);
 	
 	public static Event fitemeh = new EventTestBattle(0,0,100);
-	public static Event eventemployeeMovingtest = new EventEmployeeMovingTest(3,7,101,game);
 	
-	public Event(Game g, StateManager sm,GameState gamestate) {
-		this.game=g;
-		this.statemanager=sm;
-		this.gamestate=gamestate;
-		
+	public static Event eventemployeeMovingtest = new EventEmployeeMovingTest(3,7,101);
+	
+	public Event(Game g, StateManager sm,GameState gs) {
+		game=g;
+		statemanager=sm;
+		gamestate=gs;
 //		this.id=idnum;
 //		this.x=x;
 //		this.y=y;
+		if(Event.game!=null){
+
+		}
 
 	}
 	
@@ -115,13 +119,11 @@ public class Event{
 	
 
 	public Event(BufferedImage texture, int idnum, float x, float y) {
-		this.tex = texture;
-		if(idnum==101){
-//			this.test = new Creature(game, x ,y, 32, 32, texture);
-//			System.out.print(idnum);
+		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
+			this.test = new Creature(game, x ,y, 32, 32, texture);		
 		}
-		if(game==null){
-//			System.out.print("meep");
+		else{
+			this.tex = texture;
 		}
 		this.id = idnum;
 		this.x = x;
@@ -138,18 +140,21 @@ public class Event{
  	}
 	
 	public void tick() {
-		
-		
+		if(test!=null){
+			test.tick();		
+		}
 	}
 
 	public void render(Graphics g, int x, int y) {
-		if(tex!=null){
+		if(test==null){
 			g.drawImage(tex,x, y, TILEWIDTH, TILEHEIGHT, null);
 		}
 		
 		if(test!=null){
-//			g.drawImage(test.img, x, y, TILEWIDTH, TILEHEIGHT, null);
 			test.render(g);
+			g.drawImage(test.imgShown, x, y, TILEWIDTH, TILEHEIGHT, null);
+			
+			
 		}
 	}
 	
@@ -173,8 +178,19 @@ public class Event{
 	public void setTex(BufferedImage tex) {
 		this.tex = tex;
 	}
+	
+	public Creature getTest() {
+		return test;
+	}
+	public void setTest(Creature test) {
+		this.test = test;
+	}
+	
 	public boolean isSolid(){
 		return false;
+	}
+	public boolean isExist(){
+		return true;
 	}
 	
 	//Below this is all the stuff that events can call.
@@ -287,11 +303,14 @@ public class Event{
 	
 	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
 	public void moveUp(){
-//		if(!WorldManager.getWorld().getTile((int)((this.getX()+31/2+9)/32),(int)((this.getY()+31/2+9)/32)).isSolid()&&!EventManager.getEvent((int)((this.getX()+31/2+9)/32),(int)((this.getY()+31/2+9)/32)).isSolid()){
-			eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-			eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
-			this.setX(this.getX());this.setY(this.getY()-1);
-//		}
+//		Event temp = events[eventmanager.events[(int)(this.getX())][(int)(this.getY())]];
+		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+		eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
+//		events[eventmanager.events[(int)(this.getX())][(int)(this.getY())]] = temp;
+		this.setX(this.getX());this.setY(this.getY()-1);
+		if(test!=null){
+			this.test.getMove(0);
+		}
 		
 	}
 
@@ -308,10 +327,16 @@ public class Event{
 		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
 		eventmanager.events[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
 		this.setX(this.getX()-1);this.setY(this.getY());
+		if(test!=null){
+			this.test.getMove(2);
+		}
 	}
 	public void moveRight(){
 		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
 		eventmanager.events[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
 		this.setX(this.getX()+1);this.setY(this.getY());
+		if(test!=null){
+			this.test.getMove(3);
+		}
 	}
 }

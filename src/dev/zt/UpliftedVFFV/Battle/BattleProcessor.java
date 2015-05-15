@@ -14,6 +14,7 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BattleProcessor {
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
@@ -34,6 +35,7 @@ public class BattleProcessor {
 	public GameState gs;
 	public EffectManager em;
 	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
+	
 	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy,GameState gs,BattleState bs){
 		this.game=game;
 		this.sm=sm;
@@ -46,20 +48,29 @@ public class BattleProcessor {
 		
 		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
 		bt = new BattleText(game,sm,allies,enemy);
-		stm = new StatusManager(game,bs,gs);
 		em = new EffectManager(game,bs,gs);
+		stm = new StatusManager(game,bs,gs, this);
 		TurnOrderQueue = new ArrayList<Action>();
 //		initiate();
 		for(int i=0 ; i<enemy.size()+allies.size();i++){
 			TurnOrderQueue.add(null);
 		}
-		
+		for(Schmuck s : allies){
+			battlers.add(s);
+		}
+		for(Schmuck s : enemy){
+			battlers.add(s);
+		}
+		for(Schmuck s: battlers){
+			s.calcBuffs();
+		}
 		if(enemy.size()>1){
 			bt.textList.add(enemy.get(0).getName()+" and co attack.");
 		}
 		else{
-			bt.textList.add(enemy.get(0).getName()+"attacks you.");
+			bt.textList.add(enemy.get(0).getName()+" attacks you.");
 		}
+		
 		
 	}
 	
@@ -133,15 +144,31 @@ public class BattleProcessor {
 								e.printStackTrace();
 							}
 						}
+						
 							for(int i=0 ; i<enemy.size();i++){
 								if(!enemy.get(i).statuses.contains(enemy.get(i).i)){
-									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new StandardAttack(0),bs));
+									TurnOrderQueue.set(allies.size()+i,enemy.get(i).getAction(bs));
 								}
 								else{
+									
 									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new ActuallyNothing(0),bs));
 								}
 							}
 							sort(TurnOrderQueue);
+							
+							ArrayList<Action> TempTurnOrderQueue = new ArrayList<Action>();
+//							TempTurnOrderQueue = TurnOrderQueue;
+							for(Action a : TurnOrderQueue){
+								TempTurnOrderQueue.add(a);
+							}
+							for(int i = TempTurnOrderQueue.size()-1; i>=0; i--){
+								if(TempTurnOrderQueue.get(i) != null){
+									
+									TempTurnOrderQueue.get(i).skill.TOQChange(TempTurnOrderQueue.get(i), bs);
+//									System.out.print(TurnOrderQueue.get(i).user.getName()+" "); //
+								}				
+							}
+						
 							phase++;
 //						}
 						
@@ -167,13 +194,8 @@ public class BattleProcessor {
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
-							if(TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target)!=""){
-								bt.textList.add(TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target));
-							}
 							TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
-							if(TurnOrderQueue.get(0).skill.resultText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target)!=""){
-								bt.textList.add(TurnOrderQueue.get(0).skill.resultText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target));
-							}
+
 						}
 						else{
 							pauseTOQ = true;
@@ -184,10 +206,13 @@ public class BattleProcessor {
 					}
 					if(pauseTOQ == false){
 						TurnOrderQueue.remove(0);
-						sort(TurnOrderQueue);
+						for(Schmuck s: battlers){
+							s.calcBuffs();
+						}
 					}
 				}
 				else{					
+					stm.endofRound();
 					phase++;
 				}
 				break;
@@ -206,14 +231,15 @@ public class BattleProcessor {
 					}
 					for(Schmuck s : allies){
 						bt.textList.add(s.getName()+" gains "+exp/allies.size()+" exp!");
-						s.expGain(s.getStartStats(),s.getStatGrowths(),exp/allies.size());
-						if(exp>=Math.pow(s.Lvl,2)*10){
+						if(s.exp+exp/allies.size()>=Math.pow(s.Lvl,2)*10){
 							bt.textList.add(s.getName()+" received a raise!");
-							bt.textList.add(s.getName()+" is now level "+ s.Lvl+"!");
-							}
+							bt.textList.add(s.getName()+" is now level "+ (s.Lvl+1)+"!");
+						}
+						s.expGain(s.getStartStats(),s.getStatGrowths(),exp/allies.size());
 					}
 					bt.textList.add(script+" Company Script looted!");
 					gs.Script += script;
+					stm.endofFite();
 				}
 				phase=0;
 				try {
