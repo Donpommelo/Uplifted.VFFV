@@ -36,7 +36,7 @@ public void tick(){
 			for(int x = 0;x < width;x++){
 				if(events[x][y] != 0 && getEvent(x,y) != null){
 					if(getEvent(x,y).getTest()!=null){
-						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() - game.getGameCamera().getxOffset()),(int)(getEvent(x, y).getTest().getY() - game.getGameCamera().getyOffset()));
+						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
 					}
 					else{
 						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));

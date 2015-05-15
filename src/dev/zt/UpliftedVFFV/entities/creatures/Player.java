@@ -26,7 +26,7 @@ public class Player extends Creature{
 	public static int enemyCalc=0;
 	public static int runlast=1;
 	public GameState gamestate;
-//	public static float x,y;
+	public static float playerx, playery;
 	
 	public Player(Game game, float x, float y, GameState gs) {
 		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator);
@@ -270,7 +270,21 @@ public class Player extends Creature{
 		
 	}
 	
-	
+	public static float getPlayerX() {
+		return playerx;
+	}
+
+	public static void setPlayerX(float newx) {
+		playerx = newx;
+	}
+
+	public static float getPlayerY() {
+		return playery;
+	}
+
+	public static void setPlayerY(float newy) {
+		playery = newy;
+	}
 	
 	public String toString(){
 		return "player";

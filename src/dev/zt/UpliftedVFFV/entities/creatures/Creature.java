@@ -41,11 +41,10 @@ public class Creature extends Entity {
 	}
 	
 	public void move(){
-		if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
-			setX(getX() + xMove);
-			setY(getY() + yMove);
-//			System.out.print(this.getX()+" "+this.getY());
-		}
+//		if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
+			setX(getX() + xMove/32);
+			setY(getY() + yMove/32);
+//		}
 
 	}
 	

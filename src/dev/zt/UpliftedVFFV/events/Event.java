@@ -202,8 +202,8 @@ public class Event{
 		eventmanager = new EventManager(game, path);
 		GameState.setWorld(world);
 		GameState.setEventmanager(eventmanager);
-		Player.setX(x*32);
-		Player.setY(y*32);
+		Player.setPlayerX(x*32);
+		Player.setPlayerY(y*32);
 		
 	}
 	
