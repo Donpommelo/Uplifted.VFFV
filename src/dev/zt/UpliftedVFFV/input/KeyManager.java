@@ -8,6 +8,7 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	private boolean[] keys;
 	public boolean up, down, left, right, space, z,x,enter; //whether this button is currently being pressed
 	public boolean held;
+	public static boolean cutsceneMode = false;
 	
 	public KeyManager(){
 		keys = new boolean[256];
@@ -15,15 +16,14 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	}
 	
 	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
-		up = keys[KeyEvent.VK_W];
-		down = keys[KeyEvent.VK_S];
-		left = keys[KeyEvent.VK_A];
-		right = keys[KeyEvent.VK_D];
-		space = keys[KeyEvent.VK_SPACE];
-		enter = keys[KeyEvent.VK_ENTER];
-		z = keys[KeyEvent.VK_Z];
-		x = keys[KeyEvent.VK_X];
-		
+			up = keys[KeyEvent.VK_W];
+			down = keys[KeyEvent.VK_S];
+			left = keys[KeyEvent.VK_A];
+			right = keys[KeyEvent.VK_D];
+			space = keys[KeyEvent.VK_SPACE];
+			enter = keys[KeyEvent.VK_ENTER];
+			z = keys[KeyEvent.VK_Z];
+			x = keys[KeyEvent.VK_X];
 	}
 
 	public void keyPressed(KeyEvent ev) {
@@ -38,5 +38,16 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	public void keyTyped(KeyEvent e) {
 		
 	}
+
+	public static boolean isCutsceneMode() {
+		return cutsceneMode;
+	}
+
+	public static void setCutsceneMode(boolean cutsceneMode) {
+		KeyManager.cutsceneMode = cutsceneMode;
+	}
+	
+	
+	
 
 }

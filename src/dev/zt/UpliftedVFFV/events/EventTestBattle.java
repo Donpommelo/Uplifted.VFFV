@@ -13,7 +13,7 @@ public class EventTestBattle extends Event {
 	}
 	
 	public void run(){
-			super.fite(7);
+			super.fite(3, this.id, true);
 
 	}
 	

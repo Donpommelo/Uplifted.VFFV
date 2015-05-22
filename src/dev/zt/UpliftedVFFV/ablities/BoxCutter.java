@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class BoxCutter extends Skills {
 
 	public String name = "Box Cutter";
+	public String descr = "A quick and reliable stab with a\nbox-opening blade. This attack\nwill deal consistent damage\nscaling to its user's Level.";
 	public int cost = 1;
 	public BoxCutter(int index) {
 		super(index);
@@ -19,6 +20,10 @@ public class BoxCutter extends Skills {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr() {
+		return descr;
 	}
 	
 	public int getCost(){

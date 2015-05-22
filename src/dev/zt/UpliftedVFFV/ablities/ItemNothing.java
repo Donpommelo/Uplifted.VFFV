@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -10,7 +11,7 @@ public class ItemNothing extends Skills {
 public Item thing;
 public GameState gs;
 	public ItemNothing(int index, GameState gs) {
-		super(index);
+		super(index, Assets.item);
 		this.gs=gs;
 
 	}

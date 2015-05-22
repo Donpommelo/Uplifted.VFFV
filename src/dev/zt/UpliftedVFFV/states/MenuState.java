@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -19,9 +20,10 @@ public class MenuState extends State {
 	
 	private BufferedImage testImage;
 	private GameState gamestate;
-	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation;
-	private int itemnum;
+	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation, skillSelected;
+	private int itemnum, itemOption, itemslot;
 	private boolean optionChosen,characterChosen,itemChosen,exit;
+	private boolean equipChosen,useitemChosen;
 	StateManager statemanager;
 	ArrayList<Character> party= new ArrayList<Character>();
 	public MenuState(Game game, StateManager sm, GameState gs){
@@ -35,6 +37,7 @@ public class MenuState extends State {
 		itemSelected=0;
 		itemPointer=0;
 		backpackLocation=0;
+		itemslot = 1;
 	}
 
 	public void tick() {
@@ -86,119 +89,306 @@ public class MenuState extends State {
 			switch(optionSelected){
 			
 			//The party option. This navigates through your current party with the left, right and space keys
-			//This is used for viewing infor about your party.
+			//This is used for viewing info about your party.
 			//Eventually, selecting a character with space will bring up more information
 			case 0: 
-				if(game.getKeyManager().space){
-					characterChosen=true;
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().right){
-				if(characterSelected<gamestate.partymanager.party.size()-1){
-					characterSelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+				if(characterChosen == false){
+					if(game.getKeyManager().space){
+						characterChosen=true;
+						skillSelected = 0;
+						itemSelected=0;
+						itemPointer=0;
+						backpackLocation=0;
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
 						}
-				}
-				if(game.getKeyManager().left){
-					if(characterSelected>0){
-						characterSelected--;
+					}
+					if(game.getKeyManager().right){
+					if(characterSelected<gamestate.partymanager.party.size()-1){
+						characterSelected++;
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+							}
 					}
+					if(game.getKeyManager().left){
+						if(characterSelected>0){
+							characterSelected--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+				else{
+					if(game.getKeyManager().down){
+						if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
+							skillSelected++;
+							if(itemPointer==3){
+								backpackLocation++;
+							}
+							else{
+								itemPointer++;
+							}
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+						}
+						if(game.getKeyManager().up){
+							if(skillSelected>0){
+								skillSelected--;
+								if(itemPointer==0){
+									backpackLocation--;
+								}
+								else{
+									itemPointer--;
+								}
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							}
+						}
 				}
 				break;
 				
 			//Option 2 is inventory. This displays a 3*9 grid of your inventor and uses all directions to navigate.
 			//Eventually, space will be used to select an item and use if possible.
 			case 1:
-				if(game.getKeyManager().space){
-					itemChosen=true;
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().right){
-					if(itemSelected<gamestate.inventorymanager.backpack.size()-1){
-					itemSelected++;
-					if(itemPointer==26){
-						backpackLocation+=3;
-						itemPointer=24;
-					}
-					else{
-						itemPointer++;
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+				if(equipChosen){
+					if(game.getKeyManager().space){
+						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
+						Item[] itemDisplay= temp.toArray(new Item[27]);
+						gamestate.partymanager.party.get(characterSelected).equip(itemDisplay[itemSelected],itemslot,gamestate.inventorymanager);
+						exit = true;
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
 						}
-				}
-				if(game.getKeyManager().left){
-					if(itemSelected>0){
-						itemSelected--;
-					if(itemPointer==0){
-						backpackLocation-=3;
-						itemPointer=2;
 					}
-					else{
-						itemPointer--;
-					}
+					if(game.getKeyManager().right){
+					if(characterSelected<gamestate.partymanager.party.size()-1){
+						characterSelected++;
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+							}
 					}
-				}
-				if(game.getKeyManager().down){
-					if(itemSelected<gamestate.inventorymanager.backpack.size()-3){
-					itemSelected+=3;
-					if(26-itemPointer<3){
-						backpackLocation+=3;
-					}
-					else{
-						itemPointer+=3;
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					if(game.getKeyManager().left){
+						if(characterSelected>0){
+							characterSelected--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
 						}
+					}
+					if(game.getKeyManager().up){
+						if(itemslot>1){
+							itemslot--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(game.getKeyManager().down){
+						if(itemslot<3){			
+							itemslot++;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 				}
-				if(game.getKeyManager().up){
-					if(itemSelected>2){
-						itemSelected-=3;
-					if(itemPointer<3){
-						backpackLocation-=3;
+				else if(useitemChosen){
+					if(game.getKeyManager().space){
+						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
+						Item[] itemDisplay= temp.toArray(new Item[27]);
+						itemDisplay[itemSelected].use(gamestate.partymanager.party.get(characterSelected));
+						exit = true;
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
-					else{
-						itemPointer-=3;
-					}
+					if(game.getKeyManager().right){
+					if(characterSelected<gamestate.partymanager.party.size()-1){
+						characterSelected++;
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+							}
+					}
+					if(game.getKeyManager().left){
+						if(characterSelected>0){
+							characterSelected--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
 					}
 				}
-				break;
+				else if(!itemChosen){
+					if(game.getKeyManager().space){
+						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
+						Item[] itemDisplay= temp.toArray(new Item[27]);
+						if(!gamestate.inventorymanager.backpack.isEmpty()){
+							itemChosen=true;
+						}
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					if(game.getKeyManager().right){
+						if(itemSelected<gamestate.inventorymanager.backpack.size()-1){
+						itemSelected++;
+						if(itemPointer==26){
+							backpackLocation+=3;
+							itemPointer=24;
+						}
+						else{
+							itemPointer++;
+						}
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+							}
+					}
+					if(game.getKeyManager().left){
+						if(itemSelected>0){
+							itemSelected--;
+						if(itemPointer==0){
+							backpackLocation-=3;
+							itemPointer=2;
+						}
+						else{
+							itemPointer--;
+						}
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(game.getKeyManager().down){
+						if(itemSelected<gamestate.inventorymanager.backpack.size()-3){
+						itemSelected+=3;
+						if(26-itemPointer<3){
+							backpackLocation+=3;
+						}
+						else{
+							itemPointer+=3;
+						}
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+							}
+					}
+					if(game.getKeyManager().up){
+						if(itemSelected>2){
+							itemSelected-=3;
+						if(itemPointer<3){
+							backpackLocation-=3;
+						}
+						else{
+							itemPointer-=3;
+						}
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					break;
+					
+					}
+				else{
+					if(game.getKeyManager().right){
+					if(itemOption<2){
+						itemOption++;
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+							}
+					}
+					if(game.getKeyManager().left){
+						if(itemOption>0){
+							itemOption--;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					if(game.getKeyManager().space){
+						itemChosen = false;
+						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
+						Item[] itemDisplay= temp.toArray(new Item[27]);
+						switch(itemOption){
+						case 0:
+							if(itemDisplay[itemSelected].usedfromMenu){
+								if(itemDisplay[itemSelected].targeted){
+									useitemChosen = true;
+								}
+								else{
+									itemDisplay[itemSelected].use(null,null);
+								}
+							}
+							break;
+						case 1:
+							if(itemDisplay[itemSelected].equipable){
+								equipChosen = true;
+							}
+							break;
+						case 2:
+							exit = true;		
+							itemChosen = true;
+							break;
+						}
+						
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
 				
-				}
 		}
 	
 		
@@ -209,7 +399,11 @@ public class MenuState extends State {
 		
 		//if x is pressed, the menu will go back one screen
 		if(exit==true){
-			if(characterChosen==true){
+			if(equipChosen || useitemChosen){
+				equipChosen=false;
+				useitemChosen=false;
+			}
+			else if(characterChosen==true){
 				characterChosen=false;
 			}
 			else if(itemChosen==true){
@@ -260,13 +454,13 @@ public class MenuState extends State {
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.setColor(new Color(0, 0,0));
 				g.drawString(gamestate.partymanager.party.get(i).getName(), 150+100*i, 30);
-				g.drawImage(gamestate.partymanager.party.get(i).getBattleSprite(),130+100*i,15,100,150,null);
+				g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(),130+100*i,15,100,150,null);
 				}
 				g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
 				g.setColor(new Color(102, 178,255));
 				g.fillRect(140, 175, 150, 225);
 				Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
-				g.drawImage(tempSchmuck.getBattleSprite(), 140, 175,150,225, null);
+				g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
 				g.setColor(new Color(0, 0,0));
 				g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
@@ -277,17 +471,69 @@ public class MenuState extends State {
 				g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
 				g.setColor(new Color(0, 0,0));
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
-				g.drawString("Hp:"+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
-				g.drawString("Bp:"+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
-				g.drawString("Pow:"+tempSchmuck.getBasePow(),300,265);
-				g.drawString("Def:"+tempSchmuck.getBaseDef(),300,290);
-				g.drawString("Spd:"+tempSchmuck.getBaseSpd(),300,315);
-				g.drawString("Skl:"+tempSchmuck.getBaseSkl(),300,340);
-				g.drawString("Int:"+tempSchmuck.getBaseInt(),300,365);
-				g.drawString("Luk:"+tempSchmuck.getBaseLuk(),300,390);
+				g.drawString("Hp: "+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
+				g.drawString("Bp: "+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
+				g.drawString("Pow: "+tempSchmuck.getBuffedPow()+"("+tempSchmuck.getBasePow()+")",300,265);
+				g.drawString("Def: "+tempSchmuck.getBuffedDef()+"("+tempSchmuck.getBaseDef()+")",300,290);
+				g.drawString("Spd: "+tempSchmuck.getBuffedSpd()+"("+tempSchmuck.getBaseSpd()+")",300,315);
+				g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
+				g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
+				g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
+				g.drawString("Equiptment", 400,215);
+				if(tempSchmuck.itemSlot1 == null){
+					g.drawString("Item slot 1: Nothing", 400,240);
+				}
+				else{
+					g.drawString("Item slot 1: "+tempSchmuck.itemSlot1.getName(),400,240);
+				}
+				if(tempSchmuck.itemSlot2 == null){
+					g.drawString("Item slot 2: Nothing", 400,265);
+				}
+				else{
+					g.drawString("Item slot 2: "+tempSchmuck.itemSlot2.getName(),400,265);
+				}
+				if(tempSchmuck.itemSlot3 == null){
+					g.drawString("Item slot 3: Nothing", 400,290);
+				}
+				else{
+					g.drawString("Item slot 3: "+tempSchmuck.itemSlot3.getName(),400,290);
+				}
+				
 				if(characterChosen==true){
 					g.setColor(new Color(255, 255,51));
 					g.fillRect(135, 5,500,406);
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(140, 10, 150, 225);
+					g.drawImage(tempSchmuck.getMenuSprite(), 140, 10,150,225, null);
+					g.setColor(new Color(0, 0,0));
+					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),140,25);
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(140, 240,250,166);
+					g.fillRect(395, 240,235,166);
+					g.setColor(new Color(0, 0,0));
+					g.drawString("Abilities:", 240, 255);
+					int skillnum=0;                                                                                                                                                                                                                                                                                       
+					for(int i=backpackLocation;i<=backpackLocation+3 && i<tempSchmuck.skills.size();i++){			
+						g.drawString(tempSchmuck.skills.get(i).getName()+"  "+tempSchmuck.skills.get(i).getCost()+" Bp", 142,275+35*skillnum);
+
+						skillnum++;
+					}	
+					for(int i=0; i<4 && i<tempSchmuck.skills.size();i++){	
+						g.drawImage(tempSchmuck.skills.get(backpackLocation+i).getIcon(), 355, 260+32*i, null);
+					}
+					g.drawImage(Assets.Downarrow,142,258+32*itemPointer,null);
+					if(backpackLocation!=0){
+						g.drawImage(Assets.Uparrow,200,245,null);
+					}
+					if(backpackLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
+						g.drawImage(Assets.Downarrow,200,405,null);
+					}
+					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
+						int y=245;
+						for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
+					        g.drawString(line, 400, y += g.getFontMetrics().getHeight());
+					}
 				}
 				
 				break;
@@ -346,13 +592,99 @@ public class MenuState extends State {
 					}
 				}
 				if(itemChosen==true){
-					if(itemDisplay[itemSelected].usedfromMenu){
-						g.setColor(new Color(255, 255,51));
-						g.fillRect(135, 5,500,406);
+					if(itemDisplay[itemSelected] != null){
+						g.setColor(new Color(102, 178,255));
+						g.fillRect(300, 125,100,35);
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.drawString("Use", 330, 150);
+					
+						g.setColor(new Color(102, 178,255));
+						g.fillRect(405, 125,100,35);
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.drawString("Equip", 425, 150);
 						
+						g.setColor(new Color(102, 178,255));
+						g.fillRect(510, 125,100,35);
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.drawString("Exit", 540, 150);
+						
+						g.drawImage(Assets.Downarrow,330+105*itemOption,120,null);
 					}
+										
 				}
-				break;
+				if(equipChosen || useitemChosen){
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(135, 5,500,160);
+					tempSchmuck = gamestate.partymanager.party.get(characterSelected);
+					for(int i=0;i<gamestate.partymanager.party.size();i++){
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.setColor(new Color(0, 0,0));
+						g.drawString(gamestate.partymanager.party.get(i).getName(), 150+100*i, 30);
+						g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(),130+100*i,15,100,150,null);
+					}
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(135, 170, 500, 240);
+					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
+					g.setColor(new Color(0, 0,0));
+					g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
+					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+					g.setColor(new Color(102, 178,255));
+					g.fillRect(410, 180, 160, 5);
+					g.setColor(new Color(0,204,0));
+					g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+					g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
+					if(equipChosen){
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.drawString("Equiptment", 300,215);
+						if(tempSchmuck.itemSlot1 == null){
+							g.drawString("Item slot 1: Nothing", 300,240);
+						}
+						else{
+							g.drawString("Item slot 1: "+tempSchmuck.itemSlot1.getName(),300,240);
+						}
+						if(tempSchmuck.itemSlot2 == null){
+							g.drawString("Item slot 2: Nothing", 300,290);
+						}
+						else{
+							g.drawString("Item slot 2: "+tempSchmuck.itemSlot2.getName(),300,290);
+						}
+						if(tempSchmuck.itemSlot3 == null){
+							g.drawString("Item slot 3: Nothing", 300,340);
+						}
+						else{
+							g.drawString("Item slot 3: "+tempSchmuck.itemSlot3.getName(),300,340);
+						}									
+						g.drawString(itemDisplay[itemSelected].name,500,190+50*itemslot);
+					}
+					if(useitemChosen){
+						g.setColor(new Color(102, 178,255));
+						g.fillRect(140, 175, 150, 225);
+						g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 12));
+						g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
+						g.setColor(new Color(102, 178,255));
+						g.fillRect(410, 180, 160, 5);
+						g.setColor(new Color(0,204,0));
+						g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+						g.setColor(new Color(0, 0,0));
+						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.drawString("Hp: "+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
+						g.drawString("Bp: "+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
+						g.drawString("Pow: "+tempSchmuck.getBuffedPow()+"("+tempSchmuck.getBasePow()+")",300,265);
+						g.drawString("Def: "+tempSchmuck.getBuffedDef()+"("+tempSchmuck.getBaseDef()+")",300,290);
+						g.drawString("Spd: "+tempSchmuck.getBuffedSpd()+"("+tempSchmuck.getBaseSpd()+")",300,315);
+						g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
+						g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
+						g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
+					}
+					
+				}
 			}
 
 

@@ -34,6 +34,7 @@ public class GameState extends State {
 	public InventoryManager inventorymanager;
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
+	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
 	Event ugh;
 	
@@ -48,8 +49,10 @@ public class GameState extends State {
 		world = new World(game, "res/Worlds/backroom.txt","Home Sweet Home");		
 		eventmanager = new EventManager(game,"res/Worlds/backroom.txt");
 		
-//		world = new World(game, "res/Worlds/GlassWalk.txt","Home Sweet Home");
-//		eventmanager = new EventManager(game,"res/Worlds/GlassWalk.txt");
+//		world = new World(game, "res/Worlds/Mailroom.txt","Home Sweet Home");
+//		eventmanager = new EventManager(game,"res/Worlds/Mailroom.txt");
+//		world = new World(game, "res/Worlds/SouthHallSmall.txt","");
+//		eventmanager = new EventManager(game,"res/Worlds/SouthHallSmall.txt");
 		player = new Player(game, 128, 128, this);										//creates player
 //		game.getAudiomanager().playSound();
 	}
@@ -115,11 +118,30 @@ public class GameState extends State {
 		world.render(g);
 		eventmanager.render(g);
 		player.render(g);
+		if(!game.getGameCamera().cameraControl){
+			if(game.getGameCamera().getShakeDuration()<1){
+				game.getGameCamera().setCameraControl(true);
+			}
+			else{
+				game.getGameCamera().screenShake(game.getGameCamera().getShakeDuration());
+			}
+		}
 		
 //			StateManager.states.push(new BattleState(game,statemanager));
 			
 		
 	}
+
+	public int getFloor() {
+		return floor;
+	}
+
+	public void setFloor(int floor) {
+		this.floor = floor;
+	}
+
+
+
 
 	@Override
 	public void init() {

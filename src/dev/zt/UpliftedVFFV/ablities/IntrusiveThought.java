@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class IntrusiveThought extends Skills {
 
 	public String name = "Intrusive Thought";
+	public String descr = "User causes a target's Intrusive\nThoughts to flourish,\nstacking an invisible debuff.";
 	public int cost;
 	public IntrusiveThought(int index) {
 		super(index);
@@ -33,13 +34,17 @@ public class IntrusiveThought extends Skills {
 			bs.bp.bt.textList.add(vic.getName()+"'s Intrusive Thoughts grow.");
 		}
 		else{
-			bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10));
+			bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10, bs));
 		}
 
 		
 	}
 	
 	public String getName(){
+		return name;
+	}
+	
+	public String geDescr(){
 		return name;
 	}
 	

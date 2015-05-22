@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -21,25 +22,29 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 public class Player extends Creature{
 	
 	protected boolean runup,runleft,runright,rundown=false;
+	public boolean wall;
 	protected int rightleft;
 	protected int step=0;
 	public static int enemyCalc=0;
 	public static int runlast=1;
+	public static int enemyChance=0;
 	public GameState gamestate;
 	public static float playerx, playery;
 	
 	public Player(Game game, float x, float y, GameState gs) {
-		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator);
+		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator, 0);
 		this.gamestate = gs;
 		this.x = x;
 		this.y = y;
-		
+		this.playerx = 128;
+		this.playery = 128;
+		wall = false;
 	} 
 
 	public void tick() {
 				
 		//First, checks whether the player is standing on an event
-		Event e=Event.events[EventManager.events[(int)((x+16)/32)][(int)((y+16)/32)]];
+		Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
 		if(e!=Event.event0){		//if the player is on top of a square containing an event, the event is run
 
 			e.run();
@@ -49,8 +54,11 @@ public class Player extends Creature{
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
 			getInput();			
-			if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
+			if(!WorldManager.getWorld().getTile((int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
 				this.move();
+			}
+			else{
+				wall = true;
 			}
 		}
 		
@@ -60,11 +68,14 @@ public class Player extends Creature{
 	}
 	
 	public void move(){
-			setX(getX() + xMove);
-			setY(getY() + yMove);
+		if(!wall){
+			setPlayerX(getPlayerX() + xMove);
+			setPlayerY(getPlayerY() + yMove);
+		}			
 	}
 	
 	private void encounter(){
+		
 		try {
 			Thread.sleep(300);
 		} catch (InterruptedException e) {
@@ -95,7 +106,7 @@ public class Player extends Creature{
 		    }
 		}
 		troop = troops[randomIndex];
-		StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,gamestate));
+		StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true,gamestate));
 	}
 	
 	//this is run every tick, provided the player is not running an event
@@ -108,9 +119,17 @@ public class Player extends Creature{
 		if(step==16){
 			runup=false; runleft=false; runright=false; rundown=false;
 			step=0;
-			double temp = Math.random();
-			if(temp<(double)(WorldManager.getWorld().enemyrate)/100){			//enemy stuff
+			double temp = Math.random()*100;
+			wall = false;
+			if(temp<enemyChance){			//enemy stuff
+//				game.getGameCamera().screenShake(20);
 				encounter();
+				enemyChance = 0;
+			}
+			else{
+				if(enemyChance<(double)(WorldManager.getWorld().enemyrate)){
+					enemyChance++;
+				}
 			}
 		}
 		
@@ -137,22 +156,22 @@ public class Player extends Creature{
 		//These check for directional input. if input is given, the player is set to walk in whatever direction
 		//rightleft determines the walk cycle of the player. This cause the player sprite to alternate stepping with either foot
 		//runlast determines the direction the player is facing. This is used to check for events as well as set npc directions
-		else if(game.getKeyManager().up){
+		else if(game.getKeyManager().up && KeyManager.isCutsceneMode() == false){
 			runup = true;
 			rightleft++;
 			runlast=0;
 		}
-		else if(game.getKeyManager().down){
+		else if(game.getKeyManager().down && KeyManager.isCutsceneMode() == false){
 			rundown = true;
 			rightleft++;
 			runlast=1;
 		}
-		else if(game.getKeyManager().left){
+		else if(game.getKeyManager().left && KeyManager.isCutsceneMode() == false){
 			runleft = true;
 			rightleft++;
 			runlast=2;
 		}
-		else if(game.getKeyManager().right){
+		else if(game.getKeyManager().right && KeyManager.isCutsceneMode() == false){
 			runright = true;
 			rightleft++;
 			runlast=3;
@@ -160,29 +179,29 @@ public class Player extends Creature{
 		
 		//space checks for events. depending on the orientation of the player, the event in an adjacent square is checked and ran.
 		//also step is reset again
-		else if(game.getKeyManager().space){
+		else if(game.getKeyManager().space && KeyManager.isCutsceneMode() == false){
 			Event e;
 			switch(runlast){
 			case 0: 
-				e=Event.events[EventManager.events[(int)((x+16)/32)][(int)((y-16)/32)]];
+				e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 1:
-				e=Event.events[EventManager.events[(int)((x+16)/32)][(int)((y+48)/32)]];
+				e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 2:
-				e=Event.events[EventManager.events[(int)((x-16)/32)][(int)((y+16)/32)]];
+				e=Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 3:
-				e=Event.events[EventManager.events[(int)((x+48)/32)][(int)((y+16)/32)]];
+				e=Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
@@ -201,16 +220,16 @@ public class Player extends Creature{
 //		super.render(g);
 				if(runup==false && rundown==false && runleft==false && runright==false){
 			if(runlast==0){
-				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==1){
-				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==2){
-				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			if(runlast==3){
-				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 		}
 		
@@ -218,51 +237,51 @@ public class Player extends Creature{
 		//consider adding a separate animationmanager later for all animations
 		if(runup==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(9,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(9,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}				
 		}
 		if(rundown==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(0,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(0,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(2,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(2,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 				
 		}
 		if(runleft==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(3,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(3,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 		}
 		if(runright==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(6,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(6,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(8,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(8,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
 			}	
 		}
 					

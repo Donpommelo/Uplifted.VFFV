@@ -1,33 +1,52 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import java.awt.image.BufferedImage;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Skills {
 	
 	public String name;
+	public String descr;
 	public int cost;
+	public BufferedImage icon;
 	public boolean startTeamTarget;
 	public Skills(int index){
 		name = "";
+		descr = "";
 		cost = 0;
+		icon =Assets.skill;
 	}
+	
+	public Skills(int index, BufferedImage i){
+		name = "";
+		descr = "";
+		cost = 0;
+		icon = i;
+	}
+	
 	
 	public void run(Schmuck user, Schmuck target, BattleState bs){
 
 	}
 	
-	public String useText(Schmuck user, Schmuck target){
+	public String getName() {
+		return "meep";
+	}
+	
+	public String getDescr() {
+		return "meep";
+	}
+	
+	public String useText(Schmuck perp, Schmuck vic){
 		return "";
 	}
 	
-	public String resultText(Schmuck user, Schmuck target){
+	public String resultText(Schmuck perp, Schmuck vic){
 		return "";
-	}
-
-	public String getName() {
-		return "meep";
 	}
 
 	public int getCost() {
@@ -37,6 +56,10 @@ public class Skills {
 	
 	public boolean startTarget(){
 		return false;
+	}
+	
+	public BufferedImage getIcon(){
+		return icon;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

@@ -12,6 +12,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
+import dev.zt.UpliftedVFFV.states.CutsceneState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.MenuState;
@@ -68,6 +69,12 @@ public class Event{
 	public static Event event29 = new Event29(26, 0,29);
 	public static Event event30 = new Event30(6, 10,30);
 	public static Event event31 = new Event31(23, 10,31);
+	public static Event event32 = new Event32(0, 4,32);
+	public static Event event33 = new Event33(44, 3,33);
+	public static Event event34 = new Event34(11, 6,34);
+	public static Event event35 = new Event35(0, 6,35);
+	public static Event event36 = new Event36(38, 56,36);
+	public static Event event37 = new Event37(0, 4,37);
 	
 	public static Event eventpenpal = new EventPenPal(2,4,40);
 	public static Event eventreceptionist = new EventReceptionist(7,4,41);
@@ -93,6 +100,21 @@ public class Event{
 	public static Event eventemployee19 = new EventEmployee19(8,4,62);
 	public static Event eventemployee20 = new EventEmployee20(8,21,63);
 	public static Event eventemployee21 = new EventEmployee21(12,21,64);
+	public static Event eventemployeeIntro = new EventEmployeeIntro(2,6,65);
+	public static Event eventemployeeJorge = new EventJorge(2,6,66);
+	public static Event eventemployeeJorgeInvisible = new EventJorgeInvisible(2,6,67);
+	
+	public static Event eventemployee22 = new EventEmployee22(3,7,68);
+	public static Event eventemployee23 = new EventEmployee23(5,6,69);
+	public static Event eventemployee24 = new EventEmployee24(1,6,70);
+	public static Event eventemployee25 = new EventEmployee25(1,3,71);
+	public static Event eventemployee26 = new EventEmployee26(7,3,72);
+	public static Event eventemployee27 = new EventEmployee27(10,5,73);
+	public static Event eventemployee28 = new EventEmployee28(3,6,74);
+	public static Event eventemployee29 = new EventEmployee29(17,6,75);
+	public static Event eventemployee30 = new EventEmployee30(4,3,76);
+	public static Event eventemployee31 = new EventEmployee31(4,13,77);
+	public static Event eventemployee32 = new EventEmployee32(4,13,78);
 	
 	public static Event fitemeh = new EventTestBattle(0,0,100);
 	
@@ -116,11 +138,14 @@ public class Event{
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	BufferedImage tex;
 	Creature test;
-	
+	boolean open;
+	boolean drawn;
+	boolean fightwon;
+	boolean selfswitch1,selfswitch2,selfswitch3,selfswitch4;
 
 	public Event(BufferedImage texture, int idnum, float x, float y) {
 		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
-			this.test = new Creature(game, x ,y, 32, 32, texture);		
+			this.test = new Creature(game, x ,y, 32, 32, texture, idnum);		
 		}
 		else{
 			this.tex = texture;
@@ -131,23 +156,19 @@ public class Event{
 		events[id] = this;
 		
 	}
- 	public Event(Creature test, int idnum, float x, float y){
- 		this.test = test;
- 		this.id = idnum;
- 		this.x = x;
- 		this.y = y;
- 		events[id] = this;
- 	}
 	
 	public void tick() {
 		if(test!=null){
 			test.tick();		
 		}
+		walkCycle();
 	}
+	
+	
 
 	public void render(Graphics g, int x, int y) {
 		if(test==null){
-			g.drawImage(tex,x, y, TILEWIDTH, TILEHEIGHT, null);
+			g.drawImage(tex,x, y, tex.getWidth(), tex.getHeight(), null);
 		}
 		
 		if(test!=null){
@@ -189,7 +210,8 @@ public class Event{
 	public boolean isSolid(){
 		return false;
 	}
-	public boolean isExist(){
+	
+	public boolean drawn(){
 		return true;
 	}
 	
@@ -208,8 +230,8 @@ public class Event{
 	}
 	
 	//when ran, this opens combat with a given troop corresponding with the enemyId
-	public static void fite(int enemyId){
-		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,gamestate));
+	public static void fite(int enemyId, int eventId, boolean runnable){
+		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable,gamestate));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -227,6 +249,20 @@ public class Event{
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void Cutscene(BufferedImage[] scenes,int eventId){
+		StateManager.states.push(new CutsceneState(game,statemanager,scenes,eventId));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void screenShake(int shake){
+		game.getGameCamera().screenShake(shake);
 	}
 	
 	//opens up a choice branch state with the list of string choices.
@@ -275,6 +311,16 @@ public class Event{
 		
 	}
 	
+	public void walkCycle(){
+
+		
+	}
+	
+	public void animate(BufferedImage[] frames, int framenum){
+		
+		
+	}
+	
 	//overrode by individual events. This is called when a choicebranch is called and a choice is made.
 	//The choice will be made and, if the event is not done running, will increment the event stage
 	//This was sorta poorly explained. look at EventEmployee20 for an example
@@ -299,44 +345,123 @@ public class Event{
 	public void setstage(int i) {
 				
 	}
-
 	
+	
+	public boolean isDrawn() {
+		return drawn;
+	}
+
+	public void setDrawn(boolean drawn) {
+		this.drawn = drawn;
+	}
+	
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+	
+	public boolean isFightwon() {
+		return fightwon;
+	}
+
+	public void setFightwon(boolean fightwon) {
+		this.fightwon = fightwon;
+	}
+	
+	
+
 	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
 	public void moveUp(){
-//		Event temp = events[eventmanager.events[(int)(this.getX())][(int)(this.getY())]];
-		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-		eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
-//		events[eventmanager.events[(int)(this.getX())][(int)(this.getY())]] = temp;
-		this.setX(this.getX());this.setY(this.getY()-1);
-		if(test!=null){
-			this.test.getMove(0);
+		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid()){
+			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y)*32 || Player.getPlayerY()<=(y-2)*32){				
+				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+				eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
+				this.setX(this.getX());this.setY(this.getY()-1);
+				if(test!=null){
+					this.test.getMove(0);
+				}
+			}		
+		}
+	}
+
+	public void moveDown(){
+		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid()){
+			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y+2)*32 || Player.getPlayerY()<=(y)*32){	
+				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+				eventmanager.events[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
+				this.setX(this.getX());this.setY(this.getY()+1);
+				if(test!=null){
+					this.test.getMove(1);
+				}
+			}
 		}
 		
 	}
 
-	public void moveDown(){
-		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-		eventmanager.events[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
-		this.setX(this.getX());this.setY(this.getY()+1);
-		if(test!=null){
-			this.test.getMove(1);
-		}
-	}
-
 	public void moveLeft(){
-		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-		eventmanager.events[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
-		this.setX(this.getX()-1);this.setY(this.getY());
-		if(test!=null){
-			this.test.getMove(2);
+		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid()){
+			if(Player.getPlayerX()<=(x-2)*32 || Player.getPlayerX()>=(x)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
+				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+				eventmanager.events[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
+				this.setX(this.getX()-1);this.setY(this.getY());
+				if(test!=null){
+					this.test.getMove(2);
+				}
+			}
 		}
 	}
 	public void moveRight(){
-		eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-		eventmanager.events[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
-		this.setX(this.getX()+1);this.setY(this.getY());
-		if(test!=null){
-			this.test.getMove(3);
+		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid()){
+			if(Player.getPlayerX()<=(x)*32 || Player.getPlayerX()>=(x+2)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
+				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+				eventmanager.events[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
+				this.setX(this.getX()+1);this.setY(this.getY());
+				if(test!=null){
+					this.test.getMove(3);
+				}
+			}
 		}
 	}
+	
+	public void moveTo(int x, int y){
+		eventmanager.events[x][y]=this.getId();
+		this.setX(x);this.setY(y);
+	}
+
+	public boolean isSelfswitch1() {
+		return selfswitch1;
+	}
+
+	public void setSelfswitch1(boolean selfswitch1) {
+		this.selfswitch1 = selfswitch1;
+	}
+
+	public boolean isSelfswitch2() {
+		return selfswitch2;
+	}
+
+	public void setSelfswitch2(boolean selfswitch2) {
+		this.selfswitch2 = selfswitch2;
+	}
+
+	public boolean isSelfswitch3() {
+		return selfswitch3;
+	}
+
+	public void setSelfswitch3(boolean selfswitch3) {
+		this.selfswitch3 = selfswitch3;
+	}
+
+	public boolean isSelfswitch4() {
+		return selfswitch4;
+	}
+
+	public void setSelfswitch4(boolean selfswitch4) {
+		this.selfswitch4 = selfswitch4;
+	}
+	
+	
 }

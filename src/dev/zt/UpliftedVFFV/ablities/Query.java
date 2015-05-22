@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Query extends Skills {
 
 	public String name = "Query";
+	public String descr = "User researches a foe, gaining\nvaluable knowledge about its,\nelemental alignments and Hp.";
 	public int cost = 1;
 	public Query(int index) {
 		super(index);
@@ -21,6 +22,10 @@ public class Query extends Skills {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr(){
+		return descr;
 	}
 	
 	public int getCost(){

@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class LifeDrain extends Skills {
 
-	public String name = "Life Drain";
+	public String name = "Life Drain";	public String descr = "User sucks the lifeforce from a\ntargeted foe, dealing damage\n and restoring health.";
 	public int cost = 7;
 	public LifeDrain(int index) {
 		super(index);
@@ -21,6 +21,10 @@ public class LifeDrain extends Skills {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr(){
+		return descr;
 	}
 	
 	public int getCost(){

@@ -8,6 +8,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Pounce extends Skills {
 
 	public String name = "Pounce";
+	public String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
 	public int cost = 1;
 	public Pounce(int index) {
 		super(index);
@@ -21,6 +22,10 @@ public class Pounce extends Skills {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr(){
+		return descr;
 	}
 	
 	public int getCost(){

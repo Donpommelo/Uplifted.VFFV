@@ -16,8 +16,12 @@ public class Assets {
 	public static BufferedImage White, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
 	public static BufferedImage ElevatorPanel;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
+	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	public static BufferedImage Uparrow,Downarrow;
+	
+	public static BufferedImage attack, skill, nothing, wait, item, run;
+	
 	public static Dialog[] dialog;
 	
 	
@@ -32,7 +36,8 @@ public class Assets {
 		SpriteSheet prop=new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorProps.png"));
 		SpriteSheet arrows=new SpriteSheet(ImageLoader.loadImage("/textures/WindowPaper.png"));
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
-		
+		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
+		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
 		
 		//character walking sprites
 		Operator=sheet.crop(0, 0, 3*width, 4*height);
@@ -41,11 +46,13 @@ public class Assets {
 		EmployeeF=sheet.crop(9*width, 0, 3*width, 4*height);
 		EmployeeM2=sheet.crop(0, 4*height, 3*width, 4*height);
 		
+		Jorge1=Jorge.crop(0,0,128,64);
+		
 		//prop sprites
-		ElevatorDoor1=door.crop(16, 0, 64, 64);
-		ElevatorDoor2=door.crop(16, 64, 64, 64);
-		ElevatorDoor3=door.crop(16, 128, 64, 64);
-		ElevatorDoor4=door.crop(16, 192, 64, 64);
+		ElevatorDoor1=door.crop(16, 0, 96, 64);
+		ElevatorDoor2=door.crop(16, 64, 96, 64);
+		ElevatorDoor3=door.crop(16, 128, 96, 64);
+		ElevatorDoor4=door.crop(16, 192, 96, 64);
 		
 		ElevatorPanel = prop.crop(7*width,0,width,height);
 		
@@ -81,6 +88,15 @@ public class Assets {
 		//arrows and stuff
 		Uparrow=arrows.crop(90,12,12,12);
 		Downarrow=arrows.crop(90,40,12,12);
+		
+		//skill+item mini-icons
+		
+		attack = ActionIcons.crop(0,0,32,32);
+		skill = ActionIcons.crop(32,0,32,32);
+		nothing = ActionIcons.crop(64,0,32,32);
+		wait = ActionIcons.crop(96,0,32,32);
+		item = ActionIcons.crop(128,0,32,32);
+		run = ActionIcons.crop(160,0,32,32);
 		
 		//Dialog loaded from text files.
 		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines

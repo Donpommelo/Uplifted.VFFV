@@ -24,7 +24,7 @@ public class Augur extends Schmuck{
 
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {23,20,10,10,11,11,12,17};
+	public final static int[] startStats = {23,30,10,10,11,11,12,17};
 	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
 	public final static double[] statGrowths = {2.2 , 1.7 , 1.3 , 1.4 , 1 , 1.5 , 1.9 , 3.9};
 	public final static int expDrop=8;

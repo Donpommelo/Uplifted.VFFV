@@ -36,6 +36,7 @@ public class BadEgg extends Schmuck{
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
 		super("Bad Egg",1,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths);
 		calcStats(1);
+		this.bio = "Testing Text Testing Text Testing Text Testing Text Testing Text Testing Text Testing Text";
 	}
 	
 	

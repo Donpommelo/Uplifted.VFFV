@@ -24,8 +24,9 @@ public class BattleProcessor {
 	public int phase;
 	public int currentlySelected;
 	public boolean selected;
-	public boolean fightEnd;
+	public boolean ranAway = false;
 	public boolean pauseTOQ;
+	public boolean allReady = false;;
 	public Game game;
 	public BattleMenu bm;
 	public StateManager sm;
@@ -47,7 +48,7 @@ public class BattleProcessor {
 		currentlySelected=0;
 		
 		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
-		bt = new BattleText(game,sm,allies,enemy);
+		bt = new BattleText(game,sm,allies,enemy, bs);
 		em = new EffectManager(game,bs,gs);
 		stm = new StatusManager(game,bs,gs, this);
 		TurnOrderQueue = new ArrayList<Action>();
@@ -114,7 +115,7 @@ public class BattleProcessor {
 					}
 					if(game.getKeyManager().space){
 						if(fightlost() || enemyded()){
-							sm.states.pop();
+							bs.end(!fightlost());
 							try {
 								Thread.sleep(200);
 							} catch (InterruptedException e) {
@@ -135,9 +136,9 @@ public class BattleProcessor {
 						}
 					}
 					if(game.getKeyManager().enter){
-//						if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){
+						if(allReady){
 						if(fightlost() || enemyded()){
-							sm.states.pop();
+							bs.end(!fightlost());
 							try {
 								Thread.sleep(200);
 							} catch (InterruptedException e) {
@@ -170,7 +171,8 @@ public class BattleProcessor {
 							}
 						
 							phase++;
-//						}
+							allReady = false;
+						}
 						
 						
 					}
@@ -194,8 +196,15 @@ public class BattleProcessor {
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
-							TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
-
+							if(TurnOrderQueue.get(0).skill.getCost()<TurnOrderQueue.get(0).user.getCurrentBp()){
+								em.bpChange(-TurnOrderQueue.get(0).skill.getCost(), TurnOrderQueue.get(0).user);
+								TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+							}
+							else{
+								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to "+TurnOrderQueue.get(0).skill.getName());
+							}
+							bs.bs.targetUpdate();
+							
 						}
 						else{
 							pauseTOQ = true;
@@ -210,6 +219,7 @@ public class BattleProcessor {
 							s.calcBuffs();
 						}
 					}
+					
 				}
 				else{					
 					stm.endofRound();
@@ -264,13 +274,22 @@ public class BattleProcessor {
 			case 0:
 				
 			case 1:
-//				if(TurnOrderQueue.get(0)!=null && TurnOrderQueue.get(1)!=null){ 
+				int numReady = 0;
+				for(Action a :TurnOrderQueue){
+					if(a!=null){
+						if(allies.contains(a.user)){
+							numReady++;
+						}
+					}
+				}
+				if(numReady == allies.size()){ 
+					allReady = true;
 					g.setColor(new Color(102, 178,255));
 					g.fillRect(0, 0,120,40);
 					g.setFont(new Font("Chewy", Font.PLAIN, 18));
 					g.setColor(new Color(255, 255,255));
 					g.drawString("Ready (Enter)",0,25);
-//				}
+				}
 				if(selected==true){
 					bm.render(g);
 				}

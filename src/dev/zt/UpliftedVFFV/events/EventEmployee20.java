@@ -47,7 +47,7 @@ public class EventEmployee20 extends Event {
 				super.Dialog(88, 89,this.getId());
 				break;
 				
-			//when a dialogstate is done running, it will increment the event stage if possible, the rerun the event.
+			//when a dialogstate is done running, it will increment the event stage if possible, then rerun the event.
 			//this allow for the event to consist of many different parts.
 			case 1:
 				super.Dialog(90, 90,this.getId());

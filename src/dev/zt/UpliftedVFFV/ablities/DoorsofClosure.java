@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DoorsofClosure extends Skills {
 
 	public String name = "Doors of Closure";
+	public String descr = "User summons elevator doors\nthat close on enemies, dealing\narea damage.";
 	public int cost = 8;
 	public DoorsofClosure(int index) {
 		super(index);
@@ -30,6 +31,10 @@ public class DoorsofClosure extends Skills {
 		
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr() {
+		return descr;
 	}
 	
 	public int getCost(){

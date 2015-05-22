@@ -30,12 +30,17 @@ public class PenPal extends Schmuck{
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
 	public PenPal() {
-		super("Pen Pal",1,ImageLoader.loadImage("/BattleSprites/PenPal.png"), startStats, statGrowths);
+		super("Pen Pal",1,ImageLoader.loadImage("/BattleSprites/PenPal.png"),ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths);
 		calcStats(1);
 		super.learnSkill(new BoxCutter(0));
 		super.learnSkill(new Ennervate(0));
 		super.learnSkill(new Query(0));
 		super.learnSkill(new LifeDrain(0));
+		super.learnSkill(new Pounce(0));
+		super.learnSkill(new Pounce(0));
+		super.learnSkill(new Pounce(0));
+		super.learnSkill(new Pounce(0));
+		super.learnSkill(new Pounce(0));
 		super.learnSkill(new Pounce(0));
 		
 

@@ -1,36 +1,20 @@
-95
-meep
-Arturo.png
-0
-You couldn't sleep right now if you tried./
-meep
-Arturo.png
-0
-An unremarkable writing desk. You have nothing to write and nobody/to write to./
-meep
-Arturo.png
-0
-Display cases filled with various elevator memorabilia./
-meep
-Arturo.png
-0
-A nail in the wall. You vaguely remember a calendar hanging here./
-meep
-Arturo.png
-0
-An poster of an elevator./
+163
 Employee
 3rdSouthOffices-1.png
 1
-Good morning Operator./
+Hey. You're finally up./
 Operator
 Player-1.png
 0
-Good morning! What floor for you today?/
+! ! !/
+Operator
+Player-1.png
+0
+Oh. You surprised me. Sorry, I seem to have waken up late today. I hope I haven't kept/you waiting for too long. So, what floor for you?/
 Employee
 3rdSouthOffices-1.png
 1
-Six. As usual/
+I haven't been here too long. Not long enough to get any work done at least./Oh, and the Sixth Floor, please. As usual./
 Operator
 Player-1.png
 0
@@ -38,7 +22,23 @@ Right away./
 Employee
 3rdSouthOffices-1.png
 1
-Take me to floor six, please. I need to get to work, and you・re/the only one who knows how to use this thing./
+Oh, and one more thing./
+Operator
+Player-1.png
+0
+Hmm?/
+Employee
+3rdSouthOffices-1.png
+1
+My boss wanted me to warn you not to . . . uh. . ./Try not to . . . er . . . Don't go to the . . . um./Drat. I forgot. Oh well./
+Operator
+Player-1.png
+0
+. . ./
+Employee
+3rdSouthOffices-1.png
+1
+Take me to floor six, please. I need to get to work, and you・re the only one who knows/how to use this Elevator thing./
 Employee
 3rdSouthOffices-1.png
 1
@@ -74,11 +74,7 @@ Drat! We must find the location of Suite 521. Take me to Floor 3./I use to work 
 Operator
 Player-1.png
 0
-Very well. I hope this won・t take long./
-Operator
-Player-1.png
-0
-Wait! How are these letters responding to everything I say?/Can you hear me?/
+Alright, Here's your floor./Wait! How are these letters responding to everything I say?/Can you hear me?/
 Pen Pal
 Player-5.png
 1
@@ -107,10 +103,14 @@ Pen Pal
 Player-5.png
 1
 Don・t worry. I trust that this whole affair will be either very short or very fulfilling!/
+meep
+Arturo.png
+1
+Your Pen Pal joined your party!/
 Pen Pal
 Player-5.png
 1
-Well, are we going to Room 521 or not?/
+Well, are we going to Room 521 or not? Remember, we were going to check Floor 3./
 Operator
 Player-1.png
 1
@@ -346,7 +346,7 @@ Sometimes we have contests between the four wings of the Offices. Or so I hear./
 Employee
 3rdSouthOffices-3.png
 1
-I guess that means we lose./
+It is easier to psychologically deal with loss when you make no effort to/prevent it./
 Employee
 3rdSouthOffices-3.png
 1
@@ -379,4 +379,275 @@ Employee
 3rdSouthOffices-1.png
 1
 Why does nobody else seem to notice all the monsters in this office? This is really/freaking me out./
-
+Employee
+3rdSouthOffices-1.png
+1
+Meep merp. Floor 6 plz. Test./
+Employee
+3rdSouthOffices-1.png
+1
+More Testing./
+Pen Pal
+Player-5.png
+0
+Lets explore this floor first. We can check the other floors later./
+Jorge
+3rdSouthOffices-5.png
+1
+Gah! Who is that? Can you not see that I am very busy?/
+Operator
+Player-1.png
+0
+Good afternoon, sir! We were hoping you could point us towards Suite 521./Do you know where it is?/
+Jorge
+3rdSouthOffices-5.png
+1
+Harghmph. You came to waste my time with that? Who do you think you are?/Of course I know where it is. Suite Five-hundred and twenty Whatever, I know all about it./Hehehe. But I don・t feel like telling you./
+Jorge
+3rdSouthOffices-5.png
+1
+Yeah, If you lack the manners to not bother me and the common sense to/find the damn room yourself, why should I help you?/
+Operator
+Player-1.png
+0
+That seems. . . a little. . . unprofessional. . ./ 
+Jorge
+3rdSouthOffices-5.png
+1
+What・s that!? Why you, you・ve got some nerve! Seeing as you clearly/missed the Office Assembly on Conduct and Courtesy, it is my duty as South Wing Manager/to teach you myself./
+Operator
+Player-1.png
+0
+Woah! Please, sir, calm down. We can talk about . . ./
+Jorge
+3rdSouthOffices-5.png
+1
+C・mere! Don・t make me chase you!/
+Jorge
+3rdSouthOffices-5.png
+1
+Arrggh. . .  I'm calling security!/
+Jorge
+3rdSouthOffices-5.png
+1
+Grrr. Why haven't the guards gotten here yet?/
+Pen Pal
+Player-5.png
+1
+Hmm. Odd. This door appears to be blocked on the other side./ I think someone propped up some furniture against it. . ./
+Pen Pal
+Player-5.png
+1
+We should come this way later. I have something I want to show you first in your home./
+Employee
+3rdWestOffices-1.png
+1
+Collaborating with South Office on this initiative was a mistake./This has not been a productive session./
+Employee
+3rdWestOffices-1.png
+1
+The South Wing representatives haven't even shown up yet./We have no choice but to begin the meeting without them./How unfortunate./
+Employee
+3rdWestOffices-3.png
+1
+The South Wing Offices have failed to complete their part of this/very important joint initiative./
+Employee
+3rdWestOffices-3.png
+1
+It is a shame that I am too busy to file a complaint to Human Resources./
+Employee
+3rdWestOffices-1.png
+1
+Such irresponsibility . . .This behaviour should not be tolerated/. . .We are the most well-respected and looked-up-to company in the business./This delay could harm our reputations./
+Employee
+3rdWestOffices-1.png
+1
+It pains me to think about how much more work I could have completed if/this meeting began on time./
+Employee
+3rdSouthOffices-3.png
+1
+Aw shucks. Just my luck./
+Employee
+3rdSouthOffices-3.png
+1
+I left my phone in this room, but when I came back to get it, there was a meeting going on/that I was supposed to attend, and now I'm stuck here./
+Employee
+3rdSouthOffices-3.png
+1
+Hey, why don't you take one of these?/I always keep a couple on me in case I pass out from boredom./
+meep
+Arturo.png
+1
+You Obtained the Smellingsalt!/Consume to revive incapacitated allies!/
+Employee
+3rdSouthOffices-3.png
+1
+You'll need those Smellingsalts to stay awake if you're here for the meeting./
+Employee
+3rdWestOffices-3.png
+1
+Greetings fellow coworker. Please tell me you are here for the meeting./
+Operator
+Player-1.png
+0
+I don't believe so. What is the meeting about?/
+Employee
+3rdWestOffices-3.png
+1
+It's top secret. If you don't already know, I can't tell you./
+Employee
+3rdWestOffices-3.png
+1
+. . ./
+Employee
+3rdWestOffices-3.png
+1
+Well, alright. Seeing as we can't start until the South Office representatives show up,/I may as well tell you. I would be idle otherwise and idleness is intolerable./
+Employee
+3rdWestOffices-3.png
+1
+We were discussing plans to revive one of the company's Lost Departments./The Department of Violence specifically./
+Operator
+Player-1.png
+0
+Violence Department? Why does this company have a Violence Department?/
+Employee
+3rdWestOffices-3.png
+1
+The Violence Department was founded by the late Figmous Werbeunroy with the/intention of creating a safer, more peaceful working environment for us employees./
+Operator
+Player-1.png
+0
+Peaceful? That doesn't sound right. . ./
+Employee
+3rdWestOffices-3.png
+1
+Figmous believed that violence was an integral part of human nature./To attempt to eradicate violence would be to make the company and its employees/less human. 
+Pen Pal
+Player-5.png
+0
+Well. . ./
+Employee
+3rdWestOffices-3.png
+1
+Figmous planned to sequester all the violence in the building into one place./This way, The rest of the building is made more peaceful./
+Employee
+3rdWestOffices-3.png
+1
+The Department of Violence is one of the Four Lost Departments; ancient/administrations that have long since been lost to time./ 
+Operator
+Player-1.png
+0
+What were the other Three?/
+Employee
+3rdWestOffices-3.png
+1
+Well, nobody knows for sure, But I think the Departments of Passivity,/Apathy and Suffering were the ones./
+Operator
+Player-1.png
+0
+Those sound terrible! What were our Founders thinking?/
+Employee
+3rdWestOffices-3.png
+1
+Hmm. It makes sense if you think about it. We couldn't have a department of Happiness/because Happiness is a nice thing that the whole company should experience,/not just one department./
+Employee
+3rdWestOffices-3.png
+1
+Management only isolates things into their own department if the rest of the/building wants nothing to do with them./
+Employee
+3rdWestOffices-3.png
+1
+I think that's more than enough chatter for the quarter. We both have work/that we must refocus our attentions towards./
+Employee
+3rdSouthOffices-3.png
+1
+That hallway to the West leads to the West Wing Offices./
+Employee
+3rdSouthOffices-3.png
+1
+That advice was helpful, right? Right./Well, that's enough work for the day. Time to go back to staring off into space./
+Employee
+3rdSouthOffices-3.png
+1
+I always spend at least thirty minutes every day staring at the vending/machines to kill time./
+Employee
+3rdSouthOffices-3.png
+1
+I wonder if this makes my coworkers think I'm really consious about what/I eat./
+Operator
+Player-1.png
+0
+This door is locked from the other side./
+Employee
+3rdSouthOffices-1.png
+1
+I'm so jealous of those West Wing guys on the other side of that door./Their office is probably so much cooler than ours./
+Employee
+3rdSouthOffices-1.png
+1
+They're probably tired all the time because of all the late-night partying they do./
+Employee
+3rdSouthOffices-1.png
+1
+Man, they even locked the door so we can't disturb their fun./
+Employee
+3rdSouthOffices-1.png
+1
+I reckon the more time I waste at this water cooler, the less work I have to do./
+Employee
+3rdSouthOffices-1.png
+1
+Say, wanna learn something cool?/
+Employee
+3rdSouthOffices-1.png
+1
+Many abilities and creatures are aligned to one of several elements./These elements are color-coded for your convenience./
+Employee
+3rdSouthOffices-1.png
+1
+Do you see the Blue tab on this water cooler?/When pressed, a stream of cold water comes out./
+Employee
+3rdSouthOffices-1.png
+1
+This is because coldness and water are commonly associated with the Blue element . . ./
+Operator
+Player-1.png
+0
+I see./
+Employee
+3rdSouthOffices-1.png
+1
+Likewise, the Red tab represents the Red elemental alignment./
+Employee
+3rdSouthOffices-1.png
+1
+That's why, when pressed, it releases a destructive gout of fire./
+Employee
+3rdSouthOffices-1.png
+1
+There are several other elements, each with their own unique/abilities, strengths and weaknesses./
+Employee
+3rdSouthOffices-1.png
+1
+Elementally aligned units receive a boost when using abilities of the same color./
+Employee
+3rdSouthOffices-1.png
+1
+They also deal special, elementally infused standard attacks./
+Employee
+3rdSouthOffices-1.png
+1
+Oh. Well, if you change your mind, I'll probably still be here./
+Employee
+3rdSouthOffices-1.png
+1
+If you get attacked by a Red-Aligned enemy, don't forget to stop, drop and roll./
+Employee
+3rdSouthOffices-1.png
+1
+I could have sworn my cubical was here yesterday, but now there seems to be a hallway/instead./
+Employee
+3rdSouthOffices-1.png
+1
+I wonder if this is some sort of practical joke./

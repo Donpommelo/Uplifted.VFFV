@@ -15,7 +15,7 @@ public class Midge extends Schmuck{
 
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {12,10,8,6,22,8,13,4};
+	public final static int[] startStats = {12,22,8,6,22,8,13,4};
 	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
 	public final static double[] statGrowths = {1 , .7 , 1.7 , .6 , 3.1 , 2.1 , 1 , .9};
 	public final static int expDrop=2;

@@ -4,7 +4,7 @@ public class SeeingEye extends Item{
 
 	static String descr="Disembodied eyes have a way of always seeming terrified.";
 	public SeeingEye() {
-		super(2, "Seeing Eye", false,true, true,descr);
+		super(2, "Seeing Eye", false,true, true, true, false,descr);
 
 	}
 	

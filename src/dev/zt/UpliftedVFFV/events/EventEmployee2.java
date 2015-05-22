@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 public class EventEmployee2 extends Event {
 
 	public boolean selfswitch1=false;
-	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM2);
+	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeM2);
 	public EventEmployee2(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		

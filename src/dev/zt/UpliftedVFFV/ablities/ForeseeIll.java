@@ -7,7 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class ForeseeIll extends Skills {
 
-	public String name = "Ennervate";
+	public String name = "ForeseeIll";
+	public String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy damage\nthat scales with target's\nIntrusive Thoughts.";
 	public int cost = 4;
 	public ForeseeIll(int index) {
 		super(index);
@@ -35,6 +36,10 @@ public class ForeseeIll extends Skills {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String getDescr(){
+		return descr;
 	}
 	
 	public int getCost(){

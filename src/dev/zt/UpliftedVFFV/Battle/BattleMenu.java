@@ -16,6 +16,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.DillyDally;
 import dev.zt.UpliftedVFFV.ablities.ItemNothing;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
+import dev.zt.UpliftedVFFV.ablities.Runaway;
 import dev.zt.UpliftedVFFV.ablities.SkillNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -52,6 +53,7 @@ public class BattleMenu{
 	public Boolean attackChosen = false;
 	public Boolean skillChosen = false;
 	public Boolean teamTargeted = false;
+	public BufferedImage abilityIcon;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public Schmuck currentSchmuck;
@@ -230,13 +232,20 @@ public class BattleMenu{
 					}
 				}
 				if(game.getKeyManager().space){
-					skillChosen=true;
-					if(!currentSchmuck.skills.isEmpty()){
-						teamTargeted =  currentSchmuck.skills.get(itemSelected).startTarget();; // do to other stuff
+					if(currentSchmuck.skills.get(itemSelected).getCost()>currentSchmuck.tempStats[1]){
+						bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 					}
-//					moveSelected=false;
+					else{
+						skillChosen=true;
+						abilityIcon = Assets.skill;
+						if(!currentSchmuck.skills.isEmpty()){
+							teamTargeted =  currentSchmuck.skills.get(itemSelected).startTarget(); // do to other stuff
+						}
+//						moveSelected=false;
+					}
+					
 					try {
-						Thread.sleep(100);
+						Thread.sleep(200);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -321,10 +330,11 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().space){
 					itemChosen=true;
+					abilityIcon = Assets.item;
 					teamTargeted =  new UseItem(1,gs.inventorymanager.backpack.keySet().toArray(new Item[999])[itemSelected],gs).startTarget();
 //					moveSelected=false;									
 					try {
-						Thread.sleep(100);
+						Thread.sleep(200);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -383,12 +393,12 @@ public class BattleMenu{
 				break;
 				
 			case 4:
-					actionSelected=0;
-					playerSelected=false;
-					moveSelected=false;
-					bs.bp.stm.endofFite();
-					sm.states.pop();
-					break;
+				bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new Runaway(0),bs));
+				moveSelected=false;
+				bs.bp.selected=false;		
+				bs.bp.pauseTOQ=false;
+				break;
+			
 			}
 		}
 		else{
@@ -418,6 +428,7 @@ public class BattleMenu{
 				switch(actionSelected){
 				case 0:
 					attackChosen=true;
+					abilityIcon = Assets.attack;
 					break;
 				case 1:
 	//				skillChosen=true;
@@ -441,6 +452,9 @@ public class BattleMenu{
 	public void render(Graphics g) {
 		if(exit==true){
 			currentlyTargeted = 0;
+			itemSelected = 0;
+			itemPointer = 0;
+			backpackLocation = 0;
 			if(attackChosen==true){
 				attackChosen=false;
 				moveSelected=false;
@@ -467,16 +481,39 @@ public class BattleMenu{
 //			g.drawImage(Assets.Downarrow,515-currentlyTargeted*150,-3,null);
 			}
 				g.setColor(new Color(102, 178,255));
-				g.fillRect(540, 291,100,125);
+				g.fillRect(540, 256,100,160);
 				g.setColor(new Color(255, 255,51));
-				g.fillRect(540,291+25*actionSelected, 100, 25);
+				g.fillRect(540,256+32*actionSelected, 100, 32);
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.setColor(new Color(0, 0,0));
-				g.drawString("Attack", 540, 310);
-				g.drawString("Skills", 540, 335);
-				g.drawString("Item", 540, 360);
-				g.drawString("Wait", 540, 385);
-				g.drawString("Run", 540, 410);
+				
+				g.drawString("Attack", 540, 283);
+				g.drawString("Skills", 540, 315);
+				g.drawString("Item", 540, 347);
+				g.drawString("Wait", 540, 379);
+				g.drawString("Run", 540, 411);
+				switch(actionSelected){
+				case 0:
+					g.drawImage(Assets.attack, 610, 256, null);
+					break;
+				case 1:
+					g.drawImage(Assets.skill, 610, 288, null);
+					break;
+				case 2:
+					g.drawImage(Assets.item, 610, 320, null);
+					break;
+				case 3:
+					if(bs.bp.pauseTOQ){
+						g.drawImage(Assets.nothing, 610, 352, null);
+					}
+					else{
+						g.drawImage(Assets.wait, 610, 352, null);
+					}
+					break;
+				case 4:
+					g.drawImage(Assets.run, 610, 384, null);
+					break;
+				}
 
 		if(moveSelected){
 			switch(actionSelected){
@@ -545,10 +582,10 @@ public class BattleMenu{
 		}
 		if(itemChosen==true || attackChosen==true || skillChosen==true){
 			if(teamTargeted){
-				g.drawImage(Assets.Downarrow,50+allies.get(currentlyTargeted).getX(),allies.get(currentlyTargeted).getY(),null);
+				g.drawImage(abilityIcon,50+allies.get(currentlyTargeted).getX(),allies.get(currentlyTargeted).getY(),null);
 			}
 			else{
-				g.drawImage(Assets.Downarrow,50+enemy.get(currentlyTargeted).getX(), enemy.get(currentlyTargeted).getY(),null);
+				g.drawImage(abilityIcon,50+enemy.get(currentlyTargeted).getX(), enemy.get(currentlyTargeted).getY(),null);
 			}
 			
 			g.setColor(new Color(102, 178,255));

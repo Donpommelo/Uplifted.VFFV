@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class status {
 	public int duration;
@@ -8,16 +9,26 @@ public class status {
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public Boolean removedEnd = true;
+	public BattleState bs;
 	public int stack;
-	public status(int i, String n, Boolean end){
+	public status(int i, String n, Boolean end, BattleState bs){
 		this.duration=i;
 		this.perm = false;
 		this.name = n;
 		this.removedEnd = end;
+		this.bs = bs;
 	}
 	
-	public status(){
+	public status(String n, BattleState bs){
 		this.perm=true;
+		this.name = n;
+		this.removedEnd=false;
+		this.bs =bs;
+	}
+	
+	public status(String n){
+		this.perm=true;
+		this.name = n;
 		this.removedEnd=false;
 	}
 	
@@ -35,7 +46,9 @@ public class status {
 		return false;
 	}
 	
-	
+	public void endofturnEffect(Schmuck s){
+		
+	}
 	
 	public void run(Schmuck s){
 		

@@ -23,7 +23,7 @@ public class RotThought extends Schmuck{
 
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {19,15,9,18,5,6,7,11};
+	public final static int[] startStats = {19,27,9,18,5,6,7,11};
 	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
 	public final static double[] statGrowths = {3.6 , 4.7 , 5.7 , 4.7 , .8 , 1.9 , 3.1 , .9};
 	public final static int expDrop=6;
@@ -38,6 +38,7 @@ public class RotThought extends Schmuck{
 	public RotThought() {
 		super("Rotthought",1,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths);
 		calcStats(1);
+		this.bio = "Testing Text Testing Text Testing Text Testing Text Testing Text Testing Text Testing Text";
 	}
 	
 	

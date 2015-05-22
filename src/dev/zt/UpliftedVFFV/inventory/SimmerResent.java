@@ -4,7 +4,7 @@ public class SimmerResent extends Item{
 
 	static String descr="Resentment is like swallowing poison and hoping your enemy will\nsuffer; it demonstrates commitment.";
 	public SimmerResent() {
-		super(2, "Simmering Resentment",false,false,false,descr);
+		super(2, "Simmering Resentment",false,false,false, false, true, descr);
 
 	}
 	

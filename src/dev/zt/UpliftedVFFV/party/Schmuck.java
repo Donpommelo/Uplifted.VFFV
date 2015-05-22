@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
@@ -24,18 +25,21 @@ public class Schmuck {
 	public int[] baseStats = {0,0,0,0,0,0,0,0};
 	public int[] buffedStats;
 	public int[] tempStats = {10,10};
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
+	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
 	public int Lvl,exp,expCurrent;
 	public int expDrop;
 	public int scrDrop;
+	public boolean visible, targetable;
 	public int x = 0;
 	public int y = 0;
 	public BufferedImage BattleSprite;
+	public BufferedImage MenuSprite1;
 	public ArrayList<Skills> skills;
 	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
 	public ArrayList<status> statuses;
 	public String name;
 	public String bio;
+	public Item itemSlot1,itemSlot2,itemSlot3;
 	public incapacitate i = new incapacitate();
 	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths){	
 		this.BattleSprite=sprite;
@@ -45,10 +49,21 @@ public class Schmuck {
 		this.Lvl=lvl;
 		this.startStats=start;
 		this.statGrowths=growths;
-//		this.baseStats=start;
 		this.buffedStats=start;
 		this.exp=0;
-//		calcStats(startStats,statGrowths,lvl);
+	}
+	
+	public Schmuck(String name,int lvl,BufferedImage bsprite,BufferedImage msprite, int[] start, double[] growths){	
+		this.BattleSprite=bsprite;
+		this.MenuSprite1 = msprite;
+		this.name=name;
+		this.skills = new ArrayList<Skills>();
+		this.statuses = new ArrayList<status>();
+		this.Lvl=lvl;
+		this.startStats=start;
+		this.statGrowths=growths;
+		this.buffedStats=start;
+		this.exp=0;
 	}
 	
 	public void hpChange(int hp){
@@ -100,8 +115,64 @@ public class Schmuck {
 	
 	}
 	
+	public void equip(Item i, int slot, InventoryManager meep){
+		Item thing = null;
+		switch(slot){
+		case 1:
+			thing = getItemSlot1();
+			break;
+		case 2:
+			thing =  getItemSlot2();
+			break;
+		case 3:
+			thing =  getItemSlot3();
+			break;
+		}
+		if(meep.backpack.containsKey(i)){
+			if(thing != null){
+				meep.loot(thing,1);				
+			}
+			thing = i;
+			meep.use(i);
+			switch(slot){
+			case 1:
+				setItemSlot1(i);
+				break;
+			case 2:
+				setItemSlot2(i);
+				break;
+			case 3:
+				setItemSlot3(i);
+				break;
+			}
+			calcBuffs();
+		}			
+	}	
 	
-	
+	public Item getItemSlot1() {
+		return itemSlot1;
+	}
+
+	public void setItemSlot1(Item itemSlot1) {
+		this.itemSlot1 = itemSlot1;
+	}
+
+	public Item getItemSlot2() {
+		return itemSlot2;
+	}
+
+	public void setItemSlot2(Item itemSlot2) {
+		this.itemSlot2 = itemSlot2;
+	}
+
+	public Item getItemSlot3() {
+		return itemSlot3;
+	}
+
+	public void setItemSlot3(Item itemSlot3) {
+		this.itemSlot3 = itemSlot3;
+	}
+
 	public int getLvl() {
 		return Lvl;
 	}
@@ -120,8 +191,8 @@ public class Schmuck {
 	
 	public void lvlUp(int lvl){
 		lvl--;
-		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getCurrentHp()+(int)(lvl*statGrowths[0]));
-		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getCurrentBp()+(int)(lvl*statGrowths[1]));
+		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));hpChange((int)(lvl*statGrowths[0]));
+		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));bpChange((int)(lvl*statGrowths[1]));
 		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
 		setBaseDef(startStats[3]+(int)(lvl*statGrowths[3]));setBuffedDef(getBaseDef());
 		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
@@ -143,6 +214,15 @@ public class Schmuck {
 		}
 		for(status s : statuses){
 			s.statchanges(this);
+		}
+		if(getItemSlot1()!=null){
+			getItemSlot1().equipEffect(this);
+		}
+		if(getItemSlot2()!=null){
+			getItemSlot2().equipEffect(this);
+		}
+		if(getItemSlot3()!=null){
+			getItemSlot3().equipEffect(this);
 		}
 	}
 	
@@ -296,6 +376,10 @@ public class Schmuck {
 
 	public BufferedImage getBattleSprite() {
 		return BattleSprite;
+	}
+	
+	public BufferedImage getMenuSprite() {
+		return MenuSprite1;
 	}
 
 

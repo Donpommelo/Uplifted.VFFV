@@ -19,6 +19,11 @@ public class InventoryManager {
 	
 	public void use(Item i){											//ran when an item is used up
 		if(this.backpack.containsKey(i)){
+			int temp = this.backpack.get(i);
+			this.backpack.remove(i);
+			this.backpack.put(i, temp-1);
+		}
+		if(this.backpack.get(i)==0){
 			this.backpack.remove(i);
 		}
 	}

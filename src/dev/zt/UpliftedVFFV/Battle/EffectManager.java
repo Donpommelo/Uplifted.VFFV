@@ -6,7 +6,9 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EffectManager {
 	
@@ -23,22 +25,39 @@ public class EffectManager {
 	}
 	
 	public void hpChange(int hp, Schmuck s){
-		s.tempStats[0]+=hp;
-		if(s.tempStats[0]<0){
-			s.tempStats[0]=0;
-			bs.bp.stm.addStatus(s,s.i);
-			for(Action a : bs.bp.TurnOrderQueue){
-				if(a!=null){
-					if(a.user==s){
-						bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
-					}
-				}
-				
+		boolean invulnerable = false;
+		for(status st : s.statuses){
+			if(st.getName().equals("Invulnerable")){
+				invulnerable = true;
+				bs.bp.bt.textList.add(s.getName()+" took no damage.");
 			}
 		}
-		if(s.tempStats[0]>s.baseStats[0]){
-			s.tempStats[0]=s.baseStats[0];
+		if(!invulnerable){	
+			if(hp > 0){
+				bs.bp.bt.textList.add(s.getName()+" restored "+hp+" health!");
+			}
+			else{
+				bs.bp.bt.textList.add(s.getName()+" received "+-hp+" damage!");
+				
+			}
+			s.tempStats[0]+=hp;
+			if(s.tempStats[0]<0){
+				s.tempStats[0]=0;
+				bs.bp.stm.addStatus(s,s.i);
+				for(Action a : bs.bp.TurnOrderQueue){
+					if(a!=null){
+						if(a.user==s){
+							bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
+						}
+					}
+					
+				}
+			}
+			if(s.tempStats[0]>s.baseStats[0]){
+				s.tempStats[0]=s.baseStats[0];
+			}
 		}
+		
 	}
 	
 	public void bpChange(int bp, Schmuck s){

@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.inventory;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 //items class.
 //change usefrommenu to consummable later
@@ -10,23 +11,17 @@ public class Item implements Comparable<Item>{
 	public BufferedImage ItemSprite;
 	public String name,descr;
 	public int Id;
-	public Boolean usedfromMenu,usefromBattle, consummable;
+	public Boolean usedfromMenu,usefromBattle, consummable, targeted, equipable = true;
 	
-	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume){
+	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, Boolean equip, String description){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
 		this.usefromBattle=battle;
 		this.consummable = consume;
-	}
-	
-	public Item(int id,String name,Boolean menu, Boolean battle,Boolean consume, String description){
-		this.Id=id;
-		this.name=name;
-		this.usedfromMenu=menu;
-		this.usefromBattle=battle;
+		this.targeted = target;
+		this.equipable = equip;
 		this.descr=description;
-		this.consummable = consume;
 	}
 	
 
@@ -40,6 +35,14 @@ public class Item implements Comparable<Item>{
 
 	//ran when an item is used. Every item will override this method with whatever effect it has,
 	public void use(Schmuck perp, Schmuck vic){
+
+	}
+	
+	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+
+	}
+	
+	public void use(Schmuck s){
 
 	}
 	
@@ -80,6 +83,10 @@ public class Item implements Comparable<Item>{
 
 	public Boolean getConsummable() {
 		return consummable;
+	}
+	
+	public void equipEffect(Schmuck s){
+		
 	}
 
 }

@@ -13,6 +13,8 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 public class EventPenPal extends Event {
 
 	public boolean selfswitch1=false;
+	public boolean solid;
+	public boolean drawn = false;
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.PenPal);
 	public EventPenPal(float x, float y, int idnum) {
 		super(img,idnum,x, y);
@@ -36,7 +38,7 @@ public class EventPenPal extends Event {
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
 		}
 		if(selfswitch1==false){
-			super.Dialog(12, 26,this.getId());
+			super.Dialog(12, 17,this.getId());
 			selfswitch1=true;
 		}
 		else{
@@ -52,4 +54,28 @@ public class EventPenPal extends Event {
 	public boolean isSolid(){
 		return true;
 	}
+	
+	public boolean drawn(){
+		return drawn;
+	}
+	
+	public boolean isDrawn() {
+		return drawn;
+	}
+
+	public void setDrawn(boolean drawn) {
+		this.drawn = drawn;
+	}
+
+	
+
+	public boolean isSelfswitch1() {
+		return selfswitch1;
+	}
+
+	public void setSelfswitch1(boolean selfswitch1) {
+		this.selfswitch1 = selfswitch1;
+	}
+	
+	
 }

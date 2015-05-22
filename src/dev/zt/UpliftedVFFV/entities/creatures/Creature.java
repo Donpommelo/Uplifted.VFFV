@@ -24,11 +24,12 @@ public class Creature extends Entity {
 	protected float xMove, yMove;
 	protected int rightleft;
 	protected int step=0;
-	public static int runlast=1;
+	public int runlast=1;
+	public int Id;
 	public Game game;
 	
 	
-	public Creature(Game game, float x, float y, int width, int height, BufferedImage img) {
+	public Creature(Game game, float x, float y, int width, int height, BufferedImage img, int eventId) {
 		super(game, x, y, width, height);
 		speed = DEFAULT_SPEED;
 		xMove = 0;
@@ -36,16 +37,14 @@ public class Creature extends Entity {
 		this.img=img;
 		this.imgShown = SpriteSorter.SpriteSort(10,img);
 		this.game = game;
+		this.Id = eventId;
 //		System.out.print(this+" "+x+" "+y+"  ");
 //		System.out.print(this+" "+this.getX()+" "+this.getY());
 	}
 	
 	public void move(){
-//		if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
 			setX(getX() + xMove/32);
 			setY(getY() + yMove/32);
-//		}
-
 	}
 	
 	public void tick() {
@@ -64,6 +63,10 @@ public class Creature extends Entity {
 		if(step==16){
 			this.runup=false; this.runleft=false; this.runright=false; this.rundown=false;
 			this.step=0;
+			if(Event.events[this.Id].getstage()!=Event.events[this.Id].getfinalstage()){
+				Event.events[this.Id].setstage(Event.events[this.Id].getstage()+1);
+				Event.events[this.Id].run();
+			}
 //			System.out.print(this.x+" "+this.y);
 		}
 		
@@ -137,7 +140,7 @@ public class Creature extends Entity {
 		//consider adding a separate animationmanager later for all animations
 		if(runup==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				imgShown = SpriteSorter.SpriteSort(7,img);
+				imgShown = SpriteSorter.SpriteSort(10,img);
 //				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (x- game.getGameCamera().getxOffset()),(int)(y- game.getGameCamera().getyOffset()), width, height, null);
 			}
 			else if(rightleft%2==0){
@@ -224,6 +227,14 @@ public class Creature extends Entity {
 
 	public void setSpeed(float speed) {
 		this.speed = speed;
+	}
+
+	public BufferedImage getImgShown() {
+		return imgShown;
+	}
+
+	public void setImgShown(BufferedImage imgShown) {
+		this.imgShown = imgShown;
 	}
 	
 	

@@ -15,6 +15,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 	private int X, Y;
 	private int numevents;
 	public static int[][] events;
+	public static Event[] EventTracker;
 	
 	public EventManager(Game game, String path) {
 		this.game=game;
@@ -34,7 +35,7 @@ public void tick(){
 	public void render(Graphics g){
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				if(events[x][y] != 0 && getEvent(x,y) != null){
+				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
 					if(getEvent(x,y).getTest()!=null){
 						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
 					}
@@ -65,16 +66,21 @@ public void tick(){
 		events = new int[width][height];
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				events[x][y]=0;
-				
+				events[x][y] = 0;
 			}
 		}
 		for(int i=0;i<numevents;i++){
-			if(Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].isExist()){
-				events[Utils.parseInt(tokens[(height*width)+8+3*i])][Utils.parseInt(tokens[(height*width)+9+3*i])]=Utils.parseInt(tokens[(height*width)+7+3*i]);	
+			if(Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].drawn()){
+				events[Utils.parseInt(tokens[(height*width)+8+3*i])][Utils.parseInt(tokens[(height*width)+9+3*i])]=Utils.parseInt(tokens[(height*width)+7+3*i]);
+				Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+8+3*i]),Utils.parseInt(tokens[(height*width)+9+3*i]));
+				if(Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest()!=null){
+					Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest().setX(Utils.parseInt(tokens[(height*width)+8+3*i]));
+					Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest().setY(Utils.parseInt(tokens[(height*width)+9+3*i]));
+				}
 			}
 		}
-		
+
 	}
+	
 
 }
