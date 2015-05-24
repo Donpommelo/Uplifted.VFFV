@@ -10,6 +10,7 @@ public class UseItem extends Skills {
 	
 public Item thing;
 public GameState gs;
+
 	public UseItem(int index, Item i, GameState gs) {
 		super(index, Assets.item);
 		this.thing=i;

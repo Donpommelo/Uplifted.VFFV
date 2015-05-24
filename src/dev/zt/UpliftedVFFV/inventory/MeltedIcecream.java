@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 public class MeltedIcecream extends Item{
 
 	static String descr="A bottle of lukewarm cream soda.";
+	static String descrShort="Restore Hp.";
 	public MeltedIcecream() {
 		super(2, "Melted Ice Cream",true, true, true, true, false,descr);
 
@@ -24,6 +25,10 @@ public class MeltedIcecream extends Item{
 	
 	public void use(Schmuck s){
 		s.hpChange((int)(.5*(s.getMaxHp()-s.getCurrentHp())));
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

@@ -10,7 +10,7 @@ public class Event36 extends Event {
 
 
 	public Event36(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		
 	
 	}
@@ -20,6 +20,9 @@ public class Event36 extends Event {
 	public void run(){
 		if(Event.events[66].isSelfswitch1()){
 			super.Dialog(109, 109,this.getId());
+		}
+		else{
+
 		}
 	}
 

@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class FennelDonut extends Item{
 
 	static String descr="Mick always had the worst taste in donuts.";
+	static String descrShort="Restore Hp.";
 	public FennelDonut() {
 		super(2, "Fennel Off-Gazpacho Donut", true,true,true, true, false,descr);
 
@@ -23,6 +24,10 @@ public class FennelDonut extends Item{
 	
 	public void use(Schmuck s){
 		s.hpChange(25);
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

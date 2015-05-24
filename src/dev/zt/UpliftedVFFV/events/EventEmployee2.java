@@ -43,12 +43,12 @@ public class EventEmployee2 extends Event {
 		}
 
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return true;
+	}
+	
+	public boolean drawn(){
+		return !Event.events[66].isSelfswitch1();
 	}
 }

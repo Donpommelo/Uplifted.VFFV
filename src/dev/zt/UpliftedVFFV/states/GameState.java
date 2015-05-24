@@ -35,7 +35,7 @@ public class GameState extends State {
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
 	public int floor;
-	public int Script=0;												//starting currency. Change later for save stuff
+	public int Script=10;												//starting currency. Change later for save stuff
 	Event ugh;
 	
 	//Upon creation, the gamestate will load the starting World and events. Other worlds are loaded through events and such
@@ -51,8 +51,8 @@ public class GameState extends State {
 		
 //		world = new World(game, "res/Worlds/Mailroom.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"res/Worlds/Mailroom.txt");
-//		world = new World(game, "res/Worlds/SouthHallSmall.txt","");
-//		eventmanager = new EventManager(game,"res/Worlds/SouthHallSmall.txt");
+//		world = new World(game, "res/Worlds/EastWing.txt","");
+//		eventmanager = new EventManager(game,"res/Worlds/EastWing.txt");
 		player = new Player(game, 128, 128, this);										//creates player
 //		game.getAudiomanager().playSound();
 	}
@@ -138,6 +138,13 @@ public class GameState extends State {
 
 	public void setFloor(int floor) {
 		this.floor = floor;
+	}
+	
+	public void scriptChange(int change){
+		Script+=change;
+		if(Script<0){
+			Script = 0;
+		}
 	}
 
 

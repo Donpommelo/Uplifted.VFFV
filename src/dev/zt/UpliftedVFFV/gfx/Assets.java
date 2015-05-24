@@ -14,13 +14,18 @@ public class Assets {
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorCeiling, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
-	public static BufferedImage ElevatorPanel;
+	public static BufferedImage ElevatorPanel, ElevatorFloorMark;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
+	
+	public static BufferedImage WritingDesk1, WritingDesk2, Bed1,Bed2,Tv,Calendar, Stairs;
+	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, MoverSofa1,MoverSofa2,MoverGag, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
+	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
+	
 	public static BufferedImage Uparrow,Downarrow;
 	
-	public static BufferedImage attack, skill, nothing, wait, item, run;
+	public static BufferedImage attack, skill, nothing, wait, item, run, pointer;
 	
 	public static Dialog[] dialog;
 	
@@ -38,6 +43,8 @@ public class Assets {
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
+		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
+		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
 		
 		//character walking sprites
 		Operator=sheet.crop(0, 0, 3*width, 4*height);
@@ -55,6 +62,7 @@ public class Assets {
 		ElevatorDoor4=door.crop(16, 192, 96, 64);
 		
 		ElevatorPanel = prop.crop(7*width,0,width,height);
+		ElevatorFloorMark = prop.crop(width, 0 , 3*width, 3*height);
 		
 		//Tile textures
 		White = floor.crop(0, 0, width, height);
@@ -85,6 +93,40 @@ public class Assets {
 		ElevatorDoorWall = walls.crop(8*width, 2*width, 2*width, 3*height);
 		ElevatorWall = walls.crop(10*width, 2*height, 2*width, 3*height);
 		
+		WritingDesk1 = FurnitureBackroom.crop(0,0,32,32);
+		WritingDesk2 = FurnitureBackroom.crop(32,0,32,32);
+		Bed1 = FurnitureBackroom.crop(64,0,32,32);
+		Bed2 = FurnitureBackroom.crop(64,32,32,32);
+		Tv = FurnitureBackroom.crop(96,0,32,64);
+		Calendar = FurnitureBackroom.crop(128,0,32,32);
+		Stairs = FurnitureBackroom.crop(0,288,32,32);
+		
+		WorkDesk1 = Furniture3rdFloor.crop(0, 0, width*2, height);
+//		WorkDesk2 = Furniture3rdFloor.crop(32, 0, width, height);
+		FilingCabinet = Furniture3rdFloor.crop(64, 0, width, height);
+		Sofa1 = Furniture3rdFloor.crop(96, 0, width*2, height);
+		Sofa2 = Furniture3rdFloor.crop(288, 0, width, height*2); 
+		SafeClosed = Furniture3rdFloor.crop(160, 0, width, height);
+		SafeOpened = Furniture3rdFloor.crop(160, 32, width, height);
+		WaterCooler = Furniture3rdFloor.crop(192, 0, width, height*2);
+		Clock = Furniture3rdFloor.crop(224, 0, width, height);
+		VendingMachine = Furniture3rdFloor.crop(256, 0, width, height*2);
+		MoverSofa1 = Furniture3rdFloor.crop(288, 0, width, height);
+		MoverSofa2 = Furniture3rdFloor.crop(288, 32, width, height);
+		MoverGag = walls.crop(5*width, 2*height, width, 3*height);
+		
+		Table0 = Furniture3rdFloor.crop(10*width, 0, width, height);
+		Table1 = Furniture3rdFloor.crop(11*width, 0, width, height);
+		Table2 = Furniture3rdFloor.crop(12*width, 0, width, height);
+		Table3 = Furniture3rdFloor.crop(13*width, 0, width, height);
+		Table4 = Furniture3rdFloor.crop(11*width, height, width, height);
+		Table5 = Furniture3rdFloor.crop(12*width, height, width, height);
+		Table6 = Furniture3rdFloor.crop(13*width, height, width, height);
+		Table7 = Furniture3rdFloor.crop(11*width, 2*height, width, height);
+		Table8 = Furniture3rdFloor.crop(12*width, 2*height, width, height);
+		Table9 = Furniture3rdFloor.crop(13*width, 2*height, width, height);
+		
+		
 		//arrows and stuff
 		Uparrow=arrows.crop(90,12,12,12);
 		Downarrow=arrows.crop(90,40,12,12);
@@ -97,6 +139,7 @@ public class Assets {
 		wait = ActionIcons.crop(96,0,32,32);
 		item = ActionIcons.crop(128,0,32,32);
 		run = ActionIcons.crop(160,0,32,32);
+		pointer = ActionIcons.crop(256, 0, 32, 32);
 		
 		//Dialog loaded from text files.
 		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines

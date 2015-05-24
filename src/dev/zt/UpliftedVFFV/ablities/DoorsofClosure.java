@@ -7,7 +7,8 @@ public class DoorsofClosure extends Skills {
 
 	public String name = "Doors of Closure";
 	public String descr = "User summons elevator doors\nthat close on enemies, dealing\narea damage.";
-	public int cost = 8;
+	public String descrShort = "Damages all enemies.";
+	public int cost = 11;
 	public DoorsofClosure(int index) {
 		super(index);
 
@@ -17,13 +18,13 @@ public class DoorsofClosure extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),vic);	
 		if(bs.bp.bm.enemy.contains(vic)){
-			for(Schmuck s : bs.bp.bm.enemy){
-				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),s);
+			for(Schmuck s : bs.bs.enemyTargets){
+				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*3),s);
 			}
 		}
 		else{
-			for(Schmuck s : bs.bp.bm.allies){
-				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),s);
+			for(Schmuck s : bs.bs.alliesTargets){
+				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*3),s);
 			}
 		}
 
@@ -35,6 +36,10 @@ public class DoorsofClosure extends Skills {
 	
 	public String getDescr() {
 		return descr;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 	
 	public int getCost(){

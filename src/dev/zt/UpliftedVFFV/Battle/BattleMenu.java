@@ -53,7 +53,7 @@ public class BattleMenu{
 	public Boolean attackChosen = false;
 	public Boolean skillChosen = false;
 	public Boolean teamTargeted = false;
-	public BufferedImage abilityIcon;
+	public BufferedImage pointer = Assets.pointer;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public Schmuck currentSchmuck;
@@ -98,7 +98,7 @@ public class BattleMenu{
 					}
 				}
 				else{
-					if(currentlyTargeted<allies.size()-1){
+					if(currentlyTargeted<bs.bs.alliesTargets.size()-1){
 						currentlyTargeted++;
 					}
 				}
@@ -106,7 +106,7 @@ public class BattleMenu{
 			}
 			if(game.getKeyManager().left){
 				if(teamTargeted==false){
-					if(currentlyTargeted<enemy.size()-1){
+					if(currentlyTargeted<bs.bs.enemyTargets.size()-1){
 						currentlyTargeted++;
 						try {
 							Thread.sleep(100);
@@ -130,11 +130,11 @@ public class BattleMenu{
 				}
 			}
 			if(game.getKeyManager().up && teamTargeted==true){
-				if(currentlyTargeted>=enemy.size()){
+				if(currentlyTargeted>=bs.bs.enemyTargets.size()){
 					currentlyTargeted=0;
 				}
 				else{
-					currentlyTargeted=enemy.size()-1-currentlyTargeted;
+					currentlyTargeted=bs.bs.enemyTargets.size()-1-currentlyTargeted;
 				}
 				teamTargeted=false;
 					try {
@@ -144,11 +144,11 @@ public class BattleMenu{
 					}
 			}
 			if(game.getKeyManager().down && teamTargeted==false){
-				if(currentlyTargeted>=allies.size()){
+				if(currentlyTargeted>=bs.bs.alliesTargets.size()){
 					currentlyTargeted=0;
 				}
 				else{
-					currentlyTargeted=allies.size()-currentlyTargeted-1;
+					currentlyTargeted=bs.bs.alliesTargets.size()-currentlyTargeted-1;
 				}
 				teamTargeted=true;
 					try {
@@ -175,10 +175,10 @@ public class BattleMenu{
 							e.printStackTrace();
 						}
 						if(teamTargeted==false){
-							bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(allies.get(bs.bp.currentlySelected),enemy.get(currentlyTargeted),new StandardAttack(0),bs));
+							bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new StandardAttack(0),bs));
 						}
 						else{
-							bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(allies.get(bs.bp.currentlySelected),allies.get(currentlyTargeted),new StandardAttack(0),bs));
+							bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new StandardAttack(0),bs));
 						}
 						moveSelected=false;
 						bs.bp.selected=false;
@@ -200,21 +200,21 @@ public class BattleMenu{
 						ArrayList<Skills> skills = currentSchmuck.skills;
 						if(currentSchmuck.skills.size()==0){
 							if(teamTargeted==false){
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),enemy.get(currentlyTargeted),new SkillNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new SkillNothing(1,gs),bs));
 								
 							}
 							else{
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(currentlyTargeted),new SkillNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new SkillNothing(1,gs),bs));
 
 							}
 						}
 						else{
 							if(teamTargeted==false){
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),enemy.get(currentlyTargeted),skills.get(itemSelected),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),skills.get(itemSelected),bs));
 								
 							}
 							else{
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(currentlyTargeted),skills.get(itemSelected),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),skills.get(itemSelected),bs));
 							}
 						}
 						moveSelected=false;
@@ -237,7 +237,6 @@ public class BattleMenu{
 					}
 					else{
 						skillChosen=true;
-						abilityIcon = Assets.skill;
 						if(!currentSchmuck.skills.isEmpty()){
 							teamTargeted =  currentSchmuck.skills.get(itemSelected).startTarget(); // do to other stuff
 						}
@@ -270,7 +269,7 @@ public class BattleMenu{
 				if(game.getKeyManager().down){
 					if(itemSelected<currentSchmuck.skills.size()-1){
 						itemSelected++;
-						if(itemPointer==7){
+						if(itemPointer==4){
 							backpackLocation++;
 						}
 						else{
@@ -297,21 +296,21 @@ public class BattleMenu{
 						Item[] itemDisplay= temp.toArray(new Item[999]);
 						if(gs.inventorymanager.backpack.size()==0){
 							if(teamTargeted==false){
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),enemy.get(currentlyTargeted),new ItemNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new ItemNothing(1,gs),bs));
 								
 							}
 							else{
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(currentlyTargeted),new ItemNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new ItemNothing(1,gs),bs));
 
 							}
 						}
 						else{
 							if(teamTargeted==false){
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),enemy.get(currentlyTargeted),new UseItem(1,itemDisplay[itemSelected],gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new UseItem(1,itemDisplay[itemSelected],gs),bs));
 								
 							}
 							else{
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(currentlyTargeted),new UseItem(1,itemDisplay[itemSelected],gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new UseItem(1,itemDisplay[itemSelected],gs),bs));
 							}
 						}
 						moveSelected=false;
@@ -330,7 +329,6 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().space){
 					itemChosen=true;
-					abilityIcon = Assets.item;
 					teamTargeted =  new UseItem(1,gs.inventorymanager.backpack.keySet().toArray(new Item[999])[itemSelected],gs).startTarget();
 //					moveSelected=false;									
 					try {
@@ -359,7 +357,7 @@ public class BattleMenu{
 				if(game.getKeyManager().down){
 					if(itemSelected<gs.inventorymanager.backpack.size()-1){
 						itemSelected++;
-						if(itemPointer==7){
+						if(itemPointer==4){
 							backpackLocation++;
 						}
 						else{
@@ -428,7 +426,6 @@ public class BattleMenu{
 				switch(actionSelected){
 				case 0:
 					attackChosen=true;
-					abilityIcon = Assets.attack;
 					break;
 				case 1:
 	//				skillChosen=true;
@@ -535,17 +532,25 @@ public class BattleMenu{
 				}
 				else{
 					skillnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+26 && i<currentSchmuck.skills.size();i++){			
+					for(int i=backpackLocation;i<=backpackLocation+4 && i<currentSchmuck.skills.size();i++){			
 						g.setColor(new Color(0, 0,0));
 						g.drawString(currentSchmuck.skills.get(i).getName()+"  "+currentSchmuck.skills.get(i).getCost()+" Bp", 505, 231+25*(skillnum));
 						skillnum++;
-					}	
+					}
+					g.setColor(new Color(255, 255,255));
+					g.fillRect(505, 340, 130, 76);
+					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+					g.setColor(new Color(0, 0,0));
+					int y=340;
+					for (String line : currentSchmuck.skills.get(itemSelected).getDescrShort().split("\n")){
+						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
+					}			       
 				}
 			if(backpackLocation!=0){
 				g.drawImage(Assets.Uparrow,570,209,null);
 			}
-			if(backpackLocation!=currentSchmuck.skills.size()-8){
-				g.drawImage(Assets.Downarrow,570,409,null);
+			if(backpackLocation!=currentSchmuck.skills.size()-5 && currentSchmuck.skills.size()>5){
+				g.drawImage(Assets.Downarrow,570,334,null);
 			}				
 				break;
 			case 2:	
@@ -562,17 +567,25 @@ public class BattleMenu{
 				}
 				else{
 					itemnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+26 && i<gs.inventorymanager.backpack.size();i++){			
+					for(int i=backpackLocation;i<=backpackLocation+4 && i<gs.inventorymanager.backpack.size();i++){			
 						g.setColor(new Color(0, 0,0));
 						g.drawString(itemDisplay[i].getName()+"  x"+gs.inventorymanager.backpack.get(itemDisplay[i]), 505, 231+25*(itemnum));
 						itemnum++;
 					}	
+					g.setColor(new Color(255, 255,255));
+					g.fillRect(505, 340, 130, 76);
+					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+					g.setColor(new Color(0, 0,0));
+					int y=340;
+					for (String line : itemDisplay[itemSelected].getDescrShort().split("\n")){
+						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
+					}
 				}
 			if(backpackLocation!=0){
 				g.drawImage(Assets.Uparrow,570,209,null);
 			}
-			if(backpackLocation!=gs.inventorymanager.backpack.size()-8){
-				g.drawImage(Assets.Downarrow,570,409,null);
+			if(backpackLocation!=gs.inventorymanager.backpack.size()-5 && gs.inventorymanager.backpack.size()>5){
+				g.drawImage(Assets.Downarrow,570,334,null);
 			}
 				
 				break;
@@ -582,21 +595,21 @@ public class BattleMenu{
 		}
 		if(itemChosen==true || attackChosen==true || skillChosen==true){
 			if(teamTargeted){
-				g.drawImage(abilityIcon,50+allies.get(currentlyTargeted).getX(),allies.get(currentlyTargeted).getY(),null);
+				g.drawImage(pointer,bs.bs.alliesTargets.get(currentlyTargeted).getBattleSprite().getWidth()/2+bs.bs.alliesTargets.get(currentlyTargeted).getX()-16,bs.bs.alliesTargets.get(currentlyTargeted).getY()-10,null);
 			}
 			else{
-				g.drawImage(abilityIcon,50+enemy.get(currentlyTargeted).getX(), enemy.get(currentlyTargeted).getY(),null);
+				g.drawImage(pointer,bs.bs.enemyTargets.get(currentlyTargeted).getBattleSprite().getWidth()/2+bs.bs.enemyTargets.get(currentlyTargeted).getX()-16, bs.bs.enemyTargets.get(currentlyTargeted).getY()-10,null);
 			}
 			
 			g.setColor(new Color(102, 178,255));
 			g.fillRect(520, 0,140,25);
 			if(teamTargeted){
 				g.setColor(new Color(0, 0,0));
-				g.drawString(allies.get(currentlyTargeted).getName()+" ",520,20);
+				g.drawString(bs.bs.alliesTargets.get(currentlyTargeted).getName()+" ",520,20);
 			}
 			else{
 				g.setColor(new Color(0, 0,0));
-				g.drawString(enemy.get(currentlyTargeted).getName()+" ",520,20);
+				g.drawString(bs.bs.enemyTargets.get(currentlyTargeted).getName()+" ",520,20);
 			}
 			
 			itemnum++;

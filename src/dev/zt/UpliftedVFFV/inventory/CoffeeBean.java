@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 public class CoffeeBean extends Item{
 
 	static String descr="A fragrant, roasted coffee bean.";
+	static String descrShort="Restore Mp and damage.";
 	public CoffeeBean() {
 		super(2, "Roasted Coffee Bean",true,  true, true, true, false,descr);
 
@@ -28,6 +29,10 @@ public class CoffeeBean extends Item{
 	public void use(Schmuck s){
 		s.hpChange(-10);
 		s.bpChange(30);
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

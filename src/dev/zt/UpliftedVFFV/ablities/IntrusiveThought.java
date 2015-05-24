@@ -10,6 +10,7 @@ public class IntrusiveThought extends Skills {
 
 	public String name = "Intrusive Thought";
 	public String descr = "User causes a target's Intrusive\nThoughts to flourish,\nstacking an invisible debuff.";
+	public String descrShort = "Delayed damage debuff.";
 	public int cost;
 	public IntrusiveThought(int index) {
 		super(index);
@@ -34,7 +35,7 @@ public class IntrusiveThought extends Skills {
 			bs.bp.bt.textList.add(vic.getName()+"'s Intrusive Thoughts grow.");
 		}
 		else{
-			bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10, bs));
+			bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10));
 		}
 
 		
@@ -44,8 +45,12 @@ public class IntrusiveThought extends Skills {
 		return name;
 	}
 	
-	public String geDescr(){
+	public String getDescr(){
 		return name;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 	
 	public int getCost(){

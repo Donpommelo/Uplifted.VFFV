@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
@@ -46,11 +48,11 @@ public class BattleProcessor {
 		this.enemy = enemy;
 		phase=1;
 		currentlySelected=0;
-		
-		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
+			
 		bt = new BattleText(game,sm,allies,enemy, bs);
 		em = new EffectManager(game,bs,gs);
 		stm = new StatusManager(game,bs,gs, this);
+		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
 		TurnOrderQueue = new ArrayList<Action>();
 //		initiate();
 		for(int i=0 ; i<enemy.size()+allies.size();i++){
@@ -71,8 +73,7 @@ public class BattleProcessor {
 		else{
 			bt.textList.add(enemy.get(0).getName()+" attacks you.");
 		}
-		
-		
+				
 	}
 	
 	public void tick() {
@@ -204,7 +205,6 @@ public class BattleProcessor {
 								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to "+TurnOrderQueue.get(0).skill.getName());
 							}
 							bs.bs.targetUpdate();
-							
 						}
 						else{
 							pauseTOQ = true;
@@ -222,7 +222,7 @@ public class BattleProcessor {
 					
 				}
 				else{					
-					stm.endofRound();
+					stm.endofRound(bs);
 					phase++;
 				}
 				break;
@@ -244,11 +244,24 @@ public class BattleProcessor {
 						if(s.exp+exp/allies.size()>=Math.pow(s.Lvl,2)*10){
 							bt.textList.add(s.getName()+" received a raise!");
 							bt.textList.add(s.getName()+" is now level "+ (s.Lvl+1)+"!");
+							if(s.getLevelSkills().containsKey(s.Lvl+1)){
+								bt.textList.add(s.getName()+" learned "+ s.getLevelSkills().get(s.Lvl+1).getName()+"!");	
+							}
 						}
 						s.expGain(s.getStartStats(),s.getStatGrowths(),exp/allies.size());
-					}
+					}					
 					bt.textList.add(script+" Company Script looted!");
-					gs.Script += script;
+					gs.scriptChange(script);
+					for(Schmuck s : enemy){
+						Set<Item> temp = s.getItemdrops().keySet();
+						Item[] itemDisplay = temp.toArray(new Item[999]);
+						for(int i=0; i<s.getItemdrops().size();i++){		
+							if(Math.random()<=s.getItemdrops().get(itemDisplay[i])){
+								bt.textList.add("Looted a "+itemDisplay[i].getName()+"!");
+								gs.inventorymanager.loot(itemDisplay[i], 1);
+							}
+						}
+					}
 					stm.endofFite();
 				}
 				phase=0;

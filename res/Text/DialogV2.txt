@@ -1,4 +1,4 @@
-163
+184
 Employee
 3rdSouthOffices-1.png
 1
@@ -393,7 +393,7 @@ Player-5.png
 Lets explore this floor first. We can check the other floors later./
 Jorge
 3rdSouthOffices-5.png
-1
+0
 Gah! Who is that? Can you not see that I am very busy?/
 Operator
 Player-1.png
@@ -401,11 +401,11 @@ Player-1.png
 Good afternoon, sir! We were hoping you could point us towards Suite 521./Do you know where it is?/
 Jorge
 3rdSouthOffices-5.png
-1
+0
 Harghmph. You came to waste my time with that? Who do you think you are?/Of course I know where it is. Suite Five-hundred and twenty Whatever, I know all about it./Hehehe. But I don・t feel like telling you./
 Jorge
 3rdSouthOffices-5.png
-1
+0
 Yeah, If you lack the manners to not bother me and the common sense to/find the damn room yourself, why should I help you?/
 Operator
 Player-1.png
@@ -413,7 +413,7 @@ Player-1.png
 That seems. . . a little. . . unprofessional. . ./ 
 Jorge
 3rdSouthOffices-5.png
-1
+0
 What・s that!? Why you, you・ve got some nerve! Seeing as you clearly/missed the Office Assembly on Conduct and Courtesy, it is my duty as South Wing Manager/to teach you myself./
 Operator
 Player-1.png
@@ -421,15 +421,15 @@ Player-1.png
 Woah! Please, sir, calm down. We can talk about . . ./
 Jorge
 3rdSouthOffices-5.png
-1
+0
 C・mere! Don・t make me chase you!/
 Jorge
 3rdSouthOffices-5.png
-1
+0
 Arrggh. . .  I'm calling security!/
 Jorge
 3rdSouthOffices-5.png
-1
+0
 Grrr. Why haven't the guards gotten here yet?/
 Pen Pal
 Player-5.png
@@ -574,7 +574,7 @@ I always spend at least thirty minutes every day staring at the vending/machines
 Employee
 3rdSouthOffices-3.png
 1
-I wonder if this makes my coworkers think I'm really consious about what/I eat./
+I wonder if this makes my coworkers think I'm really conscious about what/I eat./
 Operator
 Player-1.png
 0
@@ -651,3 +651,87 @@ Employee
 3rdSouthOffices-1.png
 1
 I wonder if this is some sort of practical joke./
+meep
+Arturo.png
+1
+A comfy Bed./But you don't feel like sleeping right now and probably couldn't if you tried./
+meep
+Arturo.png
+1
+An old Writing Desk./But you don't have anything to write and no one to write to./
+meep
+Arturo.png
+1
+A Television Set./There isn't anything interesting on right now./
+meep
+Arturo.png
+1
+A Calendar./ The day of the week doesn't really concern you./
+meep
+Arturo.png
+1
+A display case filled with Elevator-themed memorabilia./
+meep
+Arturo.png
+1
+The machine appears to be out of order./
+Janitor
+Janitor1small.png
+1
+Hmm? I don't believe we've met before./
+Operator
+Player-1.png
+0
+I am the Operator. We were looking for a room called Suite 521./
+Janitor
+Janitor1small.png
+1
+Oh. Sadly I've never heard of the place before./But maybe I can provide you some other service. . ./
+Operator
+Player-1.png
+0
+What do you mean?/
+Janitor
+Janitor1small.png
+1
+I am the humble janitor of this facility, but I also do all manner of odd jobs./
+Janitor
+Janitor1small.png
+1
+If you ever need your game saved, just find me and I can help you with that./
+Janitor
+Janitor1small.png
+1
+Oh, and I also run a bit of my own business. Y'know, just to make a bit of money/on the side. Feel free to buy purchase anything that interests you./Just don't mention anything to Management./
+Janitor
+Janitor1small.png
+1
+So, what'll it be?/
+Janitor
+Janitor1small.png
+1
+See you again soon./
+Janitor
+Janitor1small.png
+1
+Well, if it isn't my favorite customer./
+meep
+Arturo.png
+1
+You found some MedPaks inside the safe!/Always handy in case of Officeplace accidents!/
+meep
+Arturo.png
+1
+The safe was filled with Company Script!/Finders keepers!/
+meep
+Arturo.png
+1
+The safe appears to be empty, But upon examining closer. . ./
+meep
+Arturo.png
+1
+You acquired the Faded Sash!/
+meep
+Arturo.png
+1
+Found a couple of Fire Extinguishers inside!/Surely that violates some sort of safety regulation. . ./

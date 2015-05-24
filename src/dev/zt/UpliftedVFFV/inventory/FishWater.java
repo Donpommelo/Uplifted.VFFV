@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class FishWater extends Item{
 	
 	static String descr="Water from the Fourth Floor Aquarium. It smells fishy.";
+	static String descrShort="Damage target.";
 	public FishWater() {
 		super(2, "Fish Water",false, true, true, true, false,descr);
 
@@ -28,5 +29,9 @@ public class FishWater extends Item{
 	
 	public boolean startTeamTarget(){
 		return false;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 }

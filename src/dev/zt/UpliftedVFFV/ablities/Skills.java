@@ -11,12 +11,14 @@ public class Skills {
 	
 	public String name;
 	public String descr;
+	public String descrShort;
 	public int cost;
 	public BufferedImage icon;
 	public boolean startTeamTarget;
 	public Skills(int index){
 		name = "";
 		descr = "";
+		descrShort = "";
 		cost = 0;
 		icon =Assets.skill;
 	}
@@ -24,6 +26,7 @@ public class Skills {
 	public Skills(int index, BufferedImage i){
 		name = "";
 		descr = "";
+		descrShort = "";
 		cost = 0;
 		icon = i;
 	}
@@ -38,6 +41,10 @@ public class Skills {
 	}
 	
 	public String getDescr() {
+		return "meep";
+	}
+	
+	public String getDescrShort() {
 		return "meep";
 	}
 	

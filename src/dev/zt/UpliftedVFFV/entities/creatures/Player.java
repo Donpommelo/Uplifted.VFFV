@@ -105,8 +105,10 @@ public class Player extends Creature{
 		        break;
 		    }
 		}
-		troop = troops[randomIndex];
-		StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true,gamestate));
+		if(randomIndex>=0){
+			troop = troops[randomIndex];
+			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true,gamestate));
+		}
 	}
 	
 	//this is run every tick, provided the player is not running an event

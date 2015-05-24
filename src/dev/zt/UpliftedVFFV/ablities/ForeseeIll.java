@@ -9,6 +9,7 @@ public class ForeseeIll extends Skills {
 
 	public String name = "ForeseeIll";
 	public String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy damage\nthat scales with target's\nIntrusive Thoughts.";
+	public String descrShort = "Release built up Intrusive\nThoughts.";
 	public int cost = 4;
 	public ForeseeIll(int index) {
 		super(index);
@@ -40,6 +41,10 @@ public class ForeseeIll extends Skills {
 	
 	public String getDescr(){
 		return descr;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 	
 	public int getCost(){

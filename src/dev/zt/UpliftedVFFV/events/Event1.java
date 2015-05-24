@@ -8,7 +8,7 @@ public class Event1 extends Event {
 
 	public boolean selfswitch1=false;	
 	public Event1(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		
 	
 	}
@@ -25,7 +25,7 @@ public class Event1 extends Event {
 	}
 
 	public static void main(String[] args) {
-		if(game==null){System.out.print("meep");}
+
 	}
 
 }

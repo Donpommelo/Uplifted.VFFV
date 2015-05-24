@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class CaffeinePatch extends Item{
 
 	static String descr="A small adhesive strip that administers your needed chemicals\ndirectly into the bloodstream.";
+	static String descrShort="Restore Mp.";
 	public CaffeinePatch() {
 		super(2, "Caffeine Patch", true, true, true, true, false, descr);
 
@@ -25,5 +26,9 @@ public class CaffeinePatch extends Item{
 	
 	public void use(Schmuck s){
 		s.bpChange(20);
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 }

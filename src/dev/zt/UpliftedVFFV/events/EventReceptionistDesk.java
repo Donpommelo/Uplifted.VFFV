@@ -12,7 +12,7 @@ public class EventReceptionistDesk extends Event {
 
 	public boolean selfswitch1=false;
 	public EventReceptionistDesk(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y);
+		super(Assets.Table8,idnum,x, y);
 		
 	
 	}

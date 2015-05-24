@@ -6,7 +6,7 @@ public class BucketBattery extends Item{
 
 	static String descr="A bucket filled with old, bulging batteries floating in some sort of\nacidic solution.";
 	public BucketBattery() {
-		super(2, "Bucket-o-Batteries",false, true, false, false, true, descr);
+		super(2, "Bucket-o-Batteries",false, false, false, false, true, descr);
 
 	}
 	

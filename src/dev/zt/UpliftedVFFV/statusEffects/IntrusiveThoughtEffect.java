@@ -9,11 +9,11 @@ public class IntrusiveThoughtEffect extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int stack;
-	public BattleState bs;
-	public IntrusiveThoughtEffect(int i, BattleState bs){
-		super(i, "Intrusive Thoughts", true, bs);
+//	public BattleState bs;
+	public IntrusiveThoughtEffect(int i){
+		super(i, "Intrusive Thoughts", true);
 		stack = 0;
-		this.bs = bs;
+//		this.bs = bs;
 	}
 	
 	

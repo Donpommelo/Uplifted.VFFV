@@ -9,18 +9,22 @@ public class Regendegen extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public Boolean HpBp;
-	public BattleState bs;
+//	public BattleState bs;
 	public int regen;
-	public Regendegen(int i, Boolean stat, int amount, BattleState bs){
-		super(i, "Regeneration", true, bs);
+	public Regendegen(int i, Boolean stat, int amount){
+		super(i, "Regeneration", true);
 		this.HpBp = stat;
 		this.regen = amount;
-		this.bs = bs;
+	}
+	
+	public Regendegen(Boolean stat, int amount){
+		super("Regeneration");
+		this.HpBp = stat;
+		this.regen = amount;
 	}
 	
 	
-	
-	public void endofturnEffect(Schmuck s){
+	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(HpBp){
 			bs.bp.em.hpChange(6,s);;
 		}

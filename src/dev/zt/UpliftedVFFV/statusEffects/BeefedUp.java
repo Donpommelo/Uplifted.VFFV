@@ -8,10 +8,10 @@ public class BeefedUp extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public BattleState bs;
-	public BeefedUp(int i, BattleState bs){
-		super(i, "Beefed Up", true, bs);
-		this.bs = bs;
+//	public BattleState bs;
+	public BeefedUp(int i){
+		super(i, "Beefed Up", true);
+//		this.bs = bs;
 	}
 	
 	

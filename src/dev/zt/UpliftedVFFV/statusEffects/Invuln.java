@@ -9,9 +9,9 @@ public class Invuln extends status{
 	public Boolean perm = false;
 	public Boolean visible = false;
 	public int stack;
-	public BattleState bs;
-	public Invuln(int i, BattleState bs){
-		super(i, "Invulnerable", true, bs);
+//	public BattleState bs;
+	public Invuln(int i){
+		super(i, "Invulnerable", true);
 		stack = 0;
 	}
 	

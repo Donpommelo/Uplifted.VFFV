@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class MedPak extends Item{
 
 	static String descr="A container of useful medicines. The Infirmary distributes these to\nother floors to avoid having to actually see any of your faces.";
+	static String descrShort="Restore Hp.";
 	public MedPak() {
 		super(1, "Med-Pak",true, true, true, true, false,descr);
 
@@ -23,6 +24,10 @@ public class MedPak extends Item{
 	
 	public void use(Schmuck s){
 		s.hpChange(10);
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

@@ -223,6 +223,9 @@ public class MenuState extends State {
 						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
 						Item[] itemDisplay= temp.toArray(new Item[27]);
 						itemDisplay[itemSelected].use(gamestate.partymanager.party.get(characterSelected));
+						if(itemDisplay[itemSelected].consummable){
+							gamestate.inventorymanager.use(itemDisplay[itemSelected]);
+						}
 						exit = true;
 						try {
 							Thread.sleep(200);
@@ -562,7 +565,7 @@ public class MenuState extends State {
 				}
 
 				if(itemDisplay[itemSelected]!=null){
-					g.setColor(new Color(102, 178,255));
+					g.setColor(new Color(255, 255,255));
 					g.fillRect(140, 10, 150, 150);
 					g.setFont(new Font("Chewy", Font.PLAIN, 18));
 					g.setColor(new Color(0, 0,0));
@@ -575,7 +578,7 @@ public class MenuState extends State {
 					        g.drawString(line, 295, y += g.getFontMetrics().getHeight());
 					}
 				}
-				else{
+				else if(temp.size() == 0){
 					g.setColor(new Color(0, 0,0));
 					g.setFont(new Font("Chewy", Font.PLAIN, 50));
 					g.drawString("Your Inventory is Empty", 145, 115);

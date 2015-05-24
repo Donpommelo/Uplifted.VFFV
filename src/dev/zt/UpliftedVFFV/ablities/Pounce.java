@@ -9,6 +9,7 @@ public class Pounce extends Skills {
 
 	public String name = "Pounce";
 	public String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
+	public String descrShort = "Deals damage and hits first.";
 	public int cost = 1;
 	public Pounce(int index) {
 		super(index);
@@ -26,6 +27,10 @@ public class Pounce extends Skills {
 	
 	public String getDescr(){
 		return descr;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 	
 	public int getCost(){

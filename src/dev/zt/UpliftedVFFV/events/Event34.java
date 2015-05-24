@@ -9,7 +9,7 @@ public class Event34 extends Event {
 
 
 	public Event34(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		
 	
 	}

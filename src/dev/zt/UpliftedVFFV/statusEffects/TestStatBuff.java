@@ -10,12 +10,19 @@ public class TestStatBuff extends status{
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public BattleState bs;
-	public TestStatBuff(int i, int stat, double amount, BattleState bs){
-		super(i, "Stats Changed", true, bs);
+//	public BattleState bs;
+	public TestStatBuff(int i, int stat, double amount){
+		super(i, "Stats Changed", true);
 		this.statChanged = stat;
 		this.statIncrement = amount;
-		this.bs =bs;
+//		this.bs =bs;
+	}
+	
+	public TestStatBuff(int stat, double amount){
+		super("Stats Changed");
+		this.statChanged = stat;
+		this.statIncrement = amount;
+//		this.bs =bs;
 	}
 	
 	
@@ -74,5 +81,6 @@ public class TestStatBuff extends status{
 	public int getDuration(){
 		return duration;
 	}
+	
 
 }

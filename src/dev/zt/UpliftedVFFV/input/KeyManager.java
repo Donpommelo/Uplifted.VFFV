@@ -16,10 +16,10 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	}
 	
 	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
-			up = keys[KeyEvent.VK_W];
-			down = keys[KeyEvent.VK_S];
-			left = keys[KeyEvent.VK_A];
-			right = keys[KeyEvent.VK_D];
+			up = keys[KeyEvent.VK_UP];
+			down = keys[KeyEvent.VK_DOWN];
+			left = keys[KeyEvent.VK_LEFT];
+			right = keys[KeyEvent.VK_RIGHT];
 			space = keys[KeyEvent.VK_SPACE];
 			enter = keys[KeyEvent.VK_ENTER];
 			z = keys[KeyEvent.VK_Z];

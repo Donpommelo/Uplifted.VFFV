@@ -36,6 +36,7 @@ public class BattleText {
 			textList.remove(0);
 			}
 			if(ranAway){
+				bs.bp.stm.endofFite();
 				bs.end(false);
 			}
 			try {

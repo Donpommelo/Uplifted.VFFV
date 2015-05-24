@@ -1,22 +1,28 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.statusEffects.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class LetterOpener extends Item{
 
 	static String descr="An ornate knife almost threatening enough to be confiscated at an\nairport.";
+	public status[] enchantment = new status[2];
 	public LetterOpener() {
 		super(3, "Letter Opener",false,false,false, false, true, descr);
-
+		enchantment[0] = new AddStatBuff(4,3);
+		enchantment[1] = new AddStatBuff(5,3);
 	}
 	
-	public void use(Character c){
+	public status[] getEnchantment() {
+		return enchantment;
+	}
+	
+	public void unEnchantment(Schmuck s) {
+		for(status st : this.enchantment){
+			s.statuses.remove(st);
+		}
 		
-	}
-	
-	public void equipEffect(Schmuck s){
-		s.buffedStats[5]+=3;
-		s.buffedStats[4]+=3;
 	}
 
 }

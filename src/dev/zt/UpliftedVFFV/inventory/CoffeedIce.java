@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 public class CoffeedIce extends Item{
 
 	static String descr="A thermos of shaved ice with some faint coffee flavoring.";
+	static String descrShort="Restore Hp and Mp.";
 	public CoffeedIce() {
 		super(2, "Coffee'd Ice",true,  true, true, true, false,descr);
 
@@ -27,6 +28,10 @@ public class CoffeedIce extends Item{
 	public void use(Schmuck s){
 		s.hpChange(15);
 		s.bpChange(25);
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

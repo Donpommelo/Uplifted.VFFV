@@ -20,29 +20,31 @@ public class EventJorgeInvisible extends Event {
 	}
 	
 	public void run(){
-		if(selfswitch1==false){
-			switch(stage){
+/*			switch(stage){
 			case 0: 
-				super.Dialog(98, 105,this.getId());
+				if(!isSelfswitch1()){
+					super.Dialog(98, 98,this.getId());//105
+				}
+				else{
+					super.Dialog(107, 107,this.getId());
+					stage=3;
+				}
 				break;
 			case 1:
 				super.fite(0,this.getId(), false);
 				break;
 			case 2:
-				super.Dialog(106, 106,this.getId());
 				if(fightwon){
-					selfswitch1=true;
+					setSelfswitch1(true);
 				}
+				super.Dialog(106, 106,this.getId());
 				break;
 			case 3:
 				stage = 0;
 				break;
-			}			
-		}
-		else{
-			super.Dialog(107, 107,this.getId());
-			stage=3;
-		}	
+			}	*/
+		Event.events[66].run();
+		
 	}
 	
 	public boolean isSolid(){
@@ -68,5 +70,9 @@ public class EventJorgeInvisible extends Event {
 
 	public void setFightwon(boolean fightwon) {
 		this.fightwon = fightwon;
+	}
+	
+	public boolean getSelfSwitch1(){
+		return selfswitch1;
 	}
 }

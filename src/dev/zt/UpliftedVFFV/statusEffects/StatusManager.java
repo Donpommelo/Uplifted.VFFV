@@ -26,11 +26,16 @@ public class StatusManager {
 	}
 	
 	public void addStatus(Schmuck s, status stat){
-		if(s.statuses.contains(stat)){
-			s.statuses.get(s.statuses.indexOf(stat)).duration+=stat.duration;
+		if(stat.getName().equals("Stats Changed") || stat.getName().equals("Regeneration")){
+			s.statuses.add(stat);
 		}
 		else{
-			s.statuses.add(stat);
+			if(checkStatus(s,stat)){
+				findStatus(s,stat).setDuration(findStatus(s,stat).getDuration()+stat.duration);
+			}
+			else{
+				s.statuses.add(stat);
+			}
 		}
 		bs.bp.bt.textList.add(stat.inflictText(s));
 	}
@@ -50,9 +55,9 @@ public class StatusManager {
 	
 	public Boolean checkStatus(Schmuck s, status stat){
 		Boolean aff = false;
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i).getName()!=null){
-				if(s.statuses.get(i).getName().equals(stat.getName())){
+		for(status st :s.statuses){
+			if(st.getName()!=null){			
+				if(st.getName().equals(stat.getName())){					
 					aff = true;
 				}
 			}
@@ -60,11 +65,23 @@ public class StatusManager {
 		return aff;
 	}
 	
-	public void endofRound(){
+	public status findStatus(Schmuck s, status stat){
+		int index = 0;
+		for(int i=0; i<s.statuses.size(); i++){
+			if(s.statuses.get(i).getName()!=null){
+				if(s.statuses.get(i).getName().equals(stat.getName())){
+					index = i;
+				}
+			}
+		}
+		return s.statuses.get(index);
+	}
+	
+	public void endofRound(BattleState bs){
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
-					s.statuses.get(i).endofturnEffect(s);
+					s.statuses.get(i).endofturnEffect(s, bs);
 					if(s.statuses.get(i).duration==0 && s.statuses.get(i).perm==false){
 						s.statuses.remove(i);
 						i--;
@@ -83,6 +100,7 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
+					s.statuses.get(i).endoffightEffect(s, bs);
 					if(s.statuses.get(i).removedEnd){
 						s.statuses.remove(i);
 						s.calcBuffs();

@@ -41,6 +41,73 @@ public class EffectManager {
 				
 			}
 			s.tempStats[0]+=hp;
+			if(hp<0){
+				for(status st : s.statuses){
+					st.takedamageEffect(s, bs, hp);
+				}
+			}
+			if(s.tempStats[0]<0){
+				s.tempStats[0]=0;
+				bs.bp.stm.addStatus(s,s.i);
+				for(Action a : bs.bp.TurnOrderQueue){
+					if(a!=null){
+						if(a.user==s){
+							bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
+						}
+					}
+					
+				}
+			}
+			if(s.tempStats[0]>s.baseStats[0]){
+				s.tempStats[0]=s.baseStats[0];
+			}
+		}
+		
+	}
+	
+	public void hpChange(int hp, Schmuck s, int elem){
+		boolean invulnerable = false;
+		for(status st : s.statuses){
+			if(st.getName().equals("Invulnerable")){
+				invulnerable = true;
+				bs.bp.bt.textList.add(s.getName()+" took no damage.");
+			}
+		}
+		String element = "";
+		switch(elem){
+		case 0:
+			element = "Red";
+			break;
+		case 1:
+			element = "Blue";
+			break;
+		case 2:
+			element = "Green";
+			break;
+		case 3:
+			element = "Yellow";
+			break;
+		case 4:
+			element = "Purple";
+			break;
+		case 5:
+			element = "Void";
+			break;
+		}
+		if(!invulnerable){
+			hp = (int)(hp*(1-s.buffedRes[elem]));
+			if(hp > 0){
+				bs.bp.bt.textList.add(s.getName()+" restored "+hp+" health!");
+			}
+			else{
+				bs.bp.bt.textList.add(s.getName()+" received "+-hp+" "+element+" damage!");
+			}
+			s.tempStats[0]+=hp;
+			if(hp<0){
+				for(status st : s.statuses){
+					st.takedamageEffect(s, bs, hp);
+				}
+			}
 			if(s.tempStats[0]<0){
 				s.tempStats[0]=0;
 				bs.bp.stm.addStatus(s,s.i);
@@ -68,6 +135,11 @@ public class EffectManager {
 		if(s.tempStats[1]>s.baseStats[1]){
 			s.tempStats[1]=s.baseStats[1];
 		}
+	}
+	
+	public int getAcc(Schmuck perp, Schmuck vic){
+		int acc = 100*perp.getBuffedSkl()/vic.getBuffedLuk()+perp.getBonusAcc();
+		return acc;
 	}
 
 }

@@ -11,6 +11,7 @@ public class SafeRoom extends Skills {
 
 	public String name = "Safe Room";
 	public String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
+	public String descrShort = "Banish and protect target.";
 	public int cost = 6;
 	public SafeRoom(int index) {
 		super(index);
@@ -20,16 +21,14 @@ public class SafeRoom extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Safe Room!");
 		bs.bp.bt.textList.add(vic.getName()+" was banished.");
-		System.out.print(bs.bp.TurnOrderQueue.size());
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
-			System.out.print(bs.bp.TurnOrderQueue.get(i).user.getName());
-			if(bs.bp.TurnOrderQueue.get(i).user.equals(vic)){
+			if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp)){
 				bs.bp.TurnOrderQueue.remove(i);
 				i--;
 			}
 		
 		}
-		bs.bp.stm.addStatus(vic, new Invuln(1,bs));
+		bs.bp.stm.addStatus(vic, new Invuln(0));
 		
 	}
 	
@@ -39,6 +38,10 @@ public class SafeRoom extends Skills {
 	
 	public String getDescr(){
 		return descr;
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 	
 	public int getCost(){

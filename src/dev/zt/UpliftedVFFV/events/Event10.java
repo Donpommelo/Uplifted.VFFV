@@ -9,7 +9,7 @@ public class Event10 extends Event {
 
 
 	public Event10(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		
 	
 	}
@@ -17,7 +17,7 @@ public class Event10 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/BoardRoom1.txt",2, 8,"");
+		super.transport("res/Worlds/BoardRoom1.txt",2,10,"");
 	}
 
 	public static void main(String[] args) {

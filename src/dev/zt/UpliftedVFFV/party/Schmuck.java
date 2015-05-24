@@ -25,10 +25,21 @@ public class Schmuck {
 	public int[] baseStats = {0,0,0,0,0,0,0,0};
 	public int[] buffedStats;
 	public int[] tempStats = {10,10};
-	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
+	
+	//public int bonusAcc, bonusCrit, bonusScrip, bonusExp, bonusItem;
+	public int[] bonusStats = {0,0,0,0,0};
+	
+	
+//	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
+	public double[] elemRes = {.1,.1,.1,.1,.1,0};
+	public double[] buffedRes;
+	
 	public int Lvl,exp,expCurrent;
+	
 	public int expDrop;
 	public int scrDrop;
+	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
+	
 	public boolean visible, targetable;
 	public int x = 0;
 	public int y = 0;
@@ -41,7 +52,7 @@ public class Schmuck {
 	public String bio;
 	public Item itemSlot1,itemSlot2,itemSlot3;
 	public incapacitate i = new incapacitate();
-	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths){	
+	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,double[] elemRes){	
 		this.BattleSprite=sprite;
 		this.name=name;
 		this.skills = new ArrayList<Skills>();
@@ -50,11 +61,14 @@ public class Schmuck {
 		this.startStats=start;
 		this.statGrowths=growths;
 		this.buffedStats=start;
+		this.elemRes = elemRes;
+		this.buffedRes = elemRes;
 		this.exp=0;
+		int[] bonusStats = {0,0,0,0,0};
 	}
 	
-	public Schmuck(String name,int lvl,BufferedImage bsprite,BufferedImage msprite, int[] start, double[] growths){	
-		this.BattleSprite=bsprite;
+	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,double[] elemRes){	
+		this.BattleSprite=sprite;
 		this.MenuSprite1 = msprite;
 		this.name=name;
 		this.skills = new ArrayList<Skills>();
@@ -64,8 +78,11 @@ public class Schmuck {
 		this.statGrowths=growths;
 		this.buffedStats=start;
 		this.exp=0;
+		this.elemRes = elemRes;
+		this.buffedRes = elemRes;
+		int[] bonusStats = {0,0,0,0,0};
 	}
-	
+		
 	public void hpChange(int hp){
 		tempStats[0]+=hp;
 		if(tempStats[0]<0){
@@ -130,7 +147,9 @@ public class Schmuck {
 		}
 		if(meep.backpack.containsKey(i)){
 			if(thing != null){
-				meep.loot(thing,1);				
+				thing.unEnchantment(this);
+				meep.loot(thing,1);
+				
 			}
 			thing = i;
 			meep.use(i);
@@ -145,6 +164,9 @@ public class Schmuck {
 				setItemSlot3(i);
 				break;
 			}
+			for(status s : i.getEnchantment()){
+				this.statuses.add(s);
+			}		
 			calcBuffs();
 		}			
 	}	
@@ -189,6 +211,14 @@ public class Schmuck {
 		return statGrowths;
 	}
 	
+	public double[] getElemRes(){
+		return elemRes;
+	}
+	
+	public double[] getBuffedRes(){
+		return buffedRes;
+	}
+	
 	public void lvlUp(int lvl){
 		lvl--;
 		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));hpChange((int)(lvl*statGrowths[0]));
@@ -212,18 +242,13 @@ public class Schmuck {
 		for(int i=0; i <8; i++){
 			buffedStats[i] = baseStats[i];
 		}
-		for(status s : statuses){
-			s.statchanges(this);
+		for(int i=0; i<6; i++){
+			buffedRes[i] = elemRes[i];
 		}
-		if(getItemSlot1()!=null){
-			getItemSlot1().equipEffect(this);
+		for(int i=0; i<5; i++){
+			bonusStats[i] = 0;
 		}
-		if(getItemSlot2()!=null){
-			getItemSlot2().equipEffect(this);
-		}
-		if(getItemSlot3()!=null){
-			getItemSlot3().equipEffect(this);
-		}
+
 	}
 	
 	public int getMaxHp() {
@@ -270,6 +295,10 @@ public class Schmuck {
 		return scrDrop;
 	}
 	
+	public TreeMap<Item, Double> getItemdrops() {
+		return itemdrops;
+	}
+
 	public int getBasePow() {
 		return baseStats[2];
 	}
@@ -381,17 +410,7 @@ public class Schmuck {
 	public BufferedImage getMenuSprite() {
 		return MenuSprite1;
 	}
-
-
-	public void attack(Schmuck victim){
-		victim.tempStats[0]-=this.buffedStats[2]*this.buffedStats[2]/victim.buffedStats[3];
-		
-	}
 	
-	public void cast(int skillindex){
-		
-	}
-
 	public int getX() {
 		return x;
 	}
@@ -408,7 +427,93 @@ public class Schmuck {
 		this.y = y;
 	}
 	
+	public int getBonusAcc(){
+		return bonusStats[0];
+	}
 	
+	public void setBonusAcc(int bonus){
+		bonusStats[0] = bonus;
+	}
+	
+	public int getBonusCrit(){
+		return bonusStats[1];
+	}
+	
+	public void setBonusCrit(int bonus){
+		bonusStats[1] = bonus;
+	}
+	
+	public int getBonusScrip(){
+		return bonusStats[2];
+	}
+	
+	public void setBonusScrip(int bonus){
+		bonusStats[2] = bonus;
+	}
+	
+	public int getBonusExp(){
+		return bonusStats[3];
+	}
+	
+	public void setBonusExp(int bonus){
+		bonusStats[3] = bonus;
+	}
+	
+	public int getBonusItem(){
+		return bonusStats[4];
+	}
+	
+	public void setBonusItem(int bonus){
+		bonusStats[4] = bonus;
+	}
+	
+	public double getRedRes() {
+		return buffedRes[0];
+	}
+
+	public void setRedRes(double buffedRedRes) {
+		buffedRes[0] = buffedRedRes;
+	}
+	
+	public double getBlueRes() {
+		return buffedRes[1];
+	}
+
+	public void setBlueRes(double buffedBlueRes) {
+		buffedRes[1] = buffedBlueRes;
+	}
+	
+	public double getGreenRes() {
+		return buffedRes[2];
+	}
+
+	public void setGreenRes(double buffedGreenRes) {
+		buffedRes[2] = buffedGreenRes;
+	}
+	
+	public double getYellowRes() {
+		return buffedRes[3];
+	}
+
+	public void setYellowRes(double buffedYellowRes) {
+		buffedRes[3] = buffedYellowRes;
+	}
+	
+	public double getPurpleRes() {
+		return buffedRes[4];
+	}
+
+	public void setPurpleRes(double buffedPurpleRes) {
+		buffedRes[4] = buffedPurpleRes;
+	}
+	
+	public double getVoidRes() {
+		return buffedRes[5];
+	}
+
+	public void setVoidRes(double buffedVoidRes) {
+		buffedRes[5] = buffedVoidRes;
+	}
 	
 	
 	

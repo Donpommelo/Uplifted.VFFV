@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 public class SmellingSalt extends Item{
 
 	static String descr="A package of chemicals used in reviving overworked or dead coworkers.";
+	static String descrShort="Revives target.";
 	public SmellingSalt() {
 		super(2, "Smellingsalt",true, true, true, true, false,descr);
 
@@ -18,6 +19,9 @@ public class SmellingSalt extends Item{
 		bs.bp.em.hpChange(5,vic);
 	}
 	
+	public String getDescrShort() {
+		return descrShort;
+	}
 	
 
 }

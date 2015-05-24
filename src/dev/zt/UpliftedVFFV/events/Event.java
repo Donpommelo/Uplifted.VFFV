@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -16,6 +17,7 @@ import dev.zt.UpliftedVFFV.states.CutsceneState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.MenuState;
+import dev.zt.UpliftedVFFV.states.ShoppingState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
@@ -75,17 +77,19 @@ public class Event{
 	public static Event event35 = new Event35(0, 6,35);
 	public static Event event36 = new Event36(38, 56,36);
 	public static Event event37 = new Event37(0, 4,37);
+	public static Event event38 = new Event38(36, 0,38);
+	public static Event event39 = new Event39(3, 8,39);
 	
 	public static Event eventpenpal = new EventPenPal(2,4,40);
 	public static Event eventreceptionist = new EventReceptionist(7,4,41);
 	public static Event eventreceptionistdesk = new EventReceptionistDesk(7,5,42);
 	
 	public static Event eventemployee1 = new EventEmployee1(3,7,43);
-	public static Event eventemployee2 = new EventEmployee2(11,3,44);
+	public static Event eventemployee2 = new EventEmployee2(11,4,44);
 	public static Event eventelevatorpanel = new EventElevatorPanel(4,3,45);
 	public static Event eventemployee3 = new EventEmployee3(8,19,46);
 	public static Event eventemployee4 = new EventEmployee4(4,26,47);
-	public static Event eventemployee5 = new EventEmployee5(3,30,48);
+	public static Event eventemployee5 = new EventEmployee5(3,31,48);
 	public static Event eventemployee6 = new EventEmployee6(6,9,49);
 	
 	public static Event eventemployee10 = new EventEmployee10(12,12,53);
@@ -116,9 +120,51 @@ public class Event{
 	public static Event eventemployee31 = new EventEmployee31(4,13,77);
 	public static Event eventemployee32 = new EventEmployee32(4,13,78);
 	
+	public static Event eventemployeeBed1 = new EventBackroomBed1(9,8,79);
+	public static Event eventemployeeBed2 = new EventBackroomBed2(9,9,80);
+	public static Event eventemployeeDesk1 = new EventBackroomDesk1(2,10,81);
+	public static Event eventemployeeDesk2 = new EventBackroomDesk2(3,10,82);
+	public static Event eventemployeeTv = new EventBackroomTv(9,2,83);
+	public static Event eventemployeeCalandar = new EventBackroomCalendar(3,10,84);
+	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendarInvisible(3,11,85);
+	
+	public static Event eventElevatorFloor = new EventElevatorFloor(2,4,89);
+	
+	public static Event eventClock = new EventClock(0,0,90);
+	public static Event eventSofa1 = new EventSofa1(0,0,91);
+	public static Event eventSofa2 = new EventSofa2(0,0,92);
+	public static Event eventVending1 = new EventVending1(0,0,93);
+	public static Event eventVending1Invisible = new EventVending1Invisible(0,0,94);
+	public static Event eventWorkDesk1 = new EventWorkDesk1(0,0,95);
+	public static Event eventTvInvis = new EventTvInvisible(9,3,96);
+	public static Event eventWaterCooler = new EventWaterCooler(0,0,97);
+	public static Event eventWaterCoolerInvisible = new EventWaterCoolerInvisible(0,0,98);
+	
 	public static Event fitemeh = new EventTestBattle(0,0,100);
 	
-	public static Event eventemployeeMovingtest = new EventEmployeeMovingTest(3,7,101);
+	public static Event eventInvisWall = new EventInvisWall(0,0,101);
+	public static Event eventemployeeJanitor1 = new EventJanitor1(3,5,102);
+	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,103);
+	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,104);
+	public static Event eventMoverGag = new EventMoverGag(13,1,105);
+	
+	public static Event eventFilingCabinet = new EventFilingCabinet(0,0,106);
+	public static Event table0 = new EventTable0(0,0,107);
+	public static Event table1 = new EventTable1(0,0,108);
+	public static Event table2 = new EventTable2(0,0,109);
+	public static Event table3 = new EventTable3(0,0,110);
+	public static Event table4 = new EventTable4(0,0,111);
+	public static Event table5 = new EventTable5(0,0,112);
+	public static Event table6 = new EventTable6(0,0,113);
+	public static Event table7 = new EventTable7(0,0,114);
+	public static Event table8 = new EventTable8(0,0,115);
+	public static Event table9 = new EventTable9(0,0,116);
+	
+	public static Event safe1 = new EventSafe1(10,30,117);
+	public static Event safe2 = new EventSafe2(0,0,118);
+	public static Event safe3 = new EventSafe3(0,0,119);
+	
+	
 	
 	public Event(Game g, StateManager sm,GameState gs) {
 		game=g;
@@ -273,9 +319,19 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-		
 
 	}
+	
+	public static void shop(int EventId,TreeMap<Item, Integer> choices, BufferedImage sk){
+		StateManager.states.push(new ShoppingState(game,gamestate,statemanager,EventId,choices,sk));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
+
+	}
+	
 	
 	public void recruit(Schmuck recruit){
 		if(gamestate.partymanager.party.size()<5){
@@ -297,6 +353,10 @@ public class Event{
 		else{
 			gamestate.inventorymanager.backpack.put(i, num);
 		}
+	}
+	
+	public void scriptChange(int i){
+		gamestate.scriptChange(i);
 	}
 	
 	public int getId() {

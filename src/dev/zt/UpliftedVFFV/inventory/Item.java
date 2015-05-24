@@ -4,12 +4,14 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 //items class.
 //change usefrommenu to consummable later
 public class Item implements Comparable<Item>{
 	public BufferedImage ItemSprite;
-	public String name,descr;
+	public String name,descr,descrShort;
 	public int Id;
 	public Boolean usedfromMenu,usefromBattle, consummable, targeted, equipable = true;
 	
@@ -53,6 +55,10 @@ public class Item implements Comparable<Item>{
 	public String getDescr() {
 		return descr;
 	}
+	
+	public String getDescrShort() {
+		return "meep";
+	}
 
 	
 	public int compareTo(Item obj) {
@@ -85,7 +91,11 @@ public class Item implements Comparable<Item>{
 		return consummable;
 	}
 	
-	public void equipEffect(Schmuck s){
+	public status[] getEnchantment() {
+		return null;
+	}
+	
+	public void unEnchantment(Schmuck s) {
 		
 	}
 

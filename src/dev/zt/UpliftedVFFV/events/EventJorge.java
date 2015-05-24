@@ -20,10 +20,15 @@ public class EventJorge extends Event {
 	}
 	
 	public void run(){
-		if(selfswitch1==false){
 			switch(stage){
 			case 0: 
-				super.Dialog(98, 105,this.getId());
+				if(!isSelfswitch1()){
+					super.Dialog(98, 105,this.getId());
+				}
+				else{
+					super.Dialog(107, 107,this.getId());
+					stage=3;
+				}
 				break;
 			case 1:
 				super.fite(0,this.getId(), false);
@@ -31,7 +36,6 @@ public class EventJorge extends Event {
 			case 2:
 				if(fightwon){
 					setSelfswitch1(true);
-//					selfswitch1=true;
 				}
 				super.Dialog(106, 106,this.getId());
 				break;
@@ -39,11 +43,7 @@ public class EventJorge extends Event {
 				stage = 0;
 				break;
 			}			
-		}
-		else{
-			super.Dialog(107, 107,this.getId());
-			stage=3;
-		}	
+		
 	}
 	
 	public boolean isSolid(){
@@ -69,5 +69,9 @@ public class EventJorge extends Event {
 
 	public void setFightwon(boolean fightwon) {
 		this.fightwon = fightwon;
+	}
+	
+	public boolean getSelfSwitch1(){
+		return selfswitch1;
 	}
 }

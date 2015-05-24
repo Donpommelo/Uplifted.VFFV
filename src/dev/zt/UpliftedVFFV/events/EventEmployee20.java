@@ -54,12 +54,14 @@ public class EventEmployee20 extends Event {
 				super.ChoiceBranch(this.getId(), Choices);
 				break;
 			case 2:
+				Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
 				selfswitch1=true;
 				stage=0;
 			}
 		}
 		else{
 			super.Dialog(88, 88,this.getId());
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
 			stage=2;
 		}
 			
@@ -69,9 +71,6 @@ public class EventEmployee20 extends Event {
 	public int getfinalstage() {
 		return finalstage;
 	}
-	
-
-
 
 	public int getstage() {
 		return stage;
@@ -81,8 +80,6 @@ public class EventEmployee20 extends Event {
 	public void setstage(int stage) {
 		EventEmployee20.stage = stage;
 	}
-
-
 
 	public void ChoiceMade(int i){
 		switch(i){

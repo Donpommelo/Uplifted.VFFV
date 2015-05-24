@@ -10,6 +10,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class BattleSprites {
@@ -58,25 +59,18 @@ public class BattleSprites {
 
 	public void render(Graphics g) {
 		g.setColor(new Color(200,200,0));
-		g.fillOval(allies.get(bs.bp.currentlySelected).getX()+15,allies.get(bs.bp.currentlySelected).getY()+60,75,75);
+		g.fillOval(allies.get(bs.bp.currentlySelected).getX()+15,allies.get(bs.bp.currentlySelected).getY()+150,90,45);
 		for(int i=0;i<allies.size();i++){
 			g.setColor(new Color(255,255,0));
 			g.drawString("Hp: "+allies.get(i).getCurrentHp()+"/"+allies.get(i).getMaxHp(), allies.get(i).getX()+20, allies.get(i).getY()-20);
 			g.drawString("Mp: "+allies.get(i).getCurrentBp()+"/"+allies.get(i).getMaxBp(), allies.get(i).getX()+20, allies.get(i).getY());
-			if(!bs.bp.stm.checkStatus(allies.get(i), new incapacitate())){
-				g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(),allies.get(i).getY(),allies.get(i).getBattleSprite().getWidth(),allies.get(i).getBattleSprite().getHeight(),null);
-			}
+			g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(),allies.get(i).getY(),allies.get(i).getBattleSprite().getWidth(),allies.get(i).getBattleSprite().getHeight(),null);
 			g.setColor(new Color(204,0,0));
 			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-20, 80, 5);
 			g.setColor(new Color(0,204,0));
 			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-20, 80*allies.get(i).getCurrentHp()/allies.get(i).getMaxHp(), 5);
 			g.setColor(new Color(0,0,204));
-			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-15, 80*allies.get(i).getCurrentBp()/allies.get(i).getMaxBp(), 5);
-/*			if(bs.bp.TurnOrderQueue.contains(allies.get(i))){
-				if(bs.bp.TurnOrderQueue.get(bs.bp.TurnOrderQueue.indexOf(allies.get(i))) != null){
-					g.drawImage(bs.bp.TurnOrderQueue.get(bs.bp.TurnOrderQueue.indexOf(allies.get(i))).skill.icon, allies.get(i).getX(), allies.get(i).getY(), null);
-				}
-			}*/			
+			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-15, 80*allies.get(i).getCurrentBp()/allies.get(i).getMaxBp(), 5);	
 		}
 		for(Action a :bs.bp.TurnOrderQueue){
 			if(a!=null){
@@ -86,14 +80,14 @@ public class BattleSprites {
 			}
 		}
 		for(int i=0;i<enemy.size();i++){
-			if(!bs.bp.stm.checkStatus(enemy.get(i), new incapacitate())){
-				g.drawImage(enemy.get(i).getBattleSprite(), enemy.get(i).getX(),enemy.get(i).getY(),enemy.get(i).getBattleSprite().getWidth(),enemy.get(i).getBattleSprite().getHeight(),null);
+			Schmuck temp = enemy.get(i);
+			if(!bs.bp.stm.checkStatus(temp, new incapacitate())){
+				g.drawImage(temp.getBattleSprite(), temp.getX(),enemy.get(i).getY(),temp.getBattleSprite().getWidth(),temp.getBattleSprite().getHeight(),null);
 				g.setColor(new Color(204,0,0));
-				g.fillRect(enemy.get(i).getX(), enemy.get(i).getY(), 80, 5);
+				g.fillRect(temp.getX(), temp.getY(), 80, 5);
 				g.setColor(new Color(0,204,0));
-				g.fillRect(enemy.get(i).getX(), enemy.get(i).getY(), 80*enemy.get(i).getCurrentHp()/enemy.get(i).getMaxHp(), 5);
-			}
-		
+				g.fillRect(temp.getX(), temp.getY(), 80*temp.getCurrentHp()/temp.getMaxHp(), 5);
+			}		
 		}
 
 	}
@@ -101,13 +95,14 @@ public class BattleSprites {
 	public void targetUpdate(){
 		alliesTargets.clear();
 		for(Schmuck s : allies){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate())){
+			if(!bs.bp.stm.checkStatus(s, new incapacitate()) && !bs.bp.stm.checkStatus(s, new Untouchable(1))){
 				alliesTargets.add(s);
 			}
 			
 		}
+		enemyTargets.clear();
 		for(Schmuck s : enemy){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate())){
+			if(!bs.bp.stm.checkStatus(s, new incapacitate()) && !bs.bp.stm.checkStatus(s, new Untouchable(1))){
 				enemyTargets.add(s);
 			}
 		}

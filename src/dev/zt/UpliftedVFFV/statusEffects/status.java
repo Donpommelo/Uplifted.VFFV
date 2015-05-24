@@ -11,20 +11,20 @@ public class status {
 	public Boolean removedEnd = true;
 	public BattleState bs;
 	public int stack;
-	public status(int i, String n, Boolean end, BattleState bs){
+	public status(int i, String n, Boolean end){//, BattleState bs){
 		this.duration=i;
 		this.perm = false;
 		this.name = n;
 		this.removedEnd = end;
-		this.bs = bs;
+//		this.bs = bs;
 	}
 	
-	public status(String n, BattleState bs){
+/*	public status(String n, BattleState bs){
 		this.perm=true;
 		this.name = n;
 		this.removedEnd=false;
 		this.bs =bs;
-	}
+	}*/
 	
 	public status(String n){
 		this.perm=true;
@@ -46,7 +46,23 @@ public class status {
 		return false;
 	}
 	
-	public void endofturnEffect(Schmuck s){
+	public void endofturnEffect(Schmuck s, BattleState bs){
+	
+	}
+	
+	public void startoffightEffect(Schmuck s, BattleState bs){
+		
+	}
+	
+	public void endoffightEffect(Schmuck s, BattleState bs){
+		
+	}
+	
+	public void takedamageEffect(Schmuck s, BattleState bs, int damage){
+		
+	}	
+	
+	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}
 	

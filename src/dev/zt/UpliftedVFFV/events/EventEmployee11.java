@@ -13,7 +13,9 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 public class EventEmployee11 extends Event {
 
 	public boolean selfswitch1=false;
-	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM2);
+	public static int stage=0;						
+	public static int finalstage=1;
+	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeM2);
 	public EventEmployee11(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		
@@ -37,12 +39,24 @@ public class EventEmployee11 extends Event {
 		}
 		
 		if(selfswitch1==false){
-			super.Dialog(74, 75,this.getId());
-			super.loot(new FennelDonut(),1);
-			selfswitch1=true;
+			switch(stage){
+			case 0: 
+				super.Dialog(74, 75,this.getId());
+				super.loot(new FennelDonut(),1);
+				break;
+			case 1:
+				Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+				selfswitch1 = true;
+				stage = 0;
+				break;
+				
+			}
+		
 		}
 		else{
 			super.Dialog(76, 76,this.getId());
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			stage = 1;
 		}
 
 	}
@@ -53,5 +67,18 @@ public class EventEmployee11 extends Event {
 	
 	public boolean isSolid(){
 		return true;
+	}
+	
+	public int getfinalstage() {
+		return finalstage;
+	}
+	
+	public int getstage() {
+		return stage;
+	}
+
+
+	public void setstage(int stage) {
+		EventEmployee11.stage = stage;
 	}
 }

@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class LemonyFresh extends Item{
 
 	static String descr="A can of translucent liquid. It is either the tastiest detergent or the\nmost antiseptic energy drink on the market.";
+	static String descrShort="Restore Hp and Bp and\nshorten statuses.";
 	public LemonyFresh() {
 		super(2, "Lemony Fresh",true, true, true, true, false,descr);
 
@@ -26,6 +27,10 @@ public class LemonyFresh extends Item{
 				s.setDuration(s.getDuration()/2);
 			}
 		}
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

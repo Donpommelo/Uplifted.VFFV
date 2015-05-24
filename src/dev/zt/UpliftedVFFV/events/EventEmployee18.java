@@ -12,7 +12,9 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 public class EventEmployee18 extends Event {
 
 	public boolean selfswitch1=false;
-	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeF);
+	public static int stage=0;						
+	public static int finalstage=1;
+	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeF);
 	public EventEmployee18(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		
@@ -34,8 +36,16 @@ public class EventEmployee18 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 		}
+		switch(stage){
+		case 0: 
 			super.Dialog(85, 86,this.getId());
-		
+			break;
+		case 1:
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
+			stage = 0;
+			break;
+			
+		}
 
 	}
 
@@ -45,5 +55,21 @@ public class EventEmployee18 extends Event {
 	
 	public boolean isSolid(){
 		return true;
+	}
+	
+	public int getfinalstage() {
+		return finalstage;
+	}
+	
+
+
+
+	public int getstage() {
+		return stage;
+	}
+
+
+	public void setstage(int stage) {
+		EventEmployee18.stage = stage;
 	}
 }

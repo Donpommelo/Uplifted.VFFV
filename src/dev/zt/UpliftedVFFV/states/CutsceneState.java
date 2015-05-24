@@ -32,7 +32,6 @@ public class CutsceneState extends State {
 		this.scenes = slides;
 		this.EventId=eventId;
 		this.image = 0;
-		System.out.print("meep");
 	}
 
 	public void tick() {
