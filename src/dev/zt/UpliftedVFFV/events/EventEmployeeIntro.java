@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.inventory.*;
 import dev.zt.UpliftedVFFV.states.DialogState;
@@ -17,16 +18,18 @@ public class EventEmployeeIntro extends Event {
 	public static float xPos,yPos;
 	public boolean selfswitch1=false;
 	public static int stage=0;						
-	public static int finalstage=4;		
+	public static int finalstage=7;		
 	public boolean drawn = true;
 	public boolean solid = true;
 	public static BufferedImage img=Assets.EmployeeM2;
-	public static BufferedImage[] scenes = new BufferedImage[1]; 
+	public static BufferedImage[] scenes = new BufferedImage[2]; 
 	public EventEmployeeIntro(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		xPos=x;
 		yPos=y;
 		Event.events[this.getId()].test.runlast = 3;
+		scenes[0]=ImageLoader.loadImage("/Cutscenes/Intro3.png");
+		scenes[1]=ImageLoader.loadImage("/Cutscenes/Intro4.png");
 	}
 	
 
@@ -63,16 +66,27 @@ public class EventEmployeeIntro extends Event {
 				Event.events[3].setOpen(true);
 				super.moveUp();
 				break;
-			case 4:				
-				Event.events[3].setOpen(false);
-//				super.Cutscene(scenes, this.getId());
-				Event.events[40].setDrawn(true);
+			case 4:
 				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
 				drawn = false;
 				solid = false;
 				selfswitch1 = true;
-				KeyManager.setCutsceneMode(false);
+				Event.events[3].setOpen(false);
+				super.Timer(this.getId(), 60);
+				break;
+			case 5:
+				Event.events[3].setOpen(true);
+				super.Timer(this.getId(), 30);
+				break;
+			case 6:		
+				Event.events[3].setOpen(false);
+				Event.events[40].setDrawn(true);
 				super.transport("res/Worlds/SouthElevator.txt", 4, 4,"");
+				super.Timer(this.getId(), 75);
+				KeyManager.setCutsceneMode(false);
+				break;
+			case 7:
+				super.Cutscene(scenes, this.getId());
 				break;
 		
 			}

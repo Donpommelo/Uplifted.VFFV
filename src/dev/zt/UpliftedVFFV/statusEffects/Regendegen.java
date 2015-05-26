@@ -26,10 +26,10 @@ public class Regendegen extends status{
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(HpBp){
-			bs.bp.em.hpChange(6,s);;
+			bs.bp.em.hpChange(regen,s);;
 		}
 		else{
-			bs.bp.em.bpChange(6,s);
+			bs.bp.em.bpChange(regen,s);
 		}
 	}
 

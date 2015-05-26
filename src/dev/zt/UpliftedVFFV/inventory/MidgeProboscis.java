@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class MidgeProboscis extends Item{
 
 	static String descr="An insect drinking straw for bodily fluids";
+	static String descrShort="Lifesteal on attacks.";
 	public status[] enchantment = new status[1];
 	public MidgeProboscis() {
 		super(2, "Midge Proboscis",false,false,false, false, true, descr);
@@ -22,6 +23,10 @@ public class MidgeProboscis extends Item{
 			s.statuses.remove(st);
 		}
 		
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

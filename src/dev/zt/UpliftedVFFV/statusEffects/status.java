@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -42,15 +43,15 @@ public class status {
 
 
 	
-	public Boolean restrict(){
-		return false;
+	public void restrict(Schmuck s, Action a, BattleState bs){
+
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 	
 	}
 	
-	public void startoffightEffect(Schmuck s, BattleState bs){
+	public void startoffightEffect(Schmuck s, BattleState bs){//
 		
 	}
 	
@@ -58,13 +59,18 @@ public class status {
 		
 	}
 	
-	public void takedamageEffect(Schmuck s, BattleState bs, int damage){
+	public void takedamageEffect(Schmuck s, BattleState bs, int damage){//
 		
 	}	
+	
+	public void onAction(BattleState bs, Action a){
+		
+	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}
+	
 	
 	public void run(Schmuck s){
 		

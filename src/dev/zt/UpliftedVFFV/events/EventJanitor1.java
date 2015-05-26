@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.CaffeinePatch;
+import dev.zt.UpliftedVFFV.inventory.DeploreApp;
 import dev.zt.UpliftedVFFV.inventory.FishWater;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.LemonyFresh;
@@ -35,6 +36,7 @@ public class EventJanitor1 extends Event {
 		selection.put(new LemonyFresh(), 5);
 		selection.put(new SummonSauce(), 5);
 		selection.put(new SleepingPills(), 6);
+		selection.put(new DeploreApp(), 960);
 	}
 	
 

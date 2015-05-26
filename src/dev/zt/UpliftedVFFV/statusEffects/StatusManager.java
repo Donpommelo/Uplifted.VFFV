@@ -37,7 +37,9 @@ public class StatusManager {
 				s.statuses.add(stat);
 			}
 		}
-		bs.bp.bt.textList.add(stat.inflictText(s));
+		if(!stat.inflictText(s).equals("")){
+			bs.bp.bt.textList.add(stat.inflictText(s));
+		}
 	}
 	
 	public void removeStatus(Schmuck s, status stat){

@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.inventory;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class SmellingSalt extends Item{
 
@@ -21,6 +22,19 @@ public class SmellingSalt extends Item{
 	
 	public String getDescrShort() {
 		return descrShort;
+	}
+	
+	public void use(Schmuck s){
+		s.hpChange(5);
+		for(int i=0; i<s.statuses.size(); i++){
+			if(s.statuses.get(i).getName()!=null){
+				if(s.statuses.get(i).getName().equals("incapacitated")){
+					s.statuses.remove(i);
+					i--;
+				}
+			}
+		}
+		
 	}
 	
 

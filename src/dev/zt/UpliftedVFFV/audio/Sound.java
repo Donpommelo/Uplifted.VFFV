@@ -11,27 +11,114 @@ public class Sound {
 	static File test;
 	static AudioInputStream testStream;
 	static Clip testClip;
+	public static Clip currentSong;
+	public static String currentFile;
+	public static Clip Intro, ElevatorTheme, OfficeTheme, BattleTheme, BossTheme;
 	
 	public static void main(String args[]){
-/*		try{
+
+	}
+	
+	public void initiate(){
+		try{
 			test = new File("res/Audio/Intro.wav");
+			testStream = AudioSystem.getAudioInputStream(test);
+			Intro = AudioSystem.getClip();
+		}catch (Exception e) {			}
+		try{
+			test = new File("res/Audio/Piano_de_Bossa_-_Samba_de_Ver_o_.wav");
+			testStream = AudioSystem.getAudioInputStream(test);
+			ElevatorTheme = AudioSystem.getClip();
+		}catch (Exception e) {			}
+		try{
+			test = new File("res/Audio/Piano_de_Bossa_-_Wave.wav");
+			testStream = AudioSystem.getAudioInputStream(test);
+			Intro = AudioSystem.getClip();
+		}catch (Exception e) {			}
+		try{
+			test = new File("res/Audio/Output 1-2.wav");
+			testStream = AudioSystem.getAudioInputStream(test);
+			Intro = AudioSystem.getClip();
+		}catch (Exception e) {			}
+		try{
+			test = new File("res/Audio/Brownout_-_African_Battle.wav");
+			testStream = AudioSystem.getAudioInputStream(test);
+			Intro = AudioSystem.getClip();
+		}catch (Exception e) {			}
+	}
+	
+	
+	public void playOnce(String fileName){
+		try{
+			test = new File(fileName);
+			testStream = AudioSystem.getAudioInputStream(test);
+			testClip = AudioSystem.getClip();
+			testClip.open(testStream);
+			testClip.start();
+		}catch (Exception e) {			}
+	}
+	
+	public void playLoop(String fileName){
+		try{
+			test = new File(fileName);
 			testStream = AudioSystem.getAudioInputStream(test);
 			testClip = AudioSystem.getClip();
 			testClip.open(testStream);
 			testClip.start();
 			testClip.loop(Clip.LOOP_CONTINUOUSLY);
-		}catch (Exception e) {			}*/
-	}
-	
-	public void test(){
-		try{
-			test = new File("res/Audio/Intro.wav");
-			testStream = AudioSystem.getAudioInputStream(test);
-			testClip = AudioSystem.getClip();
-			testClip.open(testStream);
-			testClip.start();
-//			testClip.loop(Clip.LOOP_CONTINUOUSLY);
-
 		}catch (Exception e) {			}
 	}
+	
+	public void startMusic(int track){
+		if(currentSong!=null){
+			currentSong.stop();
+		}
+		switch(track){
+		case 0:
+			setCurrentSong(Intro);
+			currentFile = "res/Audio/Intro.wav";
+			break;
+		case 1:
+			setCurrentSong(ElevatorTheme);
+			currentFile = "res/Audio/Piano_de_Bossa_-_Samba_de_Ver_o_.wav";
+			break;
+		case 2:
+			setCurrentSong(OfficeTheme);
+			currentFile = "res/Audio/Piano_de_Bossa_-_Wave.wav";
+			break;
+		case 3:
+			setCurrentSong(BattleTheme);
+			currentFile = "res/Audio/Output 1-2.wav";
+			break;
+		case 4:
+			setCurrentSong(BossTheme);
+			currentFile = "res/Audio/Brownout_-_African_Battle.wav";
+			break;
+			
+		}
+		try{
+			test = new File(currentFile);
+			testStream = AudioSystem.getAudioInputStream(test);
+			currentSong = AudioSystem.getClip();
+			currentSong.open(testStream);
+			currentSong.start();
+			currentSong.loop(Clip.LOOP_CONTINUOUSLY);
+		}catch (Exception e) {			}
+	}
+
+
+	public static void setCurrentSong(Clip currentSong) {
+		Sound.currentSong = currentSong;
+	}
+
+	public static Clip getCurrentSong() {
+		return currentSong;
+	}
+	
+	public static String getCurrentFile(){
+		return currentFile;
+	}
+	
+	
+	
 }

@@ -16,7 +16,7 @@ public class Runaway extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" ran away!");
-		if(bs.runnable){
+		if(bs.runnable && Math.random()<=.6){
 			bs.bp.bt.ranAway = true;
 		}
 		else{

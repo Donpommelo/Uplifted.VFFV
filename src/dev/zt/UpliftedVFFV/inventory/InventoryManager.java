@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.inventory;
 
-import java.util.Set;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;

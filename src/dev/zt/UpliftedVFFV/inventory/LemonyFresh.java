@@ -29,6 +29,11 @@ public class LemonyFresh extends Item{
 		}
 	}
 	
+	public void use(Schmuck s){
+		s.hpChange(15);
+		s.bpChange(15);
+	}
+	
 	public String getDescrShort() {
 		return descrShort;
 	}

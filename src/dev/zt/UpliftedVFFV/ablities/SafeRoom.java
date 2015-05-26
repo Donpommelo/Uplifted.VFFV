@@ -12,7 +12,7 @@ public class SafeRoom extends Skills {
 	public String name = "Safe Room";
 	public String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
 	public String descrShort = "Banish and protect target.";
-	public int cost = 6;
+	public int cost = 5;
 	public SafeRoom(int index) {
 		super(index);
 

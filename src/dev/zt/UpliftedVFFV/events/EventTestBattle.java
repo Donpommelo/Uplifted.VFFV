@@ -13,7 +13,7 @@ public class EventTestBattle extends Event {
 	}
 	
 	public void run(){
-			super.fite(5, this.id, true);
+			super.fite(0, this.id, true, true);
 
 	}
 	
@@ -22,6 +22,6 @@ public class EventTestBattle extends Event {
 	}
 	
 	public boolean drawn(){
-		return false;
+		return  false;
 	}
 }

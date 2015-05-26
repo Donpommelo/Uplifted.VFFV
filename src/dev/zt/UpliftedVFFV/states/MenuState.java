@@ -64,6 +64,7 @@ public class MenuState extends State {
 			}
 			if(game.getKeyManager().up){
 				if(optionSelected>0){
+					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected--;
 					try {
 						Thread.sleep(100);
@@ -73,7 +74,8 @@ public class MenuState extends State {
 				}
 			}
 			if(game.getKeyManager().down){
-				if(optionSelected<3){			//4 options currently. change this number later wen more are added
+				if(optionSelected<5){			//4 options currently. change this number later wen more are added
+					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected++;
 					try {
 						Thread.sleep(100);
@@ -107,6 +109,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -117,6 +120,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -129,6 +133,7 @@ public class MenuState extends State {
 				else{
 					if(game.getKeyManager().down){
 						if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							skillSelected++;
 							if(itemPointer==3){
 								backpackLocation++;
@@ -145,6 +150,7 @@ public class MenuState extends State {
 						}
 						if(game.getKeyManager().up){
 							if(skillSelected>0){
+								game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 								skillSelected--;
 								if(itemPointer==0){
 									backpackLocation--;
@@ -179,6 +185,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -189,6 +196,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -199,6 +207,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().up){
 						if(itemslot>1){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							itemslot--;
 							try {
 								Thread.sleep(100);
@@ -209,6 +218,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().down){
 						if(itemslot<3){			
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							itemslot++;
 							try {
 								Thread.sleep(100);
@@ -235,6 +245,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -245,6 +256,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -269,7 +281,8 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 						if(itemSelected<gamestate.inventorymanager.backpack.size()-1){
-						itemSelected++;
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected++;
 						if(itemPointer==26){
 							backpackLocation+=3;
 							itemPointer=24;
@@ -286,6 +299,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(itemSelected>0){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected--;
 						if(itemPointer==0){
 							backpackLocation-=3;
@@ -303,7 +317,8 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().down){
 						if(itemSelected<gamestate.inventorymanager.backpack.size()-3){
-						itemSelected+=3;
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected+=3;
 						if(26-itemPointer<3){
 							backpackLocation+=3;
 						}
@@ -319,6 +334,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().up){
 						if(itemSelected>2){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected-=3;
 						if(itemPointer<3){
 							backpackLocation-=3;
@@ -339,6 +355,7 @@ public class MenuState extends State {
 				else{
 					if(game.getKeyManager().right){
 					if(itemOption<2){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						itemOption++;
 						try {
 							Thread.sleep(100);
@@ -349,6 +366,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(itemOption>0){
+							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 							itemOption--;
 							try {
 								Thread.sleep(100);
@@ -442,6 +460,8 @@ public class MenuState extends State {
 		g.drawString("Inventory", 10, 50);
 		g.drawString("Map", 10, 75);
 		g.drawString("Directory", 10, 100);
+		g.drawString("Objectives", 10, 125);
+		g.drawString("Quit", 10, 150);
 		g.drawString(gamestate.Script+" Script", 10, 400);
 			switch(optionSelected){
 			case 0:
@@ -577,6 +597,9 @@ public class MenuState extends State {
 						for (String line : itemDisplay[itemSelected].getDescr().split("\n"))
 					        g.drawString(line, 295, y += g.getFontMetrics().getHeight());
 					}
+					if(!itemDisplay[itemSelected].getDescrShort().equals("meep")){
+						g.drawString(itemDisplay[itemSelected].getDescrShort(), 295, 55);
+					}
 				}
 				else if(temp.size() == 0){
 					g.setColor(new Color(0, 0,0));
@@ -649,20 +672,41 @@ public class MenuState extends State {
 						}
 						else{
 							g.drawString("Item slot 1: "+tempSchmuck.itemSlot1.getName(),300,240);
+							if(!tempSchmuck.itemSlot1.getDescrShort().equals("meep")){
+								g.setFont(new Font("Chewy", Font.PLAIN, 12));
+								g.drawString(tempSchmuck.itemSlot1.getDescrShort(),325,255);
+								g.setFont(new Font("Chewy", Font.PLAIN, 18));
+							}
+							
 						}
 						if(tempSchmuck.itemSlot2 == null){
 							g.drawString("Item slot 2: Nothing", 300,290);
+							
 						}
 						else{
 							g.drawString("Item slot 2: "+tempSchmuck.itemSlot2.getName(),300,290);
+							if(!tempSchmuck.itemSlot2.getDescrShort().equals("meep")){
+								g.setFont(new Font("Chewy", Font.PLAIN, 12));
+								g.drawString(tempSchmuck.itemSlot2.getDescrShort(),325,305);
+								g.setFont(new Font("Chewy", Font.PLAIN, 18));
+							}
 						}
 						if(tempSchmuck.itemSlot3 == null){
 							g.drawString("Item slot 3: Nothing", 300,340);
 						}
 						else{
 							g.drawString("Item slot 3: "+tempSchmuck.itemSlot3.getName(),300,340);
+							if(!tempSchmuck.itemSlot3.getDescrShort().equals("meep")){
+								g.setFont(new Font("Chewy", Font.PLAIN, 12));
+								g.drawString(tempSchmuck.itemSlot3.getDescrShort(),325,355);
+								g.setFont(new Font("Chewy", Font.PLAIN, 18));
+							}
 						}									
 						g.drawString(itemDisplay[itemSelected].name,500,190+50*itemslot);
+						if(!itemDisplay[itemSelected].getDescrShort().equals("meep")){
+							g.setFont(new Font("Chewy", Font.PLAIN, 12));
+							g.drawString(itemDisplay[itemSelected].getDescrShort(),500,205+50*itemslot);
+						}
 					}
 					if(useitemChosen){
 						g.setColor(new Color(102, 178,255));
@@ -671,6 +715,7 @@ public class MenuState extends State {
 						g.setColor(new Color(0, 0,0));
 						g.setFont(new Font("Chewy", Font.PLAIN, 12));
 						g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
+						g.drawString(itemDisplay[itemSelected].getName()+": "+itemDisplay[itemSelected].getDescrShort(),440,210);
 						g.setColor(new Color(102, 178,255));
 						g.fillRect(410, 180, 160, 5);
 						g.setColor(new Color(0,204,0));

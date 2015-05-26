@@ -14,7 +14,7 @@ public class EventElevatorPanel extends Event {
 
 	public boolean selfswitch1=false;					//whether employeeIntro has left the elevator yet
 	public boolean selfswitch2=false;					//whether the Pen Pal's floor has been recruited yet 
-	public String[] Choices={"1","2","3","4","5","6","7","8","9","11","12","Violence"};
+	public String[] Choices={"1:Reception","2:Bathhouse","3:The Offices","4:Aquarium","5:Management","6:Food Services","7:Infirmary","8:Orchestral Cathedral","9:Little America","11:Justice Park","12: Gallery of Lights"};
 	public static int stage=0;
 	public static int finalstage=1;
 
@@ -38,7 +38,7 @@ public class EventElevatorPanel extends Event {
 				}
 				else{														//otherwise choices are present.
 					super.Dialog(63, 63,this.getId());					
-					super.ChoiceBranch(this.getId(), Choices);
+					super.ChoiceBranch(this.getId(), Choices,200);
 				}
 				break;
 			case 1:

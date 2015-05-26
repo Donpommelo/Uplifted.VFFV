@@ -38,7 +38,8 @@ public class CutsceneState extends State {
 		
 		//if space is pressed and the there re more images in the array, the next one will be displayed
 		if(game.getKeyManager().space){
-				if(image>=scenes.length-1){
+			game.getAudiomanager().playSound("res/Audio/item_recipe_pickup_shop.wav", false);	
+			if(image>=scenes.length-1){
 					statemanager.states.pop();
 					
 					//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
@@ -49,7 +50,7 @@ public class CutsceneState extends State {
 					}
 					
 					}	
-				else{
+				else{					
 					image++;
 				}
 				try {

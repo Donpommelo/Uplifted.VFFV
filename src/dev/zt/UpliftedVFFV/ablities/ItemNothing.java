@@ -10,6 +10,7 @@ public class ItemNothing extends Skills {
 	
 public Item thing;
 public GameState gs;
+public String name = "Item";
 	public ItemNothing(int index, GameState gs) {
 		super(index, Assets.item);
 		this.gs=gs;
@@ -19,6 +20,10 @@ public GameState gs;
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" throws nothing at "+vic.getName());
 		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
+	}
+	
+	public String getName(){
+		return name;
 	}
 
 }

@@ -22,7 +22,7 @@ public class ChoiceBranchState extends State {
 	
 	public int EventId;
 	public String[] num;
-	public int currentchoice, choicelocation,firstchoice, boxsize;
+	public int currentchoice, choicelocation,firstchoice, boxsize, width;
 	public boolean selected,exit;
 	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
@@ -31,8 +31,26 @@ public class ChoiceBranchState extends State {
 		currentchoice=0;				//which item is selected
 		choicelocation=0;				//where does the item show up on the menu
 		firstchoice=0;					//where out of all the options is the list currently looking at
+		selected=false;			
+		this.width = 100;
+		exit=false;						//pressed when exiting. back button
+		if(num.length>5){				//list is 5 items long. Any longer and the list will scroll
+			boxsize=5;
+		}
+		else{
+			boxsize=num.length;
+		}
+	}
+	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices, int width){
+		super(game,sm);
+		this.EventId=eventId;
+		this.num=choices;
+		currentchoice=0;				//which item is selected
+		choicelocation=0;				//where does the item show up on the menu
+		firstchoice=0;					//where out of all the options is the list currently looking at
 		selected=false;					
 		exit=false;						//pressed when exiting. back button
+		this.width = width;
 		if(num.length>5){				//list is 5 items long. Any longer and the list will scroll
 			boxsize=5;
 		}
@@ -55,6 +73,7 @@ public class ChoiceBranchState extends State {
 		
 		//pressing space runs the currently selected option
 		if(game.getKeyManager().space){
+			
 			selected=true;
 			try {
 				Thread.sleep(100);
@@ -66,6 +85,7 @@ public class ChoiceBranchState extends State {
 		//up and down choose options
 		if(game.getKeyManager().up){
 			if(currentchoice>0){
+				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 				currentchoice--;
 				if(choicelocation==0){
 					firstchoice--;
@@ -83,6 +103,7 @@ public class ChoiceBranchState extends State {
 		}
 		if(game.getKeyManager().down){
 			if(currentchoice<num.length-1){
+				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 				currentchoice++;
 				if(choicelocation==boxsize-1){
 					firstchoice++;
@@ -135,9 +156,9 @@ public class ChoiceBranchState extends State {
 		}
 		else{
 			g.setColor(new Color(102, 178,255, 200));
-			g.fillRect(5, 30, 100, 25*boxsize);
+			g.fillRect(5, 30, width, 25*boxsize);
 			g.setColor(new Color(200, 200,200, 200));
-			g.fillRect(5, 30+25*choicelocation, 100, 25);
+			g.fillRect(5, 30+25*choicelocation, width, 25);
 			g.setFont(new Font("Chewy", Font.PLAIN, 18));
 			g.setColor(Color.BLACK);
 			for(int i=0;i<boxsize;i++){
@@ -146,10 +167,10 @@ public class ChoiceBranchState extends State {
 
 		}
 		if(firstchoice!=0){
-			g.drawImage(Assets.Uparrow,50,25,null);
+			g.drawImage(Assets.Uparrow,width/2,25,null);
 		}
 		if(firstchoice!=num.length-boxsize){
-			g.drawImage(Assets.Downarrow,50,20+25*boxsize,null);
+			g.drawImage(Assets.Downarrow,width/2,20+25*boxsize,null);
 		}
 	
 	}

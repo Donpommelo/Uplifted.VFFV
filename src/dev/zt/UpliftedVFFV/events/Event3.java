@@ -16,6 +16,7 @@ import dev.zt.UpliftedVFFV.inventory.CarrotJuice;
 import dev.zt.UpliftedVFFV.inventory.CoffeeBean;
 import dev.zt.UpliftedVFFV.inventory.CoffeedIce;
 import dev.zt.UpliftedVFFV.inventory.DeploreApp;
+import dev.zt.UpliftedVFFV.inventory.Disease;
 import dev.zt.UpliftedVFFV.inventory.EightBall;
 import dev.zt.UpliftedVFFV.inventory.EnvenomEarth;
 import dev.zt.UpliftedVFFV.inventory.FadedSash;
@@ -73,6 +74,7 @@ public class Event3 extends Event {
 		super.loot(new CoffeeBean(), 2);
 		super.loot(new CoffeedIce(), 1);
 		super.loot(new DeploreApp(), 1);
+		super.loot(new Disease(),4);
 		super.loot(new EightBall(), 1);
 		super.loot(new EnvenomEarth(), 1);
 		super.loot(new FadedSash(), 1);
@@ -116,6 +118,7 @@ public class Event3 extends Event {
 			case 1:
 				KeyManager.setCutsceneMode(false);
 				stage = 0;
+				game.getAudiomanager().playMusic(2);
 				super.transport("res/Worlds/Lobby.txt", 7, 10,"South Lobby");
 				open = false;
 				break;

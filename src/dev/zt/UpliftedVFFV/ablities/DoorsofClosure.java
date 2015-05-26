@@ -8,7 +8,7 @@ public class DoorsofClosure extends Skills {
 	public String name = "Doors of Closure";
 	public String descr = "User summons elevator doors\nthat close on enemies, dealing\narea damage.";
 	public String descrShort = "Damages all enemies.";
-	public int cost = 11;
+	public int cost = 8;
 	public DoorsofClosure(int index) {
 		super(index);
 

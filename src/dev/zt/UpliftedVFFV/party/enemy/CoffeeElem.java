@@ -29,7 +29,7 @@ public class CoffeeElem extends Schmuck{
 
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {70,29,18,21,24,19,8,6};
+	public final static int[] startStats = {70,29,15,21,24,12,8,6};
 	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
 	public final static double[] statGrowths = {2 , 2.7 , 2.2 , 2.3 , 1.7 , 1.5 , .8 , .9};
 	public final static int expDrop=10;

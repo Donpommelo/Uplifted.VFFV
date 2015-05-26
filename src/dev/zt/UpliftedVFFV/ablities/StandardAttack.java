@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class StandardAttack extends Skills {
 
+	public String name = "Attack";
 	public StandardAttack(int index) {
 		super(index, Assets.attack);
 
@@ -26,6 +27,10 @@ public class StandardAttack extends Skills {
 		}
 		
 		
+	}
+	
+	public String getName(){
+		return name;
 	}
 	
 

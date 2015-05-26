@@ -19,6 +19,7 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.MenuState;
 import dev.zt.UpliftedVFFV.states.ShoppingState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.states.TimerState;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
@@ -128,6 +129,9 @@ public class Event{
 	public static Event eventemployeeCalandar = new EventBackroomCalendar(3,10,84);
 	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendarInvisible(3,11,85);
 	
+	public static Event eventSmudge1= new EventSmudge1(0,0,86);
+	public static Event eventSmudge2= new EventSmudge2(0,0,87);	
+	public static Event eventElevatorWave= new EventElevatorWallWave(0,0,88);
 	public static Event eventElevatorFloor = new EventElevatorFloor(2,4,89);
 	
 	public static Event eventClock = new EventClock(0,0,90);
@@ -161,9 +165,46 @@ public class Event{
 	public static Event table9 = new EventTable9(0,0,116);
 	
 	public static Event safe1 = new EventSafe1(10,30,117);
-	public static Event safe2 = new EventSafe2(0,0,118);
-	public static Event safe3 = new EventSafe3(0,0,119);
+	public static Event safe2 = new EventSafe2(16,13,118);
+	public static Event safe3 = new EventSafe3(6,3,119);
+	public static Event safe4 = new EventSafe4(5,3,120);
+	public static Event safe5 = new EventSafe5(3,3,121);
+	public static Event safe6 = new EventSafe6(0,0,122);
 	
+	public static Event eventemployee33 = new EventEmployee33(4,13,123);
+	public static Event eventemployee34 = new EventEmployee34(4,13,124);
+	public static Event eventemployee35 = new EventEmployee35(4,13,125);
+	public static Event eventemployee36 = new EventEmployee36(4,6,126);
+
+	public static Event event40 = new Event40(1,13,127);
+	
+	public static Event eventemployee37 = new EventEmployee37(7,7,128);
+	public static Event eventemployee38 = new EventEmployee38(21,5,129);
+	public static Event eventemployeePlant = new EventEmployeePlant(15,9,130);
+	public static Event eventemployee39 = new EventEmployee39(21,5,131);
+	public static Event eventemployee40 = new EventEmployee40(21,5,132);
+	public static Event eventemployee41 = new EventEmployee41(21,5,133);
+	public static Event eventemployee42 = new EventEmployee42(21,5,134);
+	public static Event eventemployee43 = new EventEmployee43(21,5,135);
+	public static Event eventemployee44 = new EventEmployee44(21,5,136);
+	
+	public static Event eventstory1 = new EventStory1(7,8,137);
+	public static Event eventstory2 = new EventStory2(40,3,138);
+	public static Event eventstory3 = new EventStory3(21,5,139);
+	
+	public static Event eventMirror = new EventMirror(21,5,140);
+	public static Event eventToilet = new EventToilet(21,5,141);
+	public static Event eventSink = new EventSink(21,5,142);
+	public static Event eventSinkMirror = new EventSinkMirror(21,5,143);
+	public static Event eventMaleSign = new EventMaleSign(17,2,144);
+	public static Event eventFemaleSign = new EventFemaleSign(27,2,145);
+	
+	public static Event eventemployee45 = new EventEmployee45(21,5,146);
+	public static Event eventemployee46 = new EventEmployee46(21,5,147);
+	public static Event eventemployee47 = new EventEmployee47(21,5,148);
+	public static Event eventemployee48 = new EventEmployee48(21,5,149);
+	public static Event eventemployee49 = new EventEmployee49(21,5,150);
+	public static Event eventemployee50 = new EventEmployee50(21,5,151);
 	
 	
 	public Event(Game g, StateManager sm,GameState gs) {
@@ -276,13 +317,14 @@ public class Event{
 	}
 	
 	//when ran, this opens combat with a given troop corresponding with the enemyId
-	public static void fite(int enemyId, int eventId, boolean runnable){
-		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable,gamestate));
+	public static void fite(int enemyId, int eventId, boolean runnable, boolean music){
+		game.getAudiomanager().playSound("res/Audio/Elevator Sound Effect.wav", false);
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable, music,gamestate));
 	}
 	
 	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.
@@ -314,6 +356,26 @@ public class Event{
 	//opens up a choice branch state with the list of string choices.
 	public static void ChoiceBranch(int EventId,String[] choices){
 		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
+
+	}
+	
+	public static void ChoiceBranch(int EventId,String[] choices, int width){
+		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices,width));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
+
+	}
+	
+	public static void Timer(int EventId,int time){
+		StateManager.states.push(new TimerState(game,statemanager,EventId,time));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

@@ -9,7 +9,7 @@ public class FireExtinguisher extends Item{
 	static String descr="A tank of flame-retardant chemicals.";
 	static String descrShort="Cures Ablaze.";
 	public FireExtinguisher() {
-		super(2, "Fire Extinguisher",true, true, true, true, false,descr);
+		super(2, "Fire Extinguisher",false, true, true, true, false,descr);
 
 	}
 	
@@ -21,6 +21,8 @@ public class FireExtinguisher extends Item{
 	public String getDescrShort() {
 		return descrShort;
 	}
+	
+	
 	
 
 }

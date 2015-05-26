@@ -24,7 +24,7 @@ public class FishWater extends Item{
 		if(perp.getName().equals(vic.getName())){
 			bs.bp.bt.textList.add(perp.getName()+" throws the Fishwater at "+vic.getName());
 		}
-		bs.bp.em.hpChange(-12,vic);
+		bs.bp.em.hpChange(-22,vic);
 	}
 	
 	public boolean startTeamTarget(){

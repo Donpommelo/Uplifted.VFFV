@@ -12,6 +12,7 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.MidgeBlood;
 import dev.zt.UpliftedVFFV.party.PartyManager;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.quest.SwitchManager;
@@ -35,7 +36,7 @@ public class GameState extends State {
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
 	public int floor;
-	public int Script=10;												//starting currency. Change later for save stuff
+	public int Script=0;												//starting currency. Change later for save stuff
 	Event ugh;
 	
 	//Upon creation, the gamestate will load the starting World and events. Other worlds are loaded through events and such
@@ -51,10 +52,10 @@ public class GameState extends State {
 		
 //		world = new World(game, "res/Worlds/Mailroom.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"res/Worlds/Mailroom.txt");
-//		world = new World(game, "res/Worlds/EastWing.txt","");
-//		eventmanager = new EventManager(game,"res/Worlds/EastWing.txt");
-		player = new Player(game, 128, 128, this);										//creates player
-//		game.getAudiomanager().playSound();
+//		world = new World(game, "res/Worlds/SouthOfficeHallway.txt","");
+//		eventmanager = new EventManager(game,"res/Worlds/SouthOfficeHallway.txt");
+		player = new Player(game, 256, 288, this);										//creates player
+		game.getAudiomanager().playMusic(1);
 	}
 
 	

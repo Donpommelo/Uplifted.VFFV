@@ -18,7 +18,7 @@ public class EventElevatorFloor extends Event {
 
 	
 	public void run(){
-		super.Dialog(166, 166,this.getId());
+
 
 	}
 
@@ -27,6 +27,6 @@ public class EventElevatorFloor extends Event {
 	}
 	
 	public boolean isSolid(){
-		return true;
+		return false;
 	}
 }

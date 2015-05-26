@@ -41,12 +41,14 @@ public class EffectManager {
 				
 			}
 			s.tempStats[0]+=hp;
+			
 			if(hp<0){
+				bs.bs.flash(s, 51);
 				for(status st : s.statuses){
 					st.takedamageEffect(s, bs, hp);
 				}
 			}
-			if(s.tempStats[0]<0){
+			if(s.tempStats[0]<=0){
 				s.tempStats[0]=0;
 				bs.bp.stm.addStatus(s,s.i);
 				for(Action a : bs.bp.TurnOrderQueue){
@@ -104,11 +106,12 @@ public class EffectManager {
 			}
 			s.tempStats[0]+=hp;
 			if(hp<0){
+				bs.bs.flash(s, 51);
 				for(status st : s.statuses){
 					st.takedamageEffect(s, bs, hp);
 				}
 			}
-			if(s.tempStats[0]<0){
+			if(s.tempStats[0]<=0){
 				s.tempStats[0]=0;
 				bs.bp.stm.addStatus(s,s.i);
 				for(Action a : bs.bp.TurnOrderQueue){

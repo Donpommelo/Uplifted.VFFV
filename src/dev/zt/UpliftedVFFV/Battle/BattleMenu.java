@@ -251,6 +251,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().up){
 					if(itemSelected>0){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected--;
 						if(itemPointer==0){
 							backpackLocation--;
@@ -268,6 +269,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().down){
 					if(itemSelected<currentSchmuck.skills.size()-1){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected++;
 						if(itemPointer==4){
 							backpackLocation++;
@@ -339,6 +341,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().up){
 					if(itemSelected>0){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected--;
 						if(itemPointer==0){
 							backpackLocation--;
@@ -356,6 +359,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().down){
 					if(itemSelected<gs.inventorymanager.backpack.size()-1){
+						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected++;
 						if(itemPointer==4){
 							backpackLocation++;
@@ -449,9 +453,7 @@ public class BattleMenu{
 	public void render(Graphics g) {
 		if(exit==true){
 			currentlyTargeted = 0;
-			itemSelected = 0;
-			itemPointer = 0;
-			backpackLocation = 0;
+
 			if(attackChosen==true){
 				attackChosen=false;
 				moveSelected=false;
@@ -464,6 +466,9 @@ public class BattleMenu{
 			}
 			else if(moveSelected==true){
 				moveSelected=false;
+				itemSelected = 0;
+				itemPointer = 0;
+				backpackLocation = 0;
 			}
 
 			

@@ -11,7 +11,7 @@ public class EventJorge extends Event {
 	public boolean selfswitch1=false;
 	public boolean fightwon=false;
 	public static int stage=0;						
-	public static int finalstage=3;		
+	public static int finalstage=4;		
 	public static BufferedImage img = Assets.Jorge1;
 	public EventJorge(float x, float y, int idnum) {
 		super(img,idnum,x, y);
@@ -23,7 +23,8 @@ public class EventJorge extends Event {
 			switch(stage){
 			case 0: 
 				if(!isSelfswitch1()){
-					super.Dialog(98, 105,this.getId());
+					super.Dialog(98, 102,this.getId());
+					
 				}
 				else{
 					super.Dialog(107, 107,this.getId());
@@ -31,15 +32,20 @@ public class EventJorge extends Event {
 				}
 				break;
 			case 1:
-				super.fite(0,this.getId(), false);
+				super.Dialog(103, 105,this.getId());
+				game.getAudiomanager().playMusic(4);
 				break;
 			case 2:
+				super.fite(0,this.getId(), false, false);
+				break;
+			case 3:
 				if(fightwon){
 					setSelfswitch1(true);
+					game.getAudiomanager().playMusic(2);
 				}
 				super.Dialog(106, 106,this.getId());
 				break;
-			case 3:
+			case 4:
 				stage = 0;
 				break;
 			}			

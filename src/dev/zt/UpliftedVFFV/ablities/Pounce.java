@@ -18,7 +18,13 @@ public class Pounce extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],vic);
+		int hitChance = (int)(Math.random()*100);
+		if(hitChance<bs.bp.em.getAcc(perp, vic)){
+			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],vic);
+		}
+		else{
+			bs.bp.bt.textList.add(perp.getName()+" missed!");
+		}
 	}
 	
 	public String getName(){

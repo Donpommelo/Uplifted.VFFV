@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Paperweight extends Item{
 
 	static String descr="This is a solid metal paperweight. It weighs down stacks of paperwork\nthat, consequently, weigh down your hopes and dreams.";
+	static String descrShort="Def+3";
 	public status[] enchantment = new status[1];
 	public Paperweight() {
 		super(4, "Paperweight",false,false,false,false, true, descr);
@@ -23,6 +24,10 @@ public class Paperweight extends Item{
 			s.statuses.remove(st);
 		}
 		
+	}
+	
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

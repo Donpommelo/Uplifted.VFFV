@@ -40,7 +40,9 @@ public class Schmuck {
 	public int scrDrop;
 	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
 	
-	public boolean visible, targetable;
+	public boolean targetable;
+	public boolean visible = true;
+	public int flashDuration;
 	public int x = 0;
 	public int y = 0;
 	public BufferedImage BattleSprite;
@@ -247,6 +249,9 @@ public class Schmuck {
 		}
 		for(int i=0; i<5; i++){
 			bonusStats[i] = 0;
+		}
+		for(status s : this.statuses){
+			s.statchanges(this);
 		}
 
 	}
@@ -514,7 +519,25 @@ public class Schmuck {
 	public void setVoidRes(double buffedVoidRes) {
 		buffedRes[5] = buffedVoidRes;
 	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	public int getFlashDuration() {
+		return flashDuration;
+	}
+
+	public void setFlashDuration(int flashDuration) {
+		this.flashDuration = flashDuration;
+	}
 	
+	
+		
 	
 	
 }

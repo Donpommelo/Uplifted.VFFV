@@ -10,7 +10,7 @@ public class EventBackroomCalendarInvisible extends Event {
 
 	public boolean selfswitch1=false;
 	public EventBackroomCalendarInvisible(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y);
+		super(Assets.Calendar,idnum,x, y);
 		
 	
 	}

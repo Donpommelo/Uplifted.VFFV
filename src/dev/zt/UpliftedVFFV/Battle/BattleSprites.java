@@ -53,10 +53,17 @@ public class BattleSprites {
 	}
 	
 	public void tick() {
-
+		for(Schmuck s : allies){
+			if(s.getFlashDuration()>0){
+				flash(s,s.getFlashDuration()-1);
+			}
+		}
+		for(Schmuck s : enemy){
+			if(s.getFlashDuration()>0){
+				flash(s,s.getFlashDuration()-1);
+			}
+		}
 	}
-			
-
 	public void render(Graphics g) {
 		g.setColor(new Color(200,200,0));
 		g.fillOval(allies.get(bs.bp.currentlySelected).getX()+15,allies.get(bs.bp.currentlySelected).getY()+150,90,45);
@@ -64,7 +71,9 @@ public class BattleSprites {
 			g.setColor(new Color(255,255,0));
 			g.drawString("Hp: "+allies.get(i).getCurrentHp()+"/"+allies.get(i).getMaxHp(), allies.get(i).getX()+20, allies.get(i).getY()-20);
 			g.drawString("Mp: "+allies.get(i).getCurrentBp()+"/"+allies.get(i).getMaxBp(), allies.get(i).getX()+20, allies.get(i).getY());
-			g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(),allies.get(i).getY(),allies.get(i).getBattleSprite().getWidth(),allies.get(i).getBattleSprite().getHeight(),null);
+			if(allies.get(i).visible){
+				g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(),allies.get(i).getY(),allies.get(i).getBattleSprite().getWidth(),allies.get(i).getBattleSprite().getHeight(),null);
+			}
 			g.setColor(new Color(204,0,0));
 			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-20, 80, 5);
 			g.setColor(new Color(0,204,0));
@@ -79,15 +88,17 @@ public class BattleSprites {
 				}
 			}
 		}
-		for(int i=0;i<enemy.size();i++){
-			Schmuck temp = enemy.get(i);
-			if(!bs.bp.stm.checkStatus(temp, new incapacitate())){
-				g.drawImage(temp.getBattleSprite(), temp.getX(),enemy.get(i).getY(),temp.getBattleSprite().getWidth(),temp.getBattleSprite().getHeight(),null);
-				g.setColor(new Color(204,0,0));
-				g.fillRect(temp.getX(), temp.getY(), 80, 5);
-				g.setColor(new Color(0,204,0));
-				g.fillRect(temp.getX(), temp.getY(), 80*temp.getCurrentHp()/temp.getMaxHp(), 5);
-			}		
+		for(int i=0;i<enemyTargets.size();i++){
+			Schmuck temp = enemyTargets.get(i);
+//			if(!bs.bp.stm.checkStatus(temp, new incapacitate())){
+				if(temp.visible){
+					g.drawImage(temp.getBattleSprite(), temp.getX(),temp.getY(),temp.getBattleSprite().getWidth(),temp.getBattleSprite().getHeight(),null);
+				}
+//				g.setColor(new Color(204,0,0));
+//				g.fillRect(temp.getX(), temp.getY(), 80, 5);
+//				g.setColor(new Color(0,204,0));
+//				g.fillRect(temp.getX(), temp.getY(), 80*temp.getCurrentHp()/temp.getMaxHp(), 5);
+//			}		
 		}
 
 	}
@@ -107,5 +118,22 @@ public class BattleSprites {
 			}
 		}
 	}
+	
+	public void flash(Schmuck s, int duration){
+		s.setFlashDuration(duration-1);
+		if(s.isVisible()){
+			s.setVisible(false);
+		}
+		else{
+			s.setVisible(true);
+		}
+		if(s.getFlashDuration()<=0){
+			s.setVisible(true);
+		}
+		
+		
+	}
+	
+	
 
 }

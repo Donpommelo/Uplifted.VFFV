@@ -26,7 +26,7 @@ public class EyeCatcher extends Schmuck{
 
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {45,50,21,12,28,29,0,11};
+	public final static int[] startStats = {60,50,11,12,28,29,0,11};
 	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
 	public final static double[] statGrowths = {2.3 , 1.7 , 2.7 , .9 , 3.7 , 1.9 , .1 , .9};
 	public final static int expDrop=17;

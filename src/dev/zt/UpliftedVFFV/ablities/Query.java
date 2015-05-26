@@ -9,7 +9,7 @@ public class Query extends Skills {
 	public String name = "Query";
 	public String descr = "User researches a foe, gaining\nvaluable knowledge about its,\nelemental alignments and Hp.";
 	public String descrShort = "Investigate enemy info.";
-	public int cost = 1;
+	public int cost = 0;
 	public Query(int index) {
 		super(index);
 

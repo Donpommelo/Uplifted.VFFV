@@ -21,4 +21,22 @@ public class Action {
 		skill.run(user,target,bs);
 	}
 
+	public Skills getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skills skill) {
+		this.skill = skill;
+	}
+
+	public Schmuck getTarget() {
+		return target;
+	}
+
+	public void setTarget(Schmuck target) {
+		this.target = target;
+	}
+	
+	
+
 }

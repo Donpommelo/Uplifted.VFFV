@@ -23,7 +23,7 @@ public class FennelDonut extends Item{
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(25);
+		s.hpChange(30);
 	}
 	
 	public String getDescrShort() {

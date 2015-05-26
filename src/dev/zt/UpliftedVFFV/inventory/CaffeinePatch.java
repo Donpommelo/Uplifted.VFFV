@@ -20,12 +20,12 @@ public class CaffeinePatch extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" uses a Caffeine Patch on "+vic.getName());
 		}
 		bs.bp.bt.textList.add(vic.getName()+" looks 15 Bp more motivated.");
-		bs.bp.em.bpChange(15,vic);
+		bs.bp.em.bpChange(20,vic);
 
 	}
 	
 	public void use(Schmuck s){
-		s.bpChange(20);
+		s.bpChange(25);
 	}
 	
 	public String getDescrShort() {

@@ -36,8 +36,8 @@ public class Player extends Creature{
 		this.gamestate = gs;
 		this.x = x;
 		this.y = y;
-		this.playerx = 128;
-		this.playery = 128;
+		this.playerx = 256;
+		this.playery = 288;
 		wall = false;
 	} 
 
@@ -75,7 +75,6 @@ public class Player extends Creature{
 	}
 	
 	private void encounter(){
-		
 		try {
 			Thread.sleep(300);
 		} catch (InterruptedException e) {
@@ -107,13 +106,13 @@ public class Player extends Creature{
 		}
 		if(randomIndex>=0){
 			troop = troops[randomIndex];
-			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true,gamestate));
+			game.getAudiomanager().playSound("res/Audio/Elevator Sound Effect.wav", false);
+			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate));
 		}
 	}
 	
 	//this is run every tick, provided the player is not running an event
 	private void getInput(){
-	
 		xMove = 0;			//xMove and yMove dictate how much the player should move. they should are set at 0 so that no movement occurs
 		yMove = 0;			// with no input. This way, each input only registers a single movement
 		
@@ -125,8 +124,8 @@ public class Player extends Creature{
 			wall = false;
 			if(temp<enemyChance){			//enemy stuff
 //				game.getGameCamera().screenShake(20);
-				encounter();
 				enemyChance = 0;
+				encounter();
 			}
 			else{
 				if(enemyChance<(double)(WorldManager.getWorld().enemyrate)){

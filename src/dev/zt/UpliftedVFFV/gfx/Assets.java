@@ -13,15 +13,16 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorCeiling, ElevatorDoorWall,ElevatorWall;
-	public static BufferedImage White, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
-	public static BufferedImage ElevatorPanel, ElevatorFloorMark;
+	public static BufferedImage White, ActuallyWhite, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
+	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	
-	public static BufferedImage WritingDesk1, WritingDesk2, Bed1,Bed2,Tv,Calendar, Stairs;
+	public static BufferedImage WritingDesk1, WritingDesk2, Bed1,Bed2,Tv,Calendar, Stairs, StairsDown;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, MoverSofa1,MoverSofa2,MoverGag, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
+	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
 	public static BufferedImage Uparrow,Downarrow;
 	
@@ -29,8 +30,7 @@ public class Assets {
 	
 	public static Dialog[] dialog;
 	
-	
-	
+
 	
 	public static void init(){
 		
@@ -63,9 +63,13 @@ public class Assets {
 		
 		ElevatorPanel = prop.crop(7*width,0,width,height);
 		ElevatorFloorMark = prop.crop(width, 0 , 3*width, 3*height);
+		ElevatorWave = prop.crop(5*width, 0 , width, height);
+		Smudge1 = prop.crop(8*width, 0 , width, height);
+		Smudge2 = prop.crop(9*width, 0 , width, height);
 		
 		//Tile textures
 		White = floor.crop(0, 0, width, height);
+		ActuallyWhite = FurnitureBackroom.crop(480, 0, width, height);
 		Black = floor.crop(2*width, 0, width, height);
 		Void = floor.crop(2*width, 0, width, height);
 		BlackTile = floor.crop(4*width, 0, 2*width, 3*height);
@@ -100,6 +104,7 @@ public class Assets {
 		Tv = FurnitureBackroom.crop(96,0,32,64);
 		Calendar = FurnitureBackroom.crop(128,0,32,32);
 		Stairs = FurnitureBackroom.crop(0,288,32,32);
+		StairsDown = FurnitureBackroom.crop(32,288,32,32);
 		
 		WorkDesk1 = Furniture3rdFloor.crop(0, 0, width*2, height);
 //		WorkDesk2 = Furniture3rdFloor.crop(32, 0, width, height);
@@ -126,6 +131,12 @@ public class Assets {
 		Table8 = Furniture3rdFloor.crop(12*width, 2*height, width, height);
 		Table9 = Furniture3rdFloor.crop(13*width, 2*height, width, height);
 		
+		Mirror = Furniture3rdFloor.crop(0, 5*height, width, height);
+		Toilet = Furniture3rdFloor.crop(width, 5*height, width, height);
+		Sink = Furniture3rdFloor.crop(2*width, 5*height, width, height);
+		MaleSign = Furniture3rdFloor.crop(3*width, 5*height, width, height);
+		FemaleSign = Furniture3rdFloor.crop(4*width, 5*height, width, height);
+		SinkMirror = Furniture3rdFloor.crop(5*width, 5*height, width, height*2);
 		
 		//arrows and stuff
 		Uparrow=arrows.crop(90,12,12,12);
@@ -140,6 +151,7 @@ public class Assets {
 		item = ActionIcons.crop(128,0,32,32);
 		run = ActionIcons.crop(160,0,32,32);
 		pointer = ActionIcons.crop(256, 0, 32, 32);
+		
 		
 		//Dialog loaded from text files.
 		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines

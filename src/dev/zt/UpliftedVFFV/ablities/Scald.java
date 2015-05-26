@@ -9,11 +9,11 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 public class Scald extends Skills {
 
 	public String name = "Scald";
-	public String descr = "A spray of boiling hot liquid that can inflict nasty burns.";
+	public String descr = "A spray of boiling hot liquid that\ncan inflict nasty burns.";
 	public String descrShort = "Red damage and Ablaze.";
-	public int cost = 1;
+	public int cost = 5;
 	public Scald(int index) {
-		super(index, Assets.attack);
+		super(index);
 
 	}
 	
@@ -21,7 +21,7 @@ public class Scald extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Scald!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[2],vic,0);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[2]*1.5),vic,0);
 			bs.bp.stm.addStatus(vic, new Ablaze(3));
 		}		
 		else{

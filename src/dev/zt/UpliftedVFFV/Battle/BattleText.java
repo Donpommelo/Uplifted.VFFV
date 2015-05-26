@@ -33,6 +33,9 @@ public class BattleText {
 		if(game.getKeyManager().space){
 			
 			if(!textList.isEmpty()){
+				if(textList.get(0).contains("was incapacitated.")){
+					bs.bs.targetUpdate();
+				}
 			textList.remove(0);
 			}
 			if(ranAway){

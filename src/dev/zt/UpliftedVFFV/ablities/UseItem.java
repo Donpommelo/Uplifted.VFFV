@@ -11,7 +11,8 @@ public class UseItem extends Skills {
 public Item thing;
 public GameState gs;
 
-	public UseItem(int index, Item i, GameState gs) {
+public String name = "Item";
+public UseItem(int index, Item i, GameState gs) {
 		super(index, Assets.item);
 		this.thing=i;
 		this.gs=gs;
@@ -32,7 +33,7 @@ public GameState gs;
 					}
 				}
 				else{
-					//running out of planned-to-use item
+					bs.bp.bt.textList.add("But the item "+perp.getName()+ " wanted to use was not there!");//running out of planned-to-use item
 				}
 				
 				}
@@ -45,6 +46,10 @@ public GameState gs;
 		else{
 			return false;
 		}
+	}
+	
+	public String getName(){
+		return "Item";
 	}
 
 }

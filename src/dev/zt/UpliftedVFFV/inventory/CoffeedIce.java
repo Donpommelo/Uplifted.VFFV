@@ -26,8 +26,8 @@ public class CoffeedIce extends Item{
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(15);
-		s.bpChange(25);
+		s.hpChange(25);
+		s.bpChange(35);
 	}
 	
 	public String getDescrShort() {

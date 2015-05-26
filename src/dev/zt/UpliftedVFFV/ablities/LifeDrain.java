@@ -16,9 +16,14 @@ public class LifeDrain extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Life Drain!");
-		bs.bp.bt.textList.add(perp.getName()+" restored Hp!");
-		bs.bp.em.hpChange(-(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3],vic);
-		bs.bp.em.hpChange((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),perp);
+		int hitChance = (int)(Math.random()*100);
+		if(hitChance<bs.bp.em.getAcc(perp, vic)){
+			bs.bp.em.hpChange(-(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3],vic);
+			bs.bp.em.hpChange((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),perp);
+		}
+		else{
+			bs.bp.bt.textList.add(perp.getName()+" missed!");
+		}
 	}
 	
 	public String getName(){

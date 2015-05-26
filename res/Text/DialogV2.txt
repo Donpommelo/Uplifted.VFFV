@@ -1,4 +1,4 @@
-184
+287
 Employee
 3rdSouthOffices-1.png
 1
@@ -38,7 +38,7 @@ Player-1.png
 Employee
 3rdSouthOffices-1.png
 1
-Take me to floor six, please. I need to get to work, and you・re the only one who knows/how to use this Elevator thing./
+Take me to floor Six, please. I need to get to work, and you・re the only one who knows/how to use this Elevator thing./
 Employee
 3rdSouthOffices-1.png
 1
@@ -222,7 +222,7 @@ Oh, no. Not at all. Its just that. . . I didn't know you ever left your elevator
 Employee
 Emily1small.png
 1
-Things are harder to find when you never leave your elevator./
+This is good. You need to get out of your elevator more often./
 Employee
 Jack1small.png
 1
@@ -250,7 +250,7 @@ Maybe it is in a different office. There are plenty of offices in these offices.
 Employee
 Jack1small.png
 1
-Howdy./
+Enjoy the Offices my Elevator-Operating friend./
 Operator
 Player-1.png
 1
@@ -379,10 +379,10 @@ Employee
 3rdSouthOffices-1.png
 1
 Why does nobody else seem to notice all the monsters in this office? This is really/freaking me out./
-Employee
-3rdSouthOffices-1.png
+???
+Player-5.png
 1
-Meep merp. Floor 6 plz. Test./
+. . ./
 Employee
 3rdSouthOffices-1.png
 1
@@ -402,11 +402,11 @@ Good afternoon, sir! We were hoping you could point us towards Suite 521./Do you
 Jorge
 3rdSouthOffices-5.png
 0
-Harghmph. You came to waste my time with that? Who do you think you are?/Of course I know where it is. Suite Five-hundred and twenty Whatever, I know all about it./Hehehe. But I don・t feel like telling you./
+Harghmph. You came to waste my time with that? Who do you think you are?/Of course I know where it is. Suite Five-hundred and twenty Whatever, I know all about/it. Hehehe. But I don・t feel like telling you./
 Jorge
 3rdSouthOffices-5.png
 0
-Yeah, If you lack the manners to not bother me and the common sense to/find the damn room yourself, why should I help you?/
+Yeah, If you lack the manners to not bother me and the common sense to find/the damn room yourself, why should I help you?/
 Operator
 Player-1.png
 0
@@ -414,7 +414,7 @@ That seems. . . a little. . . unprofessional. . ./
 Jorge
 3rdSouthOffices-5.png
 0
-What・s that!? Why you, you・ve got some nerve! Seeing as you clearly/missed the Office Assembly on Conduct and Courtesy, it is my duty as South Wing Manager/to teach you myself./
+What・s that!? Why you, you・ve got some nerve! Seeing as you clearly missed the/Office Assembly on Conduct and Courtesy, it is my duty as South Wing Manager/to teach you myself./
 Operator
 Player-1.png
 0
@@ -735,3 +735,415 @@ meep
 Arturo.png
 1
 Found a couple of Fire Extinguishers inside!/Surely that violates some sort of safety regulation. . ./
+meep
+Arturo.png
+1
+This safe is empty. Completely empty./
+meep
+Arturo.png
+1
+So empty, in fact, that there appears to be a hole in the back./
+meep
+Arturo.png
+1
+Crawl inside?/
+meep
+Arturo.png
+1
+The safe contained several Caffeine Patches./
+Employee
+3rdSouthOffices-1.png
+1
+I regret taking for granted my long hours of unemployed freetime./
+Employee
+3rdSouthOffices-3.png
+1
+Oh no. My paperwork is trapped underneath an insurmountably heavy boulder./
+Employee
+3rdSouthOffices-3.png
+1
+Surely it would be unreasonable to expect me to work given the circumstances./
+meep
+Arturo.png
+1
+You Obtained the Paperweight!/
+Employee
+3rdSouthOffices-3.png
+1
+Hey!  I . . .uh. . .thanks. . ./
+Employee
+3rdSouthOffices-3.png
+1
+Drat. All my paperwork blew away./
+Vitor
+Vitor1small.png
+1
+Oh. It is Operator. Hello Operator./
+Operator
+Player-1.png
+0
+Good morning! What floor for you?/
+Vitor
+Vitor1small.png
+1
+. . ./
+Operator
+Player-1.png
+0
+. . .Oh, Sorry! I just. . .got so used to. . . /
+Vitor
+Vitor1small.png
+1
+Operator, I think, stay in elevator all day, not so good for you. Ya?/
+Vitor
+Vitor1small.png
+1
+Is good to see you getting fresh air. There is more to life than Elevators. Ya?/Like, there's also Offices and stuff./And I think we got nice Aquarium on one these floors too./
+Operator
+Player-1.png
+0
+4th. I think it was the 4th floor./
+Vitor
+Vitor1small.png
+1
+Ya. Ya. Fourth. It was fourth./Anyways, was nice speaking to you again./
+Vitor
+Vitor1small.png
+1
+Hey remember, if you ever don't know where you need to go next, just skip it./Go somewhere you don't need to first./
+Vitor
+Vitor1small.png
+1
+Hey remember, if you ever lost, fear not. That just means you discover new area./Very exciting, Ja?/
+Vitor
+Vitor1small.png
+1
+Hey, if you ever have trouble make progress, don't worry./If you wait very long time, you will suffer most irreversible progress eventually./
+Vitor
+Vitor1small.png
+1
+Hey, if you ever feel lonely, just remember you are important part of this workplace./Your coworkers will always value you no matter what./
+Vitor
+Vitor1small.png
+1
+Hey, whenever you feel very sad, just remember that it was an accident I swear, ok?/And besides, they were terminally ill anyways./
+Vitor
+Vitor1small.png
+1
+Hey, if you ever have conflict with coworker, just remember that everyone make/mistakes. Ya, we are only human after all. Most of us I think anyways./
+Vitor
+Vitor1small.png
+1
+Hey remember, if you ever feel like nothing makes sense, just stop making sense too./Gotta go with the flow, ya?/
+Vitor
+Vitor1small.png
+1
+Hey, whenever you afraid of something, just remember that it's probably just as/scared of you.I mean, unless your fear is spending rest of your life empty and alone./I was more thinking, y'know, spiders or something./
+Vitor
+Vitor1small.png
+1
+Hey remember, if you are afraid of failure, just pretend you aren't trying, ya?/That way, only you will know the depth of your own insecurities./
+Vitor
+Vitor1small.png
+1
+Hey remember, if you ever need help, just scream at top of lungs./That way, your coworkers will agree that you need help too./
+Vitor
+Vitor1small.png
+1
+Hey, if you ever feel uncertain, just remember that certainty is just as bad./Maybe even worse, I dunno./
+Vitor
+Vitor1small.png
+1
+Hey, if you ever struggle to deal with pressures of life, don't worry./The pressures of death will seem very easy in comparison./
+Vitor
+Vitor1small.png
+1
+Hey, if you ever feel tired, remember to take ten-minute break every/hour to stretch and look at nature or something./
+meep
+Arturo.png
+1
+You crawled into the safe./
+meep
+Arturo.png
+1
+You don't trust the safe./
+Emaudeline
+Emaudeline1small.png
+1
+Oh, hello there. You are looking for something, right?/
+Operator
+Player-1.png
+0
+Yes. . .yes, we were. How did you know?/
+Emaudeline
+Emaudeline1small.png
+1
+Oh, there was a certain light to your eyes, yes./So what happens to be the object of your search?/
+Operator
+Player-1.png
+0
+We were looking for Suite 521, but we don't really have any leads./Do you know where that is?/
+Emaudeline
+Emaudeline1small.png
+1
+Hmm. I'm afraid don't. I suppose that makes two of us then./
+Operator
+Player-1.png
+0
+What do you mean?/
+Emaudeline
+Emaudeline1small.png
+1
+I too am looking for something. And like you, I haven't had much in finding it./Perhaps you have heard of the Lux Lacheprie?/
+Operator
+Player-1.png
+0
+. . ./
+Emaudeline
+Emaudeline1small.png
+1
+No? Hmm. Oh well. It's a wonderful thing, really./The Lux Lacheprie serves as the source of all the light in the building!/The very light we are using right now to see each other!/
+Emaudeline
+Emaudeline1small.png
+1
+You can think of the Lux Lacheprie as the building's generator. It produces a stream of/radiance which is then packaged and distributed to the rest of the company by prisms./That's why this building has no ceilings./
+Emaudeline
+Emaudeline1small.png
+1
+Say, why don't we cooperate? Yes, us . . . purposeful employees ought to stick together./If you find the Lacheprie, do find a way to tell me. And if I come across this Suite 521/you will be the first to know./
+Operator
+Player-1.png
+0
+. . ./
+Operator
+Player-1.png
+0
+Alright. Sure./
+Emaudeline
+Emaudeline1small.png
+1
+Excellent! An extra pair of eyes is always appreciated!/
+Emaudeline
+Emaudeline1small.png
+1
+May good fortune light both our ways./
+Employee
+3rdSouthOffices-1.png
+1
+I. . . I've done it! Oh, this is wonderful!/
+Operator
+Player-1.png
+0
+What happened?/
+Employee
+3rdSouthOffices-1.png
+1
+I've finally succeeded in tricking myself into believing I've accomplished something great./Hah. Classic./
+Operator
+Player-1.png
+0
+Hey, look at that./
+Tree
+Player-5.png
+1
+. . ./
+Pen Pal
+Player-5.png
+0
+I don't get it./
+Tree
+Player-5.png
+1
+. . ./
+Employee
+3rdSouthOffices-3.png
+1
+I was looking for a fire alarm to pull because I was bored, but I noticed there aren't/any. Not one. In the entire South Wing Offices!/
+Employee
+3rdSouthOffices-3.png
+1
+What reckless disregard for employee well-being! I wonder why Management is so/ stoically unafraid of fire./
+Employee
+3rdSouthOffices-3.png
+1
+Working all day like this can't be good for one's health./I'm really only getting distracted because I want to live to see my grandchildren./
+Employee
+3rdSouthOffices-1.png
+1
+Oh boy. Adulthood is every bit as terrible as higher education led me to believe./
+Employee
+3rdSouthOffices-1.png
+1
+School prepared me for this job like waterboarding prepared me for drowning./
+Employee
+3rdSouthOffices-3.png
+1
+I always feel exhausted, yet I never feel like I've actually done anything./
+Employee
+3rdSouthOffices-3.png
+1
+I feel like my life is devoid of options and potential, yet I'm filled with uncertainty/about the future./
+Employee
+3rdSouthOffices-3.png
+1
+I wish I had people in my life that cared about me, yet I'm terrified of having more/friends to dissapoint and expectations to fall short of./
+Employee
+3rdSouthOffices-3.png
+1
+I'm doing this whole life-thing wrong, aren't I?/
+Employee
+3rdSouthOffices-1.png
+1
+I use to fear failure. Now I fear succeeding but still feeling just as empty/as I did before./
+Employee
+3rdSouthOffices-3.png
+1
+Whenever things go wrong, I like to look back at fond memories of that one time where/things went right. That way, things only need to go right once./Good moments truly are forever./
+Employee
+3rdSouthOffices-1.png
+1
+Days like these make me realize why all my cool friends did drugs./
+Pen Pal
+Player-5.png
+1
+Floor 3! This place certainly seems familiar! We should ask around to see if anyone/can help us find Suite 521./
+Operator
+Player-1.png
+0
+I・ll look around for anyone knowledgable./
+Pen Pal
+Player-5.png
+1
+Well that was minimally helpful./
+Operator
+Player-1.png
+0
+So, where should I take you now?/
+Pen Pal
+Player-5.png
+1
+I don・t have any leads, really. We must comb the remainder of the building for/Suite 521. We have no alternative./
+Pen Pal
+Player-5.png
+1
+Oh, and seeing as this won't be as easy as I had hoped,why don't we head back/to your room? I have some interesting things to show you./
+Operator
+Player-1.png
+0
+Well, we're here. What was it you wanted to show me?/
+Pen Pal
+Player-5.png
+1
+Ah yes. We'll get right to that. Do you have those stamps we found on that/Jorge fellow?/
+Operator
+Player-1.png
+0
+Yes. What are they for?/
+Pen Pal
+Player-5.png
+1
+Well, I can't help but notice that unused writing desk over there./Being my Pen Pal, you can use those stamps to pay for postage to send me letters./
+Pen Pal
+Player-5.png
+1
+If you ever want to ask me a question, just go to your Writing Desk and type/the word or phrase you'd like to know more about./
+Operator
+Player-1.png
+0
+But what is the purpose of that if you can already speak with me?/
+Pen Pal
+Player-5.png
+1
+. . ./
+Operator
+Player-1.png
+0
+I don・t mean to be intrusive, but what exactly are you?/
+Pen Pal
+Player-5.png
+1
+I'm your Pen Pal. Also, I'm from the future. As far as I understand./
+Operator
+Player-1.png
+0
+. . . Are you also a tree?/
+Pen Pal
+Player-5.png
+1
+Is that what this is? In any case, no./Although I have been adrift on one in the middle of the ocean ever since my plane was/shot down./
+Pen Pal
+Player-5.png
+1
+I suppose this plant you see before you is the same tree I happen to be clinging/for my life to. Through this tree, I seem to be able to send messages into the past to you./
+Pen Pal
+Player-5.png
+1
+However, if you wish to initiate a conversation with me, you・ll have to pay for postage/with Stamps at your Writing Desk./
+Pen Pal
+Player-5.png
+1
+As mundane as these conversations may be, they may have a profound effect on the/fabric of reality in this building./Remember that failed messages will not cost stamps./
+Operator
+Player-1.png
+0
+. . . Doesn't that sound a little dangerous?/
+Pen Pal
+Player-5.png
+1
+If we fail to reach Suite 521, the result would be infinitely worse than any time/paradox we could possibly create, I assure you./
+Pen Pal
+Player-5.png
+1
+With that said, we have wasted enough time. We must set out immediately for/Suite 521 and redouble our efforts./
+meep
+Arturo.png
+1
+/
+meep
+Arturo.png
+1
+Hey, there! Thanks for playing the Uplifted Demo!/
+meep
+Arturo.png
+1
+The rest of the building is still unfinished, but we are doing our best to complete it/in a timely manner./
+meep
+Arturo.png
+1
+Until then, that's all there is! Please send all comments to donpommelo@gmail.com./
+meep
+Arturo.png
+1
+Special thanks to Mrs Lorena for assigning this project, Michael Cheng/for composing the intro theme (symphony9711 on Youtube)/and Iwilldevouryourkittens for the battle theme (check out his soundcloud)/
+meep
+Arturo.png
+1
+Feel free to wander around and see if you missed anything./Hope to see you again soon!/
+Employee
+3rdSouthOffices-1.png
+1
+I hope you washed your hands./
+Employee
+3rdSouthOffices-3.png
+1
+. . ./
+Employee
+3rdSouthOffices-3.png
+1
+I was under the impression that gender was just a social construct anyways./
+Employee
+3rdSouthOffices-3.png
+1
+Well, this is hardly appropriate in a professional workplace environment./
+Employee
+3rdSouthOffices-3.png
+1
+If you promise not to tell George I waste Three hours every day in the/bathroom using my phone, I promise not to report you for sexual harassment./
+Employee
+3rdSouthOffices-1.png
+1
+They pay me by the hour, not by the work completed./They're practically giving me money to use the bathroom./
+Employee
+3rdSouthOffices-3.png
+1
+What? This one's cleaner anyways./

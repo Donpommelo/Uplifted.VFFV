@@ -59,4 +59,5 @@ public class EventEmployee27 extends Event {
 	public boolean isSolid(){
 		return true;
 	}
+	
 }

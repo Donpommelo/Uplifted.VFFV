@@ -25,6 +25,8 @@ public class Troop implements Comparable<Troop>{
 	public static Troop troop7 = new Troop(7);
 	public static Troop troop8 = new Troop(8);
 	public static Troop troop9 = new Troop(9);
+	public static Troop troop10 = new Troop(10);
+	public static Troop troop11 = new Troop(11);
 	
 	protected final int id;
 	public ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
@@ -74,14 +76,31 @@ public class Troop implements Comparable<Troop>{
 			this.troop.add(new Augur());
 			break;
 		case 8:
-			this.troop.add(new BadEgg());
-			this.troop.add(new Augur());
-			this.troop.add(new Midge());
-			this.troop.add(new RotThought());
+			this.troop.add(new IllRat());
+			this.troop.add(new IllRat());
+			this.troop.add(new IllRat());
 			this.troop.add(new IllRat());
 			break;
 		case 9:
+			this.troop.add(new BadEgg());
+			this.troop.add(new BadEgg());
+			this.troop.add(new BadEgg());
+			break;
+		case 10:
+			this.troop.add(new RotThought());
+			this.troop.add(new RotThought());
+			this.troop.add(new BadEgg());
+			this.troop.add(new RotThought());
+			this.troop.add(new RotThought());
+			break;
+		case 11:
 			this.troop.add(new CoffeeElem());
+			break;
+		case 12:
+			this.troop.add(new Augur());
+			this.troop.add(new RotThought());
+			this.troop.add(new Augur());
+			this.troop.add(new RotThought());
 			break;
 		}
 	}

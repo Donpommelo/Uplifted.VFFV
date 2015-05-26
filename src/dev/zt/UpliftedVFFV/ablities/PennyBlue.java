@@ -10,7 +10,7 @@ public class PennyBlue extends Skills {
 	public String name = "Penny Blue";
 	public String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
 	public String descrShort = "Buffs Red Resist and regen.";
-	public int cost = 8;
+	public int cost = 6;
 	public PennyBlue(int index) {
 		super(index);
 	}

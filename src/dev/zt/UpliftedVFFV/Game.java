@@ -57,7 +57,7 @@ public class Game implements Runnable{
 		gameCamera = new GameCamera(this,0,0);					//creates a gameCamera. This tracks movement of player to center the screen
 		
 		audiomanager = new AudioManager(this);
-//		audiomanager.playSound();
+		audiomanager.playMusic(0);
 		
 		statemanager=new StateManager(this);							//creates statemanager. This manages the states of the game
 		statemanager.states.push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 

@@ -25,6 +25,7 @@ public class BattleProcessor {
 	public int troop;
 	public int phase;
 	public int currentlySelected;
+	public int roundNum;
 	public boolean selected;
 	public boolean ranAway = false;
 	public boolean pauseTOQ;
@@ -48,7 +49,8 @@ public class BattleProcessor {
 		this.enemy = enemy;
 		phase=1;
 		currentlySelected=0;
-			
+		roundNum = 1;
+		
 		bt = new BattleText(game,sm,allies,enemy, bs);
 		em = new EffectManager(game,bs,gs);
 		stm = new StatusManager(game,bs,gs, this);
@@ -148,7 +150,7 @@ public class BattleProcessor {
 						}
 						
 							for(int i=0 ; i<enemy.size();i++){
-								if(!enemy.get(i).statuses.contains(enemy.get(i).i)){
+								if(!enemy.get(i).statuses.contains(enemy.get(i).i) && !bs.bs.alliesTargets.isEmpty()){
 									TurnOrderQueue.set(allies.size()+i,enemy.get(i).getAction(bs));
 								}
 								else{
@@ -196,39 +198,55 @@ public class BattleProcessor {
 
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
+						for(status s : TurnOrderQueue.get(0).user.statuses){
+							s.restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);
+						}
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
-							if(TurnOrderQueue.get(0).skill.getCost()<TurnOrderQueue.get(0).user.getCurrentBp()){
+							if(TurnOrderQueue.get(0).skill.getCost()<=TurnOrderQueue.get(0).user.getCurrentBp()){
+								for(status s : TurnOrderQueue.get(0).user.statuses){
+									s.onAction(bs,TurnOrderQueue.get(0));
+								}
 								em.bpChange(-TurnOrderQueue.get(0).skill.getCost(), TurnOrderQueue.get(0).user);
 								TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
 							}
 							else{
-								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to "+TurnOrderQueue.get(0).skill.getName());
+								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to use "+TurnOrderQueue.get(0).skill.getName());
 							}
-							bs.bs.targetUpdate();
+//							bs.bs.targetUpdate();
 						}
 						else{
-							pauseTOQ = true;
-							currentlySelected=allies.indexOf(TurnOrderQueue.get(0).user);
-							bm = new BattleMenu(game,sm,allies,enemy,bs,TurnOrderQueue.get(0).user,gs);
+							if(allies.contains(TurnOrderQueue.get(0).user)){
+								pauseTOQ = true;
+								currentlySelected=allies.indexOf(TurnOrderQueue.get(0).user);
+								bm = new BattleMenu(game,sm,allies,enemy,bs,TurnOrderQueue.get(0).user,gs);
+							}
+							else{
+								TurnOrderQueue.set(0,TurnOrderQueue.get(0).user.getAction(bs));
+							}
 			
 						}
 					}
 					if(pauseTOQ == false){
-						TurnOrderQueue.remove(0);
-						for(Schmuck s: battlers){
-							s.calcBuffs();
-						}
-					}
-					
+						if(!TurnOrderQueue.isEmpty()){
+							TurnOrderQueue.remove(0);
+							for(Schmuck s: battlers){
+								s.calcBuffs();
+							}
+						}					
+					}				
 				}
 				else{					
 					stm.endofRound(bs);
+					for(Schmuck s : battlers){
+						s.bpChange(s.getBuffedInt()/5);
+					}
 					phase++;
 				}
 				break;
 				
 			case 3:
 				if(fightlost()){
+					bt.textList.add("The fight was lost.");
 					bt.textList.add("Everything goes black.");
 				}
 				if(enemyded()){
@@ -264,6 +282,7 @@ public class BattleProcessor {
 					}
 					stm.endofFite();
 				}
+				roundNum++;
 				phase=0;
 				try {
 					Thread.sleep(100);
@@ -278,7 +297,11 @@ public class BattleProcessor {
 		
 
 	public void render(Graphics g) {
-		
+		g.setColor(new Color(102, 178,255));
+		g.fillRect(0, 25,80,40);
+		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g.setColor(new Color(0, 0,0));
+		g.drawString("Round: "+roundNum,0,50);
 		if(!bt.textList.isEmpty()){
 			bt.render(g);
 		}
@@ -295,13 +318,18 @@ public class BattleProcessor {
 						}
 					}
 				}
+				for(Schmuck s :allies){
+					if(stm.checkStatus(s,new incapacitate())){
+						numReady++;
+					}
+				}
 				if(numReady == allies.size()){ 
 					allReady = true;
 					g.setColor(new Color(102, 178,255));
-					g.fillRect(0, 0,120,40);
+					g.fillRect(0, 65,120,40);
 					g.setFont(new Font("Chewy", Font.PLAIN, 18));
-					g.setColor(new Color(255, 255,255));
-					g.drawString("Ready (Enter)",0,25);
+					g.setColor(new Color(0, 0,0));
+					g.drawString("Ready (Enter)",0,90);
 				}
 				if(selected==true){
 					bm.render(g);

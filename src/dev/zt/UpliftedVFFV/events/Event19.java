@@ -9,7 +9,7 @@ public class Event19 extends Event {
 
 
 	public Event19(float x, float y, int idnum) {
-		super(Assets.Stairs,idnum,x, y);
+		super(Assets.StairsDown,idnum,x, y);
 		
 	
 	}
@@ -17,7 +17,7 @@ public class Event19 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/SouthOfficeHallway.txt", 4, 13,"3rd Floor Hallway");
+		super.transport("res/Worlds/SouthOfficeHallway.txt", 4, 12,"3rd Floor Hallway");
 	}
 
 	public static void main(String[] args) {

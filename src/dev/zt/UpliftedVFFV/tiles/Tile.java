@@ -198,6 +198,7 @@ public class Tile {
 	public static Tile Ceiling28 = new Ceiling2(187,8);
 	public static Tile Ceiling29 = new Ceiling2(188,9);
 	public static Tile Ceiling210 = new Ceiling2(189,9);
+	public static Tile ActuallyWhite = new ActuallyWhite(190);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
