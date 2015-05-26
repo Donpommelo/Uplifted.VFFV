@@ -87,7 +87,7 @@ public class ShoppingState extends State {
 			//up and down choose options
 			if(game.getKeyManager().up){
 				if(currentchoice>0){
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					currentchoice--;
 					if(choicelocation==0){
 						firstchoice--;
@@ -106,7 +106,7 @@ public class ShoppingState extends State {
 			}
 			if(game.getKeyManager().down){
 				if(currentchoice<selection.size()-1){
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					currentchoice++;
 					if(choicelocation==boxsize-1){
 						firstchoice++;
@@ -125,7 +125,7 @@ public class ShoppingState extends State {
 		}
 		else{
 			if(game.getKeyManager().space){
-				game.getAudiomanager().playSound("res/Audio/buy.wav", false);
+				game.getAudiomanager().playSound("/Audio/buy.wav", false);
 				gs.scriptChange(-amount*selection.get(itemDisplay[choicelocation]));
 				gs.inventorymanager.loot(itemDisplay[choicelocation], amount);
 				text = "Bought "+amount+" "+itemDisplay[choicelocation].getName()+" for "+amount*selection.get(itemDisplay[choicelocation])+" Script!";
@@ -140,7 +140,7 @@ public class ShoppingState extends State {
 			//up and down choose options
 			if(game.getKeyManager().up){
 				if((amount+1)*selection.get(itemDisplay[choicelocation])<=gs.Script){
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					amount++;
 					try {
 						Thread.sleep(100);
@@ -152,7 +152,7 @@ public class ShoppingState extends State {
 			}
 			if(game.getKeyManager().down){
 				if(amount>0){
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					amount--;
 					try {
 						Thread.sleep(100);

@@ -17,7 +17,7 @@ public class Event30 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/SouthOfficeHallway.txt", 18, 1,"");
+		super.transport("/Worlds/SouthOfficeHallway.txt", 18, 1,"");
 	}
 
 	public static void main(String[] args) {

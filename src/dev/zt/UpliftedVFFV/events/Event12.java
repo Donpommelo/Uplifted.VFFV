@@ -17,7 +17,7 @@ public class Event12 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/EastWing.txt", 1, 23,"South Wing Offices");
+		super.transport("/Worlds/EastWing.txt", 1, 23,"South Wing Offices");
 	}
 
 	public static void main(String[] args) {

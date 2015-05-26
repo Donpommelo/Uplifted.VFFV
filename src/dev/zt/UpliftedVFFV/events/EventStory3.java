@@ -34,7 +34,7 @@ public class EventStory3 extends Event {
 		case 2:
 			super.Dialog(275, 279, this.getId());
 			selfswitch1 = true;
-			super.transport("res/Worlds/backroom.txt", 3, 4,"");
+			super.transport("/Worlds/backroom.txt", 3, 4,"");
 			break;
 		}
 

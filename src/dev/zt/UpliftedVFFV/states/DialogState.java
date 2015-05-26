@@ -43,7 +43,7 @@ public class DialogState extends State {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				//if the last line is shown, the dialogstate ends
 				if(linenum==endline){
 					if (current!=null){					//This sets the charIndex at 0 so rereading dialog will still scroll

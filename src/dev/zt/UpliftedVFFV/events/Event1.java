@@ -27,7 +27,7 @@ public class Event1 extends Event {
 			switch(stage){
 			case 0:
 				super.Cutscene(scenes, this.getId());
-				super.transport("res/Worlds/SouthElevator.txt", 3, 6,"South Elevator");
+				super.transport("/Worlds/SouthElevator.txt", 3, 6,"South Elevator");
 				break;
 			case 1:
 				
@@ -37,7 +37,7 @@ public class Event1 extends Event {
 			}	
 		}
 		else{
-			super.transport("res/Worlds/SouthElevator.txt", 3, 6,"South Elevator");
+			super.transport("/Worlds/SouthElevator.txt", 3, 6,"South Elevator");
 		}
 		
 	}

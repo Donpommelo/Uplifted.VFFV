@@ -47,8 +47,8 @@ public class GameState extends State {
 		ugh = new Event(game, sm,this);												//creates a new Event class that controls all events
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
-		world = new World(game, "res/Worlds/backroom.txt","Home Sweet Home");		
-		eventmanager = new EventManager(game,"res/Worlds/backroom.txt");
+		world = new World(game, "/Worlds/backroom.txt","Home Sweet Home");		
+		eventmanager = new EventManager(game,"/Worlds/backroom.txt");
 		
 //		world = new World(game, "res/Worlds/Mailroom.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"res/Worlds/Mailroom.txt");

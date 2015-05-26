@@ -1,6 +1,11 @@
 package dev.zt.UpliftedVFFV.gfx;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.utils.Utils;
@@ -159,12 +164,27 @@ public class Assets {
 		//then an image that serves as their talking sprite
 		//after that,  a 1 or 0 to determine whether they stand on the left or right respectively
 		//finally, the actual dialog of what they say. / indicates a skipping of line
-		String file = Utils.loadFileAsString("res/Text/DialogV2.txt");
+		String file = Utils.loadFileAsString("/Text/DialogV2.txt");
 		String[] tokens = file.split("\\r?\\n");
 		dialog=new Dialog[Utils.parseInt(tokens[0])];
 		for(int i = 0;i<Utils.parseInt(tokens[0]);i++){
 			dialog[i]=new Dialog((tokens[4*i+1]),ImageLoader.loadImage("/CharacterBusts/"+tokens[4*i+2]),Utils.parseInt(tokens[4*i+3]),tokens[4*i+4]);
 		}
+		
+		//Fonts
+		try {
+            //create the font to use. Specify the size!
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Fonts/Chewy.ttf")).deriveFont(12f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            //register the font
+            ge.registerFont(customFont);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch(FontFormatException e)
+        {
+            e.printStackTrace();
+        }
 	}
 
 }

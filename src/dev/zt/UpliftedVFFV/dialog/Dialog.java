@@ -35,6 +35,7 @@ public class Dialog {
 			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 			speaker = op.filter(speaker, null);
 		}
+		
 
 	}
 	

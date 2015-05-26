@@ -12,7 +12,7 @@ public class WorldManager {
 	
 	//manages world. Very straightforwards
 	public WorldManager(Game g){
-//		world=new World(g, "res/Worlds/SouthElevator.txt");
+//		world=new World(g, "/Worlds/SouthElevator.txt");
 //		setWorld(world);
 	}
 	

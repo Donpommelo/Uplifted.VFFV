@@ -85,7 +85,7 @@ public class ChoiceBranchState extends State {
 		//up and down choose options
 		if(game.getKeyManager().up){
 			if(currentchoice>0){
-				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				currentchoice--;
 				if(choicelocation==0){
 					firstchoice--;
@@ -103,7 +103,7 @@ public class ChoiceBranchState extends State {
 		}
 		if(game.getKeyManager().down){
 			if(currentchoice<num.length-1){
-				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				currentchoice++;
 				if(choicelocation==boxsize-1){
 					firstchoice++;

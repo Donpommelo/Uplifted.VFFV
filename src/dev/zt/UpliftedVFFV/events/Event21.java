@@ -18,7 +18,7 @@ public class Event21 extends Event {
 	
 	public void run(){
 		if(Event.events[66].isSelfswitch1()){
-			super.transport("res/Worlds/Lobby.txt", 13, 4,"");
+			super.transport("/Worlds/Lobby.txt", 13, 4,"");
 		}
 		else{
 			super.Dialog(108, 108,this.getId());

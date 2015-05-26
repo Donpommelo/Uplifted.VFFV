@@ -64,7 +64,7 @@ public class MenuState extends State {
 			}
 			if(game.getKeyManager().up){
 				if(optionSelected>0){
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected--;
 					try {
 						Thread.sleep(100);
@@ -75,7 +75,7 @@ public class MenuState extends State {
 			}
 			if(game.getKeyManager().down){
 				if(optionSelected<5){			//4 options currently. change this number later wen more are added
-					game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected++;
 					try {
 						Thread.sleep(100);
@@ -109,7 +109,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -120,7 +120,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -133,7 +133,7 @@ public class MenuState extends State {
 				else{
 					if(game.getKeyManager().down){
 						if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							skillSelected++;
 							if(itemPointer==3){
 								backpackLocation++;
@@ -150,7 +150,7 @@ public class MenuState extends State {
 						}
 						if(game.getKeyManager().up){
 							if(skillSelected>0){
-								game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 								skillSelected--;
 								if(itemPointer==0){
 									backpackLocation--;
@@ -185,7 +185,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -196,7 +196,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -207,7 +207,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().up){
 						if(itemslot>1){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot--;
 							try {
 								Thread.sleep(100);
@@ -218,7 +218,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().down){
 						if(itemslot<3){			
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot++;
 							try {
 								Thread.sleep(100);
@@ -245,7 +245,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -256,7 +256,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -281,7 +281,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 						if(itemSelected<gamestate.inventorymanager.backpack.size()-1){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected++;
 						if(itemPointer==26){
 							backpackLocation+=3;
@@ -299,7 +299,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(itemSelected>0){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected--;
 						if(itemPointer==0){
 							backpackLocation-=3;
@@ -317,7 +317,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().down){
 						if(itemSelected<gamestate.inventorymanager.backpack.size()-3){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected+=3;
 						if(26-itemPointer<3){
 							backpackLocation+=3;
@@ -334,7 +334,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().up){
 						if(itemSelected>2){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected-=3;
 						if(itemPointer<3){
 							backpackLocation-=3;
@@ -355,7 +355,7 @@ public class MenuState extends State {
 				else{
 					if(game.getKeyManager().right){
 					if(itemOption<2){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemOption++;
 						try {
 							Thread.sleep(100);
@@ -366,7 +366,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(itemOption>0){
-							game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemOption--;
 							try {
 								Thread.sleep(100);

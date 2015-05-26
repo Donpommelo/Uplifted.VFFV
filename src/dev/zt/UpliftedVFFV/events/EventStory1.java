@@ -18,7 +18,7 @@ public class EventStory1 extends Event {
 	public void run(){
 		super.Dialog(251, 252, this.getId());
 		selfswitch1 = true;
-		super.transport("res/Worlds/Lobby.txt", 7, 8,"");
+		super.transport("/Worlds/Lobby.txt", 7, 8,"");
 	}
 
 	public static void main(String[] args) {

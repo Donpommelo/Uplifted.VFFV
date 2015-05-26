@@ -17,7 +17,7 @@ public class Event32 extends Event {
 
 	
 	public void run(){
-		super.transport("res/Worlds/ExtraStorageRoom.txt", 10, 7,"");
+		super.transport("/Worlds/ExtraStorageRoom.txt", 10, 7,"");
 	}
 
 	public static void main(String[] args) {

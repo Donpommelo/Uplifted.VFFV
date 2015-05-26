@@ -39,7 +39,7 @@ public class TitleState extends State {
 		
 		if(game.getKeyManager().down){
 			if(optionChosen<3){
-				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				optionChosen++;
 			}
 			try {
@@ -50,7 +50,7 @@ public class TitleState extends State {
 		}
 		if(game.getKeyManager().up){
 			if(optionChosen>0){
-				game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				optionChosen--;
 			}
 			try {
