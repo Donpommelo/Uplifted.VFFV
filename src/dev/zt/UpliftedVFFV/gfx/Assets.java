@@ -174,7 +174,7 @@ public class Assets {
 		//Fonts
 		try {
             //create the font to use. Specify the size!
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Fonts/Chewy.ttf")).deriveFont(12f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(12f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(customFont);

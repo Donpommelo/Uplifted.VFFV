@@ -502,7 +502,7 @@ public class MenuState extends State {
 				g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
 				g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
 				g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
-				g.drawString("Equiptment", 400,215);
+				g.drawString("Equipment", 400,215);
 				if(tempSchmuck.itemSlot1 == null){
 					g.drawString("Item slot 1: Nothing", 400,240);
 				}

@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class TreskillingYellow extends Skills {
 
 	public String name = "Treskilling Yellow";
-	public String descr = "User strikes for with a bolt.\nof aether that tends to gain\ninitiative.";
+	public String descr = "User strikes foe with a bolt.\nof aether that tends to gain\ninitiative.";
 	public String descrShort = "Deals Yellow damage and\nhits first.";
 	public int cost = 5;
 	public TreskillingYellow(int index) {

@@ -106,7 +106,7 @@ public class Player extends Creature{
 		}
 		if(randomIndex>=0){
 			troop = troops[randomIndex];
-			game.getAudiomanager().playSound("res/Audio/Elevator Sound Effect.wav", false);
+			game.getAudiomanager().playSound("/Audio/Elevator Sound Effect.wav", false);
 			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate));
 		}
 	}

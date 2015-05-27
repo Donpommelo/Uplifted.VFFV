@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class ArcherRoulette extends Skills {
 
 	public String name = "Archer Roulette";
-	public String descr = "User fires a powerful missile\nthat is aimed, but only\nslightly.";
+	public String descr = "User fires a powerful missile\nthat is aimed, but onlyslightly.";
 	public String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
 	public int cost = 17;
 	public ArcherRoulette(int index) {

@@ -374,7 +374,7 @@ You Obtained Fishwater!/Fresh from the Fourth Floor Aquarium!./
 Employee
 3rdSouthOffices-1.png
 1
-Suite yourself./
+Suit yourself./
 Employee
 3rdSouthOffices-1.png
 1
@@ -658,7 +658,7 @@ A comfy Bed./But you don't feel like sleeping right now and probably couldn't if
 meep
 Arturo.png
 1
-An old Writing Desk./But you don't have anything to write and no one to write to./
+An old Writing Desk./But you have nothing to write and no one to write to./
 meep
 Arturo.png
 1

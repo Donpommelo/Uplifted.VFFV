@@ -17,7 +17,7 @@ public class Event4 extends Event {
 
 	
 	public void run(){
-		game.getAudiomanager().playMusic(1);
+		game.getAudiomanager().playMusic(1, true);
 		super.transport("/Worlds/SouthElevator.txt", 3, 4,"South Elevator");
 	}
 

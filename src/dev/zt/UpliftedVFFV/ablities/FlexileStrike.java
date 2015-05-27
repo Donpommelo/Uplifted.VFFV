@@ -26,7 +26,7 @@ public class FlexileStrike extends Skills {
 			target1 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
 			target2 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
 		}
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2.5)),target1);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)),target1);
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*1.5)),target2);
 
 	}

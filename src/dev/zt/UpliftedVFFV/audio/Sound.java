@@ -71,7 +71,7 @@ public class Sound {
 		}catch (Exception e) {			}
 	}
 	
-	public void startMusic(int track){
+	public void startMusic(int track, boolean looped){
 		if(currentSong!=null){
 			currentSong.stop();
 		}
@@ -104,7 +104,9 @@ public class Sound {
 			currentSong = AudioSystem.getClip();
 			currentSong.open(testStream);
 			currentSong.start();
-			currentSong.loop(Clip.LOOP_CONTINUOUSLY);
+			if(looped){
+				currentSong.loop(Clip.LOOP_CONTINUOUSLY);
+			}
 		}catch (Exception e) {			}
 	}
 

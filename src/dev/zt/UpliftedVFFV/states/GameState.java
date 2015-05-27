@@ -55,7 +55,7 @@ public class GameState extends State {
 //		world = new World(game, "res/Worlds/SouthOfficeHallway.txt","");
 //		eventmanager = new EventManager(game,"res/Worlds/SouthOfficeHallway.txt");
 		player = new Player(game, 256, 288, this);										//creates player
-		game.getAudiomanager().playMusic(1);
+		game.getAudiomanager().playMusic(1,true);
 	}
 
 	

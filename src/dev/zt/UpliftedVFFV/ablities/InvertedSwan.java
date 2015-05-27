@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 public class InvertedSwan extends Skills {
 
 	public String name = "Inverted Swan";
-	public String descr = "User infuses a target\nthe grace of an upside-\nswan, granting and double\n-attack.";
+	public String descr = "User infuses a target\nthe grace of an upside-\nswan, granting a double\n-attack.";
 	public String descrShort = "Gives a Double-Attack.\nThe second hit is Blue\naligned.";
 	public int cost = 14;
 	public InvertedSwan(int index) {

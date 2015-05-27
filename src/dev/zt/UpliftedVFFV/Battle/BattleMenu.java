@@ -251,7 +251,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().up){
 					if(itemSelected>0){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected--;
 						if(itemPointer==0){
 							backpackLocation--;
@@ -269,7 +269,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().down){
 					if(itemSelected<currentSchmuck.skills.size()-1){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected++;
 						if(itemPointer==4){
 							backpackLocation++;
@@ -341,7 +341,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().up){
 					if(itemSelected>0){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected--;
 						if(itemPointer==0){
 							backpackLocation--;
@@ -359,7 +359,7 @@ public class BattleMenu{
 				}
 				if(game.getKeyManager().down){
 					if(itemSelected<gs.inventorymanager.backpack.size()-1){
-						game.getAudiomanager().playSound("res/Audio/tutorial_ui_click_01.wav", false);
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected++;
 						if(itemPointer==4){
 							backpackLocation++;

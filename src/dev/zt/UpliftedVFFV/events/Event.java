@@ -318,7 +318,7 @@ public class Event{
 	
 	//when ran, this opens combat with a given troop corresponding with the enemyId
 	public static void fite(int enemyId, int eventId, boolean runnable, boolean music){
-		game.getAudiomanager().playSound("res/Audio/Elevator Sound Effect.wav", false);
+		game.getAudiomanager().playSound("/Audio/Elevator Sound Effect.wav", false);
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

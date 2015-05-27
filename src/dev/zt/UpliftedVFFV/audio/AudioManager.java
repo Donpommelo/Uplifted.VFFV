@@ -23,8 +23,8 @@ public class AudioManager {
 		}
 	}
 	
-	public void playMusic(int track){
-		sounds.startMusic(track);
+	public void playMusic(int track, boolean looped){
+		sounds.startMusic(track,looped);
 	}
 	
 	public Clip getMusic(){

@@ -61,7 +61,7 @@ public class EventSafe5 extends Event {
 	public void ChoiceMade(int i){
 		switch(i){
 		case 0:
-			super.transport("res/Worlds/LightRoom.txt", 1, 19,"???");
+			super.transport("/Worlds/LightRoom.txt", 1, 19,"???");
 //			super.Dialog(215, 215,this.getId());
 			break;
 		case 1:

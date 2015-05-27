@@ -118,7 +118,7 @@ public class Event3 extends Event {
 			case 1:
 				KeyManager.setCutsceneMode(false);
 				stage = 0;
-				game.getAudiomanager().playMusic(2);
+				game.getAudiomanager().playMusic(2, true);
 				super.transport("/Worlds/Lobby.txt", 7, 10,"South Lobby");
 				open = false;
 				break;

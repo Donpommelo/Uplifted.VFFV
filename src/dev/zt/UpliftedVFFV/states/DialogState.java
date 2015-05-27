@@ -31,6 +31,7 @@ public class DialogState extends State {
 		this.linenum=start;
 		this.endline=end;
 		this.EventId=eventId;
+		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 
 	public void tick() {

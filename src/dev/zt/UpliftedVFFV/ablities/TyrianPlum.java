@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.TyrianPlumEffect;
 public class TyrianPlum extends Skills {
 
 	public String name = "Tyrian Plum";
-	public String descr = "User plants a seed into a target\nthat saps health.";
+	public String descr = "User plants a seed into a target\nthat saps health over time.";
 	public String descrShort = "Drains health from target\nwhen using Mp";
 	public int cost = 13;
 	public TyrianPlum(int index) {

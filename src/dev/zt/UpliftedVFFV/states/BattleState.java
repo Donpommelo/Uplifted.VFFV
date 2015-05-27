@@ -116,7 +116,7 @@ public class BattleState extends State {
 			}
 			else{
 				if(musicReplace){
-					game.getAudiomanager().playMusic(3);
+					game.getAudiomanager().playMusic(3,true);
 				}
 				bb.render(g);
 				bs.render(g);
@@ -139,7 +139,7 @@ public class BattleState extends State {
 	
 	public void end(boolean victory){
 		statemanager.states.pop();
-		game.getAudiomanager().playMusic(2);
+		game.getAudiomanager().playMusic(2, true);
 		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 		//increment and the event will be rerrun with the new stage.
 		if(victory){

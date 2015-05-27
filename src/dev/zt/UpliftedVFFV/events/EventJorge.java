@@ -33,7 +33,7 @@ public class EventJorge extends Event {
 				break;
 			case 1:
 				super.Dialog(103, 105,this.getId());
-				game.getAudiomanager().playMusic(4);
+				game.getAudiomanager().playMusic(4, true);
 				break;
 			case 2:
 				super.fite(0,this.getId(), false, false);
@@ -41,7 +41,7 @@ public class EventJorge extends Event {
 			case 3:
 				if(fightwon){
 					setSelfswitch1(true);
-					game.getAudiomanager().playMusic(2);
+					game.getAudiomanager().playMusic(2, true);
 				}
 				super.Dialog(106, 106,this.getId());
 				break;
