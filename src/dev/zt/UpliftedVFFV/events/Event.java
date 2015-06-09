@@ -8,6 +8,50 @@ import java.util.concurrent.TimeUnit;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
+import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
+import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
+import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event1;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event2;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event3;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomBed1;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomBed2;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomCalendar;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomCalendarInvisible;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomDesk1;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomDesk2;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomTv;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventElevatorPanel;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventPenPal;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventStory3;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventTvInvisible;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventClock;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventElevatorFloor;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventElevatorWallWave;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventEmployeePlant;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventFemaleSign;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventFilingCabinet;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventInvisWall;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventMaleSign;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventMirror;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSink;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSinkMirror;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSmudge1;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSmudge2;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSofa1;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventSofa2;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable0;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable1;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable2;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable3;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable4;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable5;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable6;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable7;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable8;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable9;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventToilet;
+import dev.zt.UpliftedVFFV.events.EventsCommon.EventWorkDesk1;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -34,11 +78,11 @@ public class Event{
 	static World world;
 	static EventManager eventmanager;
 	static StateManager statemanager;
-	static Game game;
+	protected static Game game;
 	static GameState gamestate;
 	static Player killme;
-	float x;
-	float y;
+	protected float x;
+	protected float y;
 	public static Event[] events = new Event[256];
 	public static Event event0 = new Event0(0,0,0);
 	public static Event event1 = new Event1(3,2,1);
@@ -206,6 +250,48 @@ public class Event{
 	public static Event eventemployee49 = new EventEmployee49(21,5,150);
 	public static Event eventemployee50 = new EventEmployee50(21,5,151);
 	
+	public static Event event41 = new Event41(0,4,160);
+	public static Event event42 = new Event42(5,2,161);
+	public static Event event43 = new Event43(9,2,162);
+	public static Event event44 = new Event44(11,2,163);
+	public static Event event45 = new Event45(2,9,164);
+	public static Event event46 = new Event46(6,9,165);
+	public static Event event47 = new Event47(11,29,166);
+	public static Event event48 = new Event48(11,15,167);
+	public static Event event49= new Event49(0,0,168);
+	public static Event event50 = new Event50(6,18,169);
+	public static Event event51 = new Event51(6,1,170);
+	public static Event event52 = new Event52(3,11,171);
+	public static Event event53 = new Event53(3,2,172);
+	public static Event event54 = new Event54(6,2,173);
+	//55,56,57 to other bus stops
+	public static Event event59 = new Event59(3,9,178);
+	public static Event event60 = new Event60(6,2,179);
+	public static Event event61 = new Event61(6,2,180);
+	public static Event event62 = new Event62(6,2,181);
+	public static Event event63 = new Event63(6,2,182);
+	//64,65,66 to right east offices
+	public static Event event67 = new Event67(0,42,186);
+	public static Event event68 = new Event68(6,42,187);
+	public static Event event69 = new Event69(20,5,188);
+	public static Event event70 = new Event70(0,5,189);
+	public static Event event71 = new Event71(7,20,190);
+	public static Event event72 = new Event72(20,20,191);
+	public static Event event73 = new Event73(14,4,192);
+	public static Event event74 = new Event74(14,22,193);
+	public static Event event75 = new Event75(5,8,194);
+	public static Event event76 = new Event76(5,15,195);
+	public static Event event77 = new Event77(4,12,196);
+	public static Event event78 = new Event78(14,6,197);
+	public static Event event79 = new Event79(4,4,198);
+	public static Event event80 = new Event80(17,14,199);
+	public static Event event81 = new Event81(4,6,200);
+	public static Event event82 = new Event82(4,15,201);
+	public static Event event83 = new Event83(4,20,202);
+	public static Event event84 = new Event84(9,7,203);
+	public static Event event85 = new Event85(4,3,204);
+	public static Event event86 = new Event86(10,7,205);
+	public static Event event87 = new Event87(0,7,206);
 	
 	public Event(Game g, StateManager sm,GameState gs) {
 		game=g;
@@ -223,8 +309,8 @@ public class Event{
 
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
-	BufferedImage tex;
-	Creature test;
+	protected BufferedImage tex;
+	public Creature test;
 	boolean open;
 	boolean drawn;
 	boolean fightwon;
@@ -299,6 +385,10 @@ public class Event{
 	}
 	
 	public boolean drawn(){
+		return true;
+	}
+	
+	public boolean runnable(){
 		return true;
 	}
 	
@@ -421,6 +511,22 @@ public class Event{
 		gamestate.scriptChange(i);
 	}
 	
+	public void setVar(int i, int set){
+		gamestate.setVar(i, set);
+	}
+	
+	public int getVar(int i){
+		return gamestate.getVar(i);
+	}
+	
+	public void setSwitch(int i, boolean set){
+		gamestate.setSwitch(i, set);
+	}
+	
+	public boolean getSwitch(int i){
+		return gamestate.getSwitch(i);
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -484,6 +590,8 @@ public class Event{
 	public void setOpen(boolean open) {
 		this.open = open;
 	}
+	
+	
 	
 	public boolean isFightwon() {
 		return fightwon;

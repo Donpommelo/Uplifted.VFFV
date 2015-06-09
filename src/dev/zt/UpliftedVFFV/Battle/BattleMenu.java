@@ -183,6 +183,12 @@ public class BattleMenu{
 						moveSelected=false;
 						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
+						if(bs.bp.currentlySelected < allies.size()-1){
+							bs.bp.currentlySelected++;
+						}
+						else{
+							bs.bp.currentlySelected = 0;
+						}
 					}
 				}
 				
@@ -220,6 +226,12 @@ public class BattleMenu{
 						moveSelected=false;
 						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
+						if(bs.bp.currentlySelected < allies.size()-1){
+							bs.bp.currentlySelected++;
+						}
+						else{
+							bs.bp.currentlySelected = 0;
+						}
 					}
 				}
 				else{
@@ -318,6 +330,12 @@ public class BattleMenu{
 						moveSelected=false;
 						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
+						if(bs.bp.currentlySelected < allies.size()-1){
+							bs.bp.currentlySelected++;
+						}
+						else{
+							bs.bp.currentlySelected = 0;
+						}
 					}
 				}
 				else{
@@ -392,6 +410,12 @@ public class BattleMenu{
 					moveSelected=false;
 					bs.bp.selected=false;		
 					bs.bp.pauseTOQ=false;
+					if(bs.bp.currentlySelected < allies.size()-1){
+						bs.bp.currentlySelected++;
+					}
+					else{
+						bs.bp.currentlySelected = 0;
+					}
 				break;
 				
 			case 4:
@@ -399,6 +423,12 @@ public class BattleMenu{
 				moveSelected=false;
 				bs.bp.selected=false;		
 				bs.bp.pauseTOQ=false;
+				if(bs.bp.currentlySelected < allies.size()-1){
+					bs.bp.currentlySelected++;
+				}
+				else{
+					bs.bp.currentlySelected = 0;
+				}
 				break;
 			
 			}

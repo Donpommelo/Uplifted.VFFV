@@ -16,6 +16,7 @@ import dev.zt.UpliftedVFFV.inventory.MidgeBlood;
 import dev.zt.UpliftedVFFV.party.PartyManager;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.quest.SwitchManager;
+import dev.zt.UpliftedVFFV.quest.VariableManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
@@ -35,7 +36,9 @@ public class GameState extends State {
 	public InventoryManager inventorymanager;
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
-	public int floor;
+	public VariableManager variablemanager;
+	
+//	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
 	Event ugh;
 	
@@ -44,16 +47,18 @@ public class GameState extends State {
 	//Come back to this starting world/event stuff later when you want to make save states
 	public GameState(Game game, StateManager sm){
 		super(game,sm);
+		switchmanager = new SwitchManager(game);
+		variablemanager = new VariableManager(game);
 		ugh = new Event(game, sm,this);												//creates a new Event class that controls all events
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
-		world = new World(game, "/Worlds/backroom.txt","Home Sweet Home");		
-		eventmanager = new EventManager(game,"/Worlds/backroom.txt");
+		world = new World(game, "/Worlds/ElevatorsandBackroom/backroom.txt","Home Sweet Home");		
+		eventmanager = new EventManager(game,"/Worlds/ElevatorsandBackroom/backroom.txt");
 		
 //		world = new World(game, "res/Worlds/Mailroom.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"res/Worlds/Mailroom.txt");
-//		world = new World(game, "res/Worlds/SouthOfficeHallway.txt","");
-//		eventmanager = new EventManager(game,"res/Worlds/SouthOfficeHallway.txt");
+		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftMain2.txt","");
+		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftMain2.txt");
 		player = new Player(game, 256, 288, this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
 	}
@@ -133,12 +138,20 @@ public class GameState extends State {
 		
 	}
 
-	public int getFloor() {
-		return floor;
+	public int getVar(int i) {
+		return variablemanager.getVar(i);
 	}
 
-	public void setFloor(int floor) {
-		this.floor = floor;
+	public void setVar(int i, int set) {
+		variablemanager.setVar(i, set);;
+	}
+	
+	public boolean getSwitch(int i) {
+		return switchmanager.getSwitch(i);
+	}
+
+	public void setSwitch(int i, boolean set) {
+		switchmanager.setSwitch(i, set);;
 	}
 	
 	public void scriptChange(int change){

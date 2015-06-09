@@ -37,7 +37,9 @@ public class Player extends Creature{
 		this.x = x;
 		this.y = y;
 		this.playerx = 256;
-		this.playery = 288;
+		this.playery = 224;
+//		this.playerx = 128;
+//		this.playery = 128;
 		wall = false;
 	} 
 
@@ -45,7 +47,7 @@ public class Player extends Creature{
 				
 		//First, checks whether the player is standing on an event
 		Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
-		if(e!=Event.event0){		//if the player is on top of a square containing an event, the event is run
+		if(e!=Event.event0 && e.runnable()){		//if the player is on top of a square containing an event, the event is run
 
 			e.run();
 			step=16;				//when an event is run, the player step count is reset so avoid getting stuck between squares
@@ -122,10 +124,9 @@ public class Player extends Creature{
 			step=0;
 			double temp = Math.random()*100;
 			wall = false;
-			if(temp<enemyChance){			//enemy stuff
-//				game.getGameCamera().screenShake(20);
+			if(temp<enemyChance){			//enemy stuff				
 				enemyChance = 0;
-				encounter();
+//				encounter();
 			}
 			else{
 				if(enemyChance<(double)(WorldManager.getWorld().enemyrate)){

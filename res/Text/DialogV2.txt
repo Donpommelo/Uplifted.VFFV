@@ -1,4 +1,4 @@
-287
+289
 Employee
 3rdSouthOffices-1.png
 1
@@ -702,7 +702,7 @@ If you ever need your game saved, just find me and I can help you with that./
 Janitor
 Janitor1small.png
 1
-Oh, and I also run a bit of my own business. Y'know, just to make a bit of money/on the side. Feel free to buy purchase anything that interests you./Just don't mention anything to Management./
+Oh, and I also run a bit of my own business. Y'know, just to make a bit of money/on the side. Feel free to purchase anything that interests you./Just don't mention anything to Management./
 Janitor
 Janitor1small.png
 1
@@ -1147,3 +1147,11 @@ Employee
 3rdSouthOffices-3.png
 1
 What? This one's cleaner anyways./
+meep
+Arturo.png
+1
+The door is locked from this side./
+meep
+Arturo.png
+1
+The door is locked from this side. Like, super locked./

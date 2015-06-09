@@ -22,6 +22,6 @@ public class EventTestBattle extends Event {
 	}
 	
 	public boolean drawn(){
-		return  false;
+		return false;
 	}
 }
