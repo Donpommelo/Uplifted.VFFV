@@ -24,7 +24,7 @@ public class AudioManager {
 	}
 	
 	public void playMusic(int track, boolean looped){
-		sounds.startMusic(track,looped);
+//		sounds.startMusic(track,looped);
 	}
 	
 	public Clip getMusic(){

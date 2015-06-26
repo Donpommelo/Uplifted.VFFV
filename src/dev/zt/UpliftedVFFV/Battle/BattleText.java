@@ -57,6 +57,7 @@ public class BattleText {
 			g.fillRect(0, 0, 640, 25);
 			g.setColor(new Color(0,0,0));
 			g.drawString(textList.get(0),0,20);	
+//			g.drawString(textList.get(1),0,45);	
 
 	}
 

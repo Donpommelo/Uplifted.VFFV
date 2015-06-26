@@ -109,7 +109,8 @@ public class Player extends Creature{
 		if(randomIndex>=0){
 			troop = troops[randomIndex];
 			game.getAudiomanager().playSound("/Audio/Elevator Sound Effect.wav", false);
-			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate));
+			//Later, change last int for bonus ML
+			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,0));
 		}
 	}
 	
@@ -126,7 +127,7 @@ public class Player extends Creature{
 			wall = false;
 			if(temp<enemyChance){			//enemy stuff				
 				enemyChance = 0;
-//				encounter();
+				encounter();
 			}
 			else{
 				if(enemyChance<(double)(WorldManager.getWorld().enemyrate)){

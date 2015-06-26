@@ -181,7 +181,6 @@ public class BattleMenu{
 							bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new StandardAttack(0),bs));
 						}
 						moveSelected=false;
-						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
 						if(bs.bp.currentlySelected < allies.size()-1){
 							bs.bp.currentlySelected++;
@@ -189,6 +188,15 @@ public class BattleMenu{
 						else{
 							bs.bp.currentlySelected = 0;
 						}
+						for(Action a :bs.bp.TurnOrderQueue){
+							if(a!=null){
+								if(allies.get(bs.bp.currentlySelected).equals(a.user)){
+									bs.bp.selected=false;
+								}
+							}
+						}
+						
+						bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 					}
 				}
 				
@@ -224,7 +232,6 @@ public class BattleMenu{
 							}
 						}
 						moveSelected=false;
-						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
 						if(bs.bp.currentlySelected < allies.size()-1){
 							bs.bp.currentlySelected++;
@@ -232,6 +239,15 @@ public class BattleMenu{
 						else{
 							bs.bp.currentlySelected = 0;
 						}
+						for(Action a :bs.bp.TurnOrderQueue){
+							if(a!=null){
+								if(allies.get(bs.bp.currentlySelected).equals(a.user)){
+									bs.bp.selected=false;
+								}
+							}
+						}
+						
+						bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 					}
 				}
 				else{
@@ -328,7 +344,6 @@ public class BattleMenu{
 							}
 						}
 						moveSelected=false;
-						bs.bp.selected=false;
 						bs.bp.pauseTOQ=false;
 						if(bs.bp.currentlySelected < allies.size()-1){
 							bs.bp.currentlySelected++;
@@ -336,6 +351,15 @@ public class BattleMenu{
 						else{
 							bs.bp.currentlySelected = 0;
 						}
+						for(Action a :bs.bp.TurnOrderQueue){
+							if(a!=null){
+								if(allies.get(bs.bp.currentlySelected).equals(a.user)){
+									bs.bp.selected=false;
+								}
+							}
+						}
+						
+						bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 					}
 				}
 				else{
@@ -408,7 +432,6 @@ public class BattleMenu{
 						bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new DillyDally(0),bs));
 					}
 					moveSelected=false;
-					bs.bp.selected=false;		
 					bs.bp.pauseTOQ=false;
 					if(bs.bp.currentlySelected < allies.size()-1){
 						bs.bp.currentlySelected++;
@@ -416,12 +439,20 @@ public class BattleMenu{
 					else{
 						bs.bp.currentlySelected = 0;
 					}
+					for(Action a :bs.bp.TurnOrderQueue){
+						if(a!=null){
+							if(allies.get(bs.bp.currentlySelected).equals(a.user)){
+								bs.bp.selected=false;
+							}
+						}
+					}
+					
+					bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 				break;
 				
 			case 4:
 				bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new Runaway(0),bs));
 				moveSelected=false;
-				bs.bp.selected=false;		
 				bs.bp.pauseTOQ=false;
 				if(bs.bp.currentlySelected < allies.size()-1){
 					bs.bp.currentlySelected++;
@@ -429,6 +460,15 @@ public class BattleMenu{
 				else{
 					bs.bp.currentlySelected = 0;
 				}
+				for(Action a :bs.bp.TurnOrderQueue){
+					if(a!=null){
+						if(allies.get(bs.bp.currentlySelected).equals(a.user)){
+							bs.bp.selected=false;
+						}
+					}
+				}
+				
+				bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 				break;
 			
 			}

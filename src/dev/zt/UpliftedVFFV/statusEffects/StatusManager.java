@@ -101,8 +101,14 @@ public class StatusManager {
 	public void endofFite(){
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){
+				if(s.statuses.get(i)!=null){	
 					s.statuses.get(i).endoffightEffect(s, bs);
+				}				
+			}
+		}
+		for(Schmuck s : battlers){
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){					
 					if(s.statuses.get(i).removedEnd){
 						s.statuses.remove(i);
 						s.calcBuffs();

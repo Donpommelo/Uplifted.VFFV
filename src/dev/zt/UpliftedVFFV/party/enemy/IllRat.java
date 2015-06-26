@@ -44,10 +44,10 @@ public class IllRat extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public IllRat() {
+	public IllRat(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Ill Rat",1,ImageLoader.loadImage("/BattleSprites/Ill Rat.png"), startStats, statGrowths,elemRes);
-		calcStats(1);
+		super("Ill Rat",lvl,ImageLoader.loadImage("/BattleSprites/Ill Rat.png"), startStats, statGrowths,elemRes);
+		calcStats(lvl);
 		this.bio = "Filthy bringer of plague. Thrive due to lack of natural predators.";
 		itemdrops.put(new Disease(), .6);
 		

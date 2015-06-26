@@ -43,10 +43,10 @@ public class CoffeeElem extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public CoffeeElem() {
+	public CoffeeElem(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Coffee Elemental",1,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes);
-		calcStats(1);
+		super("Coffee Elemental",lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes);
+		calcStats(lvl);
 		this.bio = "A  dangerously hot elemental. Maintains and enforces orderly conduct in the Offices.";
 		itemdrops.put(new CoffeeBean(), 1.0);
 		itemdrops.put(new BossMug(), .1);

@@ -42,10 +42,10 @@ public class RotThought extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public RotThought() {
-		super("Rotthought",1,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes);
-		calcStats(1);
-		this.bio = "A weakly malicious intention. Floats feebly thought the cubicals where it was born.";
+	public RotThought(int lvl) {
+		super("Rotthought",lvl,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes);
+		calcStats(lvl);
+		this.bio = "A weakly malicious intention. Floats feebly thought the cubicles where it was born.";
 		itemdrops.put(new MentalLeakage(), .7);
 	}
 	

@@ -37,10 +37,10 @@ public class Augur extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public Augur() {
+	public Augur(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Augur",1,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes);
-		calcStats(1);
+		super("Augur",lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes);
+		calcStats(lvl);
 		this.bio = "Spectral bringer of bad news. Infects foes with insidious negativity.";
 		
 	}

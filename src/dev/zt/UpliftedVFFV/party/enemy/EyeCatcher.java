@@ -40,10 +40,10 @@ public class EyeCatcher extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public EyeCatcher() {
+	public EyeCatcher(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Eye Catcher",1,ImageLoader.loadImage("/BattleSprites/Eye Catcher.png"), startStats, statGrowths, elemRes);
-		calcStats(1);
+		super("Eye Catcher",lvl,ImageLoader.loadImage("/BattleSprites/Eye Catcher.png"), startStats, statGrowths, elemRes);
+		calcStats(lvl);
 		this.bio = "Dangerous monster that steals the eyes from its victims. Probably has a collection or something.";
 		itemdrops.put(new SeeingEye(), 1.0);
 	}

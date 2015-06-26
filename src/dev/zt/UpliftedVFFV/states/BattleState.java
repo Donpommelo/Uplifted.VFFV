@@ -24,6 +24,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.TroopManager;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -53,7 +54,9 @@ public class BattleState extends State {
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> all=new ArrayList<Schmuck>();
-	public BattleState(Game game, StateManager sm, ArrayList<Schmuck>party,int troopId, int eventId,boolean runnable, boolean music,GameState gs){
+	public Troop t;
+	public int bonusML;
+	public BattleState(Game game, StateManager sm, ArrayList<Schmuck>party,int troopId, int eventId,boolean runnable, boolean music,GameState gs, int ML){
 		super(game,sm);
 //		game.getAudiomanager().playMusic(3);
 		this.gs=gs;
@@ -62,11 +65,13 @@ public class BattleState extends State {
 		this.musicReplace = music;
 		tm= new TroopManager(game);
 //		bm = new BattleMenu(game,sm,party,tm.Troop(troopId),this);
-		bp = new BattleProcessor(game,sm,party,tm.Troop(troopId),gs,this);
-		bs = new BattleSprites(game,sm,party,tm.Troop(troopId),this);
-		bb = new BattleBackground(game,sm,this);
 		this.allies = party;
-		this.enemy = tm.Troop(troopId);
+		this.bonusML = ML;
+		t = Troop.troops[troopId];
+		this.enemy = tm.Troop(troopId,bonusML);
+		bp = new BattleProcessor(game,sm,party,enemy,t,gs,this);
+		bs = new BattleSprites(game,sm,party,enemy,this);
+		bb = new BattleBackground(game,sm,this);	
 		animatedDoors = new SpriteSheet(ImageLoader.loadImage("/textures/BattleIntro1.png"));
 		introScene = true;
 		introX = 0;

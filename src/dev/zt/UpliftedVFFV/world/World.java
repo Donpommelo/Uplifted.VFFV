@@ -23,7 +23,7 @@ public class World {
 	public int enemyrate, enemynum;
 //	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
 	public static TreeMap<Integer, Integer> enemy;//= new TreeMap<Integer, Integer>();
-	public Troop troop = new Troop(0);
+//	public Troop troop = new Troop(0);
 	public World(Game game, String path, String name){
 		this.game = game;
 		this.Worldname=name;

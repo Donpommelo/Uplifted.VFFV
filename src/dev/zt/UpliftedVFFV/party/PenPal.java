@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.ablities.ArcherRoulette;
 import dev.zt.UpliftedVFFV.ablities.BoxCutter;
+import dev.zt.UpliftedVFFV.ablities.Censor;
 import dev.zt.UpliftedVFFV.ablities.DoubleGeneva;
+import dev.zt.UpliftedVFFV.ablities.ForceWithin;
 import dev.zt.UpliftedVFFV.ablities.HeresHow;
 import dev.zt.UpliftedVFFV.ablities.InvertedSwan;
 import dev.zt.UpliftedVFFV.ablities.PantherPoise;
@@ -58,6 +60,10 @@ public class PenPal extends Schmuck{
 		super.learnSkill(new HeresHow(0));
 		super.learnSkill(new DoubleGeneva(0));
 		super.learnSkill(new PennyBlack(0));
+		
+		super.learnSkill(new Censor(0));
+		super.learnSkill(new ForceWithin(0));
+		
 
 		
 		

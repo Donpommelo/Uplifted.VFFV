@@ -11,6 +11,7 @@ import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -22,11 +23,12 @@ public class BattleProcessor {
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy = new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> battlers = new ArrayList<Schmuck>();
+	public Troop t;
 	public int troop;
 	public int phase;
 	public int currentlySelected;
 	public int roundNum;
-	public boolean selected;
+	public boolean selected = true;
 	public boolean ranAway = false;
 	public boolean pauseTOQ;
 	public boolean allReady = false;;
@@ -40,13 +42,14 @@ public class BattleProcessor {
 	public EffectManager em;
 	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
 	
-	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy,GameState gs,BattleState bs){
+	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy, Troop t,GameState gs,BattleState bs){
 		this.game=game;
 		this.sm=sm;
 		this.bs=bs;
 		this.gs=gs;
 		this.allies = party;
 		this.enemy = enemy;
+		this.t = t;
 		phase=1;
 		currentlySelected=0;
 		roundNum = 1;
@@ -69,12 +72,13 @@ public class BattleProcessor {
 		for(Schmuck s: battlers){
 			s.calcBuffs();
 		}
-		if(enemy.size()>1){
+/*		if(enemy.size()>1){
 			bt.textList.add(enemy.get(0).getName()+" and co attack.");
 		}
 		else{
 			bt.textList.add(enemy.get(0).getName()+" attacks you.");
-		}
+		}*/
+		bt.textList.add(t.encounterText());
 				
 	}
 	
@@ -86,11 +90,16 @@ public class BattleProcessor {
 		else{
 			switch(phase){
 			case 0:
+				currentlySelected=0;
+				if(!enemyded()){
+					selected = true;
+				}
 				for(int i=0 ; i<enemy.size()+allies.size();i++){
 					TurnOrderQueue.add(null);
 				}
 				phase++;
 			case 1:
+				
 				if(selected==true){
 					bm.tick();
 				}
@@ -202,12 +211,14 @@ public class BattleProcessor {
 							s.restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);
 						}
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
-							if(TurnOrderQueue.get(0).skill.getCost()<=TurnOrderQueue.get(0).user.getCurrentBp()){
-								for(status s : TurnOrderQueue.get(0).user.statuses){
-									s.onAction(bs,TurnOrderQueue.get(0));
-								}
+							if(TurnOrderQueue.get(0).skill.getCost()<=TurnOrderQueue.get(0).user.getCurrentBp()){								
 								em.bpChange(-TurnOrderQueue.get(0).skill.getCost(), TurnOrderQueue.get(0).user);
 								TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+								for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+									if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+										TurnOrderQueue.get(0).user.statuses.get(i).onAction(bs,TurnOrderQueue.get(0));
+									}
+								}
 							}
 							else{
 								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to use "+TurnOrderQueue.get(0).skill.getName());
@@ -220,6 +231,7 @@ public class BattleProcessor {
 								currentlySelected=allies.indexOf(TurnOrderQueue.get(0).user);
 								bm = new BattleMenu(game,sm,allies,enemy,bs,TurnOrderQueue.get(0).user,gs);
 							}
+							//if enemies dilly dally, they just re-get a move the same way but with updated info
 							else{
 								TurnOrderQueue.set(0,TurnOrderQueue.get(0).user.getAction(bs));
 							}
@@ -238,7 +250,7 @@ public class BattleProcessor {
 				else{					
 					stm.endofRound(bs);
 					for(Schmuck s : battlers){
-						s.bpChange(s.getBuffedInt()/5);
+						s.bpChange(s.getBuffedInt()/5); //mp regen gain. Tweak numbers later
 					}
 					phase++;
 				}
@@ -270,17 +282,19 @@ public class BattleProcessor {
 					}					
 					bt.textList.add(script+" Company Script looted!");
 					gs.scriptChange(script);
-					for(Schmuck s : enemy){
-						Set<Item> temp = s.getItemdrops().keySet();
-						Item[] itemDisplay = temp.toArray(new Item[999]);
-						for(int i=0; i<s.getItemdrops().size();i++){		
-							if(Math.random()<=s.getItemdrops().get(itemDisplay[i])){
-								bt.textList.add("Looted a "+itemDisplay[i].getName()+"!");
-								gs.inventorymanager.loot(itemDisplay[i], 1);
-							}
+					Set<Item> temp = t.getDrops().keySet();
+					Item[] itemDisplay = temp.toArray(new Item[999]);
+					for(int i=0; i<t.getDrops().size();i++){		
+						if(t.getItems().get(itemDisplay[i]) == 1){
+							bt.textList.add("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}
+						else{
+							bt.textList.add("Looted "+t.getItems().get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
+						}				
+						gs.inventorymanager.loot(itemDisplay[i], t.getItems().get(itemDisplay[i]));
 					}
 					stm.endofFite();
+					
 				}
 				roundNum++;
 				phase=0;

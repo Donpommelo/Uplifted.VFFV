@@ -18,7 +18,7 @@ public class CrushingSlam extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Crushing Slam!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)*.75){
-			bs.bp.bt.textList.add(perp.getName()+" was dazed by the blow!");
+			bs.bp.bt.textList.add(vic.getName()+" was dazed by the blow!");
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.8)),vic);
 			for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 				if(bs.bp.TurnOrderQueue.get(i)!=null){

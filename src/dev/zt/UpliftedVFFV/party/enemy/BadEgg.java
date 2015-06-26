@@ -33,11 +33,11 @@ public class BadEgg extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public BadEgg() {
+	public BadEgg(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Bad Egg",1,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes);
-		calcStats(1);
-		this.bio = "A ruthless shelled thug. Smells bad and gets in fights.";
+		super("Bad Egg",lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes);
+		calcStats(lvl);
+		this.bio = "The uncouth spirit of an unborn chicken.";
 	}
 	
 	

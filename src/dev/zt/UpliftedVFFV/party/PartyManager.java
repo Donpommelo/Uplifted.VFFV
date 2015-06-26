@@ -15,7 +15,7 @@ public class PartyManager {
 		Schmuck operator=new Operator();
 		party.add(operator);
 		Schmuck penpal=new PenPal();
-//		party.add(penpal);
+		party.add(penpal);
 /*		Schmuck penpal1=new PenPal();
 		party.add(penpal1);
 		Schmuck penpal2=new PenPal();

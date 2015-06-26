@@ -43,33 +43,42 @@ public class status {
 
 
 	
+	//Activates upon selecting a move. Prolly should rename. Atm used for restricting; if certain moves are selected, they are replaced
 	public void restrict(Schmuck s, Action a, BattleState bs){
 
 	}
+	
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 	
 	}
 	
+	//When fight starts.
 	public void startoffightEffect(Schmuck s, BattleState bs){//
 		
 	}
 	
+	//Executed at the end of fights befoe item + script calculations
 	public void endoffightEffect(Schmuck s, BattleState bs){
 		
 	}
 	
+	//upon taking damage from any source. Source is NOT possible to identify.
 	public void takedamageEffect(Schmuck s, BattleState bs, int damage){//
 		
 	}	
 	
+	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
 	public void onAction(BattleState bs, Action a){
 		
 	}
 	
+	//Upon standard attack is used
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}
+	
+	
 	
 	
 	public void run(Schmuck s){

@@ -47,10 +47,10 @@ public class BossJorge extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
-	public BossJorge() {
+	public BossJorge(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Jorge",1,ImageLoader.loadImage("/BattleSprites/Jorge.png"), startStats, statGrowths, elemRes);
-		calcStats(1);
+		super("Jorge",lvl,ImageLoader.loadImage("/BattleSprites/Jorge.png"), startStats, statGrowths, elemRes);
+		calcStats(lvl);
 		this.bio = "Unhelpful middle manager. Foul-tempered and steals food from coworkers.";
 		itemdrops.put(new PostageStamp(), 1.0);
 		itemdrops.put(new PostageStamp(), 1.0);
