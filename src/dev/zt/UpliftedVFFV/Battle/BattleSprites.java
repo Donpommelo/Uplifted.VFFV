@@ -1,12 +1,10 @@
 package dev.zt.UpliftedVFFV.Battle;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -66,7 +64,7 @@ public class BattleSprites {
 	}
 	public void render(Graphics g) {
 		g.setColor(new Color(200,200,0));
-		g.fillOval(allies.get(bs.bp.currentlySelected).getX()+15,allies.get(bs.bp.currentlySelected).getY()+150,90,45);
+		g.fillOval(alliesTargets.get(bs.bp.currentlySelected).getX()+15,alliesTargets.get(bs.bp.currentlySelected).getY()+150,90,45);
 		for(int i=0;i<allies.size();i++){
 			g.setColor(new Color(255,255,0));
 			g.drawString("Hp: "+allies.get(i).getCurrentHp()+"/"+allies.get(i).getMaxHp(), allies.get(i).getX()+20, allies.get(i).getY()-20);
@@ -87,6 +85,13 @@ public class BattleSprites {
 					g.drawImage(a.skill.icon,allies.get(allies.indexOf(a.user)).getX(),allies.get(allies.indexOf(a.user)).getY(),null);
 				}
 			}
+			g.setColor(new Color(0,0,0));
+			if(a != null){
+				g.drawString(a.user.getName()+" "+a.skill.getName(),110, 45+25*bs.bp.TurnOrderQueue.indexOf(a));
+			}
+			else{
+				g.drawString("null",110,45+25*bs.bp.TurnOrderQueue.indexOf(a));
+			}
 		}
 		for(int i=0;i<enemyTargets.size();i++){
 			Schmuck temp = enemyTargets.get(i);
@@ -106,17 +111,18 @@ public class BattleSprites {
 	public void targetUpdate(){
 		alliesTargets.clear();
 		for(Schmuck s : allies){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate()) && !bs.bp.stm.checkStatus(s, new Untouchable(1))){
+			if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) && !bs.bp.stm.checkStatus(s, new Untouchable(1,s))){
 				alliesTargets.add(s);
 			}
 			
 		}
 		enemyTargets.clear();
 		for(Schmuck s : enemy){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate()) && !bs.bp.stm.checkStatus(s, new Untouchable(1))){
+			if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) && !bs.bp.stm.checkStatus(s, new Untouchable(1, s))){
 				enemyTargets.add(s);
 			}
 		}
+		bs.bp.currentlySelected = 0;
 	}
 	
 	public void flash(Schmuck s, int duration){

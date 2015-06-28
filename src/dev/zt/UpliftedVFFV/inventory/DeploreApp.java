@@ -12,11 +12,12 @@ public class DeploreApp extends Item{
 	public status[] enchantment = new status[2];
 	public DeploreApp() {
 		super(2, "Deplorable Apparatus",false, false, false, false, true,descr);
-		enchantment[0] = new Regendegen(true,120);
-		enchantment[1] = new TestStatBuff(0,.5);
+		
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] = new Regendegen(true,120, s);
+		enchantment[1] = new TestStatBuff(0,.5, s);
 		return enchantment;
 	}
 	

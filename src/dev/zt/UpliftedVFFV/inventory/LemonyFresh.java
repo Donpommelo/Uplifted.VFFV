@@ -20,7 +20,7 @@ public class LemonyFresh extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Lemony Fresh.");
 		}
-		bs.bp.em.hpChange(15,vic);
+		bs.bp.em.hpChange(15, perp, vic);
 		bs.bp.em.bpChange(15,vic);
 		for(status s: vic.statuses){
 			if(!s.perm){

@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.inventory;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.BeefedUp;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class AngryBeef extends Item{
 
@@ -21,7 +20,7 @@ public class AngryBeef extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Angry Beef.");
 		}
-		bs.bp.stm.addStatus(vic, new BeefedUp(5));
+		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp));
 	}
 	
 	public String getDescrShort() {

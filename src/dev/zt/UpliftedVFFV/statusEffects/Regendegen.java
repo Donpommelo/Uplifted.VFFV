@@ -11,14 +11,14 @@ public class Regendegen extends status{
 	public Boolean HpBp;
 //	public BattleState bs;
 	public int regen;
-	public Regendegen(int i, Boolean stat, int amount){
-		super(i, "Regeneration", true);
+	public Regendegen(int i, Boolean stat, int amount, Schmuck perp){
+		super(i, "Regeneration",  false, false, true, perp);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
 	
-	public Regendegen(Boolean stat, int amount){
-		super("Regeneration");
+	public Regendegen(Boolean stat, int amount, Schmuck perp){
+		super("Regeneration", false, false,perp);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
@@ -26,7 +26,7 @@ public class Regendegen extends status{
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(HpBp){
-			bs.bp.em.hpChange(regen,s);;
+			bs.bp.em.hpChange(regen,perp,s);;
 		}
 		else{
 			bs.bp.em.bpChange(regen,s);

@@ -20,7 +20,7 @@ public class BeefBoyle extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Beef Boyleston.");
 		}
-		bs.bp.stm.addStatus(vic, new BeefedUp(5));
+		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp));
 	}
 	
 	public String getDescrShort() {

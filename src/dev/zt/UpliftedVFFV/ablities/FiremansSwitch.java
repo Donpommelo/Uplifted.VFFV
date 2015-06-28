@@ -16,12 +16,12 @@ public class FiremansSwitch extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Fireman's Switch!");	
-		for(Schmuck s : bs.bs.enemyTargets){
+		
+		for(Schmuck s : bs.bp.getAlliedTargets(vic)){
 			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.8)),s,0);
+				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(s.buffedStats[3]*.8)), perp,s,0);
 			}		
 		}
-		
 
 
 	}

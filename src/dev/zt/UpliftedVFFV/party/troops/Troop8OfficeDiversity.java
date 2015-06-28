@@ -22,7 +22,7 @@ public class Troop8OfficeDiversity extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop = new ArrayList<Schmuck>();
 		ArrayList<Schmuck> tempList = new ArrayList<Schmuck>();
-		tempList.add(new Midge(4+ML));tempList.add(new RotThought(4+ML));tempList.add(new Augur(4+ML));tempList.add(new BadEgg(4+ML));tempList.add(new IllRat(4+ML));
+		tempList.add(new Midge(3+ML));tempList.add(new RotThought(3+ML));tempList.add(new Augur(3+ML));tempList.add(new BadEgg(3+ML));tempList.add(new IllRat(3+ML));
 		for(int i = 0; i <5; i++){
 			int tempIndex = (int)(Math.random()*tempList.size());
 			Schmuck temp = tempList.get(tempIndex);

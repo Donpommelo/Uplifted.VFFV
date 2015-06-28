@@ -9,10 +9,8 @@ public class TyrianPlumEffect extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Schmuck user;
-	public TyrianPlumEffect(int i, Schmuck user){
-		super(i, "Plum Outta Luck", true);
-		this.user = user;
+	public TyrianPlumEffect(int i, Schmuck perp){
+		super(i, "Plum Outta Luck", false, true, true, perp);
 	}
 	
 	public void onAction(BattleState bs, Action a){
@@ -23,9 +21,9 @@ public class TyrianPlumEffect extends status{
 				a.user.setCurrentHp(1);
 			}
 			else{
-				bs.bp.em.hpChange(-(int)(amount*1.5), a.user, 2);
+				bs.bp.em.hpChange(-(int)(amount*1.5),perp, a.user, 2);
 			}
-			bs.bp.em.hpChange((int)(amount*1.5), user);
+			bs.bp.em.hpChange((int)(amount*1.5), a.user, perp);
 		}
 	}
 	

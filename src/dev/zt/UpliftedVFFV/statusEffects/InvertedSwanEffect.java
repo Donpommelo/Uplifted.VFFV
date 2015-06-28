@@ -10,10 +10,8 @@ public class InvertedSwanEffect extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-//	public BattleState bs;
-	public InvertedSwanEffect(int i){
-		super(i, "Inverted Swan", true);
-//		this.bs = bs;
+	public InvertedSwanEffect(int i, Schmuck perp){
+		super(i, "Inverted Swan",false, true, true, perp);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

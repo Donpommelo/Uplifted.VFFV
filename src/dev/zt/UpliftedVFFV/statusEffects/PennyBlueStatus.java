@@ -9,8 +9,8 @@ public class PennyBlueStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public PennyBlueStatus(int i){
-		super(i, "Penny Blue", true);
+	public PennyBlueStatus(int i, Schmuck perp){
+		super(i, "Penny Blue", false, true, true, perp);
 //		this.bs = bs;
 	}
 	
@@ -18,7 +18,7 @@ public class PennyBlueStatus extends status{
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+"'s Penny Blue regenerates vitality.");
-		bs.bp.em.hpChange(s.getMaxHp()/10,s);;
+		bs.bp.em.hpChange(s.getMaxHp()/10,perp,s);
 		bs.bp.em.bpChange(s.getMaxBp()/10,s);		
 	}
 

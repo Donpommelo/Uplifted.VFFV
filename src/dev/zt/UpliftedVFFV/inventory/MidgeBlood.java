@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.inventory;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class MidgeBlood extends Item{
 
@@ -21,7 +20,7 @@ public class MidgeBlood extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Midge Blood.");
 		}
-		bs.bp.stm.addStatus(vic, new Regendegen(3,true,8));
+		bs.bp.stm.addStatus(vic, new Regendegen(3,true,8, perp));
 
 	}
 	

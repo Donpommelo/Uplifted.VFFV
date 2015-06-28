@@ -11,11 +11,12 @@ public class LetterOpener extends Item{
 	public status[] enchantment = new status[2];
 	public LetterOpener() {
 		super(3, "Letter Opener",false,false,false, false, true, descr);
-		enchantment[0] = new AddStatBuff(4,3);
-		enchantment[1] = new AddStatBuff(5,3);
+		
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] = new AddStatBuff(4,3, s);
+		enchantment[1] = new AddStatBuff(5,3, s);
 		return enchantment;
 	}
 	

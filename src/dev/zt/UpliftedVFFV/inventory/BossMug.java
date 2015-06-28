@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.AddStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -12,10 +11,10 @@ public class BossMug extends Item{
 	public status[] enchantment = new status[1];
 	public BossMug() {
 		super(2, "#1 Boss Mug", false, false, false, false, true, descr);
-		enchantment[0] = new Regendegen(false,5);
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] = new Regendegen(false,5, s);
 		return enchantment;
 	}
 	

@@ -3,8 +3,7 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
-import dev.zt.UpliftedVFFV.statusEffects.Silenced;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+
 
 public class ForceWithin extends Skills {
 
@@ -13,7 +12,7 @@ public class ForceWithin extends Skills {
 	public String descrShort = "Damages and stuns all foes\n1 use per fight.";
 	public int cost = 6;
 	public ForceWithin(int index) {
-		super(index);
+		super(index,1);
 
 	}
 	
@@ -24,9 +23,9 @@ public class ForceWithin extends Skills {
 //			if(!bs.bp.stm.checkStatus(perp, new)){
 				
 //			}
-			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0));
-			for(Schmuck s : bs.bs.enemyTargets){
-				bs.bp.em.hpChange(-11,s);
+			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
+			for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+				bs.bp.em.hpChange(-11,perp,s);
 				for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 					if(bs.bp.TurnOrderQueue.get(i)!=null){
 						if(bs.bp.TurnOrderQueue.get(i).user.equals(s) && !s.equals(perp)){
@@ -59,6 +58,9 @@ public class ForceWithin extends Skills {
 	public int getCost(){
 		return cost;
 	}
-
+	
+	public int getTargetType(){
+		return targetType;
+	}
 
 }

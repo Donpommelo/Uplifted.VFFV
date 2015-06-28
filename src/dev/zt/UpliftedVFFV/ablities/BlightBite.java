@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class BlightBite extends Skills {
 
@@ -20,8 +19,8 @@ public class BlightBite extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<.8*bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],vic);
-			bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3));
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic);
+			bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp));
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");

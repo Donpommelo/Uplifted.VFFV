@@ -19,7 +19,7 @@ public class FennelDonut extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the nasty, nasty donut.");
 		}
-		bs.bp.em.hpChange(20,vic);
+		bs.bp.em.hpChange(20,perp,vic);
 	}
 	
 	public void use(Schmuck s){

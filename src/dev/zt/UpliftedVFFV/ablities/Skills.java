@@ -13,6 +13,12 @@ public class Skills {
 	public String descr;
 	public String descrShort;
 	public int cost;
+	
+	//0: All targets
+	//1: No target: automatically performs action
+	//2: All targetable allies (used in reviving)
+	public int targetType;
+	
 	public BufferedImage icon;
 	public boolean startTeamTarget;
 	public Skills(int index){
@@ -20,6 +26,16 @@ public class Skills {
 		descr = "";
 		descrShort = "";
 		cost = 0;
+		targetType = 0;
+		icon =Assets.skill;
+	}
+	
+	public Skills(int index, int t){
+		name = "";
+		descr = "";
+		descrShort = "";
+		cost = 0;
+		targetType = t;
 		icon =Assets.skill;
 	}
 	
@@ -28,6 +44,7 @@ public class Skills {
 		descr = "";
 		descrShort = "";
 		cost = 0;
+		targetType = 0;
 		icon = i;
 	}
 	
@@ -59,6 +76,10 @@ public class Skills {
 	public int getCost() {
 
 		return cost;
+	}
+	
+	public int getTargetType(){
+		return 0;
 	}
 	
 	public boolean startTarget(){

@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.IntrusiveThoughtEffect;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class IntrusiveThought extends Skills {
@@ -22,7 +21,7 @@ public class IntrusiveThought extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Intrusive Thought!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<1.5*bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(1),vic);
+			bs.bp.em.hpChange(-(1), perp, vic);
 			int stacked = -1;
 			for(status s : vic.statuses){
 				if(s!=null){
@@ -37,7 +36,7 @@ public class IntrusiveThought extends Skills {
 				bs.bp.bt.textList.add(vic.getName()+"'s Intrusive Thoughts grow.");
 			}
 			else{
-				bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10));
+				bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10, perp));
 			}
 		}
 		else{

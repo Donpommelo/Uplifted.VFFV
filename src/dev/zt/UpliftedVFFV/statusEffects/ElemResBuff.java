@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ElemResBuff extends status{
 	
@@ -10,14 +9,14 @@ public class ElemResBuff extends status{
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public ElemResBuff(int i, int stat, double amount){
-		super(i, "Resistances Changed", true);
+	public ElemResBuff(int i, int stat, double amount, Schmuck perp){
+		super(i, "Resistances Changed", true, false, true, perp);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public ElemResBuff(int stat, double amount){
-		super("Resistances Changed");
+	public ElemResBuff(int stat, double amount, Schmuck perp){
+		super("Resistances Changed", false, false, perp);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}

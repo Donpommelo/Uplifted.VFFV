@@ -51,5 +51,10 @@ public UseItem(int index, Item i, GameState gs) {
 	public String getName(){
 		return "Item";
 	}
+	
+	public int getTargetType(){
+		return thing.getTargetType();
+	}
+
 
 }

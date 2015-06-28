@@ -9,16 +9,16 @@ public class Ablaze extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public Ablaze(int i){
-		super(i, "Ablaze", true);
-//		this.bs = bs;
+	public Ablaze(int i, Schmuck perp){
+		super(i, "Ablaze", false, true, true, perp);
+//		this.perp = perp;
 	}
 	
 	
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+" continues to immolate.");
-		bs.bp.em.hpChange(-4,s,0);	
+		bs.bp.em.hpChange(-4,perp,s,0);	
 	}
 
 	public void statchanges(Schmuck s){

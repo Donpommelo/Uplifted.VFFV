@@ -11,10 +11,11 @@ public class MidgeProboscis extends Item{
 	public status[] enchantment = new status[1];
 	public MidgeProboscis() {
 		super(2, "Midge Proboscis",false,false,false, false, true, descr);
-		enchantment[0] = new Vampirism(.1);
+		
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] = new Vampirism(.1, s);
 		return enchantment;
 	}
 	

@@ -11,17 +11,14 @@ public class PantherPoise extends Skills {
 	public String descrShort = "Redirects items to self.";
 	public int cost = 8;
 	public PantherPoise(int index) {
-		super(index);
+		super(index,1);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Panther Poise!");
 		bs.bp.bt.textList.add(perp.getName()+" looks poised to strike!");
-		for(Schmuck s : bs.bs.enemyTargets){
-			bs.bp.stm.addStatus(s, new PantherPoiseEffect(1,perp));
-		}
-		for(Schmuck s : bs.bs.alliesTargets){
+		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
 			bs.bp.stm.addStatus(s, new PantherPoiseEffect(1,perp));
 		}
 
@@ -41,6 +38,10 @@ public class PantherPoise extends Skills {
 	
 	public int getCost(){
 		return cost;
+	}
+	
+	public int getTargetType(){
+		return targetType;
 	}
 	
 

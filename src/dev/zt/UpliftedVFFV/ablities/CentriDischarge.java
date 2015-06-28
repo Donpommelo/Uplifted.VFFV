@@ -19,8 +19,8 @@ public class CentriDischarge extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Centrifuge Discharge!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],vic,3);
-			bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,1.2));
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic,3);
+			bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,1.2, perp));
 		}	
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");

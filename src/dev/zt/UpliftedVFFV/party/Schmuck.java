@@ -53,7 +53,7 @@ public class Schmuck {
 	public String name;
 	public String bio;
 	public Item itemSlot1,itemSlot2,itemSlot3;
-	public incapacitate i = new incapacitate();
+//	public incapacitate i = new incapacitate();
 	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,double[] elemRes){	
 		this.BattleSprite=sprite;
 		this.name=name;
@@ -89,7 +89,7 @@ public class Schmuck {
 		tempStats[0]+=hp;
 		if(tempStats[0]<0){
 			tempStats[0]=0;
-			statuses.add(i);
+			statuses.add(new incapacitate(this));
 			
 		}
 		if(tempStats[0]>baseStats[0]){
@@ -166,7 +166,7 @@ public class Schmuck {
 				setItemSlot3(i);
 				break;
 			}
-			for(status s : i.getEnchantment()){
+			for(status s : i.getEnchantment(this)){
 				this.statuses.add(s);
 			}		
 			calcBuffs();

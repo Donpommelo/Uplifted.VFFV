@@ -7,12 +7,12 @@ import dev.zt.UpliftedVFFV.Game;
 //This manages the player inventory
 public class InventoryManager {
 	
-	private Game game;
+//	private Game game;
 	public TreeMap<Item, Integer> backpack = new TreeMap<>();			//treemap corresponding to each item and the amount owned
 	
 	
 	public InventoryManager(Game game){
-		this.game=game;
+//		this.game=game;
 		
 	}
 	

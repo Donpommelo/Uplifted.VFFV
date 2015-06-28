@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Silenced;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+
 
 public class Censor extends Skills {
 
@@ -20,7 +20,7 @@ public class Censor extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Censor!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.stm.addStatus(vic, new Silenced(3));
+			bs.bp.stm.addStatus(vic, new Silenced(3, perp));
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");

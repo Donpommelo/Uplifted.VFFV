@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+
 
 public class CoffeeBean extends Item{
 
@@ -21,7 +21,7 @@ public class CoffeeBean extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Coffee Bean.");
 		}
 		bs.bp.bt.textList.add("The Coffee Bean scalds "+vic.getName()+"'s tongue.");
-		bs.bp.em.hpChange(-10,vic);
+		bs.bp.em.hpChange(-10,perp,vic);
 		bs.bp.em.bpChange(30,vic);
 
 	}

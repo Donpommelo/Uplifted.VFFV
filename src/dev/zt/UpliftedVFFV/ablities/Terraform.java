@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.ablities;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -14,14 +13,16 @@ public class Terraform extends Skills {
 	public String descrShort = "Damages and scrambles\nTurn Order";
 	public int cost = 18;
 	public Terraform(int index) {
-		super(index);
+		super(index,1);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
 		bs.bp.bt.textList.add("All battlers look discombobulated.");
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3])),vic);
+		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
+		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);
 		for(Action a : bs.bp.TurnOrderQueue){
@@ -53,5 +54,8 @@ public class Terraform extends Skills {
 		return cost;
 	}
 	
+	public int getTargetType(){
+		return targetType;
+	}
 
 }

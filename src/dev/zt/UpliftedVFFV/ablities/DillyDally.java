@@ -2,14 +2,13 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.states.GameState;
+
 
 public class DillyDally extends Skills {
 	
-public Item thing;
+
 	public String name = "Dilly Dally";
 	public int cost = 0;
 	public DillyDally(int index) {

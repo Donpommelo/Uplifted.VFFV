@@ -12,25 +12,23 @@ public class status {
 	public Boolean removedEnd = true;
 	public BattleState bs;
 	public int stack;
-	public status(int i, String n, Boolean end){//, BattleState bs){
+	public Schmuck perp;
+	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p){
 		this.duration=i;
 		this.perm = false;
 		this.name = n;
+		this.perm = perm;
+		this.visible = vis;
 		this.removedEnd = end;
-//		this.bs = bs;
+		this.perp = p;
 	}
 	
-/*	public status(String n, BattleState bs){
-		this.perm=true;
+	public status(String n, Boolean vis, Boolean end, Schmuck p){
 		this.name = n;
-		this.removedEnd=false;
-		this.bs =bs;
-	}*/
-	
-	public status(String n){
-		this.perm=true;
-		this.name = n;
-		this.removedEnd=false;
+		this.perm = true;
+		this.visible = vis;
+		this.removedEnd = end;
+		this.perp = p;
 	}
 	
 	public int getDuration() {
@@ -63,13 +61,23 @@ public class status {
 		
 	}
 	
-	//upon taking damage from any source. Source is NOT possible to identify.
-	public void takedamageEffect(Schmuck s, BattleState bs, int damage){//
+	//upon taking damage from any source. 
+	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}	
 	
 	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
 	public void onAction(BattleState bs, Action a){
+		
+	}
+	
+	//Upon incapacitating any character
+	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
+		
+	}
+	
+	//upon being incapacitated
+	public void onDeath(Schmuck perp, Schmuck vic, BattleState bs){
 		
 	}
 	

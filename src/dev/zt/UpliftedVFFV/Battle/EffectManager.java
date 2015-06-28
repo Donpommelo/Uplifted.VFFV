@@ -6,7 +6,6 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -24,55 +23,69 @@ public class EffectManager {
 //		this.enemy=bs.bp.enemy;		
 	}
 	
-	public void hpChange(int hp, Schmuck s){
+	public void hpChange(int hp, Schmuck perp, Schmuck vic){
 		boolean invulnerable = false;
-		for(status st : s.statuses){
+		for(status st : vic.statuses){
 			if(st.getName().equals("Invulnerable")){
 				invulnerable = true;
-				bs.bp.bt.textList.add(s.getName()+" took no damage.");
+				bs.bp.bt.textList.add(vic.getName()+" took no damage.");
 			}
 		}
 		if(!invulnerable){	
 			if(hp > 0){
-				bs.bp.bt.textList.add(s.getName()+" restored "+hp+" health!");
+				bs.bp.bt.textList.add(vic.getName()+" restored "+hp+" health!");
 			}
 			else{
-				bs.bp.bt.textList.add(s.getName()+" received "+-hp+" damage!");
+				bs.bp.bt.textList.add(vic.getName()+" received "+-hp+" damage!");
 				
 			}
-			s.tempStats[0]+=hp;
+			vic.tempStats[0]+=hp;
 			
 			if(hp<0){
-				bs.bs.flash(s, 51);
-				for(status st : s.statuses){
-					st.takedamageEffect(s, bs, hp);
+				bs.bs.flash(vic, 51);
+				for(int i=0; i<vic.statuses.size(); i++){
+					if(vic.statuses.get(i)!=null){
+						vic.statuses.get(i).takedamageEffect(perp,vic, bs, hp);
+					}
 				}
 			}
-			if(s.tempStats[0]<=0){
-				s.tempStats[0]=0;
-				bs.bp.stm.addStatus(s,s.i);
+			if(vic.tempStats[0]<=0){
+				vic.tempStats[0]=0;
+				bs.bp.stm.addStatus(vic,new incapacitate(perp));
+				bs.bp.currentlySelected = 0;
+				for(int i=0; i<perp.statuses.size(); i++){
+					if(perp.statuses.get(i)!=null){
+						perp.statuses.get(i).onKill(perp,vic, bs);
+					}
+				}
+				for(int i=0; i<vic.statuses.size(); i++){
+					if(vic.statuses.get(i)!=null){
+						vic.statuses.get(i).onDeath(perp,vic, bs);
+					}
+				}
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
-						if(a.user==s){
+						if(a.user==vic){
 							bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
 						}
 					}
 					
 				}
+				bs.bs.targetUpdate();
 			}
-			if(s.tempStats[0]>s.baseStats[0]){
-				s.tempStats[0]=s.baseStats[0];
+			if(vic.tempStats[0]>vic.baseStats[0]){
+				vic.tempStats[0]=vic.baseStats[0];
 			}
 		}
 		
 	}
 	
-	public void hpChange(int hp, Schmuck s, int elem){
+	public void hpChange(int hp, Schmuck perp, Schmuck vic, int elem){
 		boolean invulnerable = false;
-		for(status st : s.statuses){
+		for(status st : vic.statuses){
 			if(st.getName().equals("Invulnerable")){
 				invulnerable = true;
-				bs.bp.bt.textList.add(s.getName()+" took no damage.");
+				bs.bp.bt.textList.add(vic.getName()+" took no damage.");
 			}
 		}
 		String element = "";
@@ -97,34 +110,47 @@ public class EffectManager {
 			break;
 		}
 		if(!invulnerable){
-			hp = (int)(hp*(1-s.buffedRes[elem]));
+			hp = (int)(hp*(1-vic.buffedRes[elem]));
 			if(hp > 0){
-				bs.bp.bt.textList.add(s.getName()+" restored "+hp+" health!");
+				bs.bp.bt.textList.add(vic.getName()+" restored "+hp+" health!");
 			}
 			else{
-				bs.bp.bt.textList.add(s.getName()+" received "+-hp+" "+element+" damage!");
+				bs.bp.bt.textList.add(vic.getName()+" received "+-hp+" "+element+" damage!");
 			}
-			s.tempStats[0]+=hp;
+			vic.tempStats[0]+=hp;
 			if(hp<0){
-				bs.bs.flash(s, 51);
-				for(status st : s.statuses){
-					st.takedamageEffect(s, bs, hp);
+				bs.bs.flash(vic, 51);
+				for(int i=0; i<vic.statuses.size(); i++){
+					if(vic.statuses.get(i)!=null){
+						vic.statuses.get(i).takedamageEffect(perp,vic, bs, hp);
+					}
 				}
 			}
-			if(s.tempStats[0]<=0){
-				s.tempStats[0]=0;
-				bs.bp.stm.addStatus(s,s.i);
+			if(vic.tempStats[0]<=0){
+				vic.tempStats[0]=0;
+				bs.bp.stm.addStatus(vic, new incapacitate(perp));
+				for(int i=0; i<perp.statuses.size(); i++){
+					if(perp.statuses.get(i)!=null){
+						perp.statuses.get(i).onKill(perp,vic, bs);
+					}
+				}
+				for(int i=0; i<vic.statuses.size(); i++){
+					if(vic.statuses.get(i)!=null){
+						vic.statuses.get(i).onDeath(perp,vic, bs);
+					}
+				}
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
-						if(a.user==s){
+						if(a.user==vic){
 							bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
 						}
 					}
 					
 				}
+				bs.bs.targetUpdate();
 			}
-			if(s.tempStats[0]>s.baseStats[0]){
-				s.tempStats[0]=s.baseStats[0];
+			if(vic.tempStats[0]>vic.baseStats[0]){
+				vic.tempStats[0]=vic.baseStats[0];
 			}
 		}
 		

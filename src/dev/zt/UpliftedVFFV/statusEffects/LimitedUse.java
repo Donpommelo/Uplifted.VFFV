@@ -1,9 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.InvertedSwanBonusAttack;
 import dev.zt.UpliftedVFFV.ablities.OutofUsesNothing;
-import dev.zt.UpliftedVFFV.ablities.SilencedNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -15,14 +13,14 @@ public class LimitedUse extends status{
 	public Boolean visible = false;
 	public int usesLeft;
 	public Skills move;
-	public LimitedUse(int i,Skills m, int uses){
-		super(999,"MoveLimit",true);
+	public LimitedUse(int i,Skills m, int uses, Schmuck perp){
+		super(999,"MoveLimit",true, false, true, perp);
 		this.move = m;
 		this.usesLeft = uses;
 	}
 	
-	public LimitedUse(){
-		super("Limited Use Move");
+	public LimitedUse(Schmuck perp){
+		super("Limited Use Move", false, true, perp);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

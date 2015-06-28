@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 //items class.
@@ -24,8 +23,7 @@ public class Item implements Comparable<Item>{
 		this.targeted = target;
 		this.equipable = equip;
 		this.descr=description;
-	}
-	
+	}	
 
 	public Item(int id,String name){
 		this.Id=id;
@@ -59,6 +57,13 @@ public class Item implements Comparable<Item>{
 	public String getDescrShort() {
 		return "meep";
 	}
+	
+	//0: All targets
+	//1: No target: automatically performs action
+	//2: All targetable allies (used in reviving)
+	public int getTargetType(){
+		return 0;
+	}
 
 	
 	public int compareTo(Item obj) {
@@ -91,7 +96,7 @@ public class Item implements Comparable<Item>{
 		return consummable;
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
 		return null;
 	}
 	

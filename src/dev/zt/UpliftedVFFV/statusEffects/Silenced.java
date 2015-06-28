@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.InvertedSwanBonusAttack;
 import dev.zt.UpliftedVFFV.ablities.SilencedNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -11,12 +10,12 @@ public class Silenced extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Silenced(int i){
-		super(i, "Silenced", true);
+	public Silenced(int i, Schmuck perp){
+		super(i, "Silenced", false, true, false, perp);
 	}
 	
-	public Silenced(){
-		super("Silenced");
+	public Silenced(Schmuck perp){
+		super("Silenced", true, false, perp);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

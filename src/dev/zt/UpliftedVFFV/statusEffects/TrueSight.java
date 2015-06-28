@@ -1,20 +1,19 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class TrueSight extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public TrueSight(int i, double amount){
-		super(i, "True Sight", true);
+	public TrueSight(int i, double amount, Schmuck perp){
+		super(i, "True Sight",  false, true, true, perp);
 
 	}
 	
-	public TrueSight(double amount){
-		super("True Sight");
+	public TrueSight(double amount, Schmuck perp){
+		super("True Sight", true, true, perp);
 
 	}
 	

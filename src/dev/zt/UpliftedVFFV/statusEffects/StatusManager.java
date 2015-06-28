@@ -80,21 +80,25 @@ public class StatusManager {
 	}
 	
 	public void endofRound(BattleState bs){
+		
 		for(Schmuck s : battlers){
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){
-					s.statuses.get(i).endofturnEffect(s, bs);
-					if(s.statuses.get(i).duration==0 && s.statuses.get(i).perm==false){
-						s.statuses.remove(i);
-						i--;
-					}
-					else{
-						s.statuses.get(i).duration--;
-					}
+			if(!checkStatus(s, new incapacitate(s))){
+				for(int i=0; i<s.statuses.size(); i++){
+					if(s.statuses.get(i)!=null){
+						s.statuses.get(i).endofturnEffect(s, bs);
+						if(s.statuses.get(i).duration==0 && s.statuses.get(i).perm==false){
+							s.statuses.remove(i);
+							i--;
+						}
+						else{
+							s.statuses.get(i).duration--;
+						}
 
+					}
+					
 				}
-				
 			}
+			
 		}
 	}
 	

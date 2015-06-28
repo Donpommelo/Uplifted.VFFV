@@ -10,10 +10,11 @@ public class EightBall extends Item{
 	public status[] enchantment = new status[1];
 	public EightBall() {
 		super(2, "8-Ball", false, false, false, false, true, descr);
-		enchantment[0] = new ElemResBuff(5,.1);
+		
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] = new ElemResBuff(5,.1, s);
 		return enchantment;
 	}
 	

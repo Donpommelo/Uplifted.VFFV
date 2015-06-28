@@ -17,7 +17,7 @@ public class StandardAttack extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+"!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],vic);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic);
 			for(status s : perp.statuses){
 				s.attackModify(perp, vic, bs, -(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]);
 			}

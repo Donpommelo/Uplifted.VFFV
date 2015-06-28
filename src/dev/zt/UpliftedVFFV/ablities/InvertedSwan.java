@@ -3,8 +3,6 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.InvertedSwanEffect;
-import dev.zt.UpliftedVFFV.statusEffects.PennyBlueStatus;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class InvertedSwan extends Skills {
 
@@ -18,7 +16,7 @@ public class InvertedSwan extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Inverted Swan!");
-		bs.bp.stm.addStatus(vic, new InvertedSwanEffect(1));
+		bs.bp.stm.addStatus(vic, new InvertedSwanEffect(1, perp));
 	}
 
 	

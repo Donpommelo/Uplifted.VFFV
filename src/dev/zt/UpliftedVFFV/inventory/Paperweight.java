@@ -11,11 +11,12 @@ public class Paperweight extends Item{
 	public status[] enchantment = new status[1];
 	public Paperweight() {
 		super(4, "Paperweight",false,false,false,false, true, descr);
-		enchantment[0] =  new AddStatBuff(3,3);
+		
 
 	}
 		
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] =  new AddStatBuff(3,3, s);
 		return enchantment;
 	}
 	

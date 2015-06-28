@@ -2,7 +2,6 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class ForeseeIll extends Skills {
@@ -25,7 +24,7 @@ public class ForeseeIll extends Skills {
 			}					
 		}
 		if(stacked != -1){
-			bs.bp.em.hpChange(-(int)Math.pow(2, vic.statuses.get(stacked).stack),vic);
+			bs.bp.em.hpChange(-(int)Math.pow(2, vic.statuses.get(stacked).stack), perp, vic);
 			bs.bp.stm.removeStatus(vic, vic.statuses.get(stacked));
 		}
 		else{

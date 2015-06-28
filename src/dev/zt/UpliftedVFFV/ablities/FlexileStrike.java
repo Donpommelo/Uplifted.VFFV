@@ -10,7 +10,7 @@ public class FlexileStrike extends Skills {
 	public String descrShort = "Damages two random\nenemies.";
 	public int cost = 6;
 	public FlexileStrike(int index) {
-		super(index);
+		super(index,1);
 
 	}
 	
@@ -18,16 +18,12 @@ public class FlexileStrike extends Skills {
 		Schmuck target1;
 		Schmuck target2;
 		bs.bp.bt.textList.add(perp.getName()+" used Flexile Strike!");
-		if(bs.bp.bm.enemy.contains(vic)){
-			target1 = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.enemyTargets.size()));
-			target2 = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.enemyTargets.size()));
-		}
-		else{
-			target1 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
-			target2 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
-		}
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)),target1);
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*1.5)),target2);
+		
+		target1 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		target2 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp, target1);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*1.5)), perp, target2);
 
 	}
 		
@@ -45,6 +41,10 @@ public class FlexileStrike extends Skills {
 	
 	public int getCost(){
 		return cost;
+	}
+	
+	public int getTargetType(){
+		return targetType;
 	}
 	
 

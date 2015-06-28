@@ -3,8 +3,6 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.PennyBlackStatus;
-import dev.zt.UpliftedVFFV.statusEffects.PennyBlueStatus;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class PennyBlack extends Skills {
 
@@ -18,7 +16,7 @@ public class PennyBlack extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Penny Black!");
-		bs.bp.stm.addStatus(vic, new PennyBlackStatus(3));
+		bs.bp.stm.addStatus(vic, new PennyBlackStatus(3, perp));
 	}
 
 	

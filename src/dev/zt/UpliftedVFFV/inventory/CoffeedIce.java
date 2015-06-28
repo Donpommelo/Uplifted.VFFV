@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+
 
 public class CoffeedIce extends Item{
 
@@ -21,7 +21,7 @@ public class CoffeedIce extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.");
 		}
 //		bs.bp.stm.removeStatus(vic, );
-		bs.bp.em.hpChange(15,vic);
+		bs.bp.em.hpChange(15,perp, vic);
 		bs.bp.em.bpChange(25,vic);
 	}
 	

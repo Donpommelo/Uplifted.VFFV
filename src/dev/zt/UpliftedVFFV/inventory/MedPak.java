@@ -19,7 +19,7 @@ public class MedPak extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" uses the Med-Pak on "+vic.getName());
 		}
-		bs.bp.em.hpChange(20,vic);
+		bs.bp.em.hpChange(20,perp, vic);
 	}
 	
 	public void use(Schmuck s){

@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -20,7 +19,7 @@ public class Pounce extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],vic);
+			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic);
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");

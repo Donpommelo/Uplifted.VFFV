@@ -19,16 +19,12 @@ public class ArcherRoulette extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		if(Math.random()>.5){
 			bs.bp.bt.textList.add(perp.getName()+"'s aim was true!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5)),vic);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5)),perp,vic);
 		}
 		else{
-			if(bs.bp.bm.enemy.contains(vic)){
-				target = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.enemyTargets.size()));
-			}
-			else{
-				target = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
-			}
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5)),target);
+			target = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
+			bs.bp.bt.textList.add(perp.getName()+"'s aim was was off target!");
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target.buffedStats[3]*.5)),perp,target);
 			
 		}
 		

@@ -18,19 +18,13 @@ public class DoubleGeneva extends Skills {
 		Schmuck target1;
 		Schmuck target2;
 		bs.bp.bt.textList.add(perp.getName()+" used Double Geneva!");
-		if(bs.bp.bm.enemy.contains(vic)){
-			target1 = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.enemyTargets.size()));
-			target2 = bs.bs.enemyTargets.get((int)(Math.random()*bs.bs.enemyTargets.size()));
-		}
-		else{
-			target1 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
-			target2 = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
-		}
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)),target1);
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*2)),target2);
+		target1 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
+		target2 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp,target1);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*2)), perp, target2);
 		if(!vic.equals(target1) && !vic.equals(target2)){
 			bs.bp.bt.textList.add(vic.getName()+"'s diplomatic immunity expires!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*.5)),vic);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*.5)),perp, vic);
 		}
 
 	}

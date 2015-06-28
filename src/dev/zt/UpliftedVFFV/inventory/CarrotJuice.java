@@ -22,7 +22,7 @@ public class CarrotJuice extends Item{
 		}
 		bs.bp.em.bpChange(15,vic);
 		bs.bp.bt.textList.add(vic.getName()+"'s vision improved.");
-		bs.bp.stm.addStatus(vic, new TestStatBuff(5,5,1.5));
+		bs.bp.stm.addStatus(vic, new TestStatBuff(5,5,1.5, perp));
 	}
 	
 	public String getDescrShort() {

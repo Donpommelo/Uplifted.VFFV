@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invuln extends status{
 	
@@ -9,9 +8,8 @@ public class Invuln extends status{
 	public Boolean perm = false;
 	public Boolean visible = false;
 	public int stack;
-//	public BattleState bs;
-	public Invuln(int i){
-		super(i, "Invulnerable", true);
+	public Invuln(int i, Schmuck perp){
+		super(i, "Invulnerable", false, true, true, perp);
 		stack = 0;
 	}
 	

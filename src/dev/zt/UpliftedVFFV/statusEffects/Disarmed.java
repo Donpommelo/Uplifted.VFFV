@@ -2,8 +2,6 @@ package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.DisarmedNothing;
-import dev.zt.UpliftedVFFV.ablities.InvertedSwanBonusAttack;
-import dev.zt.UpliftedVFFV.ablities.SilencedNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -12,12 +10,12 @@ public class Disarmed extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Disarmed(int i){
-		super(i, "Disarmed", true);
+	public Disarmed(int i, Schmuck perp){
+		super(i, "Disarmed", false, true, false, perp);
 	}
 	
-	public Disarmed(){
-		super("Disarmed");
+	public Disarmed(Schmuck perp){
+		super("Disarmed", true, false, perp);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

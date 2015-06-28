@@ -8,7 +8,6 @@ import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
-import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
@@ -50,35 +49,41 @@ public class BattleProcessor {
 		this.allies = party;
 		this.enemy = enemy;
 		this.t = t;
-		phase=1;
+		phase=0;
 		currentlySelected=0;
 		roundNum = 1;
 		
 		bt = new BattleText(game,sm,allies,enemy, bs);
 		em = new EffectManager(game,bs,gs);
 		stm = new StatusManager(game,bs,gs, this);
-		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
+//		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(0),gs);
 		TurnOrderQueue = new ArrayList<Action>();
-//		initiate();
-		for(int i=0 ; i<enemy.size()+allies.size();i++){
-			TurnOrderQueue.add(null);
+
+		for(int i=0 ; i<this.enemy.size()+this.allies.size();i++){
+//			TurnOrderQueue.add(null);
 		}
+		bt.textList.add(t.encounterText());
 		for(Schmuck s : allies){
 			battlers.add(s);
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){
+					s.statuses.get(i).startoffightEffect(s,bs);
+				}
+			}
 		}
 		for(Schmuck s : enemy){
 			battlers.add(s);
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){
+					s.statuses.get(i).startoffightEffect(s,bs);
+				}
+			}
 		}
 		for(Schmuck s: battlers){
 			s.calcBuffs();
 		}
-/*		if(enemy.size()>1){
-			bt.textList.add(enemy.get(0).getName()+" and co attack.");
-		}
-		else{
-			bt.textList.add(enemy.get(0).getName()+" attacks you.");
-		}*/
-		bt.textList.add(t.encounterText());
+		
+		
 				
 	}
 	
@@ -91,8 +96,9 @@ public class BattleProcessor {
 			switch(phase){
 			case 0:
 				currentlySelected=0;
-				if(!enemyded()){
-					selected = true;
+				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesTargets.get(currentlySelected),gs);
+				if(!enemyded()){					
+					selected=true;					
 				}
 				for(int i=0 ; i<enemy.size()+allies.size();i++){
 					TurnOrderQueue.add(null);
@@ -106,7 +112,7 @@ public class BattleProcessor {
 				else{
 					
 					if(game.getKeyManager().right){
-						if(currentlySelected<allies.size()-1){
+						if(currentlySelected<bs.bs.alliesTargets.size()-1){
 							currentlySelected++;
 							try {
 								Thread.sleep(100);
@@ -134,9 +140,9 @@ public class BattleProcessor {
 								e.printStackTrace();
 							}
 						}
-						if(!allies.get(currentlySelected).statuses.contains(allies.get(currentlySelected).i)){	
+						if(!stm.checkStatus(bs.bs.alliesTargets.get(currentlySelected), new incapacitate(bs.bs.alliesTargets.get(currentlySelected)))){	
 							selected=true;
-							bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
+							bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesTargets.get(currentlySelected),gs);
 						}
 						else{
 							bt.textList.add("he ded");
@@ -159,7 +165,7 @@ public class BattleProcessor {
 						}
 						
 							for(int i=0 ; i<enemy.size();i++){
-								if(!enemy.get(i).statuses.contains(enemy.get(i).i) && !bs.bs.alliesTargets.isEmpty()){
+								if(!stm.checkStatus(enemy.get(i), new incapacitate(enemy.get(i))) && !bs.bs.alliesTargets.isEmpty()){
 									TurnOrderQueue.set(allies.size()+i,enemy.get(i).getAction(bs));
 								}
 								else{
@@ -169,16 +175,14 @@ public class BattleProcessor {
 							}
 							sort(TurnOrderQueue);
 							
+							//For TOQ modifying abilities. tempTOQ
 							ArrayList<Action> TempTurnOrderQueue = new ArrayList<Action>();
-//							TempTurnOrderQueue = TurnOrderQueue;
 							for(Action a : TurnOrderQueue){
 								TempTurnOrderQueue.add(a);
 							}
-							for(int i = TempTurnOrderQueue.size()-1; i>=0; i--){
-								if(TempTurnOrderQueue.get(i) != null){
-									
+							for(int i = TempTurnOrderQueue.size()-1; i>=0; i--){ //reverse order so faster schmucks get last say in TOQ
+								if(TempTurnOrderQueue.get(i) != null){									
 									TempTurnOrderQueue.get(i).skill.TOQChange(TempTurnOrderQueue.get(i), bs);
-//									System.out.print(TurnOrderQueue.get(i).user.getName()+" "); //
 								}				
 							}
 						
@@ -207,16 +211,20 @@ public class BattleProcessor {
 
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
-						for(status s : TurnOrderQueue.get(0).user.statuses){
-							s.restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);
+						for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+							if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);
+							}
 						}
-						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally")){
+						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally") && TurnOrderQueue.get(0) != null){
 							if(TurnOrderQueue.get(0).skill.getCost()<=TurnOrderQueue.get(0).user.getCurrentBp()){								
 								em.bpChange(-TurnOrderQueue.get(0).skill.getCost(), TurnOrderQueue.get(0).user);
 								TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
-								for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
-									if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
-										TurnOrderQueue.get(0).user.statuses.get(i).onAction(bs,TurnOrderQueue.get(0));
+								if(TurnOrderQueue.get(0) != null){
+									for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+										if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+											TurnOrderQueue.get(0).user.statuses.get(i).onAction(bs,TurnOrderQueue.get(0));
+										}
 									}
 								}
 							}
@@ -235,7 +243,7 @@ public class BattleProcessor {
 							else{
 								TurnOrderQueue.set(0,TurnOrderQueue.get(0).user.getAction(bs));
 							}
-			
+
 						}
 					}
 					if(pauseTOQ == false){
@@ -285,13 +293,13 @@ public class BattleProcessor {
 					Set<Item> temp = t.getDrops().keySet();
 					Item[] itemDisplay = temp.toArray(new Item[999]);
 					for(int i=0; i<t.getDrops().size();i++){		
-						if(t.getItems().get(itemDisplay[i]) == 1){
+						if(t.getDrops().get(itemDisplay[i]) == 1){
 							bt.textList.add("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}
 						else{
-							bt.textList.add("Looted "+t.getItems().get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
+							bt.textList.add("Looted "+t.getDrops().get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
 						}				
-						gs.inventorymanager.loot(itemDisplay[i], t.getItems().get(itemDisplay[i]));
+						gs.inventorymanager.loot(itemDisplay[i], t.getDrops().get(itemDisplay[i]));
 					}
 					stm.endofFite();
 					
@@ -333,7 +341,7 @@ public class BattleProcessor {
 					}
 				}
 				for(Schmuck s :allies){
-					if(stm.checkStatus(s,new incapacitate())){
+					if(stm.checkStatus(s,new incapacitate(s))){
 						numReady++;
 					}
 				}
@@ -346,7 +354,9 @@ public class BattleProcessor {
 					g.drawString("Ready (Enter)",0,90);
 				}
 				if(selected==true){
-					bm.render(g);
+					if(bm != null){
+						bm.render(g);
+					}					
 				}
 				break;
 				
@@ -362,7 +372,23 @@ public class BattleProcessor {
 		}
 	}
 	
-
+	public ArrayList<Schmuck> getEnemyTargets(Schmuck s){
+		if(allies.contains(s)){
+			return bs.bs.enemyTargets;
+		}
+		else{
+			return bs.bs.alliesTargets;
+		}
+	}
+	
+	public ArrayList<Schmuck> getAlliedTargets(Schmuck s){
+		if(allies.contains(s)){
+			return bs.bs.alliesTargets;
+		}
+		else{
+			return bs.bs.enemyTargets;
+		}
+	}
 	
 	public void sort(ArrayList<Action> a){
 		int j;

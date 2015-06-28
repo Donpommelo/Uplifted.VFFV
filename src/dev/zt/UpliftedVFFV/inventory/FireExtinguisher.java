@@ -15,7 +15,7 @@ public class FireExtinguisher extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" sprays the Fire Extinguisher at "+vic.getName());
-		bs.bp.stm.removeStatus(vic, new Ablaze(1) );
+		bs.bp.stm.removeStatus(vic, new Ablaze(1, perp) );
 	}
 	
 	public String getDescrShort() {

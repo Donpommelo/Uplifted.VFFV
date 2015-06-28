@@ -17,8 +17,8 @@ public class Ennervate extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Ennervate!");
-		bs.bp.stm.addStatus(vic, new TestStatBuff(2,2,.9));
-		bs.bp.stm.addStatus(vic, new TestStatBuff(2,4,.9));
+		bs.bp.stm.addStatus(vic, new TestStatBuff(2,2,.9, perp));
+		bs.bp.stm.addStatus(vic, new TestStatBuff(2,4,.9, perp));
 	}
 
 	

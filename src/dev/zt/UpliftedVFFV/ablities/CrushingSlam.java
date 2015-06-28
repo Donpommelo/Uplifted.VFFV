@@ -19,7 +19,7 @@ public class CrushingSlam extends Skills {
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)*.75){
 			bs.bp.bt.textList.add(vic.getName()+" was dazed by the blow!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.8)),vic);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.8)), perp, vic);
 			for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 				if(bs.bp.TurnOrderQueue.get(i)!=null){
 					if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp)){

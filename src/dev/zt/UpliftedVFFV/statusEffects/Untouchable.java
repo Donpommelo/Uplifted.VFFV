@@ -1,14 +1,13 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Untouchable extends status{
 	
 	
 //	public BattleState bs;
-	public Untouchable(int i){
-		super(i, "Untouchable", true);
+	public Untouchable(int i, Schmuck perp){
+		super(i, "Untouchable", false, true, true, perp);
 //		this.bs = bs;
 	}
 	

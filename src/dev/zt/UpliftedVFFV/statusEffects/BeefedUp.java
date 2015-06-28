@@ -1,20 +1,19 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class BeefedUp extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-//	public BattleState bs;
-	public BeefedUp(int i){
-		super(i, "Beefed Up", true);
-//		this.bs = bs;
+	public BeefedUp(int i, Schmuck perp){
+		super(i, "Beefed Up", false, true, false, perp);
 	}
 	
-	
+	public BeefedUp(Schmuck perp){
+		super("Beefed Up", true, false, perp);
+	}
 	
 	public void run(){
 		

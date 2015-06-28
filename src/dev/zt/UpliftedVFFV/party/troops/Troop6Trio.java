@@ -27,13 +27,13 @@ public class Troop6Trio extends Troop{
 		num2 = (int)(Math.random()*3);
 		switch (num1){
 		case 0:
-			troop.add(new Midge(3+ML));
+			troop.add(new Midge(2+ML));
 			break;
 		case 1:
-			troop.add(new Augur(3+ML));
+			troop.add(new Augur(2+ML));
 			break;
 		case 2:
-			troop.add(new BadEgg(3+ML));
+			troop.add(new BadEgg(2+ML));
 			break;
 		}
 		switch (num2){
@@ -41,7 +41,7 @@ public class Troop6Trio extends Troop{
 			troop.add(new BadEgg(3+ML));
 			break;
 		case 1:
-			troop.add(new RotThought(5+ML));
+			troop.add(new RotThought(3+ML));
 			break;
 		case 2:
 			troop.add(new IllRat(3+ML));
@@ -49,13 +49,13 @@ public class Troop6Trio extends Troop{
 		}
 		switch (num1){
 		case 0:
-			troop.add(new Midge(3+ML));
+			troop.add(new Midge(2+ML));
 			break;
 		case 1:
-			troop.add(new Augur(3+ML));
+			troop.add(new Augur(2+ML));
 			break;
 		case 2:
-			troop.add(new BadEgg(3+ML));
+			troop.add(new BadEgg(2+ML));
 			break;
 		}
 		

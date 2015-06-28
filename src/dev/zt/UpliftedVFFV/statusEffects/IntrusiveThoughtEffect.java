@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class IntrusiveThoughtEffect extends status{
 	
@@ -9,11 +8,9 @@ public class IntrusiveThoughtEffect extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int stack;
-//	public BattleState bs;
-	public IntrusiveThoughtEffect(int i){
-		super(i, "Intrusive Thoughts", true);
+	public IntrusiveThoughtEffect(int i, Schmuck perp){
+		super(i, "Intrusive Thoughts", false, false, true, perp);
 		stack = 0;
-//		this.bs = bs;
 	}
 	
 	

@@ -34,7 +34,7 @@ public class BattleText {
 			
 			if(!textList.isEmpty()){
 				if(textList.get(0).contains("was incapacitated.")){
-					bs.bs.targetUpdate();
+//					bs.bs.targetUpdate();
 				}
 			textList.remove(0);
 			}

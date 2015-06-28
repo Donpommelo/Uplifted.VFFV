@@ -9,14 +9,14 @@ public class PennyBlackStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public PennyBlackStatus(int i){
-		super(i, "Penny Black", true);
+	public PennyBlackStatus(int i, Schmuck perp){
+		super(i, "Penny Black", false, true, true, perp);
 //		this.bs = bs;
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		bs.bp.bt.textList.add(perp.getName()+"'s Penny Black sucks away some of "+vic.getName()+"'s soul");
-		bs.bp.em.hpChange(-vic.getMaxHp()/10,vic,5);
+		bs.bp.em.hpChange(-vic.getMaxHp()/10,perp, vic,5);
 	}
 
 	public String inflictText(Schmuck s){

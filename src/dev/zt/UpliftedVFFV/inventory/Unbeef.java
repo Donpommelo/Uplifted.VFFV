@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.inventory;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.BeefedUp;
-import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class Unbeef extends Item{
 
@@ -21,7 +20,7 @@ public class Unbeef extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Unbeef.");
 		}
-		bs.bp.stm.removeStatus(vic, new BeefedUp(1) );
+		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp) );
 	}
 	
 	public String getDescrShort() {

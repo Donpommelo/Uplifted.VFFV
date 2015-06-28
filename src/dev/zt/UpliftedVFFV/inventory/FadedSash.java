@@ -11,11 +11,12 @@ public class FadedSash extends Item{
 	public status[] enchantment = new status[2];
 	public FadedSash() {
 		super(2, "Faded Sash", false,false,false, false, true, descr);
-		enchantment[0] =  new TestStatBuff(2,.5);
-		enchantment[1] =  new TestStatBuff(3,1.5);
+		
 	}
 	
-	public status[] getEnchantment() {
+	public status[] getEnchantment(Schmuck s) {
+		enchantment[0] =  new TestStatBuff(2,.5, s);
+		enchantment[1] =  new TestStatBuff(3,1.5, s);
 		return enchantment;
 	}
 	

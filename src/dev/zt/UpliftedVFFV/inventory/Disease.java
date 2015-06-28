@@ -28,7 +28,7 @@ public class Disease extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" throws the Disease at "+vic.getName());
 		}
-		bs.bp.stm.addStatus(vic, new Regendegen(4,true,-6));
+		bs.bp.stm.addStatus(vic, new Regendegen(4,true,-6, perp));
 	}
 	
 	public boolean startTeamTarget(){

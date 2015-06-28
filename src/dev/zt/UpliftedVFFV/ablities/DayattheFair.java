@@ -1,7 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
+
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -12,14 +11,16 @@ public class DayattheFair extends Skills {
 	public String descrShort = "Damages and ends round\nprematurely.";
 	public int cost = 21;
 	public DayattheFair(int index) {
-		super(index);
+		super(index,1);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Day at the Fair");
 		bs.bp.bt.textList.add("The round was ended prematurely");
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2),vic);
+		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
+		}
 		bs.bp.TurnOrderQueue.clear();
 	}
 	
@@ -37,6 +38,10 @@ public class DayattheFair extends Skills {
 	
 	public int getCost(){
 		return cost;
+	}
+	
+	public int getTargetType(){
+		return targetType;
 	}
 	
 

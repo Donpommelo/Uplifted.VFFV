@@ -1,10 +1,8 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.IntrusiveThoughtEffect;
 import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 
 public class SafeRoom extends Skills {
@@ -28,7 +26,7 @@ public class SafeRoom extends Skills {
 			}
 		
 		}
-		bs.bp.stm.addStatus(vic, new Invuln(0));
+		bs.bp.stm.addStatus(vic, new Invuln(0, perp));
 		
 	}
 	
@@ -48,10 +46,6 @@ public class SafeRoom extends Skills {
 		return cost;
 	}
 	
-	public void TOQChange(Action a, BattleState bs){
-		bs.bp.TurnOrderQueue.remove(a);
-		bs.bp.TurnOrderQueue.add(0, a);
-	}
 	
 
 }

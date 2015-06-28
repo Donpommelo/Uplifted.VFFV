@@ -9,19 +9,19 @@ public class Vampirism extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public double lifesteal;
-	public Vampirism(int i, double amount){
-		super(i, "Lifesteal", true);
+	public Vampirism(int i, double amount, Schmuck perp){
+		super(i, "Lifesteal", false, true, true, perp);
 		this.lifesteal = amount;
 	}
 	
-	public Vampirism(double amount){
-		super("Lifesteal");
+	public Vampirism(double amount, Schmuck perp){
+		super("Lifesteal", true, true, perp);
 		this.lifesteal = amount;
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		bs.bp.bt.textList.add(perp.getName()+" drains "+vic.getName()+"'s life.");
-		bs.bp.em.hpChange(-(int)(damage*lifesteal), perp);
+		bs.bp.em.hpChange(-(int)(damage*lifesteal), perp, perp);
 	}
 	
 	
