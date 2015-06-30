@@ -3,34 +3,27 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 
 
-public class ForceWithin extends Skills {
+public class GodsBreath extends Skills {
 
-	public String name = "Force Within";
-	public String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
-	public String descrShort = "Dazes all foes\n1 use per fight.";
-	public int cost = 6;
-	public ForceWithin(int index) {
+	public String name = "Gods Breath";
+	public String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
+	public String descrShort = "Protects all allies\n1 use per fight.";
+	public int cost = 15;
+	public GodsBreath(int index) {
 		super(index,1);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Force Within!");
-		bs.bp.bt.textList.add("All enemies were dazed!");
+		bs.bp.bt.textList.add(perp.getName()+" used Gods Breath!");
+		bs.bp.bt.textList.add("All allies were fortified!");
 			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
-			for(Schmuck s : bs.bp.getEnemyTargets(perp)){
-				for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
-					if(bs.bp.TurnOrderQueue.get(i)!=null){
-						if(bs.bp.TurnOrderQueue.get(i).user.equals(s) && !s.equals(perp)){
-							bs.bp.TurnOrderQueue.remove(i);
-							i--;
-						}
-					}
-					
-				}
+			for(Schmuck s : bs.bp.getAlliedTargets(perp)){
+				bs.bp.stm.addStatus(s, new Invuln(0, perp));
 			}
 		
 	}

@@ -38,8 +38,8 @@ public class Troop5SmallSchmucks extends Troop{
 		return troop;
 	}
 	
-	public TreeMap<Item, Integer>  getDrops(){
-		return super.getDrops();
+	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
+		return super.getDrops(bonusDrop);
 	}
 	
 	public String encounterText(){

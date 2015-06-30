@@ -1,7 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.AddStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class NewtonCradle extends Item{
@@ -15,15 +15,8 @@ public class NewtonCradle extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TestStatBuff(4,6, s);
+		enchantment[0] = new AddStatBuff(4,6, s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

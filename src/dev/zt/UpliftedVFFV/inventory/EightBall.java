@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class EightBall extends Item{
 
 	static String descr = "A black cue ball that some jerk threw at you.";
+	static String descrShort="10% ??? Resistance.";
 	public status[] enchantment = new status[1];
 	public EightBall() {
 		super(2, "8-Ball", false, false, false, false, true, descr);
@@ -14,15 +15,12 @@ public class EightBall extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemResBuff(5,.1, s);
+		enchantment[0] = new ElemResBuff(5,.1, s.itemDummy);
 		return enchantment;
 	}
 	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
+	public String getDescrShort() {
+		return descrShort;
 	}
 
 }

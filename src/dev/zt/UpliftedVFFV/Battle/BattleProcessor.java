@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
@@ -227,6 +228,7 @@ public class BattleProcessor {
 										}
 									}
 								}
+								bs.bs.targetUpdate();
 							}
 							else{
 								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to use "+TurnOrderQueue.get(0).skill.getName());
@@ -271,35 +273,46 @@ public class BattleProcessor {
 				}
 				if(enemyded()){
 					bt.textList.add("You won");
-					int exp = 0;
-					int script = 0;
+					double exp = 0;
+					double script = 0;
+					double expMult = 0;
+					double scriptMult = 0;
+					double itemMult = 0;
+					for(Schmuck s : allies){
+						expMult += s.getBonusExp();
+						scriptMult += s.getBonusScrip();
+						itemMult += s.getBonusItem();
+					}
 					for(Schmuck s : enemy){
-						exp += s.getExpDrop();
-						script += s.getScrDrop();
+						exp += (s.getExpDrop()*(1+expMult));
+						script += (s.getScrDrop()*(1+scriptMult));
 					}
 					for(Schmuck s : allies){
-						bt.textList.add(s.getName()+" gains "+exp/allies.size()+" exp!");
-						if(s.exp+exp/allies.size()>=Math.pow(s.Lvl,2)*10){
+						bt.textList.add(s.getName()+" gains "+(int)(exp/allies.size())+" exp!");
+						if(s.exp+(int)(exp/allies.size())>=Math.pow(s.Lvl,2)*10){
 							bt.textList.add(s.getName()+" received a raise!");
 							bt.textList.add(s.getName()+" is now level "+ (s.Lvl+1)+"!");
 							if(s.getLevelSkills().containsKey(s.Lvl+1)){
 								bt.textList.add(s.getName()+" learned "+ s.getLevelSkills().get(s.Lvl+1).getName()+"!");	
 							}
 						}
-						s.expGain(s.getStartStats(),s.getStatGrowths(),exp/allies.size());
+						s.expGain(s.getStartStats(),s.getStatGrowths(),(int)(exp/allies.size()));
 					}					
-					bt.textList.add(script+" Company Script looted!");
-					gs.scriptChange(script);
-					Set<Item> temp = t.getDrops().keySet();
+					bt.textList.add((int)script+" Company Script looted!");
+					gs.scriptChange((int)script);
+					
+					TreeMap<Item, Integer> drops = t.getDrops(itemMult);					
+					Set<Item> temp = drops.keySet();
 					Item[] itemDisplay = temp.toArray(new Item[999]);
-					for(int i=0; i<t.getDrops().size();i++){		
-						if(t.getDrops().get(itemDisplay[i]) == 1){
+					
+					for(int i=0; i<drops.size();i++){		
+						if(drops.get(itemDisplay[i]) == 1){		
 							bt.textList.add("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}
 						else{
-							bt.textList.add("Looted "+t.getDrops().get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
+							bt.textList.add("Looted "+drops.get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
 						}				
-						gs.inventorymanager.loot(itemDisplay[i], t.getDrops().get(itemDisplay[i]));
+						gs.inventorymanager.loot(itemDisplay[i], drops.get(itemDisplay[i]));
 					}
 					stm.endofFite();
 					

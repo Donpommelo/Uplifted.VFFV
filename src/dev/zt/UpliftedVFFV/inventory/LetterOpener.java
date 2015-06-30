@@ -15,16 +15,9 @@ public class LetterOpener extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AddStatBuff(4,3, s);
-		enchantment[1] = new AddStatBuff(5,3, s);
+		enchantment[0] = new AddStatBuff(4,3, s.itemDummy);
+		enchantment[1] = new AddStatBuff(5,3, s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

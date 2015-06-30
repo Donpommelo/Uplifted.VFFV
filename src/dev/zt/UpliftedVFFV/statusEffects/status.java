@@ -86,16 +86,18 @@ public class status {
 		
 	}
 	
+	//When calcStats is called
 	
+	public void statchanges(Schmuck s){
+
+	}
 	
-	
+	//not currently used
 	public void run(Schmuck s){
 		
 	}
 	
-	public void statchanges(Schmuck s){
-//		System.out.println(s.buffedStats[3]);
-	}
+	
 	
 	public String inflictText(Schmuck s){
 		return "";

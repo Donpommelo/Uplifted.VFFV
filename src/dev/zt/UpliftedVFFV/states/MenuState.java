@@ -37,7 +37,7 @@ public class MenuState extends State {
 		itemSelected=0;
 		itemPointer=0;
 		backpackLocation=0;
-		itemslot = 1;
+		itemslot = 0;
 	}
 
 	public void tick() {
@@ -206,7 +206,7 @@ public class MenuState extends State {
 						}
 					}
 					if(game.getKeyManager().up){
-						if(itemslot>1){
+						if(itemslot>0){
 							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot--;
 							try {
@@ -217,7 +217,7 @@ public class MenuState extends State {
 						}
 					}
 					if(game.getKeyManager().down){
-						if(itemslot<3){			
+						if(itemslot<2){			
 							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot++;
 							try {
@@ -503,23 +503,13 @@ public class MenuState extends State {
 				g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
 				g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
 				g.drawString("Equipment", 400,215);
-				if(tempSchmuck.itemSlot1 == null){
-					g.drawString("Item slot 1: Nothing", 400,240);
-				}
-				else{
-					g.drawString("Item slot 1: "+tempSchmuck.itemSlot1.getName(),400,240);
-				}
-				if(tempSchmuck.itemSlot2 == null){
-					g.drawString("Item slot 2: Nothing", 400,265);
-				}
-				else{
-					g.drawString("Item slot 2: "+tempSchmuck.itemSlot2.getName(),400,265);
-				}
-				if(tempSchmuck.itemSlot3 == null){
-					g.drawString("Item slot 3: Nothing", 400,290);
-				}
-				else{
-					g.drawString("Item slot 3: "+tempSchmuck.itemSlot3.getName(),400,290);
+				for(int i=0; i<tempSchmuck.getItemSlots(); i++){
+					if(tempSchmuck.getItems()[i] == null){
+						g.drawString("Item slot "+(i+1)+": Nothing", 400,240+25*i);
+					}
+					else{
+						g.drawString("Item slot "+(i+1)+" "+tempSchmuck.getItems()[i].getName(),400,240+25*i);
+					}
 				}
 				
 				if(characterChosen==true){
@@ -667,45 +657,24 @@ public class MenuState extends State {
 						g.setColor(new Color(0, 0,0));
 						g.setFont(new Font("Chewy", Font.PLAIN, 18));
 						g.drawString("Equiptment", 300,215);
-						if(tempSchmuck.itemSlot1 == null){
-							g.drawString("Item slot 1: Nothing", 300,240);
-						}
-						else{
-							g.drawString("Item slot 1: "+tempSchmuck.itemSlot1.getName(),300,240);
-							if(!tempSchmuck.itemSlot1.getDescrShort().equals("meep")){
-								g.setFont(new Font("Chewy", Font.PLAIN, 12));
-								g.drawString(tempSchmuck.itemSlot1.getDescrShort(),325,255);
-								g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						for(int i=0; i<tempSchmuck.getItemSlots(); i++){
+							if(tempSchmuck.getItems()[i] == null){
+								g.drawString("Item slot "+(i+1)+" : Nothing", 300,240+50*i);
 							}
-							
-						}
-						if(tempSchmuck.itemSlot2 == null){
-							g.drawString("Item slot 2: Nothing", 300,290);
-							
-						}
-						else{
-							g.drawString("Item slot 2: "+tempSchmuck.itemSlot2.getName(),300,290);
-							if(!tempSchmuck.itemSlot2.getDescrShort().equals("meep")){
-								g.setFont(new Font("Chewy", Font.PLAIN, 12));
-								g.drawString(tempSchmuck.itemSlot2.getDescrShort(),325,305);
-								g.setFont(new Font("Chewy", Font.PLAIN, 18));
+							else{
+								g.drawString("Item slot "+(i+1)+" "+tempSchmuck.getItems()[i].getName(),300,240+50*i);
+								if(!tempSchmuck.getItems()[i].getDescrShort().equals("meep")){
+									g.setFont(new Font("Chewy", Font.PLAIN, 12));
+									g.drawString(tempSchmuck.getItems()[i].getDescrShort(),325,255+50*i);
+									g.setFont(new Font("Chewy", Font.PLAIN, 18));
+								}
+								
 							}
 						}
-						if(tempSchmuck.itemSlot3 == null){
-							g.drawString("Item slot 3: Nothing", 300,340);
-						}
-						else{
-							g.drawString("Item slot 3: "+tempSchmuck.itemSlot3.getName(),300,340);
-							if(!tempSchmuck.itemSlot3.getDescrShort().equals("meep")){
-								g.setFont(new Font("Chewy", Font.PLAIN, 12));
-								g.drawString(tempSchmuck.itemSlot3.getDescrShort(),325,355);
-								g.setFont(new Font("Chewy", Font.PLAIN, 18));
-							}
-						}									
-						g.drawString(itemDisplay[itemSelected].name,500,190+50*itemslot);
+						g.drawString(itemDisplay[itemSelected].name,500,240+50*itemslot);
 						if(!itemDisplay[itemSelected].getDescrShort().equals("meep")){
 							g.setFont(new Font("Chewy", Font.PLAIN, 12));
-							g.drawString(itemDisplay[itemSelected].getDescrShort(),500,205+50*itemslot);
+							g.drawString(itemDisplay[itemSelected].getDescrShort(),500,255+50*itemslot);
 						}
 					}
 					if(useitemChosen){

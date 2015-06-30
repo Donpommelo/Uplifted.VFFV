@@ -71,13 +71,13 @@ public class Troop implements Comparable<Troop>{
 		return "";
 	}
 	
-	public TreeMap<Item, Integer>  getDrops(){
+	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
 		TreeMap<Item, Integer> itemdrops = new TreeMap<>();		
 		for(Schmuck s : this.troop){
 			Set<Item> temp = s.getItemdrops().keySet();
 			Item[] itemDisplay = temp.toArray(new Item[999]);
 			for(int i=0; i<s.getItemdrops().size();i++){		
-				if(Math.random()<=s.getItemdrops().get(itemDisplay[i])){
+				if(Math.random()<=(s.getItemdrops().get(itemDisplay[i]))*(1+bonusDrop)){
 					if(itemdrops.containsKey(itemDisplay[i])){
 						int tempint = itemdrops.get(itemDisplay[i]);
 						itemdrops.put(itemDisplay[i], tempint + 1);

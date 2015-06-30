@@ -16,15 +16,8 @@ public class Paperweight extends Item{
 	}
 		
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new AddStatBuff(3,3, s);
+		enchantment[0] =  new AddStatBuff(3,3, s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

@@ -31,21 +31,24 @@ public class EffectManager {
 				bs.bp.bt.textList.add(vic.getName()+" took no damage.");
 			}
 		}
+		int finalDamage = hp;
+		finalDamage += perp.getDamAmp()*hp;
+		finalDamage -= vic.getDamRes()*hp;
 		if(!invulnerable){	
-			if(hp > 0){
-				bs.bp.bt.textList.add(vic.getName()+" restored "+hp+" health!");
+			if(finalDamage > 0){
+				bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
 			}
 			else{
-				bs.bp.bt.textList.add(vic.getName()+" received "+-hp+" damage!");
+				bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
 				
 			}
-			vic.tempStats[0]+=hp;
+			vic.tempStats[0]+=finalDamage;
 			
-			if(hp<0){
+			if(finalDamage<0){
 				bs.bs.flash(vic, 51);
 				for(int i=0; i<vic.statuses.size(); i++){
 					if(vic.statuses.get(i)!=null){
-						vic.statuses.get(i).takedamageEffect(perp,vic, bs, hp);
+						vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage);
 					}
 				}
 			}
@@ -71,7 +74,7 @@ public class EffectManager {
 					}
 					
 				}
-				bs.bs.targetUpdate();
+//				bs.bs.targetUpdate();
 			}
 			if(vic.tempStats[0]>vic.baseStats[0]){
 				vic.tempStats[0]=vic.baseStats[0];
@@ -88,6 +91,9 @@ public class EffectManager {
 				bs.bp.bt.textList.add(vic.getName()+" took no damage.");
 			}
 		}
+		int finalDamage = hp;
+		finalDamage += perp.getDamAmp()*hp;
+		finalDamage -= vic.getDamRes()*hp;
 		String element = "";
 		switch(elem){
 		case 0:
@@ -110,19 +116,19 @@ public class EffectManager {
 			break;
 		}
 		if(!invulnerable){
-			hp = (int)(hp*(1-vic.buffedRes[elem]));
-			if(hp > 0){
-				bs.bp.bt.textList.add(vic.getName()+" restored "+hp+" health!");
+			finalDamage = (int)(finalDamage*(1-vic.buffedRes[elem]));
+			if(finalDamage > 0){
+				bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
 			}
 			else{
-				bs.bp.bt.textList.add(vic.getName()+" received "+-hp+" "+element+" damage!");
+				bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 			}
-			vic.tempStats[0]+=hp;
-			if(hp<0){
+			vic.tempStats[0]+=finalDamage;
+			if(finalDamage<0){
 				bs.bs.flash(vic, 51);
 				for(int i=0; i<vic.statuses.size(); i++){
 					if(vic.statuses.get(i)!=null){
-						vic.statuses.get(i).takedamageEffect(perp,vic, bs, hp);
+						vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage);
 					}
 				}
 			}
@@ -147,7 +153,7 @@ public class EffectManager {
 					}
 					
 				}
-				bs.bs.targetUpdate();
+//				bs.bs.targetUpdate();
 			}
 			if(vic.tempStats[0]>vic.baseStats[0]){
 				vic.tempStats[0]=vic.baseStats[0];
@@ -167,7 +173,7 @@ public class EffectManager {
 	}
 	
 	public int getAcc(Schmuck perp, Schmuck vic){
-		int acc = 100*perp.getBuffedSkl()/vic.getBuffedLuk()+perp.getBonusAcc();
+		int acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
 		return acc;
 	}
 

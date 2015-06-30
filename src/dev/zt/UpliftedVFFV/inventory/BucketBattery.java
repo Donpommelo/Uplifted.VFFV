@@ -15,15 +15,8 @@ public class BucketBattery extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Volatile(s);
+		enchantment[0] = new Volatile(s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

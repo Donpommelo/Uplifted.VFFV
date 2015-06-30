@@ -14,15 +14,8 @@ public class BossMug extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Regendegen(false,5, s);
+		enchantment[0] = new Regendegen(false,5, s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

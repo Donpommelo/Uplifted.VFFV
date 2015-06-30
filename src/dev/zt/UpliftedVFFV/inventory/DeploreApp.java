@@ -16,16 +16,9 @@ public class DeploreApp extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Regendegen(true,120, s);
-		enchantment[1] = new TestStatBuff(0,.5, s);
+		enchantment[0] = new Regendegen(true,120, s.itemDummy);
+		enchantment[1] = new TestStatBuff(0,.5, s.itemDummy);
 		return enchantment;
-	}
-	
-	public void unEnchantment(Schmuck s) {
-		for(status st : this.enchantment){
-			s.statuses.remove(st);
-		}
-		
 	}
 	
 	public String getDescrShort() {

@@ -1155,3 +1155,23 @@ meep
 Arturo.png
 1
 The door is locked from this side. Like, super locked./
+Operator
+Player-1.png
+0
+Hey. . . uh. . . do you need any watering?/
+Pen Pal
+1
+Player-5.png
+Watering? What do you mean?/
+Operator
+Player-1.png
+0
+Well, there's a water cooler right here, so are you thirtsy at all?/
+Pen Pal
+1
+Player-5.png
+Oh, that. Goodness, no./Water is the last thing I need right now./I don't even want to look at it./
+Pen Pal
+1
+Player-5.png
+But, that's very considerate of you to ask./You are very responsible./I knew it was a good idea to pick you for this./

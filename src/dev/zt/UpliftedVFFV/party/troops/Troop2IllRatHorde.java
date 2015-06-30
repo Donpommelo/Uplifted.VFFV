@@ -18,7 +18,7 @@ public class Troop2IllRatHorde extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		int num = (int)(Math.random()*2+1);
+		int num = (int)(Math.random()*2+2);
 		for(int i=0; i<num; i++){
 			troop.add(new IllRat(1+ML));
 		}
@@ -26,8 +26,8 @@ public class Troop2IllRatHorde extends Troop{
 		return troop;
 	}
 	
-	public TreeMap<Item, Integer>  getDrops(){
-		return super.getDrops();
+	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
+		return super.getDrops(bonusDrop);
 	}
 	
 	public String encounterText(){
