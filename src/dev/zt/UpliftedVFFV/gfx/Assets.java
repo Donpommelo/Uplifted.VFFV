@@ -31,7 +31,7 @@ public class Assets {
 	
 	public static BufferedImage Uparrow,Downarrow;
 	
-	public static BufferedImage attack, skill, nothing, wait, item, run, pointer;
+	public static BufferedImage attack, skill, nothing, wait, item, run, pointer/*, hpbar*/;
 	
 	public static Dialog[] dialog;
 	
@@ -48,6 +48,7 @@ public class Assets {
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
+		//SpriteSheet gauges = new SpriteSheet(ImageLoader.loadImage("/ui/PlayerGauge.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
 		
@@ -156,6 +157,10 @@ public class Assets {
 		item = ActionIcons.crop(128,0,32,32);
 		run = ActionIcons.crop(160,0,32,32);
 		pointer = ActionIcons.crop(256, 0, 32, 32);
+		
+		// UI elements
+		//hpbar = gauges.crop(0,  0,  350,  100);
+
 		
 		
 		//Dialog loaded from text files.
