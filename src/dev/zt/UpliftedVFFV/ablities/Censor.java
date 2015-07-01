@@ -27,6 +27,11 @@ public class Censor extends Skills {
 		}
 	}
 
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" used Censor!");
+		bs.bp.bt.textList.add("A Critical blow!");
+		bs.bp.stm.addStatus(vic, new Silenced((int)(3*(1.5+perp.getCritMulti())), perp));	
+	}
 	
 	public String getName(){
 		return name;

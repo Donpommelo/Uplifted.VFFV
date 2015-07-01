@@ -21,7 +21,14 @@ public class PantherPoise extends Skills {
 		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
 			bs.bp.stm.addStatus(s, new PantherPoiseEffect(1,perp));
 		}
-
+	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" used Panther Poise!");
+		bs.bp.bt.textList.add(perp.getName()+" looks critically poised to strike!");
+		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(1.5+perp.getCritMulti()),perp));
+		}
 	}
 		
 	public String getName(){

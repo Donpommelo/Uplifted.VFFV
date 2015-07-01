@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -101,6 +102,10 @@ public class Item implements Comparable<Item>{
 	}
 	
 	public void unEnchantment(Schmuck s) {
+		
+	}
+
+	public void TOQChange(Action a, BattleState bs){
 		
 	}
 

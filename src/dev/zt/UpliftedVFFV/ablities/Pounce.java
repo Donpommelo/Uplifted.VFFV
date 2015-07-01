@@ -26,6 +26,12 @@ public class Pounce extends Skills {
 		}
 	}
 	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
+		bs.bp.bt.textList.add("A Critical blow!");
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti())), perp, vic);	
+	}
+	
 	public String getName(){
 		return name;
 	}

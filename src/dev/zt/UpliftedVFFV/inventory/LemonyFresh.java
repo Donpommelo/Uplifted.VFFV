@@ -20,8 +20,8 @@ public class LemonyFresh extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Lemony Fresh.");
 		}
-		bs.bp.em.hpChange(15, perp, vic);
-		bs.bp.em.bpChange(15,vic);
+		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())), perp, vic);
+		bs.bp.em.bpChange((int)(15*(1+perp.getItemPow())),vic);
 		for(status s: vic.statuses){
 			if(!s.perm){
 				s.setDuration(s.getDuration()/2);
@@ -30,8 +30,8 @@ public class LemonyFresh extends Item{
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(15);
-		s.bpChange(15);
+		s.hpChange((int)(25*(1+s.getItemPow())));
+		s.bpChange((int)(15*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {

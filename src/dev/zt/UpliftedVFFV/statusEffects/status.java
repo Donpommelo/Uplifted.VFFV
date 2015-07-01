@@ -12,6 +12,7 @@ public class status {
 	public Boolean removedEnd = true;
 	public BattleState bs;
 	public int stack;
+	public int priority;
 	public Schmuck perp;
 	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p){
 		this.duration=i;
@@ -21,6 +22,7 @@ public class status {
 		this.visible = vis;
 		this.removedEnd = end;
 		this.perp = p;
+		this.priority = 0;
 	}
 	
 	public status(String n, Boolean vis, Boolean end, Schmuck p){
@@ -29,6 +31,27 @@ public class status {
 		this.visible = vis;
 		this.removedEnd = end;
 		this.perp = p;
+		this.priority = 0;
+	}
+	
+	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p, int pr){
+		this.duration=i;
+		this.perm = false;
+		this.name = n;
+		this.perm = perm;
+		this.visible = vis;
+		this.removedEnd = end;
+		this.perp = p;
+		this.priority = pr;
+	}
+	
+	public status(String n, Boolean vis, Boolean end, Schmuck p, int pr){
+		this.name = n;
+		this.perm = true;
+		this.visible = vis;
+		this.removedEnd = end;
+		this.perp = p;
+		this.priority = pr;
 	}
 	
 	public int getDuration() {
@@ -38,15 +61,21 @@ public class status {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
+		
+	public int getPriority() {
+		return priority;
+	}
 
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
 
-	
 	//Activates upon selecting a move. Prolly should rename. Atm used for restricting; if certain moves are selected, they are replaced
 	public void restrict(Schmuck s, Action a, BattleState bs){
 
 	}
 	
-	
+	//Activates at the end of round in stm.endofRound
 	public void endofturnEffect(Schmuck s, BattleState bs){
 	
 	}
@@ -86,12 +115,17 @@ public class status {
 		
 	}
 	
-	//When calcStats is called
-	
+	//When calcStats is called. This includes all passive changes to any Schmuck's stat	
 	public void statchanges(Schmuck s){
 
 	}
 	
+	//Occurs right before a character makes a delayed move
+	public void onDillyDally(Schmuck s, BattleState bs){
+		
+	}
+	
+
 	//not currently used
 	public void run(Schmuck s){
 		

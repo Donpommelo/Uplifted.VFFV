@@ -21,14 +21,14 @@ public class CoffeeBean extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Coffee Bean.");
 		}
 		bs.bp.bt.textList.add("The Coffee Bean scalds "+vic.getName()+"'s tongue.");
-		bs.bp.em.hpChange(-10,perp,vic);
-		bs.bp.em.bpChange(30,vic);
+		bs.bp.em.hpChange((int)(-10*(1+perp.getItemPow())),perp,vic);
+		bs.bp.em.bpChange((int)(30*(1+perp.getItemPow())),vic);
 
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(-10);
-		s.bpChange(30);
+		s.hpChange((int)(-10*(1+s.getItemPow())));
+		s.bpChange((int)(30*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {

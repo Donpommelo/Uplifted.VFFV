@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.inventory;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -19,15 +20,20 @@ public class MedPak extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" uses the Med-Pak on "+vic.getName());
 		}
-		bs.bp.em.hpChange(20,perp, vic);
+		bs.bp.em.hpChange((int)(20*(1+perp.getItemPow())),perp, vic);
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(20);
+		s.hpChange((int)(20*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {
 		return descrShort;
+	}
+	
+	public void TOQChange(Action a, BattleState bs){
+		bs.bp.TurnOrderQueue.remove(a);
+		bs.bp.TurnOrderQueue.add(0, a);
 	}
 
 }

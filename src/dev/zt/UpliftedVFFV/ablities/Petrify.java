@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
@@ -24,7 +23,7 @@ public class Petrify extends Skills {
 		bs.bp.bt.textList.add(vic.getName()+" was petrified!");
 		bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
 		bs.bp.stm.addStatus(vic, new Stunned(3,perp));	
-		bs.bp.stm.addStatus(vic, new TestStatBuff(3,1.5,perp));
+		bs.bp.stm.addStatus(vic, new TestStatBuff(3,1.5,perp,10));
 	}
 
 	

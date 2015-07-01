@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class ArcherRoulette extends Skills {
 
 	public String name = "Archer Roulette";
-	public String descr = "User fires a powerful missile\nthat is aimed, but onlyslightly.";
+	public String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
 	public String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
 	public int cost = 17;
 	public ArcherRoulette(int index) {
@@ -27,10 +27,14 @@ public class ArcherRoulette extends Skills {
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target.buffedStats[3]*.5)),perp,target);
 			
 		}
-		
-
-
 	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
+		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
+		bs.bp.bt.textList.add("A Critical Blow!");	
+		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5))*(1.5*perp.getCritMulti())),perp,vic);
+	}
+	
 		
 	public String getName(){
 		return name;

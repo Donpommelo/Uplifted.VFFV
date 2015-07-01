@@ -2,21 +2,21 @@ package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
-public class TestStatBuff extends status{
+public class ElemResBuffMult extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public TestStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, "Stats Changed", false, false, true, perp, pr);
+	public ElemResBuffMult(int i, int stat, double amount, Schmuck perp, int pr){
+		super(i, "Resistances Changed", false, false, true, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public TestStatBuff(int stat, double amount, Schmuck perp, int pr){
-		super("Stats Changed", false, false, perp,pr);
+	public ElemResBuffMult(int stat, double amount, Schmuck perp, int pr){
+		super("Resistances Changed", false, false, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
@@ -28,7 +28,7 @@ public class TestStatBuff extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedStats[this.statChanged]*=statIncrement;
+		s.buffedRes[this.statChanged]*=statIncrement;
 	}
 	
 	public String inflictText(Schmuck s){
@@ -36,28 +36,22 @@ public class TestStatBuff extends status{
 		String plusminus = "";
 		switch(statChanged){
 		case 0:
-			stat = "Health";
+			stat = "Red";
 			break;
 		case 1:
-			stat = "Motivation";
+			stat = "Blue";
 			break;
 		case 2:
-			stat = "Power";
+			stat = "Green";
 			break;
 		case 3:
-			stat = "Defense";
+			stat = "Yellow";
 			break;
 		case 4:
-			stat = "Speed";
+			stat = "Purple";
 			break;
 		case 5:
-			stat = "Skill";
-			break;
-		case 6:
-			stat = "Intelligence";
-			break;
-		case 7:
-			stat = "Luck";
+			stat = "???";
 			break;
 		}
 		if(statIncrement>1){
@@ -66,12 +60,12 @@ public class TestStatBuff extends status{
 		else{
 			plusminus = "lowered";
 		}
-		return s.getName()+"'s "+stat+" was "+plusminus;
+		return s.getName()+"'s "+stat+" Resistance was "+plusminus;
 
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s stats went back to normal";
+		return s.getName()+"'s resistances went back to normal";
 	}
 	
 	public int getDuration(){

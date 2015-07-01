@@ -20,7 +20,7 @@ public class FireMagnum extends Skills {
 			bs.bp.bt.textList.add(perp.getName()+" fired a Magnum at "+vic.getName()+"!");
 			int hitChance = (int)(Math.random()*100);
 			if(hitChance<bs.bp.em.getAcc(perp, vic)){
-				bs.bp.em.hpChange(-45,perp,vic);
+				bs.bp.em.hpChange((int)(-45*(1+perp.getEquipPow())),perp,vic);
 			}
 			else{
 				bs.bp.bt.textList.add(perp.getName()+" missed!");
@@ -30,10 +30,19 @@ public class FireMagnum extends Skills {
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" is out of ammunition!");
+		}		
+	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		if(bs.gs.inventorymanager.backpack.containsKey(new MetalRations())){
+			bs.bp.bt.textList.add(perp.getName()+" fired a Magnum at "+vic.getName()+"!");
+			bs.bp.em.hpChange((int)(-90*(1+perp.getEquipPow())),perp,vic);
+			bs.gs.inventorymanager.use(new MetalRations());
+			bs.bp.bt.textList.add(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
 		}
-		
-		
-		
+		else{
+			bs.bp.bt.textList.add(perp.getName()+" is out of ammunition!");
+		}	
 	}
 	
 	public String getName(){

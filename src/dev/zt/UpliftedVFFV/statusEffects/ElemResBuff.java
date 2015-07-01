@@ -9,14 +9,14 @@ public class ElemResBuff extends status{
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public ElemResBuff(int i, int stat, double amount, Schmuck perp){
-		super(i, "Resistances Changed", true, false, true, perp);
+	public ElemResBuff(int i, int stat, double amount, Schmuck perp, int pr){
+		super(i, "Resistances Changed", false, false, true, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public ElemResBuff(int stat, double amount, Schmuck perp){
-		super("Resistances Changed", false, false, perp);
+	public ElemResBuff(int stat, double amount, Schmuck perp, int pr){
+		super("Resistances Changed", false, false, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
@@ -51,10 +51,10 @@ public class ElemResBuff extends status{
 			stat = "Purple";
 			break;
 		case 5:
-			stat = "Voide";
+			stat = "???";
 			break;
 		}
-		if(statIncrement>1){
+		if(statIncrement>0){
 			plusminus = "raised";
 		}
 		else{

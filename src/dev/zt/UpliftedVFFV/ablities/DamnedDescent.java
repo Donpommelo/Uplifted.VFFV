@@ -29,7 +29,17 @@ public class DamnedDescent extends Skills {
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
 		}
-		
+	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
+		bs.bp.bt.textList.add("A Critical blow!");
+		bs.bp.em.hpChange(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]), perp, vic);
+		if(vic.tempStats[0]==0){
+			bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
+		}	
 	}
 
 	

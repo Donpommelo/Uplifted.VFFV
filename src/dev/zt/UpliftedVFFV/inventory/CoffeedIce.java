@@ -21,13 +21,13 @@ public class CoffeedIce extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.");
 		}
 //		bs.bp.stm.removeStatus(vic, );
-		bs.bp.em.hpChange(15,perp, vic);
-		bs.bp.em.bpChange(25,vic);
+		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())),perp, vic);
+		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(25);
-		s.bpChange(35);
+		s.hpChange((int)(25*(1+s.getItemPow())));
+		s.bpChange((int)(35*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {

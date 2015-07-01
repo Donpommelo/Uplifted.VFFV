@@ -23,7 +23,7 @@ public class TyrianPlumEffect extends status{
 			else{
 				bs.bp.em.hpChange(-(int)(amount*1.5),perp, a.user, 2);
 			}
-			bs.bp.em.hpChange((int)(amount*1.5), a.user, perp);
+			bs.bp.em.hpChange((int)(amount*1.5), a.user, a.user);
 		}
 	}
 	

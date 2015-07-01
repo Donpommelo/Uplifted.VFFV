@@ -124,11 +124,20 @@ public class BattleMenu{
 					phase+=1;
 					break;
 				case 3:
+					if(!bs.bp.pauseTOQ){
+						for(int i=0; i<currentSchmuck.statuses.size(); i++){
+							if(currentSchmuck.statuses.get(i)!=null){
+								currentSchmuck.statuses.get(i).onDillyDally(currentSchmuck,bs);
+							}	
+						}
+					}
 					currentSkill = new DillyDally(0);
+					targetedSchmuck = currentSchmuck;
 					phase+=3;
 					break;
 				case 4:
 					currentSkill = new Runaway(0);
+					targetedSchmuck = currentSchmuck;
 					phase+=3;
 					break;
 				}
@@ -148,7 +157,7 @@ public class BattleMenu{
 						currentSkill = new SkillNothing(1,gs);
 					}
 					else{
-						if(currentSchmuck.skills.get(itemSelected).getCost()>currentSchmuck.tempStats[1]){
+						if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]){
 							bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 						}
 						else{
@@ -558,7 +567,7 @@ public class BattleMenu{
 					skillnum=0;                                                                                                                                                                                                                                                                                       
 					for(int i=backpackLocation;i<=backpackLocation+4 && i<currentSchmuck.skills.size();i++){			
 						g.setColor(new Color(0, 0,0));
-						g.drawString(currentSchmuck.skills.get(i).getName()+"  "+currentSchmuck.skills.get(i).getCost()+" Mp", 505, 231+25*(skillnum));
+						g.drawString(currentSchmuck.skills.get(i).getName()+"  "+(int)(currentSchmuck.skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", 505, 231+25*(skillnum));
 						skillnum++;
 					}
 					

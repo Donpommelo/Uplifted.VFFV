@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
@@ -28,6 +29,8 @@ public class Player extends Creature{
 	public static int enemyCalc=0;
 	public static int runlast=1;
 	public static int enemyChance=0;
+	public static double bonusML;
+	public static double combatFreq;
 	public GameState gamestate;
 	public static float playerx, playery;
 	
@@ -109,8 +112,12 @@ public class Player extends Creature{
 		if(randomIndex>=0){
 			troop = troops[randomIndex];
 			game.getAudiomanager().playSound("/Audio/Elevator Sound Effect.wav", false);
+			bonusML = 0;
+			for(Schmuck s : gamestate.partymanager.party){
+				bonusML += s.getBonusML();
+			}
 			//Later, change last int for bonus ML
-			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,0));
+			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,(int)bonusML));
 		}
 	}
 	
@@ -125,7 +132,11 @@ public class Player extends Creature{
 			step=0;
 			double temp = Math.random()*100;
 			wall = false;
-			if(temp<enemyChance){			//enemy stuff				
+			combatFreq = 0;
+			for(Schmuck s : gamestate.partymanager.party){
+				combatFreq += s.getCombatFreq();
+			}
+			if(temp<enemyChance*(1+combatFreq)){			//enemy stuff				
 				enemyChance = 0;
 				encounter();
 			}

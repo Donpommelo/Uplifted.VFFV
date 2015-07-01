@@ -20,12 +20,12 @@ public class MidgeBlood extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Midge Blood.");
 		}
-		bs.bp.stm.addStatus(vic, new Regendegen(3,true,8, perp));
+		bs.bp.stm.addStatus(vic, new Regendegen(3,true,(int)(8*(1+perp.getItemPow())), perp));
 
 	}
 	
 	public void use(Schmuck s){
-		s.hpChange(10);
+		s.hpChange((int)(10*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {

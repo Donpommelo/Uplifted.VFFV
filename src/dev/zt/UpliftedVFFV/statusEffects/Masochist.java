@@ -28,7 +28,7 @@ public class Masochist extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" is masochistic!";
+		return s.getName()+" became masochistic!";
 
 	}
 

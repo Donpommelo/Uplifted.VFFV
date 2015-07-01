@@ -415,7 +415,11 @@ public class Event{
 			e.printStackTrace();
 		}
 		//change last int for bonus ML
-		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable, music,gamestate,0));
+		int bonusML = 0;
+		for(Schmuck s : gamestate.partymanager.party){
+			bonusML += s.getBonusML();
+		}
+		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable, music,gamestate,bonusML));
 	}
 	
 	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.

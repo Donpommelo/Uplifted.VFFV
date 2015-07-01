@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.BonusStatBuff;
 
 public class CarrotJuice extends Item{
 	
@@ -20,9 +20,9 @@ public class CarrotJuice extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Carbonated Carrot Juice.");
 		}
-		bs.bp.em.bpChange(15,vic);
+		bs.bp.em.bpChange((int)(15*(1+perp.getItemPow())),vic);
 		bs.bp.bt.textList.add(vic.getName()+"'s vision improved.");
-		bs.bp.stm.addStatus(vic, new TestStatBuff(5,5,1.5, perp));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(5,0,.25, perp,75));
 	}
 	
 	public String getDescrShort() {

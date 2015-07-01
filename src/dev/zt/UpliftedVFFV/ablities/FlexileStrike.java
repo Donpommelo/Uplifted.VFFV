@@ -26,6 +26,25 @@ public class FlexileStrike extends Skills {
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*1.5)), perp, target2);
 
 	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		Schmuck target1;
+		Schmuck target2;
+		Schmuck target3;
+		Schmuck target4;
+		bs.bp.bt.textList.add(perp.getName()+" used Flexile Strike!");
+		bs.bp.bt.textList.add("A Critical blow!");
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5*perp.getCritMulti())), perp, vic);
+		target1 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		target2 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		target3 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		target4 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2.5)), perp, target1);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*2)), perp, target2);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*1.5)), perp, target3);
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3])), perp, target4);
+				
+	}
 		
 	public String getName(){
 		return name;

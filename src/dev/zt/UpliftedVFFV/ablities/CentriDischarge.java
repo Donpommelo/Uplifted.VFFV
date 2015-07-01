@@ -20,11 +20,18 @@ public class CentriDischarge extends Skills {
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic,3);
-			bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,1.2, perp));
+			bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,1.5, perp,75));
 		}	
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
 		}
+	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" used Centrifuge Discharge!");
+		bs.bp.bt.textList.add("A Critical blow!");
+		bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*(1.5*perp.getCritMulti())), perp, vic,3);
+		bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,2, perp,25));	
 	}
 
 	

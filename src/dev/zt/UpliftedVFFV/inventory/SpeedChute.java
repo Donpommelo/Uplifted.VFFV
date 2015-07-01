@@ -16,8 +16,8 @@ public class SpeedChute extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TestStatBuff(4,.5, s.itemDummy);
-		enchantment[1] = new BonusStatBuff(3,0.15, s.itemDummy);
+		enchantment[0] = new TestStatBuff(4,.5, s.itemDummy,10);
+		enchantment[1] = new BonusStatBuff(3,0.15*(1+s.getEquipPow()), s.itemDummy,80);
 		return enchantment;
 	}
 	

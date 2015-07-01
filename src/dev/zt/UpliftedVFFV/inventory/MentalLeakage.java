@@ -19,14 +19,14 @@ public class MentalLeakage extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" uses the Mental Leakage on "+vic.getName());
 		}
-		bs.bp.em.bpChange(25,vic);
+		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
 		if(Math.random()<.1){
 			//get some terrible side effect.
 		}
 	}
 	
 	public void use(Schmuck s){
-		s.bpChange(30);
+		s.bpChange((int)(30*(1+s.getItemPow())));
 	}
 	
 	public String getDescrShort() {

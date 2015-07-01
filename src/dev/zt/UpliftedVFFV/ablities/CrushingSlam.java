@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Stunned;
 
 public class CrushingSlam extends Skills {
 
@@ -33,9 +34,13 @@ public class CrushingSlam extends Skills {
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
 		}
-			
-
-
+	}
+	
+	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.textList.add(perp.getName()+" used Crushing Slam!");
+		bs.bp.bt.textList.add(vic.getName()+" was critically dazed by the blow!");
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5*perp.getCritMulti())), perp, vic);
+		bs.bp.stm.addStatus(vic, new Stunned(2,perp));
 	}
 		
 	public String getName(){

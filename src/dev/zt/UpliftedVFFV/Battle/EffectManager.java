@@ -32,8 +32,14 @@ public class EffectManager {
 			}
 		}
 		int finalDamage = hp;
-		finalDamage += perp.getDamAmp()*hp;
-		finalDamage -= vic.getDamRes()*hp;
+		if(finalDamage < 0){
+			finalDamage += perp.getDamAmp()*hp;
+			finalDamage -= vic.getDamRes()*hp;
+		}
+		else{
+			finalDamage *= (1+perp.getHealPower());
+		}
+		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		if(!invulnerable){	
 			if(finalDamage > 0){
 				bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
@@ -42,8 +48,7 @@ public class EffectManager {
 				bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
 				
 			}
-			vic.tempStats[0]+=finalDamage;
-			
+			vic.tempStats[0]+=finalDamage;			
 			if(finalDamage<0){
 				bs.bs.flash(vic, 51);
 				for(int i=0; i<vic.statuses.size(); i++){
@@ -92,8 +97,14 @@ public class EffectManager {
 			}
 		}
 		int finalDamage = hp;
-		finalDamage += perp.getDamAmp()*hp;
-		finalDamage -= vic.getDamRes()*hp;
+		if(finalDamage < 0){
+			finalDamage += perp.getDamAmp()*hp;
+			finalDamage -= vic.getDamRes()*hp;
+		}
+		else{
+			finalDamage *= (1+perp.getHealPower());
+		}
+		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		String element = "";
 		switch(elem){
 		case 0:
@@ -116,7 +127,12 @@ public class EffectManager {
 			break;
 		}
 		if(!invulnerable){
-			finalDamage = (int)(finalDamage*(1-vic.buffedRes[elem]));
+			if(finalDamage < 0){
+				finalDamage = (int)(finalDamage*(1-vic.buffedRes[elem]));
+			}
+			else{
+				finalDamage = (int)(finalDamage*(1+vic.buffedRes[elem]));
+			}
 			if(finalDamage > 0){
 				bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
 			}
@@ -176,5 +192,7 @@ public class EffectManager {
 		int acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
 		return acc;
 	}
+	
+	
 
 }

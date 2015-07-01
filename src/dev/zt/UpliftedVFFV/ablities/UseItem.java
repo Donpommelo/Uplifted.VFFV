@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -39,6 +40,8 @@ public UseItem(int index, Item i, GameState gs) {
 				}
 			}
 		}
+	
+	
 	public boolean startTarget(){
 		if(thing!=null){
 			return thing.startTeamTarget();
@@ -56,5 +59,8 @@ public UseItem(int index, Item i, GameState gs) {
 		return thing.getTargetType();
 	}
 
-
+	public void TOQChange(Action a, BattleState bs){
+		thing.TOQChange(a, bs);
+	}
+	
 }

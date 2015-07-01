@@ -17,7 +17,7 @@ public class DeploreApp extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new Regendegen(true,120, s.itemDummy);
-		enchantment[1] = new TestStatBuff(0,.5, s.itemDummy);
+		enchantment[1] = new TestStatBuff(0,.5, s.itemDummy,10);
 		return enchantment;
 	}
 	

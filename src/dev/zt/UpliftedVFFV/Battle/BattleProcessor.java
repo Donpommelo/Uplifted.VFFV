@@ -218,9 +218,14 @@ public class BattleProcessor {
 							}
 						}
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally") && TurnOrderQueue.get(0) != null){
-							if(TurnOrderQueue.get(0).skill.getCost()<=TurnOrderQueue.get(0).user.getCurrentBp()){								
-								em.bpChange(-TurnOrderQueue.get(0).skill.getCost(), TurnOrderQueue.get(0).user);
-								TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+							if((int)(TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost()))<=TurnOrderQueue.get(0).user.getCurrentBp()){								
+								em.bpChange((int)(-TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost())), TurnOrderQueue.get(0).user);
+								if(Math.random()<TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance()){
+									TurnOrderQueue.get(0).skill.runCrit(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+								}
+								else{
+									TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+								}
 								if(TurnOrderQueue.get(0) != null){
 									for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
 										if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
@@ -411,7 +416,7 @@ public class BattleProcessor {
 			flag=false;
 			for(j=0; j<a.size()-1; j++){
 				if(a.get(j) != null && a.get(j+1) != null){
-					if(a.get(j).user.buffedStats[4] < a.get(j+1).user.buffedStats[4]){
+					if(a.get(j).user.getBuffedSpd()*(1+a.get(j).user.getBonusInit()) < a.get(j+1).user.getBuffedSpd()*(1+a.get(j).user.getBonusInit())){
 						temp = a.get(j);
 						a.set(j,a.get(j+1));
 						a.set(j+1,temp);

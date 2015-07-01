@@ -9,15 +9,15 @@ public class BonusStatBuff extends status{
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public BonusStatBuff(int i, int stat, double amount, Schmuck perp){
-		super(i, "Stats Changed",false, false, true, perp);
+	public BonusStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
+		super(i, "Stats Changed",false, false, true, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 //		this.perp = perp;
 	}
 	
-	public BonusStatBuff(int stat, double amount, Schmuck perp){
-		super("Stats Changed",false,true, perp);
+	public BonusStatBuff(int stat, double amount, Schmuck perp, int pr){
+		super("Stats Changed",false,false, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
@@ -84,8 +84,14 @@ public class BonusStatBuff extends status{
 		case 15:
 			stat = "Damage Variance";
 			break;
+		case 16:
+			stat = "Critical Chance";
+			break;
+		case 17:
+			stat = "Critical Multiplier";
+			break;
 		}
-		if(statIncrement>1){
+		if(statIncrement>0){
 			plusminus = "raised";
 		}
 		else{

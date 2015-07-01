@@ -2,22 +2,22 @@ package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
-public class AddStatBuff extends status{
+public class BonusStatBuffMult extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public AddStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, "Stats Changed",false, false, true, perp);
+	public BonusStatBuffMult(int i, int stat, double amount, Schmuck perp, int pr){
+		super(i, "Stats Changed",false, false, true, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 //		this.perp = perp;
 	}
 	
-	public AddStatBuff(int stat, int amount, Schmuck perp, int pr){
-		super("Stats Changed",false,false, perp);
+	public BonusStatBuffMult(int stat, double amount, Schmuck perp, int pr){
+		super("Stats Changed",false,false, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
@@ -29,7 +29,7 @@ public class AddStatBuff extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedStats[this.statChanged]+=statIncrement;
+		s.bonusStats[this.statChanged]*=statIncrement;
 	}
 	
 	public String inflictText(Schmuck s){
@@ -37,28 +37,52 @@ public class AddStatBuff extends status{
 		String plusminus = "";
 		switch(statChanged){
 		case 0:
-			stat = "Health";
+			stat = "Accuracy";
 			break;
 		case 1:
-			stat = "Motivation";
+			stat = "Evasion";
 			break;
 		case 2:
-			stat = "Power";
+			stat = "Bonus Script Drop";
 			break;
 		case 3:
-			stat = "Defense";
+			stat = "Bonus Exp Drop";
 			break;
 		case 4:
-			stat = "Speed";
+			stat = "Bonus Item Drop";
 			break;
 		case 5:
-			stat = "Skill";
+			stat = "Bonus Critical Chance";
 			break;
 		case 6:
-			stat = "Intelligence";
+			stat = "Elemental Alignment";
 			break;
 		case 7:
-			stat = "Luck";
+			stat = "Damage Amplification";
+			break;
+		case 8:
+			stat = "Damage Resistance";
+			break;
+		case 9:
+			stat = "Item Power";
+			break;
+		case 10:
+			stat = "Equipment Power";
+			break;
+		case 11:
+			stat = "Bonus Monster Level";
+			break;
+		case 12:
+			stat = "Combat Frequency";
+			break;
+		case 13:
+			stat = "Motivation Costs";
+			break;
+		case 14:
+			stat = "Combat Initiative";
+			break;
+		case 15:
+			stat = "Damage Variance";
 			break;
 		}
 		if(statIncrement>1){

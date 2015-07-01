@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -25,10 +26,11 @@ public class Schmuck {
 	public int[] tempStats = {10,10};
 	
 	
-	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, bonusCrit,elemAlignment,damAmp,damRes,itemPow,equipPow,bonusML
-	//combatFreq,mpCost,bonusInit,damageVariance;
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	public double[] buffedBonusStats;
+	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
+	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower;
+
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
 	
 //	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
 	public double[] elemRes = {.1,.1,.1,.1,.1,0};
@@ -56,7 +58,6 @@ public class Schmuck {
 	public Schmuck itemDummy;	
 	public String name;
 	public String bio;
-	public Item itemSlot1,itemSlot2,itemSlot3;
 //	public incapacitate i = new incapacitate();
 	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,double[] elemRes){	
 		this.BattleSprite=sprite;
@@ -70,9 +71,8 @@ public class Schmuck {
 		this.elemRes = elemRes;
 		this.buffedRes = elemRes;
 		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0};
-		this.buffedBonusStats = bonusStats;
-		this.itemSlots = 3;
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
 	
@@ -89,9 +89,8 @@ public class Schmuck {
 		this.exp=0;
 		this.elemRes = elemRes;
 		this.buffedRes = elemRes;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0};
-		this.buffedBonusStats = bonusStats;
-		this.itemSlots = 3;
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
 	
@@ -133,8 +132,8 @@ public class Schmuck {
 	
 	public void calcStats(int lvl){
 		lvl--;
-		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getMaxHp());
-		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getMaxBp());
+		setBaseHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getBaseHp());
+		setBaseBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getBaseBp());
 		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
 		setBaseDef(startStats[3]+(int)(lvl*statGrowths[3]));setBuffedDef(getBaseDef());
 		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
@@ -179,79 +178,6 @@ public class Schmuck {
 		
 	}
 	
-/*	public void equip(Item i, int slot, InventoryManager meep){
-		Item thing = null;
-		switch(slot){
-		case 1:
-			thing = getItemSlot1();
-			break;
-		case 2:
-			thing =  getItemSlot2();
-			break;
-		case 3:
-			thing =  getItemSlot3();
-			break;
-		}
-		if(meep.backpack.containsKey(i)){
-			if(thing != null){
-				meep.loot(thing,1);
-			}
-			thing = i;
-			meep.use(i);
-			switch(slot){
-			case 1:
-				setItemSlot1(i);
-				break;
-			case 2:
-				setItemSlot2(i);
-				break;
-			case 3:
-				setItemSlot3(i);
-				break;
-			}
-			this.statuses.clear();
-			if(getItemSlot1() != null){
-				for(status s : getItemSlot1().getEnchantment(this)){
-					this.statuses.add(s);
-				}
-			}
-			if(getItemSlot2() != null){
-				for(status s : getItemSlot2().getEnchantment(this)){
-					this.statuses.add(s);
-				}
-			}if(getItemSlot3() != null){
-				for(status s : getItemSlot3().getEnchantment(this)){
-					this.statuses.add(s);
-				}
-			}
-			calcBuffs();
-		}
-	}	*/
-	
-	public Item getItemSlot1() {
-		return itemSlot1;
-	}
-
-	public void setItemSlot1(Item itemSlot1) {
-		this.itemSlot1 = itemSlot1;
-	}
-
-	public Item getItemSlot2() {
-		return itemSlot2;
-	}
-
-	public void setItemSlot2(Item itemSlot2) {
-		this.itemSlot2 = itemSlot2;
-	}
-
-	public Item getItemSlot3() {
-		return itemSlot3;
-	}
-
-	public void setItemSlot3(Item itemSlot3) {
-		this.itemSlot3 = itemSlot3;
-	}
-	
 	public Schmuck getItemDummy(){
 		return itemDummy;
 	}
@@ -290,8 +216,8 @@ public class Schmuck {
 	
 	public void lvlUp(int lvl){
 		lvl--;
-		setMaxHp(startStats[0]+(int)(lvl*statGrowths[0]));hpChange((int)(lvl*statGrowths[0]));
-		setMaxBp(startStats[1]+(int)(lvl*statGrowths[1]));bpChange((int)(lvl*statGrowths[1]));
+		setBaseHp(startStats[0]+(int)(lvl*statGrowths[0]));hpChange((int)(lvl*statGrowths[0]));
+		setBaseBp(startStats[1]+(int)(lvl*statGrowths[1]));bpChange((int)(lvl*statGrowths[1]));
 		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
 		setBaseDef(startStats[3]+(int)(lvl*statGrowths[3]));setBuffedDef(getBaseDef());
 		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
@@ -315,20 +241,44 @@ public class Schmuck {
 			buffedRes[i] = elemRes[i];
 		}
 		for(int i=0; i<bonusStats.length; i++){
-			buffedBonusStats[i] = 0;
+			bonusStats[i] = 0;
+		}
+		int j;
+		boolean flag = true;
+		status temp;
+		while (flag){
+			flag=false;
+			for(j=0; j<this.statuses.size()-1; j++){
+				if(this.statuses.get(j) != null && this.statuses.get(j+1) != null){
+					if(this.statuses.get(j).getPriority() > this.statuses.get(j+1).getPriority()){
+						temp = this.statuses.get(j);
+						this.statuses.set(j,this.statuses.get(j+1));
+						this.statuses.set(j+1,temp);
+						flag = true;
+					}
+				}
+			}
 		}
 		for(status s : this.statuses){
 			s.statchanges(this);
 		}
+		if(this.getCurrentHp()>this.getMaxHp()){
+			this.setCurrentHp(this.getMaxHp());
+		}
+		if(this.getCurrentBp()>this.getMaxBp()){
+			this.setCurrentBp(this.getMaxBp());
+		}
+		
+		
 
 	}
 	
 	public int getMaxHp() {
-		return baseStats[0];
+		return buffedStats[0];
 	}
 
 	public void setMaxHp(int maxHp) {
-		baseStats[0] = maxHp;
+		buffedStats[0] = maxHp;
 	}
 
 	public int getCurrentHp() {
@@ -340,11 +290,11 @@ public class Schmuck {
 	}
 
 	public int getMaxBp() {
-		return baseStats[1];
+		return buffedStats[1];
 	}
 
 	public void setMaxBp(int maxBp) {
-		baseStats[1] = maxBp;
+		buffedStats[1] = maxBp;
 	}
 
 	public int getCurrentBp() {
@@ -376,7 +326,23 @@ public class Schmuck {
 	public TreeMap<Item, Double> getItemdrops() {
 		return itemdrops;
 	}
+	
+	public int getBaseHp() {
+		return baseStats[0];
+	}
 
+	public void setBaseHp(int baseHp) {
+		baseStats[0] = baseHp;
+	}
+	
+	public int getBaseBp() {
+		return baseStats[1];
+	}
+
+	public void setBaseBp(int baseBp) {
+		baseStats[1] = baseBp;
+	}
+	
 	public int getBasePow() {
 		return baseStats[2];
 	}
@@ -545,11 +511,11 @@ public class Schmuck {
 		bonusStats[4] = bonus;
 	}
 	
-	public double getBonusCrit(){
+	public double getFortune(){
 		return bonusStats[5];
 	}
 	
-	public void setbonusCrit(double bonus){
+	public void setFortune(double bonus){
 		bonusStats[5] = bonus;
 	}
 	
@@ -607,11 +573,11 @@ public class Schmuck {
 		bonusStats[12] = bonus;
 	}
 	
-	public double getmpCost(){
+	public double getMpCost(){
 		return bonusStats[13];
 	}
 	
-	public void setmpCost(double bonus){
+	public void setMpCost(double bonus){
 		bonusStats[13] = bonus;
 	}
 	
@@ -629,6 +595,30 @@ public class Schmuck {
 	
 	public void setDamageVariance(double bonus){
 		bonusStats[15] = bonus;
+	}
+	
+	public double getCritChance(){
+		return bonusStats[16];
+	}
+	
+	public void setCritChance(double bonus){
+		bonusStats[16] = bonus;
+	}
+	
+	public double getCritMulti(){
+		return bonusStats[17];
+	}
+	
+	public void setCritMulti(double bonus){
+		bonusStats[17] = bonus;
+	}
+	
+	public double getHealPower(){
+		return bonusStats[18];
+	}
+	
+	public void setHealPower(double bonus){
+		bonusStats[18] = bonus;
 	}
 	
 	public double getRedRes() {

@@ -64,7 +64,9 @@ public class BattleSprites {
 	}
 	public void render(Graphics g) {
 		g.setColor(new Color(200,200,0));
-		g.fillOval(alliesTargets.get(bs.bp.currentlySelected).getX()+15,alliesTargets.get(bs.bp.currentlySelected).getY()+150,90,45);
+		if(!alliesTargets.isEmpty()){
+			g.fillOval(alliesTargets.get(bs.bp.currentlySelected).getX()+15,alliesTargets.get(bs.bp.currentlySelected).getY()+150,90,45);
+		}
 		for(int i=0;i<allies.size();i++){
 			g.setColor(new Color(255,255,0));
 			g.drawString("Hp: "+allies.get(i).getCurrentHp()+"/"+allies.get(i).getMaxHp(), allies.get(i).getX()+20, allies.get(i).getY()-20);

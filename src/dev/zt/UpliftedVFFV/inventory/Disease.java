@@ -23,12 +23,12 @@ public class Disease extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.textList.add(perp.getName()+" eats the Disease at "+vic.getName());
+			bs.bp.bt.textList.add(perp.getName()+" eats the Disease.");
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" throws the Disease at "+vic.getName());
 		}
-		bs.bp.stm.addStatus(vic, new Regendegen(4,true,-6, perp));
+		bs.bp.stm.addStatus(vic, new Regendegen(4,true,(int)(-6*(1+perp.getItemPow())), perp));
 	}
 	
 	public boolean startTeamTarget(){

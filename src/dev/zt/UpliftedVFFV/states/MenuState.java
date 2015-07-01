@@ -217,7 +217,7 @@ public class MenuState extends State {
 						}
 					}
 					if(game.getKeyManager().down){
-						if(itemslot<2){			
+						if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
 							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot++;
 							try {
@@ -528,7 +528,7 @@ public class MenuState extends State {
 					g.drawString("Abilities:", 240, 255);
 					int skillnum=0;                                                                                                                                                                                                                                                                                       
 					for(int i=backpackLocation;i<=backpackLocation+3 && i<tempSchmuck.skills.size();i++){			
-						g.drawString(tempSchmuck.skills.get(i).getName()+"  "+tempSchmuck.skills.get(i).getCost()+" Bp", 142,275+35*skillnum);
+						g.drawString(tempSchmuck.skills.get(i).getName()+"  "+(int)(tempSchmuck.skills.get(i).getCost()*(1+tempSchmuck.getMpCost()))+" Mp", 142,275+35*skillnum);
 
 						skillnum++;
 					}	
