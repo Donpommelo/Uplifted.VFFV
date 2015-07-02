@@ -40,7 +40,7 @@ public class World {
 		
 		//Sets background to black. Change later perhaps to allow for special background/parallax scrolling
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 640, 416);
+		g.fillRect(0, 0, game.getWidth(), game.getHeight());
 		
 		//renders every tile in the matrix. 	
 		for(int y = 0;y<height;y++){

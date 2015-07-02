@@ -6,6 +6,7 @@ public class Launcher {
 	
 	public static void main(String[] args){					//launcher. launches stuff and does launching things	
 		Game game = new Game("Uplifted", 640,416);			//Title of window, x-y coordinates.
+//		Game game = new Game("Uplifted", 960,624);
 		game.start();										
 	}
 

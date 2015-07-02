@@ -8,6 +8,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.Queried;
 import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
@@ -81,6 +82,7 @@ public class BattleSprites {
 			g.setColor(new Color(0,0,204));
 			g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-15, 80*allies.get(i).getCurrentBp()/allies.get(i).getMaxBp(), 5);	
 		}
+		 
 		for(Action a :bs.bp.TurnOrderQueue){
 			if(a!=null){
 				if(allies.contains(a.user)){
@@ -97,15 +99,15 @@ public class BattleSprites {
 		}
 		for(int i=0;i<enemyTargets.size();i++){
 			Schmuck temp = enemyTargets.get(i);
-//			if(!bs.bp.stm.checkStatus(temp, new incapacitate())){
 				if(temp.visible){
 					g.drawImage(temp.getBattleSprite(), temp.getX(),temp.getY(),temp.getBattleSprite().getWidth(),temp.getBattleSprite().getHeight(),null);
 				}
-//				g.setColor(new Color(204,0,0));
-//				g.fillRect(temp.getX(), temp.getY(), 80, 5);
-//				g.setColor(new Color(0,204,0));
-//				g.fillRect(temp.getX(), temp.getY(), 80*temp.getCurrentHp()/temp.getMaxHp(), 5);
-//			}		
+				if(bs.bp.stm.checkStatus(temp, new Queried(temp))){
+					g.setColor(new Color(204,0,0));
+					g.fillRect(temp.getX(), temp.getY(), 80, 5);
+					g.setColor(new Color(0,204,0));
+					g.fillRect(temp.getX(), temp.getY(), 80*temp.getCurrentHp()/temp.getMaxHp(), 5);
+				}		
 		}
 
 	}

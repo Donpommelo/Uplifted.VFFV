@@ -36,9 +36,6 @@ public class EffectManager {
 			finalDamage += perp.getDamAmp()*hp;
 			finalDamage -= vic.getDamRes()*hp;
 		}
-		else{
-			finalDamage *= (1+perp.getHealPower());
-		}
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		if(!invulnerable){	
 			if(finalDamage > 0){
@@ -100,9 +97,6 @@ public class EffectManager {
 		if(finalDamage < 0){
 			finalDamage += perp.getDamAmp()*hp;
 			finalDamage -= vic.getDamRes()*hp;
-		}
-		else{
-			finalDamage *= (1+perp.getHealPower());
 		}
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		String element = "";

@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Queried;
 
 public class Query extends Skills {
 
@@ -17,6 +18,7 @@ public class Query extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Query!");
+		bs.bp.stm.addStatus(vic, new Queried(perp));
 		bs.bp.bt.textList.add("A(n) "+ vic.getName()+". "+ vic.getCurrentHp()+"/"+vic.getMaxHp()+" Hp");
 		bs.bp.bt.textList.add(vic.getBio());
 	}
