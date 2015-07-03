@@ -31,7 +31,7 @@ public class Assets {
 	
 	public static BufferedImage Uparrow,Downarrow;
 	
-	public static BufferedImage attack, skill, nothing, wait, item, run, pointer/*, hpbar*/;
+	public static BufferedImage attack, skill, nothing, wait, item, run, pointer;
 	
 	public static Dialog[] dialog;
 	
@@ -156,12 +156,7 @@ public class Assets {
 		wait = ActionIcons.crop(96,0,32,32);
 		item = ActionIcons.crop(128,0,32,32);
 		run = ActionIcons.crop(160,0,32,32);
-		pointer = ActionIcons.crop(256, 0, 32, 32);
-		
-		// UI elements
-		//hpbar = gauges.crop(0,  0,  350,  100);
-
-		
+		pointer = ActionIcons.crop(256, 0, 32, 32);		
 		
 		//Dialog loaded from text files.
 		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines
@@ -178,10 +173,10 @@ public class Assets {
 		
 		//Fonts
 		try {
-            //create the font to use. Specify the size!
+            //Create the font to use. Specify the size!
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(12f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            //register the font
+            //Register the font
             ge.registerFont(customFont);
         } catch (IOException e) {
             e.printStackTrace();
