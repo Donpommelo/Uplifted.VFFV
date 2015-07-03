@@ -22,7 +22,7 @@ public class Ablaze extends status{
 	}
 
 	public void statchanges(Schmuck s){
-		s.buffedRes[0]-=.2;
+		s.bonusStats[19]-=.2;
 	}
 	
 	public String inflictText(Schmuck s){

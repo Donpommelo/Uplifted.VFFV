@@ -28,7 +28,7 @@ public class Midge extends Schmuck{
 	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
 	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static double[] elemRes = {.1,.1,.1,.1,.1,0};
+	public final static int[] elemRes = {10,10,10,10,10,0};
 	public static int[] baseStats=startStats;
 	public static int[] buffedStats=baseStats;
 	public static int[] tempStats={startStats[0],startStats[1]};

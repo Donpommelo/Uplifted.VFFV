@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.BonusStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.ElemPointsBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Impatient;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -19,7 +20,7 @@ public class RingofTesting extends Item{
 		enchantment[0] = new BonusStatBuff(2,.5, s.itemDummy,15);
 		enchantment[1] = new BonusStatBuff(16,.25, s.itemDummy,50);
 		enchantment[2] = new BonusStatBuff(17,2, s.itemDummy,50);
-		enchantment[3] = new Impatient(.25,s.itemDummy);
+		enchantment[3] = new ElemPointsBuff(3,15,s.itemDummy,99);
 		return enchantment;
 	}
 	

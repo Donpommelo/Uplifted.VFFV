@@ -7,7 +7,6 @@ import java.util.TreeMap;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -27,14 +26,15 @@ public class Schmuck {
 	
 	
 	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
-	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower;
+	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
+	//PurpRes,VoidRes
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	
 //	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public double[] elemRes = {.1,.1,.1,.1,.1,0};
-	public double[] buffedRes;
+	public int[] elemPoints = {0,0,0,0,0,0};
+	public int[] buffedElemPoints;
 	
 	public int Lvl,exp,expCurrent;
 	
@@ -59,7 +59,7 @@ public class Schmuck {
 	public String name;
 	public String bio;
 //	public incapacitate i = new incapacitate();
-	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,double[] elemRes){	
+	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,int[] elemPoints){	
 		this.BattleSprite=sprite;
 		this.name=name;
 		this.skills = new ArrayList<Skills>();
@@ -68,15 +68,15 @@ public class Schmuck {
 		this.startStats=start;
 		this.statGrowths=growths;
 		this.buffedStats=start;
-		this.elemRes = elemRes;
-		this.buffedRes = elemRes;
+		this.elemPoints = elemPoints;
+		this.buffedElemPoints = elemPoints;
 		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
 	
-	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,double[] elemRes){	
+	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elemPoints){	
 		this.BattleSprite=sprite;
 		this.MenuSprite1 = msprite;
 		this.name=name;
@@ -87,15 +87,16 @@ public class Schmuck {
 		this.statGrowths=growths;
 		this.buffedStats=start;
 		this.exp=0;
-		this.elemRes = elemRes;
-		this.buffedRes = elemRes;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.elemPoints = elemPoints;
+		this.buffedElemPoints = elemPoints;
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
 	
 	public Schmuck(){
-		
+		this.name = "Item Dummy";
+		//for itemdummy
 	}
 		
 	public void hpChange(int hp){
@@ -172,7 +173,7 @@ public class Schmuck {
 					}
 					
 				}
-				calcBuffs();
+				calcBuffs(null);
 			}
 		}
 		
@@ -206,12 +207,16 @@ public class Schmuck {
 		return statGrowths;
 	}
 	
-	public double[] getElemRes(){
-		return elemRes;
+	public int[] getElemPoints(){
+		return elemPoints;
 	}
 	
-	public double[] getBuffedRes(){
-		return buffedRes;
+	public int[] getBuffedElemPoints(){
+		return buffedElemPoints;
+	}
+	
+	public double[] getBonusStats(){
+		return bonusStats;
 	}
 	
 	public void lvlUp(int lvl){
@@ -233,12 +238,12 @@ public class Schmuck {
 		return levelSkills;
 	}
 
-	public void calcBuffs(){
+	public void calcBuffs(BattleState bs){
 		for(int i=0; i <baseStats.length; i++){
 			buffedStats[i] = baseStats[i];
 		}
-		for(int i=0; i<elemRes.length; i++){
-			buffedRes[i] = elemRes[i];
+		for(int i=0; i<elemPoints.length; i++){
+			buffedElemPoints[i] = elemPoints[i];
 		}
 		for(int i=0; i<bonusStats.length; i++){
 			bonusStats[i] = 0;
@@ -261,6 +266,24 @@ public class Schmuck {
 		}
 		for(status s : this.statuses){
 			s.statchanges(this);
+		}
+		this.setRedRes((this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()-this.getGreenPoints()-this.getPurplePoints()));
+		this.setBlueRes((-this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()-this.getPurplePoints()));
+		this.setGreenRes((this.getRedPoints()-this.getBluePoints()-this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
+		this.setYellowRes((-this.getRedPoints()-this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
+		this.setPurpleRes((this.getRedPoints()+this.getBluePoints()-this.getYellowPoints()-this.getGreenPoints()+this.getPurplePoints()));
+		this.setVoidRes(this.getVoidPoints()/100);
+		for(int i = 0 ; i< this.getBuffedElemPoints().length; i++){
+			if(this.buffedElemPoints[i] > this.getPrismaticPoints()){
+				this.setElemAlignment(i+1);
+				i = this.getBuffedElemPoints().length;
+				if(bs != null){
+					bs.bp.bt.textList.add(this.getName()+" became elementally aligned!");
+				}
+			}
+			else{
+				this.setElemAlignment(0);
+			}
 		}
 		if(this.getCurrentHp()>this.getMaxHp()){
 			this.setCurrentHp(this.getMaxHp());
@@ -622,52 +645,105 @@ public class Schmuck {
 	}
 	
 	public double getRedRes() {
-		return buffedRes[0];
+		return bonusStats[19];
 	}
 
 	public void setRedRes(double buffedRedRes) {
-		buffedRes[0] = buffedRedRes;
+		bonusStats[19] = buffedRedRes;
 	}
 	
 	public double getBlueRes() {
-		return buffedRes[1];
+		return bonusStats[20];
 	}
 
 	public void setBlueRes(double buffedBlueRes) {
-		buffedRes[1] = buffedBlueRes;
+		bonusStats[20] = buffedBlueRes;
 	}
 	
 	public double getGreenRes() {
-		return buffedRes[2];
+		return bonusStats[21];
 	}
 
 	public void setGreenRes(double buffedGreenRes) {
-		buffedRes[2] = buffedGreenRes;
+		bonusStats[21] = buffedGreenRes;
 	}
 	
 	public double getYellowRes() {
-		return buffedRes[3];
+		return bonusStats[22];
 	}
 
 	public void setYellowRes(double buffedYellowRes) {
-		buffedRes[3] = buffedYellowRes;
+		bonusStats[22] = buffedYellowRes;
 	}
 	
 	public double getPurpleRes() {
-		return buffedRes[4];
+		return bonusStats[23];
 	}
 
 	public void setPurpleRes(double buffedPurpleRes) {
-		buffedRes[4] = buffedPurpleRes;
+		bonusStats[23] = buffedPurpleRes;
 	}
 	
 	public double getVoidRes() {
-		return buffedRes[5];
+		return bonusStats[24];
 	}
 
 	public void setVoidRes(double buffedVoidRes) {
-		buffedRes[5] = buffedVoidRes;
+		bonusStats[24] = buffedVoidRes;
 	}
+	
+	public int getRedPoints(){
+		return elemPoints[0];
+	}
+	
+	public void setRedPoints(int red){
+		elemPoints[0] = red;
+	}
+	
+	public int getBluePoints(){
+		return elemPoints[1];
+	}
+	
+	public void setBluePoints(int blue){
+		elemPoints[1] =blue;
+	}
+	
+	public int getGreenPoints(){
+		return elemPoints[2];
+	}
+	
+	public void setGreenPoints(int green){
+		elemPoints[2] = green;
+	}
+	
+	public int getYellowPoints(){
+		return elemPoints[3];
+	}
+	
+	public void setYellowPoints(int yellow){
+		elemPoints[3] = yellow;
+	}
+	
+	public int getPurplePoints(){
+		return elemPoints[4];
+	}
+	
+	public void setPurplePoints(int purple){
+		elemPoints[4] = purple;
+	}
+	
+	public int getVoidPoints(){
+		return elemPoints[5];
+	}
+	
+	public void setVoidPoints(int meep){
+		elemPoints[5] = meep;
+	}
+	
+	public int getPrismaticPoints(){
+		return elemPoints[0] + elemPoints[1] + elemPoints[2] + elemPoints[3] + elemPoints[4];
+	}
+	
 
 	public boolean isVisible() {
 		return visible;

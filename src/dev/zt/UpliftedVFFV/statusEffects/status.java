@@ -125,6 +125,11 @@ public class status {
 		
 	}
 	
+	//Occurs after status is inflicted
+	public void onStatusInflict(Schmuck s, status st, BattleState bs){
+			
+	}
+	
 
 	//not currently used
 	public void run(Schmuck s){

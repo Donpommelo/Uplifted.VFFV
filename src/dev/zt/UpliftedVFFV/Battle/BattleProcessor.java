@@ -81,7 +81,7 @@ public class BattleProcessor {
 			}
 		}
 		for(Schmuck s: battlers){
-			s.calcBuffs();
+			s.calcBuffs(bs);
 		}
 		
 		
@@ -257,7 +257,7 @@ public class BattleProcessor {
 						if(!TurnOrderQueue.isEmpty()){
 							TurnOrderQueue.remove(0);
 							for(Schmuck s: battlers){
-								s.calcBuffs();
+								s.calcBuffs(bs);
 							}
 						}					
 					}				

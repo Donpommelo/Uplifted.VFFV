@@ -40,6 +40,11 @@ public class StatusManager {
 		if(!stat.inflictText(s).equals("")){
 			bs.bp.bt.textList.add(stat.inflictText(s));
 		}
+		for(int i=0; i<s.statuses.size(); i++){
+			if(s.statuses.get(i)!=null){
+				s.statuses.get(i).onStatusInflict(s,stat,bs);
+			}
+		}
 	}
 	
 	public void removeStatus(Schmuck s, status stat){
@@ -115,7 +120,7 @@ public class StatusManager {
 				if(s.statuses.get(i)!=null){					
 					if(s.statuses.get(i).removedEnd){
 						s.statuses.remove(i);
-						s.calcBuffs();
+						s.calcBuffs(bs);
 						i--;
 					}
 				}

@@ -23,7 +23,7 @@ public class PennyBlueStatus extends status{
 	}
 
 	public void statchanges(Schmuck s){
-		s.buffedRes[0]+=.3;
+		s.buffedElemPoints[1]+=8;
 	}
 	
 	public String inflictText(Schmuck s){

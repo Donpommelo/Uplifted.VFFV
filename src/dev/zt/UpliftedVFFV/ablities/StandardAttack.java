@@ -17,6 +17,15 @@ public class StandardAttack extends Skills {
 		int hitChance = (int)(Math.random()*100);
 		if(hitChance<bs.bp.em.getAcc(perp, vic)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic);
+			switch((int)perp.getElemAlignment()){
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+				
+			}
 			for(int i=0; i<perp.statuses.size(); i++){
 				if(perp.statuses.get(i)!=null){
 					perp.statuses.get(i).attackModify(perp, vic, bs, -(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]);

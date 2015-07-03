@@ -78,18 +78,18 @@ public class BattleSprites {
 		}
 		
 		for(int i=0;i<allies.size();i++){
-			g.drawImage(uihealth, allies.get(i).getX() - 10 + 10 * i, allies.get(i).getY() - allies.get(i).getBattleSprite().getHeight() / 3, uihealth.getWidth(), uihealth.getHeight(), null);
-
 			if(allies.get(i).visible){
 				g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(),allies.get(i).getY(),allies.get(i).getBattleSprite().getWidth(),allies.get(i).getBattleSprite().getHeight(),null);
 			}
 			//g.setColor(new Color(204,0,0));
 			//g.fillRect(allies.get(i).getX()+20, allies.get(i).getY()-20, 80, 5);		
 			g.setColor(new Color(0,204,0));
-			g.fillRect(allies.get(i).getX() + 51 + 10 * i, allies.get(i).getY() - 49, 62 * allies.get(i).getCurrentHp()/allies.get(i).getMaxHp(), 7);
+			g.fillRect(allies.get(i).getX() + 48 + 10 * i, allies.get(i).getY() - 49, 65 * allies.get(i).getCurrentHp()/allies.get(i).getMaxHp(), 7);
 			g.setColor(new Color(0,0,204));
 			g.fillRect(allies.get(i).getX() + 52 + 10 * i, allies.get(i).getY() - 41, 52*allies.get(i).getCurrentBp()/allies.get(i).getMaxBp(), 4);	
 			
+			g.drawImage(uihealth, allies.get(i).getX() - 10 + 10 * i, allies.get(i).getY() - allies.get(i).getBattleSprite().getHeight() / 3, uihealth.getWidth(), uihealth.getHeight(), null);
+
 			g.setColor(new Color(255,255,0));
 			g.drawString("Hp: "+allies.get(i).getCurrentHp()+"/"+allies.get(i).getMaxHp(), allies.get(i).getX() + 55 + 10 * i, allies.get(i).getY() - 48);
 			g.drawString("Mp: "+allies.get(i).getCurrentBp()+"/"+allies.get(i).getMaxBp(), allies.get(i).getX() + 55 + 10 * i, allies.get(i).getY() - 38);

@@ -84,6 +84,15 @@ public class BonusStatBuffMult extends status{
 		case 15:
 			stat = "Damage Variance";
 			break;
+		case 16:
+			stat = "Critical Chance";
+			break;
+		case 17:
+			stat = "Critical Multiplier";
+			break;
+		case 18:
+			stat = "Heal Power";
+			break;
 		}
 		if(statIncrement>1){
 			plusminus = "raised";

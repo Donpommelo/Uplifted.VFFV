@@ -14,14 +14,12 @@ import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.BlightBite;
-import dev.zt.UpliftedVFFV.ablities.LifeDrain;
 import dev.zt.UpliftedVFFV.ablities.Pounce;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Disease;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.MidgeBlood;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -38,7 +36,7 @@ public class IllRat extends Schmuck{
 	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
 	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static double[] elemRes = {.1,.1,.1,.1,.1,0};
+	public final static int[] elemRes = {10,10,10,10,10,0};
 	public static int[] baseStats=startStats;
 	public static int[] buffedStats=baseStats;
 	public static int[] tempStats={startStats[0],startStats[1]};

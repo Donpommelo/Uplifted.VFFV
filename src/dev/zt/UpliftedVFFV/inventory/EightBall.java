@@ -1,7 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.ElemResBuff;
+import dev.zt.UpliftedVFFV.statusEffects.ElemPointsBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EightBall extends Item{
@@ -15,7 +15,7 @@ public class EightBall extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemResBuff(5,.1*(1+s.getEquipPow()), s.itemDummy, 50);
+		enchantment[0] = new ElemPointsBuff(5,10*(1+s.getEquipPow()), s.itemDummy, 50);
 		return enchantment;
 	}
 	

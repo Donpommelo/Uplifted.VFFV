@@ -11,7 +11,6 @@ import dev.zt.UpliftedVFFV.ablities.DayattheFair;
 import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
 import dev.zt.UpliftedVFFV.ablities.FiremansSwitch;
 import dev.zt.UpliftedVFFV.ablities.MotorGrinder;
-import dev.zt.UpliftedVFFV.ablities.Pounce;
 import dev.zt.UpliftedVFFV.ablities.SafeRoom;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.Terraform;
@@ -30,7 +29,7 @@ public class Operator extends Schmuck{
 	public static int[] buffedStats=baseStats;
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static double[] elemRes = {.2,.1,.1,.2,.1,0};
+	public final static int[] elemRes = {20,10,10,20,10,0};
 	public static int Lvl=1;
 	public int exp=0;
 	public ArrayList<Skills> skills;

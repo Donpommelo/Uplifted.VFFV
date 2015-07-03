@@ -90,6 +90,9 @@ public class BonusStatBuff extends status{
 		case 17:
 			stat = "Critical Multiplier";
 			break;
+		case 18:
+			stat = "Heal Power";
+			break;
 		}
 		if(statIncrement>0){
 			plusminus = "raised";

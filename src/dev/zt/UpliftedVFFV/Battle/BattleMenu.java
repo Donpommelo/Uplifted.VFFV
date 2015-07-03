@@ -73,6 +73,13 @@ public class BattleMenu{
 		actionSelected=0;
 		TurnOrderQueue=0;
 		phase = 1;
+		if(bs.bp.pauseTOQ){
+			for(int i=0; i<currentSchmuck.statuses.size(); i++){
+				if(currentSchmuck.statuses.get(i)!=null){
+					currentSchmuck.statuses.get(i).onDillyDally(currentSchmuck,bs);
+				}	
+			}
+		}
 	}
 
 	public void tick() {
@@ -124,13 +131,6 @@ public class BattleMenu{
 					phase+=1;
 					break;
 				case 3:
-					if(!bs.bp.pauseTOQ){
-						for(int i=0; i<currentSchmuck.statuses.size(); i++){
-							if(currentSchmuck.statuses.get(i)!=null){
-								currentSchmuck.statuses.get(i).onDillyDally(currentSchmuck,bs);
-							}	
-						}
-					}
 					currentSkill = new DillyDally(0);
 					targetedSchmuck = currentSchmuck;
 					phase+=3;

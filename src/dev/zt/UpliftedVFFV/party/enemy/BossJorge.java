@@ -2,24 +2,15 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 
 import java.util.ArrayList;
-
-
-
-
-
-
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.CrushingSlam;
 import dev.zt.UpliftedVFFV.ablities.FlexileStrike;
 import dev.zt.UpliftedVFFV.ablities.PantherPoise;
-import dev.zt.UpliftedVFFV.ablities.Pounce;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.inventory.BossMug;
-import dev.zt.UpliftedVFFV.inventory.CoffeeBean;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.LetterOpener;
 import dev.zt.UpliftedVFFV.inventory.PostageStamp;
@@ -39,7 +30,7 @@ public class BossJorge extends Schmuck{
 	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
 	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static double[] elemRes = {.1,.1,.1,.1,.1,0};
+	public final static int[] elemRes = {10,10,10,10,10,0};
 //	public int x = 400;
 //	public int y = 0;
 	public static int[] baseStats=startStats;

@@ -2,21 +2,21 @@ package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
-public class ElemResBuffMult extends status{
+public class ElemPointsBuff extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public ElemResBuffMult(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, "Resistances Changed", false, false, true, perp, pr);
+	public ElemPointsBuff(int i, int stat, double amount, Schmuck perp, int pr){
+		super(i, "Elementally Aligned", false, false, true, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public ElemResBuffMult(int stat, double amount, Schmuck perp, int pr){
-		super("Resistances Changed", false, false, perp, pr);
+	public ElemPointsBuff(int stat, double amount, Schmuck perp, int pr){
+		super("Elementally Aligned", false, false, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
@@ -28,7 +28,7 @@ public class ElemResBuffMult extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedRes[this.statChanged]*=statIncrement;
+		s.buffedElemPoints[this.statChanged]+=statIncrement;
 	}
 	
 	public String inflictText(Schmuck s){
@@ -55,17 +55,17 @@ public class ElemResBuffMult extends status{
 			break;
 		}
 		if(statIncrement>1){
-			plusminus = "raised";
+			plusminus = "more";
 		}
 		else{
-			plusminus = "lowered";
+			plusminus = "less";
 		}
-		return s.getName()+"'s "+stat+" Resistance was "+plusminus;
+		return s.getName()+" became "+ plusminus +" "+ stat + " aligned!";
 
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s resistances went back to normal";
+		return s.getName()+"'s elemental alignments went back to normal";
 	}
 	
 	public int getDuration(){
