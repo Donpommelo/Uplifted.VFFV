@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 //First state ran. This is a title screen
 public class TitleState extends State {
@@ -101,7 +102,8 @@ public class TitleState extends State {
 		g.fillRect(0, 0, 640, 416);
 		g.drawImage(testImage, 48, 0, null);
 		g.setColor(new Color(102, 178,255));
-		g.fillRect(360,200, 150, 100);
+		//g.fillRect(360,200, 150, 100);
+		Utils.drawMenu(g, "WindowBlack.png", 360, 200, 150, 100);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));;
 		g.setColor(new Color(255, 255,51));
 		g.fillRect(360,200+25*optionChosen, 150, 25);
