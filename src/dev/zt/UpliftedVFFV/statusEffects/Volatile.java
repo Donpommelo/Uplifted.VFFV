@@ -14,17 +14,17 @@ public class Volatile extends status{
 	}
 	
 	public Volatile(Schmuck perp){
-		super("Volatile", false, true, perp);
+		super("Volatile", false, false, perp);
 	}
 	
 	
 	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		if(damage>Math.random()*500){
 			bs.bp.bt.textList.add("The blow causes "+vic.getName()+"'s bucket to explode!");
-			for(Schmuck s : bs.bs.enemyTargets){
+			for(Schmuck s : bs.bs.enemySelectable){
 				s.hpChange(-60);
 			}
-			for(Schmuck s : bs.bs.alliesTargets){
+			for(Schmuck s : bs.bs.alliesSelectable){
 				s.hpChange(-60);
 			}
 		}

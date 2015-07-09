@@ -22,6 +22,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
 
 
 public class BattleMenu{
@@ -157,7 +158,8 @@ public class BattleMenu{
 						currentSkill = new SkillNothing(1,gs);
 					}
 					else{
-						if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]){
+						if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
+								&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
 							bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 						}
 						else{
@@ -271,6 +273,16 @@ public class BattleMenu{
 			}
 			break;
 		case 3:
+			if(teamTargeted){
+				if(bs.bs.alliesTargets.isEmpty()){
+					teamTargeted = false;
+				}
+			}
+			else{
+				if(bs.bs.enemyTargets.isEmpty()){
+					teamTargeted = true;
+				}
+			}
 			switch(currentSkill.getTargetType()){
 	 		case 0:
 	 			if(game.getKeyManager().right){
@@ -316,7 +328,7 @@ public class BattleMenu{
 						
 					}
 				}
-				if(game.getKeyManager().up && teamTargeted==true){
+				if(game.getKeyManager().up && teamTargeted==true && !bs.bs.enemyTargets.isEmpty()){
 					if(currentlyTargeted>=bs.bs.enemyTargets.size()){
 						currentlyTargeted=0;
 					}
@@ -330,7 +342,7 @@ public class BattleMenu{
 							e.printStackTrace();
 						}
 				}
-				if(game.getKeyManager().down && teamTargeted==false){
+				if(game.getKeyManager().down && teamTargeted==false && !bs.bs.alliesTargets.isEmpty()){
 					if(currentlyTargeted>=bs.bs.alliesTargets.size()){
 						currentlyTargeted=0;
 					}
@@ -365,47 +377,25 @@ public class BattleMenu{
 	 			break;
 	 		case 2:
 	 			if(game.getKeyManager().right){
-					if(teamTargeted==false){
-						if(currentlyTargeted>0){
-							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
+	 				if(currentlyTargeted<allies.size()-1){
+						currentlyTargeted++;
 					}
-					else{
-						if(currentlyTargeted<allies.size()-1){
-							currentlyTargeted++;
-						}
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
-					
 				}
 				if(game.getKeyManager().left){
-					if(teamTargeted==false){
-						if(currentlyTargeted<enemy.size()-1){
-							currentlyTargeted++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						
-						
-						}
-					else {
-						if(currentlyTargeted>0){
-							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						
+					if(currentlyTargeted>0){
+						currentlyTargeted--;
+											}	
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
+					
 				}
 				if(game.getKeyManager().space){
 					try {
@@ -442,14 +432,14 @@ public class BattleMenu{
 				bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
 			}
 			bs.bp.pauseTOQ=false;								//if dillydallying, end dillydally
-			if(bs.bp.currentlySelected < bs.bs.alliesTargets.size()-1){		//Immediately selects next unit to give command to
+			if(bs.bp.currentlySelected < bs.bs.alliesSelectable.size()-1){		//Immediately selects next unit to give command to
 				bs.bp.currentlySelected++;						
 			}
 			else{
 				bs.bp.currentlySelected = 0;
 			}
 			ArrayList<Schmuck> temp = new ArrayList<Schmuck>();
-			for(Schmuck s : bs.bs.alliesTargets){
+			for(Schmuck s : bs.bs.alliesSelectable){
 				temp.add(s);
 			}
 			for(Action a :bs.bp.TurnOrderQueue){				//If all allied schmucks have made actions, exit selection
@@ -460,7 +450,7 @@ public class BattleMenu{
 					}
 				}
 			if(!temp.isEmpty()){
-				bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesTargets.get(bs.bp.currentlySelected),gs);
+				bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(bs.bp.currentlySelected),gs);
 
 			}
 			else{
@@ -635,10 +625,14 @@ public class BattleMenu{
 			switch(currentSkill.getTargetType()){
 			case 0:
 				if(teamTargeted){
-					pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+					if(!bs.bs.alliesTargets.isEmpty()){
+						pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+					}
 				}
 				else{
-					pointed = bs.bs.enemyTargets.get(currentlyTargeted);
+					if(!bs.bs.enemyTargets.isEmpty()){
+						pointed = bs.bs.enemyTargets.get(currentlyTargeted);
+					}
 				} 
 				break;
 			case 2:

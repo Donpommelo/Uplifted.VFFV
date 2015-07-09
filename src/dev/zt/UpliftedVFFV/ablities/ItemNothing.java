@@ -12,7 +12,7 @@ public Item thing;
 public GameState gs;
 public String name = "Item";
 	public ItemNothing(int index, GameState gs) {
-		super(index, Assets.item);
+		super(index, Assets.item,6);
 		this.gs=gs;
 
 	}

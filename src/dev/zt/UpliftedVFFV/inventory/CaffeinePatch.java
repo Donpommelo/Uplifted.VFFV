@@ -8,7 +8,7 @@ public class CaffeinePatch extends Item{
 	static String descr="A small adhesive strip that administers your needed chemicals\ndirectly into the bloodstream.";
 	static String descrShort="Restore Mp.";
 	public CaffeinePatch() {
-		super(2, "Caffeine Patch", true, true, true, true, false, descr);
+		super(2, "Caffeine Patch", true, true, true, true, false, descr, descrShort);
 
 	}
 	
@@ -26,9 +26,5 @@ public class CaffeinePatch extends Item{
 	
 	public void use(Schmuck s){
 		s.bpChange(25);
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
 	}
 }

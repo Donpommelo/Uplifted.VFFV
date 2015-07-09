@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 
 public class SafeRoom extends Skills {
 
-	public String name = "Safe Room";
-	public String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
-	public String descrShort = "Banish and protect target.";
-	public int cost = 5;
+	public static String name = "Safe Room";
+	public static String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
+	public static String descrShort = "Banish and protect target.";
+	public static int cost = 5;
 	public SafeRoom(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -29,22 +29,4 @@ public class SafeRoom extends Skills {
 		
 	}
 	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
-	
-
 }

@@ -48,7 +48,11 @@ public class Regendegen extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" stopped regenerating.";
+		String plus = "degenerating";
+		if(regen>0){
+			plus = "regenerating";
+		}
+		return s.getName()+" stopped "+plus;
 	}
 	
 	public int getDuration(){

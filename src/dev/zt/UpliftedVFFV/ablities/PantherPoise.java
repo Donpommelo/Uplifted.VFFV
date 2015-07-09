@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.PantherPoiseEffect;
 
 public class PantherPoise extends Skills {
 
-	public String name = "Panther Poise";
-	public String descr = "User gains the poise of a\npanther and gets ready to do\npanther things.";
-	public String descrShort = "Redirects items to self.";
-	public int cost = 8;
+	public static String name = "Panther Poise";
+	public static String descr = "User gains the poise of a\npanther and gets ready to do\npanther things.";
+	public static String descrShort = "Redirects items to self.";
+	public static int cost = 8;
 	public PantherPoise(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -29,22 +29,6 @@ public class PantherPoise extends Skills {
 		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
 			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(1.5+perp.getCritMulti()),perp));
 		}
-	}
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public int getTargetType(){

@@ -4,9 +4,12 @@ package dev.zt.UpliftedVFFV.party.enemy;
 import java.util.ArrayList;
 
 
+
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.ForeseeIll;
 import dev.zt.UpliftedVFFV.ablities.IntrusiveThought;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -32,7 +35,7 @@ public class Augur extends Schmuck{
 	public ArrayList<status> statuses;
 	public Augur(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Augur",lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes);
+		super("Augur",lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Spectral bringer of bad news. Infects foes with insidious negativity.";
 		
@@ -41,7 +44,13 @@ public class Augur extends Schmuck{
 	
 	public Action getAction(BattleState bs){
 //		return new Action(this,bs.bp.allies.get((int)(Math.random()*bs.bp.allies.size())),new StandardAttack(0),bs);
-		Schmuck target = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
+		Schmuck target = null;
+		if(!bs.bs.alliesTargets.isEmpty()){
+			target = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
+		}
+		else{
+			return new Action(this,this,new PassTurn(0),bs);
+		}
 		int mostStacks = 0;
 		for(Schmuck s : bs.bp.allies){
 			for(status st : s.statuses){
@@ -73,14 +82,5 @@ public class Augur extends Schmuck{
 
 	}
 	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
-	}
-	
-
 
 }

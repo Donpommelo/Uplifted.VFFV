@@ -40,7 +40,7 @@ public class BossJorge extends Schmuck{
 	public ArrayList<status> statuses;
 	public BossJorge(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Jorge",lvl,ImageLoader.loadImage("/BattleSprites/Jorge.png"), startStats, statGrowths, elemRes);
+		super("Jorge",lvl,ImageLoader.loadImage("/BattleSprites/Jorge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Unhelpful middle manager. Foul-tempered and steals food from coworkers.";
 		itemdrops.put(new PostageStamp(), 1.0);
@@ -54,7 +54,11 @@ public class BossJorge extends Schmuck{
 	public Action getAction(BattleState bs){
 		int random = (int)(Math.random()*4);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
-		switch (random){
+		if(bs.bs.alliesTargets.isEmpty()){
+			act = new Action(this,this,new FlexileStrike(0),bs);
+		}
+		else{
+			switch (random){
 			case 0:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new FlexileStrike(0),bs);
 				break;
@@ -67,17 +71,10 @@ public class BossJorge extends Schmuck{
 			case 3:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CrushingSlam(0),bs);
 				break;
+			}
 		}
 		return act;
 		
-	}
-	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
 	}
 	
 	public int getX(){

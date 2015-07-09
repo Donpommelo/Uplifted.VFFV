@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FireMagnum extends Skills {
 
-	public String name = "Fire Magnum";
-	public String descr = "Remember that gun you had?\nWell, you can shoot someone with it.\nC'mon, go ahead! Try it!\nYou'll need bullets though.";
-	public String descrShort = "Shoot someone\nUses up Metal Rations.";
-	public int cost = 0;
+	public static String name = "Fire Magnum";
+	public static String descr = "Remember that gun you had?\nWell, you can shoot someone with it.\nC'mon, go ahead! Try it!\nYou'll need bullets though.";
+	public static String descrShort = "Shoot someone\nUses up Metal Rations.";
+	public static int cost = 0;
 	public FireMagnum(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 		
 	}
 	
@@ -43,23 +43,6 @@ public class FireMagnum extends Skills {
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" is out of ammunition!");
 		}	
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
+	}	
 
 }

@@ -15,7 +15,7 @@ public class Impatient extends status{
 	}
 	
 	public Impatient(double percent, Schmuck perp){
-		super("Impatient", false, true, perp);
+		super("Impatient", false, false, perp);
 		this.percent = percent;
 	}
 	

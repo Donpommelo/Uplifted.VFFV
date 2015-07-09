@@ -6,10 +6,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.party.PenPal;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
+
 
 
 public class EventPenPal extends Event {
@@ -48,10 +45,6 @@ public class EventPenPal extends Event {
 			super.Dialog(27, 27,this.getId());
 		}
 
-	}
-
-	public static void main(String[] args) {
-		
 	}
 	
 	public boolean isSolid(){

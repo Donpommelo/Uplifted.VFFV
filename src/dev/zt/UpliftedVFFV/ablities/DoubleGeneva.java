@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DoubleGeneva extends Skills {
 
-	public String name = "Double Geneva";
-	public String descr = "User summons a barrage of\nmissles and will do massive damage\n to unscathed target.";
-	public String descrShort = "Damages two random foes.\nIf this attack targeted\nneither,target is damaged. ";
-	public int cost = 12;
+	public static String name = "Double Geneva";
+	public static String descr = "User summons a barrage of\nmissles and will do massive damage\n to unscathed target.";
+	public static String descrShort = "Damages two random foes.\nIf this attack targeted\nneither,target is damaged. ";
+	public static int cost = 12;
 	public DoubleGeneva(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -40,22 +40,5 @@ public class DoubleGeneva extends Skills {
 		bs.bp.bt.textList.add(vic.getName()+"'s diplomatic was critically rejected!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*.5)),perp, vic);
 	}
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
 
 }

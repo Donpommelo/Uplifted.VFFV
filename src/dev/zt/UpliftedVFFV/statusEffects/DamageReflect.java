@@ -15,7 +15,7 @@ public class DamageReflect extends status{
 	}
 	
 	public DamageReflect(double percent, Schmuck perp){
-		super("Damage Reflect", false, true, perp);
+		super("Damage Reflect", false, false, perp);
 		this.percent = percent;
 	}
 	

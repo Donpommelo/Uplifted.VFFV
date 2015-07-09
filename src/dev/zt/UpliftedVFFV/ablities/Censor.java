@@ -7,12 +7,12 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 
 public class Censor extends Skills {
 
-	public String name = "Censor";
-	public String descr = "User harshly Censors a for, causing\nthem to be unable to cast\nspecial abilities.";
-	public String descrShort = "Silences target.";
-	public int cost = 10;
+	public static String name = "Censor";
+	public static String descr = "User harshly Censors a for, causing\nthem to be unable to cast\nspecial abilities.";
+	public static String descrShort = "Silences target.";
+	public static int cost = 10;
 	public Censor(int index) {
-		super(index);
+		super(index, 0, 6, name, descr, descrShort, cost);
 
 	}
 	
@@ -32,22 +32,4 @@ public class Censor extends Skills {
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new Silenced((int)(3*(1.5+perp.getCritMulti())), perp));	
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-
-
 }

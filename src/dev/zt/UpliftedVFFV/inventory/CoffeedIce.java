@@ -9,7 +9,7 @@ public class CoffeedIce extends Item{
 	static String descr="A thermos of shaved ice with some faint coffee flavoring.";
 	static String descrShort="Restore Hp and Mp.";
 	public CoffeedIce() {
-		super(2, "Coffee'd Ice",true,  true, true, true, false,descr);
+		super(2, "Coffee'd Ice",true,  true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -28,10 +28,6 @@ public class CoffeedIce extends Item{
 	public void use(Schmuck s){
 		s.hpChange((int)(25*(1+s.getItemPow())));
 		s.bpChange((int)(35*(1+s.getItemPow())));
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
 	}
 
 }

@@ -20,8 +20,10 @@ public class BattleSprites {
 	public Game game;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
-	public ArrayList<Schmuck>alliesTargets=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> alliesTargets=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> alliesSelectable=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemyTargets=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> enemySelectable=new ArrayList<Schmuck>();
 	public BattleState bs;
 	private BufferedImage uihealth;
 	
@@ -73,8 +75,8 @@ public class BattleSprites {
 	}
 	public void render(Graphics g) {
 		g.setColor(new Color(200,200,0));
-		if(!alliesTargets.isEmpty()){
-			g.fillOval(alliesTargets.get(bs.bp.currentlySelected).getX()+15,alliesTargets.get(bs.bp.currentlySelected).getY()+150,90,45);
+		if(!alliesSelectable.isEmpty() && bs.bp.currentlySelected < alliesSelectable.size()){
+			g.fillOval(alliesSelectable.get(bs.bp.currentlySelected).getX()+15,alliesSelectable.get(bs.bp.currentlySelected).getY()+150,90,45);
 		}
 		
 		for(int i=0;i<allies.size();i++){
@@ -110,8 +112,8 @@ public class BattleSprites {
 				g.drawString("null",110,45+25*bs.bp.TurnOrderQueue.indexOf(a));
 			}
 		}
-		for(int i=0;i<enemyTargets.size();i++){
-			Schmuck temp = enemyTargets.get(i);
+		for(int i=0;i<enemySelectable.size();i++){
+			Schmuck temp = enemySelectable.get(i);
 				if(temp.visible){
 					g.drawImage(temp.getBattleSprite(), temp.getX(),temp.getY(),temp.getBattleSprite().getWidth(),temp.getBattleSprite().getHeight(),null);
 				}
@@ -127,16 +129,24 @@ public class BattleSprites {
 	
 	public void targetUpdate(){
 		alliesTargets.clear();
+		alliesSelectable.clear();
 		for(Schmuck s : allies){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) && !bs.bp.stm.checkStatus(s, new Untouchable(1,s))){
-				alliesTargets.add(s);
+			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
+				alliesSelectable.add(s);
+				if(!bs.bp.stm.checkStatus(s, new Untouchable(1,s))){
+					alliesTargets.add(s);
+				}				
 			}
 			
 		}
 		enemyTargets.clear();
+		enemySelectable.clear();
 		for(Schmuck s : enemy){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) && !bs.bp.stm.checkStatus(s, new Untouchable(1, s))){
-				enemyTargets.add(s);
+			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
+				enemySelectable.add(s);
+				if(!bs.bp.stm.checkStatus(s, new Untouchable(1, s))){
+					enemyTargets.add(s);
+				}
 			}
 		}
 		bs.bp.currentlySelected = 0;

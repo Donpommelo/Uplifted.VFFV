@@ -10,7 +10,7 @@ public class Runaway extends Skills {
 	public String name = "Run Away";
 	public int cost = 0;
 	public Runaway(int index) {
-		super(index, Assets.run);
+		super(index, Assets.run,6);
 
 	}
 	

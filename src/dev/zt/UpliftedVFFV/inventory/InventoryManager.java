@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.inventory;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -38,7 +39,10 @@ public class InventoryManager {
 	}
 	
 	public TreeMap<Item, Integer> battleItem(){
-		TreeMap<Item, Integer> temp = backpack;
+		TreeMap<Item, Integer> temp = new TreeMap<Item, Integer>();
+		for(Map.Entry<Item,Integer> entry : backpack.entrySet()) {
+			temp.put(entry.getKey(), entry.getValue());
+		}
 		Item[] itemDisplay = backpack.keySet().toArray(new Item[999]);
 //		Set<Item> tempSet= backpack.keySet();
 		for(Item i : itemDisplay){

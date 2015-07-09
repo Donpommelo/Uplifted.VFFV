@@ -8,12 +8,12 @@ import dev.zt.UpliftedVFFV.statusEffects.Ablaze;
 
 public class Scald extends Skills {
 
-	public String name = "Scald";
-	public String descr = "A spray of boiling hot liquid that\ncan inflict nasty burns.";
-	public String descrShort = "Red damage and Ablaze.";
-	public int cost = 5;
+	public static String name = "Scald";
+	public static String descr = "A spray of boiling hot liquid that\ncan inflict nasty burns.";
+	public static String descrShort = "Red damage and Ablaze.";
+	public static int cost = 5;
 	public Scald(int index) {
-		super(index);
+		super(index,0,0, name, descr, descrShort, cost);
 
 	}
 	
@@ -35,22 +35,4 @@ public class Scald extends Skills {
 		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.8)), perp,vic,0);
 		bs.bp.stm.addStatus(vic, new Ablaze((int)(3*(1.5+perp.getCritMulti())), perp));
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
-
 }

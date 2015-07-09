@@ -10,7 +10,7 @@ public class FadedSash extends Item{
 	static String descrShort="Pow-50%  Def+50%.";
 	public status[] enchantment = new status[2];
 	public FadedSash() {
-		super(2, "Faded Sash", false,false,false, false, true, descr);
+		super(2, "Faded Sash", false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -19,9 +19,4 @@ public class FadedSash extends Item{
 		enchantment[1] =  new TestStatBuff(3,1.5, s.itemDummy,20);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

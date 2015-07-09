@@ -10,7 +10,7 @@ public class PassTurn extends Skills {
 public Item thing;
 
 	public PassTurn(int index) {
-		super(index,Assets.nothing);
+		super(index,Assets.nothing,6);
 
 	}
 	

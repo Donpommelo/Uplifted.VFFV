@@ -16,7 +16,6 @@ public class status {
 	public Schmuck perp;
 	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p){
 		this.duration=i;
-		this.perm = false;
 		this.name = n;
 		this.perm = perm;
 		this.visible = vis;
@@ -36,7 +35,6 @@ public class status {
 	
 	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p, int pr){
 		this.duration=i;
-		this.perm = false;
 		this.name = n;
 		this.perm = perm;
 		this.visible = vis;
@@ -80,6 +78,11 @@ public class status {
 	
 	}
 	
+	//Activates right before sorting and TOQ changes
+	public void preBattlePhase(Schmuck s, BattleState bs){
+		
+	}
+	
 	//When fight starts.
 	public void startoffightEffect(Schmuck s, BattleState bs){//
 		
@@ -97,6 +100,11 @@ public class status {
 	
 	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
 	public void onAction(BattleState bs, Action a){
+		
+	}
+	
+	//Takes place after any action, whether ally or enemy.
+	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
 		
 	}
 	

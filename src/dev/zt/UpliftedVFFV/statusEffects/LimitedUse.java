@@ -35,19 +35,13 @@ public class LimitedUse extends status{
 		}
 	}
 	
-	public void onAction(BattleState bs, Action a){
-		if(a.skill.getName().equals(move.getName())){
-			bs.bp.bt.textList.add(a.user.getName()+"'s  "+move.getName()+" has "+usesLeft+" uses left.");
-		}
-	}
-
 	public String inflictText(Schmuck s){
 		return "";
 
 	}
 
 	public String cureText(Schmuck s){
-		return "meep";
+		return "";
 	}
 	
 }

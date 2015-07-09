@@ -10,12 +10,12 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 
 public class ChaosConjure extends Skills {
 
-	public String name = "Chaos Conjure";
-	public String descr = "User summons a storm damaging and\n scrambling and damaging foes\nLimit : One use per fight.";
-	public String descrShort = "Damages all foes and\nScrambles order\n1 use per fight.";
-	public int cost = 5;
+	public static String name = "Chaos Conjure";
+	public static String descr = "User summons a storm damaging and\n scrambling and damaging foes\nLimit : One use per fight.";
+	public static String descrShort = "Damages all foes and\nScrambles order\n1 use per fight.";
+	public static int cost = 5;
 	public ChaosConjure(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -38,23 +38,6 @@ public class ChaosConjure extends Skills {
 				temp.remove(rand);
 			}
 		
-	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

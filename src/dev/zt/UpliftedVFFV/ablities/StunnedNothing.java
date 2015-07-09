@@ -9,20 +9,11 @@ public class StunnedNothing extends Skills {
 public Item thing;
 
 	public StunnedNothing(int index) {
-		super(index);
+		super(index,1,6,"","","",0);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" is Stunned and cannot move.");
+		bs.bp.bt.textList.add(perp.getName()+" is disabled and cannot move.");
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 }

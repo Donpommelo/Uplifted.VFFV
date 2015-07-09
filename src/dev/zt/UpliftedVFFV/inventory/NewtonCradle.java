@@ -10,7 +10,7 @@ public class NewtonCradle extends Item{
 	static String descrShort="Skl+6";
 	public status[] enchantment = new status[1];
 	public NewtonCradle() {
-		super(2, "Newton's Cradle",false,false,false, false, true, descr);
+		super(2, "Newton's Cradle",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -18,9 +18,4 @@ public class NewtonCradle extends Item{
 		enchantment[0] = new AddStatBuff(4,(int)(6*(1+s.getEquipPow())), s.itemDummy, 50);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

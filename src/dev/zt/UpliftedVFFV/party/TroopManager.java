@@ -3,16 +3,15 @@ package dev.zt.UpliftedVFFV.party;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.party.enemy.BossJorge;
 
 public class TroopManager {
-	private Game game;
-	private Troop troop;
+//	private Game game;
+//	private Troop troop;
 
 	
 	
 	public TroopManager(Game game){
-		this.game=game;
+//		this.game=game;
 //		troop = new Troop(0);
 	}
 	

@@ -9,12 +9,12 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 
 public class GodsBreath extends Skills {
 
-	public String name = "Gods Breath";
-	public String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
-	public String descrShort = "Protects all allies\n1 use per fight.";
-	public int cost = 15;
+	public static String name = "Gods Breath";
+	public static String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
+	public static String descrShort = "Protects all allies\n1 use per fight.";
+	public static int cost = 15;
 	public GodsBreath(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -26,23 +26,6 @@ public class GodsBreath extends Skills {
 				bs.bp.stm.addStatus(s, new Invuln(0, perp));
 			}
 		
-	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

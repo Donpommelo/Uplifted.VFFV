@@ -8,7 +8,7 @@ public class MentalLeakage extends Item{
 	static String descr="A handful of loose thoughts. You doubt it contains anything useful.";
 	static String descrShort="Restore Mp.";
 	public MentalLeakage() {
-		super(2, "Mental Leakage",true, true, true, true, false,descr);
+		super(2, "Mental Leakage",true, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -28,9 +28,4 @@ public class MentalLeakage extends Item{
 	public void use(Schmuck s){
 		s.bpChange((int)(30*(1+s.getItemPow())));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

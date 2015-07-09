@@ -7,13 +7,12 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class IntrusiveThought extends Skills {
 
-	public String name = "Intrusive Thought";
-	public String descr = "User causes a target's Intrusive\nThoughts to flourish,\nstacking an invisible debuff.";
-	public String descrShort = "Delayed damage debuff.";
-	public int cost;
+	public static String name = "Intrusive Thought";
+	public static String descr = "User causes a target's Intrusive\nThoughts to flourish,\nstacking an invisible debuff.";
+	public static String descrShort = "Delayed damage debuff.";
+	public static int cost = 1;
 	public IntrusiveThought(int index) {
-		super(index);
-		cost = 1;
+		super(index,0,4, name, descr, descrShort, cost);
 
 	}
 	
@@ -42,27 +41,8 @@ public class IntrusiveThought extends Skills {
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
 		}
-		
-		
 
 		
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
 
 }

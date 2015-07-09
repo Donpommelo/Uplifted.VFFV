@@ -1,32 +1,19 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import javax.sound.sampled.Clip;
-
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Battle.BattleBackground;
 import dev.zt.UpliftedVFFV.Battle.BattleMenu;
 import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.Battle.BattleSprites;
-import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.TroopManager;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class BattleState extends State {

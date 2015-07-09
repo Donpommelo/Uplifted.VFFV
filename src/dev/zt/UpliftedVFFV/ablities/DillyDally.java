@@ -12,7 +12,7 @@ public class DillyDally extends Skills {
 	public String name = "Dilly Dally";
 	public int cost = 0;
 	public DillyDally(int index) {
-		super(index,Assets.wait);
+		super(index,Assets.wait,6);
 
 	}
 	

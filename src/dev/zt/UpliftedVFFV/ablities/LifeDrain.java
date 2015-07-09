@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class LifeDrain extends Skills {
 
-	public String name = "Life Drain";
-	public String descr = "User sucks the lifeforce from a\ntargeted foe, dealing damage\n and restoring health.";
-	public String descrShort = "Damages target and heals\nself.";
-	public int cost = 7;
+	public static String name = "Life Drain";
+	public static String descr = "User sucks the lifeforce from a\ntargeted foe, dealing damage\n and restoring health.";
+	public static String descrShort = "Damages target and heals\nself.";
+	public static int cost = 7;
 	public LifeDrain(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -32,22 +32,4 @@ public class LifeDrain extends Skills {
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti())), perp, vic);
 		bs.bp.em.hpChange((int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti())), vic, perp);
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
-
 }

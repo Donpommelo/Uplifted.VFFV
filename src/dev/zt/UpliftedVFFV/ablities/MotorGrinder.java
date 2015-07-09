@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class MotorGrinder extends Skills {
 
-	public String name = "Motorgrinder";
-	public String descr = "User summons crushing gears to\nbatter a foe and lower the\ntarget's Defense.";
-	public String descrShort = "Damage and lower Def.";
-	public int cost = 7;
+	public static String name = "Motorgrinder";
+	public static String descr = "User summons crushing gears to\nbatter a foe and lower the\ntarget's Defense.";
+	public static String descrShort = "Damage and lower Def.";
+	public static int cost = 7;
 	public MotorGrinder(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -32,22 +32,6 @@ public class MotorGrinder extends Skills {
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,(int)(.8*(1-perp.getCritMulti())), perp,60));
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*perp.getCritMulti()), perp, vic);
-	}
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 
 }

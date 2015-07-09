@@ -8,7 +8,7 @@ public class Lachiplatre extends Item{
 	static String descr="A stale, bun-like object stuffed with dry paste. You assume it is edible.";
 	static String descrShort="Eat it. I guess.";
 	public Lachiplatre() {
-		super(0, "Lachiplatre",true, true, true, true, false,descr);
+		super(0, "Lachiplatre",true, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -27,9 +27,4 @@ public class Lachiplatre extends Item{
 		s.hpChange(2);
 		s.bpChange(2);
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

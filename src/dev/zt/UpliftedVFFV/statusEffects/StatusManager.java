@@ -45,14 +45,27 @@ public class StatusManager {
 				s.statuses.get(i).onStatusInflict(s,stat,bs);
 			}
 		}
+		if(stat.getName().equals("incapacitated")){
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){
+					if(s.statuses.get(i).perm != true){
+						s.statuses.remove(i);
+					}
+				}
+			}
+		}
+
+
 	}
 	
 	public void removeStatus(Schmuck s, status stat){
 		for(int i=0; i<s.statuses.size(); i++){
 			if(s.statuses.get(i).getName()!=null){
 				if(s.statuses.get(i).getName().equals(stat.getName())){
+					if(!s.statuses.get(i).cureText(s).equals("")){
+						bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+					}
 					s.statuses.remove(i);
-					bs.bp.bt.textList.add(stat.cureText(s));
 					i--;
 				}
 			}
@@ -87,11 +100,14 @@ public class StatusManager {
 	public void endofRound(BattleState bs){
 		
 		for(Schmuck s : battlers){
-			if(!checkStatus(s, new incapacitate(s))){
+			if(!checkStatus(s, new incapacitate(s)) || checkStatus(s, new Undead(s, 10))){
 				for(int i=0; i<s.statuses.size(); i++){
 					if(s.statuses.get(i)!=null){
 						s.statuses.get(i).endofturnEffect(s, bs);
 						if(s.statuses.get(i).duration==0 && s.statuses.get(i).perm==false){
+							if(!s.statuses.get(i).cureText(s).equals("")){
+								bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+							}
 							s.statuses.remove(i);
 							i--;
 						}
@@ -102,17 +118,18 @@ public class StatusManager {
 					}
 					
 				}
-			}
-			
+			}			
 		}
 	}
 	
 	public void endofFite(){
 		for(Schmuck s : battlers){
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){	
-					s.statuses.get(i).endoffightEffect(s, bs);
-				}				
+			if(!checkStatus(s, new incapacitate(s)) || checkStatus(s, new Undead(s, 10))){
+				for(int i=0; i<s.statuses.size(); i++){
+					if(s.statuses.get(i)!=null){	
+						s.statuses.get(i).endoffightEffect(s, bs);
+					}				
+				}
 			}
 		}
 		for(Schmuck s : battlers){

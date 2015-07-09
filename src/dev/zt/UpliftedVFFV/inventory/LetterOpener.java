@@ -10,7 +10,7 @@ public class LetterOpener extends Item{
 	static String descrShort="Spd+3  Skl+3";
 	public status[] enchantment = new status[2];
 	public LetterOpener() {
-		super(3, "Letter Opener",false,false,false, false, true, descr);
+		super(3, "Letter Opener",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -19,9 +19,4 @@ public class LetterOpener extends Item{
 		enchantment[1] = new AddStatBuff(5,(int)(3*(1+s.getEquipPow())), s.itemDummy, 50);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

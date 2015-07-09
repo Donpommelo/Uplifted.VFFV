@@ -10,7 +10,7 @@ public class EightBall extends Item{
 	static String descrShort="10% ??? Resistance.";
 	public status[] enchantment = new status[1];
 	public EightBall() {
-		super(2, "8-Ball", false, false, false, false, true, descr);
+		super(2, "8-Ball", false, false, false, false, true, descr, descrShort);
 		
 	}
 	
@@ -18,9 +18,6 @@ public class EightBall extends Item{
 		enchantment[0] = new ElemPointsBuff(5,10*(1+s.getEquipPow()), s.itemDummy, 50);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
+
 
 }

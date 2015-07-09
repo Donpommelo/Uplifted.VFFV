@@ -10,7 +10,7 @@ public class MidgeProboscis extends Item{
 	static String descrShort="Lifesteal on attacks.";
 	public status[] enchantment = new status[1];
 	public MidgeProboscis() {
-		super(2, "Midge Proboscis",false,false,false, false, true, descr);
+		super(2, "Midge Proboscis",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -18,9 +18,4 @@ public class MidgeProboscis extends Item{
 		enchantment[0] = new Vampirism(.1*(1+s.getEquipPow()), s.itemDummy);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

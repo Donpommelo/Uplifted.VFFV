@@ -8,7 +8,7 @@ public class StandardAttack extends Skills {
 
 	public String name = "Attack";
 	public StandardAttack(int index) {
-		super(index, Assets.attack);
+		super(index, Assets.attack,6);
 
 	}
 	
