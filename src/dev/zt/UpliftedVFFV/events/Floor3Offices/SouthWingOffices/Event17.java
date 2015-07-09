@@ -20,8 +20,4 @@ public class Event17 extends Event {
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt", 11, 24,"4th Floor Tunnel");
 	}
 
-	public static void main(String[] args) {
-		
-	}
-
 }

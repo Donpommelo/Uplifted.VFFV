@@ -1,10 +1,9 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
-import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.GameState;
+
 
 
 public class Event28 extends Event {
@@ -22,8 +21,5 @@ public class Event28 extends Event {
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthHallRestrooms.txt", 6, 9,"");
 	}
 
-	public static void main(String[] args) {
-		
-	}
 
 }

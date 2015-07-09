@@ -6,12 +6,6 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.Paperweight;
-import dev.zt.UpliftedVFFV.inventory.SmellingSalt;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
 
 public class EventEmployee38 extends Event {
 
@@ -20,10 +14,7 @@ public class EventEmployee38 extends Event {
 	public EventEmployee38(float x, float y, int idnum) {
 		super(img,idnum,x, y);
 		
-	
 	}
-	
-
 	
 	public void run(){
 		if (Player.runlast==0){
@@ -43,8 +34,6 @@ public class EventEmployee38 extends Event {
 	
 	}
 
-
-	
 	public boolean isSolid(){
 		return true;
 	}

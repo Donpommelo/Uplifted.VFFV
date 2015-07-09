@@ -1,13 +1,7 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
-import java.awt.image.BufferedImage;
-
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
 
 public class EventReceptionistDesk extends Event {
 
@@ -28,10 +22,6 @@ public class EventReceptionistDesk extends Event {
 		else{
 			super.Dialog(37, 37,this.getId());
 		}
-	}
-
-	public static void main(String[] args) {
-		
 	}
 	
 	public boolean isSolid(){

@@ -1,10 +1,9 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
-import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.GameState;
+
 
 
 public class Event21 extends Event {
@@ -25,10 +24,6 @@ public class Event21 extends Event {
 		else{
 			super.Dialog(108, 108,this.getId());
 		}
-		
-	}
-
-	public static void main(String[] args) {
 		
 	}
 	

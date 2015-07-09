@@ -7,10 +7,6 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.Entity;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
-import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.world.EventManager;
-import dev.zt.UpliftedVFFV.world.WorldManager;
-
 
 public class Creature extends Entity {
 	

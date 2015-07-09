@@ -11,21 +11,19 @@ public class HoGStatus extends status{
 	public int cooldown;
 
 	public HoGStatus(Schmuck perp, int pr){
-		super("Envenomed", false, false, perp, pr);
+		super("Glorious", false, false, perp, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		cooldown = 0;
 	}
 	
-	public void onStatusInflict(Schmuck s, status st, BattleState bs){
+	
+	public void preBattlePhase(Schmuck s, BattleState bs){
 		if(cooldown == 0){
-			if(st.getName().equals("Stunned") || st.getName().equals("Silenced") || st.getName().equals("Ablaze") || st.getName().equals("Disarmed")
-			 || st.getName().equals("HealBlock") || st.getName().equals("Impatient")){
-				bs.bp.bt.textList.add(s.getName()+"'s Hand of Glory removes the ailment!");
-				bs.bp.stm.removeStatus(s, st);
-				cooldown +=4;
-			}
+			Schmuck target = bs.bp.getEnemyTargets(s).get((int)(Math.random()*bs.bp.getEnemyTargets(s).size()));
+			bs.bp.stm.addStatus(target, new Stunned(2,perp));				
+			cooldown +=8;
 		}
 	}
 	

@@ -2,16 +2,7 @@ package dev.zt.UpliftedVFFV.events;
 
 import java.awt.image.BufferedImage;
 
-import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.entities.creatures.Creature;
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.*;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
-
 
 public class EventEmployeeMovingTest extends Event {
 
@@ -97,11 +88,6 @@ public class EventEmployeeMovingTest extends Event {
 		EventEmployeeMovingTest.stage = stage;
 	}
 	
-
-
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return true;

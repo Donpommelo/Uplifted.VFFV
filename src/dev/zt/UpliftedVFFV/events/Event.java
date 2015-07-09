@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.events;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.TreeMap;
-import java.util.concurrent.TimeUnit;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
@@ -52,7 +51,6 @@ import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable8;
 import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable9;
 import dev.zt.UpliftedVFFV.events.EventsCommon.EventToilet;
 import dev.zt.UpliftedVFFV.events.EventsCommon.EventWorkDesk1;
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -60,7 +58,6 @@ import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.CutsceneState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.MenuState;
 import dev.zt.UpliftedVFFV.states.ShoppingState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.states.TimerState;
@@ -612,8 +609,8 @@ public class Event{
 	public void moveUp(){
 		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid()){
 			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y)*32 || Player.getPlayerY()<=(y-2)*32){				
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
 				this.setX(this.getX());this.setY(this.getY()-1);
 				if(test!=null){
 					this.test.getMove(0);
@@ -625,8 +622,8 @@ public class Event{
 	public void moveDown(){
 		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid()){
 			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y+2)*32 || Player.getPlayerY()<=(y)*32){	
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-				eventmanager.events[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
 				this.setX(this.getX());this.setY(this.getY()+1);
 				if(test!=null){
 					this.test.getMove(1);
@@ -639,8 +636,8 @@ public class Event{
 	public void moveLeft(){
 		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid()){
 			if(Player.getPlayerX()<=(x-2)*32 || Player.getPlayerX()>=(x)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-				eventmanager.events[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
+				EventManager.getEvents()[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
 				this.setX(this.getX()-1);this.setY(this.getY());
 				if(test!=null){
 					this.test.getMove(2);
@@ -651,8 +648,8 @@ public class Event{
 	public void moveRight(){
 		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid()){
 			if(Player.getPlayerX()<=(x)*32 || Player.getPlayerX()>=(x+2)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
-				eventmanager.events[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
+				EventManager.getEvents()[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
 				this.setX(this.getX()+1);this.setY(this.getY());
 				if(test!=null){
 					this.test.getMove(3);
@@ -662,7 +659,7 @@ public class Event{
 	}
 	
 	public void moveTo(int x, int y){
-		eventmanager.events[x][y]=this.getId();
+		EventManager.getEvents()[x][y]=this.getId();
 		this.setX(x);this.setY(y);
 	}
 

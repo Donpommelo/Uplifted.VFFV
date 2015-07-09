@@ -1,9 +1,7 @@
 package dev.zt.UpliftedVFFV.gfx;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.entities.Entity;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
-import dev.zt.UpliftedVFFV.events.Event;
 
 //the gamecamera object. This controls where in the map the game views
 //at the moment, the game  always centers on the player object, but later, perhaps in cutscenes or in special rooms, this can be changed

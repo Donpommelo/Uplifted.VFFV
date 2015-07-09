@@ -23,9 +23,6 @@ public class EventWaterCoolerInvisible extends Event {
 
 	}
 
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return true;

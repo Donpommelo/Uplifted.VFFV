@@ -1,26 +1,14 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.concurrent.TimeUnit;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
-import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 //Cutscene. This plays a series of pictures
 public class CutsceneState extends State {
 	
-	private StateManager statemanager;
 	public BufferedImage[] scenes;
 	public int image;
 	public int EventId;
@@ -40,7 +28,7 @@ public class CutsceneState extends State {
 		if(game.getKeyManager().space){
 			game.getAudiomanager().playSound("/Audio/item_recipe_pickup_shop.wav", false);	
 			if(image>=scenes.length-1){
-					statemanager.states.pop();
+					StateManager.getStates().pop();
 					
 					//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 					//increment and the event will be rerrun with the new stage.

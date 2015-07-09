@@ -2,20 +2,12 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 
 import java.util.ArrayList;
-
-
-
-
-
-
-
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Scald;
 import dev.zt.UpliftedVFFV.ablities.Skills;
-import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.BossMug;
 import dev.zt.UpliftedVFFV.inventory.CoffeeBean;

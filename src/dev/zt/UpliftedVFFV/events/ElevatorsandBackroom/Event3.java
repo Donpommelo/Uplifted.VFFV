@@ -8,10 +8,6 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.EventEmployeeIntro;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
-import dev.zt.UpliftedVFFV.inventory.*;
-import dev.zt.UpliftedVFFV.party.PenPal;
-import dev.zt.UpliftedVFFV.quest.VariableManager;
-import dev.zt.UpliftedVFFV.states.GameState;
 
 public class Event3 extends Event {
 
@@ -37,7 +33,7 @@ public class Event3 extends Event {
 		else{
 			
 		}
-		if(!Event.events[45].isSelfswitch1()){
+		if(Event.events[45].isSelfswitch1()){
 			switch(stage){
 			case 0: 				
 				if(!open){

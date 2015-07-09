@@ -6,12 +6,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.input.KeyManager;
-import dev.zt.UpliftedVFFV.inventory.*;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
-
+import dev.zt.UpliftedVFFV.world.EventManager;
 
 public class EventEmployeeIntro extends Event {
 
@@ -67,7 +62,7 @@ public class EventEmployeeIntro extends Event {
 				super.moveUp();
 				break;
 			case 4:
-				eventmanager.events[(int)(this.getX())][(int)(this.getY())]=0;
+				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				drawn = false;
 				solid = false;
 				selfswitch1 = true;

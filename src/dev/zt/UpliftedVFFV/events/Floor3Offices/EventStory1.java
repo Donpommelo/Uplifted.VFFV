@@ -21,10 +21,6 @@ public class EventStory1 extends Event {
 		selfswitch1 = true;
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 7, 8,"");
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return false;

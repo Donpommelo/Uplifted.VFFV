@@ -20,10 +20,6 @@ public class Event48 extends Event {
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMain.txt", 6,17,"");
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
 	public boolean isSolid(){
 		return false;
 	}

@@ -37,15 +37,7 @@ public class EventVending1Invisible extends Event {
 
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
 	public boolean isSolid(){
 		return true;
 	}
-
-
-
-	public static Event event38 = new Event38(34, 0,38);
 }

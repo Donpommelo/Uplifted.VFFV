@@ -22,10 +22,6 @@ public class EventVending1 extends Event {
 
 
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return true;

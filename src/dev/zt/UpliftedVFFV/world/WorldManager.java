@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.world;
 import java.awt.Graphics;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class WorldManager {

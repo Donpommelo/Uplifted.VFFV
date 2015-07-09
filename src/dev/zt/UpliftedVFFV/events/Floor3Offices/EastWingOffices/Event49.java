@@ -19,10 +19,6 @@ public class Event49 extends Event {
 	public void run(){
 		super.Dialog(287, 287, this.getId());
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
 	public boolean isSolid(){
 		return true;

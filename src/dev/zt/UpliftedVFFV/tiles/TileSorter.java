@@ -1,9 +1,6 @@
 package dev.zt.UpliftedVFFV.tiles;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 
 public class TileSorter {

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -20,7 +19,7 @@ public class MenuState extends State {
 	
 	private BufferedImage testImage;
 	private GameState gamestate;
-	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation, skillSelected;
+	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation, skillSelected, skillPointer,skillLocation;
 	private int itemnum, itemOption, itemslot;
 	private boolean optionChosen,characterChosen,itemChosen,exit;
 	private boolean equipChosen,useitemChosen;
@@ -37,6 +36,9 @@ public class MenuState extends State {
 		itemSelected=0;
 		itemPointer=0;
 		backpackLocation=0;
+		skillSelected=0;
+		skillPointer=0;
+		skillLocation=0;
 		itemslot = 0;
 	}
 
@@ -98,9 +100,8 @@ public class MenuState extends State {
 					if(game.getKeyManager().space){
 						characterChosen=true;
 						skillSelected = 0;
-						itemSelected=0;
-						itemPointer=0;
-						backpackLocation=0;
+						skillPointer=0;
+						skillLocation=0;
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
@@ -135,11 +136,11 @@ public class MenuState extends State {
 						if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
 							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 							skillSelected++;
-							if(itemPointer==3){
-								backpackLocation++;
+							if(skillPointer==3){
+								skillLocation++;
 							}
 							else{
-								itemPointer++;
+								skillPointer++;
 							}
 							try {
 								Thread.sleep(100);
@@ -152,11 +153,11 @@ public class MenuState extends State {
 							if(skillSelected>0){
 								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 								skillSelected--;
-								if(itemPointer==0){
-									backpackLocation--;
+								if(skillPointer==0){
+									skillLocation--;
 								}
 								else{
-									itemPointer--;
+									skillPointer--;
 								}
 								try {
 									Thread.sleep(100);
@@ -268,8 +269,8 @@ public class MenuState extends State {
 				}
 				else if(!itemChosen){
 					if(game.getKeyManager().space){
-						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
-						Item[] itemDisplay= temp.toArray(new Item[27]);
+//						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
+//						Item[] itemDisplay= temp.toArray(new Item[27]);
 						if(!gamestate.inventorymanager.backpack.isEmpty()){
 							itemChosen=true;
 						}
@@ -434,7 +435,7 @@ public class MenuState extends State {
 				optionChosen=false;
 			}
 			else{
-				statemanager.states.pop();
+				StateManager.getStates().pop();
 			}
 			exit=false;
 		}
@@ -527,19 +528,19 @@ public class MenuState extends State {
 					g.setColor(new Color(0, 0,0));
 					g.drawString("Abilities:", 240, 255);
 					int skillnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+3 && i<tempSchmuck.skills.size();i++){			
+					for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
 						g.drawString(tempSchmuck.skills.get(i).getName()+"  "+(int)(tempSchmuck.skills.get(i).getCost()*(1+tempSchmuck.getMpCost()))+" Mp", 142,275+35*skillnum);
 
 						skillnum++;
 					}	
 					for(int i=0; i<4 && i<tempSchmuck.skills.size();i++){	
-						g.drawImage(tempSchmuck.skills.get(backpackLocation+i).getIcon(), 355, 260+32*i, null);
+						g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 260+32*i, null);
 					}
-					g.drawImage(Assets.Downarrow,142,258+32*itemPointer,null);
-					if(backpackLocation!=0){
+					g.drawImage(Assets.Downarrow,142,258+32*skillPointer,null);
+					if(skillLocation!=0){
 						g.drawImage(Assets.Uparrow,200,245,null);
 					}
-					if(backpackLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
+					if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
 						g.drawImage(Assets.Downarrow,200,405,null);
 					}
 					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){

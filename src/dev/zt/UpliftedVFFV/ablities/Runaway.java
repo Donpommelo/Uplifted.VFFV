@@ -16,7 +16,18 @@ public class Runaway extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" ran away!");	
-		if(bs.runnable && Math.random()<=.6){	
+		int partyLevel = 0;
+		double bonus = 0;
+		int enemyLevel = 0;
+		for(Schmuck s : bs.bs.alliesSelectable){
+			partyLevel += s.getLvl();
+			bonus += s.getRunawayBonus();
+		}
+		for(Schmuck m : bs.bs.enemySelectable){
+			enemyLevel += m.getLvl();
+		}
+		double chance = .8 *(partyLevel/enemyLevel)*(1+bonus);
+		if(bs.runnable && Math.random()<=chance){	
 			bs.bp.bt.ranAway = true;
 		}
 		else{

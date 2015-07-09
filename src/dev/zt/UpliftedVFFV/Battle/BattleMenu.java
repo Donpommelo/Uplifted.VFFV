@@ -548,7 +548,7 @@ public class BattleMenu{
 				g.fillRect(500, 216+25*itemPointer, 140, 25);
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
 				g.setColor(new Color(0, 0,0));
-				if(currentSchmuck.skills.size()==0){
+				if(skills.size()==0){
 					g.drawString("Do Nothing", 505, 231);
 				}
 				else{
@@ -557,7 +557,7 @@ public class BattleMenu{
 					skillnum=0;                                                                                                                                                                                                                                                                                       
 					for(int i=backpackLocation;i<=backpackLocation+4 && i<currentSchmuck.skills.size();i++){			
 						g.setColor(new Color(0, 0,0));
-						g.drawString(currentSchmuck.skills.get(i).getName()+"  "+(int)(currentSchmuck.skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", 505, 231+25*(skillnum));
+						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", 505, 231+25*(skillnum));
 						skillnum++;
 					}
 					
@@ -567,14 +567,14 @@ public class BattleMenu{
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
 					g.setColor(new Color(0, 0,0));
 					int y=340;
-					for (String line : currentSchmuck.skills.get(itemSelected).getDescrShort().split("\n")){
+					for (String line : skills.get(itemSelected).getDescrShort().split("\n")){
 						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
 					}			       
 				}
 				if(backpackLocation!=0){
 					g.drawImage(Assets.Uparrow,570,209,null);
 				}
-				if(backpackLocation!=currentSchmuck.skills.size()-5 && currentSchmuck.skills.size()>5){
+				if(backpackLocation!=skills.size()-5 && skills.size()>5){
 					g.drawImage(Assets.Downarrow,570,334,null);
 				}				
 				break;

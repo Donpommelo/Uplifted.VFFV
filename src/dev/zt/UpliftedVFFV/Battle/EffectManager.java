@@ -101,7 +101,7 @@ public class EffectManager {
 			finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
 		}
 		else{
-			finalDamage = (int)(finalDamage*(1+vic.bonusStats[elem+19]));
+			finalDamage = (int)(finalDamage*(1+vic.getBonusStats()[elem+19]));
 		}
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		String element = "";
@@ -140,7 +140,7 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prvented damage!");
 				}
 				else{
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
+					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){

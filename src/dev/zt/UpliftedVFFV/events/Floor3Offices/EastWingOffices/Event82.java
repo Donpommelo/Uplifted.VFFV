@@ -9,19 +9,11 @@ public class Event82 extends Event {
 
 
 	public Event82(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y);
-		
-	
+		super(Assets.White,idnum,x, y);	
 	}
-	
-
 	
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftMain2Room2.txt", 8,7,"");
-	}
-
-	public static void main(String[] args) {
-		
 	}
 	
 	public boolean isSolid(){

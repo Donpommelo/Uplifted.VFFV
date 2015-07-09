@@ -13,9 +13,7 @@ public class Event51 extends Event {
 		
 	
 	}
-	
-
-	
+		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt", 3,8,"");
 	}

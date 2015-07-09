@@ -1,26 +1,16 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.concurrent.TimeUnit;
 
+import java.awt.Graphics;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.utils.Utils;
+
 
 //DialogState. This controls which dialog is displayed
 public class DialogState extends State {
 	
-	private StateManager statemanager;
 	private int linenum,endline;
 	private Dialog current;
 	public int EventId;
@@ -50,7 +40,7 @@ public class DialogState extends State {
 					if (current!=null){					//This sets the charIndex at 0 so rereading dialog will still scroll
 						current.charIndex=0;			
 					}
-					statemanager.states.pop();
+					StateManager.getStates().pop();
 					
 					//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 					//increment and the event will be rerrun with the new stage.
@@ -90,9 +80,9 @@ public class DialogState extends State {
 
 
 		current = Assets.dialog[linenum];
-			statemanager.states.pop();
-			statemanager.states.peek().render(g);
-			statemanager.states.push(this);
+			StateManager.getStates().pop();
+			StateManager.getStates().peek().render(g);
+			StateManager.getStates().push(this);
 			if(current!=null){
 				current.render(g);
 			}

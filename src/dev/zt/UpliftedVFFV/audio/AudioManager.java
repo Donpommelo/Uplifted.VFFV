@@ -5,11 +5,11 @@ import dev.zt.UpliftedVFFV.Game;
 
 public class AudioManager {
 
-	private Game game;
+//	private Game game;
 	static Sound sounds;
 	
 	public AudioManager(Game g){
-		this.game = g;
+//		this.game = g;
 		sounds = new Sound();
 		sounds.initiate();
 	}

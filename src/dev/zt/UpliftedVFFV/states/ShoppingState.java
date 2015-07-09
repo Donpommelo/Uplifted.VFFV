@@ -6,21 +6,11 @@ import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.concurrent.TimeUnit;
-
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.dialog.Dialog;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 //State for when the player is shoppin'. Modified version of ChoiceBranchState.
 public class ShoppingState extends State {
@@ -171,9 +161,9 @@ public class ShoppingState extends State {
 	public void render(Graphics g) {
 		
 		//ChoiceBranches do not take up the entire screen. The state underneath it should be rendered as well
-		statemanager.states.pop();
-		statemanager.states.peek().render(g);
-		statemanager.states.push(this);
+		StateManager.getStates().pop();
+		StateManager.getStates().peek().render(g);
+		StateManager.getStates().push(this);
 		
 		//if x is pressed, the state is popped
 		if(exit==true){
@@ -183,7 +173,7 @@ public class ShoppingState extends State {
 				exit = false;
 			}
 			else{
-				statemanager.states.pop();
+				StateManager.getStates().pop();
 				exit=false;
 			}
 			
