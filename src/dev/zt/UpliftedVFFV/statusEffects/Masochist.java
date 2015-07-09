@@ -15,7 +15,7 @@ public class Masochist extends status{
 	}
 	
 	public Masochist(double percent, Schmuck perp){
-		super("Masochist", false, true, perp);
+		super("Masochist", false, false, perp);
 		this.percent = percent;
 	}
 	

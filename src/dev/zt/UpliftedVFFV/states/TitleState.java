@@ -103,7 +103,7 @@ public class TitleState extends State {
 		g.drawImage(testImage, 48, 0, null);
 		g.setColor(new Color(102, 178,255));
 		//g.fillRect(360,200, 150, 100);
-		Utils.drawMenu(g, "WindowBlack.png", 360, 200, 150, 100);
+		Utils.drawMenu(g, "WindowBlue.png", 360, 200, 150, 100);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));;
 		g.setColor(new Color(255, 255,51));
 		g.fillRect(360,200+25*optionChosen, 150, 25);

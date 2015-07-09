@@ -10,17 +10,12 @@ public class CactusSuit extends Item{
 	static String descrShort="Reflects damage against foes.";
 	public status[] enchantment = new status[1];
 	public CactusSuit() {
-		super(2, "Cactus Suit",false,false,false, false, true, descr);
+		super(2, "Cactus Suit",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DamageReflect(.5*(1+s.getEquipPow()), s.itemDummy);
+		enchantment[0] = new DamageReflect(.3*(1+s.getEquipPow()), s.itemDummy);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

@@ -9,20 +9,12 @@ public class OutofUsesNothing extends Skills {
 public Item thing;
 	public Skills move;;
 	public OutofUsesNothing(int index, Skills move) {
-	super(index);
+	super(index,1,6,"" ,"" ,"", 0);
 	this.move = move;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+"'s "+move.getName()+" has no more uses left!");
-	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
 	}
 
 }

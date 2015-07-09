@@ -10,7 +10,7 @@ public class CursedCilice extends Item{
 	static String descrShort="Regains meter when taking damage.";
 	public status[] enchantment = new status[1];
 	public CursedCilice() {
-		super(2, "Cursed Cilice",false,false,false, false, true, descr);
+		super(2, "Cursed Cilice",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -18,9 +18,4 @@ public class CursedCilice extends Item{
 		enchantment[0] = new Masochist(.25*(1+s.getEquipPow()), s.itemDummy);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

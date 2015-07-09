@@ -14,7 +14,7 @@ public GameState gs;
 
 public String name = "Item";
 public UseItem(int index, Item i, GameState gs) {
-		super(index, Assets.item);
+		super(index, Assets.item,6);
 		this.thing=i;
 		this.gs=gs;
 

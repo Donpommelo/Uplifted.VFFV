@@ -65,8 +65,6 @@ public class Event1 extends Event {
 		this.selfswitch1 = selfswitch1;
 	}
 	
-	public static void main(String[] args) {
 
-	}
 
 }

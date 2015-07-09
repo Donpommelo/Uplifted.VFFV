@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.PennyBlueStatus;
 public class PennyBlue extends Skills {
 
-	public String name = "Penny Blue";
-	public String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
-	public String descrShort = "Buffs Red Resist and regen.";
-	public int cost = 6;
+	public static String name = "Penny Blue";
+	public static String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
+	public static String descrShort = "Buffs Red Resist and regen.";
+	public static int cost = 6;
 	public PennyBlue(int index) {
-		super(index);
+		super(index,0,1, name, descr, descrShort, cost);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -22,22 +22,6 @@ public class PennyBlue extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Penny Blue!");
 		bs.bp.bt.textList.add("A Critical buff!");
 		bs.bp.stm.addStatus(vic, new PennyBlueStatus((int)(3*perp.getCritMulti()), perp));	
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public boolean startTarget(){

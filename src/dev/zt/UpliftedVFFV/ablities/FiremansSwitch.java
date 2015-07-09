@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FiremansSwitch extends Skills {
 
-	public String name = "Fireman's Switch";
-	public String descr = "User releases energy from\noverheated machinery to\ndamage foes.";
-	public String descrShort = "Deals Red damage to all\nenemies except target.";
-	public int cost = 12;
+	public static String name = "Fireman's Switch";
+	public static String descr = "User releases energy from\noverheated machinery to\ndamage foes.";
+	public static String descrShort = "Deals Red damage to all\nenemies except target.";
+	public static int cost = 12;
 	public FiremansSwitch(int index) {
-		super(index);
+		super(index,0,0, name, descr, descrShort, cost);
 
 	}
 	
@@ -34,22 +34,5 @@ public class FiremansSwitch extends Skills {
 			}		
 		}
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
 
 }

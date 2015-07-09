@@ -14,6 +14,7 @@ import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.BlightBite;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Pounce;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -44,7 +45,7 @@ public class IllRat extends Schmuck{
 	public ArrayList<status> statuses;
 	public IllRat(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Ill Rat",lvl,ImageLoader.loadImage("/BattleSprites/Ill Rat.png"), startStats, statGrowths,elemRes);
+		super("Ill Rat",lvl,ImageLoader.loadImage("/BattleSprites/Ill Rat.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Filthy bringer of plague. Thrive due to lack of natural predators.";
 		itemdrops.put(new Disease(), .6);
@@ -54,7 +55,11 @@ public class IllRat extends Schmuck{
 	public Action getAction(BattleState bs){
 		int random = (int)(Math.random()*3);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
-		switch (random){
+		if(bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,this,new PassTurn(0),bs);
+		}
+		else{
+			switch (random){
 			case 0:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Pounce(0),bs);
 				break;
@@ -64,18 +69,12 @@ public class IllRat extends Schmuck{
 			case 2:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new BlightBite(0),bs);
 				break;
+			}
 		}
+		
 		return act;
 	}
-	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
-	}
-	
+		
 	public TreeMap<Item, Double> getItemdrops() {
 		return itemdrops;
 	}

@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class TreskillingYellow extends Skills {
 
-	public String name = "Treskilling Yellow";
-	public String descr = "User strikes foe with a bolt.\nof aether that tends to gain\ninitiative.";
-	public String descrShort = "Deals Yellow damage and\nhits first.";
-	public int cost = 5;
+	public static String name = "Treskilling Yellow";
+	public static String descr = "User strikes foe with a bolt.\nof aether that tends to gain\ninitiative.";
+	public static String descrShort = "Deals Yellow damage and\nhits first.";
+	public static int cost = 5;
 	public TreskillingYellow(int index) {
-		super(index);
+		super(index,0,3, name, descr, descrShort, cost);
 
 	}
 	
@@ -31,24 +31,6 @@ public class TreskillingYellow extends Skills {
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2]*.6)/vic.buffedStats[3])*(1.5*perp.getCritMulti())), perp, vic,3);
 				
-	}
-	
-	
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

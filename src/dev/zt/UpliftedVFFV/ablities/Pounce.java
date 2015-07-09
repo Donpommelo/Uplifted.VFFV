@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Pounce extends Skills {
 
-	public String name = "Pounce";
-	public String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
-	public String descrShort = "Deals damage and hits first.";
-	public int cost = 1;
+	public static String name = "Pounce";
+	public static String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
+	public static String descrShort = "Deals damage and hits first.";
+	public static int cost = 1;
 	public Pounce(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -30,22 +30,6 @@ public class Pounce extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti())), perp, vic);	
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

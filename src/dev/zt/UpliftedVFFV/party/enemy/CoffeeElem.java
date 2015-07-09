@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Scald;
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.BossMug;
 import dev.zt.UpliftedVFFV.inventory.CoffeeBean;
@@ -41,8 +43,7 @@ public class CoffeeElem extends Schmuck{
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
 	public CoffeeElem(int lvl) {
-//		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Coffee Elemental",lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes);
+		super("Coffee Elemental",lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A  dangerously hot elemental. Maintains and enforces orderly conduct in the Offices.";
 		itemdrops.put(new CoffeeBean(), 1.0);
@@ -51,16 +52,15 @@ public class CoffeeElem extends Schmuck{
 	
 	
 	public Action getAction(BattleState bs){
-		return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Scald(0),bs);
+		if(!bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Scald(0),bs);
+		}
+		else{
+			return new Action(this,this,new PassTurn(0),bs);
+
+		}
 	}
 	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
-	}
 	
 	public TreeMap<Item, Double> getItemdrops() {
 		return itemdrops;

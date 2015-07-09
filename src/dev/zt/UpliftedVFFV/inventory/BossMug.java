@@ -10,7 +10,7 @@ public class BossMug extends Item{
 	static String descrShort="Restore Mp at end of Round.";
 	public status[] enchantment = new status[1];
 	public BossMug() {
-		super(2, "#1 Boss Mug", false, false, false, false, true, descr);
+		super(2, "#1 Boss Mug", false, false, false, false, true, descr, descrShort);
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
@@ -18,9 +18,4 @@ public class BossMug extends Item{
 		return enchantment;
 	}
 	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
-
 }

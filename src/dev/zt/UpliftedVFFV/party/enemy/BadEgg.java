@@ -4,6 +4,7 @@ package dev.zt.UpliftedVFFV.party.enemy;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -29,8 +30,7 @@ public class BadEgg extends Schmuck{
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
 	public BadEgg(int lvl) {
-//		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Bad Egg",lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes);
+		super("Bad Egg",lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "The uncouth spirit of an unborn chicken.";
 	}
@@ -38,17 +38,15 @@ public class BadEgg extends Schmuck{
 	
 	
 	public Action getAction(BattleState bs){
+		if(!bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		}
+		else{
+			return new Action(this,this,new PassTurn(0),bs);
+
+		}
 		
-		return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
-		
-	}
-	
-	public int getExpDrop() {
-		return expDrop;
 	}
 
-	public int getScrDrop() {
-		return scrDrop;
-	}
 
 }

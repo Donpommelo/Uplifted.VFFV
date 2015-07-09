@@ -9,7 +9,7 @@ public class SmellingSalt extends Item{
 	static String descr="A package of chemicals used in reviving overworked or dead coworkers.";
 	static String descrShort="Revives target.";
 	public SmellingSalt() {
-		super(2, "Smellingsalt",true, true, true, true, false,descr);
+		super(2, "Smellingsalt",true, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -18,10 +18,6 @@ public class SmellingSalt extends Item{
 		bs.bp.stm.removeStatus(vic, new incapacitate(vic) );
 		bs.bs.targetUpdate();
 		bs.bp.em.hpChange(5, perp, vic);
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
 	}
 	
 	public void use(Schmuck s){

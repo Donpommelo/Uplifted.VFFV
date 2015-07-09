@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Ennervate;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -34,7 +35,7 @@ public class RotThought extends Schmuck{
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
 	public RotThought(int lvl) {
-		super("Rotthought",lvl,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes);
+		super("Rotthought",lvl,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A weakly malicious intention. Floats feebly thought the cubicles where it was born.";
 		itemdrops.put(new MentalLeakage(), .7);
@@ -44,7 +45,11 @@ public class RotThought extends Schmuck{
 	public Action getAction(BattleState bs){
 		int random = (int)(Math.random()*3);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
-		switch (random){
+		if(bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,this,new PassTurn(0),bs);
+		}
+		else{
+			switch (random){
 			case 0:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Ennervate(0),bs);
 				break;
@@ -54,16 +59,10 @@ public class RotThought extends Schmuck{
 			case 2:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Ennervate(0),bs);
 				break;
-		}
+			}
+		}	
 		return act;
 					
-	}
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
 	}
 	
 	public TreeMap<Item, Double> getItemdrops() {

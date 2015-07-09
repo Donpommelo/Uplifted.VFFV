@@ -4,14 +4,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.party.enemy.Augur;
-import dev.zt.UpliftedVFFV.party.enemy.BadEgg;
 import dev.zt.UpliftedVFFV.party.enemy.BossJorge;
-import dev.zt.UpliftedVFFV.party.enemy.CoffeeElem;
-import dev.zt.UpliftedVFFV.party.enemy.EyeCatcher;
-import dev.zt.UpliftedVFFV.party.enemy.IllRat;
-import dev.zt.UpliftedVFFV.party.enemy.Midge;
-import dev.zt.UpliftedVFFV.party.enemy.RotThought;
 import dev.zt.UpliftedVFFV.party.troops.Troop0Test;
 import dev.zt.UpliftedVFFV.party.troops.Troop10LeaderandCo;
 import dev.zt.UpliftedVFFV.party.troops.Troop11CoffeeElemental;

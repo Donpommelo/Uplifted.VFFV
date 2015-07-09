@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FlexileStrike extends Skills {
 
-	public String name = "Flexile Strike";
-	public String descr = "User attacks multiple enemy\nwith a flexible appendage.";
-	public String descrShort = "Damages two random\nenemies.";
-	public int cost = 6;
+	public static String name = "Flexile Strike";
+	public static String descr = "User attacks multiple enemy\nwith a flexible appendage.";
+	public static String descrShort = "Damages two random\nenemies.";
+	public static int cost = 6;
 	public FlexileStrike(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -46,22 +46,6 @@ public class FlexileStrike extends Skills {
 				
 	}
 		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
 	public int getTargetType(){
 		return targetType;
 	}

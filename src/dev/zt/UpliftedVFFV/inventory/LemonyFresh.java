@@ -9,7 +9,7 @@ public class LemonyFresh extends Item{
 	static String descr="A can of translucent liquid. It is either the tastiest detergent or the\nmost antiseptic energy drink on the market.";
 	static String descrShort="Restore Hp and Bp and\nshorten statuses.";
 	public LemonyFresh() {
-		super(2, "Lemony Fresh",true, true, true, true, false,descr);
+		super(2, "Lemony Fresh",true, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -33,9 +33,4 @@ public class LemonyFresh extends Item{
 		s.hpChange((int)(25*(1+s.getItemPow())));
 		s.bpChange((int)(15*(1+s.getItemPow())));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

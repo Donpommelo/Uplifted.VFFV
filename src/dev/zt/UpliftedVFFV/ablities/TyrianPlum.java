@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.TyrianPlumEffect;
 
 public class TyrianPlum extends Skills {
 
-	public String name = "Tyrian Plum";
-	public String descr = "User plants a seed into a target\nthat saps health over time.";
-	public String descrShort = "Drains health from target\nwhen using Mp";
-	public int cost = 13;
+	public static String name = "Tyrian Plum";
+	public static String descr = "User plants a seed into a target\nthat saps health over time.";
+	public static String descrShort = "Drains health from target\nwhen using Mp";
+	public static int cost = 13;
 	public TyrianPlum(int index) {
-		super(index);
+		super(index,0,2, name, descr, descrShort, cost);
 
 	}
 	
@@ -32,23 +32,5 @@ public class TyrianPlum extends Skills {
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5*perp.getCritMulti())), perp, vic);
 		bs.bp.stm.addStatus(vic, new TyrianPlumEffect((int)(6*perp.getCritMulti()),perp));	
 	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-
 
 }

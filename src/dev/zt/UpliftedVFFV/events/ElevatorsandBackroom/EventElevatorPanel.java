@@ -1,14 +1,12 @@
 package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 
-import java.awt.image.BufferedImage;
+
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.*;
+
 import dev.zt.UpliftedVFFV.party.PenPal;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
+
 
 
 public class EventElevatorPanel extends Event {
@@ -112,7 +110,7 @@ public class EventElevatorPanel extends Event {
 					break;
 				case 2:
 					super.screenShake(50);
-					super.setVar(1,3);
+					super.setVar(1,2);
 					super.Dialog(18,26,this.getId());
 					super.recruit(new PenPal());
 					this.setSelfswitch2(true);
@@ -170,6 +168,6 @@ public class EventElevatorPanel extends Event {
 		Choices[9] = "11: Justice Park";
 		Choices[10] = "12: Gallery of Lights";
 //		Choices[11] = "B1: Company Town";
-//		Choices[11] = "B2: Boiler Room";
+//		Choices[12] = "B2: Boiler Room";
 	}
 }

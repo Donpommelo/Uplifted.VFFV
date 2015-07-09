@@ -15,7 +15,7 @@ public class Item implements Comparable<Item>{
 	public int Id;
 	public Boolean usedfromMenu,usefromBattle, consummable, targeted, equipable = true;
 	
-	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, Boolean equip, String description){
+	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, Boolean equip, String description, String descrShort){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
@@ -24,6 +24,7 @@ public class Item implements Comparable<Item>{
 		this.targeted = target;
 		this.equipable = equip;
 		this.descr=description;
+		this.descrShort = descrShort;
 	}	
 
 	public Item(int id,String name){
@@ -56,7 +57,7 @@ public class Item implements Comparable<Item>{
 	}
 	
 	public String getDescrShort() {
-		return "meep";
+		return descrShort;
 	}
 	
 	//0: All targets

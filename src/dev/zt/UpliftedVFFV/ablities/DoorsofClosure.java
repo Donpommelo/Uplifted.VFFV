@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DoorsofClosure extends Skills {
 
-	public String name = "Doors of Closure";
-	public String descr = "User summons elevator doors\nthat close on enemies, dealing\narea damage.";
-	public String descrShort = "Damages all enemies.";
-	public int cost = 8;
+	public static String name = "Doors of Closure";
+	public static String descr = "User summons elevator doors\nthat close on enemies, dealing\narea damage.";
+	public static String descrShort = "Damages all enemies.";
+	public static int cost = 8;
 	public DoorsofClosure(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -28,22 +28,6 @@ public class DoorsofClosure extends Skills {
 		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
 			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*5)*(1.5*perp.getCritMulti())), perp, s);
 		}		
-	}
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public int getTargetType(){

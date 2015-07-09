@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.InvertedSwanEffect;
 
 public class InvertedSwan extends Skills {
 
-	public String name = "Inverted Swan";
-	public String descr = "User infuses a target\nthe grace of an upside-\nswan, granting a double\n-attack.";
-	public String descrShort = "Gives a Double-Attack.\nThe second hit is Blue\naligned.";
-	public int cost = 14;
+	public static String name = "Inverted Swan";
+	public static String descr = "User infuses a target\nthe grace of an upside-\nswan, granting a double\n-attack.";
+	public static String descrShort = "Gives a Double-Attack.\nThe second hit is Blue\naligned.";
+	public static int cost = 14;
 	public InvertedSwan(int index) {
-		super(index);
+		super(index,0,1, name, descr, descrShort, cost);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -25,23 +25,6 @@ public class InvertedSwan extends Skills {
 		bs.bp.stm.addStatus(vic, new InvertedSwanEffect((int)(1+perp.getCritMulti()), perp));		
 	}
 
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
 	public boolean startTarget(){
 		return true;
 	}

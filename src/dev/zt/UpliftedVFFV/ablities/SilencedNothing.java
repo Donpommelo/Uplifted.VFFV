@@ -9,20 +9,11 @@ public class SilencedNothing extends Skills {
 public Item thing;
 	public String moveReplaced;
 	public SilencedNothing(int index, String moveReplaced) {
-	super(index);
+	super(index,1,6,"","","",0);
 	this.moveReplaced = moveReplaced;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" tried to use "+moveReplaced+" but was Silenced.");
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 }

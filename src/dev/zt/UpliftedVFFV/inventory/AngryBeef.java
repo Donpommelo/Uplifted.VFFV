@@ -9,7 +9,7 @@ public class AngryBeef extends Item{
 	static String descr="A hunk of angry, angry beef.";
 	static String descrShort="Enrage and buff Pow.";
 	public AngryBeef() {
-		super(2, "Angry Beef", false, true, true, true, false,descr);
+		super(2, "Angry Beef", false, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -22,10 +22,4 @@ public class AngryBeef extends Item{
 		}
 		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-		
-
 }

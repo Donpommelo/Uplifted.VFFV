@@ -9,7 +9,7 @@ public class MidgeBlood extends Item{
 	static String descr="Blood from a midge could really be anybody¡¦s.";
 	static String descrShort="Regenerate Hp over time.";
 	public MidgeBlood() {
-		super(2, "Midge Blood",true, true, true, true, false,descr);
+		super(2, "Midge Blood",true, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -27,9 +27,4 @@ public class MidgeBlood extends Item{
 	public void use(Schmuck s){
 		s.hpChange((int)(10*(1+s.getItemPow())));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

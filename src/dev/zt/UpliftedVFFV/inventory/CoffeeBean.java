@@ -9,7 +9,7 @@ public class CoffeeBean extends Item{
 	static String descr="A fragrant, roasted coffee bean.";
 	static String descrShort="Restore Mp and damage.";
 	public CoffeeBean() {
-		super(2, "Roasted Coffee Bean",true,  true, true, true, false,descr);
+		super(2, "Roasted Coffee Bean",true,  true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -30,9 +30,4 @@ public class CoffeeBean extends Item{
 		s.hpChange((int)(-10*(1+s.getItemPow())));
 		s.bpChange((int)(30*(1+s.getItemPow())));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

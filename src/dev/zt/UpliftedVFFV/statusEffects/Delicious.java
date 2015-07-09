@@ -15,7 +15,7 @@ public class Delicious extends status{
 	}
 	
 	public Delicious(double percent, Schmuck perp){
-		super("Delicious", false, true, perp);
+		super("Delicious", false, false, perp);
 		this.percent = percent;
 	}
 	

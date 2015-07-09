@@ -11,7 +11,7 @@ public class SpeedChute extends Item{
 	static String descrShort="Speed -50%. +15% Exp Gain";
 	public status[] enchantment = new status[2];
 	public SpeedChute() {
-		super(2, "Speed Chute",false,false,false, false, true, descr);
+		super(2, "Speed Chute",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -20,9 +20,4 @@ public class SpeedChute extends Item{
 		enchantment[1] = new BonusStatBuff(3,0.15*(1+s.getEquipPow()), s.itemDummy,80);
 		return enchantment;
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

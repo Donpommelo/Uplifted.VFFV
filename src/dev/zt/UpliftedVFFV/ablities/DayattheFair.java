@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DayattheFair extends Skills {
 
-	public String name = "Day at the Fair";
-	public String descr = "User summons a chaotic parade\nthat disturbs the fight and\nends the round.";
-	public String descrShort = "Damages and ends round\nprematurely.";
-	public int cost = 21;
+	public static String name = "Day at the Fair";
+	public static String descr = "User summons a chaotic parade\nthat disturbs the fight and\nends the round.";
+	public static String descrShort = "Damages and ends round\nprematurely.";
+	public static int cost = 21;
 	public DayattheFair(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -31,23 +31,7 @@ public class DayattheFair extends Skills {
 			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(perp.getCritMulti())), perp, s);
 		}
 	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
+		
 	public int getTargetType(){
 		return targetType;
 	}

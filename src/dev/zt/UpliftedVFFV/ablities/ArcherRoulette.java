@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ArcherRoulette extends Skills {
 
-	public String name = "Archer Roulette";
-	public String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
-	public String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
-	public int cost = 17;
+	public static String name = "Archer Roulette";
+	public static String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
+	public static String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
+	public static int cost = 17;
 	public ArcherRoulette(int index) {
-		super(index);
+		super(index, 0, 6, name, descr, descrShort, cost);
 
 	}
 	
@@ -35,22 +35,4 @@ public class ArcherRoulette extends Skills {
 		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5))*(1.5*perp.getCritMulti())),perp,vic);
 	}
 	
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
-
 }

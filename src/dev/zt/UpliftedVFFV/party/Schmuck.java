@@ -21,7 +21,7 @@ public class Schmuck {
 	public double[] statGrowths;
 //	public int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int[] baseStats = {0,0,0,0,0,0,0,0};
-	public int[] buffedStats;
+	public int[] buffedStats = {0,0,0,0,0,0,0,0};
 	public int[] tempStats = {10,10};
 	
 	
@@ -33,8 +33,8 @@ public class Schmuck {
 
 	
 //	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public int[] elemPoints = {0,0,0,0,0,0};
-	public int[] buffedElemPoints;
+	public int[] elemPoints;
+	public int[] buffedElemPoints = {0,0,0,0,0,0};
 	
 	public int Lvl,exp,expCurrent;
 	
@@ -58,8 +58,7 @@ public class Schmuck {
 	public Schmuck itemDummy;	
 	public String name;
 	public String bio;
-//	public incapacitate i = new incapacitate();
-	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,int[] elemPoints){	
+	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,int[] elem, int exp, int script){	
 		this.BattleSprite=sprite;
 		this.name=name;
 		this.skills = new ArrayList<Skills>();
@@ -67,16 +66,17 @@ public class Schmuck {
 		this.Lvl=lvl;
 		this.startStats=start;
 		this.statGrowths=growths;
-		this.buffedStats=start;
-		this.elemPoints = elemPoints;
-		this.buffedElemPoints = elemPoints;
+//		this.buffedStats=start;
+		this.elemPoints = elem;
 		this.exp=0;
 		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
+		this.expDrop = exp;
+		this.scrDrop = script;
 	}
 	
-	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elemPoints){	
+	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elem){	
 		this.BattleSprite=sprite;
 		this.MenuSprite1 = msprite;
 		this.name=name;
@@ -85,10 +85,9 @@ public class Schmuck {
 		this.Lvl=lvl;
 		this.startStats=start;
 		this.statGrowths=growths;
-		this.buffedStats=start;
+//		this.buffedStats=start;
 		this.exp=0;
-		this.elemPoints = elemPoints;
-		this.buffedElemPoints = elemPoints;
+		this.elemPoints = elem;
 		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
@@ -104,10 +103,17 @@ public class Schmuck {
 		if(tempStats[0]<0){
 			tempStats[0]=0;
 			statuses.add(new incapacitate(this));
+			for(int i=0; i<statuses.size(); i++){
+				if(statuses.get(i)!=null){
+					if(statuses.get(i).perm != true){
+						statuses.remove(i);
+					}
+				}
+			}
 			
 		}
-		if(tempStats[0]>baseStats[0]){
-			tempStats[0]=baseStats[0];
+		if(tempStats[0]>buffedStats[0]){
+			tempStats[0]=buffedStats[0];
 		}
 	}
 	
@@ -131,8 +137,20 @@ public class Schmuck {
 		}
 	}
 	
+	//Character stats are set upon initial creation
 	public void calcStats(int lvl){
 		lvl--;
+		
+		for(int i = 0 ; i< this.startStats.length; i++){
+			int argh = startStats[i];
+			buffedStats[i] = argh;			
+		}
+		
+		for(int i = 0 ; i< this.elemPoints.length; i++){
+			int argh = elemPoints[i];
+			buffedElemPoints[i] = argh;			
+		}
+		
 		setBaseHp(startStats[0]+(int)(lvl*statGrowths[0]));setCurrentHp(getBaseHp());
 		setBaseBp(startStats[1]+(int)(lvl*statGrowths[1]));setCurrentBp(getBaseBp());
 		setBasePow(startStats[2]+(int)(lvl*statGrowths[2]));setBuffedPow(getBasePow());
@@ -140,7 +158,9 @@ public class Schmuck {
 		setBaseSpd(startStats[4]+(int)(lvl*statGrowths[4]));setBuffedSpd(getBaseSpd());
 		setBaseSkl(startStats[5]+(int)(lvl*statGrowths[5]));setBuffedSkl(getBaseSkl());
 		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
-		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
+		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());	
+		
+		
 	}
 	
 	public Action getAction(BattleState bs){
@@ -173,6 +193,7 @@ public class Schmuck {
 					}
 					
 				}
+				
 				calcBuffs(null);
 			}
 		}
@@ -229,6 +250,7 @@ public class Schmuck {
 		setBaseSkl(startStats[5]+(int)(lvl*statGrowths[5]));setBuffedSkl(getBaseSkl());
 		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
 		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());
+		
 		if(this.getLevelSkills().containsKey(Lvl)){
 			learnSkill(this.getLevelSkills().get(Lvl));	
 		}
@@ -265,7 +287,9 @@ public class Schmuck {
 			}
 		}
 		for(status s : this.statuses){
-			s.statchanges(this);
+			if(s != null){
+				s.statchanges(this);
+			}
 		}
 		this.setRedRes((this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()-this.getGreenPoints()-this.getPurplePoints()));
 		this.setBlueRes((-this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()-this.getPurplePoints()));
@@ -278,7 +302,7 @@ public class Schmuck {
 				this.setElemAlignment(i+1);
 				i = this.getBuffedElemPoints().length;
 				if(bs != null){
-					bs.bp.bt.textList.add(this.getName()+" became elementally aligned!");
+					bs.bp.bt.textList.add(this.getName()+" became elementally aligned! "+i);
 				}
 			}
 			else{
@@ -290,10 +314,7 @@ public class Schmuck {
 		}
 		if(this.getCurrentBp()>this.getMaxBp()){
 			this.setCurrentBp(this.getMaxBp());
-		}
-		
-		
-
+		}		
 	}
 	
 	public int getMaxHp() {
@@ -693,55 +714,55 @@ public class Schmuck {
 	}
 	
 	public int getRedPoints(){
-		return elemPoints[0];
+		return buffedElemPoints[0];
 	}
 	
 	public void setRedPoints(int red){
-		elemPoints[0] = red;
+		buffedElemPoints[0] = red;
 	}
 	
 	public int getBluePoints(){
-		return elemPoints[1];
+		return buffedElemPoints[1];
 	}
 	
 	public void setBluePoints(int blue){
-		elemPoints[1] =blue;
+		buffedElemPoints[1] =blue;
 	}
 	
 	public int getGreenPoints(){
-		return elemPoints[2];
+		return buffedElemPoints[2];
 	}
 	
 	public void setGreenPoints(int green){
-		elemPoints[2] = green;
+		buffedElemPoints[2] = green;
 	}
 	
 	public int getYellowPoints(){
-		return elemPoints[3];
+		return buffedElemPoints[3];
 	}
 	
 	public void setYellowPoints(int yellow){
-		elemPoints[3] = yellow;
+		buffedElemPoints[3] = yellow;
 	}
 	
 	public int getPurplePoints(){
-		return elemPoints[4];
+		return buffedElemPoints[4];
 	}
 	
 	public void setPurplePoints(int purple){
-		elemPoints[4] = purple;
+		buffedElemPoints[4] = purple;
 	}
 	
 	public int getVoidPoints(){
-		return elemPoints[5];
+		return buffedElemPoints[5];
 	}
 	
 	public void setVoidPoints(int meep){
-		elemPoints[5] = meep;
+		buffedElemPoints[5] = meep;
 	}
 	
 	public int getPrismaticPoints(){
-		return elemPoints[0] + elemPoints[1] + elemPoints[2] + elemPoints[3] + elemPoints[4];
+		return buffedElemPoints[0] + buffedElemPoints[1] + buffedElemPoints[2] + buffedElemPoints[3] + buffedElemPoints[4];
 	}
 	
 

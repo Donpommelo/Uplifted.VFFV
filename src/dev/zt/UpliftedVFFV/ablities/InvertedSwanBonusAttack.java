@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class InvertedSwanBonusAttack extends Skills {
 
 	public InvertedSwanBonusAttack(int index) {
-		super(index, Assets.attack);
+		super(index, Assets.attack,1);
 
 	}
 	

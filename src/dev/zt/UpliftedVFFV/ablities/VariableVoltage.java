@@ -5,12 +5,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class VariableVoltage extends Skills {
 
-	public String name = "Variable Voltage";
-	public String descr = "User strikes the enemy team\nwith random bursts of\nelectricity.";
-	public String descrShort = "Deals random Yellow\ndamage to enemies.";
-	public int cost = 15;
+	public static String name = "Variable Voltage";
+	public static String descr = "User strikes the enemy team\nwith random bursts of\nelectricity.";
+	public static String descrShort = "Deals random Yellow\ndamage to enemies.";
+	public static int cost = 15;
 	public VariableVoltage(int index) {
-		super(index,1);
+		super(index,1,3, name, descr, descrShort, cost);
 
 	}
 	
@@ -76,23 +76,7 @@ public class VariableVoltage extends Skills {
 			}
 		}	
 	}
-		
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr() {
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-	
+			
 	public int getTargetType(){
 		return targetType;
 	}

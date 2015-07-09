@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 
 public class Ennervate extends Skills {
 
-	public String name = "Ennervate";
-	public String descr = "User casts a fatiguing aura that\ncauses a targeted foe's Power\nand Speed to decrease.";
-	public String descrShort = "Lowers single targets Pow\nand Spd.";
-	public int cost = 4;
+	public static String name = "Ennervate";
+	public static String descr = "User casts a fatiguing aura that\ncauses a targeted foe's Power\nand Speed to decrease.";
+	public static String descrShort = "Lowers single targets Pow\nand Spd.";
+	public static int cost = 4;
 	public Ennervate(int index) {
-		super(index);
+		super(index,0,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -27,23 +27,4 @@ public class Ennervate extends Skills {
 		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti())),2,.9, perp,60));
 		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti())),4,.9, perp,60));		
 	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-
-
 }

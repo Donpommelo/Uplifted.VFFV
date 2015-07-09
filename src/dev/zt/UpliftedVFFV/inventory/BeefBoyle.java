@@ -9,7 +9,7 @@ public class BeefBoyle extends Item{
 	static String descr="A thick, stew filled with beef as well as several ingredients that are \nless likely to be beef. ";
 	static String descrShort="Silence and buff Pow.";
 	public BeefBoyle() {
-		super(2, "Beef Boyleston", false, true, true, true, false,descr);
+		super(2, "Beef Boyleston", false, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -22,9 +22,4 @@ public class BeefBoyle extends Item{
 		}
 		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp));
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

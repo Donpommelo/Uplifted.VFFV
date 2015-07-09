@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.LifeDrain;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -36,7 +37,7 @@ public class Midge extends Schmuck{
 	public ArrayList<status> statuses;
 	public Midge(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Midge",lvl,ImageLoader.loadImage("/BattleSprites/Midge.png"), startStats, statGrowths, elemRes);
+		super("Midge",lvl,ImageLoader.loadImage("/BattleSprites/Midge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";
 		itemdrops.put(new MidgeBlood(), .3);
@@ -48,26 +49,21 @@ public class Midge extends Schmuck{
 	public Action getAction(BattleState bs){
 		int random = (int)(Math.random()*2);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
-		switch (random){
+		if(bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,this,new PassTurn(0),bs);
+		}
+		else{
+			switch (random){
 			case 0:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new LifeDrain(0),bs);
 				break;
 			case 1:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
 				break;
-		}
+			}
+		}	
 		return act;
 	}
-	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
-	}
-
-
 
 	public TreeMap<Item, Double> getItemdrops() {
 		return itemdrops;

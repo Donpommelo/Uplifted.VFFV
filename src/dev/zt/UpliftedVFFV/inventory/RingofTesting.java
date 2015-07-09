@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.inventory;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.ElemPointsBuff;
-import dev.zt.UpliftedVFFV.statusEffects.Impatient;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class RingofTesting extends Item{
@@ -12,7 +11,7 @@ public class RingofTesting extends Item{
 	static String descrShort="Anything, really.";
 	public status[] enchantment = new status[4];
 	public RingofTesting() {
-		super(2, "Ring of Testing",false,false,false, false, true, descr);
+		super(2, "Ring of Testing",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -22,10 +21,6 @@ public class RingofTesting extends Item{
 		enchantment[2] = new BonusStatBuff(17,2, s.itemDummy,50);
 		enchantment[3] = new ElemPointsBuff(3,15,s.itemDummy,99);
 		return enchantment;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
 	}
 
 }

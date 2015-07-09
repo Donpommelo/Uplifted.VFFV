@@ -10,6 +10,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.inventory.*;
 import dev.zt.UpliftedVFFV.party.PenPal;
+import dev.zt.UpliftedVFFV.quest.VariableManager;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class Event3 extends Event {
@@ -29,38 +30,6 @@ public class Event3 extends Event {
 
 	
 	public void run(){
-/*		super.loot(new AngryBeef(), 2);
-		super.loot(new BeefBoyle(), 3);
-		super.loot(new BossMug(), 1);
-		super.loot(new BucketBattery(), 1);
-		super.loot(new CaffeinePatch(), 5);
-		super.loot(new CarrotJuice(), 3);
-		super.loot(new CoffeeBean(), 2);
-		super.loot(new CoffeedIce(), 1);
-		super.loot(new DeploreApp(), 1);
-		super.loot(new Disease(),4);
-		super.loot(new EightBall(), 1);
-		super.loot(new EnvenomEarth(), 1);
-		super.loot(new FadedSash(), 1);
-		super.loot(new FennelDonut(), 1);
-		super.loot(new FishWater(), 1);
-		super.loot(new Fishbones(), 1);
-		super.loot(new Lachiplatre(), 683);
-		super.loot(new LemonyFresh(), 2);
-		super.loot(new LetterOpener(), 1);
-		super.loot(new MedPak(), 6);
-		super.loot(new MeltedIcecream(), 3);
-		super.loot(new MentalLeakage(), 5);
-		super.loot(new MidgeBlood(), 4);
-		super.loot(new MidgeProboscis(), 1);
-		super.loot(new NewtonCradle(), 1);
-		super.loot(new Paperweight(), 1);
-		super.loot(new SeeingEye(), 1);
-		super.loot(new PostageStamp(),4);
-		super.loot(new SimmerResent(), 1);
-		super.loot(new SleepingPills(), 6);
-		super.loot(new SmellingSalt(), 3);
-		super.loot(new Unbeef(), 3);*/
 		
 		if(elevatorOn){
 			
@@ -68,7 +37,7 @@ public class Event3 extends Event {
 		else{
 			
 		}
-		if(Event.events[45].isSelfswitch1()){
+		if(!Event.events[45].isSelfswitch1()){
 			switch(stage){
 			case 0: 				
 				if(!open){
@@ -83,7 +52,40 @@ public class Event3 extends Event {
 				KeyManager.setCutsceneMode(false);
 				stage = 0;
 				game.getAudiomanager().playMusic(2, true);
-				super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 7, 10,"South Lobby");
+				switch(super.getVar(1)){
+				case 0:
+					super.transport("/Worlds/Floor1Reception/Lobby1.txt", 22, 58,"Reception");
+					break;
+				case 1:
+					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 6, 16,"Bathhouse");
+					break;
+				case 2:
+					super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 7, 10,"South Lobby");
+					break;
+				case 3:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					break;
+				case 8:
+					break;
+				case 9:
+					break;
+				case 10:
+					break;
+				case 11:
+					break;
+				case 12:
+					break;
+				case 13:
+					break;
+				case 14:
+					break;
+					
+				}
 				open = false;
 				break;
 				
@@ -167,10 +169,6 @@ public class Event3 extends Event {
 
 	public boolean isSolid(){
 		return solid;
-	}
-
-	public static void main(String[] args) {
-		
 	}
 
 }

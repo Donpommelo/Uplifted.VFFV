@@ -15,7 +15,7 @@ public class Vampirism extends status{
 	}
 	
 	public Vampirism(double amount, Schmuck perp){
-		super("Lifesteal", true, true, perp);
+		super("Lifesteal", true, false, perp);
 		this.lifesteal = amount;
 	}
 	

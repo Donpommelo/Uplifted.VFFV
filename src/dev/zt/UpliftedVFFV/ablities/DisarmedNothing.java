@@ -9,7 +9,7 @@ public class DisarmedNothing extends Skills {
 public Item thing;
 
 	public DisarmedNothing(int index) {
-		super(index);
+		super(index,1,6, "", "", "", 0);
 
 	}
 	
@@ -17,12 +17,4 @@ public Item thing;
 		bs.bp.bt.textList.add(perp.getName()+" tried to use attack, but was Disarmed.");
 	}
 	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 }

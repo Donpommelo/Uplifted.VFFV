@@ -12,7 +12,7 @@ public class Magnum extends Item{
 	static Skills test = new FireMagnum(0);
 	public status[] enchantment = new status[0];
 	public Magnum() {
-		super(2, "Magnum",false,false,false, false, true, descr);
+		super(2, "Magnum",false,false,false, false, true, descr, descrShort);
 		
 	}
 	
@@ -25,9 +25,4 @@ public class Magnum extends Item{
 		s.forgetSkill(test);
 		
 	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-
 }

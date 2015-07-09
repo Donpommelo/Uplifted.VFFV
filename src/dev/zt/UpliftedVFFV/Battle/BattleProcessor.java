@@ -16,8 +16,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
+import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
-import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BattleProcessor {
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
@@ -66,19 +66,9 @@ public class BattleProcessor {
 		bt.textList.add(t.encounterText());
 		for(Schmuck s : allies){
 			battlers.add(s);
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){
-					s.statuses.get(i).startoffightEffect(s,bs);
-				}
-			}
 		}
 		for(Schmuck s : enemy){
 			battlers.add(s);
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){
-					s.statuses.get(i).startoffightEffect(s,bs);
-				}
-			}
 		}
 		for(Schmuck s: battlers){
 			s.calcBuffs(bs);
@@ -96,8 +86,19 @@ public class BattleProcessor {
 		else{
 			switch(phase){
 			case 0:
+				if(roundNum == 1){
+					for(Schmuck s : battlers){
+						if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
+							for(int i=0; i<s.statuses.size(); i++){
+								if(s.statuses.get(i)!=null){
+									s.statuses.get(i).startoffightEffect(s,bs);
+								}
+							}
+						}
+					}
+				}
 				currentlySelected=0;
-				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesTargets.get(currentlySelected),gs);
+				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(currentlySelected),gs);
 				if(!enemyded()){					
 					selected=true;					
 				}
@@ -113,7 +114,7 @@ public class BattleProcessor {
 				else{
 					
 					if(game.getKeyManager().right){
-						if(currentlySelected<bs.bs.alliesTargets.size()-1){
+						if(currentlySelected<bs.bs.alliesSelectable.size()-1){
 							currentlySelected++;
 							try {
 								Thread.sleep(100);
@@ -141,9 +142,9 @@ public class BattleProcessor {
 								e.printStackTrace();
 							}
 						}
-						if(!stm.checkStatus(bs.bs.alliesTargets.get(currentlySelected), new incapacitate(bs.bs.alliesTargets.get(currentlySelected)))){	
+						if(!stm.checkStatus(bs.bs.alliesSelectable.get(currentlySelected), new incapacitate(bs.bs.alliesSelectable.get(currentlySelected)))){	
 							selected=true;
-							bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesTargets.get(currentlySelected),gs);
+							bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(currentlySelected),gs);
 						}
 						else{
 							bt.textList.add("he ded");
@@ -166,13 +167,22 @@ public class BattleProcessor {
 						}
 						
 							for(int i=0 ; i<enemy.size();i++){
-								if(!stm.checkStatus(enemy.get(i), new incapacitate(enemy.get(i))) && !bs.bs.alliesTargets.isEmpty()){
+								if(!stm.checkStatus(enemy.get(i), new incapacitate(enemy.get(i))) && !bs.bs.alliesSelectable.isEmpty()){
 									TurnOrderQueue.set(allies.size()+i,enemy.get(i).getAction(bs));
 								}
 								else{
 									
 									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new ActuallyNothing(0),bs));
 								}
+							}
+							for(Schmuck s : battlers){
+								if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
+									for(int i=0; i<s.statuses.size(); i++){
+										if(s.statuses.get(i)!=null){
+											s.statuses.get(i).preBattlePhase(s, bs);
+										}
+									}
+								}			
 							}
 							sort(TurnOrderQueue);
 							
@@ -212,9 +222,9 @@ public class BattleProcessor {
 
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
-						for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
-							if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
-								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);
+						if(!stm.checkStatus(TurnOrderQueue.get(0).user, new incapacitate(TurnOrderQueue.get(0).user)) || stm.checkStatus(TurnOrderQueue.get(0).user, new Undead(TurnOrderQueue.get(0).user,50))){
+							for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
 							}
 						}
 						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally") && TurnOrderQueue.get(0) != null){
@@ -232,11 +242,22 @@ public class BattleProcessor {
 											TurnOrderQueue.get(0).user.statuses.get(i).onAction(bs,TurnOrderQueue.get(0));
 										}
 									}
+									
+									for(Schmuck s : battlers){
+										if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
+											for(int i=0; i<s.statuses.size(); i++){
+												if(s.statuses.get(i)!=null){
+													s.statuses.get(i).endofAnyAction(bs,TurnOrderQueue.get(0),s);
+												}
+											}
+										}
+									}
 								}
 								bs.bs.targetUpdate();
+
 							}
 							else{
-								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to use "+TurnOrderQueue.get(0).skill.getName());
+								bt.textList.add(TurnOrderQueue.get(0).user.getName()+" didn't have the Motivation to use "+TurnOrderQueue.get(0).skill.getName()+"!");
 							}
 //							bs.bs.targetUpdate();
 						}
@@ -302,6 +323,7 @@ public class BattleProcessor {
 							}
 						}
 						s.expGain(s.getStartStats(),s.getStatGrowths(),(int)(exp/allies.size()));
+						s.calcBuffs(bs);
 					}					
 					bt.textList.add((int)script+" Company Script looted!");
 					gs.scriptChange((int)script);
@@ -392,19 +414,19 @@ public class BattleProcessor {
 	
 	public ArrayList<Schmuck> getEnemyTargets(Schmuck s){
 		if(allies.contains(s)){
-			return bs.bs.enemyTargets;
+			return bs.bs.enemySelectable;
 		}
 		else{
-			return bs.bs.alliesTargets;
+			return bs.bs.alliesSelectable;
 		}
 	}
 	
 	public ArrayList<Schmuck> getAlliedTargets(Schmuck s){
 		if(allies.contains(s)){
-			return bs.bs.alliesTargets;
+			return bs.bs.alliesSelectable;
 		}
 		else{
-			return bs.bs.enemyTargets;
+			return bs.bs.enemySelectable;
 		}
 	}
 	

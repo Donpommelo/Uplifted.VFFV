@@ -10,20 +10,11 @@ public class ActuallyNothing extends Skills {
 public Item thing;
 
 	public ActuallyNothing(int index) {
-		super(index);
+		super(index, 1,6, "", "", "", 0);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 	
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 }

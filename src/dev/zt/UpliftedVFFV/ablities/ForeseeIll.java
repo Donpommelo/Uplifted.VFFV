@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class ForeseeIll extends Skills {
 
-	public String name = "Foresee Ill";
-	public String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy\ndamage that scales with target's\nIntrusive Thoughts.";
-	public String descrShort = "Release built up Intrusive\nThoughts.";
-	public int cost = 4;
+	public static String name = "Foresee Ill";
+	public static String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy\ndamage that scales with target's\nIntrusive Thoughts.";
+	public static String descrShort = "Release built up Intrusive\nThoughts.";
+	public static int cost = 4;
 	public ForeseeIll(int index) {
-		super(index);
+		super(index,0,4, name, descr, descrShort, cost);
 
 	}
 	
@@ -32,23 +32,5 @@ public class ForeseeIll extends Skills {
 		}
 		
 	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-
 
 }

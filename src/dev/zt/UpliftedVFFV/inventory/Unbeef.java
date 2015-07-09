@@ -9,7 +9,7 @@ public class Unbeef extends Item{
 	static String descr="You aren¡¦t sure what this is exactly, but you¡¦re confident it isn¡¦t beef.";
 	static String descrShort="Removes beef-related\nafflictions.";
 	public Unbeef() {
-		super(2, "Unbeef",false, true, true, true, false,descr);
+		super(2, "Unbeef",false, true, true, true, false,descr, descrShort);
 
 	}
 	
@@ -21,10 +21,6 @@ public class Unbeef extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Unbeef.");
 		}
 		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp) );
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
 	}
 
 }

@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.utils;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -53,7 +52,7 @@ public class Utils {
 	 */
 	public static void drawMenu(Graphics g, String frame, int x, int y, int width, int height){
 		//Load texture and cut into subsections.
-		SpriteSheet texture = new SpriteSheet(ImageLoader.loadImage("/ui/Window/" + frame));
+		SpriteSheet texture = new SpriteSheet(ImageLoader.loadImage("/ui/" + frame));
 		BufferedImage upperleft = texture.crop(0, 0, 64, 64);
 		BufferedImage centerleft = texture.crop(0, 64, 64, 64);
 		BufferedImage lowerleft = texture.crop(0, 128, 64, 64);

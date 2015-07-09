@@ -7,12 +7,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamnedDescent extends Skills {
 
-	public String name = "Damned Descent";
-	public String descr = "User drops a target a considerable\ndistance. If this attack\nincapacitates a foe, the\nuser gains an extra turn.";
-	public String descrShort = "Deals Red damage and\nrefunds turn if lethal.";
-	public int cost = 11;
+	public static String name = "Damned Descent";
+	public static String descr = "User drops a target a considerable\ndistance. If this attack\nincapacitates a foe, the\nuser gains an extra turn.";
+	public static String descrShort = "Deals Red damage and\nrefunds turn if lethal.";
+	public static int cost = 11;
 	public DamnedDescent(int index) {
-		super(index);
+		super(index,0,0, name, descr, descrShort, cost);
 
 	}
 	
@@ -41,23 +41,4 @@ public class DamnedDescent extends Skills {
 			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
 		}	
 	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
-	}
-
-
 }

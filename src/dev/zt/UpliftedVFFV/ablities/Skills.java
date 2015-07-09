@@ -19,33 +19,30 @@ public class Skills {
 	//2: All targetable allies (used in reviving)
 	public int targetType;
 	
+	//0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:No Alignment
+	public int element = 6;
+	
 	public BufferedImage icon;
 	public boolean startTeamTarget;
-	public Skills(int index){
-		name = "";
-		descr = "";
-		descrShort = "";
-		cost = 0;
-		targetType = 0;
-		icon =Assets.skill;
-	}
 	
-	public Skills(int index, int t){
-		name = "";
-		descr = "";
-		descrShort = "";
-		cost = 0;
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost){
+		this.name = name;
+		this.descr = descr;
+		this.descrShort = descrShort;
+		this.cost = cost;
 		targetType = t;
 		icon =Assets.skill;
+		element = elem;
 	}
 	
-	public Skills(int index, BufferedImage i){
+	public Skills(int index, BufferedImage i, int elem){
 		name = "";
 		descr = "";
 		descrShort = "";
 		cost = 0;
 		targetType = 0;
 		icon = i;
+		element = elem;
 	}
 	
 	
@@ -59,15 +56,15 @@ public class Skills {
 	}
 	
 	public String getName() {
-		return "meep";
+		return name;
 	}
 	
 	public String getDescr() {
-		return "meep";
+		return descr;
 	}
 	
 	public String getDescrShort() {
-		return "meep";
+		return descrShort;
 	}
 	
 	public String useText(Schmuck perp, Schmuck vic){
@@ -85,6 +82,10 @@ public class Skills {
 	
 	public int getTargetType(){
 		return 0;
+	}
+	
+	public int getElement(){
+		return element;
 	}
 	
 	public boolean startTarget(){

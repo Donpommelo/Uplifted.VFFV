@@ -8,12 +8,12 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 
 public class ForceWithin extends Skills {
 
-	public String name = "Force Within";
-	public String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
-	public String descrShort = "Dazes all foes\n1 use per fight.";
-	public int cost = 6;
+	public static String name = "Force Within";
+	public static String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
+	public static String descrShort = "Dazes all foes\n1 use per fight.";
+	public static int cost = 6;
 	public ForceWithin(int index) {
-		super(index,1);
+		super(index,1,6, name, descr, descrShort, cost);
 
 	}
 	
@@ -33,23 +33,6 @@ public class ForceWithin extends Skills {
 				}
 			}
 		
-	}
-
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

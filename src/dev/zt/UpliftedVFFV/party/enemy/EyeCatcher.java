@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -40,7 +41,7 @@ public class EyeCatcher extends Schmuck{
 	public ArrayList<status> statuses;
 	public EyeCatcher(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Eye Catcher",lvl,ImageLoader.loadImage("/BattleSprites/Eye Catcher.png"), startStats, statGrowths, elemRes);
+		super("Eye Catcher",lvl,ImageLoader.loadImage("/BattleSprites/Eye Catcher.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Dangerous monster that steals the eyes from its victims. Probably has a collection or something.";
 		itemdrops.put(new SeeingEye(), 1.0);
@@ -48,19 +49,16 @@ public class EyeCatcher extends Schmuck{
 	
 	
 	public Action getAction(BattleState bs){
+		if(!bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		}
+		else{
+			return new Action(this,this,new PassTurn(0),bs);
 
-		return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		}
 		
 	}
-	
-	public int getExpDrop() {
-		return expDrop;
-	}
-
-	public int getScrDrop() {
-		return scrDrop;
-	}
-	
+		
 	public TreeMap<Item, Double> getItemdrops() {
 		return itemdrops;
 	}

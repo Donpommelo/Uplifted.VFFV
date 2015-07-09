@@ -8,12 +8,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Terraform extends Skills {
 
-	public String name = "Terraform";
-	public String descr = "User shakes the very foundation\nof the building, scrambling\nremaining Turn Order";
-	public String descrShort = "Damages and scrambles\nTurn Order";
-	public int cost = 18;
+	public static String name = "Terraform";
+	public static String descr = "User shakes the very foundation\nof the building, scrambling\nremaining Turn Order";
+	public static String descrShort = "Damages and scrambles\nTurn Order";
+	public static int cost = 18;
 	public Terraform(int index) {
-		super(index,1);
+		super(index,1,2, name, descr, descrShort, cost);
 
 	}
 	
@@ -55,23 +55,6 @@ public class Terraform extends Skills {
 			temp.remove(rand);
 		}
 		bs.bp.TurnOrderQueue.add(0, new Action(perp, vic, new Terraform(0), bs));	
-	}
-	
-	
-	public String getName(){
-		return name;
-	}
-	
-	public String getDescr(){
-		return descr;
-	}
-	
-	public String getDescrShort() {
-		return descrShort;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public int getTargetType(){
