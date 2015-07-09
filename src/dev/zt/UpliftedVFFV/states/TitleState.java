@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 //First state ran. This is a title screen
 public class TitleState extends State {
 	
-	private BufferedImage testImage;
+	private BufferedImage testImage, window;
 	private boolean controls, about;
 	private boolean exit;
 	private StateManager statemanager;
@@ -21,8 +21,9 @@ public class TitleState extends State {
 	public TitleState(Game game, StateManager sm){
 		super(game,sm);
 		testImage = ImageLoader.loadImage("/textures/title.png");
-		controls=false;
-		about=false;
+		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
+		controls = false;
+		about = false;
 		exit = false;
 	}
 
@@ -101,18 +102,10 @@ public class TitleState extends State {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 640, 416);
 		g.drawImage(testImage, 48, 0, null);
-		g.setColor(new Color(102, 178,255));
+		//g.setColor(new Color(102, 178,255));
 		//g.fillRect(360,200, 150, 100);
-		Utils.drawMenu(g, "WindowBlack.png", 360, 200, 150, 100);
-		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));;
-		g.setColor(new Color(255, 255,51));
-		g.fillRect(360,200+25*optionChosen, 150, 25);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.setColor(new Color(0, 0,0));
-		g.drawString("New Game", 375, 220);	
-		g.drawString("Controls", 375, 245);
-		g.drawString("About", 375, 270);
-		g.drawString("Quit", 375, 295);
+		String[] options = {"New Game", "Controls", "About", "Quit"};
+		Utils.drawMenu(g, window, options, Color.white, optionChosen, 360, 200, 150, 100, true);
 		
 		if(controls){
 			g.setColor(new Color(102, 178,255));

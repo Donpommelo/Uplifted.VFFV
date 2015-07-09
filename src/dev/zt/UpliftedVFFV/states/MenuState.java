@@ -13,12 +13,13 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 //This is the menu state that is called up by pressing z during the game state.
 //This displays info about party, inventory and everything else later.
 public class MenuState extends State {
 	
-	private BufferedImage testImage;
+	private BufferedImage testImage, window;
 	private GameState gamestate;
 	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation, skillSelected;
 	private int itemnum, itemOption, itemslot;
@@ -29,6 +30,7 @@ public class MenuState extends State {
 	public MenuState(Game game, StateManager sm, GameState gs){
 		super(game, sm);
 		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		this.gamestate=gs;
 		optionSelected=0;
 		optionChosen=false;
@@ -439,30 +441,35 @@ public class MenuState extends State {
 			exit=false;
 		}
 		
-		//ackground consists of black with an image in front. Def change this later
+		//background consists of black with an image in front. Def change this later
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 640, 416);
 		g.drawImage(testImage, 48, 0, null);
 		
-		//Color of sidebar chnages depending on whether it is selected or not
-		if(optionChosen==true){
-			g.setColor(new Color(160,160,160));
-		}
-		else{
-			g.setColor(new Color(255, 255,51));
-		}
-		g.fillRect(5, 5,125,406);
-		g.setColor(new Color(102, 178,255));
-		g.fillRect(5,5+25*optionSelected, 125, 25);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.setColor(new Color(0, 0,0));
-		g.drawString("Party", 10, 25);
-		g.drawString("Inventory", 10, 50);
-		g.drawString("Map", 10, 75);
-		g.drawString("Directory", 10, 100);
-		g.drawString("Objectives", 10, 125);
-		g.drawString("Quit", 10, 150);
-		g.drawString(gamestate.Script+" Script", 10, 400);
+//		//Color of sidebar changes depending on whether it is selected or not
+//		if(optionChosen==true){
+//			g.setColor(new Color(160,160,160));
+//		}
+//		else{
+//			g.setColor(new Color(255, 255,51));
+//		}
+//		g.fillRect(5, 5,125,406);
+//		g.setColor(new Color(102, 178,255));
+//		g.fillRect(5,5+25*optionSelected, 125, 25);
+//		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+//		g.setColor(new Color(0, 0,0));
+//		g.drawString("Party", 10, 25);
+//		g.drawString("Inventory", 10, 50);
+//		g.drawString("Map", 10, 75);
+//		g.drawString("Directory", 10, 100);
+//		g.drawString("Objectives", 10, 125);
+//		g.drawString("Quit", 10, 150);
+//		g.drawString(gamestate.Script+" Script", 10, 400);
+		
+		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit", 
+				gamestate.Script + " Script"};
+		Utils.drawMenu(g, window, options, Color.black, optionSelected, 5, 5, 125, 406, optionChosen);
+		
 			switch(optionSelected){
 			case 0:
 				if(optionChosen==false){
