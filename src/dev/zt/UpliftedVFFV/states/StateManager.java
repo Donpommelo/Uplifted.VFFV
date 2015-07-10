@@ -29,4 +29,14 @@ public class StateManager {
 	public void init(){
 		states.peek().init();
 	}
+
+	public static Stack<State> getStates() {
+		return states;
+	}
+
+	public static void setStates(Stack<State> states) {
+		StateManager.states = states;
+	}
+	
+	
 }

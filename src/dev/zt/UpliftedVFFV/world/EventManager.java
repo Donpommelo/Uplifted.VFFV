@@ -4,7 +4,6 @@ import java.awt.Graphics;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
-import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 
@@ -12,7 +11,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 	
 	private Game game;
 	private int width, height;
-	private int X, Y;
+//	private int X, Y;
 	private int numevents;
 	public static int[][] events;
 	public static Event[] EventTracker;
@@ -81,6 +80,15 @@ public void tick(){
 		}
 
 	}
+
+	public static int[][] getEvents() {
+		return events;
+	}
+
+	public static void setEvents(int[][] events) {
+		EventManager.events = events;
+	}
+	
 	
 
 }

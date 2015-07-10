@@ -4,18 +4,11 @@ package dev.zt.UpliftedVFFV;
 import java.awt.Graphics;
 
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.display.Display;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.GameCamera;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.input.KeyManager;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.MenuState;
-import dev.zt.UpliftedVFFV.states.State;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.states.TitleState;
 import dev.zt.UpliftedVFFV.world.WorldManager;
@@ -62,7 +55,7 @@ public class Game implements Runnable{
 		getAudiomanager().playMusic(0, false);
 		
 		statemanager=new StateManager(this);							//creates statemanager. This manages the states of the game
-		statemanager.states.push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 
+		StateManager.getStates().push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 
 		
 		worldmanager=new WorldManager(this);					//creates a worldmanager. This manages the world.
 	//	statemanager.init();
@@ -76,8 +69,8 @@ public class Game implements Runnable{
 	private void tick(){										//Every tick, the game runs the tick() of the current state
 		keyManager.tick();
 		
-		if(statemanager.states.peek() != null)
-			statemanager.states.peek().tick();
+		if(StateManager.getStates().peek() != null)
+			StateManager.getStates().peek().tick();
 	}
 	
 	private void render(){										//Every render, the game runs the render() of the current state
@@ -90,8 +83,8 @@ public class Game implements Runnable{
 		g.clearRect(0, 0, width, height);
 		
 		
-		if(statemanager.states.peek() != null)
-			statemanager.states.peek().render(g);
+		if(StateManager.getStates().peek() != null)
+			StateManager.getStates().peek().render(g);
 		
 		bs.show();
 		g.dispose();
@@ -108,7 +101,7 @@ public class Game implements Runnable{
 		long now;
 		long lastTime = System.nanoTime();
 		long timer = 0;
-		int ticks = 0;
+//		int ticks = 0;
 		
 		while(running){
 			now = System.nanoTime();
@@ -119,12 +112,12 @@ public class Game implements Runnable{
 			if(delta >=1){
 				tick();
 				render();
-				ticks++;
+//				ticks++;
 				delta--;
 			}
 			
 			if(timer>=1000000000){
-				ticks = 0;
+//				ticks = 0;
 				timer = 0;
 			}
 			

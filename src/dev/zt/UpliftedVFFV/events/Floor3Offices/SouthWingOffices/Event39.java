@@ -19,9 +19,4 @@ public class Event39 extends Event {
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 36, 1,"South Office Hall");
 	}
-
-	public static void main(String[] args) {
-		
-	}
-
 }

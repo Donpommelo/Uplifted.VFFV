@@ -11,19 +11,12 @@ public class Event86 extends Event {
 	public Event86(float x, float y, int idnum) {
 		super(Assets.White,idnum,x, y);
 		
-	
 	}
-	
-
 	
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftMain2.txt", 5,6,"");
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
 	public boolean isSolid(){
 		return false;
 	}

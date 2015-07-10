@@ -3,19 +3,9 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.concurrent.TimeUnit;
-
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 //State for when the player must choose an option from a list of any size
 public class ChoiceBranchState extends State {
@@ -126,27 +116,27 @@ public class ChoiceBranchState extends State {
 	public void render(Graphics g) {
 		
 		//ChoiceBranches do not take up the entire screen. The state underneath it should be rendered as well
-		statemanager.states.pop();
-		statemanager.states.peek().render(g);
-		statemanager.states.push(this);
+		StateManager.getStates().pop();
+		StateManager.getStates().peek().render(g);
+		StateManager.getStates().push(this);
 		
 		//if x is pressed, the state is popped
 		if(exit==true){
-			statemanager.states.pop();
+			StateManager.getStates().pop();
 			Event.events[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
 				Event.events[this.EventId].run();
 			}*/
-			statemanager.states.pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
+			StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
 			exit=false;
 		}
 		
 		//if space is pressed, the states are exited and the event that called the ChoiceBranch receives the selected int
 		
 		if(selected==true){
-			statemanager.states.pop();
-			statemanager.states.pop();
+			StateManager.getStates().pop();
+			StateManager.getStates().pop();
 			Event.events[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);

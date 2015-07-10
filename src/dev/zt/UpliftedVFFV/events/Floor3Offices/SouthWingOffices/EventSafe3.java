@@ -4,9 +4,6 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.MedPak;
-import dev.zt.UpliftedVFFV.states.GameState;
-
 
 public class EventSafe3 extends Event {
 

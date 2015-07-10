@@ -9,6 +9,8 @@ import dev.zt.UpliftedVFFV.party.troops.Troop0Test;
 import dev.zt.UpliftedVFFV.party.troops.Troop10LeaderandCo;
 import dev.zt.UpliftedVFFV.party.troops.Troop11CoffeeElemental;
 import dev.zt.UpliftedVFFV.party.troops.Troop12Thoughts;
+import dev.zt.UpliftedVFFV.party.troops.Troop13EastOfficePreview;
+import dev.zt.UpliftedVFFV.party.troops.Troop14WanderingMind;
 import dev.zt.UpliftedVFFV.party.troops.Troop1MidgeSwarm;
 import dev.zt.UpliftedVFFV.party.troops.Troop2IllRatHorde;
 import dev.zt.UpliftedVFFV.party.troops.Troop3RotThoughtPuddle;
@@ -36,6 +38,8 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop10 = new Troop10LeaderandCo(10);
 	public static Troop Troop11 = new Troop11CoffeeElemental(11);
 	public static Troop Troop12 = new Troop12Thoughts(12);
+	public static Troop Troop13 = new Troop13EastOfficePreview(13);
+	public static Troop Troop14 = new Troop14WanderingMind(14);
 	
 
 	

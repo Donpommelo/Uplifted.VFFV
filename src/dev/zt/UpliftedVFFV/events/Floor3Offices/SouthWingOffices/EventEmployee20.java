@@ -7,10 +7,6 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.*;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
 
 //This is commented as an example of slightly more complex event processing.
 //This contains a choicebranch that branches into different dialog and event running
@@ -93,10 +89,6 @@ public class EventEmployee20 extends Event {
 			super.Dialog(93,93,this.getId());
 			break;
 		}
-	}
-
-	public static void main(String[] args) {
-		
 	}
 	
 	public boolean isSolid(){

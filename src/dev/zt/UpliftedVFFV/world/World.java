@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -15,7 +13,7 @@ public class World {
 	
 	private Game game;
 	private int width, height;					//size of world 
-	private int spawnX, spawnY;					//default start location of player. Only used for testing
+//	private int spawnX, spawnY;					//default start location of player. Only used for testing
 	private int numEvents;
 	private int[][] tiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
 	public String Worldname;					//name that shows up in nameplate upon entering new location. ""=no nameplate
@@ -87,8 +85,8 @@ public class World {
 		String[] tokens = file.split("\\s+");			
 		width = Utils.parseInt(tokens[0]);
 		height = Utils.parseInt(tokens[1]);
-		spawnX = Utils.parseInt(tokens[2]);
-		spawnY = Utils.parseInt(tokens[3]);
+//		spawnX = Utils.parseInt(tokens[2]);
+//		spawnY = Utils.parseInt(tokens[3]);
 		numEvents = Utils.parseInt(tokens[4]);
 		enemyrate = Utils.parseInt(tokens[5]);
 		enemynum = Utils.parseInt(tokens[6]);

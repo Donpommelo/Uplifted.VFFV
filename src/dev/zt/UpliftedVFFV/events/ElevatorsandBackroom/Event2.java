@@ -1,10 +1,8 @@
 package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 
-import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.GameState;
 
 
 public class Event2 extends Event {
@@ -20,10 +18,6 @@ public class Event2 extends Event {
 	
 	public void run(){
 		super.transport("/Worlds/ElevatorsandBackroom/backroom.txt", 3, 3,"Home Sweet Home");
+		super.setVar(2, 0);
 	}
-
-	public static void main(String[] args) {
-
-	}
-
 }

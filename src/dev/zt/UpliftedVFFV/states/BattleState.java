@@ -86,9 +86,9 @@ public class BattleState extends State {
 		if(introScene){
 			if(frame<=54){
 				introY = 416*(int)(frame/3);
-				statemanager.states.pop();
-				statemanager.states.peek().render(g);
-				statemanager.states.push(this);
+				StateManager.getStates().pop();
+				StateManager.getStates().peek().render(g);
+				StateManager.getStates().push(this);
 				elevatorDoors = animatedDoors.crop(introX, introY, 640, 416);
 				g.drawImage(elevatorDoors,0,0,null);
 			}
@@ -130,7 +130,7 @@ public class BattleState extends State {
 	}
 	
 	public void end(boolean victory){
-		statemanager.states.pop();
+		StateManager.getStates().pop();
 		game.getAudiomanager().playMusic(2, true);
 		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 		//increment and the event will be rerrun with the new stage.
@@ -138,7 +138,7 @@ public class BattleState extends State {
 			Event.events[this.EventId].setFightwon(true);
 		}
 		else if(bp.fightlost()){
-			statemanager.states.pop();
+			StateManager.getStates().pop();
 		}
 		if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 			Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);

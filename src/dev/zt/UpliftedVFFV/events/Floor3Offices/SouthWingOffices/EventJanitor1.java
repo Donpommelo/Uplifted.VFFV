@@ -12,7 +12,6 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.CaffeinePatch;
 import dev.zt.UpliftedVFFV.inventory.DeploreApp;
-import dev.zt.UpliftedVFFV.inventory.FishWater;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.LemonyFresh;
 import dev.zt.UpliftedVFFV.inventory.MedPak;

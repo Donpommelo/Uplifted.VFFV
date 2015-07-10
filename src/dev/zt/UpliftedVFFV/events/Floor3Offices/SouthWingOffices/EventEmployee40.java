@@ -6,10 +6,6 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-
 
 public class EventEmployee40 extends Event {
 
@@ -52,10 +48,6 @@ public class EventEmployee40 extends Event {
 
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
 	public boolean isSolid(){
 		return true;
 	}
@@ -63,9 +55,6 @@ public class EventEmployee40 extends Event {
 	public int getfinalstage() {
 		return finalstage;
 	}
-	
-
-
 
 	public int getstage() {
 		return stage;

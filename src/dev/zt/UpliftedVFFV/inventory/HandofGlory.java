@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class HandofGlory extends Item{
 
 	static String descr="The hand of a murderer preserved in pickle juice and formaldehyde.";
-	static String descrShort = "Cures user of first negative status inflicted in a fight.";
+	static String descrShort = "Sometimes stuns enemies.";
 	public status[] enchantment = new status[1];
 	public HandofGlory() {
 		super(2, "Hand of Glory",false, false, false, false, true, descr, descrShort);

@@ -1,10 +1,9 @@
 package dev.zt.UpliftedVFFV.events.EventsCommon;
 
-import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.states.GameState;
+
 
 
 public class EventTable8 extends Event {

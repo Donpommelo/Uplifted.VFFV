@@ -6,12 +6,12 @@ import dev.zt.UpliftedVFFV.Game;
 
 public class PartyManager {
 	
-	private Game game;
+//	private Game game;
 	public ArrayList<Schmuck> party=new ArrayList<Schmuck>(5);
 	
 	
 	public PartyManager(Game game){
-		this.game=game;
+//		this.game=game;
 		Schmuck operator=new Operator();
 		party.add(operator);
 		Schmuck penpal=new PenPal();
@@ -27,7 +27,7 @@ public class PartyManager {
 	}
 	
 	public PartyManager(Game game, ArrayList<Schmuck> party){
-		this.game=game;
+//		this.game=game;
 		this.party=party;
 	}
 	
