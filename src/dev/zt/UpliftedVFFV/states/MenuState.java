@@ -447,127 +447,104 @@ public class MenuState extends State {
 		g.fillRect(0, 0, 640, 416);
 		g.drawImage(testImage, 48, 0, null);
 		
-//		//Color of sidebar changes depending on whether it is selected or not
-//		if(optionChosen==true){
-//			g.setColor(new Color(160,160,160));
-//		}
-//		else{
-//			g.setColor(new Color(255, 255,51));
-//		}
-//		g.fillRect(5, 5,125,406);
-//		g.setColor(new Color(102, 178,255));
-//		g.fillRect(5,5+25*optionSelected, 125, 25);
-//		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-//		g.setColor(new Color(0, 0,0));
-//		g.drawString("Party", 10, 25);
-//		g.drawString("Inventory", 10, 50);
-//		g.drawString("Map", 10, 75);
-//		g.drawString("Directory", 10, 100);
-//		g.drawString("Objectives", 10, 125);
-//		g.drawString("Quit", 10, 150);
-//		g.drawString(gamestate.Script+" Script", 10, 400);
+		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
+		Utils.drawMenu(g, window, options, Color.black, optionSelected, 5, 5, 125, 380, !optionChosen, true);
+		g.drawString(gamestate.Script + " Script", 25, 375);
 		
-		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit", 
-				gamestate.Script + " Script"};
-		Utils.drawMenu(g, window, options, Color.black, optionSelected, 5, 5, 125, 406, optionChosen, false);
-		
-			switch(optionSelected){
+		switch(optionSelected){
 			//Character view screen.
 			case 0:
-				if(optionChosen==false){
-					g.setColor(new Color(160, 160,160));
-				}
-				else{
-					g.setColor(new Color(255, 255,51));
-				}
-				g.fillRect(135, 5,500,160);
-				g.fillRect(135, 170, 500, 241);
-				for(int i=0;i<gamestate.partymanager.party.size();i++){
+			
+			//Manually draw party names and portraits.
+			Utils.drawDialogueBox(g, window, "", 135, 5, 480, 150, optionChosen);
+			for(int i = 0; i < gamestate.partymanager.party.size(); i++){
+				g.drawString(gamestate.partymanager.party.get(i).getName(), 150 + 100 * i, 30);
+				g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(), 130 + 100 * i, 15, 100, 150, null);
+			}
+			
+			for(int i=0;i<gamestate.partymanager.party.size();i++){
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.setColor(new Color(0, 0,0));
 				g.drawString(gamestate.partymanager.party.get(i).getName(), 150+100*i, 30);
 				g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(),130+100*i,15,100,150,null);
-				}
-				g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(140, 175, 150, 225);
-				Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
-				g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
-				g.setColor(new Color(0, 0,0));
-				g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
-				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(410, 180, 160, 5);
-				g.setColor(new Color(0,204,0));
-				g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
-				g.setColor(new Color(0, 0,0));
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
-				g.drawString("Hp: "+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
-				g.drawString("Bp: "+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
-				g.drawString("Pow: "+tempSchmuck.getBuffedPow()+"("+tempSchmuck.getBasePow()+")",300,265);
-				g.drawString("Def: "+tempSchmuck.getBuffedDef()+"("+tempSchmuck.getBaseDef()+")",300,290);
-				g.drawString("Spd: "+tempSchmuck.getBuffedSpd()+"("+tempSchmuck.getBaseSpd()+")",300,315);
-				g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
-				g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
-				g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
-				g.drawString("Equipment", 400,215);
-				for(int i=0; i<tempSchmuck.getItemSlots(); i++){
-					if(tempSchmuck.getItems()[i] == null){
-						g.drawString("Item slot "+(i+1)+": Nothing", 400,240+25*i);
-					}
-					else{
-						g.drawString("Item slot "+(i+1)+" "+tempSchmuck.getItems()[i].getName(),400,240+25*i);
-					}
-				}
-				
-				if(characterChosen==true){
-					g.setColor(new Color(255, 255,51));
-					g.fillRect(135, 5,500,406);
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(140, 10, 150, 225);
-					g.drawImage(tempSchmuck.getMenuSprite(), 140, 10,150,225, null);
-					g.setColor(new Color(0, 0,0));
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
-					g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),140,25);
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(140, 240,250,166);
-					g.fillRect(395, 240,235,166);
-					g.setColor(new Color(0, 0,0));
-					g.drawString("Abilities:", 240, 255);
-					int skillnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
-						g.drawString(tempSchmuck.skills.get(i).getName()+"  "+(int)(tempSchmuck.skills.get(i).getCost()*(1+tempSchmuck.getMpCost()))+" Mp", 142,275+35*skillnum);
+			}
+			//Draw custom Cursor.
+			g.drawImage(Assets.Downarrow, 180+characterSelected * 100, 5, null);
 
-						skillnum++;
-					}	
-					for(int i=0; i<4 && i<tempSchmuck.skills.size();i++){	
-						g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 260+32*i, null);
-					}
-					g.drawImage(Assets.Downarrow,142,258+32*skillPointer,null);
-					if(skillLocation!=0){
-						g.drawImage(Assets.Uparrow,200,245,null);
-					}
-					if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
-						g.drawImage(Assets.Downarrow,200,405,null);
-					}
-					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
-						int y=245;
-						for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
-					        g.drawString(line, 400, y += g.getFontMetrics().getHeight());
-					}
-				}
-				
-				break;
-			case 1:
-				if(optionChosen==false){
-					g.setColor(new Color(160, 160,160));
+			Utils.drawDialogueBox(g, window, "", 135, 170, 480, 225, optionChosen);
+			
+			Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
+			g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
+			g.setColor(new Color(0, 0,0));
+			g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
+			g.setFont(new Font("Chewy", Font.PLAIN, 12));
+			g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
+			g.setColor(new Color(102, 178,255));
+			g.fillRect(410, 180, 160, 5);
+			g.setColor(new Color(0,204,0));
+			g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+			g.setColor(new Color(0, 0,0));
+			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g.drawString("Hp: "+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
+			g.drawString("Bp: "+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
+			g.drawString("Pow: "+tempSchmuck.getBuffedPow()+"("+tempSchmuck.getBasePow()+")",300,265);
+			g.drawString("Def: "+tempSchmuck.getBuffedDef()+"("+tempSchmuck.getBaseDef()+")",300,290);
+			g.drawString("Spd: "+tempSchmuck.getBuffedSpd()+"("+tempSchmuck.getBaseSpd()+")",300,315);
+			g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
+			g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
+			g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
+			g.drawString("Equipment", 400,215);
+			for(int i=0; i<tempSchmuck.getItemSlots(); i++){
+				if(tempSchmuck.getItems()[i] == null){
+					g.drawString("Item slot "+(i+1)+": Nothing", 400,240+25*i);
 				}
 				else{
-					g.setColor(new Color(255, 255,51));
+					g.drawString("Item slot "+(i+1)+" "+tempSchmuck.getItems()[i].getName(),400,240+25*i);
 				}
-				g.fillRect(135, 5,500,160);
-				g.fillRect(135, 170, 500, 240);
+			}
+			
+			if(characterChosen==true){
+				g.setColor(new Color(255, 255,51));
+				g.fillRect(135, 5,500,406);
+				g.setColor(new Color(102, 178,255));
+				g.fillRect(140, 10, 150, 225);
+				g.drawImage(tempSchmuck.getMenuSprite(), 140, 10,150,225, null);
+				g.setColor(new Color(0, 0,0));
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),140,25);
+				g.setColor(new Color(102, 178,255));
+				g.fillRect(140, 240,250,166);
+				g.fillRect(395, 240,235,166);
+				g.setColor(new Color(0, 0,0));
+				g.drawString("Abilities:", 240, 255);
+				int skillnum=0;                                                                                                                                                                                                                                                                                       
+				for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
+					g.drawString(tempSchmuck.skills.get(i).getName()+"  "+(int)(tempSchmuck.skills.get(i).getCost()*(1+tempSchmuck.getMpCost()))+" Mp", 142,275+35*skillnum);
+
+					skillnum++;
+				}	
+				for(int i=0; i<4 && i<tempSchmuck.skills.size();i++){	
+					g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 260+32*i, null);
+				}
+				g.drawImage(Assets.Downarrow,142,258+32*skillPointer,null);
+				if(skillLocation!=0){
+					g.drawImage(Assets.Uparrow,200,245,null);
+				}
+				if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
+					g.drawImage(Assets.Downarrow,200,405,null);
+				}
+				if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
+					int y=245;
+					for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
+				        g.drawString(line, 400, y += g.getFontMetrics().getHeight());
+				}
+			}
+				
+			break;
+			
+			case 1:
+				Utils.drawDialogueBox(g, window, "", 135, 5, 480, 150, optionChosen);
+				Utils.drawDialogueBox(g, window, "", 135, 170, 480, 225, optionChosen);
 				Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
 				Item[] itemDisplay= temp.toArray(new Item[27]);
 				if(itemDisplay[itemSelected]!=null){

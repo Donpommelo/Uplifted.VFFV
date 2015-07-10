@@ -11,7 +11,7 @@ public class DialogState extends State {
 	private int linenum,endline;
 	private Dialog current;
 	private int yoffset, ybob;
-	private boolean yrise;
+	private boolean yrise;	//Booleans for arrow animation direction and frame skip.
 	public int EventId;
 	
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
@@ -21,7 +21,7 @@ public class DialogState extends State {
 		this.endline=end;
 		this.EventId=eventId;
 		this.yoffset = 0;
-		this.ybob = 3;
+		this.ybob = 12;
 		this.yrise = false;
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
@@ -90,8 +90,9 @@ public class DialogState extends State {
 			}
 			
 		if(Dialog.scrolling==false){
-			g.drawImage(Assets.Downarrow, 320 - Assets.Downarrow.getWidth() / 2, 416 - Assets.Downarrow.getHeight() + yoffset, null);
+			g.drawImage(Assets.Downarrow, 320 - Assets.Downarrow.getWidth() / 2, 416 - Assets.Downarrow.getHeight() + yoffset / 4, null);
 			//Edit y offsets for animation.
+			
 			if(yrise){
 				yoffset--;
 				if (yoffset <= -ybob){
@@ -103,6 +104,8 @@ public class DialogState extends State {
 					yrise = true;
 				}
 			}
+				
+			
 		}		
 		
 	}
