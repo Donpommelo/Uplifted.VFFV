@@ -30,7 +30,7 @@ public class FiremansSwitch extends Skills {
 		bs.bp.bt.textList.add("A Critical blow!");
 		for(Schmuck s : bs.bp.getAlliedTargets(vic)){
 			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*.8)*(1.5*perp.getCritMulti())), perp, vic,0);
+				bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*.8)*(1.5+perp.getCritMulti())), perp, vic,0);
 			}		
 		}
 	}

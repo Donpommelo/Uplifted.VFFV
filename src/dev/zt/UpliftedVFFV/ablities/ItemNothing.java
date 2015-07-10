@@ -18,7 +18,7 @@ public String name = "Item";
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" throws nothing at "+vic.getName());
+		bs.bp.bt.textList.add(perp.getName()+" throws nothing at "+vic.getName()+".");
 		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
 	}
 	

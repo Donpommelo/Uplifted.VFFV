@@ -34,7 +34,6 @@ public class FlexileStrike extends Skills {
 		Schmuck target4;
 		bs.bp.bt.textList.add(perp.getName()+" used Flexile Strike!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5*perp.getCritMulti())), perp, vic);
 		target1 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
 		target2 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));
 		target3 = bs.bp.getEnemyTargets(perp).get((int)(Math.random()*bs.bp.getEnemyTargets(perp).size()));

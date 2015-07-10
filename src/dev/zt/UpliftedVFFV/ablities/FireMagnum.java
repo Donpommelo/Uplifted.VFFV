@@ -36,7 +36,7 @@ public class FireMagnum extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		if(bs.gs.inventorymanager.backpack.containsKey(new MetalRations())){
 			bs.bp.bt.textList.add(perp.getName()+" fired a Magnum at "+vic.getName()+"!");
-			bs.bp.em.hpChange((int)(-90*(1+perp.getEquipPow())),perp,vic);
+			bs.bp.em.hpChange((int)(-45*(1+perp.getEquipPow())*(1+perp.getCritMulti())*(1+perp.getCritMulti())),perp,vic);
 			bs.gs.inventorymanager.use(new MetalRations());
 			bs.bp.bt.textList.add(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
 		}

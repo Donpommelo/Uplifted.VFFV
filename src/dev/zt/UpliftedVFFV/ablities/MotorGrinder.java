@@ -31,7 +31,7 @@ public class MotorGrinder extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Motorgrinder!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,(int)(.8*(1-perp.getCritMulti())), perp,60));
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*perp.getCritMulti()), perp, vic);
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, vic);
 	}
 
 }
