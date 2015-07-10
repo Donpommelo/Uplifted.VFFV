@@ -10,7 +10,7 @@ public class FadedSash extends Item{
 	static String descrShort="Pow-50%  Def+50%.";
 	public status[] enchantment = new status[2];
 	public FadedSash() {
-		super(2, "Faded Sash", false,false,false, false, true, descr, descrShort);
+		super(2, "Faded Sash", false,false,false, false,descr, descrShort, 200, 1);
 		
 	}
 	

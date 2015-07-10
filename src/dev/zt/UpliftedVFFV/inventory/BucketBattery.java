@@ -10,7 +10,7 @@ public class BucketBattery extends Item{
 	static String descrShort="May explode when hit.";
 	public status[] enchantment = new status[1];
 	public BucketBattery() {
-		super(2, "Bucket-o-Batteries",false, false, false, false, true, descr, descrShort);
+		super(2, "Bucket-o-Batteries",false, false, false, false,descr, descrShort,70,1);
 
 	}
 	

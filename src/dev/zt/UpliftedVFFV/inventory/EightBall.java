@@ -10,7 +10,7 @@ public class EightBall extends Item{
 	static String descrShort="10% ??? Resistance.";
 	public status[] enchantment = new status[1];
 	public EightBall() {
-		super(2, "8-Ball", false, false, false, false, true, descr, descrShort);
+		super(2, "8-Ball", false, false, false, false, descr, descrShort, 111, 1);
 		
 	}
 	

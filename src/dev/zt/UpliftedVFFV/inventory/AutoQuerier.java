@@ -10,7 +10,7 @@ public class AutoQuerier extends Item{
 	static String descrShort = "Scans foes at the start of combat.";
 	public status[] enchantment = new status[1];
 	public AutoQuerier() {
-		super(2, "Future-Tech Autoquerier",false, false, false, false, true, descr, descrShort);
+		super(2, "Future-Tech Autoquerier",false, false, false, false, descr, descrShort,66,1);
 
 	}
 	

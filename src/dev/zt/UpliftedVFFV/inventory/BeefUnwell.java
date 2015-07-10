@@ -9,7 +9,7 @@ public class BeefUnwell extends Item{
 	static String descr="A meaty, beef sandwich. There aren¡¦t any obvious defects with\nit, but it makes you feel nauseated nonetheless.";
 	static String descrShort="Buff Pow and Poison.";
 	public BeefUnwell() {
-		super(2, "Beef Unwellington", false, true, true, true, false,descr, descrShort);
+		super(2, "Beef Unwellington", false, true, true, true,descr, descrShort, 35, 0);
 
 	}
 	

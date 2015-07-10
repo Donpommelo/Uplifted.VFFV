@@ -11,7 +11,7 @@ public class RingofTesting extends Item{
 	static String descrShort="Anything, really.";
 	public status[] enchantment = new status[4];
 	public RingofTesting() {
-		super(2, "Ring of Testing",false,false,false, false, true, descr, descrShort);
+		super(2, "Ring of Testing",false,false,false, false,descr, descrShort,322,1);
 		
 	}
 	
@@ -23,4 +23,7 @@ public class RingofTesting extends Item{
 		return enchantment;
 	}
 
+	public boolean isLegendary(){
+		return true;
+	}
 }

@@ -11,7 +11,7 @@ public class SpeedChute extends Item{
 	static String descrShort="Speed -50%. +15% Exp Gain";
 	public status[] enchantment = new status[2];
 	public SpeedChute() {
-		super(2, "Speed Chute",false,false,false, false, true, descr, descrShort);
+		super(2, "Speed Chute",false,false,false, false,descr, descrShort,110,1);
 		
 	}
 	

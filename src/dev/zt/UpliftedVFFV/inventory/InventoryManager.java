@@ -47,7 +47,7 @@ public class InventoryManager {
 //		Set<Item> tempSet= backpack.keySet();
 		for(Item i : itemDisplay){
 			if(i!=null){
-				if(!i.usefromBattle){
+				if(!i.isUsefromBattle()){
 					temp.remove(i);
 				}
 

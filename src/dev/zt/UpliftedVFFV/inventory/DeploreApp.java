@@ -10,12 +10,16 @@ public class DeploreApp extends Item{
 	static String descrShort="Lowers Max Hp, gives Hp regen";
 	public status[] enchantment = new status[1];
 	public DeploreApp() {
-		super(2, "Deplorable Apparatus",false, false, false, false, true,descr, descrShort);
+		super(2, "Deplorable Apparatus",false, false, false, false,descr, descrShort, 900, 1);
 		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new Deplorable(s.itemDummy, 5);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return false;
 	}
 }

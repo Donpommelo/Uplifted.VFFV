@@ -9,7 +9,7 @@ public class CarrotJuice extends Item{
 	static String descr="A can of fizzy, orange liquid. It can serve as a nutritious substitute to\nsoda, if you didn¡¦t really want to drink a soda to begin with.";
 	static String descrShort="Buff Acc and restore Mp.";
 	public CarrotJuice() {
-		super(2, "Carbonated Carrot Juice", false, true, true, true, false, descr, descrShort);
+		super(2, "Carbonated Carrot Juice", false, true, true, true, descr, descrShort, 20, 0);
 
 	}
 	

@@ -9,7 +9,7 @@ public class Unbeef extends Item{
 	static String descr="You aren¡¦t sure what this is exactly, but you¡¦re confident it isn¡¦t beef.";
 	static String descrShort="Removes beef-related\nafflictions.";
 	public Unbeef() {
-		super(2, "Unbeef",false, true, true, true, false,descr, descrShort);
+		super(2, "Unbeef",false, true, true, true,descr, descrShort,30,0);
 
 	}
 	

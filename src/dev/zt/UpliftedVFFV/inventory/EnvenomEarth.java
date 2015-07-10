@@ -11,7 +11,7 @@ public class EnvenomEarth extends Item{
 	public int points = 0;
 	public status[] enchantment = new status[1];
 	public EnvenomEarth() {
-		super(2, "Envenomed Earth",false, false, false, false, true, descr, descrShort);
+		super(2, "Envenomed Earth",false, false, false, false,descr, descrShort, 300,1);
 
 	}
 	

@@ -10,12 +10,16 @@ public class GGG extends Item{
 	static String descrShort="Heal when incapacitating enemies.";
 	public status[] enchantment = new status[1];
 	public GGG() {
-		super(2, "Gluttonous Grey Glove",false,false,false, false, true, descr, descrShort);
+		super(2, "Gluttonous Grey Glove",false,false,false, false,descr, descrShort, 650, 1);
 		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new Cannabalism(.40*(1+s.getEquipPow()), s.itemDummy);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }

@@ -10,7 +10,7 @@ public class CatalogueofWant extends Item{
 	static String descrShort = "Cast spells with Hp when low on meter.";
 	public status[] enchantment = new status[1];
 	public CatalogueofWant() {
-		super(2, "Catalogue of Want",false, false, false, false, true, descr, descrShort);
+		super(2, "Catalogue of Want",false, false, false, false,descr, descrShort, 700, 1);
 
 	}
 	
@@ -19,4 +19,7 @@ public class CatalogueofWant extends Item{
 		return enchantment;
 	}
 	
+	public boolean isLegendary(){
+		return true;
+	}
 }

@@ -11,7 +11,7 @@ public class DeadMansHand extends Item{
 	static String descrShort = "Haunts enemies when user is dead.";
 	public status[] enchantment = new status[2];
 	public DeadMansHand() {
-		super(2, "Dead Man's Hand",false, false, false, false, true, descr, descrShort);
+		super(2, "Dead Man's Hand",false, false, false, false, descr, descrShort,850, 1);
 
 	}
 	
@@ -21,5 +21,7 @@ public class DeadMansHand extends Item{
 		return enchantment;
 	}
 
-	
+	public boolean isLegendary(){
+		return true;
+	}
 }

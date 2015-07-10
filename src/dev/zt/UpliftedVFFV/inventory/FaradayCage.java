@@ -10,12 +10,16 @@ public class FaradayCage extends Item{
 	static String descrShort="Uses meter to reduce damage.";
 	public status[] enchantment = new status[1];
 	public FaradayCage() {
-		super(2, "Faraday's Cage",false,false,false, false, true, descr, descrShort);
+		super(2, "Faraday's Cage",false,false,false, false,descr, descrShort, 840, 1);
 		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new MeterShield(.3*(1+s.getEquipPow()), s.itemDummy);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }

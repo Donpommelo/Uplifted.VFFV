@@ -8,7 +8,7 @@ public class MentalLeakage extends Item{
 	static String descr="A handful of loose thoughts. You doubt it contains anything useful.";
 	static String descrShort="Restore Mp.";
 	public MentalLeakage() {
-		super(2, "Mental Leakage",true, true, true, true, false,descr, descrShort);
+		super(2, "Mental Leakage",true, true, true, true, descr, descrShort,4,0);
 
 	}
 	

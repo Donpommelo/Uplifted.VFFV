@@ -10,7 +10,7 @@ public class CactusSuit extends Item{
 	static String descrShort="Reflects damage against foes.";
 	public status[] enchantment = new status[1];
 	public CactusSuit() {
-		super(2, "Cactus Suit",false,false,false, false, true, descr, descrShort);
+		super(2, "Cactus Suit",false,false,false, false,descr, descrShort, 85, 1);
 		
 	}
 	

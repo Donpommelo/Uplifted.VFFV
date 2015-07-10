@@ -10,7 +10,7 @@ public class CursedCilice extends Item{
 	static String descrShort="Regains meter when taking damage.";
 	public status[] enchantment = new status[1];
 	public CursedCilice() {
-		super(2, "Cursed Cilice",false,false,false, false, true, descr, descrShort);
+		super(2, "Cursed Cilice",false,false,false, false, descr, descrShort, 200, 1);
 		
 	}
 	

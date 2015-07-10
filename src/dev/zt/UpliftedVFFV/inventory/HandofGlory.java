@@ -10,7 +10,7 @@ public class HandofGlory extends Item{
 	static String descrShort = "Sometimes stuns enemies.";
 	public status[] enchantment = new status[1];
 	public HandofGlory() {
-		super(2, "Hand of Glory",false, false, false, false, true, descr, descrShort);
+		super(2, "Hand of Glory",false, false, false, false,descr, descrShort,800,1);
 
 	}
 	
@@ -18,6 +18,9 @@ public class HandofGlory extends Item{
 		enchantment[0] = new HoGStatus(s.getItemDummy(),5);
 		return enchantment;
 	}
-
+	
+	public boolean isLegendary(){
+		return true;
+	}
 	
 }

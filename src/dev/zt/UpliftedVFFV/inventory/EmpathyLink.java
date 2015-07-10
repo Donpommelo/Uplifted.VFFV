@@ -10,7 +10,7 @@ public class EmpathyLink extends Item{
 	static String descrShort = "Equalizes the Hp of living allies after every round.";
 	public status[] enchantment = new status[1];
 	public EmpathyLink() {
-		super(2, "Empathy Link",false, false, false, false, true, descr, descrShort);
+		super(2, "Empathy Link",false, false, false, false,descr, descrShort, 1000, 1);
 
 	}
 	
@@ -18,6 +18,9 @@ public class EmpathyLink extends Item{
 		enchantment[0] = new EmpathyLinkStatus(s.getItemDummy(),5);
 		return enchantment;
 	}
-
+	
+	public boolean isLegendary(){
+		return true;
+	}
 	
 }

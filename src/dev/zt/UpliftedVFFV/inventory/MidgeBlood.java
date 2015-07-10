@@ -9,7 +9,7 @@ public class MidgeBlood extends Item{
 	static String descr="Blood from a midge could really be anybody¡¦s.";
 	static String descrShort="Regenerate Hp over time.";
 	public MidgeBlood() {
-		super(2, "Midge Blood",true, true, true, true, false,descr, descrShort);
+		super(2, "Midge Blood",true, true, true, true, descr, descrShort,3,0);
 
 	}
 	

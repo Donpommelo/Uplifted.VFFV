@@ -236,7 +236,7 @@ public class MenuState extends State {
 						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
 						Item[] itemDisplay= temp.toArray(new Item[27]);
 						itemDisplay[itemSelected].use(gamestate.partymanager.party.get(characterSelected));
-						if(itemDisplay[itemSelected].consummable){
+						if(itemDisplay[itemSelected].isConsummable()){
 							gamestate.inventorymanager.use(itemDisplay[itemSelected]);
 						}
 						exit = true;
@@ -384,17 +384,17 @@ public class MenuState extends State {
 						Item[] itemDisplay= temp.toArray(new Item[27]);
 						switch(itemOption){
 						case 0:
-							if(itemDisplay[itemSelected].usedfromMenu){
+							if(itemDisplay[itemSelected].isUsedfromMenu()){
 								if(itemDisplay[itemSelected].targeted){
 									useitemChosen = true;
 								}
 								else{
-									itemDisplay[itemSelected].use(null,null);
+									itemDisplay[itemSelected].use();
 								}
 							}
 							break;
 						case 1:
-							if(itemDisplay[itemSelected].equipable){
+							if(itemDisplay[itemSelected].getSlot() == 1){
 								equipChosen = true;
 							}
 							break;

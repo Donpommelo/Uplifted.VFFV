@@ -8,7 +8,7 @@ public class FennelDonut extends Item{
 	static String descr="Mick always had the worst taste in donuts.";
 	static String descrShort="Restore Hp.";
 	public FennelDonut() {
-		super(2, "Fennel Off-Gazpacho Donut", true,true,true, true, false,descr, descrShort);
+		super(2, "Fennel Off-Gazpacho Donut", true,true,true, true,descr, descrShort, 5, 0);
 
 	}
 		

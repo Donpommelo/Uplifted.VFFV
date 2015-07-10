@@ -8,7 +8,7 @@ public class MeltedIcecream extends Item{
 	static String descr="A bottle of lukewarm cream soda.";
 	static String descrShort="Restore Hp.";
 	public MeltedIcecream() {
-		super(2, "Melted Ice Cream",true, true, true, true, false,descr, descrShort);
+		super(2, "Melted Ice Cream",true, true, true, true,descr, descrShort,18,0);
 
 	}
 	

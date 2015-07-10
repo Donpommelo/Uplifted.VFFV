@@ -8,7 +8,7 @@ public class FishWater extends Item{
 	static String descr="Water from the Fourth Floor Aquarium. It smells fishy.";
 	static String descrShort="Damage target.";
 	public FishWater() {
-		super(2, "Fish Water",false, true, true, true, false,descr, descrShort);
+		super(2, "Fish Water",false, true, true, true,descr, descrShort, 2, 2);
 
 	}
 	
@@ -28,6 +28,10 @@ public class FishWater extends Item{
 	}
 	
 	public boolean startTeamTarget(){
+		return false;
+	}
+	
+	public boolean isLegendary(){
 		return false;
 	}
 

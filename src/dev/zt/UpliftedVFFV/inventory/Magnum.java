@@ -12,7 +12,7 @@ public class Magnum extends Item{
 	static Skills test = new FireMagnum(0);
 	public status[] enchantment = new status[0];
 	public Magnum() {
-		super(2, "Magnum",false,false,false, false, true, descr, descrShort);
+		super(2, "Magnum",false,false,false, false,descr, descrShort,200,1);
 		
 	}
 	
@@ -22,7 +22,10 @@ public class Magnum extends Item{
 	}
 	
 	public void unEnchantment(Schmuck s) {
-		s.forgetSkill(test);
-		
+		s.forgetSkill(test);		
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }

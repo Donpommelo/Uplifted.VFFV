@@ -9,7 +9,7 @@ public class CoffeeBean extends Item{
 	static String descr="A fragrant, roasted coffee bean.";
 	static String descrShort="Restore Mp and damage.";
 	public CoffeeBean() {
-		super(2, "Roasted Coffee Bean",true,  true, true, true, false,descr, descrShort);
+		super(2, "Roasted Coffee Bean",true,  true, true, true,descr, descrShort, 6, 0);
 
 	}
 	

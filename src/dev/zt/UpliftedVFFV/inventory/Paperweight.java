@@ -10,7 +10,7 @@ public class Paperweight extends Item{
 	static String descrShort="Def+3";
 	public status[] enchantment = new status[1];
 	public Paperweight() {
-		super(4, "Paperweight",false,false,false,false, true, descr, descrShort);
+		super(4, "Paperweight",false,false,false,false,descr, descrShort,30,1);
 		
 
 	}

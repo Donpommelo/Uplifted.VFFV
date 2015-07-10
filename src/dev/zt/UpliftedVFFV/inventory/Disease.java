@@ -9,7 +9,7 @@ public class Disease extends Item{
 	static String descr="A handful of some ambiguous illness.";
 	static String descrShort="Poisons target.";
 	public Disease() {
-		super(2, "Disease",false, true, true, true, false,descr, descrShort);
+		super(2, "Disease",false, true, true, true,descr, descrShort, 3, 2);
 
 	}
 	

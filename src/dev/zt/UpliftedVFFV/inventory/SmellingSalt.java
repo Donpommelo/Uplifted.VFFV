@@ -9,7 +9,7 @@ public class SmellingSalt extends Item{
 	static String descr="A package of chemicals used in reviving overworked or dead coworkers.";
 	static String descrShort="Revives target.";
 	public SmellingSalt() {
-		super(2, "Smellingsalt",true, true, true, true, false,descr, descrShort);
+		super(2, "Smellingsalt",true, true, true, true,descr, descrShort,35,0);
 
 	}
 	

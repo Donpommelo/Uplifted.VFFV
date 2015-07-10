@@ -10,7 +10,7 @@ public class MiracleCure extends Item{
 	static String descrShort = "Sometimes cures user of negative status.";
 	public status[] enchantment = new status[1];
 	public MiracleCure() {
-		super(2, "Miracle Cure",false, false, false, false, true, descr, descrShort);
+		super(2, "Miracle Cure",false, false, false, false,descr, descrShort,320,1);
 
 	}
 	

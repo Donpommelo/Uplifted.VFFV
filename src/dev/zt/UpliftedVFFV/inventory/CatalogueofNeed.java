@@ -10,13 +10,17 @@ public class CatalogueofNeed extends Item{
 	static String descrShort = "Uses meter to prevent lethal damage.";
 	public status[] enchantment = new status[1];
 	public CatalogueofNeed() {
-		super(2, "Catalogue of Need",false, false, false, false, true, descr, descrShort);
+		super(2, "Catalogue of Need",false, false, false, false, descr, descrShort, 700, 1);
 
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new CatoNeedStatus(s.getItemDummy(),100);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 	
 }

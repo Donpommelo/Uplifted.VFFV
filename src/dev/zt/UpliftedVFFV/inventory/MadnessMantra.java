@@ -10,7 +10,7 @@ public class MadnessMantra extends Item{
 	static String descrShort = "Buffs Pow and Spd when repeating moves.";
 	public status[] enchantment = new status[1];
 	public MadnessMantra() {
-		super(2, "Madness Mantra",false, false, false, false, true, descr, descrShort);
+		super(2, "Madness Mantra",false, false, false, false,descr, descrShort, 500,1);
 
 	}
 	
@@ -18,6 +18,9 @@ public class MadnessMantra extends Item{
 		enchantment[0] = new MadnessMantraStatus(s.getItemDummy(),75);
 		return enchantment;
 	}
-
+	
+	public boolean isLegendary(){
+		return true;
+	}
 	
 }

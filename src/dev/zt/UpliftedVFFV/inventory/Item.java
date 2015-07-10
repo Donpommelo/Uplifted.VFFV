@@ -13,37 +13,42 @@ public class Item implements Comparable<Item>{
 	public BufferedImage ItemSprite;
 	public String name,descr,descrShort;
 	public int Id;
-	public Boolean usedfromMenu,usefromBattle, consummable, targeted, equipable = true;
+	public int value;
 	
-	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, Boolean equip, String description, String descrShort){
+	public String janatorText;
+	
+	//0: Consummable 1: Equipment 2: Misc 3: Key Item
+	public int slot;
+	public Boolean usedfromMenu,usefromBattle, consummable, targeted = true;
+	
+	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, String description,String descrShort,
+			int value, int slot){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
 		this.usefromBattle=battle;
 		this.consummable = consume;
 		this.targeted = target;
-		this.equipable = equip;
 		this.descr=description;
 		this.descrShort = descrShort;
+		this.value = value;
+		this.slot = slot;
 	}	
 
-	public Item(int id,String name){
-		this.Id=id;
-		this.name=name;
-		this.usedfromMenu=false;
-		this.usefromBattle=false;
-	}
-
-
 	//ran when an item is used. Every item will override this method with whatever effect it has,
-	public void use(Schmuck perp, Schmuck vic){
+	
+	//Nontargeted item used from menu
+	public void use(){
 
 	}
 	
+	
+	//targeted item used in battle
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 
 	}
 	
+	//targeted item used from menu
 	public void use(Schmuck s){
 
 	}
@@ -71,30 +76,20 @@ public class Item implements Comparable<Item>{
 	public int compareTo(Item obj) {
 		 return this.name.compareTo(obj.name);
 	}
-	
-	//text displayed when used. Atm only used from Battlestate.
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
+		
 	public boolean startTeamTarget(){
 		return true;
 	}
 	
-	public Boolean getUsedfromMenu() {
+	public Boolean isUsedfromMenu() {
 		return usedfromMenu;
 	}
 
-	public Boolean getUsefromBattle() {
+	public Boolean isUsefromBattle() {
 		return usefromBattle;
 	}
 
-
-	public Boolean getConsummable() {
+	public Boolean isConsummable() {
 		return consummable;
 	}
 	
@@ -109,5 +104,43 @@ public class Item implements Comparable<Item>{
 	public void TOQChange(Action a, BattleState bs){
 		
 	}
-
+	
+	public boolean isLegendary(){
+		return false;
+	}
+	
+	public int value(){
+		return value;
+	}
+	
+	public int getSlot(){
+		return slot;
+	}
+	
+	public boolean isSellable(){
+		return true;
+	}
+	
+	public String getJanitorText(Item i){
+		int rand = (int)(Math.random()*7);
+		String text = "";
+		switch(rand){
+		case 0:
+			text = "Ah, "+i.getName()+"s. That could be useful, I suppose.";
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		}
+		return text;
+	}
 }
