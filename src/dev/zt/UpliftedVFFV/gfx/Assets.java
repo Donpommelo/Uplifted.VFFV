@@ -43,11 +43,11 @@ public class Assets {
 		SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorFloor.png"));
 		SpriteSheet walls = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorWalls.png"));
 		SpriteSheet prop=new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorProps.png"));
-		SpriteSheet arrows=new SpriteSheet(ImageLoader.loadImage("/textures/WindowPaper.png"));
+		SpriteSheet arrowup = new SpriteSheet(ImageLoader.loadImage("/ui/Arrow.png"));
+		SpriteSheet arrowdown = new SpriteSheet(ImageLoader.loadImage("/ui/ArrowDown.png"));
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
-		//SpriteSheet gauges = new SpriteSheet(ImageLoader.loadImage("/ui/PlayerGauge.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
 		
@@ -144,8 +144,8 @@ public class Assets {
 		SinkMirror = Furniture3rdFloor.crop(5*width, 5*height, width, height*2);
 		
 		//arrows and stuff
-		Uparrow=arrows.crop(90,12,12,12);
-		Downarrow=arrows.crop(90,40,12,12);
+		Uparrow = arrowup.crop(0, 0 ,32, 32);
+		Downarrow = arrowdown.crop(0, 0 ,32, 32);
 		
 		//skill+item mini-icons
 		

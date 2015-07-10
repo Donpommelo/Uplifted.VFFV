@@ -46,10 +46,13 @@ public class Utils {
 	
 /*****UTILS FOR MENU DRAWING*****/	
 
+	//Size of cuts, make smaller for more precision. Values <16 or >64 will probably break things.
+	private static int squareSize = 16;
+	
 	//Wrapper for drawImage that draws a scalable menu background.
 	/* Parameters:
 	 * 	g - Graphics object
-	 * 	window - Name of menu texture. Texture should be a 128 x 160 image divided into 4 64 x 64 sections 
+	 * 	window - Name of menu texture. Texture should be a 128 x 160 image divided into 4 squareSize x squareSize sections 
 	 * 		and with a 128 x 32 cursor texture at the bottom.
 	 *  options - List of menu options to display. Size/font not currently adjustable (Default font size 18).
 	 *  fontColor - Color of options.
@@ -59,29 +62,30 @@ public class Utils {
 	 * 	width - Width of window to be drawn.
 	 * 	height - Height of window to be drawn.
 	 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
+	 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 	 */
 	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor, int cursor, 
-			int x, int y, int width, int height, boolean priority){
+			int x, int y, int width, int height, boolean priority, boolean drawCursor){
 		
 		Graphics2D g2d = (Graphics2D) g;
 		//Load texture and cut into subsections.
 		SpriteSheet texture = new SpriteSheet(window);		
-		BufferedImage upperleft = texture.crop(0, 0, 64, 64);
-		BufferedImage centerleft = texture.crop(0, 32, 64, 64);
-		BufferedImage lowerleft = texture.crop(0, 64, 64, 64);
-		BufferedImage uppercenter = texture.crop(32, 0, 64, 64);
-		BufferedImage centercenter = texture.crop(32, 32, 64, 64);
-		BufferedImage lowercenter = texture.crop(32, 64, 64, 64);
-		BufferedImage upperright = texture.crop(64, 0, 64, 64);
-		BufferedImage centerright = texture.crop(64, 32, 64, 64);
-		BufferedImage lowerright = texture.crop(64, 64, 64, 64);
-		BufferedImage cursorLeft = texture.crop(0, 128, 64, 32);
-		BufferedImage cursorCenter = texture.crop(32, 128, 64, 32);
-		BufferedImage cursorRight = texture.crop(64, 128, 64, 32);
+		BufferedImage upperleft = texture.crop(0, 0, squareSize, squareSize);
+		BufferedImage centerleft = texture.crop(0, 32, squareSize, squareSize);
+		BufferedImage lowerleft = texture.crop(0, 128 - squareSize, squareSize, squareSize);
+		BufferedImage uppercenter = texture.crop(32, 0, squareSize, squareSize);
+		BufferedImage centercenter = texture.crop(32, 32, squareSize, squareSize);
+		BufferedImage lowercenter = texture.crop(32, 128 - squareSize, squareSize, squareSize);
+		BufferedImage upperright = texture.crop(128 - squareSize, 0, squareSize, squareSize);
+		BufferedImage centerright = texture.crop(128 - squareSize, 32, squareSize, squareSize);
+		BufferedImage lowerright = texture.crop(128 - squareSize, 128 - squareSize, squareSize, squareSize);
+		BufferedImage cursorLeft = texture.crop(0, 128, squareSize, 32);
+		BufferedImage cursorCenter = texture.crop(32, 128, squareSize, 32);
+		BufferedImage cursorRight = texture.crop(128 - squareSize, 128, squareSize, 32);
 		
 		//Calculate menu size from width and height (round up).
-		int xsquares = (width / 64) + 1;
-		int ysquares = (height / 64) + 1;
+		int xsquares = (width / squareSize) + 1;
+		int ysquares = (height / squareSize) + 1;
 		
 		//Set transparency according to priority.
 		if(!priority){
@@ -94,43 +98,73 @@ public class Utils {
 				//Determine subsection to draw.
 				if(i == 0 && j == 0){
 					//Upper Left.
-					g2d.drawImage(upperleft, x + i * 64, y + j * 64, null);
+					g2d.drawImage(upperleft, x + i * squareSize, y + j * squareSize, null);
 				} else if(i == xsquares - 1 && j == 0){
 					//Upper Right.
-					g2d.drawImage(upperright, x + i * 64, y + j * 64, null);
+					g2d.drawImage(upperright, x + i * squareSize, y + j * squareSize, null);
 				} else if(i == 0 && j == ysquares - 1){
 					//Lower Left.
-					g2d.drawImage(lowerleft, x + i * 64, y + j * 64, null);
+					g2d.drawImage(lowerleft, x + i * squareSize, y + j * squareSize, null);
 				} else if(i == xsquares - 1 && j == ysquares - 1){
 					//Lower Right.
-					g2d.drawImage(lowerright, x + i * 64, y + j * 64, null);
+					g2d.drawImage(lowerright, x + i * squareSize, y + j * squareSize, null);
 				} else if(j == 0){
 					//Upper edge.
-					g2d.drawImage(uppercenter, x + i * 64, y + j * 64, null);
+					g2d.drawImage(uppercenter, x + i * squareSize, y + j * squareSize, null);
 				} else if (j == ysquares - 1){
 					//Lower edge.
-					g2d.drawImage(lowercenter, x + i * 64, y + j * 64, null);
+					g2d.drawImage(lowercenter, x + i * squareSize, y + j * squareSize, null);
 				} else if (i == 0){
 					//Left edge.
-					g2d.drawImage(centerleft, x + i * 64, y + j * 64, null);
+					g2d.drawImage(centerleft, x + i * squareSize, y + j * squareSize, null);
 				} else if(i == xsquares - 1){
 					//Right edge.
-					g2d.drawImage(centerright, x + i * 64, y + j * 64, null);
+					g2d.drawImage(centerright, x + i * squareSize, y + j * squareSize, null);
 				} else{
 					//Interior.
-					g2d.drawImage(centercenter, x + i * 64, y + j * 64, null);
+					g2d.drawImage(centercenter, x + i * squareSize, y + j * squareSize, null);
 				}
+				
+			}
+		}
+		
+		//Account for short menus.
+		if(xsquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x + squareSize, y, null);
+			//Lower Right.
+			g2d.drawImage(lowerright, x + squareSize, y + squareSize * (ysquares - 1), null);
+			//Right edge.
+			for(int i = 1; i < ysquares - 1; i++){
+				g2d.drawImage(centerright, x + squareSize, y + squareSize * i, null);
+			}
+		}
+		if(ysquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x, y + squareSize, null);
+			//Lower edge.
+			g2d.drawImage(lowerright, x + squareSize * (xsquares - 1), y + squareSize, null);
+			//Lower Right.
+			for(int j = 1; j < xsquares - 1; j++){
+				g2d.drawImage(lowercenter, x + squareSize * j, y + squareSize, null);
 			}
 		}
 		
 		//Draw Cursor at index cursor.
-		for(int i = 0; i < xsquares; i++){
-			if(i == 0){
-				g2d.drawImage(cursorLeft, x, y + 12 + 25 * cursor, null);
-			} else if(i == xsquares - 1){
-				g2d.drawImage(cursorRight, x + 128, y + 12 + 25 * cursor, null);
-			} else{
-				g2d.drawImage(cursorCenter, x + 64, y + 12 + 25 * cursor, null);
+		if(drawCursor){
+			for(int i = 0; i < xsquares; i++){
+				if(i == 0){
+					g2d.drawImage(cursorLeft, x, y + 12 + 25 * cursor, null);
+				} else if(i == xsquares - 1){
+					//Account for narrow menus.
+					if(xsquares > 2){
+						g2d.drawImage(cursorRight, x + squareSize * (xsquares - 1), y + 12 + 25 * cursor, null);
+					} else{
+						g2d.drawImage(cursorRight, x + squareSize, y + 12 + 25 * cursor, null);
+					}
+				} else{
+					g2d.drawImage(cursorCenter, x + squareSize * i, y + 12 + 25 * cursor, null);
+				}
 			}
 		}
 		
@@ -166,16 +200,192 @@ public class Utils {
 	//Wrapper for drawImage that draws a dialogue box.
 	/* Parameters:
 	 * 	g - Graphics object
-	 *	window - Name of menu texture. Texture should be a 128 x 128 image divided into 4 64 x 64 sections.
-	 *	textSource - ?
+	 *	window - Name of menu texture. Texture should be a 128 x 128 image divided into 4 squareSize x squareSize sections.
+	 *	text - Text to display inside the box.
 	 *  fontColor - Color of text.
 	 *  x - x coordinate of upper right box corner.
 	 *  y - y coordinate of upper right box corner.
 	 * 	width - Width of box to be drawn.
 	 * 	height - Height of box to be drawn.
+	 * 	priority - Window focus. If not in focus, the box is drawn transparently.
 	 */
-	public static void drawDialogue(Graphics g, BufferedImage window, String[] options, Color fontColor, int x, int y, int width, int height){
+	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int x, int y, int width, int height, 
+			boolean priority){
+		Graphics2D g2d = (Graphics2D) g;
+		//Load texture and cut into subsections.
+		SpriteSheet texture = new SpriteSheet(window);		
+		BufferedImage upperleft = texture.crop(0, 0, squareSize, squareSize);
+		BufferedImage centerleft = texture.crop(0, 32, squareSize, squareSize);
+		BufferedImage lowerleft = texture.crop(0, 128 - squareSize, squareSize, squareSize);
+		BufferedImage uppercenter = texture.crop(32, 0, squareSize, squareSize);
+		BufferedImage centercenter = texture.crop(32, 32, squareSize, squareSize);
+		BufferedImage lowercenter = texture.crop(32, 128 - squareSize, squareSize, squareSize);
+		BufferedImage upperright = texture.crop(128 - squareSize, 0, squareSize, squareSize);
+		BufferedImage centerright = texture.crop(128 - squareSize, 32, squareSize, squareSize);
+		BufferedImage lowerright = texture.crop(128 - squareSize, 128 - squareSize, squareSize, squareSize);
 		
+		//Calculate menu size from width and height (round up).
+		int xsquares = (width / squareSize) + 1;
+		int ysquares = (height / squareSize) + 1;
+		
+		//Set transparency according to priority.
+		if(!priority){
+			 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+		}
+		
+		//Draw box.
+		for(int i = 0; i < xsquares; i++){
+			for(int j = 0; j < ysquares; j++){
+				//Determine subsection to draw.
+				if(i == 0 && j == 0){
+					//Upper Left.
+					g2d.drawImage(upperleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1 && j == 0){
+					//Upper Right.
+					g2d.drawImage(upperright, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == 0 && j == ysquares - 1){
+					//Lower Left.
+					g2d.drawImage(lowerleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1 && j == ysquares - 1){
+					//Lower Right.
+					g2d.drawImage(lowerright, x + i * squareSize, y + j * squareSize, null);
+				} else if(j == 0){
+					//Upper edge.
+					g2d.drawImage(uppercenter, x + i * squareSize, y + j * squareSize, null);
+				} else if (j == ysquares - 1){
+					//Lower edge.
+					g2d.drawImage(lowercenter, x + i * squareSize, y + j * squareSize, null);
+				} else if (i == 0){
+					//Left edge.
+					g2d.drawImage(centerleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1){
+					//Right edge.
+					g2d.drawImage(centerright, x + i * squareSize, y + j * squareSize, null);
+				} else{
+					//Interior.
+					g2d.drawImage(centercenter, x + i * squareSize, y + j * squareSize, null);
+				}
+			}
+		}
+		
+		//Account for small boxes.
+		if(xsquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x + squareSize, y, null);
+			//Lower Right.
+			g2d.drawImage(lowerright, x + squareSize, y + squareSize * (ysquares - 1), null);
+			//Right edge.
+			for(int i = 1; i < ysquares - 1; i++){
+				g2d.drawImage(centerright, x + squareSize, y + squareSize * i, null);
+			}
+		}
+		if(ysquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x, y + squareSize, null);
+			//Lower edge.
+			g2d.drawImage(lowerright, x + squareSize * (xsquares - 1), y + squareSize, null);
+			//Lower Right.
+			for(int j = 1; j < xsquares - 1; j++){
+				g2d.drawImage(lowercenter, x + squareSize * j, y + squareSize, null);
+			}
+		}
+		
+		//Draw text.
+		g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g2d.setColor(Color.BLACK);
+		g2d.drawString(text, x + 12, y + 25);
+		
+	}
+	
+	//Wrapper for drawImage that draws a cursor. Pretty much like drawDialogueBox.
+	/* Parameters:
+	 * 	g - Graphics object
+	 *	window - Name of menu texture. Texture should be a 128 x 128 image divided into 4 squareSize x squareSize sections.
+	 *  x - x coordinate of upper right box corner.
+	 *  y - y coordinate of upper right box corner.
+	 * 	width - Width of box to be drawn.
+	 * 	height - Height of box to be drawn.
+	 *	priority - Window focus. If not in focus, the box is drawn transparently.
+	 */
+	public static void drawCursor(Graphics g, BufferedImage window, int x, int y, int width, int height, boolean priority){
+		Graphics2D g2d = (Graphics2D) g;
+		//Load texture and cut into subsections.
+		SpriteSheet texture = new SpriteSheet(window);		
+		BufferedImage upperleft = texture.crop(0, 0, squareSize, squareSize);
+		BufferedImage centerleft = texture.crop(0, 32, squareSize, squareSize);
+		BufferedImage lowerleft = texture.crop(0, 128 - squareSize, squareSize, squareSize);
+		BufferedImage uppercenter = texture.crop(32, 0, squareSize, squareSize);
+		BufferedImage centercenter = texture.crop(32, 32, squareSize, squareSize);
+		BufferedImage lowercenter = texture.crop(32, 128 - squareSize, squareSize, squareSize);
+		BufferedImage upperright = texture.crop(128 - squareSize, 0, squareSize, squareSize);
+		BufferedImage centerright = texture.crop(128 - squareSize, 32, squareSize, squareSize);
+		BufferedImage lowerright = texture.crop(128 - squareSize, 128 - squareSize, squareSize, squareSize);
+		
+		//Calculate menu size from width and height (round up).
+		int xsquares = (width / squareSize) + 1;
+		int ysquares = (height / squareSize) + 1;
+		
+		//Set transparency according to priority.
+		if(!priority){
+			 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+		}
+		
+		//Draw box.
+		for(int i = 0; i < xsquares; i++){
+			for(int j = 0; j < ysquares; j++){
+				//Determine subsection to draw.
+				if(i == 0 && j == 0){
+					//Upper Left.
+					g2d.drawImage(upperleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1 && j == 0){
+					//Upper Right.
+					g2d.drawImage(upperright, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == 0 && j == ysquares - 1){
+					//Lower Left.
+					g2d.drawImage(lowerleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1 && j == ysquares - 1){
+					//Lower Right.
+					g2d.drawImage(lowerright, x + i * squareSize, y + j * squareSize, null);
+				} else if(j == 0){
+					//Upper edge.
+					g2d.drawImage(uppercenter, x + i * squareSize, y + j * squareSize, null);
+				} else if (j == ysquares - 1){
+					//Lower edge.
+					g2d.drawImage(lowercenter, x + i * squareSize, y + j * squareSize, null);
+				} else if (i == 0){
+					//Left edge.
+					g2d.drawImage(centerleft, x + i * squareSize, y + j * squareSize, null);
+				} else if(i == xsquares - 1){
+					//Right edge.
+					g2d.drawImage(centerright, x + i * squareSize, y + j * squareSize, null);
+				} else{
+					//Interior.
+					g2d.drawImage(centercenter, x + i * squareSize, y + j * squareSize, null);
+				}
+			}
+		}
+		
+		//Account for small boxes.
+		if(xsquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x + squareSize, y, null);
+			//Lower Right.
+			g2d.drawImage(lowerright, x + squareSize, y + squareSize * (ysquares - 1), null);
+			//Right edge.
+			for(int i = 1; i < ysquares - 1; i++){
+				g2d.drawImage(centerright, x + squareSize, y + squareSize * i, null);
+			}
+		}
+		if(ysquares == 1){
+			//Lower Left.
+			g2d.drawImage(lowerleft, x, y + squareSize, null);
+			//Lower edge.
+			g2d.drawImage(lowerright, x + squareSize * (xsquares - 1), y + squareSize, null);
+			//Lower Right.
+			for(int j = 1; j < xsquares - 1; j++){
+				g2d.drawImage(lowercenter, x + squareSize * j, y + squareSize, null);
+			}
+		}
 	}
 	
 	//Wrapper for drawImage that draws a menu for the shop interface.

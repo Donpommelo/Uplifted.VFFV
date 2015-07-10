@@ -464,31 +464,34 @@ public class MenuState extends State {
 //		g.drawString("Directory", 10, 100);
 //		g.drawString("Objectives", 10, 125);
 //		g.drawString("Quit", 10, 150);
-//		g.drawString(gamestate.Script+" Script", 10, 400);
 		
-		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit", 
-				gamestate.Script + " Script"};
-		Utils.drawMenu(g, window, options, Color.black, optionSelected, 5, 5, 125, 406, optionChosen);
+		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
+		Utils.drawMenu(g, window, options, Color.black, optionSelected, 5, 20, 125, 380, !optionChosen, true);
+		g.drawString(gamestate.Script + " Script", 25, 390);
 		
-			switch(optionSelected){
+		switch(optionSelected){
 			case 0:
-				if(optionChosen==false){
-					g.setColor(new Color(160, 160,160));
+//				if(optionChosen==false){
+//					g.setColor(new Color(160, 160,160));
+//				}
+//				else{
+//					g.setColor(new Color(255, 255,51));
+//				}
+//				g.fillRect(135, 5,500,160);
+//				g.fillRect(135, 170, 500, 241);
+				
+				//Manually draw party names and portraits.
+				Utils.drawDialogueBox(g, window, "", 135, 5, 480, 150, optionChosen);
+				for(int i = 0; i < gamestate.partymanager.party.size(); i++){
+					g.drawString(gamestate.partymanager.party.get(i).getName(), 150 + 100 * i, 30);
+					g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(), 130 + 100 * i, 15, 100, 150, null);
 				}
-				else{
-					g.setColor(new Color(255, 255,51));
-				}
-				g.fillRect(135, 5,500,160);
-				g.fillRect(135, 170, 500, 241);
-				for(int i=0;i<gamestate.partymanager.party.size();i++){
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
-				g.setColor(new Color(0, 0,0));
-				g.drawString(gamestate.partymanager.party.get(i).getName(), 150+100*i, 30);
-				g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(),130+100*i,15,100,150,null);
-				}
-				g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(140, 175, 150, 225);
+				//Draw custom Cursor.
+				g.drawImage(Assets.Downarrow, 180+characterSelected * 100, 5, null);
+				
+//				g.setColor(new Color(102, 178,255));
+//				g.fillRect(140, 175, 150, 225);
+				Utils.drawDialogueBox(g, window, "", 135, 170, 480, 225, optionChosen);
 				Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
 				g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
 				g.setColor(new Color(0, 0,0));
@@ -558,14 +561,16 @@ public class MenuState extends State {
 				
 				break;
 			case 1:
-				if(optionChosen==false){
-					g.setColor(new Color(160, 160,160));
-				}
-				else{
-					g.setColor(new Color(255, 255,51));
-				}
-				g.fillRect(135, 5,500,160);
-				g.fillRect(135, 170, 500, 240);
+//				if(optionChosen==false){
+//					g.setColor(new Color(160, 160,160));
+//				}
+//				else{
+//					g.setColor(new Color(255, 255,51));
+//				}
+//				g.fillRect(135, 5,500,160);
+//				g.fillRect(135, 170, 500, 240);
+				Utils.drawDialogueBox(g, window, "", 135, 5, 480, 150, optionChosen);
+				Utils.drawDialogueBox(g, window, "", 135, 170, 480, 225, optionChosen);
 				Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
 				Item[] itemDisplay= temp.toArray(new Item[27]);
 				if(itemDisplay[itemSelected]!=null){

@@ -1,21 +1,12 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
+
 import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.concurrent.TimeUnit;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 //DialogState. This controls which dialog is displayed
 public class DialogState extends State {
@@ -23,6 +14,8 @@ public class DialogState extends State {
 	private StateManager statemanager;
 	private int linenum,endline;
 	private Dialog current;
+	private int yoffset, ybob;
+	private boolean yrise;
 	public int EventId;
 	
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
@@ -31,6 +24,9 @@ public class DialogState extends State {
 		this.linenum=start;
 		this.endline=end;
 		this.EventId=eventId;
+		this.yoffset = 0;
+		this.ybob = 3;
+		this.yrise = false;
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 
@@ -78,7 +74,7 @@ public class DialogState extends State {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				}
+			}
 			
 		}	
 			
@@ -98,11 +94,20 @@ public class DialogState extends State {
 			}
 			
 		if(Dialog.scrolling==false){
-			g.drawImage(Assets.Downarrow, 315, 410, null);
-		}
-		
-		
-		
+			g.drawImage(Assets.Downarrow, 320 - Assets.Downarrow.getWidth() / 2, 416 - Assets.Downarrow.getHeight() + yoffset, null);
+			//Edit y offsets for animation.
+			if(yrise){
+				yoffset--;
+				if (yoffset <= -ybob){
+					yrise = false;
+				}
+			} else{
+				yoffset++;
+				if (yoffset >= ybob){
+					yrise = true;
+				}
+			}
+		}		
 		
 	}
 
