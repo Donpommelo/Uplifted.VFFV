@@ -57,6 +57,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.CutsceneState;
 import dev.zt.UpliftedVFFV.states.DialogState;
+import dev.zt.UpliftedVFFV.states.ElevatorChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.ShoppingState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -458,6 +459,16 @@ public class Event{
 	
 	public static void ChoiceBranch(int EventId,String[] choices, int width){
 		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices,width));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
+
+	}
+	
+	public static void ElevatorChoiceBranch(int EventId,String[] choices, int width){
+		StateManager.states.push(new ElevatorChoiceBranchState(game,statemanager,EventId,choices));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

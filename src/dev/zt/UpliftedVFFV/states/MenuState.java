@@ -19,7 +19,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 //This displays info about party, inventory and everything else later.
 public class MenuState extends State {
 	
-	private BufferedImage testImage, window, itemWindow;
+	private BufferedImage testImage, window, window2;
 	private GameState gamestate;
 	private int optionSelected,characterSelected,itemSelected,itemPointer,backpackLocation, skillSelected, skillPointer,skillLocation;
 	private int itemnum, itemOption, itemslot;
@@ -31,7 +31,7 @@ public class MenuState extends State {
 		super(game, sm);
 		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
-		itemWindow = ImageLoader.loadImage("/ui/Window/WindowWhite.png");
+		window2 = ImageLoader.loadImage("/ui/Window/WindowWhite.png");
 		this.gamestate=gs;
 		optionSelected=0;
 		optionChosen=false;
@@ -458,27 +458,28 @@ public class MenuState extends State {
 			case 0:
 			
 			//Manually draw party names and portraits.
-			Utils.drawDialogueBox(g, window, "", 18, 135, 5, 480, 150, optionChosen);
+			Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 5, 480, 150, optionChosen);
 			//Draw custom Cursor.
-//			g.drawImage(Assets.Downarrow, 180+characterSelected * 100, 5, null);
-			Utils.drawCursor(g, window, 138 + characterSelected * 100, 12, 100, 128, false);
+			Utils.drawCursor(g, window, 138 + characterSelected * 100, 14, 100, 128, false);
 			for(int i = 0; i < gamestate.partymanager.party.size(); i++){
 				g.drawString(gamestate.partymanager.party.get(i).getName(), 160 + 100 * i, 30);
 				g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(), 144 + 100 * i, 15, 94, 141, null);
 			}
 			
 			//Draw character stats.
-			Utils.drawDialogueBox(g, window, "", 18, 135, 170, 480, 225, optionChosen);
+			Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 170, 480, 225, optionChosen);
 			Schmuck tempSchmuck=gamestate.partymanager.party.get(characterSelected);
+			g.setColor(Color.white);
+			g.fillRect(148, 182, 142, 218);
 			g.drawImage(tempSchmuck.getMenuSprite(), 140, 175, 150, 225, null);
 			g.setColor(Color.black);
 			g.setFont(new Font("Chewy", Font.PLAIN, 12));
-			g.drawString(tempSchmuck.getName() +" Lvl "+tempSchmuck.getLvl(), 300, 194);
-			g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp", 550, 194);
+			g.drawString(tempSchmuck.getName() +" Lvl "+tempSchmuck.getLvl(), 338, 194);
+			g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp", 575, 194);
 			g.setColor(Color.darkGray);
-			g.fillRect(375, 188, 160, 5);
+			g.fillRect(408, 188, 160, 5);
 			g.setColor(Color.green);
-			g.fillRect(375, 188, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+			g.fillRect(408, 188, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
 			g.setColor(Color.black);
 			g.setFont(new Font("Chewy", Font.PLAIN, 18));
 			g.drawString("Hp: ", 300, 220);
@@ -517,84 +518,170 @@ public class MenuState extends State {
 				g.setColor(Color.black);
 			}
 			
-			
-			g.drawString("Equipment", 455, 215);
+			//Alignment.
 			g.setFont(new Font("Chewy", Font.PLAIN, 12));
+			g.fillRect(308, 184, 16, 16);
+			switch((int)tempSchmuck.getElemAlignment()){
+				case 0:
+					g.setColor(Color.white);
+					break;
+				case 1:
+					g.setColor(Color.red);
+					break;
+				case 2:
+					g.setColor(Color.blue);
+					break;	
+				case 3:
+					g.setColor(Color.green);
+					break;	
+				case 4:
+					g.setColor(Color.yellow);
+					break;
+				case 5:
+					g.setColor(Color.magenta);
+					break;
+				case 6:
+					g.setColor(Color.black);
+					break;
+			}
+			g.fillRect(309, 185, 14, 14);
+			
+			//Draw equipped items.
+			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g.setColor(Color.black);
+			g.drawString("Equipment", 455, 235);
 			for(int i = 0; i < tempSchmuck.getItemSlots(); i++){
 				if(tempSchmuck.getItems()[i] == null){
 					g.setColor(Color.black);
-					g.drawString("Nothing", 500, 250 + 40 * i);
-					g.fillRect(450, 230 + i * 40, 36, 36);
+					g.drawString("Nothing", 500, 260 + 40 * i);
+					g.fillRect(450, 240 + i * 40, 36, 36);
 				}
 				else{
 					g.setColor(Color.black);
-					g.drawString(tempSchmuck.getItems()[i].getName(), 500, 250 + 40 * i);
-					g.fillRect(450, 230 + i * 40, 36, 36);
+					g.drawString(tempSchmuck.getItems()[i].getName(), 500, 260 + 40 * i);
+					g.fillRect(450, 240 + i * 40, 36, 36);
 					g.setColor(Color.white);
-					g.fillRect(452, 232 + i * 40, 32, 32);
+					g.fillRect(452, 242 + i * 40, 32, 32);
 				}
 			}
 			
 			//2nd level of character info tab.
 			if(characterChosen==true){
-				g.setColor(new Color(255, 255,51));
-				g.fillRect(135, 5,500,406);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(140, 10, 150, 225);
-				g.drawImage(tempSchmuck.getMenuSprite(), 140, 10,150,225, null);
-				g.setColor(new Color(0, 0,0));
+//				g.setColor(new Color(255, 255,51));
+//				g.fillRect(135, 5,500,406);
+				Utils.drawDialogueBox(g, window, "", 18, Color.black, 132, 5, 496, 384, characterChosen);
+				g.setColor(Color.white);
+				g.fillRect(145, 20, 150, 200);
+				g.drawImage(tempSchmuck.getMenuSprite(), 140, 10, 135, 201, null);
+				g.setColor(Color.black);
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
-				g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),140,25);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(140, 240,250,166);
-				g.fillRect(395, 240,235,166);
-				g.setColor(new Color(0, 0,0));
-				g.drawString("Abilities:", 240, 255);
-				int skillnum=0;                                                                                                                                                                                                                                                                                       
+				g.drawString(tempSchmuck.getName() + " Lvl " + tempSchmuck.getLvl(), 145, 30);
+				
+				//Draw tabs.
+				g.setColor(Color.lightGray);
+				g.fillRect(140, 212, 250, 28);
+				g.setColor(Color.white);
+				for(int i = 0; i < 5; i++){
+					g.fillRect(142 + 50 * i, 214, 46, 24);
+				}
+				g.setColor(Color.black);
+				g.drawString("Skills", 145, 232);
+				
+				//Draw scrolling display options and icons
+				int skillnum = 0;                                                                                                                                                                                                                                                                                       
+				Utils.drawDialogueBox(g, window2, "", 18, Color.black, 140, 240, 250, 150, characterChosen);
 				for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
-					g.drawString(tempSchmuck.skills.get(i).getName()+"  "+(int)(tempSchmuck.skills.get(i).getCost()*(1+tempSchmuck.getMpCost()))+" Mp", 142,275+35*skillnum);
+					g.drawString(tempSchmuck.skills.get(i).getName() + "  " +
+							(int)(tempSchmuck.skills.get(i).getCost() * (1+tempSchmuck.getMpCost())) + " Mp", 
+							150, 274 + 36 * skillnum);
 
 					skillnum++;
 				}	
-				for(int i=0; i<4 && i<tempSchmuck.skills.size();i++){	
-					g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 260+32*i, null);
+				for(int i = 0; i < 4 && i < tempSchmuck.skills.size(); i++){	
+					g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 254 + 36 * i, null);
 				}
-				g.drawImage(Assets.Downarrow,142,258+32*skillPointer,null);
+				//Draw custom cursor.
+				Utils.drawCursor(g, window2, 140, 245 + 36 * skillPointer, 250, 32, characterChosen);
 				if(skillLocation!=0){
-					g.drawImage(Assets.Uparrow,200,245,null);
+					g.drawImage(Assets.Uparrow, 265 - Assets.Uparrow.getWidth() / 2, 225, null);
 				}
 				if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
-					g.drawImage(Assets.Downarrow,200,405,null);
+					g.drawImage(Assets.Downarrow, 265 - Assets.Uparrow.getWidth() / 2, 390, null);
 				}
-				if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
-					int y=245;
-					for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
-				        g.drawString(line, 400, y += g.getFontMetrics().getHeight());
-				}
-			}
 				
+				//Draw info box.
+				Utils.drawDialogueBox(g, window2, "", 18, Color.black, 398, 240, 235, 150, characterChosen);
+				if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
+					int y = 245;
+					for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
+				        g.drawString(line, 410, y += g.getFontMetrics().getHeight());
+				}
+				
+				//Draw Alignment bars.
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setColor(Color.black);
+				for(int i = 0; i < 6; i++){
+					g.fillRect(325, 30 + 25 * i, 16, 16);
+				}
+				int alignment = (int)tempSchmuck.getElemAlignment() - 1;
+				if(alignment >= 0){
+					g.drawRect(324, 29 + 25 * alignment, 17, 17);
+				} else{
+					g.drawRect(324, 154, 17, 17);
+				}
+				
+				int remaining = (tempSchmuck.getPrismaticPoints() - tempSchmuck.getElemPoints()[4] 
+						- tempSchmuck.getElemPoints()[3] - tempSchmuck.getElemPoints()[2] - tempSchmuck.getElemPoints()[1]
+						- tempSchmuck.getElemPoints()[0]);
+				g.setColor(Color.red);				
+				g.fillRect(326, 31, 14, 14);
+				g.fillRect(345, 32, tempSchmuck.getElemPoints()[0] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[0] + "", 575, 45);
+				g.setColor(Color.blue);
+				g.fillRect(326, 56, 14, 14);
+				g.fillRect(345, 57, tempSchmuck.getElemPoints()[1] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[1] + "", 575, 70);
+				g.setColor(Color.green);
+				g.fillRect(326, 81, 14, 14);
+				g.fillRect(345, 82, tempSchmuck.getElemPoints()[2] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[2] + "", 575, 95);
+				g.setColor(Color.yellow);
+				g.fillRect(326, 106, 14, 14);
+				g.fillRect(345, 107, tempSchmuck.getElemPoints()[3] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[3] + "", 575, 120);
+				g.setColor(Color.magenta);
+				g.fillRect(326, 131, 14, 14);
+				g.fillRect(345, 132, tempSchmuck.getElemPoints()[4] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[4] + "", 575, 145);
+				g.setColor(Color.white);
+				g.fillRect(326, 156, 14, 14);
+				g.fillRect(345, 157,  remaining * 3 , 12);
+				g.drawString(remaining + "", 575, 170);
+			}
 			break;
 			
+			//Draw inventory.
 			case 1:
-				Utils.drawDialogueBox(g, window, "", 18, 135, 5, 480, 150, optionChosen);
-				Utils.drawDialogueBox(g, window, "", 18, 135, 170, 480, 225, optionChosen);
+				Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 5, 480, 150, optionChosen);
+				Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 170, 480, 225, optionChosen);
 				Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
 				Item[] itemDisplay= temp.toArray(new Item[27]);
+				//Draw cursor.
 				if(itemDisplay[itemSelected]!=null){
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(136+166*(itemPointer%3), 180+25*(itemPointer/3), 166, 25);
+//					g.setColor(new Color(102, 178,255));
+//					g.fillRect(136+166*(itemPointer%3), 180+25*(itemPointer/3), 166, 25);
+					Utils.drawCursor(g, window, 136 + 166 * (itemPointer%3), 180 + 25 * (itemPointer / 3), 160, 16, optionChosen);
 				}
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
 				itemnum=0;                                                                                                                                                                                                                                                                                       
-//				for(Item current : temp){
 				for(int i=backpackLocation;i<=backpackLocation+26 && i<gamestate.inventorymanager.backpack.size();i++){			
-					g.setColor(new Color(0, 0,0));
+					g.setColor(Color.black);
 					g.drawString(itemDisplay[i].getName()+"  x"+gamestate.inventorymanager.backpack.get(itemDisplay[i]), 140+175*(itemnum%3), 200+25*(itemnum/3));
 					itemnum++;
 				}
 
 				if(itemDisplay[itemSelected]!=null){
-					g.setColor(new Color(255, 255,255));
+					g.setColor(new Color(255, 255, 255));
 					g.fillRect(140, 10, 150, 150);
 					g.setFont(new Font("Chewy", Font.PLAIN, 18));
 					g.setColor(new Color(0, 0,0));
@@ -623,7 +710,7 @@ public class MenuState extends State {
 				}
 				if((backpackLocation+27)/3!=(gamestate.inventorymanager.backpack.size()+2)/3){
 					if(gamestate.inventorymanager.backpack.size()!=0){
-						g.drawImage(Assets.Downarrow,385,405,null);
+						g.drawImage(Assets.Downarrow, 385, 384,null);
 					}
 				}
 				if(itemChosen==true){

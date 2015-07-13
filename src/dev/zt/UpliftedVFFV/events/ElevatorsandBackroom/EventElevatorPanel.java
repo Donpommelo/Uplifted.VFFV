@@ -43,7 +43,7 @@ public class EventElevatorPanel extends Event {
 				}
 				else{														//otherwise choices are present.
 					super.Dialog(63, 63,this.getId());
-					super.ChoiceBranch(this.getId(), Choices,200);
+					super.ElevatorChoiceBranch(this.getId(), Choices, 200);
 				}
 				break;
 			case 1:
