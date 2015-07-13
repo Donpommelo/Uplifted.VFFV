@@ -809,15 +809,6 @@ public class MenuState extends State {
 					
 				}
 			}
-
-
-		
-//		g.drawImage(testImage, 0, 0, null);
-//		if(optionChosen){
-//			statemanager.states.pop();
-//			optionChosen=false;
-//			StateManager.states.push(new DialogState(game,statemanager,0,2));
-//		}
 		
 	}
 
