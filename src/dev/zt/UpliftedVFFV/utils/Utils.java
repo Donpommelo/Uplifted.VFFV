@@ -69,7 +69,7 @@ public class Utils {
 			int cursor, int x, int y, int width, int height, boolean priority, boolean drawCursor){
 		
 		Graphics2D g2d = (Graphics2D) g;
-		drawDialogueBox(g2d, window, "", 18, x, y, width, height, priority);
+		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
 		
 		//Set transparency according to priority.
 		if(!priority){
@@ -114,13 +114,14 @@ public class Utils {
 	 *	window - Name of menu texture. Texture should be a 128 x 128 image divided into 4 squareSize x squareSize sections.
 	 *	text - Text to display inside the box.
 	 *  fontSize - Size of text.
+	 *  fontColor - Color of text.
 	 *  x - x coordinate of upper right box corner.
 	 *  y - y coordinate of upper right box corner.
 	 * 	width - Width of box to be drawn.
 	 * 	height - Height of box to be drawn.
 	 * 	priority - Window focus. If not in focus, the box is drawn transparently.
 	 */
-	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, int x, int y, int width, int height, 
+	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
 			boolean priority){
 		Graphics2D g2d = (Graphics2D) g;
 		//Load texture and cut into subsections.
@@ -203,7 +204,7 @@ public class Utils {
 		
 		//Draw text.
 		g2d.setFont(new Font("Chewy", Font.PLAIN, fontSize));
-		g2d.setColor(Color.BLACK);
+		g2d.setColor(fontColor);
 		g2d.drawString(text, x + 12, y + 25);
 		
 		//Reset transparency.

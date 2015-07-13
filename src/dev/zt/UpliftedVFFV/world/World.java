@@ -3,9 +3,11 @@ package dev.zt.UpliftedVFFV.world;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -22,10 +24,12 @@ public class World {
 //	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
 	public static TreeMap<Integer, Integer> enemy;//= new TreeMap<Integer, Integer>();
 //	public Troop troop = new Troop(0);
+	private BufferedImage window;
 	public World(Game game, String path, String name){
 		this.game = game;
 		this.Worldname=name;
 		enemy = new TreeMap<Integer, Integer>();
+		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		loadWorld(path);
 	}
 	
@@ -52,14 +56,14 @@ public class World {
 		
 		//renders scrolling nameplate. 
 		if(!this.Worldname.equals("")){
-			g.setColor(new Color(102, 178,255, 255));
-			g.setFont(new Font("Chewy", Font.PLAIN, 12));
-			g.fillRect(550,(int)(.01*(110-(nameplate-10)*(nameplate-10))), 90, 25);
-			g.setColor(Color.BLACK);
-			g.drawString(this.Worldname, 552,(int)(20+.01*(110-(nameplate-10)*(nameplate-10))));
+//			g.setColor(new Color(102, 178,255, 255));
+//			g.setFont(new Font("Chewy", Font.PLAIN, 12));
+//			g.fillRect(550,(int)(.01*(110-(nameplate-10)*(nameplate-10))), 90, 25);
+//			g.setColor(Color.BLACK);
+//			g.drawString(this.Worldname, 552,(int)(20+.01*(110-(nameplate-10)*(nameplate-10))));
+			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 520, 
+					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), 112, 25, true);
 		}
-		
-		
 		
 	}
 	
