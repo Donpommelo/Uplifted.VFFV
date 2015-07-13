@@ -17,7 +17,7 @@ public class CatoNeedStatus extends status{
 		super("Needs Met", false, false, perp,pr);
 	}
 	
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		int overkill = vic.getCurrentHp() + damage;
 		if(overkill <= 0){
 			if(vic.getCurrentBp() >= -(overkill*2+5)){

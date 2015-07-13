@@ -52,7 +52,7 @@ public class EffectManager {
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage);
+							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,6);
 						}
 					}
 					vic.tempStats[0]+=finalDamage;
@@ -144,7 +144,7 @@ public class EffectManager {
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage);
+							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
 						}
 					}
 					vic.tempStats[0]+=finalDamage;

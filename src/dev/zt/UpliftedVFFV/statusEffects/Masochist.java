@@ -20,7 +20,7 @@ public class Masochist extends status{
 	}
 	
 	
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage,int elem){
 		if(damage >= vic.getMaxHp()*.1){
 			bs.bp.bt.textList.add(vic.getName()+" seems to be enjoying it!");
 			vic.bpChange((int)(damage*percent));

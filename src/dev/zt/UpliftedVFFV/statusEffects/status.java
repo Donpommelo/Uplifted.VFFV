@@ -94,7 +94,8 @@ public class status {
 	}
 	
 	//upon taking damage from any source. 
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
+	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		
 	}	
 	

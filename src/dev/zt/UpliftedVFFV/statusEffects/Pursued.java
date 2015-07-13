@@ -25,12 +25,12 @@ public class Pursued extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Disarmed.";
+		return s.getName()+" was Pursued.";
 
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s arms grew back.";
+		return s.getName()+" shook off the pursuer.";
 	}
 	
 	public int getDuration(){

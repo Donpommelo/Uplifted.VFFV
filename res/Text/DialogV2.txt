@@ -253,7 +253,7 @@ Jack1small.png
 Enjoy the Offices my Elevator-Operating friend./
 Operator
 Player-1.png
-1
+0
 To which floor?/
 Employee
 Gerome1small.png
@@ -1174,4 +1174,5 @@ Oh, that. Goodness, no./Water is the last thing I need right now./I don't even w
 Pen Pal
 1
 Player-5.png
-But, that's very considerate of you to ask./You are very responsible./I knew it was a good idea to pick you for this./
+But, that's very considerate of you to ask./You are very responsible./I knew you were the right person for this task./
+

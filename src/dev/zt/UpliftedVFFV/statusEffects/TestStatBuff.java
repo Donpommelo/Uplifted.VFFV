@@ -66,7 +66,7 @@ public class TestStatBuff extends status{
 		else{
 			plusminus = "lowered";
 		}
-		return s.getName()+"'s "+stat+" was "+plusminus;
+		return s.getName()+"'s "+stat+" was "+plusminus+"!";
 
 	}
 

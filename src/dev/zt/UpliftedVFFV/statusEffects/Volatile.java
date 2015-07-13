@@ -18,7 +18,7 @@ public class Volatile extends status{
 	}
 	
 	
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(damage>Math.random()*500){
 			bs.bp.bt.textList.add("The blow causes "+vic.getName()+"'s bucket to explode!");
 			for(Schmuck s : bs.bs.enemySelectable){

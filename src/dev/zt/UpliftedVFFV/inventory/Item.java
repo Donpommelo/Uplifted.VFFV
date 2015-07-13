@@ -126,11 +126,13 @@ public class Item implements Comparable<Item>{
 		String text = "";
 		switch(rand){
 		case 0:
-			text = "Ah, "+i.getName()+"s. That could be useful, I suppose.";
+			text = "Ah, "+i.getName()+"s. That could be nice, I suppose. I'll add it to my stock.";
 			break;
 		case 1:
+			text = "Hmm. I don't know if I need that. But I like you, so I'll buy it.";
 			break;
 		case 2:
+			
 			break;
 		case 3:
 			break;

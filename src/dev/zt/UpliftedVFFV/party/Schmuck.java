@@ -27,7 +27,7 @@ public class Schmuck {
 	
 	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
-	//PurpRes,VoidRes, RunawayBonus
+	//PurpRes,VoidRes, RunawayBonus, DiscountBonus, SummonPower
 
 	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
