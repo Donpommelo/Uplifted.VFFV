@@ -6,23 +6,26 @@ import dev.zt.UpliftedVFFV.Game;
 public abstract class Entity {
 	
 	protected Game game;
-	protected static float x;
-	protected static float y;
+	public float x,y;
 	protected int width, height;
 	
 	public Entity(Game game, float x, float y, int width, int height){
 		this.game = game;
-		Entity.x = x;
-		Entity.y = y;
+		this.x = x;
+		this.y = y;
 		this.width = width;
 		this.height = height;
+	}
+	
+	public Game getGame(){
+		return game;
 	}
 	
 	public float getX() {
 		return x;
 	}
 
-	public static void setX(float newx) {
+	public void setX(float newx) {
 		x = newx;
 	}
 
@@ -30,7 +33,7 @@ public abstract class Entity {
 		return y;
 	}
 
-	public static void setY(float newy) {
+	public void setY(float newy) {
 		y = newy;
 	}
 

@@ -1,0 +1,32 @@
+package dev.zt.UpliftedVFFV.ablities;
+
+import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Invuln;
+
+public class SafeRoom extends Skills {
+
+	public static String name = "Safe Room";
+	public static String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
+	public static String descrShort = "Banish and protect target.";
+	public static int cost = 5;
+	public SafeRoom(int index) {
+		super(index,0,6, name, descr, descrShort, cost);
+
+	}
+	
+	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
+		bs.bp.bt.textList.add(perp.getName()+" uses Safe Room!");
+		bs.bp.bt.textList.add(vic.getName()+" was banished.");
+		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
+			if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp)){
+				bs.bp.TurnOrderQueue.remove(i);
+				i--;
+			}
+		
+		}
+		bs.bp.stm.addStatus(vic, new Invuln(0, perp));
+		
+	}
+	
+}

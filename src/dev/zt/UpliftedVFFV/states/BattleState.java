@@ -1,137 +1,149 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.concurrent.TimeUnit;
-
+import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.dialog.Dialog;
-import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.Battle.BattleBackground;
+import dev.zt.UpliftedVFFV.Battle.BattleMenu;
+import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
+import dev.zt.UpliftedVFFV.Battle.BattleSprites;
+import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.utils.Utils;
+import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
+import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.party.Troop;
+import dev.zt.UpliftedVFFV.party.TroopManager;
 
 
 public class BattleState extends State {
 	
-	private BufferedImage testImage;
+	public String prevSong;
+	private BufferedImage elevatorDoors;
+	private SpriteSheet animatedDoors;
+	private int introX,introY;
 	public int currentlySelected;
 	public int currentlyTargeted;
 	public int actionSelected;
+	public int EventId;
+	public int frame;
 	public Boolean playerSelected=false;
 	public Boolean moveSelected=false;
-	public Character[] allies, enemy;
-	//public BattleState(Game game, StateManager sm, Character[] party,int troopId){
-		public BattleState(Game game, StateManager sm){
-			
+	public Boolean runnable;
+	public Boolean introScene;
+	public Boolean musicReplace;
+	public GameState gs;
+	public BattleMenu bm;
+	public BattleSprites bs;
+	public BattleBackground bb;
+	public TroopManager tm;
+	public BattleProcessor bp;
+	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> all=new ArrayList<Schmuck>();
+	public Troop t;
+	public int bonusML;
+	public BattleState(Game game, StateManager sm, ArrayList<Schmuck>party,int troopId, int eventId,boolean runnable, boolean music,GameState gs, int ML){
 		super(game,sm);
-//		this.allies = party;
-		testImage = ImageLoader.loadImage("/textures/title.png");
-		currentlySelected=0;
-		actionSelected=0;
+//		game.getAudiomanager().playMusic(3);
+		this.gs=gs;
+		this.EventId = eventId;
+		this.runnable = runnable;
+		this.musicReplace = music;
+		tm= new TroopManager(game);
+//		bm = new BattleMenu(game,sm,party,tm.Troop(troopId),this);
+		this.allies = party;
+		this.bonusML = ML;
+		t = Troop.troops[troopId];
+		this.enemy = tm.Troop(troopId,bonusML);
+		bp = new BattleProcessor(game,sm,party,enemy,t,gs,this);
+		bs = new BattleSprites(game,sm,party,enemy,this);
+		bb = new BattleBackground(game,sm,this);	
+		animatedDoors = new SpriteSheet(ImageLoader.loadImage("/textures/BattleIntro1.png"));
+		introScene = true;
+		introX = 0;
+		introY = 0;
+		frame = 0;
+//		currentlySelected=0;
+//		actionSelected=0;
 
 	}
 
 	public void tick() {
-		if(playerSelected==false){
-			if(game.getKeyManager().right){
-				if(currentlySelected<2){
-					currentlySelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().left){
-				if(currentlySelected>0){
-					currentlySelected--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().space){
-				playerSelected=true;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
+		if(introScene){
+			frame++;			
 		}
 		else{
-			if(game.getKeyManager().down){
-				if(actionSelected<3){
-					actionSelected++;
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().up){
-				if(actionSelected>0){
-					actionSelected--;
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().space){
-				moveSelected=true;
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+			bs.tick();
+			bp.tick();	
 		}
-			
+//		bm.tick();
 
 	}
 			
 
 	public void render(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 640, 416);
-		g.drawImage(testImage, 48, 0, null);
-		for(int i=0;i<3;i++){
-			g.drawImage(ImageLoader.loadImage("/CharacterBusts/Player-1.png"), i*150, 200,null);
-		}
-		g.drawImage(Assets.Downarrow,100+currentlySelected*150,200,null);
-		if(playerSelected==true){
-			g.setColor(new Color(102, 178,255));
-			g.fillRect(540, 316,100,100);
-			g.setColor(new Color(200, 200,200));
-			g.fillRect(540,316+25*actionSelected, 100, 25);
-			g.setFont(new Font("Chewy", Font.PLAIN, 18));
-			g.setColor(new Color(255, 255,255));
-			g.drawString("Attack", 540, 335);
-			g.drawString("Argleblargh", 540, 360);
-			g.drawString("Item", 540, 385);
-			g.drawString("Run", 540, 410);
-			if(moveSelected==true){
-				if(actionSelected==3){
-					actionSelected=0;
-					playerSelected=false;
-					moveSelected=false;
-				}
+		if(introScene){
+			if(frame<=54){
+				introY = 416*(int)(frame/3);
+				StateManager.getStates().pop();
+				StateManager.getStates().peek().render(g);
+				StateManager.getStates().push(this);
+				elevatorDoors = animatedDoors.crop(introX, introY, 640, 416);
+				g.drawImage(elevatorDoors,0,0,null);
 			}
+			else if (frame<=100){
+				
+				g.drawImage(elevatorDoors,0,0,null);
+			}
+			else if(frame<=154){
+//				g.drawImage(floor, 0, 0,null);
+//				g.drawImage(wall, 0, -32, null);					
+				bb.render(g);
+				bs.render(g);
+				bp.render(g);
+				introY = 416*(int)((frame-100)/3);
+				elevatorDoors = animatedDoors.crop(introX,7488-introY, 640, 416);
+				g.drawImage(elevatorDoors,0,0,null);
+			}
+			else{
+				if(musicReplace){
+					game.getAudiomanager().playMusic(3,true);
+				}
+				bb.render(g);
+				bs.render(g);
+				bp.render(g);
+				introScene = false;
+			}
+			
 		}
+		else{
+//			g.drawImage(floor, 0, 0,null);
+//			g.drawImage(wall, 0, -32, null);	
+			bb.render(g);
+			bs.render(g);
+			bp.render(g);
+//			bm.render(g);
+		}
+
 		
+	}
+	
+	public void end(boolean victory){
+		StateManager.getStates().pop();
+		game.getAudiomanager().playMusic(2, true);
+		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
+		//increment and the event will be rerrun with the new stage.
+		if(victory){
+			Event.events[this.EventId].setFightwon(true);
+		}
+		else if(bp.fightlost()){
+			StateManager.getStates().pop();
+		}
+		if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
+			Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
+			Event.events[this.EventId].run();
+		}
 	}
 
 	@Override

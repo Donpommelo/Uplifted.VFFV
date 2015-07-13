@@ -1,11 +1,9 @@
 package dev.zt.UpliftedVFFV.events;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 
+//this is pretty much tilesorter except with a different cutting pattern meant for processing character sprite sheets
 public class SpriteSorter {
 	
 	static SpriteSheet meep;
@@ -17,6 +15,9 @@ public class SpriteSorter {
 	
 	public static BufferedImage SpriteSort(int num, BufferedImage img){
 		meep=new SpriteSheet(img);
+		if(meep == null){
+
+		}
 		switch(num){
 		case 0:
 			merp=meep.crop(0,0,32,32);

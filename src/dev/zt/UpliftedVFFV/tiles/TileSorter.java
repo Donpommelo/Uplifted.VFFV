@@ -1,15 +1,15 @@
 package dev.zt.UpliftedVFFV.tiles;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 
 public class TileSorter {
 	
 	static SpriteSheet meep;
 	static BufferedImage merp;
+	
+	//this cuts a 64 x 96 spritesheet into a single 32 x32 tile.
+	//the numbers input, 0-10 correspond to specific regions of the larger spritesheet
 	
 	public TileSorter(){
 		

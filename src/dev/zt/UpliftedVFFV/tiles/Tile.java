@@ -3,8 +3,16 @@ package dev.zt.UpliftedVFFV.tiles;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+
+//Controls tiles. Sets up every tile in the game. Tiles consist of an image and a id that is called whenever we want to use that tile
+//each individual type of tile extends this class.
+//tiles are all 32 x 32 pixels, but most of the images are 64 x 96.
+//This is why each tile in the list below takes 2 variables. The first is the aforementioned id and the second is region of the larger 
+//image that we actually want. This is done through the TileSorter.
 public class Tile {
 	
+	//When each of these tiles are created, they each run super(their image,their id)
+	//This not only creates them, but also adds them to the list of tiles
 	public static Tile[] tiles = new Tile[512];
 	public static Tile white = new White(0);
 	public static Tile black = new Black(1);
@@ -98,6 +106,20 @@ public class Tile {
 	public static Tile GlassTile9 = new GlassTile(89,9);
 	public static Tile GlassTile10 = new GlassTile(90,10);
 	
+	public static Tile DiagCarpet1 = new DiagCarpet(91,0);
+	public static Tile DiagCarpet2 = new DiagCarpet(92,1);
+	
+	public static Tile AquaTile0 = new AquaTile(93,0);
+	public static Tile AquaTile1 = new AquaTile(94,1);
+	public static Tile AquaTile2 = new AquaTile(95,2);
+	public static Tile AquaTile3 = new AquaTile(96,3);
+	public static Tile AquaTile4 = new AquaTile(97,4);
+	public static Tile AquaTile5 = new AquaTile(98,5);
+	public static Tile AquaTile6 = new AquaTile(99,6);
+	public static Tile AquaTile7 = new AquaTile(100,7);
+	public static Tile AquaTile8 = new AquaTile(101,8);
+	public static Tile AquaTile9 = new AquaTile(102,9);
+	public static Tile AquaTile10 = new AquaTile(103,10);
 	
 	public static Tile Wall10 = new Wall1(113,0);
 	public static Tile Wall11 = new Wall1(114,1);
@@ -176,12 +198,18 @@ public class Tile {
 	public static Tile Ceiling28 = new Ceiling2(187,8);
 	public static Tile Ceiling29 = new Ceiling2(188,9);
 	public static Tile Ceiling210 = new Ceiling2(189,9);
+	public static Tile ActuallyWhite = new ActuallyWhite(190);
+	
+	public static Tile CircleTile = new CircleCarpet(191,0);
+	public static Tile Stairs = new StairsTile(192,0);
+	public static Tile StairsDown = new StairsDownTile(193,0);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
 	protected BufferedImage texture;
 	protected final int id;
 	
+	//this is run every time a type of tile is created. They are added to the tiles array. Their index in the list=their id
 	public Tile(BufferedImage texture, int id){
 		this.texture = texture;
 		this.id = id;
@@ -197,6 +225,7 @@ public class Tile {
 		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
 	}
 	
+	//determines if a tile can be walked through or not. default is no.
 	public boolean isSolid(){
 		return false;
 	}
