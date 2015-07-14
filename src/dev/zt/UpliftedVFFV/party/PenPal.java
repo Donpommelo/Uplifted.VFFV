@@ -26,9 +26,9 @@ public class PenPal extends Schmuck{
 	
 	
 //	public final static int startHp=42,startBp=40,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
-	public final static int[] startStats = {72, 51, 15, 17, 12, 22, 25, 16};
+	public final static int[] startStats = {53, 43, 15, 17, 12, 22, 25, 16};
 //	public final static double hpGrowth=1, bpGrowth=2.3, powGrowth=1.4, defGrowth=1.3, spdGrowth=2, sklGrowth=2.1, intGrowth=2.6, lukGrowth=1.3;
-	public final static double[] statGrowths = {1, 2.3, 1.4, 1.3, 2, 2.1, 2.6, 1.3};
+	public final static double[] statGrowths = {1, 1.5, 1.4, 1.3, 2, 2.1, 2.6, 1.3};
 // static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
 	public final static int[] elemRes = {10,20,20,10,10,0};

@@ -160,6 +160,9 @@ public class Schmuck {
 		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
 		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());	
 		
+		this.baseStats[1] += (this.getBuffedInt()/2);
+		this.buffedStats[1] += (this.getBuffedInt()/2);
+		this.tempStats[1] += (this.getBuffedInt()/2);
 		
 	}
 	
@@ -309,6 +312,8 @@ public class Schmuck {
 				this.setElemAlignment(0);
 			}
 		}
+		this.baseStats[1] += (this.getBuffedInt()/2);
+		this.buffedStats[1] += (this.getBuffedInt()/2);
 		if(this.getCurrentHp()>this.getMaxHp()){
 			this.setCurrentHp(this.getMaxHp());
 		}

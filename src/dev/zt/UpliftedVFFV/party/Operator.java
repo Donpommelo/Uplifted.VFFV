@@ -21,7 +21,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Operator extends Schmuck{
 	
 //	public final static int startHp=50,startBp=35,startPow=17, startDef=18, startSpd=17, startSkl=13, startLuk=12, startInt=18;
-	public final static int[] startStats = {85,42,17,18,17,13,18,12};
+	public final static int[] startStats = {56,35,17,18,17,13,18,12};
 //	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.2, defGrowth=1.3, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
 	public final static double[] statGrowths = {1 , .7 , 1.2 , 1.3 , 1.7 , 1.5 , 1.9 , .9};
 //	public final static double[] statGrowths = {10 , 10 , 10 , 10 , 10 , 10 , 10 , 10};
