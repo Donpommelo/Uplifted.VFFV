@@ -89,25 +89,6 @@ public class Utils {
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 	}
 	
-	//Wrapper for drawImage that draws a custom menu background (for Elevator panels?).
-	/* Parameters:
-	 * 	g - Graphics object
-	 *	window - Name of menu texture. Texture should be an image of fixed size.
-	 *	window2 - Texture of window to use for secondary display.
-	 *	cursorTexture - Texture of cursor to draw.
-	 *  options - List of menu options to display. Size/font not currently adjustable (Default font size 18).
-	 *  fontColor - Color of options.
-	 *  cursor - Integer index of cursor.
-	 *  x - x coordinate of upper right menu corner.
-	 *  y - y coordinate of upper right menu corner.
-	 * 	width - Width of image to be drawn.
-	 * 	height - Height of image to be drawn.
-	 */
-	public static void drawElevatorMenu(Graphics g, BufferedImage window, BufferedImage window2, BufferedImage cursorTexture, 
-				String[] options, Color fontColor, int cursor, int x, int y, int width, int height){
-		
-	}
-	
 	//Wrapper for drawImage that draws a dialogue box.
 	/* Parameters:
 	 * 	g - Graphics object
@@ -327,5 +308,4 @@ public class Utils {
 	}
 
 /*****END MENU DRAWING UTILS*****/
-
 }
