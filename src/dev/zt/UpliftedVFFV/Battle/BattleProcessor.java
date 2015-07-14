@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
+import dev.zt.UpliftedVFFV.ablities.DillyDally;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
@@ -195,6 +196,11 @@ public class BattleProcessor {
 								if(TempTurnOrderQueue.get(i) != null){									
 									TempTurnOrderQueue.get(i).skill.TOQChange(TempTurnOrderQueue.get(i), bs);
 								}				
+							}
+							
+							if(TurnOrderQueue.get(0).user.getBuffedSpd() >= (1.5)*(TurnOrderQueue.get(1).user.getBuffedSpd())){
+								bt.textList.add(TurnOrderQueue.get(0).user.getName()+"'s speed grants an extra turn!");
+								TurnOrderQueue.add(new Action(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).user,new DillyDally(0),bs));
 							}
 						
 							phase++;

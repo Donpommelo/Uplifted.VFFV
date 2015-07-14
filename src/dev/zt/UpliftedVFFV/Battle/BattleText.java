@@ -73,7 +73,7 @@ public class BattleText {
 //		g.drawString(textList.get(0),0,20);	
 //		g.drawString(textList.get(1),0,45);	
 		
-		for(int i=1;i<charIndex;i++){
+		for(int i=1;i<=charIndex;i++){
 			g.drawString(textList.get(0).substring(0,i), 6, 25);		//causes text to form new lines
 		}
 		

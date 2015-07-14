@@ -101,7 +101,7 @@ public class EffectManager {
 			finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
 		}
 		else{
-			finalDamage = (int)(finalDamage*(1+vic.getBonusStats()[elem+19]));
+			finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
 		}
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
 		String element = "";
@@ -150,7 +150,6 @@ public class EffectManager {
 					vic.tempStats[0]+=finalDamage;
 				}				
 			}	
-			vic.tempStats[0]+=finalDamage;
 			if(vic.tempStats[0]<=0){
 				vic.tempStats[0]=0;				
 				bs.bp.stm.addStatus(vic, new incapacitate(perp));

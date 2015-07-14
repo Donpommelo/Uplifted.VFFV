@@ -495,14 +495,24 @@ public class MenuState extends State {
 			FontMetrics metrics = g.getFontMetrics(new Font("Chewy", Font.PLAIN, 18));
 			for(int i = 0; i < tempSchmuck.baseStats.length; i++){
 				if(i <= 1){
-					g.drawString(tempSchmuck.tempStats[i] + "/" + tempSchmuck.baseStats[i], 340, 220 + 25 * i);
+					if(i == 0){
+						g.drawString(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp(), 340, 220);
+					}
+					else{
+						g.drawString(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp(), 340, 220 + 25);
+					}
 					if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
 						if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
 							g.setColor(Color.green);
 						} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
 							g.setColor(Color.red);
 						}
-						g.drawString("(" + tempSchmuck.buffedStats[i] + ")", 345 + metrics.stringWidth(tempSchmuck.tempStats[i] + "/" + tempSchmuck.baseStats[i]), 220 + 25 * i);
+						if(i == 0){
+							g.drawString("(" + tempSchmuck.getMaxHp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp()), 220 + 25 * i);
+						}
+						else{
+							g.drawString("(" + tempSchmuck.getMaxBp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp()), 220 + 25 * i);
+						}
 					}
 				} else{
 					g.drawString(tempSchmuck.baseStats[i] + "", 340, 220 + 25 * i);

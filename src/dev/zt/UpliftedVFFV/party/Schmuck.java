@@ -160,10 +160,6 @@ public class Schmuck {
 		setBaseInt(startStats[6]+(int)(lvl*statGrowths[6]));setBuffedInt(getBaseInt());
 		setBaseLuk(startStats[7]+(int)(lvl*statGrowths[7]));setBuffedLuk(getBaseLuk());	
 		
-		this.baseStats[1] += (this.getBuffedInt()/2);
-		this.buffedStats[1] += (this.getBuffedInt()/2);
-		this.tempStats[1] += (this.getBuffedInt()/2);
-		
 	}
 	
 	public Action getAction(BattleState bs){
@@ -264,6 +260,7 @@ public class Schmuck {
 	}
 
 	public void calcBuffs(BattleState bs){
+
 		for(int i=0; i <baseStats.length; i++){
 			buffedStats[i] = baseStats[i];
 		}
@@ -312,8 +309,7 @@ public class Schmuck {
 				this.setElemAlignment(0);
 			}
 		}
-		this.baseStats[1] += (this.getBuffedInt()/2);
-		this.buffedStats[1] += (this.getBuffedInt()/2);
+
 		if(this.getCurrentHp()>this.getMaxHp()){
 			this.setCurrentHp(this.getMaxHp());
 		}
@@ -339,7 +335,7 @@ public class Schmuck {
 	}
 
 	public int getMaxBp() {
-		return buffedStats[1];
+		return buffedStats[1]+buffedStats[6]/2;
 	}
 
 	public void setMaxBp(int maxBp) {
@@ -385,7 +381,7 @@ public class Schmuck {
 	}
 	
 	public int getBaseBp() {
-		return baseStats[1];
+		return baseStats[1]+buffedStats[6]/2;
 	}
 
 	public void setBaseBp(int baseBp) {
