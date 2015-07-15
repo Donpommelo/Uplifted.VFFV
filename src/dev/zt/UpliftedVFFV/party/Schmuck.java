@@ -27,9 +27,9 @@ public class Schmuck {
 	
 	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
-	//PurpRes,VoidRes, RunawayBonus, DiscountBonus, SummonPower
+	//PurpRes,VoidRes, RunawayBonus, DiscountBonus, SummonPower, DamageStat
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	
 //	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
@@ -69,7 +69,7 @@ public class Schmuck {
 //		this.buffedStats=start;
 		this.elemPoints = elem;
 		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 		this.expDrop = exp;
@@ -88,7 +88,7 @@ public class Schmuck {
 //		this.buffedStats=start;
 		this.exp=0;
 		this.elemPoints = elem;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
@@ -120,10 +120,10 @@ public class Schmuck {
 	public void bpChange(int bp){
 		tempStats[1]+=bp;
 		if(tempStats[1]<0){
-			tempStats[1]=0;
+			setCurrentBp(0);
 		}
-		if(tempStats[1]>baseStats[1]){
-			tempStats[1]=baseStats[1];
+		if(getCurrentBp()>getMaxBp()){
+			setCurrentBp(getMaxBp());
 		}
 		
 	}
@@ -720,6 +720,14 @@ public class Schmuck {
 
 	public void setRunawayBonus(double runaway) {
 		bonusStats[25] = runaway;
+	}
+	
+	public double getDamageStat() {
+		return bonusStats[26];
+	}
+
+	public void setDamageStat(double stat) {
+		bonusStats[26] = stat;
 	}
 	
 	public int getRedPoints(){

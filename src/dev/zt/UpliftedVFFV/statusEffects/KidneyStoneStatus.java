@@ -3,15 +3,15 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
-public class MiracleCureStatus extends status{
+public class KidneyStoneStatus extends status{
 	
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int cooldown;
 
-	public MiracleCureStatus(Schmuck perp, int pr){
-		super("Miraculous", false, false, perp, pr);
+	public KidneyStoneStatus(Schmuck perp, int pr){
+		super("Filtering", false, false, perp, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
@@ -22,7 +22,7 @@ public class MiracleCureStatus extends status{
 		if(cooldown == 0){
 			if(st.getName().equals("Stunned") || st.getName().equals("Silenced") || st.getName().equals("Ablaze") || st.getName().equals("Disarmed")
 			 || st.getName().equals("HealBlock") || st.getName().equals("Impatient")){
-				bs.bp.bt.textList.add(s.getName()+"'s Miracle Cure removes the ailment!");
+				bs.bp.bt.textList.add(s.getName()+"'s Kidney Stone removes the ailment!");
 				bs.bp.stm.removeStatus(s, st);
 				cooldown +=4;
 			}

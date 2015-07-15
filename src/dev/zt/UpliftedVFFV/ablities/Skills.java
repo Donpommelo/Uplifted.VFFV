@@ -51,7 +51,6 @@ public class Skills {
 	}
 		
 	public void runCrit(Schmuck user, Schmuck target, BattleState bs){
-		bs.bp.bt.textList.add("Muh skillbased game");
 		run(user,target,bs);
 	}
 	
