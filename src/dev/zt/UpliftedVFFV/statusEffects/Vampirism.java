@@ -26,7 +26,7 @@ public class Vampirism extends status{
 	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" gained the ability lifesteal.";
+		return s.getName()+" gained the ability to lifesteal.";
 
 	}
 

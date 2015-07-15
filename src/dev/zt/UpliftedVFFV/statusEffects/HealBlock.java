@@ -11,7 +11,9 @@ public class HealBlock extends status{
 		super(i, "Heal Block", false, true, true, perp);
 	}
 	
-	
+	public HealBlock(Schmuck perp, int pr){
+		super("Heal Block", false, false, perp, pr);
+	}
 	
 	public void run(){
 		

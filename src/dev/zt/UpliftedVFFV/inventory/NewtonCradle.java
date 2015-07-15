@@ -15,7 +15,7 @@ public class NewtonCradle extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AddStatBuff(4,(int)(6*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] = new AddStatBuff(5,(int)(6*(1+s.getEquipPow())), s.itemDummy, 80);
 		return enchantment;
 	}
 }

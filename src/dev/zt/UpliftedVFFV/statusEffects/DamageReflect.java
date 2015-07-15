@@ -20,12 +20,13 @@ public class DamageReflect extends status{
 	}
 	
 	
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!perp.equals(vic) && !perp.getName().equals("Item Dummy")){
 			bs.bp.bt.textList.add(vic.getName()+" reflected some damage back at "+perp.getName());
 			perp.hpChange((int)(damage*percent));
 		}
 		bs.bs.targetUpdate();
+		return damage;
 	}	
 	
 	public String inflictText(Schmuck s){

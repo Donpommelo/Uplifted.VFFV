@@ -48,19 +48,18 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+" took no damage.");
 				}
 				else{
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
-					bs.bs.flash(vic, 51);
+					bs.bs.flash(vic, 61);
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,6);
+							finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,6);
 						}
 					}
+					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
 					vic.tempStats[0]+=finalDamage;
 				}				
 			}			
 			if(vic.tempStats[0]<=0){
 				vic.tempStats[0]=0;				
-				bs.bp.stm.addStatus(vic, new incapacitate(perp));
 				for(int i=0; i<perp.statuses.size(); i++){
 					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
 						if(perp.statuses.get(i)!=null){
@@ -75,6 +74,7 @@ public class EffectManager {
 						}
 					}
 				}
+				bs.bp.stm.addStatus(vic, new incapacitate(perp));
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
 						if(a.user==vic){
@@ -140,19 +140,18 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prvented damage!");
 				}
 				else{
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
+							finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
 						}
 					}
+					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 					vic.tempStats[0]+=finalDamage;
 				}				
 			}	
 			if(vic.tempStats[0]<=0){
 				vic.tempStats[0]=0;				
-				bs.bp.stm.addStatus(vic, new incapacitate(perp));
 				for(int i=0; i<perp.statuses.size(); i++){
 					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
 						if(perp.statuses.get(i)!=null){
@@ -167,6 +166,7 @@ public class EffectManager {
 						}
 					}
 				}
+				bs.bp.stm.addStatus(vic, new incapacitate(perp));
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
 						if(a.user==vic){
@@ -187,11 +187,11 @@ public class EffectManager {
 	public void bpChange(int bp, Schmuck s){
 		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s))){
 			s.tempStats[1]+=bp;
-			if(s.tempStats[1]<0){
-				s.tempStats[1]=0;
+			if(s.getCurrentBp()<0){
+				s.setCurrentBp(0);
 			}
-			if(s.tempStats[1]>s.buffedStats[1]){
-				s.tempStats[1]=s.buffedStats[1];
+			if(s.getCurrentBp()>s.getMaxBp()){
+				s.setCurrentBp(s.getMaxBp());
 			}
 		}
 		else{
