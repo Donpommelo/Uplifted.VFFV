@@ -76,6 +76,7 @@ public class BattleText {
 		
 		for(int i = 1; i <= charIndex; i++){
 			g.drawString(textList.get(0).substring(0, i), 6, 24);		//causes text to form new lines
+
 		}
 		
 		if(charIndex < textList.get(0).length()){			//charIndex increases each time it is rendered so text scrolls

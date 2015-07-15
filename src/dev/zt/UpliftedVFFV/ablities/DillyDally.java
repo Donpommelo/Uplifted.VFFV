@@ -29,8 +29,14 @@ public class DillyDally extends Skills {
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
-		bs.bp.TurnOrderQueue.remove(a);
-		bs.bp.TurnOrderQueue.add(a);
+//		bs.bp.TurnOrderQueue.remove(a);
+//		bs.bp.TurnOrderQueue.add(a);
+		int meep = bs.bp.TurnOrderQueue.indexOf(a);
+		if(meep < bs.bp.TurnOrderQueue.size()-2){	
+			bs.bp.TurnOrderQueue.remove(a);
+			bs.bp.TurnOrderQueue.add(meep+2,a);
+		}
+
 	}
 	
 	public String getName(){

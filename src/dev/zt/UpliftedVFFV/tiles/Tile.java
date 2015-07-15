@@ -203,6 +203,7 @@ public class Tile {
 	public static Tile CircleTile = new CircleCarpet(191,0);
 	public static Tile Stairs = new StairsTile(192,0);
 	public static Tile StairsDown = new StairsDownTile(193,0);
+	public static Tile WhiteTile = new WhiteTile(194,0);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
