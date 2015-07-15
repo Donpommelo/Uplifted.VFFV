@@ -107,7 +107,7 @@ public class BattleProcessor {
 				if(!enemyded()){					
 					selected=true;					
 				}
-				for(int i=0 ; i<enemy.size()+allies.size();i++){
+				for(int i=0 ; i<bs.bs.enemySelectable.size()+bs.bs.alliesSelectable.size();i++){
 					TurnOrderQueue.add(null);
 				}
 				phase++;
@@ -171,13 +171,13 @@ public class BattleProcessor {
 							}
 						}
 						
-							for(int i=0 ; i<enemy.size();i++){
-								if(!stm.checkStatus(enemy.get(i), new incapacitate(enemy.get(i))) && !bs.bs.alliesSelectable.isEmpty()){
-									TurnOrderQueue.set(allies.size()+i,enemy.get(i).getAction(bs));
+							for(int i=0 ; i<bs.bs.enemySelectable.size();i++){
+								if(!stm.checkStatus(bs.bs.enemySelectable.get(i), new incapacitate(bs.bs.enemySelectable.get(i))) && !bs.bs.alliesSelectable.isEmpty()){
+									TurnOrderQueue.set(bs.bs.alliesSelectable.size()+i,bs.bs.enemySelectable.get(i).getAction(bs));
 								}
 								else{
 									
-									TurnOrderQueue.set(allies.size()+i,new Action(enemy.get(i),allies.get((int)(Math.random()*allies.size())),new ActuallyNothing(0),bs));
+									TurnOrderQueue.set(bs.bs.alliesSelectable.size()+i,new Action(bs.bs.enemySelectable.get(i),bs.bs.alliesSelectable.get((int)(Math.random()*bs.bs.alliesSelectable.size())),new ActuallyNothing(0),bs));
 								}
 							}
 							for(Schmuck s : battlers){
@@ -201,7 +201,9 @@ public class BattleProcessor {
 									TempTurnOrderQueue.get(i).skill.TOQChange(TempTurnOrderQueue.get(i), bs);
 								}				
 							}
-							
+//							if(){
+								
+//							}
 							if(TurnOrderQueue.get(0).user.getBuffedSpd() >= (1.5)*(TurnOrderQueue.get(1).user.getBuffedSpd())){
 								bt.textList.add(TurnOrderQueue.get(0).user.getName()+"'s speed grants an extra turn!");
 								TurnOrderQueue.add(new Action(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).user,new DillyDally(0),bs));
@@ -280,6 +282,12 @@ public class BattleProcessor {
 							//if enemies dilly dally, they just re-get a move the same way but with updated info
 							else{
 								TurnOrderQueue.set(0,TurnOrderQueue.get(0).user.getAction(bs));
+								if(Math.random()<TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance()){
+									TurnOrderQueue.get(0).skill.runCrit(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+								}
+								else{
+									TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+								}
 							}
 
 						}
