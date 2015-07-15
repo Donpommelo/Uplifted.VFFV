@@ -17,12 +17,14 @@ import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.UseItem;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class BattleMenu{
@@ -39,6 +41,7 @@ public class BattleMenu{
 	public int phase;
 	public StateManager sm;
 	public Game game;
+	private BufferedImage window;
 	
 	//Turned on by pressing "x" anytime. Moves one menu screen backwards. De-selects options.
 	public Boolean exit = false; 			
@@ -74,6 +77,7 @@ public class BattleMenu{
 		actionSelected=0;
 		TurnOrderQueue=0;
 		phase = 1;
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		if(bs.bp.pauseTOQ){
 			for(int i=0; i<currentSchmuck.statuses.size(); i++){
 				if(currentSchmuck.statuses.get(i)!=null){
@@ -491,21 +495,23 @@ public class BattleMenu{
 		}
 		
 		if(phase == 1 || phase == 3){
-			g.setColor(new Color(102, 178,255));
-			g.fillRect(540, 256,100,160);
-			g.setColor(new Color(255, 255,51));
-			g.fillRect(540,256+32*actionSelected, 100, 32);
-			g.fillRect(530,233,110,23);
-			g.setFont(new Font("Chewy", Font.PLAIN, 18));
-			g.setColor(new Color(0, 0,0));
+//			g.setColor(new Color(102, 178,255));
+//			g.fillRect(540, 256,100,160);
+//			g.setColor(new Color(255, 255,51));
+//			g.fillRect(540,256+32*actionSelected, 100, 32);
+//			g.fillRect(530,233,110,23);
+//			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+//			g.setColor(new Color(0, 0,0));
 			
-			g.drawString(currentSchmuck.getName(),540, 250);
-			
-			g.drawString("Attack", 540, 283);
-			g.drawString("Skills", 540, 315);
-			g.drawString("Item", 540, 347);
-			g.drawString("Wait", 540, 379);
-			g.drawString("Run", 540, 411);
+//			g.drawString(currentSchmuck.getName(),540, 250);
+			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, 525, 232, 110, 32, true);
+//			g.drawString("Attack", 540, 283);
+//			g.drawString("Skills", 540, 315);
+//			g.drawString("Item", 540, 347);
+//			g.drawString("Wait", 540, 379);
+//			g.drawString("Run", 540, 411);
+			String[] options = {"Attack", "Skills", "Item", "Wait", "Run"};
+			Utils.drawMenu(g, window, options, Color.black, 18, actionSelected, 540, 256, 100, 160, true, true);
 			
 			//Displays mini-icons for actions
 			switch(actionSelected){

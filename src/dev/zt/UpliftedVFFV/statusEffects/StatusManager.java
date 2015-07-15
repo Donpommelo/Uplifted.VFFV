@@ -26,6 +26,18 @@ public class StatusManager {
 	}
 	
 	public void addStatus(Schmuck s, status stat){
+		if(stat.getName().equals("incapacitated")){
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){
+					if(s.statuses.get(i).perm != true){
+						s.statuses.remove(i);
+					}
+				}
+			}
+			if(bs.bs.alliesSelectable.contains(s) && !checkStatus(s,new incapacitate(s)) && bs.bs.alliesSelectable.size() == 1){
+				bs.bp.bt.textList.add("You and everyone you care about are dead.");
+			}			
+		}		
 		if(stat.getName().equals("Stats Changed") || stat.getName().equals("Regeneration")){
 			s.statuses.add(stat);
 		}
@@ -35,6 +47,7 @@ public class StatusManager {
 			}
 			else{
 				s.statuses.add(stat);
+//				bs.bs.targetUpdate();
 			}
 		}
 		if(!stat.inflictText(s).equals("")){
@@ -45,17 +58,6 @@ public class StatusManager {
 				s.statuses.get(i).onStatusInflict(s,stat,bs);
 			}
 		}
-		if(stat.getName().equals("incapacitated")){
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){
-					if(s.statuses.get(i).perm != true){
-						s.statuses.remove(i);
-					}
-				}
-			}
-		}
-
-
 	}
 	
 	public void removeStatus(Schmuck s, status stat){
@@ -66,6 +68,7 @@ public class StatusManager {
 						bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
 					}
 					s.statuses.remove(i);
+//					bs.bs.targetUpdate();
 					i--;
 				}
 			}

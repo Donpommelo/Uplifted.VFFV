@@ -38,8 +38,8 @@ public class BattleText {
 		if(game.getKeyManager().space){
 			
 			if(!textList.isEmpty()){
-				if(textList.get(0).contains("was incapacitated.")){
-//					bs.bs.targetUpdate();
+				if(textList.get(0).contains("You and everyone you care about are dead.")){
+					bs.end(false);
 				}
 				if(scrolling){
 //					charIndex+=5;
@@ -58,6 +58,7 @@ public class BattleText {
 				bs.bp.stm.endofFite();
 				bs.end(false);
 			}
+			
 		}
 	}
 			
@@ -66,18 +67,18 @@ public class BattleText {
 		if(charIndex>textList.get(0).length()){				//controls how much of the dialog is rendered. 
 			charIndex=textList.get(0).length();				//charIndex increases as time passes, causing text to scroll
 		}	
-		g.setColor(new Color(160, 160,160, 200));
+		g.setColor(new Color(160, 160, 160, 200));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.fillRect(0, 0, 640, 25);
+		g.fillRect(0, 0, 640, 28);
 		g.setColor(new Color(0,0,0));
 //		g.drawString(textList.get(0),0,20);	
 //		g.drawString(textList.get(1),0,45);	
 		
-		for(int i=1;i<charIndex;i++){
-			g.drawString(textList.get(0).substring(0,i), 6, 25);		//causes text to form new lines
+		for(int i = 1; i <= charIndex; i++){
+			g.drawString(textList.get(0).substring(0, i), 6, 24);		//causes text to form new lines
 		}
 		
-		if(charIndex<textList.get(0).length()){			//charIndex increases each time it is rendered so text scrolls
+		if(charIndex < textList.get(0).length()){			//charIndex increases each time it is rendered so text scrolls
 			scrolling=true;
 			charIndex+=2;
 		}

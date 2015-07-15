@@ -16,12 +16,12 @@ public class PartyManager {
 		party.add(operator);
 		Schmuck penpal=new PenPal();
 		party.add(penpal);
-/*		Schmuck penpal1=new PenPal();
-		party.add(penpal1);
-		Schmuck penpal2=new PenPal();
-		party.add(penpal2);
-		Schmuck penpal3=new PenPal();
-		party.add(penpal3);*/
+//		Schmuck penpal1=new PenPal();
+//		party.add(penpal1);
+//		Schmuck penpal2=new PenPal();
+//		party.add(penpal2);
+//		Schmuck penpal3=new PenPal();
+//		party.add(penpal3);
 		
 		
 	}

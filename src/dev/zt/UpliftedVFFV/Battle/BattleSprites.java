@@ -34,7 +34,7 @@ public class BattleSprites {
 		this.allies = party;
 		this.enemy=enemy;
 		this.bs=bs;
-		int sumSize1 = 0;
+		int sumSize1 = -20;
 		
 		// Load UI elements.
 		uihealth = ImageLoader.loadImage("/ui/PlayerGauge.png");
@@ -130,6 +130,7 @@ public class BattleSprites {
 			}
 			
 		}
+		
 		enemyTargets.clear();
 		enemySelectable.clear();
 		for(Schmuck s : enemy){
@@ -149,11 +150,17 @@ public class BattleSprites {
 		//Draw status circle.
 		g.setColor(Color.white);
 		g.fillOval(s.getX() - 5, s.getY() - 58, 59, 59);
-		if(bs.bp.currentlySelected == index){
-			g.setColor(Color.green);
+		if(alliesSelectable.size() > 0){
+			if(alliesSelectable.get(bs.bp.currentlySelected).equals(s)){
+				g.setColor(Color.green);
+				g.fillOval(alliesSelectable.get(bs.bp.currentlySelected).getX() - 5, 
+						alliesSelectable.get(bs.bp.currentlySelected).getY() - 58, 59, 59);
+			}
+		}
+		if(!alliesSelectable.contains(s)){
+			g.setColor(Color.red);
 			g.fillOval(s.getX() - 5, s.getY() - 58, 59, 59);
 		}
-		
 		//Draw health bar.
 		g.setColor(Color.green);
 		g.fillRect(s.getX() + 50, s.getY() - 44, 60 * s.getCurrentHp() / s.getMaxHp(), 7);
@@ -180,7 +187,7 @@ public class BattleSprites {
 		g.drawImage(enemyhealth, s.getX() + (s.getBattleSprite().getWidth() - enemyhealth.getWidth()) / 2, s.getY() - 10, enemyhealth.getWidth(), enemyhealth.getHeight(), null);
 		//Draw HP Bar.
 		g.setColor(Color.red);
-		g.fillRect(s.getX() + 6 + (s.getBattleSprite().getWidth() - enemyhealth.getWidth()) / 2, s.getY() + 12, (s.getCurrentHp() / s.getMaxHp()) * 53, 2);
+		g.fillRect(s.getX() + 6 + (s.getBattleSprite().getWidth() - enemyhealth.getWidth()) / 2, s.getY() + 12, 53 * s.getCurrentHp() / s.getMaxHp(), 2);
 	}
 	
 	//Blinks battle sprite. Used when Schmuck is taking damage.

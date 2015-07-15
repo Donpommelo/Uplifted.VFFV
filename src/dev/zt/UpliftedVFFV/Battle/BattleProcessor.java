@@ -1,14 +1,15 @@
 package dev.zt.UpliftedVFFV.Battle;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
@@ -18,6 +19,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
 import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class BattleProcessor {
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
@@ -41,6 +43,7 @@ public class BattleProcessor {
 	public GameState gs;
 	public EffectManager em;
 	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
+	private BufferedImage window;
 	
 	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy, Troop t,GameState gs,BattleState bs){
 		this.game=game;
@@ -59,6 +62,7 @@ public class BattleProcessor {
 		stm = new StatusManager(game,bs,gs, this);
 //		bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(0),gs);
 		TurnOrderQueue = new ArrayList<Action>();
+		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 
 		for(int i=0 ; i<this.enemy.size()+this.allies.size();i++){
 //			TurnOrderQueue.add(null);
@@ -359,11 +363,12 @@ public class BattleProcessor {
 		
 
 	public void render(Graphics g) {
-		g.setColor(new Color(102, 178,255));
-		g.fillRect(0, 25,80,40);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.setColor(new Color(0, 0,0));
-		g.drawString("Round: "+roundNum,0,50);
+//		g.setColor(new Color(102, 178,255));
+//		g.fillRect(0, 25,80,40);
+//		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+//		g.setColor(new Color(0, 0,0));
+//		g.drawString("Round: "+roundNum,0,50);
+		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 18, Color.white, 0, 30, 80, 40, true);
 		if(!bt.textList.isEmpty()){
 			bt.render(g);
 		}
@@ -387,11 +392,12 @@ public class BattleProcessor {
 				}
 				if(numReady == allies.size()){ 
 					allReady = true;
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(0, 65,120,40);
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
-					g.setColor(new Color(0, 0,0));
-					g.drawString("Ready (Enter)",0,90);
+//					g.setColor(new Color(102, 178,255));
+//					g.fillRect(0, 65,120,40);
+//					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+//					g.setColor(new Color(0, 0,0));
+//					g.drawString("Ready (Enter)",0,90);
+					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 78, 120, 40, true);
 				}
 				if(selected==true){
 					if(bm != null){
