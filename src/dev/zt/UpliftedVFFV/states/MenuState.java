@@ -548,7 +548,7 @@ public class MenuState extends State {
 					g.setColor(Color.yellow);
 					break;
 				case 5:
-					g.setColor(Color.magenta);
+					g.setColor(new Color(128, 0, 128));
 					break;
 				case 6:
 					g.setColor(Color.black);
@@ -659,7 +659,7 @@ public class MenuState extends State {
 				g.fillRect(326, 106, 14, 14);
 				g.fillRect(345, 107, tempSchmuck.getElemPoints()[3] * 3, 12);
 				g.drawString(tempSchmuck.getElemPoints()[3] + "", 575, 120);
-				g.setColor(Color.magenta);
+				g.setColor(new Color(128, 0, 128));
 				g.fillRect(326, 131, 14, 14);
 				g.fillRect(345, 132, tempSchmuck.getElemPoints()[4] * 3, 12);
 				g.drawString(tempSchmuck.getElemPoints()[4] + "", 575, 145);
