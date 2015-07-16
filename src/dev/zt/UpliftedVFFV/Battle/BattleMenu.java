@@ -230,7 +230,7 @@ public class BattleMenu{
 						currentSkill = new ItemNothing(1,gs);
 					}
 					else{
-						currentSkill = new UseItem(1,gs.inventorymanager.backpack.keySet().toArray(new Item[999])[itemSelected],gs);
+						currentSkill = new UseItem(1,gs.inventorymanager.battleItem().keySet().toArray(new Item[999])[itemSelected],gs);
 					}
 					teamTargeted = currentSkill.startTarget();
 					phase++;			
@@ -259,7 +259,7 @@ public class BattleMenu{
 					
 				}
 				if(game.getKeyManager().down){
-					if(itemSelected<gs.inventorymanager.backpack.size()-1){
+					if(itemSelected<gs.inventorymanager.battleItem().size()-1){
 						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemSelected++;
 						if(itemPointer==4){
@@ -495,9 +495,10 @@ public class BattleMenu{
 			exit=false;
 		}
 		
+		int menux = currentSchmuck.getX();
+		int menuy = currentSchmuck.getY();
+		
 		if(phase == 1 || phase == 3){
-			int menux = currentSchmuck.getX();
-			int menuy = currentSchmuck.getY();
 			g.setColor(new Color(0, 0, 0, 200));
 			g.fillRect(menux, menuy - 40, 110, 160);
 			g.setColor(new Color(255, 255, 51, 225));
@@ -548,81 +549,83 @@ public class BattleMenu{
 				break;
 			case 1:
 				//if Skill is chosen, a list of skills covers up the actions menu
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
+				g.setColor(Color.black);
+				g.fillRect(menux, menuy - 40, 120, 160);
 				ArrayList<Skills> skills = currentSchmuck.skills;
-				g.setColor(new Color(255, 255,51));
-				g.fillRect(500, 216+25*itemPointer, 140, 25);
+				g.setColor(new Color(255, 255, 51, 225));
+				g.fillRect(menux , menuy - 65, 110, 25);
+				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setColor(Color.white);
+				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				g.setColor(new Color(0, 0,0));
 				if(skills.size()==0){
-					g.drawString("Do Nothing", 505, 231);
+					g.drawString("Do Nothing", menux + 3, menuy - 10);
 				}
 				else{
-					
-					//Displays list of skill names and mp costs
-					skillnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+4 && i<currentSchmuck.skills.size();i++){			
-						g.setColor(new Color(0, 0,0));
-						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", 505, 231+25*(skillnum));
+					//Displays list of skill names and mp costs.
+					skillnum = 0;                                                                                                                                                                                                                                                                                       
+					for(int i = backpackLocation; i <= backpackLocation + 4 && i < currentSchmuck.skills.size(); i++){			
+						g.setColor(Color.white);
+						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", menux + 3, menuy - 10 + 25 * (skillnum));
 						skillnum++;
 					}
 					
 					//Short descriptions are also visible at the bottom
-					g.setColor(new Color(255, 255,255));
-					g.fillRect(505, 340, 130, 76);
+					g.setColor(Color.white);
+					g.fillRect(menux + 120, menuy - 35, 125, 75);
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(new Color(0, 0,0));
-					int y=340;
+					g.setColor(Color.black);;
+					int y = menuy - 25;
 					for (String line : skills.get(itemSelected).getDescrShort().split("\n")){
-						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
+						 g.drawString(line, menux + 125, y += g.getFontMetrics().getHeight());
 					}			       
 				}
 				if(backpackLocation!=0){
-					g.drawImage(Assets.Uparrow,570,209,null);
+					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);
 				}
 				if(backpackLocation!=skills.size()-5 && skills.size()>5){
-					g.drawImage(Assets.Downarrow,570,334,null);
+					g.drawImage(Assets.Downarrow, menux + 60 - Assets.Downarrow.getWidth() / 2, menuy + 92, null);
 				}				
 				break;
 			case 2:	
-				
 				//Same as skills
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
+				g.setColor(Color.black);
+				g.fillRect(menux, menuy - 40, 120, 160);
 				Set<Item> temp = gs.inventorymanager.battleItem().keySet();
 				Item[] itemDisplay = temp.toArray(new Item[999]);
-				g.setColor(new Color(255, 255,51));
-				g.fillRect(500, 216+25*itemPointer, 140, 25);
+				g.setColor(new Color(255, 255, 51, 225));
+				g.fillRect(menux, menuy - 65, 110, 25);
+				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setColor(Color.white);
+				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				g.setColor(new Color(0, 0,0));
 				if(gs.inventorymanager.backpack.size()==0){
-					g.drawString("Nothing x999", 505, 231);
+					g.drawString("Nothing x999", menux + 3, menuy - 10);
 				}
 				else{
 					itemnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+4 && i<gs.inventorymanager.backpack.size();i++){			
-						g.setColor(new Color(0, 0,0));
-						g.drawString(itemDisplay[i].getName()+"  x"+gs.inventorymanager.backpack.get(itemDisplay[i]), 505, 231+25*(itemnum));
+					for(int i = backpackLocation; i <= backpackLocation + 4 && i < gs.inventorymanager.backpack.size(); i++){			
+						g.setColor(Color.white);
+						g.drawString(itemDisplay[i].getName() + "  x" + gs.inventorymanager.backpack.get(itemDisplay[i]), menux + 3, menuy - 10 + 25 * (itemnum));
 						itemnum++;
 					}	
-					g.setColor(new Color(255, 255,255));
-					g.fillRect(505, 340, 130, 76);
+					g.setColor(Color.white);
+					g.fillRect(menux + 120, menuy - 35, 125, 75);
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(new Color(0, 0,0));
-					int y=340;
+					g.setColor(Color.black);;
+					int y = menuy - 25;
 					for (String line : itemDisplay[itemSelected].getDescrShort().split("\n")){
-						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
+						 g.drawString(line, menux + 125, y += g.getFontMetrics().getHeight());
 					}
 				}
-			if(backpackLocation!=0){
-				g.drawImage(Assets.Uparrow,570,209,null);
-			}
-			if(backpackLocation!=gs.inventorymanager.backpack.size()-5 && gs.inventorymanager.backpack.size()>5){
-				g.drawImage(Assets.Downarrow,570,334,null);
-			}
+				if(backpackLocation!=0){
+					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);
+				}
+				if(backpackLocation!=gs.inventorymanager.battleItem().size()-5 && gs.inventorymanager.battleItem().size()>5){
+					g.drawImage(Assets.Downarrow, menux + 60 - Assets.Downarrow.getWidth() / 2, menuy + 92, null);
+				}
 				break;
 				
 				//For Wait and run actions, nothing is displayed. An action is instantly queued up instead.
