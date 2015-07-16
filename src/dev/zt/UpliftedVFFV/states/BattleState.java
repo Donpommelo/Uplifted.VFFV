@@ -3,11 +3,13 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Battle.BattleBackground;
 import dev.zt.UpliftedVFFV.Battle.BattleMenu;
 import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.Battle.BattleSprites;
+import dev.zt.UpliftedVFFV.Battle.BattleUI;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
@@ -38,6 +40,7 @@ public class BattleState extends State {
 	public BattleBackground bb;
 	public TroopManager tm;
 	public BattleProcessor bp;
+	public BattleUI bui;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> all=new ArrayList<Schmuck>();
@@ -58,7 +61,8 @@ public class BattleState extends State {
 		this.enemy = tm.Troop(troopId,bonusML);
 		bp = new BattleProcessor(game,sm,party,enemy,t,gs,this);
 		bs = new BattleSprites(game,sm,party,enemy,this);
-		bb = new BattleBackground(game,sm,this);	
+		bb = new BattleBackground(game,sm,this);
+		bui = new BattleUI(game,sm,party,enemy,this);
 		animatedDoors = new SpriteSheet(ImageLoader.loadImage("/textures/BattleIntro1.png"));
 		introScene = true;
 		introX = 0;
@@ -102,6 +106,7 @@ public class BattleState extends State {
 				bb.render(g);
 				bs.render(g);
 				bp.render(g);
+				bui.render(g);
 				introY = 416*(int)((frame-100)/3);
 				elevatorDoors = animatedDoors.crop(introX,7488-introY, 640, 416);
 				g.drawImage(elevatorDoors,0,0,null);
@@ -113,6 +118,7 @@ public class BattleState extends State {
 				bb.render(g);
 				bs.render(g);
 				bp.render(g);
+				bui.render(g);
 				introScene = false;
 			}
 			
@@ -123,6 +129,7 @@ public class BattleState extends State {
 			bb.render(g);
 			bs.render(g);
 			bp.render(g);
+			bui.render(g);
 //			bm.render(g);
 		}
 

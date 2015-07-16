@@ -28,7 +28,7 @@ public class Assets {
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
-	public static BufferedImage Uparrow,Downarrow;
+	public static BufferedImage Uparrow, Downarrow, Crosshair1;
 	
 	public static BufferedImage attack, skill, nothing, wait, item, run, pointer;
 	
@@ -45,6 +45,7 @@ public class Assets {
 		SpriteSheet prop=new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorProps.png"));
 		SpriteSheet arrowup = new SpriteSheet(ImageLoader.loadImage("/ui/Arrow.png"));
 		SpriteSheet arrowdown = new SpriteSheet(ImageLoader.loadImage("/ui/ArrowDown.png"));
+		SpriteSheet crosshair = new SpriteSheet(ImageLoader.loadImage("/ui/Crosshair.png"));
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
@@ -146,6 +147,7 @@ public class Assets {
 		//arrows and stuff
 		Uparrow = arrowup.crop(0, 0 ,32, 32);
 		Downarrow = arrowdown.crop(0, 0 ,32, 32);
+		Crosshair1 = crosshair.crop(0, 0, 64, 64);
 		
 		//skill+item mini-icons
 		
