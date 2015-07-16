@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.Game;
 
 public class PartyManager {
-	
+	 
 //	private Game game;
 	public ArrayList<Schmuck> party=new ArrayList<Schmuck>(5);
 	

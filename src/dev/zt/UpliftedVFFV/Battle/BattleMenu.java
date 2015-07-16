@@ -17,14 +17,14 @@ import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.UseItem;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+//import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
-import dev.zt.UpliftedVFFV.utils.Utils;
+//import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class BattleMenu{
@@ -41,7 +41,7 @@ public class BattleMenu{
 	public int phase;
 	public StateManager sm;
 	public Game game;
-	private BufferedImage window;
+//	private BufferedImage window;
 	
 	//Turned on by pressing "x" anytime. Moves one menu screen backwards. De-selects options.
 	public Boolean exit = false; 			
@@ -59,6 +59,7 @@ public class BattleMenu{
 	//The Schmuck who is currently making a move and his target.
 	public Schmuck currentSchmuck;
 	public Schmuck targetedSchmuck;
+	public Schmuck pointed;
 	
 	//The Skill currently being chosen.
 	public Skills currentSkill;
@@ -77,7 +78,7 @@ public class BattleMenu{
 		actionSelected=0;
 		TurnOrderQueue=0;
 		phase = 1;
-		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
+//		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		if(bs.bp.pauseTOQ){
 			for(int i=0; i<currentSchmuck.statuses.size(); i++){
 				if(currentSchmuck.statuses.get(i)!=null){
@@ -85,6 +86,7 @@ public class BattleMenu{
 				}	
 			}
 		}
+		pointed = chosen;
 	}
 
 	public void tick() {
@@ -467,7 +469,6 @@ public class BattleMenu{
 			
 
 	public void render(Graphics g) {
-		
 		//if exit is used by pressing x, actions will be de-selected. Eveything moves one menu screen back
 		if(exit==true){
 			switch(phase){
@@ -495,45 +496,47 @@ public class BattleMenu{
 		}
 		
 		if(phase == 1 || phase == 3){
-//			g.setColor(new Color(102, 178,255));
-//			g.fillRect(540, 256,100,160);
-//			g.setColor(new Color(255, 255,51));
-//			g.fillRect(540,256+32*actionSelected, 100, 32);
-//			g.fillRect(530,233,110,23);
-//			g.setFont(new Font("Chewy", Font.PLAIN, 18));
-//			g.setColor(new Color(0, 0,0));
+			int menux = currentSchmuck.getX();
+			int menuy = currentSchmuck.getY();
+			g.setColor(new Color(0, 0, 0, 200));
+			g.fillRect(menux, menuy - 40, 110, 160);
+			g.setColor(new Color(255, 255, 51, 225));
+			g.fillRect(menux, menuy - 40 + 32 * actionSelected, 110, 32);
+			g.fillRect(menux , menuy - 65, 110, 25);
+			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g.setColor(Color.white);
 			
-//			g.drawString(currentSchmuck.getName(),540, 250);
-			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, 525, 232, 110, 32, true);
-//			g.drawString("Attack", 540, 283);
-//			g.drawString("Skills", 540, 315);
-//			g.drawString("Item", 540, 347);
-//			g.drawString("Wait", 540, 379);
-//			g.drawString("Run", 540, 411);
-			String[] options = {"Attack", "Skills", "Item", "Wait", "Run"};
-			Utils.drawMenu(g, window, options, Color.black, 18, actionSelected, 540, 256, 100, 160, true, true);
+			g.drawString(currentSchmuck.getName(), menux, menuy - 50);
+//			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, 525, 232, 110, 32, true);
+			g.drawString("Attack", menux + 55, menuy - 20);
+			g.drawString("Skills", menux + 55, menuy + 12);
+			g.drawString("Item", menux + 55, menuy + 44);
+			g.drawString("Wait", menux + 55, menuy + 76);
+			g.drawString("Run", menux + 55, menuy + 108);
+//			String[] options = {"Attack", "Skills", "Item", "Wait", "Run"};
+//			Utils.drawMenu(g, window, options, Color.black, 18, actionSelected, 540, 256, 100, 160, true, true);
 			
 			//Displays mini-icons for actions
 			switch(actionSelected){
 			case 0:
-				g.drawImage(Assets.attack, 610, 256, null);
+				g.drawImage(Assets.attack, menux + 8, menuy - 40, null);
 				break;
 			case 1:
-				g.drawImage(Assets.skill, 610, 288, null);
+				g.drawImage(Assets.skill, menux + 8, menuy - 8, null);
 				break;
 			case 2:
-				g.drawImage(Assets.item, 610, 320, null);
+				g.drawImage(Assets.item, menux + 8, menuy + 24, null);
 				break;
 			case 3:
 				if(bs.bp.pauseTOQ){
-					g.drawImage(Assets.nothing, 610, 352, null);
+					g.drawImage(Assets.nothing, menux + 8, menuy + 56, null);
 				}
 				else{
-					g.drawImage(Assets.wait, 610, 352, null);
+					g.drawImage(Assets.wait, menux + 8, menuy + 56, null);
 				}
 				break;
 			case 4:
-				g.drawImage(Assets.run, 610, 384, null);
+				g.drawImage(Assets.run, menux + 8, menuy + 88, null);
 				break;
 			}
 			
@@ -627,7 +630,7 @@ public class BattleMenu{
 		}
 		
 		if(phase == 3){
-			Schmuck pointed = currentSchmuck;
+			pointed = currentSchmuck;
 			switch(currentSkill.getTargetType()){
 			case 0:
 				if(teamTargeted){
@@ -644,21 +647,10 @@ public class BattleMenu{
 			case 2:
 				pointed = allies.get(currentlyTargeted);
 				break;
-			}
-			
-			g.drawImage(pointer,pointed.getBattleSprite().getWidth()/2+pointed.getX()-16, pointed.getY()-10,null);
-			
-			g.setColor(new Color(102, 178,255));
-			g.fillRect(520, 0,140,25);
-			g.setFont(new Font("Chewy", Font.PLAIN, 16));
-			g.setColor(new Color(0, 0,0));
-			g.drawString(pointed.getName()+" ",520,20);
-			
+			}	
 		}
 	
-	
-		itemnum++;
-		
+		itemnum++;	
 	}
 
 
