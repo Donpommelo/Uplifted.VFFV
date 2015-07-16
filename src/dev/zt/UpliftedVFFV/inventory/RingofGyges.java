@@ -11,7 +11,7 @@ public class RingofGyges extends Item{
 	static String descrShort = "Grants Invisibility at low Health\n+12% Evasion Chance";
 	public status[] enchantment = new status[2];
 	public RingofGyges() {
-		super(2, "Echo Shell",false, false, false, false,descr, descrShort,800,1);
+		super(2, "Echo Shell",false, false, false, false,descr, descrShort,1150,1);
 
 	}
 	

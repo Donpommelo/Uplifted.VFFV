@@ -10,7 +10,7 @@ public class PainGate extends Item{
 	static String descrShort="";
 	public status[] enchantment = new status[1];
 	public PainGate() {
-		super(2, "Pain Gate",false,false,false, false,descr, descrShort, 85, 1);
+		super(2, "Pain Gate",false,false,false, false,descr, descrShort, 175, 1);
 		
 	}
 	

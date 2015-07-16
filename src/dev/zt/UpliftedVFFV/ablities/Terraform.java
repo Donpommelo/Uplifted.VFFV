@@ -20,7 +20,7 @@ public class Terraform extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
 		bs.bp.bt.textList.add("All battlers look discombobulated.");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
@@ -40,7 +40,7 @@ public class Terraform extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
 		bs.bp.bt.textList.add("All battlers look critically discombobulated.");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();

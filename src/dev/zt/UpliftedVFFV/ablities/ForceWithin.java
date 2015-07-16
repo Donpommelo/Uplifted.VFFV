@@ -21,7 +21,7 @@ public class ForceWithin extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Force Within!");
 		bs.bp.bt.textList.add("All enemies were dazed!");
 			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
-			for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 				for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 					if(bs.bp.TurnOrderQueue.get(i)!=null){
 						if(bs.bp.TurnOrderQueue.get(i).user.equals(s) && !s.equals(perp)){

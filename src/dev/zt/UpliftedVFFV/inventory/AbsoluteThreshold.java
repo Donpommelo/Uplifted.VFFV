@@ -10,7 +10,7 @@ public class AbsoluteThreshold extends Item{
 	static String descrShort="";
 	public status[] enchantment = new status[1];
 	public AbsoluteThreshold() {
-		super(2, "Absolute Threshold",false,false,false, false,descr, descrShort, 85, 1);
+		super(2, "Absolute Threshold",false,false,false, false,descr, descrShort, 800, 1);
 		
 	}
 	

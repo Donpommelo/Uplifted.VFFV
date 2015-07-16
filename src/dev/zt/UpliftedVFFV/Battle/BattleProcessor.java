@@ -17,6 +17,7 @@ import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.Misaligned;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
 import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
@@ -432,22 +433,62 @@ public class BattleProcessor {
 		}
 	}
 	
-	public ArrayList<Schmuck> getEnemyTargets(Schmuck s){
+	public ArrayList<Schmuck> getSelectableEnemies(Schmuck s){
+		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
-			return bs.bs.enemySelectable;
+			for(Schmuck m : bs.bs.enemySelectable){
+				if(!stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
+			for(Schmuck m : bs.bs.alliesSelectable){
+				if(stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
 		}
 		else{
-			return bs.bs.alliesSelectable;
+			for(Schmuck m : bs.bs.enemySelectable){
+				if(stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
+			for(Schmuck m : bs.bs.alliesSelectable){
+				if(!stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
 		}
+		return selectables;
 	}
 	
-	public ArrayList<Schmuck> getAlliedTargets(Schmuck s){
+	public ArrayList<Schmuck> getSelectableAllies(Schmuck s){
+		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
-			return bs.bs.alliesSelectable;
+			for(Schmuck m : bs.bs.enemySelectable){
+				if(stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
+			for(Schmuck m : bs.bs.alliesSelectable){
+				if(!stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
 		}
 		else{
-			return bs.bs.enemySelectable;
+			for(Schmuck m : bs.bs.enemySelectable){
+				if(!stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
+			for(Schmuck m : bs.bs.alliesSelectable){
+				if(stm.checkStatus(m,new Misaligned(0,m))){
+					selectables.add(m);
+				}
+			}
 		}
+		return selectables;
 	}
 	
 	public void sort(ArrayList<Action> a){

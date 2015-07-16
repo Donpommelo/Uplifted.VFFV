@@ -18,8 +18,8 @@ public class DoubleGeneva extends Skills {
 		Schmuck target1;
 		Schmuck target2;
 		bs.bp.bt.textList.add(perp.getName()+" used Double Geneva!");
-		target1 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
-		target2 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
+		target1 = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
+		target2 = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp,target1);
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*2)), perp, target2);
 		if(!vic.equals(target1) && !vic.equals(target2)){
@@ -33,8 +33,8 @@ public class DoubleGeneva extends Skills {
 		Schmuck target2;
 		bs.bp.bt.textList.add(perp.getName()+" used Double Geneva!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		target1 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
-		target2 = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
+		target1 = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
+		target2 = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp,target1);
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target2.buffedStats[3]*2)), perp, target2);
 		bs.bp.bt.textList.add(vic.getName()+"'s diplomatic was critically rejected!");

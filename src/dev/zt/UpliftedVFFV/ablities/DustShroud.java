@@ -22,7 +22,7 @@ public class DustShroud extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Dust Shroud!");
 		bs.bp.bt.textList.add("All allies became Untargetable!");
 			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
-			for(Schmuck s : bs.bp.getAlliedTargets(perp)){
+			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
 				bs.bp.stm.addStatus(s, new Untouchable(2, perp));
 			}
 		

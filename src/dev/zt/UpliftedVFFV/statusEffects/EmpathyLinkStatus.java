@@ -19,11 +19,11 @@ public class EmpathyLinkStatus extends status{
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+"'s Empathy Link equalizes the Hp of living allies!");
 		int totalHp = 0;
-		for(Schmuck e : bs.bp.getAlliedTargets(s)){
+		for(Schmuck e : bs.bp.getSelectableAllies(s)){
 			totalHp += e.getCurrentHp();
 		}
-		for(Schmuck e : bs.bp.getAlliedTargets(s)){
-			e.hpChange(totalHp/bs.bp.getAlliedTargets(s).size()-e.getCurrentHp());
+		for(Schmuck e : bs.bp.getSelectableAllies(s)){
+			e.hpChange(totalHp/bs.bp.getSelectableAllies(s).size()-e.getCurrentHp());
 		}
 	}
 	

@@ -10,7 +10,7 @@ public class BackpackBuddy extends Item{
 	static String descrShort="+25% Equipment Power";
 	public status[] enchantment = new status[1];
 	public BackpackBuddy() {
-		super(2, "Backpack Buddy",false,false,false, false,descr, descrShort,110,1);
+		super(2, "Backpack Buddy",false,false,false, false,descr, descrShort,200,1);
 		
 	}
 	

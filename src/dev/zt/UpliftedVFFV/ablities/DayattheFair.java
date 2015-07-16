@@ -18,7 +18,7 @@ public class DayattheFair extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Day at the Fair");
 		bs.bp.bt.textList.add("The round was ended prematurely");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
 		}
 		bs.bp.TurnOrderQueue.clear();
@@ -27,7 +27,7 @@ public class DayattheFair extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Day at the Fair");
 		bs.bp.bt.textList.add("A Critical blow!");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s);
 		}
 	}

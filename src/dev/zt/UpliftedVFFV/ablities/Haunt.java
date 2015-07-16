@@ -17,7 +17,7 @@ public class Haunt extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Haunt!");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2]*2)/(s.buffedStats[3]*10), perp, s);
 			bs.bp.stm.addStatus(s, new TestStatBuff(5,3,.9,perp,80));
 		}
