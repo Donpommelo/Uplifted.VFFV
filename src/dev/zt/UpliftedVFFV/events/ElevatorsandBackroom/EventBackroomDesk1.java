@@ -22,12 +22,8 @@ public class EventBackroomDesk1 extends Event {
 		super.Dialog(164, 164,this.getId());
 
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

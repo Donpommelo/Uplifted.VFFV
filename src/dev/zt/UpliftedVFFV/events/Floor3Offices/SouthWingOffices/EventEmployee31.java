@@ -18,10 +18,7 @@ public class EventEmployee31 extends Event {
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM1);
 	public EventEmployee31(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-	
 	}
-	
-
 	
 	public void run(){	
 		if (Player.runlast==0){
@@ -59,27 +56,19 @@ public class EventEmployee31 extends Event {
 			super.Dialog(160, 160,this.getId());
 			stage=2;
 		}
-			
-			
 	}
 	
 	public int getfinalstage() {
 		return finalstage;
 	}
-	
-
-
 
 	public int getstage() {
 		return stage;
 	}
 
-
 	public void setstage(int stage) {
 		EventEmployee31.stage = stage;
 	}
-
-
 
 	public void ChoiceMade(int i){
 		switch(i){
@@ -93,7 +82,7 @@ public class EventEmployee31 extends Event {
 		}
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

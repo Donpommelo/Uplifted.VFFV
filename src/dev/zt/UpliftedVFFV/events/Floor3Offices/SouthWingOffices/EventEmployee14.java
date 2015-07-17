@@ -15,11 +15,7 @@ public class EventEmployee14 extends Event {
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeM1);
 	public EventEmployee14(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		if (Player.runlast==0){
@@ -44,11 +40,9 @@ public class EventEmployee14 extends Event {
 			break;
 			
 		}
-		
-
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	
@@ -59,7 +53,6 @@ public class EventEmployee14 extends Event {
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventEmployee14.stage = stage;

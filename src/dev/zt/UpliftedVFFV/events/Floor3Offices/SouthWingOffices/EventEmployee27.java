@@ -14,11 +14,7 @@ public class EventEmployee27 extends Event {
 	public static BufferedImage img=SpriteSorter.SpriteSort(4,Assets.EmployeeF);
 	public EventEmployee27(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		if (Player.runlast==0){
@@ -44,12 +40,9 @@ public class EventEmployee27 extends Event {
 			super.Dialog(133, 138,this.getId());
 			selfswitch2 = true;
 		}
-		
-		
-
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

@@ -27,8 +27,6 @@ public class EventEmployeeIntro extends Event {
 		scenes[1]=ImageLoader.loadImage("/Cutscenes/Intro4.png");
 	}
 	
-
-	
 	public void run(){	
 		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		if (Player.runlast==0){
@@ -83,7 +81,6 @@ public class EventEmployeeIntro extends Event {
 			case 7:
 				super.Cutscene(scenes, this.getId());
 				break;
-		
 			}
 		}
 		else{
@@ -96,19 +93,8 @@ public class EventEmployeeIntro extends Event {
 				break;
 			
 		}
-			
-		
 		}
 			
-			
-			
-			
-	}
-	
-
-	
-	public static void main(String[] args) {
-		
 	}
 	
 	public int getfinalstage() {
@@ -120,7 +106,6 @@ public class EventEmployeeIntro extends Event {
 		return stage;
 	}
 
-
 	public void setstage(int stage) {
 		EventEmployeeIntro.stage = stage;
 	}
@@ -129,16 +114,12 @@ public class EventEmployeeIntro extends Event {
 		return selfswitch1;
 	}
 
-
-
 	public void setSelfswitch1(boolean selfswitch1) {
 		this.selfswitch1 = selfswitch1;
 	}
 
-
-
-	public boolean isSolid(){
-		return solid;
+	public boolean isSolid(int i){
+		return true;
 	}
 	
 	public boolean drawn(){

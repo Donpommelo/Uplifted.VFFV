@@ -16,19 +16,9 @@ public class EventSmudge1 extends Event {
 	
 	}
 	
-
-	
 	public void run(){
 		super.Dialog(166, 166,this.getId());
 
-	}
-
-	public static void main(String[] args) {
-		
-	}
-	
-	public boolean isSolid(){
-		return false;
 	}
 	
 	public boolean runnable(){

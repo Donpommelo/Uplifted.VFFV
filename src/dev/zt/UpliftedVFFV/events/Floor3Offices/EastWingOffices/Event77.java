@@ -15,9 +15,4 @@ public class Event77 extends Event {
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftMain1.txt", 5,9,"");
 	}
-
-	public boolean isSolid(){
-		return false;
-	}
-
 }

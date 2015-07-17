@@ -22,14 +22,6 @@ public class EventSmudge2 extends Event {
 		super.Dialog(166, 166,this.getId());
 
 	}
-
-	public static void main(String[] args) {
-		
-	}
-	
-	public boolean isSolid(){
-		return false;
-	}
 	
 	public boolean runnable(){
 		return false;

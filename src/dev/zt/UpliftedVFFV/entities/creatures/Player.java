@@ -39,7 +39,7 @@ public class Player extends Creature{
 		this.x = x;
 		this.y = y;
 		this.playerx = 256;
-		this.playery = 224;
+		this.playery = 192;
 //		this.playerx = 128;
 //		this.playery = 128;
 		wall = false;
@@ -57,8 +57,9 @@ public class Player extends Creature{
 		else {
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
-			getInput();			
-			if(!WorldManager.getWorld().getTile((int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
+			getInput();	
+			int [] tent = {(int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)};
+			if(!WorldManager.getWorld().getTile(tent[0],tent[1]).isSolid() && !EventManager.getEvent(tent[0],tent[1]).isSolid(runlast)){
 				this.move();
 			}
 			else{
@@ -158,10 +159,22 @@ public class Player extends Creature{
 		}
 		else if(runleft==true){
 			xMove = -speed;
+			if(WorldManager.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == 1){
+				yMove = speed;
+			}
+			if(WorldManager.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == -1){
+				yMove = -speed;
+			}
 			step++;
 		}
 		else if(runright==true){
 			xMove = speed;
+			if(WorldManager.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == 1){
+				yMove = -speed;
+			}
+			if(WorldManager.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == -1){
+				yMove = speed;
+			}
 			step++;
 		}
 		

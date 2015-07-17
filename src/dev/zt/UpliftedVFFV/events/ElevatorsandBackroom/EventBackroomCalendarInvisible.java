@@ -76,7 +76,7 @@ public class EventBackroomCalendarInvisible extends Event {
 		super.loot(new BoxofFun(), 1);
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

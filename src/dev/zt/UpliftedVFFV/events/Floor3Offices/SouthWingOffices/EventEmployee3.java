@@ -42,7 +42,6 @@ public class EventEmployee3 extends Event {
 		else{
 			super.Dialog(62, 62,this.getId());
 		}
-
 	}
 	
 	public void walkCycle(){
@@ -65,11 +64,9 @@ public class EventEmployee3 extends Event {
 			}
 			move = 0;
 		}
-	
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
-	
 }

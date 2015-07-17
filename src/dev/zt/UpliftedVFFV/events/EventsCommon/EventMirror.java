@@ -14,7 +14,7 @@ public class EventMirror extends Event {
 	
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

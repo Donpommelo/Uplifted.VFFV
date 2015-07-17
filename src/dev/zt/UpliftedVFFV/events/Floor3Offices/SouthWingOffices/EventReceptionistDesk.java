@@ -8,11 +8,7 @@ public class EventReceptionistDesk extends Event {
 	public boolean selfswitch1=false;
 	public EventReceptionistDesk(float x, float y, int idnum) {
 		super(Assets.Table8,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		if(selfswitch1==false){
@@ -24,7 +20,7 @@ public class EventReceptionistDesk extends Event {
 		}
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

@@ -29,15 +29,12 @@ public class EventVending1Invisible extends Event {
 		selection.put(new LemonyFresh(), 5);
 	}
 	
-
-	
 	public void run(){
 //		super.Dialog(168, 168,this.getId());
 		super.shop(this.getId(),selection,shopKeeper);
-
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

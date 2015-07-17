@@ -27,7 +27,7 @@ public class EventBackroomCalendar extends Event {
 		
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

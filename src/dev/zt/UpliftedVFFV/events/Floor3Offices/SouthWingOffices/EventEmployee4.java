@@ -21,8 +21,6 @@ public class EventEmployee4 extends Event {
 		Event.events[this.getId()].test.runlast = 0;
 	}
 	
-
-	
 	public void run(){
 		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 		if (Player.runlast==0){
@@ -44,7 +42,6 @@ public class EventEmployee4 extends Event {
 		else{
 			super.Dialog(55, 55,this.getId());
 		}
-
 	}
 	
 	public void walkCycle(){
@@ -67,11 +64,9 @@ public class EventEmployee4 extends Event {
 			}
 			move = 0;
 		}
-	
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
-
 }
