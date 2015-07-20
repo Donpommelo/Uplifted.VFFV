@@ -49,6 +49,7 @@ public class IllRat extends Schmuck{
 		calcStats(lvl);
 		this.bio = "Filthy bringer of plague. Thrive due to lack of natural predators.";
 		itemdrops.put(new Disease(), .6);
+//		skills.add
 		
 	}
 	

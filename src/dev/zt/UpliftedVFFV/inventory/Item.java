@@ -132,9 +132,10 @@ public class Item implements Comparable<Item>{
 			text = "Hmm. I don't know if I need that. But I like you, so I'll buy it.";
 			break;
 		case 2:
-			
+			text = "Well, its not amazing, but I guess I'll buy it anyways. Out of charity, really.";
 			break;
 		case 3:
+			text = "That could be nice. Yeah, that could be real nice . . . ";
 			break;
 		case 4:
 			break;
