@@ -3,23 +3,24 @@ package dev.zt.UpliftedVFFV.inventory;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 //items class.
-//change usefrommenu to consummable later
+//change usefrommenu to consumable later
 public class Item implements Comparable<Item>{
-	public BufferedImage ItemSprite;
+	public BufferedImage ItemSprite, ItemImage;
 	public String name,descr,descrShort;
 	public int Id;
 	public int value;
 	
-	public String janatorText;
+	public String janitorText;
 	
-	//0: Consummable 1: Equipment 2: Misc 3: Key Item
+	//0: Consumable 1: Equipment 2: Misc 3: Key Item
 	public int slot;
-	public Boolean usedfromMenu,usefromBattle, consummable, targeted = true;
+	public Boolean usedfromMenu, usefromBattle, consumable, targeted = true;
 	
 	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, String description,String descrShort,
 			int value, int slot){
@@ -27,7 +28,7 @@ public class Item implements Comparable<Item>{
 		this.name=name;
 		this.usedfromMenu=menu;
 		this.usefromBattle=battle;
-		this.consummable = consume;
+		this.consumable = consume;
 		this.targeted = target;
 		this.descr=description;
 		this.descrShort = descrShort;
@@ -90,7 +91,7 @@ public class Item implements Comparable<Item>{
 	}
 
 	public Boolean isConsummable() {
-		return consummable;
+		return consumable;
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
@@ -144,5 +145,27 @@ public class Item implements Comparable<Item>{
 			break;
 		}
 		return text;
+	}
+	
+	public BufferedImage getIcon(){
+		if(ItemSprite != null){
+			return ItemSprite;
+		}
+		else{
+			return Assets.item;
+		}
+	}
+	
+	public BufferedImage getImage(){
+		if(ItemSprite != null){
+			return ItemImage;
+		}
+		else{
+			return Assets.item;
+		}
+	}
+	
+	public String toString(){
+		return getName();
 	}
 }

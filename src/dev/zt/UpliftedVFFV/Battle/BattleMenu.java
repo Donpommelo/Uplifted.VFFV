@@ -499,7 +499,8 @@ public class BattleMenu{
 		int menuy = currentSchmuck.getY();
 		
 		if(phase == 1 || phase == 3){
-			g.setColor(new Color(0, 0, 0, 200));
+			g.setColor(new Color(0, 128, 255, 200));
+			//g.setColor(new Color(0, 0, 0, 200));
 			g.fillRect(menux, menuy - 40, 110, 160);
 			g.setColor(new Color(255, 255, 51, 225));
 			g.fillRect(menux, menuy - 40 + 32 * actionSelected, 110, 32);
@@ -549,7 +550,8 @@ public class BattleMenu{
 				break;
 			case 1:
 				//if Skill is chosen, a list of skills covers up the actions menu
-				g.setColor(new Color(0, 0, 0, 200));
+				g.setColor(new Color(0, 128, 255, 200));
+				//g.setColor(new Color(0, 0, 0, 200));
 				g.fillRect(menux, menuy - 40, 120, 160);
 				ArrayList<Skills> skills = currentSchmuck.skills;
 				g.setColor(new Color(255, 255, 51, 225));
@@ -590,7 +592,8 @@ public class BattleMenu{
 				break;
 			case 2:	
 				//Same as skills
-				g.setColor(new Color(0, 0, 0, 200));
+				g.setColor(new Color(0, 128, 255, 200));
+				//g.setColor(new Color(0, 0, 0, 200));
 				g.fillRect(menux, menuy - 40, 120, 160);
 				Set<Item> temp = gs.inventorymanager.battleItem().keySet();
 				Item[] itemDisplay = temp.toArray(new Item[999]);
