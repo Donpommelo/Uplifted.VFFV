@@ -20,7 +20,7 @@ public class HoGStatus extends status{
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		if(cooldown == 0){
 			Schmuck target = bs.bp.getSelectableEnemies(s).get((int)(Math.random()*bs.bp.getSelectableEnemies(s).size()));
-			bs.bp.stm.addStatus(target, new Stunned(2,perp));				
+			bs.bp.stm.addStatus(target, new Stunned(2,perp, 50));				
 			cooldown +=8;
 		}
 	}

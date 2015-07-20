@@ -15,7 +15,7 @@ public class FaradayCage extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new MeterShield(.3*(1+s.getEquipPow()), s.itemDummy);
+		enchantment[0] = new MeterShield(.3*(1+s.getEquipPow()), s.itemDummy, 75);
 		return enchantment;
 	}
 	

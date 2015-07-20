@@ -8,8 +8,8 @@ public class EmpathyLinkStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public EmpathyLinkStatus(int i, Schmuck perp){
-		super(i, "Empathy", false, false, true, perp);
+	public EmpathyLinkStatus(int i, Schmuck perp, int pr){
+		super(i, "Empathy", false, false, true, perp, pr);
 	}
 	
 	public EmpathyLinkStatus(Schmuck perp, int pr){
@@ -29,7 +29,6 @@ public class EmpathyLinkStatus extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" became Empathetic!";
-
 	}
 
 	public String cureText(Schmuck s){

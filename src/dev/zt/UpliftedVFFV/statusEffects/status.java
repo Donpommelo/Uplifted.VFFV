@@ -13,26 +13,7 @@ public class status {
 	public BattleState bs;
 	public int stack;
 	public int priority;
-	public Schmuck perp;
-	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p){
-		this.duration=i;
-		this.name = n;
-		this.perm = perm;
-		this.visible = vis;
-		this.removedEnd = end;
-		this.perp = p;
-		this.priority = 0;
-	}
-	
-	public status(String n, Boolean vis, Boolean end, Schmuck p){
-		this.name = n;
-		this.perm = true;
-		this.visible = vis;
-		this.removedEnd = end;
-		this.perp = p;
-		this.priority = 0;
-	}
-	
+	public Schmuck perp;	
 	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p, int pr){
 		this.duration=i;
 		this.name = n;

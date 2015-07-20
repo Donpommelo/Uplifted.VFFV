@@ -11,14 +11,14 @@ public class Regendegen extends status{
 	public Boolean HpBp;
 //	public BattleState bs;
 	public int regen;
-	public Regendegen(int i, Boolean stat, int amount, Schmuck perp){
-		super(i, "Regeneration",  false, false, true, perp);
+	public Regendegen(int i, Boolean stat, int amount, Schmuck perp, int pr){
+		super(i, "Regeneration",  false, false, true, perp, pr);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
 	
-	public Regendegen(Boolean stat, int amount, Schmuck perp){
-		super("Regeneration", false, false,perp);
+	public Regendegen(Boolean stat, int amount, Schmuck perp, int pr){
+		super("Regeneration", false, false,perp, pr);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
@@ -42,7 +42,6 @@ public class Regendegen extends status{
 			Hpbp = "Hp";
 		}
 		return s.getName()+" is "+plus+" "+Hpbp+".";
-
 	}
 
 	public String cureText(Schmuck s){

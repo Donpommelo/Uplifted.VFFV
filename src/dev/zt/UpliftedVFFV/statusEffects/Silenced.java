@@ -10,12 +10,12 @@ public class Silenced extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Silenced(int i, Schmuck perp){
-		super(i, "Silenced", false, true, false, perp);
+	public Silenced(int i, Schmuck perp, int pr){
+		super(i, "Silenced", false, true, false, perp, pr);
 	}
 	
-	public Silenced(Schmuck perp){
-		super("Silenced", true, false, perp);
+	public Silenced(Schmuck perp, int pr){
+		super("Silenced", true, false, perp, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

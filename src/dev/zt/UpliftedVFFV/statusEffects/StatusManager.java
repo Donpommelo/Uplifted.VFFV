@@ -58,6 +58,22 @@ public class StatusManager {
 				s.statuses.get(i).onStatusInflict(s,stat,bs);
 			}
 		}
+		int j;
+		boolean flag = true;
+		status temp;
+		while (flag){
+			flag=false;
+			for(j=0; j<s.statuses.size()-1; j++){
+				if(s.statuses.get(j) != null && s.statuses.get(j+1) != null){
+					if(s.statuses.get(j).getPriority() > s.statuses.get(j+1).getPriority()){
+						temp = s.statuses.get(j);
+						s.statuses.set(j,s.statuses.get(j+1));
+						s.statuses.set(j+1,temp);
+						flag = true;
+					}
+				}
+			}
+		}
 	}
 	
 	public void removeStatus(Schmuck s, status stat){

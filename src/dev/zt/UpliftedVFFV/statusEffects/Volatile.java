@@ -9,12 +9,12 @@ public class Volatile extends status{
 
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Volatile(int i, Schmuck perp){
-		super(i, "Volatile", false, false, true, perp);
+	public Volatile(int i, Schmuck perp, int pr){
+		super(i, "Volatile", false, false, true, perp, pr);
 	}
 	
-	public Volatile(Schmuck perp){
-		super("Volatile", false, false, perp);
+	public Volatile(Schmuck perp, int pr){
+		super("Volatile", false, false, perp, pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

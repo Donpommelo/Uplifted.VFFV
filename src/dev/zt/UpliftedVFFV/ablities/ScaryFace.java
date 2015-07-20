@@ -19,7 +19,7 @@ public class ScaryFace extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Scary Face!");
 		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.stm.addStatus(vic, new Intimidated(3, perp));
+			bs.bp.stm.addStatus(vic, new Intimidated(3, perp, 40));
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
@@ -29,6 +29,6 @@ public class ScaryFace extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Initmidate!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti())), perp));	
+		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti())), perp, 40));	
 	}
 }

@@ -68,7 +68,7 @@ public class EffectManager {
 		}
 		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
 			if(finalDamage > 0){
-				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic))){
+				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic,50))){
 					bs.bp.bt.textList.add(vic.getName()+" was prevented from healing!");
 				}
 				else{
@@ -77,8 +77,8 @@ public class EffectManager {
 				}
 			}
 			else{
-				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic))){
-					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prvented damage!");
+				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic,50))){
+					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prevented damage!");
 				}
 				else{
 					bs.bs.flash(vic, 51);
@@ -126,7 +126,7 @@ public class EffectManager {
 
 	public int damageSimulation(int hp, Schmuck perp, Schmuck vic, int elem, int acc){
 		int finalDamage = hp;
-		if(!bs.bp.em.getAcc(perp, vic,acc) || bs.bp.stm.checkStatus(perp, new Invuln(0,vic))){
+		if(!bs.bp.em.getAcc(perp, vic,acc) || bs.bp.stm.checkStatus(perp, new Invuln(0,vic,50))){
 			finalDamage = 0;
 		}
 		else{
@@ -149,7 +149,7 @@ public class EffectManager {
 	}
 	
 	public void bpChange(int bp, Schmuck s){
-		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s))){
+		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s,50))){
 			s.tempStats[1]+=bp;
 			if(s.getCurrentBp()<0){
 				s.setCurrentBp(0);

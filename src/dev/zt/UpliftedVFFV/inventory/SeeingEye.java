@@ -20,7 +20,7 @@ public class SeeingEye extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Seeing Eye.");
 		}
-		bs.bp.stm.addStatus(vic, new TrueSight(3, perp));
+		bs.bp.stm.addStatus(vic, new TrueSight(3, perp, 70));
 	}
 
 }

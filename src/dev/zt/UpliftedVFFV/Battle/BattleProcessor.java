@@ -437,24 +437,24 @@ public class BattleProcessor {
 		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(!stm.checkStatus(m,new Misaligned(0,m))){
+				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(stm.checkStatus(m,new Misaligned(0,m))){
+				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 		}
 		else{
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(stm.checkStatus(m,new Misaligned(0,m))){
+				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(!stm.checkStatus(m,new Misaligned(0,m))){
+				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
@@ -466,24 +466,24 @@ public class BattleProcessor {
 		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(stm.checkStatus(m,new Misaligned(0,m))){
+				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(!stm.checkStatus(m,new Misaligned(0,m))){
+				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 		}
 		else{
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(!stm.checkStatus(m,new Misaligned(0,m))){
+				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(stm.checkStatus(m,new Misaligned(0,m))){
+				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
 					selectables.add(m);
 				}
 			}

@@ -9,13 +9,13 @@ public class Intimidated extends status{
 	public double percent;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Intimidated(int i, double percent, Schmuck perp){
-		super(i, "Intimidated", false, false, true, perp);
+	public Intimidated(int i, double percent, Schmuck perp, int pr){
+		super(i, "Intimidated", false, false, true, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Intimidated(double percent, Schmuck perp){
-		super("Intimidated", false, false, perp);
+	public Intimidated(double percent, Schmuck perp, int pr){
+		super("Intimidated", false, false, perp, pr);
 		this.percent = percent;
 	}
 	
@@ -38,7 +38,6 @@ public class Intimidated extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" was intimidated!";
-
 	}
 
 	public String cureText(Schmuck s){

@@ -20,6 +20,6 @@ public class AngryBeef extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Angry Beef.");
 		}
-		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp));
+		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
 	}
 }

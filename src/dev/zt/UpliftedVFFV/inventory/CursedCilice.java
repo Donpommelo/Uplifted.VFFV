@@ -15,7 +15,7 @@ public class CursedCilice extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Masochist(.40*(1+s.getEquipPow()), s.itemDummy);
+		enchantment[0] = new Masochist(.40*(1+s.getEquipPow()), s.itemDummy, 25);
 		return enchantment;
 	}
 }

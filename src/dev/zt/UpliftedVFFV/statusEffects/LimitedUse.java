@@ -13,14 +13,14 @@ public class LimitedUse extends status{
 	public Boolean visible = false;
 	public int usesLeft;
 	public Skills move;
-	public LimitedUse(int i,Skills m, int uses, Schmuck perp){
-		super(999,"MoveLimit",true, false, true, perp);
+	public LimitedUse(int i,Skills m, int uses, Schmuck perp, int pr){
+		super(999,"MoveLimit",true, false, true, perp, pr);
 		this.move = m;
 		this.usesLeft = uses;
 	}
 	
-	public LimitedUse(Schmuck perp){
-		super("Limited Use Move", false, true, perp);
+	public LimitedUse(Schmuck perp, int pr){
+		super("Limited Use Move", false, true, perp, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -33,14 +33,5 @@ public class LimitedUse extends status{
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new OutofUsesNothing(0,a.skill),bs));				
 			}
 		}
-	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
 	}
 }

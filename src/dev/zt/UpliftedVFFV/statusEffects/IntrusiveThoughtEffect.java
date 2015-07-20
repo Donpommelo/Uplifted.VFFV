@@ -8,8 +8,8 @@ public class IntrusiveThoughtEffect extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int stack;
-	public IntrusiveThoughtEffect(int i, Schmuck perp){
-		super(i, "Intrusive Thoughts", false, false, true, perp);
+	public IntrusiveThoughtEffect(int i, Schmuck perp, int pr){
+		super(i, "Intrusive Thoughts", false, false, true, perp, pr);
 		stack = 0;
 	}
 

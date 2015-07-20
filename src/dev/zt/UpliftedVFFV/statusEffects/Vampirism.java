@@ -9,13 +9,13 @@ public class Vampirism extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public double lifesteal;
-	public Vampirism(int i, double amount, Schmuck perp){
-		super(i, "Lifesteal", false, true, true, perp);
+	public Vampirism(int i, double amount, Schmuck perp, int pr){
+		super(i, "Lifesteal", false, true, true, perp, pr);
 		this.lifesteal = amount;
 	}
 	
-	public Vampirism(double amount, Schmuck perp){
-		super("Lifesteal", true, false, perp);
+	public Vampirism(double amount, Schmuck perp, int pr){
+		super("Lifesteal", true, false, perp, pr);
 		this.lifesteal = amount;
 	}
 	

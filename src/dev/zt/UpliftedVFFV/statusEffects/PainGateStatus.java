@@ -9,8 +9,8 @@ public class PainGateStatus extends status{
 
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public PainGateStatus(Schmuck perp){
-		super("Damage Round", false, false, perp);
+	public PainGateStatus(Schmuck perp, int pr){
+		super("Damage Round", false, false, perp, pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

@@ -18,7 +18,7 @@ public class Query extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Query!");
-		bs.bp.stm.addStatus(vic, new Queried(perp));
+		bs.bp.stm.addStatus(vic, new Queried(perp, 50));
 		bs.bp.bt.textList.add("A(n) "+ vic.getName()+". "+ vic.getCurrentHp()+"/"+vic.getMaxHp()+" Hp");
 		bs.bp.bt.textList.add(vic.getBio());
 	}

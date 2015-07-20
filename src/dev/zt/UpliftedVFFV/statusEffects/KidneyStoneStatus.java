@@ -9,7 +9,6 @@ public class KidneyStoneStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int cooldown;
-
 	public KidneyStoneStatus(Schmuck perp, int pr){
 		super("Filtering", false, false, perp, pr);
 	}

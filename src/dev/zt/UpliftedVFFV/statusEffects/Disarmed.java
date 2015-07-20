@@ -10,12 +10,12 @@ public class Disarmed extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Disarmed(int i, Schmuck perp){
-		super(i, "Disarmed", false, true, false, perp);
+	public Disarmed(int i, Schmuck perp, int pr){
+		super(i, "Disarmed", false, true, false, perp,pr);
 	}
 	
-	public Disarmed(Schmuck perp){
-		super("Disarmed", true, false, perp);
+	public Disarmed(Schmuck perp, int pr){
+		super("Disarmed", true, false, perp, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

@@ -96,7 +96,7 @@ public class BattleSprites {
 		for(Schmuck s : allies){
 			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
 				alliesSelectable.add(s);
-				if(!bs.bp.stm.checkStatus(s, new Untouchable(1,s))){
+				if(!bs.bp.stm.checkStatus(s, new Untouchable(1,s,50))){
 					alliesTargets.add(s);
 				}				
 			}
@@ -108,7 +108,7 @@ public class BattleSprites {
 		for(Schmuck s : enemy){
 			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
 				enemySelectable.add(s);
-				if(!bs.bp.stm.checkStatus(s, new Untouchable(1, s))){
+				if(!bs.bp.stm.checkStatus(s, new Untouchable(1, s, 50))){
 					enemyTargets.add(s);
 				}
 			}

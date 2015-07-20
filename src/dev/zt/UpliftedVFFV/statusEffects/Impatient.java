@@ -9,13 +9,13 @@ public class Impatient extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public double percent;
-	public Impatient(int i, double percent, Schmuck perp){
-		super(i, "Impatient", false, false, true, perp);
+	public Impatient(int i, double percent, Schmuck perp, int pr){
+		super(i, "Impatient", false, false, true, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Impatient(double percent, Schmuck perp){
-		super("Impatient", false, false, perp);
+	public Impatient(double percent, Schmuck perp, int pr){
+		super("Impatient", false, false, perp, pr);
 		this.percent = percent;
 	}
 	
@@ -26,7 +26,6 @@ public class Impatient extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" became Impatient!";
-
 	}
 
 	public String cureText(Schmuck s){

@@ -20,7 +20,7 @@ public class Unbeef extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Unbeef.");
 		}
-		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp) );
+		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp, 30) );
 	}
 
 }

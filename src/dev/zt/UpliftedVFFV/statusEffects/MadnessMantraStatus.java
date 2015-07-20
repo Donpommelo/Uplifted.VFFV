@@ -39,7 +39,6 @@ public class MadnessMantraStatus extends status{
 				lastUsed = a.skill;
 			}
 		}
-		
 	}
 	
 	public void statchanges(Schmuck s){

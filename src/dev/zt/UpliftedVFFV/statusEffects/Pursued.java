@@ -10,12 +10,12 @@ public class Pursued extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Pursued(int i, Schmuck perp){
-		super(i, "Pursued", false, true, false, perp);
+	public Pursued(int i, Schmuck perp, int pr){
+		super(i, "Pursued", false, true, false, perp,pr);
 	}
 	
-	public Pursued(Schmuck perp){
-		super("Pursued", true, false, perp);
+	public Pursued(Schmuck perp, int pr){
+		super("Pursued", true, false, perp, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -26,7 +26,6 @@ public class Pursued extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Pursued.";
-
 	}
 
 	public String cureText(Schmuck s){

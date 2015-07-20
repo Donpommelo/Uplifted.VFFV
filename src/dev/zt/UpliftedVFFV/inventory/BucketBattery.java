@@ -15,7 +15,7 @@ public class BucketBattery extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Volatile(s.itemDummy);
+		enchantment[0] = new Volatile(s.itemDummy, 25);
 		return enchantment;
 	}
 }

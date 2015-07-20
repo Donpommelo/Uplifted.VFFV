@@ -9,14 +9,13 @@ public class MeterShield extends status{
 	public double percent;
 	public Boolean perm = false;
 	public Boolean visible = true;	
-	public MeterShield(double percent, Schmuck perp){
-		super("Meter Shield", false, false, perp);
+	public MeterShield(double percent, Schmuck perp, int pr){
+		super("Meter Shield", false, false, perp, pr);
 		this.percent = percent;
 	}
 
 	public void statchanges(Schmuck s){
 		s.bonusStats[8]+=percent;
-
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

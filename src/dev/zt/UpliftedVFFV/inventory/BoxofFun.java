@@ -15,7 +15,7 @@ public class BoxofFun extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Misaligned( s.itemDummy);
+		enchantment[0] = new Misaligned( s.itemDummy, 50);
 		return enchantment;
 	}
 }

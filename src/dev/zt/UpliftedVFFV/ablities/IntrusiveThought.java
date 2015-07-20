@@ -34,7 +34,7 @@ public class IntrusiveThought extends Skills {
 				bs.bp.bt.textList.add(vic.getName()+"'s Intrusive Thoughts grow.");
 			}
 			else{
-				bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10, perp));
+				bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(10, perp, 50));
 			}
 		}
 		else{

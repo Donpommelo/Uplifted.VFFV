@@ -14,7 +14,7 @@ public class BossMug extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Regendegen(false,(int)(5*(1+s.getEquipPow())), s.itemDummy);
+		enchantment[0] = new Regendegen(false,(int)(5*(1+s.getEquipPow())), s.itemDummy, 35);
 		return enchantment;
 	}
 	

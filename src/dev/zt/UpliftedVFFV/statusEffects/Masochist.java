@@ -9,13 +9,13 @@ public class Masochist extends status{
 	public double percent;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Masochist(int i, double percent, Schmuck perp){
-		super(i, "Masochist", false, false, true, perp);
+	public Masochist(int i, double percent, Schmuck perp, int pr){
+		super(i, "Masochist", false, false, true, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Masochist(double percent, Schmuck perp){
-		super("Masochist", false, false, perp);
+	public Masochist(double percent, Schmuck perp, int pr){
+		super("Masochist", false, false, perp, pr);
 		this.percent = percent;
 	}
 	
@@ -29,7 +29,6 @@ public class Masochist extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" became masochistic!";
-
 	}
 
 	public String cureText(Schmuck s){

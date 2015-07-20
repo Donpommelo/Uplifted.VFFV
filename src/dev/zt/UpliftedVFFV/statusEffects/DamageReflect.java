@@ -9,16 +9,15 @@ public class DamageReflect extends status{
 	public double percent;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public DamageReflect(int i, double percent, Schmuck perp){
-		super(i, "Damage Reflect", false, false, true, perp);
+	public DamageReflect(int i, double percent, Schmuck perp, int pr){
+		super(i, "Damage Reflect", false, false, true, perp, pr);
 		this.percent = percent;
 	}
 	
-	public DamageReflect(double percent, Schmuck perp){
-		super("Damage Reflect", false, false, perp);
+	public DamageReflect(double percent, Schmuck perp, int pr){
+		super("Damage Reflect", false, false, perp, pr);
 		this.percent = percent;
 	}
-	
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!perp.equals(vic) && !perp.getName().equals("Item Dummy")){

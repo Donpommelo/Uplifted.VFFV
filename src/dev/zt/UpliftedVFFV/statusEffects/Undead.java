@@ -7,8 +7,8 @@ public class Undead extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public Undead(int i, Schmuck perp){
-		super(i, "Undead", false, true, true, perp);
+	public Undead(int i, Schmuck perp, int pr){
+		super(i, "Undead", false, true, true, perp, pr);
 	}
 	
 	public Undead(Schmuck perp, int pr){

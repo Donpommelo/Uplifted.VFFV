@@ -95,7 +95,6 @@ public class BonusStatBuff extends status{
 			plusminus = "lowered";
 		}
 		return s.getName()+"'s "+stat+" was "+plusminus;
-
 	}
 
 	public String cureText(Schmuck s){

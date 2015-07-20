@@ -9,8 +9,8 @@ public class PantherPoiseEffect extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public PantherPoiseEffect(int i, Schmuck perp){
-		super(i, "PantherPoiseEffect", false, false, true, perp);
+	public PantherPoiseEffect(int i, Schmuck perp, int pr){
+		super(i, "PantherPoiseEffect", false, false, true, perp, pr);
 		this.perp = perp;
 	}
 	
@@ -25,7 +25,6 @@ public class PantherPoiseEffect extends status{
 
 	public String inflictText(Schmuck s){
 		return "";
-
 	}
 
 	public String cureText(Schmuck s){

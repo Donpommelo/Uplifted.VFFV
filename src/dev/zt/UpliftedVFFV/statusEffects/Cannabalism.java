@@ -9,13 +9,13 @@ public class Cannabalism extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public double lifesteal;
-	public Cannabalism(int i, double amount, Schmuck perp){
-		super(i, "Cannabalism", false, true, true, perp);
+	public Cannabalism(int i, double amount, Schmuck perp, int pr){
+		super(i, "Cannabalism", false, true, true, perp, pr);
 		this.lifesteal = amount;
 	}
 	
-	public Cannabalism(double amount, Schmuck perp){
-		super("Cannabalism", true, false, perp);
+	public Cannabalism(double amount, Schmuck perp, int pr){
+		super("Cannabalism", true, false, perp, pr);
 		this.lifesteal = amount;
 	}
 	

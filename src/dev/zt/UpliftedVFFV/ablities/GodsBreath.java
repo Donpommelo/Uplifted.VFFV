@@ -20,9 +20,9 @@ public class GodsBreath extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Gods Breath!");
 		bs.bp.bt.textList.add("All allies were fortified!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
+			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp, 50));
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-				bs.bp.stm.addStatus(s, new Invuln(0, perp));
+				bs.bp.stm.addStatus(s, new Invuln(0, perp, 50));
 			}
 	}
 	

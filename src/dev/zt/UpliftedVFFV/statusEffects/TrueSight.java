@@ -7,12 +7,12 @@ public class TrueSight extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public TrueSight(int i, double amount, Schmuck perp){
-		super(i, "True Sight",  false, true, true, perp);
+	public TrueSight(int i, double amount, Schmuck perp, int pr){
+		super(i, "True Sight",  false, true, true, perp, pr);
 	}
 	
-	public TrueSight(double amount, Schmuck perp){
-		super("True Sight", true, true, perp);
+	public TrueSight(double amount, Schmuck perp, int pr){
+		super("True Sight", true, true, perp, pr);
 	}
 	
 	public void statchanges(Schmuck s){

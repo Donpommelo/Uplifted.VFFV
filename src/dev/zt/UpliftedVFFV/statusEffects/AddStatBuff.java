@@ -10,14 +10,14 @@ public class AddStatBuff extends status{
 	public int statChanged;
 	public double statIncrement;
 	public AddStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, "Stats Changed",false, false, true, perp);
+		super(i, "Stats Changed",false, false, true, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 //		this.perp = perp;
 	}
 	
 	public AddStatBuff(int stat, int amount, Schmuck perp, int pr){
-		super("Stats Changed",false,false, perp);
+		super("Stats Changed",false,false, perp,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}	
@@ -62,11 +62,9 @@ public class AddStatBuff extends status{
 			plusminus = "lowered";
 		}
 		return s.getName()+"'s "+stat+" was "+plusminus;
-
 	}
 
 	public String cureText(Schmuck s){
 		return "";//s.getName()+"'s stats went back to normal";
 	}
-	
 }

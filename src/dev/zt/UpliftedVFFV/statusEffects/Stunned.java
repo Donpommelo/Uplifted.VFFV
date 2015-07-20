@@ -10,12 +10,12 @@ public class Stunned extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Stunned(int i, Schmuck perp){
-		super(i, "Stunned", false, true, false, perp);
+	public Stunned(int i, Schmuck perp, int pr){
+		super(i, "Stunned", false, true, false, perp, pr);
 	}
 	
-	public Stunned(Schmuck perp){
-		super("Stunned", true, false, perp);
+	public Stunned(Schmuck perp, int pr){
+		super("Stunned", true, false, perp, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -24,7 +24,6 @@ public class Stunned extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Stunned.";
-
 	}
 
 	public String cureText(Schmuck s){

@@ -8,12 +8,12 @@ public class Misaligned extends status{
 	
 	public int stack;
 	public BattleState bs;
-	public Misaligned(int i, Schmuck perp){
-		super(i,"Misaligned", false, true, true, perp);
+	public Misaligned(int i, Schmuck perp, int pr){
+		super(i,"Misaligned", false, true, true, perp, pr);
 	}
 	
-	public Misaligned(Schmuck perp){
-		super("Misaligned", false, false, perp);
+	public Misaligned(Schmuck perp, int pr){
+		super("Misaligned", false, false, perp, pr);
 	}	
 		
 	public String inflictText(Schmuck s){

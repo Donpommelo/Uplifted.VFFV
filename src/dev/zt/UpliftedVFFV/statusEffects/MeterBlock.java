@@ -7,8 +7,8 @@ public class MeterBlock extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public MeterBlock(int i, Schmuck perp){
-		super(i, "Meter Block", false, true, true, perp);
+	public MeterBlock(int i, Schmuck perp, int pr){
+		super(i, "Meter Block", false, true, true, perp, pr);
 	}
 	
 	public String inflictText(Schmuck s){

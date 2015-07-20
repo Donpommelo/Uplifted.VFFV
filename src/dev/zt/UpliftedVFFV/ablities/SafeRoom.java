@@ -23,7 +23,7 @@ public class SafeRoom extends Skills {
 				i--;
 			}
 		}
-		bs.bp.stm.addStatus(vic, new Invuln(0, perp));
+		bs.bp.stm.addStatus(vic, new Invuln(0, perp, 50));
 		
 	}
 	

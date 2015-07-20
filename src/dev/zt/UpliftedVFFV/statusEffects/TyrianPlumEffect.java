@@ -9,8 +9,8 @@ public class TyrianPlumEffect extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public TyrianPlumEffect(int i, Schmuck perp){
-		super(i, "Plum Outta Luck", false, true, true, perp);
+	public TyrianPlumEffect(int i, Schmuck perp, int pr){
+		super(i, "Plum Outta Luck", false, true, true, perp, pr);
 	}
 	
 	public void onAction(BattleState bs, Action a){

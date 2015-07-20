@@ -19,7 +19,7 @@ public class BlightBite extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
 		if(bs.bp.em.getAcc(perp, vic,90)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic,6);
-			bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp));
+			bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp, 40));
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
@@ -30,7 +30,7 @@ public class BlightBite extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti())), perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Regendegen((int)(3*(1.5+perp.getCritMulti())),true,-3, perp));	
+		bs.bp.stm.addStatus(vic, new Regendegen((int)(3*(1.5+perp.getCritMulti())),true,-3, perp, 80));	
 	}
 	
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){

@@ -6,8 +6,8 @@ public class Untouchable extends status{
 	
 	
 
-	public Untouchable(int i, Schmuck perp){
-		super(i, "Untouchable", false, true, true, perp);
+	public Untouchable(int i, Schmuck perp, int pr){
+		super(i, "Untouchable", false, true, true, perp, pr);
 	}
 		
 	public String inflictText(Schmuck s){

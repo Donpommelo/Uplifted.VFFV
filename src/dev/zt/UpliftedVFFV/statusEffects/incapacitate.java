@@ -9,7 +9,7 @@ public class incapacitate extends status{
 	public int stack;
 	public BattleState bs;
 	public incapacitate(Schmuck perp){
-		super("incapacitated", true, false, perp);
+		super("incapacitated", true, false, perp,999);
 	}
 	
 	public String inflictText(Schmuck s){

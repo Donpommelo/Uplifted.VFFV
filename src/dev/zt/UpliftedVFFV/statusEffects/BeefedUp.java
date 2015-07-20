@@ -7,12 +7,12 @@ public class BeefedUp extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public BeefedUp(int i, Schmuck perp){
-		super(i, "Beefed Up", false, true, false, perp);
+	public BeefedUp(int i, Schmuck perp, int pr){
+		super(i, "Beefed Up", false, true, false, perp,pr);
 	}
 	
-	public BeefedUp(Schmuck perp){
-		super("Beefed Up", true, false, perp);
+	public BeefedUp(Schmuck perp, int pr){
+		super("Beefed Up", true, false, perp,pr);
 	}
 		
 	public void statchanges(Schmuck s){

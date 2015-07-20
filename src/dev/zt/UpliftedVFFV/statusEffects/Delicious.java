@@ -9,13 +9,13 @@ public class Delicious extends status{
 	public double percent;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Delicious(int i, double percent, Schmuck perp){
-		super(i, "Delicious", false, false, true, perp);
+	public Delicious(int i, double percent, Schmuck perp, int pr){
+		super(i, "Delicious", false, false, true, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Delicious(double percent, Schmuck perp){
-		super("Delicious", false, false, perp);
+	public Delicious(double percent, Schmuck perp, int pr){
+		super("Delicious", false, false, perp, pr);
 		this.percent = percent;
 	}
 	

@@ -15,7 +15,7 @@ public class PainGate extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new PainGateStatus(s.itemDummy);
+		enchantment[0] = new PainGateStatus(s.itemDummy, 15);
 		return enchantment;
 	}
 }

@@ -9,13 +9,13 @@ public class Cleave extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public double cleave;
-	public Cleave(int i, double amount, Schmuck perp){
-		super(i, "Cleave", false, true, true, perp);
+	public Cleave(int i, double amount, Schmuck perp, int pr){
+		super(i, "Cleave", false, true, true, perp, pr);
 		this.cleave = amount;
 	}
 	
-	public Cleave(double amount, Schmuck perp){
-		super("Cleave", true, false, perp);
+	public Cleave(double amount, Schmuck perp, int pr){
+		super("Cleave", true, false, perp, pr);
 		this.cleave = amount;
 	}
 	

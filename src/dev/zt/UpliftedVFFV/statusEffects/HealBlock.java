@@ -7,8 +7,8 @@ public class HealBlock extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public HealBlock(int i, Schmuck perp){
-		super(i, "Heal Block", false, true, true, perp);
+	public HealBlock(int i, Schmuck perp, int pr){
+		super(i, "Heal Block", false, true, true, perp, pr);
 	}
 	
 	public HealBlock(Schmuck perp, int pr){

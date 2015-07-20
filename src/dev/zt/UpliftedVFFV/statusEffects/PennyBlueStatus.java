@@ -9,8 +9,8 @@ public class PennyBlueStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public PennyBlueStatus(int i, Schmuck perp){
-		super(i, "Penny Blue", false, true, true, perp);
+	public PennyBlueStatus(int i, Schmuck perp, int pr){
+		super(i, "Penny Blue", false, true, true, perp, pr);
 //		this.bs = bs;
 	}
 	
@@ -26,7 +26,6 @@ public class PennyBlueStatus extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" became infused with Blue energy.";
-
 	}
 
 	public String cureText(Schmuck s){

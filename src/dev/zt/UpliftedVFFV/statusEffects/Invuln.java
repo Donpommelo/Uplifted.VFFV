@@ -7,8 +7,8 @@ public class Invuln extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public Invuln(int i, Schmuck perp){
-		super(i, "Invulnerable", false, true, true, perp);
+	public Invuln(int i, Schmuck perp, int pr){
+		super(i, "Invulnerable", false, true, true, perp, pr);
 	}
 	
 	public String inflictText(Schmuck s){

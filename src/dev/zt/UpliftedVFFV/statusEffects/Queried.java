@@ -7,8 +7,8 @@ public class Queried extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = false;
-	public Queried(Schmuck perp){
-		super("Queried",false, true, perp);
+	public Queried(Schmuck perp, int pr){
+		super("Queried",false, true, perp, pr);
 	}	
 
 	public String inflictText(Schmuck s){

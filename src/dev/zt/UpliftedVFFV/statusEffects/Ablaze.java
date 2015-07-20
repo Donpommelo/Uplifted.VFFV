@@ -9,8 +9,8 @@ public class Ablaze extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public Ablaze(int i, Schmuck perp){
-		super(i, "Ablaze", false, true, true, perp);
+	public Ablaze(int i, Schmuck perp, int pr){
+		super(i, "Ablaze", false, true, true, perp,pr);
 //		this.perp = perp;
 	}
 	

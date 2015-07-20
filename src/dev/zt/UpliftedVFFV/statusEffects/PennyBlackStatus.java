@@ -9,8 +9,8 @@ public class PennyBlackStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 //	public BattleState bs;
-	public PennyBlackStatus(int i, Schmuck perp){
-		super(i, "Penny Black", false, true, true, perp);
+	public PennyBlackStatus(int i, Schmuck perp, int pr){
+		super(i, "Penny Black", false, true, true, perp, pr);
 //		this.bs = bs;
 	}
 	
