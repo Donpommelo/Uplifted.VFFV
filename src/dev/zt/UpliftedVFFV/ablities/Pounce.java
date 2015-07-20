@@ -12,14 +12,12 @@ public class Pounce extends Skills {
 	public static int cost = 1;
 	public Pounce(int index) {
 		super(index,0,6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic);
+		if(bs.bp.em.getAcc(perp, vic,100)){
+			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic,6);
 		}
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" missed!");
@@ -29,7 +27,7 @@ public class Pounce extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti())), perp, vic);	
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti())), perp, vic,6);	
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
@@ -37,5 +35,9 @@ public class Pounce extends Skills {
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
 	
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2]*.6)/(int)(vic.buffedStats[3]);
+		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
+	}
 
 }

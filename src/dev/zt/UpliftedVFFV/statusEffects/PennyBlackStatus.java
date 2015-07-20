@@ -21,15 +21,9 @@ public class PennyBlackStatus extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" became infused with Void energy.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Void energy wore off.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

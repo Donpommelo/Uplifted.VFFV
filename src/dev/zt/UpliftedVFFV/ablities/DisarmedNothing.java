@@ -10,7 +10,6 @@ public Item thing;
 
 	public DisarmedNothing(int index) {
 		super(index,1,6, "", "", "", 0);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

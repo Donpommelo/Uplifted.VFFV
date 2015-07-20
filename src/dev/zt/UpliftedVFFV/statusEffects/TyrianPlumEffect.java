@@ -16,23 +16,18 @@ public class TyrianPlumEffect extends status{
 	public void onAction(BattleState bs, Action a){
 		int amount = a.skill.getCost();
 		if(amount!=0){
-			bs.bp.bt.textList.add(perp.getName()+"'s Tyrian Plum drains health");
-			bs.bp.em.hpChange((int)(amount*1.5*(1+perp.getHealPower())), perp, perp,2);
+			if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
+				bs.bp.bt.textList.add(perp.getName()+"'s Tyrian Plum drains health");
+				bs.bp.em.hpChange((int)(amount*1.5*(1+perp.getHealPower())), perp, perp,2);
+			}
 		}
 	}
 	
-	
 	public String inflictText(Schmuck s){
 		return s.getName()+" has seeds growing inside.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s seeds passed away.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

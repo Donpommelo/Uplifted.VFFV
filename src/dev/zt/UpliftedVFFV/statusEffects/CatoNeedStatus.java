@@ -9,10 +9,6 @@ public class CatoNeedStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public CatoNeedStatus(int i, Schmuck perp){
-		super(i, "Needs Met", false, false, true, perp);
-	}
-	
 	public CatoNeedStatus(Schmuck perp, int pr){
 		super("Needs Met", false, false, perp,pr);
 	}
@@ -33,19 +29,4 @@ public class CatoNeedStatus extends status{
 			return damage;
 		}
 	}
-	
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" looks needy!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" looks normal again.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

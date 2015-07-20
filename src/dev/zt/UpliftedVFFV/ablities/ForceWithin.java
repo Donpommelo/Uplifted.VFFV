@@ -39,9 +39,5 @@ public class ForceWithin extends Skills {
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
 
 }

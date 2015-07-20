@@ -30,9 +30,4 @@ public class Stunned extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" recovered from the stun.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

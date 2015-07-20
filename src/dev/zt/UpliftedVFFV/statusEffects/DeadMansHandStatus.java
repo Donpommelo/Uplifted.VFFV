@@ -9,11 +9,7 @@ public class DeadMansHandStatus extends status{
 	
 	public int duration;
 	public Boolean perm = false;
-	public Boolean visible = true;
-	public DeadMansHandStatus(int i, Schmuck perp){
-		super(i, "Haunting", false, false, true, perp);
-	}
-	
+	public Boolean visible = true;	
 	public DeadMansHandStatus(Schmuck perp, int pr){
 		super("Haunting", false, false, perp,pr);
 	}
@@ -23,18 +19,4 @@ public class DeadMansHandStatus extends status{
 			bs.bp.TurnOrderQueue.add(new Action(s, s, new Haunt(0), bs));
 		}
 	}
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" looks ghostly!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" looks normal again.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

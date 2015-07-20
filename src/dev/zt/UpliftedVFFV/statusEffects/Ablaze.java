@@ -33,9 +33,4 @@ public class Ablaze extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+"'s fire was extinguished.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

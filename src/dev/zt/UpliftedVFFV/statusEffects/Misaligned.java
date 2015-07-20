@@ -14,14 +14,8 @@ public class Misaligned extends status{
 	
 	public Misaligned(Schmuck perp){
 		super("Misaligned", false, false, perp);
-	}
-	
-	
-	
-	public void run(){
+	}	
 		
-	}
-	
 	public String inflictText(Schmuck s){
 		return s.getName()+" was misaligned.";
 	}
@@ -29,5 +23,4 @@ public class Misaligned extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" is correctly aligned again.";
 	}
-
 }

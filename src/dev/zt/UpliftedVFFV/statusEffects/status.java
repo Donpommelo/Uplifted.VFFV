@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class status {
-	public int duration;
+	public int duration = 0;
 	public String name;
 	public Boolean perm = false;
 	public Boolean visible = true;

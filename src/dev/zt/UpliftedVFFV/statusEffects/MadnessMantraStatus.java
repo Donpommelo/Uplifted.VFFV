@@ -12,7 +12,6 @@ public class MadnessMantraStatus extends status{
 	public Boolean visible = true;
 	public int stack;
 	public Skills lastUsed;
-
 	public MadnessMantraStatus(Schmuck perp, int pr){
 		super("Maddening", false, false, perp, pr);
 	}
@@ -47,18 +46,5 @@ public class MadnessMantraStatus extends status{
 		s.buffedStats[2] += 5*stack;
 		s.bonusStats[5] += .2*stack;
 		s.bonusStats[13] += .2*stack;
-
 	}
-	
-	
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
 }

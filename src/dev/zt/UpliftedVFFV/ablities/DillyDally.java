@@ -7,13 +7,13 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 
 public class DillyDally extends Skills {
-	
 
-	public String name = "Dilly Dally";
-	public int cost = 0;
+	public static String name = "Dilly Dally";
+	public static String descr = "User waits.";
+	public static String descrShort = "Delays decision making.";
+	public static int cost = 0;
 	public DillyDally(int index) {
-		super(index,Assets.wait,6);
-
+		super(index, 1, 6, name, descr, descrShort, cost, Assets.wait);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
@@ -37,10 +37,6 @@ public class DillyDally extends Skills {
 			bs.bp.TurnOrderQueue.add(meep+2,a);
 		}
 
-	}
-	
-	public String getName(){
-		return name;
 	}
 
 }

@@ -227,7 +227,7 @@ public class BattleMenu{
 			case 2:
 				if(game.getKeyManager().space){
 					if(gs.inventorymanager.backpack.size()==0){
-						currentSkill = new ItemNothing(1,gs);
+						currentSkill = new ItemNothing(1);
 					}
 					else{
 						currentSkill = new UseItem(1,gs.inventorymanager.battleItem().keySet().toArray(new Item[999])[itemSelected],gs);

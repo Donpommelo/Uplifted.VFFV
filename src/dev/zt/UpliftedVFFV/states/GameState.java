@@ -47,8 +47,8 @@ public class GameState extends State {
 		world = new World(game, "/Worlds/ElevatorsandBackroom/backroom.txt","Home Sweet Home");		
 		eventmanager = new EventManager(game,"/Worlds/ElevatorsandBackroom/backroom.txt");
 		
-		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtria.txt","Home Sweet Home");
-		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtria.txt");
+//		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtria.txt","Home Sweet Home");
+//		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtria.txt");
 //		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt","");
 //		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt");
 		player = new Player(game, 256, 288, this);										//creates player

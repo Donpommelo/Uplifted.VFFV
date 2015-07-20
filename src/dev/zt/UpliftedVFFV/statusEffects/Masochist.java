@@ -19,7 +19,6 @@ public class Masochist extends status{
 		this.percent = percent;
 	}
 	
-	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage,int elem){
 		if(damage >= vic.getMaxHp()*.1){
 			bs.bp.bt.textList.add(vic.getName()+" seems to be enjoying it!");
@@ -36,9 +35,4 @@ public class Masochist extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer masochistic.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

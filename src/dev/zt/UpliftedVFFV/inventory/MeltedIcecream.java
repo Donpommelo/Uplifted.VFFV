@@ -19,7 +19,7 @@ public class MeltedIcecream extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Melted Icecream.");
 		}
-		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())),perp,vic);
+		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())),perp,vic,6);
 	}
 	
 	public void use(Schmuck s){

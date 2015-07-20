@@ -16,6 +16,10 @@ public class BoxCutter extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Box Cutter!");
-		bs.bp.em.hpChange(-(perp.Lvl*2+5),perp,vic);
+		bs.bp.em.hpChange(-(perp.Lvl*2+5),perp,vic,6);
+	}
+	
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		return -(perp.Lvl*2+5);
 	}
 }

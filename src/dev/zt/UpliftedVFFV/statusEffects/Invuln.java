@@ -11,23 +11,11 @@ public class Invuln extends status{
 		super(i, "Invulnerable", false, true, true, perp);
 	}
 	
-	
-	
-	public void run(){
-		
-	}
-	
-
 	public String inflictText(Schmuck s){
 		return s.getName()+" was made invulnerable!";
-
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s invulnerablility wore off!";
-
 	}
-	
-
 }

@@ -9,7 +9,6 @@ public class HoGStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int cooldown;
-
 	public HoGStatus(Schmuck perp, int pr){
 		super("Glorious", false, false, perp, pr);
 	}
@@ -17,7 +16,6 @@ public class HoGStatus extends status{
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		cooldown = 0;
 	}
-	
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		if(cooldown == 0){
@@ -31,15 +29,5 @@ public class HoGStatus extends status{
 		if(cooldown >0){
 			cooldown--;
 		}
-	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
+	}	
 }

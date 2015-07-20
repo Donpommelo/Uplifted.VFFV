@@ -7,12 +7,9 @@ public class PrismShield extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-
 	public PrismShield(Schmuck perp, int pr){
 		super("Prism Shield", false, false, perp, pr);
 	}
-
-
 	
 	public void statchanges(Schmuck s){
 		double most = 0;
@@ -27,18 +24,4 @@ public class PrismShield extends status{
 		s.setYellowRes(most);
 		s.setPurpleRes(most);
 	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

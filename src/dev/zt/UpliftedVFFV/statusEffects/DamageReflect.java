@@ -31,15 +31,9 @@ public class DamageReflect extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" is reflecting damage!";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer reflecting damage.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

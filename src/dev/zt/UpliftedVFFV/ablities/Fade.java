@@ -12,7 +12,6 @@ public class Fade extends Skills {
 	public static int cost = 8;
 	public Fade(int index) {
 		super(index,1,6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -21,7 +20,4 @@ public class Fade extends Skills {
 
 	}
 		
-	public int getTargetType(){
-		return targetType;
-	}
 }

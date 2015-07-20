@@ -14,26 +14,16 @@ public class BeefedUp extends status{
 	public BeefedUp(Schmuck perp){
 		super("Beefed Up", true, false, perp);
 	}
-	
-	public void run(){
 		
-	}
-	
 	public void statchanges(Schmuck s){
 		s.buffedStats[2]*=1.5;
 	}
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" looks beefed up.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" no longer looks notably beefy.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

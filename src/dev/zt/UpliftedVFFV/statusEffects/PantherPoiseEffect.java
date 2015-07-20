@@ -31,9 +31,4 @@ public class PantherPoiseEffect extends status{
 	public String cureText(Schmuck s){
 		return "";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

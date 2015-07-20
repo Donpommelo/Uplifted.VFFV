@@ -21,12 +21,6 @@ public class ElemPointsBuff extends status{
 		this.statIncrement = amount;
 	}
 	
-	
-	
-	public void run(){
-		
-	}
-	
 	public void statchanges(Schmuck s){
 		s.buffedElemPoints[this.statChanged]+=statIncrement;
 	}
@@ -61,16 +55,9 @@ public class ElemPointsBuff extends status{
 			plusminus = "less";
 		}
 		return s.getName()+" became "+ plusminus +" "+ stat + " aligned!";
-
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s elemental alignments went back to normal";
+		return "";//s.getName()+"'s elemental alignments went back to normal";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-	
-
 }

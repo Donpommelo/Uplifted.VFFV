@@ -18,13 +18,16 @@ public class Haunt extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Haunt!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2]*2)/(s.buffedStats[3]*10), perp, s);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2]*2)/(s.buffedStats[3]*10), perp, s,6);
 			bs.bp.stm.addStatus(s, new TestStatBuff(5,3,.9,perp,80));
 		}
-
 	}
 		
-	public int getTargetType(){
-		return targetType;
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = 0;
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*5),perp,s,6,1000);
+		}
+		return damage;
 	}
 }

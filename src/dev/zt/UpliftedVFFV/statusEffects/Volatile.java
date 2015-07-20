@@ -17,7 +17,6 @@ public class Volatile extends status{
 		super("Volatile", false, false, perp);
 	}
 	
-	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(damage>Math.random()*500){
 			bs.bp.bt.textList.add("The blow causes "+vic.getName()+"'s bucket to explode!");
@@ -34,15 +33,9 @@ public class Volatile extends status{
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" is reflecting damage!";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer reflecting damage.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

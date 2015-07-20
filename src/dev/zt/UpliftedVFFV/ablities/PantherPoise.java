@@ -30,10 +30,4 @@ public class PantherPoise extends Skills {
 			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(1.5+perp.getCritMulti()),perp));
 		}
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
-	
-
 }

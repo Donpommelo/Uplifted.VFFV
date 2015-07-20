@@ -11,7 +11,6 @@ public class VariableVoltage extends Skills {
 	public static int cost = 15;
 	public VariableVoltage(int index) {
 		super(index,1,3, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -76,10 +75,9 @@ public class VariableVoltage extends Skills {
 			}
 		}	
 	}
-			
-	public int getTargetType(){
-		return targetType;
+				
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		return -(int)((Math.random()+.5)*(perp.buffedStats[2]*perp.buffedStats[2])/((int)(perp.buffedStats[3])));
 	}
-	
 
 }

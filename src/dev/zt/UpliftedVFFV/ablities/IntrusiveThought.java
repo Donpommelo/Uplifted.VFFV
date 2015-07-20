@@ -18,9 +18,8 @@ public class IntrusiveThought extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Intrusive Thought!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<1.5*bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(1), perp, vic);
+		if(bs.bp.em.getAcc(perp, vic,100)){
+			bs.bp.em.hpChange(-(3), perp, vic,6);
 			int stacked = -1;
 			for(status s : vic.statuses){
 				if(s!=null){
@@ -44,5 +43,8 @@ public class IntrusiveThought extends Skills {
 
 		
 	}
-
+	
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		return 3;
+	}
 }

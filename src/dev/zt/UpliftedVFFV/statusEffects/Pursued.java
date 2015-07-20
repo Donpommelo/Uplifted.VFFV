@@ -32,9 +32,4 @@ public class Pursued extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" shook off the pursuer.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

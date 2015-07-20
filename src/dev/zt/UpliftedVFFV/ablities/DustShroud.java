@@ -25,16 +25,10 @@ public class DustShroud extends Skills {
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
 				bs.bp.stm.addStatus(s, new Untouchable(2, perp));
 			}
-		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
-
 }

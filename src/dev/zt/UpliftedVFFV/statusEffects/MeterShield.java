@@ -8,14 +8,9 @@ public class MeterShield extends status{
 	public int duration;
 	public double percent;
 	public Boolean perm = false;
-	public Boolean visible = true;
-	public MeterShield(int i, double percent, Schmuck perp){
-		super(i, "Damage Reflect", false, false, true, perp);
-		this.percent = percent;
-	}
-	
+	public Boolean visible = true;	
 	public MeterShield(double percent, Schmuck perp){
-		super("Damage Reflect", false, false, perp);
+		super("Meter Shield", false, false, perp);
 		this.percent = percent;
 	}
 
@@ -28,21 +23,5 @@ public class MeterShield extends status{
 		bs.bp.bt.textList.add(vic.getName()+"'s Faraday Cage absorbs damage!");
 		bs.bp.em.bpChange((int)(damage*percent),vic);
 		return (int)(damage *(1-percent));
-	}
-	
-	
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" is reflecting damage!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" is not longer reflecting damage.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
+	}	
 }

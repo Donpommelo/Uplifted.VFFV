@@ -15,7 +15,6 @@ public class Petrify extends Skills {
 	public static int cost = 10;
 	public Petrify(int index) {
 		super(index,0,2, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -25,9 +24,4 @@ public class Petrify extends Skills {
 		bs.bp.stm.addStatus(vic, new Stunned(3,perp));	
 		bs.bp.stm.addStatus(vic, new TestStatBuff(3,1.5,perp,10));
 	}	
-	
-	public int getTargetType(){
-		return targetType;
-	}
-
 }

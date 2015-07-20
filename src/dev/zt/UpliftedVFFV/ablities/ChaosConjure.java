@@ -16,7 +16,6 @@ public class ChaosConjure extends Skills {
 	public static int cost = 5;
 	public ChaosConjure(int index) {
 		super(index,1,6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -24,7 +23,7 @@ public class ChaosConjure extends Skills {
 		bs.bp.bt.textList.add("All battlers were discombobulated!");
 			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
 			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-				bs.bp.em.hpChange(-15, perp, s);
+				bs.bp.em.hpChange(-15, perp, s,6);
 			}
 			ArrayList<Action> temp = new ArrayList<Action>();
 			bs.bp.TurnOrderQueue.remove(0);
@@ -45,8 +44,7 @@ public class ChaosConjure extends Skills {
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
 	
-	public int getTargetType(){
-		return targetType;
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		return 15*bs.bp.getSelectableEnemies(perp).size();
 	}
-
 }

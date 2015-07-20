@@ -19,24 +19,17 @@ public class Delicious extends status{
 		this.percent = percent;
 	}
 	
-	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		bs.bp.bt.textList.add(perp.getName()+" looks replenished.");
-		bs.bp.em.hpChange((int)(damage*percent), vic, perp);
+		bs.bp.em.hpChange((int)(damage*percent), vic, perp,6);
 		return damage;
 	}	
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" looks more delicious!";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" doesn't look delicious anymore.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

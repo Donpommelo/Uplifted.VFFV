@@ -21,7 +21,7 @@ public class CoffeeBean extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Coffee Bean.");
 		}
 		bs.bp.bt.textList.add("The Coffee Bean scalds "+vic.getName()+"'s tongue.");
-		bs.bp.em.hpChange((int)(-10*(1+perp.getItemPow())),perp,vic);
+		bs.bp.em.hpChange((int)(-10*(1+perp.getItemPow())),perp,vic,6);
 		bs.bp.em.bpChange((int)(30*(1+perp.getItemPow())),vic);
 
 	}

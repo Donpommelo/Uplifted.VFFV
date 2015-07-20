@@ -21,15 +21,9 @@ public class InvertedSwanEffect extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" looks light on his/her feet.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Inverted Swan wore off.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
+	}	
 }

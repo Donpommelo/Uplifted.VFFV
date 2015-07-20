@@ -29,18 +29,4 @@ public class AbsoluteThresholdStatus extends status{
 			return damage;
 		}
 	}	
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" is ignoring damage!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" is not longer ignoring damage.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

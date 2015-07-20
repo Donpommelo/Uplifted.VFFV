@@ -20,13 +20,7 @@ public class TestStatBuff extends status{
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
-	
-	
-	
-	public void run(){
-		
-	}
-	
+			
 	public void statchanges(Schmuck s){
 		s.buffedStats[this.statChanged]*=statIncrement;
 	}
@@ -67,16 +61,9 @@ public class TestStatBuff extends status{
 			plusminus = "lowered";
 		}
 		return s.getName()+"'s "+stat+" was "+plusminus+"!";
-
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s stats went back to normal";
+		return "";//s.getName()+"'s stats went back to normal";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-	
-
 }

@@ -11,7 +11,6 @@ public class ArcherRoulette extends Skills {
 	public static int cost = 17;
 	public ArcherRoulette(int index) {
 		super(index, 0, 6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -19,20 +18,24 @@ public class ArcherRoulette extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		if(Math.random()>.5){
 			bs.bp.bt.textList.add(perp.getName()+"'s aim was true!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5)),perp,vic);
+			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,vic,6);
 		}
 		else{
 			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
 			bs.bp.bt.textList.add(perp.getName()+"'s aim was was off target!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target.buffedStats[3]*.5)),perp,target);
-			
+			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,target,6);
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		bs.bp.bt.textList.add("A Critical Blow!");	
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5))*(1.5+perp.getCritMulti())),perp,vic);
+		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti())),perp,vic,6);
 	}
 	
+
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = -(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5));
+		return bs.bp.em.damageSimulation(damage, perp, vic, 6,1000);
+	}	
 }

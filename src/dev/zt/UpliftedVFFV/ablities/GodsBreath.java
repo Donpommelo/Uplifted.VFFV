@@ -15,7 +15,6 @@ public class GodsBreath extends Skills {
 	public static int cost = 15;
 	public GodsBreath(int index) {
 		super(index,1,6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -25,16 +24,10 @@ public class GodsBreath extends Skills {
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
 				bs.bp.stm.addStatus(s, new Invuln(0, perp));
 			}
-		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
-
 }

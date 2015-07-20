@@ -13,25 +13,13 @@ public class Undead extends status{
 	
 	public Undead(Schmuck perp, int pr){
 		super("Undead", false, false, perp,pr);
-	}
-	
-	
-	
-	public void run(){
-		
-	}
-	
+	}	
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" became undead.";
-
-
 	}
 
 	public String cureText(Schmuck s){
 		return "";
-
 	}
-	
-
 }

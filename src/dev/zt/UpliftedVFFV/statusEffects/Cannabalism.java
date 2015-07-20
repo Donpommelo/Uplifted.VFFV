@@ -21,21 +21,14 @@ public class Cannabalism extends status{
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" regained health from incapacitating "+vic.getName()+"!");
-		bs.bp.em.hpChange((int)(vic.getMaxHp()*lifesteal*(1+perp.getHealPower())), perp.itemDummy, perp);
+		bs.bp.em.hpChange((int)(vic.getMaxHp()*lifesteal*(1+perp.getHealPower())), perp.itemDummy, perp,6);
 	}
-	
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" became Cannabalistic.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is no longer Cannabalistic.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

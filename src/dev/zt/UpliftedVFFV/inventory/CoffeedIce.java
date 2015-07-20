@@ -21,7 +21,7 @@ public class CoffeedIce extends Item{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.");
 		}
 //		bs.bp.stm.removeStatus(vic, );
-		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())),perp, vic);
+		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())),perp, vic,6);
 		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
 	}
 	

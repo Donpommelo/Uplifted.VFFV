@@ -11,7 +11,6 @@ public class Envenomed extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public EnvenomEarth e;
-
 	public Envenomed(double percent, Schmuck perp, EnvenomEarth e, int pr){
 		super("Envenomed", false, false, perp, pr);
 		this.percent = percent;
@@ -34,18 +33,4 @@ public class Envenomed extends status{
 	public void statchanges(Schmuck s){
 		s.buffedStats[3]+=(int)(e.getPoints()/5);
 	}
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" became envenomed!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" is not longer envenomed.";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

@@ -13,13 +13,11 @@ public GameState gs;
 	public SkillNothing(int index, GameState gs) {
 		super(index,1,6,"","","",0);
 		this.gs=gs;
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" did nothing in "+vic.getName()+"'s general direction.");
 		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
 	}
-
 
 }

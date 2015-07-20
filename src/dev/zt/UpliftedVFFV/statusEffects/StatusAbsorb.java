@@ -10,12 +10,10 @@ public class StatusAbsorb extends status{
 	public Boolean visible = true;
 	public StatusAbsorb(int i, Schmuck perp){
 		super(i, "Status Absorb", false, true, true, perp);
-
 	}
 	
 	public StatusAbsorb(Schmuck perp){
 		super("Status Absorb", true, false, perp);
-
 	}
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
@@ -29,18 +27,11 @@ public class StatusAbsorb extends status{
 		}
 	}
 	
-	
 	public String inflictText(Schmuck s){
 		return s.getName()+"";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

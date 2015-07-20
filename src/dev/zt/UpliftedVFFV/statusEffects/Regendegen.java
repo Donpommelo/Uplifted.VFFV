@@ -23,17 +23,15 @@ public class Regendegen extends status{
 		this.regen = amount;
 	}
 	
-	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(HpBp){
-			bs.bp.em.hpChange(regen,perp,s);;
+			bs.bp.em.hpChange(regen,perp,s,6);
 		}
 		else{
 			bs.bp.em.bpChange(regen,s);
 		}
 	}
 
-	
 	public String inflictText(Schmuck s){
 		String plus = "degenerating";
 		String Hpbp = "Bp";
@@ -54,9 +52,4 @@ public class Regendegen extends status{
 		}
 		return s.getName()+" stopped "+plus;
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

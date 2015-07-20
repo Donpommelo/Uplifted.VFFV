@@ -32,9 +32,4 @@ public class Impatient extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer Impatient.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

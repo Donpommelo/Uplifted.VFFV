@@ -19,7 +19,7 @@ public class DayattheFair extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Day at the Fair");
 		bs.bp.bt.textList.add("The round was ended prematurely");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s,6);
 		}
 		bs.bp.TurnOrderQueue.clear();
 	}
@@ -28,13 +28,16 @@ public class DayattheFair extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Day at the Fair");
 		bs.bp.bt.textList.add("A Critical blow!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s);
+			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s,6);
 		}
 	}
 		
-	public int getTargetType(){
-		return targetType;
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = 0;
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2),perp,s,6,1000);
+		}
+		return damage;
 	}
 	
-
 }

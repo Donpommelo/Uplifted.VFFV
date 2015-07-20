@@ -12,12 +12,6 @@ public class incapacitate extends status{
 		super("incapacitated", true, false, perp);
 	}
 	
-	
-	
-	public void run(){
-		
-	}
-	
 	public String inflictText(Schmuck s){
 		return s.getName()+" was incapacitated.";
 	}
@@ -25,5 +19,4 @@ public class incapacitate extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" looks ok again.";
 	}
-
 }

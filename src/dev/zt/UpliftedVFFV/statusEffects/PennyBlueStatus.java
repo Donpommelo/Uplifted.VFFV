@@ -14,11 +14,9 @@ public class PennyBlueStatus extends status{
 //		this.bs = bs;
 	}
 	
-	
-	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+"'s Penny Blue regenerates vitality.");
-		bs.bp.em.hpChange((int)((s.getMaxHp()/10)*(1+perp.getHealPower())),perp,s);
+		bs.bp.em.hpChange((int)((s.getMaxHp()/10)*(1+perp.getHealPower())),perp,s,6);
 		bs.bp.em.bpChange(s.getMaxBp()/10,s);		
 	}
 
@@ -34,9 +32,4 @@ public class PennyBlueStatus extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Blue energy wore off.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

@@ -17,7 +17,7 @@ public class SmellingSalt extends Item{
 		bs.bp.bt.textList.add(perp.getName()+" administers the Smellingsalt to "+vic.getName());
 		bs.bp.stm.removeStatus(vic, new incapacitate(vic) );
 		bs.bs.targetUpdate();
-		bs.bp.em.hpChange(5, perp, vic);
+		bs.bp.em.hpChange(5, perp, vic,6);
 	}
 	
 	public void use(Schmuck s){

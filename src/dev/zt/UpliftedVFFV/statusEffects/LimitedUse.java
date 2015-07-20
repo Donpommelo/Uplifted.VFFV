@@ -43,5 +43,4 @@ public class LimitedUse extends status{
 	public String cureText(Schmuck s){
 		return "";
 	}
-	
 }

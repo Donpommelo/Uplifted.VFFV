@@ -22,12 +22,6 @@ public class BonusStatBuff extends status{
 		this.statIncrement = amount;
 	}
 	
-	
-	
-	public void run(){
-		
-	}
-	
 	public void statchanges(Schmuck s){
 		s.bonusStats[this.statChanged]+=statIncrement;
 	}
@@ -105,12 +99,6 @@ public class BonusStatBuff extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s stats went back to normal";
+		return "";//s.getName()+"'s stats went back to normal";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-	
-
 }

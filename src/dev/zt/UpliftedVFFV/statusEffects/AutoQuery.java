@@ -19,20 +19,5 @@ public class AutoQuery extends status{
 			bs.bp.bt.textList.add("A(n) "+ e.getName()+". "+ e.getCurrentHp()+"/"+e.getMaxHp()+" Hp");
 			bs.bp.stm.addStatus(e, new Queried(s));
 		}
-		
 	}
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+"'s Auto Querier is online!";
-
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+"'s Auto-Querier no longer works!";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

@@ -17,7 +17,7 @@ public class Skills {
 	//0: All targets
 	//1: No target: automatically performs action
 	//2: All targetable allies (used in reviving)
-	public int targetType;
+	public int targetType = 0;
 	
 	//0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:No Alignment
 	public int element = 6;
@@ -35,13 +35,13 @@ public class Skills {
 		element = elem;
 	}
 	
-	public Skills(int index, BufferedImage i, int elem){
-		name = "";
-		descr = "";
-		descrShort = "";
-		cost = 0;
-		targetType = 0;
-		icon = i;
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, BufferedImage i){
+		this.name = name;
+		this.descr = descr;
+		this.descrShort = descrShort;
+		this.cost = cost;
+		targetType = t;
+		icon =i;
 		element = elem;
 	}
 	
@@ -66,21 +66,13 @@ public class Skills {
 		return descrShort;
 	}
 	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-
 	public int getCost() {
 
 		return cost;
 	}
 	
 	public int getTargetType(){
-		return 0;
+		return targetType;
 	}
 	
 	public int getElement(){
@@ -99,8 +91,8 @@ public class Skills {
 		
 	}
 	
-	public int damageCalc(){
-		return 0;
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		return 0;//-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3];
 	}
 	
 

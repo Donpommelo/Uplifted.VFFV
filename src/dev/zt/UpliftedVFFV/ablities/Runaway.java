@@ -7,11 +7,12 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Runaway extends Skills {
 
-	public String name = "Run Away";
-	public int cost = 0;
+	public static String name = "Run Away";
+	public static String descr = "User attempts to escape.";
+	public static String descrShort = "Run away from battle.";
+	public static int cost = 0;
 	public Runaway(int index) {
-		super(index, Assets.run,6);
-
+		super(index, 1, 6, name, descr, descrShort, cost, Assets.run);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -33,14 +34,6 @@ public class Runaway extends Skills {
 		else{
 			bs.bp.bt.textList.add("Runaway failed!");
 		}
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public int getCost(){
-		return cost;
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

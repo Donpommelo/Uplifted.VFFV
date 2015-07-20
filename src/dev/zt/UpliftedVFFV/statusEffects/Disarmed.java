@@ -26,15 +26,9 @@ public class Disarmed extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Disarmed.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s arms grew back.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

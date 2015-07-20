@@ -240,7 +240,7 @@ public class BattleProcessor {
 								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
 							}
 						}
-						if(!TurnOrderQueue.get(0).skill.useText(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target).equals("DillyDally") && TurnOrderQueue.get(0) != null){
+						if(!TurnOrderQueue.get(0).skill.getName().equals("Dilly Dally") && TurnOrderQueue.get(0) != null){
 							if((int)(TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost()))<=TurnOrderQueue.get(0).user.getCurrentBp()){								
 								em.bpChange((int)(-TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost())), TurnOrderQueue.get(0).user);
 								if(Math.random()<TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance()){

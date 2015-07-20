@@ -35,9 +35,4 @@ public class EmpathyLinkStatus extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer Empathetic.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

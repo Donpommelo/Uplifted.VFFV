@@ -15,5 +15,4 @@ public Item thing;
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" tried to use run but was pursued.");
 	}
-
 }

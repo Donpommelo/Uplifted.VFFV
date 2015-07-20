@@ -11,11 +11,7 @@ public class RingofGygesStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public int damage = 0;
-	public Boolean used;
-	public RingofGygesStatus(int i, Schmuck perp){
-		super(i, "Defensive Invisibility", false, false, true, perp);
-	}
-	
+	public Boolean used;	
 	public RingofGygesStatus(Schmuck perp, int pr){
 		super("Defensive Invisibility", false, false, perp,pr);
 	}
@@ -34,19 +30,4 @@ public class RingofGygesStatus extends status{
 		}		
 		return damage;
 	}
-		
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

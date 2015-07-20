@@ -11,23 +11,11 @@ public class MeterBlock extends status{
 		super(i, "Meter Block", false, true, true, perp);
 	}
 	
-	
-	
-	public void run(){
-		
-	}
-	
-
 	public String inflictText(Schmuck s){
 		return s.getName()+" can no longer regain Mp!";
-
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+" can regain Mp again!";
-
 	}
-	
-
 }

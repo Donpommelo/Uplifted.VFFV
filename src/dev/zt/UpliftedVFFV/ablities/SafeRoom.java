@@ -12,7 +12,6 @@ public class SafeRoom extends Skills {
 	public static int cost = 5;
 	public SafeRoom(int index) {
 		super(index,0,6, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -23,7 +22,6 @@ public class SafeRoom extends Skills {
 				bs.bp.TurnOrderQueue.remove(i);
 				i--;
 			}
-		
 		}
 		bs.bp.stm.addStatus(vic, new Invuln(0, perp));
 		

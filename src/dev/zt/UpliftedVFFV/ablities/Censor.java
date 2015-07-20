@@ -18,8 +18,7 @@ public class Censor extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Censor!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<bs.bp.em.getAcc(perp, vic)){
+		if(bs.bp.em.getAcc(perp, vic,100)){
 			bs.bp.stm.addStatus(vic, new Silenced(3, perp));
 		}
 		else{

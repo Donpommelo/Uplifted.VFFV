@@ -19,7 +19,7 @@ public class Lachiplatre extends Item{
 		else{
 			bs.bp.bt.textList.add(perp.getName()+" gives "+vic.getName()+" the Lachiplatre.");
 		}
-		bs.bp.em.hpChange(2, perp, vic);
+		bs.bp.em.hpChange(2, perp, vic,6);
 		bs.bp.em.bpChange(2,vic);
 	}
 	

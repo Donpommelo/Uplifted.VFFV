@@ -26,15 +26,9 @@ public class Silenced extends status{
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Silenced.";
-
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s voice came back.";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

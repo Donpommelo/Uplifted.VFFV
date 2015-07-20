@@ -12,13 +12,11 @@ public class TreskillingYellow extends Skills {
 	public static int cost = 5;
 	public TreskillingYellow(int index) {
 		super(index,0,3, name, descr, descrShort, cost);
-
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Treskilling Yellow!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<bs.bp.em.getAcc(perp, vic)){
+		if(bs.bp.em.getAcc(perp, vic,100)){
 			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],perp, vic,3);
 		}
 		else{
@@ -38,5 +36,9 @@ public class TreskillingYellow extends Skills {
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
 	
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = (int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3];
+		return bs.bp.em.damageSimulation(damage, perp, vic, 3,100);
+	}
 
 }

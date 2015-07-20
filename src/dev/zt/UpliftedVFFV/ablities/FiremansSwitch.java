@@ -34,5 +34,15 @@ public class FiremansSwitch extends Skills {
 			}		
 		}
 	}
-
+	
+	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = 0;
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			if(!s.equals(vic)){
+				damage += bs.bp.em.damageSimulation((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.8)/(s.buffedStats[3])),perp,s,0,1000);
+			}	
+		}
+		return damage;
+	}
+	
 }

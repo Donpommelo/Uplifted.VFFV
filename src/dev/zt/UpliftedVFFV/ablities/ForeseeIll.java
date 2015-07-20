@@ -24,13 +24,12 @@ public class ForeseeIll extends Skills {
 			}					
 		}
 		if(stacked != -1){
-			bs.bp.em.hpChange(-(int)Math.pow(2, vic.statuses.get(stacked).stack), perp, vic);
+			bs.bp.em.hpChange(-(int)Math.pow(2, vic.statuses.get(stacked).stack)+1, perp, vic,6);
 			bs.bp.stm.removeStatus(vic, vic.statuses.get(stacked));
 		}
 		else{
 			bs.bp.bt.textList.add("But it failed.");
 		}
-		
 	}
 
 }

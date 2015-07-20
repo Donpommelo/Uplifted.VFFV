@@ -33,15 +33,5 @@ public class KidneyStoneStatus extends status{
 		if(cooldown >0){
 			cooldown--;
 		}
-	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
+	}	
 }
