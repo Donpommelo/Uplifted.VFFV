@@ -25,7 +25,7 @@ public class EventSafe6 extends Event {
 		}
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

@@ -16,8 +16,6 @@ public class EventJorge extends Event {
 	public static BufferedImage img = Assets.Jorge1;
 	public EventJorge(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-		
-	
 	}
 	
 	public void run(){
@@ -51,10 +49,9 @@ public class EventJorge extends Event {
 				stage = 0;
 				break;
 			}			
-		
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	
@@ -65,7 +62,6 @@ public class EventJorge extends Event {
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventJorge.stage = stage;

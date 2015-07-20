@@ -23,10 +23,7 @@ public class Event3 extends Event {
 		frame = 0;
 	}
 	
-
-	
 	public void run(){
-		
 		if(elevatorOn){
 			
 		}
@@ -136,9 +133,6 @@ public class Event3 extends Event {
 			break;
 		}
 		g.drawImage(tex,x-16, y-32, tex.getWidth(), tex.getHeight(), null);
-
-		
-
 	}
 	
 	public int getfinalstage() {
@@ -149,7 +143,6 @@ public class Event3 extends Event {
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventEmployeeIntro.stage = stage;
@@ -163,8 +156,8 @@ public class Event3 extends Event {
 		this.open = open;
 	}
 
-	public boolean isSolid(){
-		return solid;
+	public boolean isSolid(int i){
+		return true;
 	}
 
 }

@@ -14,7 +14,4 @@ public class EventFemaleSign extends Event {
 	
 	}
 	
-	public boolean isSolid(){
-		return true;
-	}
 }

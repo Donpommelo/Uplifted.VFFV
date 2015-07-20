@@ -18,10 +18,7 @@ public class Event1 extends Event {
 		super(Assets.White,idnum,x, y);
 		scenes[0]=ImageLoader.loadImage("/Cutscenes/Intro1.png");
 		scenes[1]=ImageLoader.loadImage("/Cutscenes/Intro2.png");
-	
 	}
-	
-
 	
 	public void run(){
 		if(!selfswitch1){
@@ -46,7 +43,6 @@ public class Event1 extends Event {
 		return finalstage;
 	}
 
-
 	public int getstage() {
 		return stage;
 	}
@@ -59,12 +55,8 @@ public class Event1 extends Event {
 		return selfswitch1;
 	}
 
-
-
 	public void setSelfswitch1(boolean selfswitch1) {
 		this.selfswitch1 = selfswitch1;
 	}
-	
-
 
 }

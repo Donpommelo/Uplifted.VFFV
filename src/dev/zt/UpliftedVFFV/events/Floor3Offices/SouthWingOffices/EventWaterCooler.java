@@ -12,18 +12,13 @@ public class EventWaterCooler extends Event {
 	public boolean selfswitch1=false;
 	public EventWaterCooler(float x, float y, int idnum) {
 		super(Assets.WaterCooler,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 
-
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

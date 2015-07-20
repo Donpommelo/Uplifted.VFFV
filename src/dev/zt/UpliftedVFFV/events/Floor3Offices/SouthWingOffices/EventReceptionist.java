@@ -12,17 +12,13 @@ public class EventReceptionist extends Event {
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeF);
 	public EventReceptionist(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

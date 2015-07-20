@@ -40,8 +40,6 @@ public class EventJanitor1 extends Event {
 		selection.put(new DeploreApp(), 960);
 	}
 	
-
-	
 	public void run(){
 		if (Player.runlast==0){
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
@@ -66,7 +64,6 @@ public class EventJanitor1 extends Event {
 				else{
 					super.Dialog(178, 178,this.getId());
 				}
-				
 				break;
 			case 1:
 				super.Dialog(176, 176,this.getId());
@@ -77,12 +74,12 @@ public class EventJanitor1 extends Event {
 				stage = 0;
 				break;
 			}
-		
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
+	
 	public int getfinalstage() {
 		return finalstage;
 	}
@@ -90,7 +87,6 @@ public class EventJanitor1 extends Event {
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventJanitor1.stage = stage;
@@ -111,6 +107,4 @@ public class EventJanitor1 extends Event {
 			break;
 		}
 	}
-
-
 }

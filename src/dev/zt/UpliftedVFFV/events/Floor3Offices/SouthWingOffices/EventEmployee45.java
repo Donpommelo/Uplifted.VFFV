@@ -13,8 +13,6 @@ public class EventEmployee45 extends Event {
 	public static BufferedImage img=SpriteSorter.SpriteSort(4,Assets.EmployeeF);
 	public EventEmployee45(float x, float y, int idnum) {
 		super(img,idnum,x, y);
-		
-	
 	}
 		
 	public void run(){
@@ -30,13 +28,10 @@ public class EventEmployee45 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 		}
-
 			super.Dialog(281, 282,this.getId());		
-
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
-	
 }

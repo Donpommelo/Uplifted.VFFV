@@ -99,6 +99,10 @@ public class Skills {
 		
 	}
 	
+	public int damageCalc(){
+		return 0;
+	}
+	
 
 
 }

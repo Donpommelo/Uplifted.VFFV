@@ -10,11 +10,7 @@ public class Event37 extends Event {
 
 	public Event37(float x, float y, int idnum) {
 		super(Assets.White,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 //		if(Event.events[66].isSelfswitch1()){
@@ -23,7 +19,7 @@ public class Event37 extends Event {
 	}
 
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 

@@ -37,8 +37,6 @@ public class EventSafe5 extends Event {
 			stage=0;
 			break;
 		}
-		
-		
 	}
 	
 	public int getfinalstage() {
@@ -48,7 +46,6 @@ public class EventSafe5 extends Event {
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventSafe5.stage = stage;
@@ -66,7 +63,7 @@ public class EventSafe5 extends Event {
 		}
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

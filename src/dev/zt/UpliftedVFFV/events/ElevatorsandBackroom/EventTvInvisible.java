@@ -22,12 +22,8 @@ public class EventTvInvisible extends Event {
 		super.Dialog(165, 165,this.getId());
 
 	}
-
-	public static void main(String[] args) {
-		
-	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

@@ -14,12 +14,8 @@ public class EventEmployee39 extends Event {
 	public static int finalstage=1;
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeF);
 	public EventEmployee39(float x, float y, int idnum) {
-		super(img,idnum,x, y);
-		
-	
+		super(img,idnum,x, y);	
 	}
-	
-
 	
 	public void run(){
 		if (Player.runlast==0){
@@ -42,13 +38,10 @@ public class EventEmployee39 extends Event {
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 			stage = 0;
 			break;
-			
 		}
-		
-
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

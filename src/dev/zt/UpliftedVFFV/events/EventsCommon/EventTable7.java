@@ -15,7 +15,7 @@ public class EventTable7 extends Event {
 	
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

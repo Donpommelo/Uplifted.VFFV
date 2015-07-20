@@ -10,18 +10,9 @@ public class Event52 extends Event {
 
 	public Event52(float x, float y, int idnum) {
 		super(Assets.White,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMain.txt", 6,2,"");
 	}
-
-	public boolean isSolid(){
-		return false;
-	}
-
 }

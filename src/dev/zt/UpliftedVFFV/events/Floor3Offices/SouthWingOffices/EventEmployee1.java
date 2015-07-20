@@ -21,9 +21,7 @@ public class EventEmployee1 extends Event {
 		move = 0;
 		Event.events[this.getId()].test.runlast = 3;
 	}
-	
-
-	
+		
 	public void run(){
 		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		if (Player.runlast==0){
@@ -71,7 +69,7 @@ public class EventEmployee1 extends Event {
 	
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

@@ -10,15 +10,10 @@ public class Event35 extends Event {
 
 
 	public Event35(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y);
-		
-	
+		super(Assets.White,idnum,x, y);	
 	}
-	
-
 	
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 42, 3,"");
 	}
-
 }

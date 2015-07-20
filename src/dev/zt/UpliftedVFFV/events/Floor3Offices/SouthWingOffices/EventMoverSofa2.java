@@ -12,23 +12,17 @@ public class EventMoverSofa2 extends Event {
 	public boolean selfswitch1=false;
 	public EventMoverSofa2(float x, float y, int idnum) {
 		super(Assets.MoverSofa2,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
-//		super.Dialog(165, 165,this.getId());
-
+		super.Dialog(165, 165,this.getId());
 	}
 
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	
 	public boolean drawn(){
-//		return !super.getSwitch(2);
-		return false;
+		return !super.getSwitch(2);
 	}
 }

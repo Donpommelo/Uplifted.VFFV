@@ -9,7 +9,6 @@ public class EventTestBattle extends Event {
 	public EventTestBattle(float x, float y, int idnum) {
 		super(Assets.Black,idnum,x, y);
 		
-	
 	}
 	
 	public void run(){
@@ -18,7 +17,7 @@ public class EventTestBattle extends Event {
 
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

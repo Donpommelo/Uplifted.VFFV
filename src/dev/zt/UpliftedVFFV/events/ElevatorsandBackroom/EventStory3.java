@@ -57,11 +57,7 @@ public class EventStory3 extends Event {
 	public void setstage(int stage) {
 		EventStory3.stage = stage;
 	}
-	
-	public boolean isSolid(){
-		return false;
-	}
-	
+		
 	public boolean drawn(){
 		return !selfswitch1 && Event.events[66].isSelfswitch1();
 

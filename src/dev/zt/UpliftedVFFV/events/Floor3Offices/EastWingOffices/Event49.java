@@ -20,7 +20,7 @@ public class Event49 extends Event {
 		super.Dialog(287, 287, this.getId());
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 

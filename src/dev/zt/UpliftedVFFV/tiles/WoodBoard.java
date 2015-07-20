@@ -8,6 +8,5 @@ public class WoodBoard extends Tile{
 
 		
 	}
-	
 
 }

@@ -11,11 +11,7 @@ public class Event22 extends Event {
 	
 	public Event22(float x, float y, int idnum) {
 		super(Assets.White,idnum,x, y);
-		
-	
 	}
-	
-
 	
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthSmallHallRooms.txt", 9, 7,"");

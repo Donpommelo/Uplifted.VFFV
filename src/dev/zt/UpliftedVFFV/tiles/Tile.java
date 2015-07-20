@@ -204,6 +204,8 @@ public class Tile {
 	public static Tile Stairs = new StairsTile(192,0);
 	public static Tile StairsDown = new StairsDownTile(193,0);
 	public static Tile WhiteTile = new WhiteTile(194,0);
+	public static Tile StairsSide1 = new StairsSide1(195,0);
+	public static Tile StairsSide2 = new StairsSide2(196,0);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
@@ -234,5 +236,10 @@ public class Tile {
 	public int getId(){
 		return id;
 	}
+	
+	public int isDiagMove(){
+		return 0;
+	}
+	
 
 }

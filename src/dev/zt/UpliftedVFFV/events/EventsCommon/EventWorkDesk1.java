@@ -23,11 +23,7 @@ public class EventWorkDesk1 extends Event {
 
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 }

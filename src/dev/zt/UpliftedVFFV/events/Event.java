@@ -263,18 +263,22 @@ public class Event{
 	public static Event event53 = new Event53(3,2,172);
 	public static Event event54 = new Event54(6,2,173);
 	//55,56,57 to other bus stops
+	
 	public static Event event59 = new Event59(3,9,178);
 	public static Event event60 = new Event60(6,2,179);
-	public static Event event61 = new Event61(6,2,180);
-	public static Event event62 = new Event62(6,2,181);
-	public static Event event63 = new Event63(6,2,182);
-	//64,65,66 to right east offices
+	public static Event event61 = new Event61(7,15,180);
+	public static Event event62 = new Event62(7,23,181);
+	public static Event event63 = new Event63(7,31,182);
+	public static Event event64 = new Event64(27,15,183);
+	public static Event event65 = new Event65(27,23,184);
+//64,65,66 to right east offices
 	public static Event event67 = new Event67(0,42,186);
 	public static Event event68 = new Event68(6,42,187);
 	public static Event event69 = new Event69(20,5,188);
 	public static Event event70 = new Event70(0,5,189);
 	public static Event event71 = new Event71(7,20,190);
 	public static Event event72 = new Event72(20,20,191);
+	
 	public static Event event73 = new Event73(14,4,192);
 	public static Event event74 = new Event74(14,22,193);
 	public static Event event75 = new Event75(5,8,194);
@@ -282,6 +286,7 @@ public class Event{
 	public static Event event77 = new Event77(4,12,196);
 	public static Event event78 = new Event78(14,6,197);
 	public static Event event79 = new Event79(4,4,198);
+	
 	public static Event event80 = new Event80(17,14,199);
 	public static Event event81 = new Event81(4,6,200);
 	public static Event event82 = new Event82(4,15,201);
@@ -290,6 +295,26 @@ public class Event{
 	public static Event event85 = new Event85(4,3,204);
 	public static Event event86 = new Event86(10,7,205);
 	public static Event event87 = new Event87(0,7,206);
+	
+	public static Event event88 = new Event88(10,34,207);
+	
+	//events 89-96 east wing left lvl3 rooms
+	public static Event event97 = new Event97(0,9,216);
+	public static Event event98 = new Event98(7,12,217);
+	public static Event event99 = new Event99(14,9,218);
+	public static Event event100 = new Event100(4,3,219);
+	public static Event event101 = new Event101(13,15,220);
+	//event 102 :East Wing right room1 path
+	
+	public static Event event103 = new Event103(0,11,222);
+	public static Event event104 = new Event104(4,24,223);
+	public static Event event105 = new Event105(5,7,224);
+	public static Event event106 = new Event106(11,17,225);
+	public static Event event107 = new Event107(8,21,226);
+
+	
+	
+	
 	
 	public Event(Game g, StateManager sm,GameState gs) {
 		game=g;
@@ -378,7 +403,7 @@ public class Event{
 		this.test = test;
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int direction){
 		return false;
 	}
 	
@@ -618,7 +643,7 @@ public class Event{
 
 	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
 	public void moveUp(){
-		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid()){
+		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
 			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y)*32 || Player.getPlayerY()<=(y-2)*32){				
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
@@ -631,7 +656,7 @@ public class Event{
 	}
 
 	public void moveDown(){
-		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid()){
+		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid(1)){
 			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y+2)*32 || Player.getPlayerY()<=(y)*32){	
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
@@ -645,7 +670,7 @@ public class Event{
 	}
 
 	public void moveLeft(){
-		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid()){
+		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid(2)){
 			if(Player.getPlayerX()<=(x-2)*32 || Player.getPlayerX()>=(x)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
@@ -657,7 +682,7 @@ public class Event{
 		}
 	}
 	public void moveRight(){
-		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid()){
+		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid(3)){
 			if(Player.getPlayerX()<=(x)*32 || Player.getPlayerX()>=(x+2)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
