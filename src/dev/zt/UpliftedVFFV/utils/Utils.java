@@ -44,7 +44,7 @@ public class Utils {
 		}
 	}
 	
-/*****UTILS FOR MENU DRAWING*****/	
+/*****UTILS FOR MENU DRAWING (NOT PROCESSING)*****/	
 
 	//Size of cuts, make smaller for more precision. Values <16 or >64 will probably break things.
 	private static int squareSize = 16;
@@ -57,16 +57,15 @@ public class Utils {
 	 *  options - List of menu options to display. Size/font not currently adjustable (Default font size 18).
 	 *  fontColor - Color of options.
 	 *  fontHeight - Height of cursor.
-	 *  cursor - Integer index of cursor.
+	 *  cursorIndex - Integer index of cursor.
 	 *  x - x coordinate of upper right menu corner.
 	 *  y - y coordinate of upper right menu corner.
 	 * 	width - Width of window to be drawn.
 	 * 	height - Height of window to be drawn.
 	 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
-	 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 	 */
 	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor, int fontHeight,
-			int cursor, int x, int y, int width, int height, boolean priority, boolean drawCursor){
+			int cursorIndex, int x, int y, int width, int height, boolean priority){
 		
 		Graphics2D g2d = (Graphics2D) g;
 		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
@@ -76,18 +75,70 @@ public class Utils {
 			 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
 		}
 		
-		//Draw cursor.
-		drawCursor(g2d, window, x, y + (25 * cursor) + 12, width, fontHeight, priority);
-		
+		drawCursor(g2d, window, x, y + (25 * cursorIndex) + 12, width, fontHeight, priority);
+
 		//Draw menu options.
 		g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g2d.setColor(fontColor);
-		for(int i = 0; i< options.length; i++){
+		for(int i = 0; i < options.length; i++){
 			g2d.drawString(options[i], x + 25, y + 35 + (25 * i));
 		}		
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 	}
+	
+	//Wrapper for drawImage that draws a scrolling menu with a controllable number of x and y options.
+		/* Parameters:
+		 g - Graphics object
+		 * 	window - Name of menu texture. Texture should be a 128 x 160 image divided into 4 squareSize x squareSize sections 
+		 * 		and with a 128 x 32 cursor texture at the bottom.
+		 *  options - List of menu options to display with toString(). Size/font not currently adjustable (Default font size 18).
+		 *  fontColor - Color of options.
+		 *  fontHeight - Height of cursor.
+		 *  cursorIndex - Integer index of cursor.
+		 *  x - x coordinate of upper right menu corner.
+		 *  y - y coordinate of upper right menu corner.
+		 * 	width - Width of window to be drawn.
+		 * 	height - Height of window to be drawn.
+		 *  optionx - Number of options displayed horizontally.
+		 *  optiony - number of options displayed vertically.
+		 *  frame - Reference location for displaying observable list.
+		 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
+		 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
+		 */
+		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor, int fontHeight,
+				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, boolean priority){
+			Graphics2D g2d = (Graphics2D) g;
+			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
+			
+			//Set transparency according to priority.
+			if(!priority){
+				 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+			}
+			
+			//Draw cursor.
+			drawCursor(g2d, window, x + (width / optionx - 2) * (cursorIndex % optionx), y + (25 * (cursorIndex / optionx)) + 8, width / optionx + 5, fontHeight, priority);
+			//Draw menu options.
+			g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g2d.setColor(fontColor);
+			if(options.length > 0){	
+				int listPosition = 0;
+				g2d.setFont(new Font("Chewy", Font.PLAIN, fontHeight));
+				for(int i = frame * optionx; i < optionx * (frame + optiony) && i < options.length; i++){
+					if(options[i] != null){
+						g2d.drawString(options[i].toString(), x + 15 + (width / optionx) * (listPosition % optionx), y + 28 + (25 * (listPosition / optionx)));
+						listPosition++;
+					} else{
+						break;
+					}
+				}
+			} else{
+				g2d.drawString("EMPTY", x + 15, y + 28);
+			}
+			
+			//Reset transparency.
+			g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
+		}
 	
 	//Wrapper for drawImage that draws a dialogue box.
 	/* Parameters:
@@ -287,6 +338,8 @@ public class Utils {
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 	}
+	
+	
 	
 	//Wrapper for drawImage that draws a menu for the shop interface.
 	/* Parameters:

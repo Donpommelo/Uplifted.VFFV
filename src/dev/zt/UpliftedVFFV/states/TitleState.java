@@ -106,7 +106,7 @@ public class TitleState extends State {
 		//g.fillRect(360,200, 150, 100);
 
 		String[] options = {"New Game", "Controls", "About", "Quit"};
-		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 120, true, true);
+		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 120, true);
 		
 		if(controls){
 			g.setColor(new Color(102, 178,255));
