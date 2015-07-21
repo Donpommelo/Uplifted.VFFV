@@ -20,6 +20,13 @@ public class VariableManager {
  9: Ennui
  10: Ennui Ceiling
  11: 
+ 12: 
+ 13: 
+ 14: 
+ 15: 
+ 16: 
+ 17: 
+ 18: 
  */
 	
 	public VariableManager(Game g){
