@@ -1,8 +1,11 @@
 package dev.zt.UpliftedVFFV.Battle;
 
+import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
@@ -577,7 +580,11 @@ public class BattleMenu{
 					g.setColor(Color.white);
 					g.fillRect(menux + 120, menuy - 35, 125, 75);
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(Color.black);;
+					g.setColor(Color.black);
+					Stroke oldStroke = ((Graphics2D) g).getStroke();
+					((Graphics2D) g).setStroke(new BasicStroke(3));
+					g.drawRect(menux + 120, menuy - 35, 125, 75);
+					((Graphics2D) g).setStroke(oldStroke);
 					int y = menuy - 25;
 					for (String line : skills.get(itemSelected).getDescrShort().split("\n")){
 						 g.drawString(line, menux + 125, y += g.getFontMetrics().getHeight());

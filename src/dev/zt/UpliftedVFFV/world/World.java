@@ -61,7 +61,7 @@ public class World {
 //			g.setColor(Color.BLACK);
 //			g.drawString(this.Worldname, 552,(int)(20+.01*(110-(nameplate-10)*(nameplate-10))));
 			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 520, 
-					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), 112, 25, true);
+					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), 112, 25, 16, true);
 		}
 		
 	}

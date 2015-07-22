@@ -383,7 +383,7 @@ public class BattleProcessor {
 //		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 //		g.setColor(new Color(0, 0,0));
 //		g.drawString("Round: "+roundNum,0,50);
-		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 75, 28, true);
+		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 75, 28, 16, true);
 		if(!bt.textList.isEmpty()){
 			bt.render(g);
 		}
@@ -412,7 +412,7 @@ public class BattleProcessor {
 //					g.setFont(new Font("Chewy", Font.PLAIN, 18));
 //					g.setColor(new Color(0, 0,0));
 //					g.drawString("Ready (Enter)",0,90);
-					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 65, 120, 40, true);
+					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 65, 120, 40, 16, true);
 				}
 				if(selected==true){
 					if(bm != null){

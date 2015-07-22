@@ -61,14 +61,14 @@ public class Dialog {
 //		g.setColor(new Color(102, 178,255, 200));
 //		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 //		g.fillRect(0, 316, 640, 100);
-		Utils.drawDialogueBox(g, window, "", 18, Color.black, 0, 316, 625, 80, true);
+		Utils.drawDialogueBox(g, window, "", 18, Color.black, 0, 316, 625, 80, 16, true);
 		
 		if(!SpeakerName.equals("meep"))				//displays speaker's name in a box.
 		{
 //			g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
 //			g.setColor(Color.BLACK);
 //			g.drawString(SpeakerName, 8, 304);
-			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, 280, 25 + SpeakerName.length() * 8, 32, true);
+			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, 280, 25 + SpeakerName.length() * 8, 32, 16, true);
 		}
 		g.setColor(Color.black);					//displays text. / indicates a new line
 		for(int i = 1; i < charIndex; i++){

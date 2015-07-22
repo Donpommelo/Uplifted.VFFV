@@ -28,7 +28,6 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 
 	public void keyPressed(KeyEvent ev) {
 		keys[ev.getKeyCode()] = true;
-		
 	}
 
 	public void keyReleased(KeyEvent ev) {

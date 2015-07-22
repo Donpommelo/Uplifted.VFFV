@@ -68,7 +68,7 @@ public class Utils {
 			int cursorIndex, int x, int y, int width, int height, boolean priority){
 		
 		Graphics2D g2d = (Graphics2D) g;
-		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
+		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, squareSize, priority);
 		
 		//Set transparency according to priority.
 		if(!priority){
@@ -103,13 +103,15 @@ public class Utils {
 		 *  optionx - Number of options displayed horizontally.
 		 *  optiony - number of options displayed vertically.
 		 *  frame - Reference location for displaying observable list.
+		 *  squareSize - Size of texture to be sampled. Larger values: More detail, less precision in size.
 		 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
 		 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 		 */
 		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor, int fontHeight,
-				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, boolean priority){
+				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, int squareSize,
+				boolean priority){
 			Graphics2D g2d = (Graphics2D) g;
-			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
+			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, squareSize, priority);
 			
 			//Set transparency according to priority.
 			if(!priority){
@@ -151,10 +153,11 @@ public class Utils {
 	 *  y - y coordinate of upper right box corner.
 	 * 	width - Width of box to be drawn.
 	 * 	height - Height of box to be drawn.
+	 *  squareSize - Size of texture to be sampled. Larger values: More detail, less precision in size.
 	 * 	priority - Window focus. If not in focus, the box is drawn transparently.
 	 */
 	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
-			boolean priority){
+			int squareSize, boolean priority){
 		Graphics2D g2d = (Graphics2D) g;
 		//Load texture and cut into subsections.
 		SpriteSheet texture = new SpriteSheet(window);		

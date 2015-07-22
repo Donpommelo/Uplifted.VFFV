@@ -40,7 +40,7 @@ public class TitleState extends State {
 		}
 		
 		if(game.getKeyManager().down){
-			if(optionChosen<3){
+			if(optionChosen < 4){
 				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 				optionChosen++;
 			}
@@ -71,13 +71,16 @@ public class TitleState extends State {
 				case 0:
 					StateManager.states.push(new GameState(game,statemanager));			//This pushes on a gamestate. The game begins.	
 					break;
+				//TODO: Load game.
 				case 1:
-					controls = true;
 					break;
 				case 2:
-					about = true;
+					controls = true;
 					break;
 				case 3:
+					about = true;
+					break;
+				case 4:
 					System.exit(0);														//this exits the game
 					break;
 				}
@@ -105,8 +108,8 @@ public class TitleState extends State {
 		//g.setColor(new Color(102, 178,255));
 		//g.fillRect(360,200, 150, 100);
 
-		String[] options = {"New Game", "Controls", "About", "Quit"};
-		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 120, true);
+		String[] options = {"New Game", "Load Game", "Controls", "About", "Quit"};
+		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 144, true);
 		
 		if(controls){
 			g.setColor(new Color(102, 178,255));

@@ -47,7 +47,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 			//Draw Cursor.
 			g.drawImage(cursor, 502, 42 + 32 * (firstchoice + choicelocation), 25, 25, null);
 			//Draw Text.
-			Utils.drawDialogueBox(g, window, num[firstchoice + choicelocation], 15, Color.white, 440, 0, 200, 16, true);
+			Utils.drawDialogueBox(g, window, num[firstchoice + choicelocation], 15, Color.white, 440, 0, 200, 16, 16, true);
 		}
 	}
 	
