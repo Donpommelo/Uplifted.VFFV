@@ -159,5 +159,9 @@ public class Event3 extends Event {
 	public boolean isSolid(int i){
 		return true;
 	}
+	
+	public boolean isDoor(){
+		return true;
+	}
 
 }

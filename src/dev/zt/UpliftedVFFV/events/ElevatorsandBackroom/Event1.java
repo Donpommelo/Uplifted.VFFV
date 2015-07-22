@@ -58,5 +58,12 @@ public class Event1 extends Event {
 	public void setSelfswitch1(boolean selfswitch1) {
 		this.selfswitch1 = selfswitch1;
 	}
+	
+	public boolean isSolid(int i){
+		return true;
+	}
+	public boolean isDoor(){
+		return true;
+	}
 
 }

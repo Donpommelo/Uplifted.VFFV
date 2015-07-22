@@ -30,6 +30,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 		//if x is pressed, the state is popped
 		if(exit==true){
 			StateManager.getStates().pop();
+			StateManager.getStates().pop();
 			Event.events[this.EventId].ChoiceMade(currentchoice);
 			StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
 			exit=false;

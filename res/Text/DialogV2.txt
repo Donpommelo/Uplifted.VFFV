@@ -113,7 +113,7 @@ Player-5.png
 Well, are we going to Room 521 or not? Remember, we were going to check Floor 3./
 Operator
 Player-1.png
-1
+0
 I don't think that's the floor that was asked for./
 Operator
 Player-1.png

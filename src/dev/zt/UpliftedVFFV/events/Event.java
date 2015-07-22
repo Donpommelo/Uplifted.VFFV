@@ -59,6 +59,7 @@ import dev.zt.UpliftedVFFV.states.CutsceneState;
 import dev.zt.UpliftedVFFV.states.DialogState;
 import dev.zt.UpliftedVFFV.states.ElevatorChoiceBranchState;
 import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.PenPalLetterState;
 import dev.zt.UpliftedVFFV.states.ShoppingState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.states.TimerState;
@@ -499,7 +500,15 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-
+	}
+	
+	public static void PenPalState(){
+		StateManager.states.push(new PenPalLetterState(game,statemanager));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
 	}
 	
 	public static void Timer(int EventId,int time){
@@ -570,6 +579,10 @@ public class Event{
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public boolean isDoor(){
+		return false;
 	}
 	
 	//overrode by individual events. This is called whenever the event is interacted with

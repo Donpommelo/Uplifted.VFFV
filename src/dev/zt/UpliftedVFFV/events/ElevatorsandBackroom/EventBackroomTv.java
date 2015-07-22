@@ -19,12 +19,7 @@ public class EventBackroomTv extends Event {
 
 	
 	public void run(){
-		
 
-	}
-
-	public static void main(String[] args) {
-		
 	}
 	
 	public boolean isSolid(int i){
