@@ -572,6 +572,10 @@ public class Event{
 		this.id = id;
 	}
 	
+	public boolean isDoor(){
+		return false;
+	}
+	
 	//overrode by individual events. This is called whenever the event is interacted with
 	public void run() {
 		

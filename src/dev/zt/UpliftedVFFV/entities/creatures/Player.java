@@ -48,13 +48,13 @@ public class Player extends Creature{
 	public void tick() {
 				
 		//First, checks whether the player is standing on an event
-		Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
+/*		Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
 		if(e!=Event.event0 && e.runnable()){		//if the player is on top of a square containing an event, the event is run
 
 			e.run();
 			step=16;				//when an event is run, the player step count is reset so avoid getting stuck between squares
 		}
-		else {
+		else */{
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
 			getInput();	
@@ -130,8 +130,14 @@ public class Player extends Creature{
 		if(step==16){
 			runup=false; runleft=false; runright=false; rundown=false;
 			step=0;
+			
+			Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
+			if(e!=Event.event0 && e.runnable()){		//if the player is on top of a square containing an event, the event is run
+				e.run();
+			}
 			double temp = Math.random()*100;
 			wall = false;
+			
 			combatFreq = 0;
 			for(Schmuck s : gamestate.partymanager.party){
 				combatFreq += s.getCombatFreq();
@@ -186,21 +192,33 @@ public class Player extends Creature{
 			runup = true;
 			rightleft++;
 			runlast=0;
+			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].isDoor()){
+				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].run();
+			}
 		}
 		else if(game.getKeyManager().down && KeyManager.isCutsceneMode() == false){
 			rundown = true;
 			rightleft++;
 			runlast=1;
+			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].isDoor()){
+				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].run();
+			}
 		}
 		else if(game.getKeyManager().left && KeyManager.isCutsceneMode() == false){
 			runleft = true;
 			rightleft++;
 			runlast=2;
+			if(Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].isDoor()){
+				Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].run();
+			}
 		}
 		else if(game.getKeyManager().right && KeyManager.isCutsceneMode() == false){
 			runright = true;
 			rightleft++;
 			runlast=3;
+			if(Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].isDoor()){
+				Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].run();
+			}
 		}
 		
 		//space checks for events. depending on the orientation of the player, the event in an adjacent square is checked and ran.
