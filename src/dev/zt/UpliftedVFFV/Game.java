@@ -2,8 +2,8 @@ package dev.zt.UpliftedVFFV;
 
 
 import java.awt.Graphics;
-
 import java.awt.image.BufferStrategy;
+
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.display.Display;
 import dev.zt.UpliftedVFFV.gfx.Assets;

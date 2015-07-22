@@ -1,14 +1,18 @@
 package dev.zt.UpliftedVFFV.states;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -19,13 +23,15 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 //This displays info about party, inventory and everything else later.
 public class MenuState extends State {
 	
-	private BufferedImage testImage, window, window2;
+	private AudioManager audio;
+	
+	private BufferedImage testImage, window, window2, window3;
 	private GameState gamestate;
 	private int optionSelected, characterSelected, itemSelected, itemPointer, 
 		backpackLocation, skillSelected, skillPointer, skillLocation, equipSelected, equipPointer, equipLocation, characterTab;
-	private int itemOption, itemslot, backpackTab, backpackDisplaySize;
+	private int itemOption, itemslot, backpackTab, backpackDisplaySize, quipPointer;
 	private boolean optionChosen,characterChosen,itemChosen,exit;
-	private boolean equipChosen,useitemChosen;
+	private boolean equipChosen,useitemChosen, toggleXtraInfo, bypassSelection, progFlag;
 	StateManager statemanager;
 	ArrayList<Character> party= new ArrayList<Character>();
 	
@@ -38,8 +44,10 @@ public class MenuState extends State {
 		super(game, sm);
 		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
-		window2 = ImageLoader.loadImage("/ui/Window/WindowWhite.png");
+		window2 = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
+		window3 = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		this.gamestate=gs;
+		audio = game.getAudiomanager();
 		optionSelected=0;
 		optionChosen=false;
 		exit=false;
@@ -57,10 +65,22 @@ public class MenuState extends State {
 		itemslot = 0;
 		backpackTab = 0;
 		
+		//Flag for showing extra info on character screen.
+		toggleXtraInfo = false;
+		
+		//Equip/Dequip.
+		quipPointer = 0;
+		
+		//Boolean for bypassing second stage of equipping items.
+		bypassSelection = false;
+		
+		//Delay after using/equipping an item.
+		progFlag = false;
+		
 		backpackDisplaySize = 13;
 		
 		//Sort backpack for display.
-		temp= gamestate.inventorymanager.backpack.keySet();
+		temp = gamestate.inventorymanager.backpack.keySet();
 		tempBackpack = new ArrayList<ArrayList<Item>>();
 		itemDisplayConsumable = new ArrayList<Item>();
 		itemDisplayEquip = new ArrayList<Item>();
@@ -102,6 +122,7 @@ public class MenuState extends State {
 		
 		//pressing exit will move back one screen or deselect stuff
 		if(game.getKeyManager().x){
+			audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
 			exit=true;
 			try {
 				Thread.sleep(100);
@@ -113,6 +134,7 @@ public class MenuState extends State {
 		//if you havent selected a subcategory yet, space, up and down will control that.
 		if(optionChosen==false){
 			if(game.getKeyManager().space){
+				audio.playSound("/Audio/paper_pickup_01.wav", false);
 				optionChosen=true;
 				try {
 					Thread.sleep(200);
@@ -122,7 +144,7 @@ public class MenuState extends State {
 			}
 			if(game.getKeyManager().up){
 				if(optionSelected>0){
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected--;
 					try {
 						Thread.sleep(100);
@@ -133,7 +155,7 @@ public class MenuState extends State {
 			}
 			if(game.getKeyManager().down){
 				if(optionSelected<5){			//4 options currently. change this number later wen more are added
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionSelected++;
 					try {
 						Thread.sleep(100);
@@ -154,6 +176,7 @@ public class MenuState extends State {
 			case 0: 
 				if(characterChosen == false){
 					if(game.getKeyManager().space){
+						audio.playSound("/Audio/paper_pickup_01.wav", false);
 						characterChosen=true;
 						characterTab = 0;
 						skillSelected = 0;
@@ -170,7 +193,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -181,7 +204,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -194,9 +217,19 @@ public class MenuState extends State {
 				else{
 					if(characterTab == 0){
 						//Skills tab.
+						if(game.getKeyManager().space){
+							//Extra skill info.
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							toggleXtraInfo = !toggleXtraInfo;
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
 						if(game.getKeyManager().down){
 							if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
-								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 								skillSelected++;
 								if(skillPointer==3){
 									skillLocation++;
@@ -213,7 +246,7 @@ public class MenuState extends State {
 						}
 						if(game.getKeyManager().up){
 							if(skillSelected>0){
-								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 								skillSelected--;
 								if(skillPointer==0){
 									skillLocation--;
@@ -229,70 +262,141 @@ public class MenuState extends State {
 							}
 						}
 						if(game.getKeyManager().right){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterTab++;
 							try {
 								Thread.sleep(100);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
-						}
+						}						
 					} else if (characterTab == 1){
 						//Equipment tab.
-						if(game.getKeyManager().down){
-							if(equipSelected < gamestate.partymanager.party.get(characterSelected).getItemSlots() - 1){
-								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-								equipSelected++;
-								if(equipPointer == 3){
-									equipLocation++;
-								} else {
-									equipPointer++;
-								}
+						if(!toggleXtraInfo){
+							if(game.getKeyManager().space){
+								//Toggle Equip/Unequip mode.
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+								toggleXtraInfo = !toggleXtraInfo;
+								quipPointer = 0;
 								try {
 									Thread.sleep(100);
 								} catch (InterruptedException e) {
 									e.printStackTrace();
 								}
 							}
-						}
-						if(game.getKeyManager().up){
-							if(equipSelected > 0){
-								game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-								equipSelected--;
-								if(equipPointer == 0){
-									equipLocation--;
-								} else {
-									equipPointer--;
+							if(game.getKeyManager().down){
+								if(equipSelected < gamestate.partymanager.party.get(characterSelected).getItemSlots() - 1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									equipSelected++;
+									if(equipPointer == 3){
+										equipLocation++;
+									} else {
+										equipPointer++;
+									}
+									try {
+										Thread.sleep(100);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
 								}
+							}
+							if(game.getKeyManager().up){
+								if(equipSelected > 0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									equipSelected--;
+									if(equipPointer == 0){
+										equipLocation--;
+									} else {
+										equipPointer--;
+									}
+									try {
+										Thread.sleep(100);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
+								}
+							}
+							if(game.getKeyManager().right){
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+								characterTab++;
 								try {
 									Thread.sleep(100);
 								} catch (InterruptedException e) {
 									e.printStackTrace();
 								}
 							}
-						}
-						if(game.getKeyManager().right){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-							characterTab++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+							if(game.getKeyManager().left){
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+								characterTab--;
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
 							}
-						}
-						if(game.getKeyManager().left){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-							characterTab--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+						} else{
+							//Equip/Dequip menu.
+							if(game.getKeyManager().space){
+								//Equip/Unequip item.
+								audio.playSound("/Audio/paper_pickup_01.wav", false);
+								switch(quipPointer){
+									case 0: 
+										//Equip Item.
+										toggleXtraInfo = false;
+										bypassSelection = true;
+										//Go to inventory and set lock/bypass.
+										optionSelected = 1;
+										backpackTab = 1;
+										//Reset item pointer/location
+										itemPointer = 0;
+										itemSelected = 0;
+										backpackLocation = 0;
+										itemslot = equipSelected;
+										itemChosen = false;
+										break;
+									case 1:
+										//Unequip item.
+										gamestate.partymanager.party.get(characterSelected).unEquip(equipSelected, gamestate.inventorymanager);
+										refreshBackpack();
+										toggleXtraInfo = false;
+										break;
+									case 2:
+										toggleXtraInfo = false;
+										break;
+								}
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							}	
+							if(game.getKeyManager().down){
+									if(quipPointer < 2){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										quipPointer++;
+									}
+									try {
+										Thread.sleep(100);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
 							}
+							if(game.getKeyManager().up){
+								if(quipPointer > 0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									quipPointer--;
+									try {
+										Thread.sleep(100);
+									} catch (InterruptedException e) {
+										e.printStackTrace();
+									}
+								}
+							}						
 						}
 					} else if(characterTab == 2){
 						//Biography tab.
 						if(game.getKeyManager().left){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterTab--;
 							try {
 								Thread.sleep(100);
@@ -306,13 +410,23 @@ public class MenuState extends State {
 				
 			//Option 2 is inventory.
 			case 1:
+				Item tempItem = null;
+				if(tempBackpack.get(backpackTab).size() > 0){	
+					tempItem = tempBackpack.get(backpackTab).get(itemSelected);
+				}
 				//Equip item. Choose party member/slot to equip item in.
 				if(equipChosen){
 					if(game.getKeyManager().space){
-						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
-						Item[] itemDisplay= temp.toArray(new Item[27]);
-						gamestate.partymanager.party.get(characterSelected).equip(itemDisplay[itemSelected],itemslot,gamestate.inventorymanager);
-						exit = true;
+						if(progFlag){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							progFlag = false;
+							exit = true;
+						} else{
+							audio.playSound("/Audio/option_toggle.wav", false);
+							gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+							refreshBackpack();
+							progFlag = true;
+						}
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
@@ -321,7 +435,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 						if(characterSelected<gamestate.partymanager.party.size()-1){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected++;
 							try {
 								Thread.sleep(100);
@@ -332,7 +446,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -343,7 +457,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().up){
 						if(itemslot>0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot--;
 							try {
 								Thread.sleep(100);
@@ -354,7 +468,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().down){
 						if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemslot++;
 							try {
 								Thread.sleep(100);
@@ -367,13 +481,18 @@ public class MenuState extends State {
 				else if(useitemChosen){
 					//Use item. Select which party member to use item on.
 					if(game.getKeyManager().space){
-						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
-						Item[] itemDisplay= temp.toArray(new Item[27]);
-						itemDisplay[itemSelected].use(gamestate.partymanager.party.get(characterSelected));
-						if(itemDisplay[itemSelected].isConsummable()){
-							gamestate.inventorymanager.use(itemDisplay[itemSelected]);
+						if(progFlag){
+							progFlag = false;
+							exit = true;
+						} else{
+							audio.playSound("/Audio/option_toggle.wav", false);
+							tempItem.use(gamestate.partymanager.party.get(characterSelected));
+							if(tempItem.isConsummable()){
+								gamestate.inventorymanager.use(tempItem);
+								refreshBackpack();
+							}
+							progFlag = true;
 						}
-						exit = true;
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
@@ -382,7 +501,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 					if(characterSelected<gamestate.partymanager.party.size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 						characterSelected++;
 						try {
 							Thread.sleep(100);
@@ -393,7 +512,7 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().left){
 						if(characterSelected>0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							characterSelected--;
 							try {
 								Thread.sleep(100);
@@ -407,8 +526,19 @@ public class MenuState extends State {
 					//No item selected. Arrows to navigate menu, space to select item.
 					if(game.getKeyManager().space){
 						//Select item;
-						if(!gamestate.inventorymanager.backpack.isEmpty()){
+						if(!gamestate.inventorymanager.backpack.isEmpty() && !bypassSelection){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemChosen=true;
+						} else if(!gamestate.inventorymanager.backpack.isEmpty() && bypassSelection){
+							if(tempBackpack.get(backpackTab).size() > 0){	
+								tempItem = tempBackpack.get(backpackTab).get(itemSelected);
+							}
+							audio.playSound("/Audio/option_toggle.wav", false);
+							gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+							refreshBackpack();
+							bypassSelection = false;
+							optionSelected = 0;
+							characterTab = 1;
 						}
 						try {
 							Thread.sleep(200);
@@ -418,37 +548,42 @@ public class MenuState extends State {
 					}
 					if(game.getKeyManager().right){
 						//Change tab.
-						if(backpackTab < 3){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-							backpackTab++;
-							itemSelected = 0;
-							itemPointer = 0;
-							backpackLocation = 0;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+						if(!bypassSelection){
+							if(backpackTab < 3){
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+								backpackTab++;
+								itemSelected = 0;
+								itemPointer = 0;
+								backpackLocation = 0;
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
 							}
+						}
 					}
 					if(game.getKeyManager().left){
 						//Change tab.
-						if(backpackTab > 0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-							backpackTab--;
-							itemSelected = 0;
-							itemPointer = 0;
-							backpackLocation = 0;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						if(!bypassSelection){
+							if(backpackTab > 0){
+								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+								backpackTab--;
+								itemSelected = 0;
+								itemPointer = 0;
+								backpackLocation = 0;
+								try {
+									Thread.sleep(100);
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							}
 						}
 					}
 					if(game.getKeyManager().down){
+						//Scroll through items.
 						if(itemSelected < tempBackpack.get(backpackTab).size() - 1){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected++;
 							if(itemPointer >= backpackDisplaySize - 1){
 								backpackLocation++;
@@ -464,8 +599,9 @@ public class MenuState extends State {
 						}
 					}
 					if(game.getKeyManager().up){
+						//Scroll through items.
 						if(itemSelected > 0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemSelected--;
 						if(itemPointer == 0){
 							backpackLocation--;
@@ -484,10 +620,10 @@ public class MenuState extends State {
 					
 					}
 				else{
-					//Item selected. Left/Right to select what to do with item.
-					if(game.getKeyManager().right){
-					if(itemOption<2){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					//Item selected. Up/Down to select what to do with item (itemOption 0 = use, 1 = equip).
+					if(game.getKeyManager().down){
+					if(itemOption < 1){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 						itemOption++;
 						try {
 							Thread.sleep(100);
@@ -496,9 +632,9 @@ public class MenuState extends State {
 						}
 							}
 					}
-					if(game.getKeyManager().left){
-						if(itemOption>0){
-							game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					if(game.getKeyManager().up){
+						if(itemOption > 0){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 							itemOption--;
 							try {
 								Thread.sleep(100);
@@ -508,31 +644,27 @@ public class MenuState extends State {
 						}
 					}
 					if(game.getKeyManager().space){
-						itemChosen = false;
-						Set<Item> temp= gamestate.inventorymanager.backpack.keySet();
-						Item[] itemDisplay= temp.toArray(new Item[27]);
-						switch(itemOption){
-						case 0:
-							if(itemDisplay[itemSelected].isUsedfromMenu()){
-								if(itemDisplay[itemSelected].targeted){
+						if(itemOption == 0){
+							if(tempItem.isUsedfromMenu()){
+								itemChosen = false;
+								if(tempItem.targeted){
+									audio.playSound("/Audio/paper_pickup_01.wav", false);
 									useitemChosen = true;
 								}
 								else{
-									itemDisplay[itemSelected].use();
+									audio.playSound("/Audio/option_toggle.wav", false);
+									tempItem.use();
+									refreshBackpack();
 								}
+								
 							}
-							break;
-						case 1:
-							if(itemDisplay[itemSelected].getSlot() == 1){
+						} else if(itemOption == 1){
+							if(tempItem.getSlot() == 1){
+								audio.playSound("/Audio/paper_pickup_01.wav", false);
+								itemChosen = false;
 								equipChosen = true;
 							}
-							break;
-						case 2:
-							exit = true;		
-							itemChosen = true;
-							break;
-						}
-						
+						}						
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
@@ -548,7 +680,7 @@ public class MenuState extends State {
 
 	public void render(Graphics g) {
 		
-		//if x is pressed, the menu will go back one screen
+		//if x is pressed, the menu will go back one screen.
 		if(exit==true){
 			if(equipChosen || useitemChosen){
 				equipChosen=false;
@@ -566,6 +698,8 @@ public class MenuState extends State {
 			else{
 				StateManager.getStates().pop();
 			}
+			toggleXtraInfo = false;
+			bypassSelection = false;
 			exit=false;
 		}
 		
@@ -709,26 +843,34 @@ public class MenuState extends State {
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.drawString(tempSchmuck.getName() + " Lvl " + tempSchmuck.getLvl(), 145, 30);
 				g.setColor(Color.lightGray);
-				g.fillRect(140, 212, 200, 28);
+				g.fillRect(145, 212, 200, 28);
 				g.setColor(Color.white);
-				g.fillRect(142, 214, 46, 24);
-				g.fillRect(192, 214, 96, 24);
-				g.fillRect(292, 214, 46, 24);
+				g.fillRect(147, 214, 46, 24);
+				g.fillRect(197, 214, 96, 24);
+				g.fillRect(297, 214, 46, 24);
 				g.setColor(Color.black);
-				g.drawString("Skills", 145, 232);
-				g.drawString("Equipment", 195, 232);
-				g.drawString("Bio", 295, 232);
+				g.drawString("Skills", 150, 232);
+				g.drawString("Equipment", 200, 232);
+				g.drawString("Bio", 300, 232);
 				
 				if(characterTab == 0){
 					//Skills tab.
 					g.setColor(Color.yellow);
-					g.fillRect(142, 214, 46, 24);
+					g.fillRect(147, 214, 46, 24);
 					g.setColor(Color.black);
-					g.drawString("Skills", 145, 232);
-					
+					g.drawString("Skills", 152, 232);
+									
 					//Draw scrolling display options and icons
 					int skillnum = 0;                                                                                                                                                                                                                                                                                       
 					Utils.drawDialogueBox(g, window2, "", 18, Color.black, 140, 240, 250, 150, characterChosen);
+					//Draw custom cursor.
+					Utils.drawCursor(g, window2, 140, 245 + 36 * skillPointer, 250, 32, characterChosen);
+					if(skillLocation!=0){
+						g.drawImage(Assets.Uparrow, 265 - Assets.Uparrow.getWidth() / 2, 225, null);
+					}
+					if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
+						g.drawImage(Assets.Downarrow, 265 - Assets.Downarrow.getWidth() / 2, 390, null);
+					}
 					for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
 						g.drawString(tempSchmuck.skills.get(i).getName() + "  " +
 								(int)(tempSchmuck.skills.get(i).getCost() * (1+tempSchmuck.getMpCost())) + " Mp", 
@@ -739,31 +881,35 @@ public class MenuState extends State {
 					for(int i = 0; i < 4 && i < tempSchmuck.skills.size(); i++){	
 						g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 254 + 36 * i, null);
 					}
-					//Draw custom cursor.
-					Utils.drawCursor(g, window2, 140, 245 + 36 * skillPointer, 250, 32, characterChosen);
-					if(skillLocation!=0){
-						g.drawImage(Assets.Uparrow, 265 - Assets.Uparrow.getWidth() / 2, 225, null);
-					}
-					if(skillLocation!=tempSchmuck.skills.size()-4 && tempSchmuck.skills.size()>4){
-						g.drawImage(Assets.Downarrow, 265 - Assets.Downarrow.getWidth() / 2, 390, null);
-					}
 					
 					//Draw info box.
-					Utils.drawDialogueBox(g, window2, "", 18, Color.black, 398, 240, 235, 150, characterChosen);
+					Utils.drawDialogueBox(g, window2, "", 18, Color.black, 396, 240, 235, 150, characterChosen);
 					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
 						int y = 245;
 						for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
 					        g.drawString(line, 410, y += g.getFontMetrics().getHeight());
 					}
+					//Draw extra skill info.
+					if(toggleXtraInfo){
+						Utils.drawDialogueBox(g, window2, "Useful Info", 16, Color.black, 275, 225 + 36 * skillPointer, 96, 72, true);
+					}
 				} else if(characterTab == 1){
 					//Equipment tab.
 					g.setColor(Color.yellow);
-					g.fillRect(192, 214, 96, 24);
+					g.fillRect(197, 214, 96, 24);
 					g.setColor(Color.black);
-					g.drawString("Equipment", 195, 232);
+					g.drawString("Equipment", 202, 232);
 					
 					//Draw list and icons.
 					Utils.drawDialogueBox(g, window2, "", 18, Color.black, 140, 240, 250, 150, characterChosen);
+					//Draw cursor and arrows.
+					Utils.drawCursor(g, window2, 140, 243 + 36 * equipPointer, 250, 32, characterChosen);
+					if(equipLocation != 0){
+						g.drawImage(Assets.Uparrow, 265 - Assets.Uparrow.getWidth() / 2, 225, null);
+					}
+					if(equipLocation != tempSchmuck.getItemSlots() - 4 && tempSchmuck.getItemSlots() > 3){
+						g.drawImage(Assets.Downarrow, 265 - Assets.Downarrow.getWidth() / 2, 390, null);
+					}
 					int displayIndex = 0;
 					for(int i = equipLocation; i <= equipLocation + 3 && i < tempSchmuck.getItemSlots(); i++){			
 						if(tempSchmuck.getItems()[i] == null){
@@ -782,28 +928,26 @@ public class MenuState extends State {
 						}
 						displayIndex++;
 					}
-					//Draw cursor and arrows.
-					Utils.drawCursor(g, window2, 140, 243 + 36 * equipPointer, 250, 32, characterChosen);
-					if(equipLocation != 0){
-						g.drawImage(Assets.Uparrow, 265 - Assets.Uparrow.getWidth() / 2, 225, null);
-					}
-					if(equipLocation != tempSchmuck.getItemSlots() - 4 && tempSchmuck.getItemSlots() > 3){
-						g.drawImage(Assets.Downarrow, 265 - Assets.Downarrow.getWidth() / 2, 390, null);
-					}
 					
 					//Draw info box.
 					if(tempSchmuck.getItems()[equipSelected] != null){
-						Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(), 18, Color.black, 398, 240, 235, 150, characterChosen);
+						Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(), 18, Color.black, 396, 240, 235, 150, characterChosen);
 					} else{
-						Utils.drawDialogueBox(g, window2, "An empty pocket.", 18, Color.black, 398, 240, 235, 150, characterChosen);
+						Utils.drawDialogueBox(g, window2, "An empty pocket.", 18, Color.black, 396, 240, 235, 150, characterChosen);
+					}
+					
+					//Draw unequip option.
+					if(toggleXtraInfo){
+						String[] options1 = {"Equip", "Unequip", "Exit"};
+						Utils.drawMenu(g, window3, options1, Color.white, 16, quipPointer, 280, 222 + 36 * equipPointer, 120, 80, 1, 3, 0, true);
 					}
 					
 				} else if(characterTab == 2){
 					//Biography tab.
 					g.setColor(Color.yellow);
-					g.fillRect(292, 214, 46, 24);
+					g.fillRect(297, 214, 46, 24);
 					g.setColor(Color.black);
-					g.drawString("Bio", 295, 232);
+					g.drawString("Bio", 302, 232);
 					
 					//Draw info box.
 					Utils.drawDialogueBox(g, window2, tempSchmuck.getBio(), 18, Color.black, 140, 240, 480, 150, characterChosen);
@@ -813,53 +957,60 @@ public class MenuState extends State {
 				g.setFont(new Font("Chewy", Font.PLAIN, 18));
 				g.setColor(Color.black);
 				for(int i = 0; i < 6; i++){
-					g.fillRect(325, 30 + 25 * i, 16, 16);
+					g.fillRect(325, 42 + 25 * i, 16, 16);
 				}
 				int alignment = (int)tempSchmuck.getElemAlignment() - 1;
 				if(alignment >= 0){
-					g.drawRect(324, 29 + 25 * alignment, 17, 17);
+					g.drawRect(324, 41 + 25 * alignment, 17, 17);
 				} else{
-					g.drawRect(324, 154, 17, 17);
+					g.drawRect(324, 166, 17, 17);
 				}
 				
 				int remaining = (tempSchmuck.getPrismaticPoints() - tempSchmuck.getElemPoints()[4] 
 						- tempSchmuck.getElemPoints()[3] - tempSchmuck.getElemPoints()[2] - tempSchmuck.getElemPoints()[1]
 						- tempSchmuck.getElemPoints()[0]);
 				g.setColor(Color.red);				
-				g.fillRect(326, 31, 14, 14);
-				g.fillRect(345, 32, tempSchmuck.getElemPoints()[0] * 3, 12);
-				g.drawString(tempSchmuck.getElemPoints()[0] + "", 575, 45);
+				g.fillRect(326, 43, 14, 14);
+				g.fillRect(345, 44, tempSchmuck.getElemPoints()[0] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[0] + "", 575, 57);
 				g.setColor(Color.blue);
-				g.fillRect(326, 56, 14, 14);
-				g.fillRect(345, 57, tempSchmuck.getElemPoints()[1] * 3, 12);
-				g.drawString(tempSchmuck.getElemPoints()[1] + "", 575, 70);
+				g.fillRect(326, 68, 14, 14);
+				g.fillRect(345, 69, tempSchmuck.getElemPoints()[1] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[1] + "", 575, 82);
 				g.setColor(Color.green);
-				g.fillRect(326, 81, 14, 14);
-				g.fillRect(345, 82, tempSchmuck.getElemPoints()[2] * 3, 12);
-				g.drawString(tempSchmuck.getElemPoints()[2] + "", 575, 95);
+				g.fillRect(326, 93, 14, 14);
+				g.fillRect(345, 94, tempSchmuck.getElemPoints()[2] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[2] + "", 575, 107);
 				g.setColor(Color.yellow);
-				g.fillRect(326, 106, 14, 14);
-				g.fillRect(345, 107, tempSchmuck.getElemPoints()[3] * 3, 12);
-				g.drawString(tempSchmuck.getElemPoints()[3] + "", 575, 120);
+				g.fillRect(326, 118, 14, 14);
+				g.fillRect(345, 119, tempSchmuck.getElemPoints()[3] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[3] + "", 575, 132);
 				g.setColor(new Color(128, 0, 128));
-				g.fillRect(326, 131, 14, 14);
-				g.fillRect(345, 132, tempSchmuck.getElemPoints()[4] * 3, 12);
-				g.drawString(tempSchmuck.getElemPoints()[4] + "", 575, 145);
+				g.fillRect(326, 143, 14, 14);
+				g.fillRect(345, 144, tempSchmuck.getElemPoints()[4] * 3, 12);
+				g.drawString(tempSchmuck.getElemPoints()[4] + "", 575, 157);
 				g.setColor(Color.white);
-				g.fillRect(326, 156, 14, 14);
-				g.fillRect(345, 157,  remaining * 3 , 12);
-				g.drawString(remaining + "", 575, 170);
+				g.fillRect(326, 168, 14, 14);
+				g.fillRect(345, 169,  remaining * 3 , 12);
+				g.drawString(remaining + "", 575, 182);
 			}
 			break;
 			
 			//Draw inventory.
 			case 1:				
-				Utils.drawMenu(g, window, tempBackpack.get(backpackTab).toArray(), Color.black, 15, itemPointer, 130, 48, 180, 365, 1, backpackDisplaySize, backpackLocation, optionChosen);
-				Utils.drawDialogueBox(g, window, "", 16, Color.black, 320, 5, 316, 225, optionChosen);
+				//Build string array from current tab.
+				String[] printThis = new String[tempBackpack.get(backpackTab).size()];
+				for(int i = 0; i < tempBackpack.get(backpackTab).size(); i++){
+					printThis[i] = tempBackpack.get(backpackTab).get(i).toString() + " x " + gamestate.inventorymanager.backpack.get(tempBackpack.get(backpackTab).get(i));
+				}
+				
+				Utils.drawMenu(g, window, printThis, Color.black, 15, itemPointer, 130, 48, 180, 365, 1, backpackDisplaySize, 
+						backpackLocation, optionChosen && !(useitemChosen || equipChosen));
+				Utils.drawDialogueBox(g, window, "", 16, Color.black, 320, 5, 316, 225, optionChosen && !(useitemChosen || equipChosen));
 				
 				//Draw backpack tabs.
 				String[] packTabs = {"Cons", "Equip", "Misc", "Key"};
-				Utils.drawMenu(g, window, packTabs, Color.black, 15, backpackTab, 130, 2, 180, 32, 4, 1, 0, optionChosen);
+				Utils.drawMenu(g, window, packTabs, Color.black, 15, backpackTab, 130, 2, 180, 32, 4, 1, 0, optionChosen && !(useitemChosen || equipChosen));
 				Item curItem = null;
 				if(tempBackpack.get(backpackTab).size() > 0){	
 					curItem = tempBackpack.get(backpackTab).get(itemSelected);
@@ -867,7 +1018,6 @@ public class MenuState extends State {
 				
 				//Draw item icon and description.
 				if(curItem != null){
-
 					//Icon.
 					g.drawImage(curItem.getImage(), 375 - curItem.getImage().getWidth() / 2, 
 							160 - curItem.getImage().getHeight() / 2, null);
@@ -928,101 +1078,166 @@ public class MenuState extends State {
 				//Draw item action menu.
 				if(itemChosen==true){
 					if(curItem != null){
-						g.setColor(new Color(102, 178,255));
-						g.fillRect(300, 125,100,35);
-						g.setColor(new Color(0, 0,0));
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.drawString("Use", 330, 150);
-					
-						g.setColor(new Color(102, 178,255));
-						g.fillRect(405, 125,100,35);
-						g.setColor(new Color(0, 0,0));
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.drawString("Equip", 425, 150);
+						Utils.drawDialogueBox(g, window2, "", 18, Color.black, 300, 36 + 25 * itemPointer, 80, 80, itemChosen);
+						Utils.drawCursor(g, window2, 299, 40 + 25 * itemPointer + 38 * itemOption, 80, 32, itemChosen);
 						
-						g.setColor(new Color(102, 178,255));
-						g.fillRect(510, 125,100,35);
-						g.setColor(new Color(0, 0,0));
 						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.drawString("Exit", 540, 150);
+						if(curItem.isUsedfromMenu()){
+							g.setColor(Color.black);
+						} else{
+							g.setColor(Color.lightGray);
+						}
+						g.drawString("Use", 320, 68 + 25 * itemPointer);
 						
-						g.drawImage(Assets.Downarrow,330+105*itemOption,120,null);
+						if(curItem.slot == 1){
+							g.setColor(Color.black);
+						} else{
+							g.setColor(Color.lightGray);
+						}
+						g.drawString("Equip", 320, 105 + 25 * itemPointer);
 					}
 										
 				}
-				if(equipChosen || useitemChosen){
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(135, 5,500,160);
-					tempSchmuck = gamestate.partymanager.party.get(characterSelected);
-					for(int i=0;i<gamestate.partymanager.party.size();i++){
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.setColor(new Color(0, 0,0));
-						g.drawString(gamestate.partymanager.party.get(i).getName(), 150+100*i, 30);
-						g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(),130+100*i,15,100,150,null);
-					}
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(135, 170, 500, 240);
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
-					g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
-					g.setColor(new Color(0, 0,0));
-					g.drawString(tempSchmuck.getName()+" Lvl "+tempSchmuck.getLvl(),300,190);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(new Color(102, 178,255));
-					g.fillRect(410, 180, 160, 5);
-					g.setColor(new Color(0,204,0));
-					g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
-					g.drawImage(Assets.Downarrow,180+characterSelected*100,5,null);
-					if(equipChosen){
-						g.setColor(new Color(0, 0,0));
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.drawString("Equiptment", 300,215);
-						for(int i=0; i<tempSchmuck.getItemSlots(); i++){
-							if(tempSchmuck.getItems()[i] == null){
-								g.drawString("Item slot "+(i+1)+" : Nothing", 300,240+50*i);
-							}
-							else{
-								g.drawString("Item slot "+(i+1)+" "+tempSchmuck.getItems()[i].getName(),300,240+50*i);
-								if(!tempSchmuck.getItems()[i].getDescrShort().equals("meep")){
-									g.setFont(new Font("Chewy", Font.PLAIN, 12));
-									g.drawString(tempSchmuck.getItems()[i].getDescrShort(),325,255+50*i);
-									g.setFont(new Font("Chewy", Font.PLAIN, 18));
-								}
-								
-							}
-						}
-						g.drawString(curItem.name,500,240+50*itemslot);
-						if(!curItem.getDescrShort().equals("meep")){
-							g.setFont(new Font("Chewy", Font.PLAIN, 12));
-							g.drawString(curItem.getDescrShort(),500,255+50*itemslot);
-						}
-					}
-					if(useitemChosen){
-						g.setColor(new Color(102, 178,255));
-						g.fillRect(140, 175, 150, 225);
-						g.drawImage(tempSchmuck.getMenuSprite(), 140, 175,150,225, null);
-						g.setColor(new Color(0, 0,0));
-						g.setFont(new Font("Chewy", Font.PLAIN, 12));
-						g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp",575,190);
-						g.drawString(curItem.getName()+": "+curItem.getDescrShort(),440,210);
-						g.setColor(new Color(102, 178,255));
-						g.fillRect(410, 180, 160, 5);
-						g.setColor(new Color(0,204,0));
-						g.fillRect(410, 180, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
-						g.setColor(new Color(0, 0,0));
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
-						g.drawString("Hp: "+tempSchmuck.getCurrentHp()+"/"+tempSchmuck.getMaxHp(),300,215);
-						g.drawString("Bp: "+tempSchmuck.getCurrentBp()+"/"+tempSchmuck.getMaxBp(),300,240);
-						g.drawString("Pow: "+tempSchmuck.getBuffedPow()+"("+tempSchmuck.getBasePow()+")",300,265);
-						g.drawString("Def: "+tempSchmuck.getBuffedDef()+"("+tempSchmuck.getBaseDef()+")",300,290);
-						g.drawString("Spd: "+tempSchmuck.getBuffedSpd()+"("+tempSchmuck.getBaseSpd()+")",300,315);
-						g.drawString("Skl: "+tempSchmuck.getBuffedSkl()+"("+tempSchmuck.getBaseSkl()+")",300,340);
-						g.drawString("Int: "+tempSchmuck.getBuffedInt()+"("+tempSchmuck.getBaseInt()+")",300,365);
-						g.drawString("Luk: "+tempSchmuck.getBuffedLuk()+"("+tempSchmuck.getBaseLuk()+")",300,390);
+				//Select target menu.
+				if(equipChosen || useitemChosen){					
+					//Draw character screen.
+					Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 5, 480, 150, optionChosen);
+					//Draw custom Cursor.
+					Utils.drawCursor(g, window, 138 + characterSelected * 100, 14, 100, 128, false);
+					for(int i = 0; i < gamestate.partymanager.party.size(); i++){
+						g.drawString(gamestate.partymanager.party.get(i).getName(), 160 + 100 * i, 30);
+						g.drawImage(gamestate.partymanager.party.get(i).getMenuSprite(), 144 + 100 * i, 15, 94, 141, null);
 					}
 					
+					//Stats.
+					Utils.drawDialogueBox(g, window, "", 18, Color.black, 135, 170, 480, 225, optionChosen);
+					tempSchmuck=gamestate.partymanager.party.get(characterSelected);
+					g.setColor(Color.white);
+					g.fillRect(148, 182, 142, 218);
+					g.drawImage(tempSchmuck.getMenuSprite(), 140, 175, 150, 225, null);
+					g.setColor(Color.black);
+					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+					g.drawString(tempSchmuck.getName() +" Lvl "+tempSchmuck.getLvl(), 338, 194);
+					g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp", 575, 194);
+					g.setColor(Color.darkGray);
+					g.fillRect(408, 188, 160, 5);
+					g.setColor(Color.green);
+					g.fillRect(408, 188, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+					g.setColor(Color.black);
+					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.drawString("Hp: ", 300, 220);
+					g.drawString("Bp: ", 300, 245);
+					g.drawString("Pow: ", 300, 270);
+					g.drawString("Def: ", 300, 295);
+					g.drawString("Spd: ", 300, 320);
+					g.drawString("Skl: ", 300, 345);
+					g.drawString("Int: ", 300, 370);
+					g.drawString("Luk: ", 300, 395);
+					
+					metrics = g.getFontMetrics(new Font("Chewy", Font.PLAIN, 18));
+					for(int i = 0; i < tempSchmuck.baseStats.length; i++){
+						if(i <= 1){
+							if(i == 0){
+								g.drawString(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp(), 340, 220);
+							}
+							else{
+								g.drawString(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp(), 340, 220 + 25);
+							}
+							if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
+								if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
+									g.setColor(Color.green);
+								} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
+									g.setColor(Color.red);
+								}
+								if(i == 0){
+									g.drawString("(" + tempSchmuck.getMaxHp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp()), 220 + 25 * i);
+								}
+								else{
+									g.drawString("(" + tempSchmuck.getMaxBp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp()), 220 + 25 * i);
+								}
+							}
+						} else{
+							g.drawString(tempSchmuck.baseStats[i] + "", 340, 220 + 25 * i);
+							if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
+								if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
+									g.setColor(Color.green);
+								} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
+									g.setColor(Color.red);
+								}
+								g.drawString("(" + tempSchmuck.buffedStats[i] + ")", 345 + metrics.stringWidth(tempSchmuck.baseStats[i] + ""), 220 + 25 * i);
+							}
+						}
+						g.setColor(Color.black);
+					}
+					
+					//Alignment.
+					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+					g.fillRect(308, 184, 16, 16);
+					switch((int)tempSchmuck.getElemAlignment()){
+						case 0:
+							g.setColor(Color.white);
+							break;
+						case 1:
+							g.setColor(Color.red);
+							break;
+						case 2:
+							g.setColor(Color.blue);
+							break;	
+						case 3:
+							g.setColor(Color.green);
+							break;	
+						case 4:
+							g.setColor(Color.yellow);
+							break;
+						case 5:
+							g.setColor(new Color(128, 0, 128));
+							break;
+						case 6:
+							g.setColor(Color.black);
+							break;
+					}
+					g.fillRect(309, 185, 14, 14);
+					
+					//Items.
+					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.setColor(Color.black);
+					g.drawString("Equipment", 455, 235);
+					for(int i = 0; i < tempSchmuck.getItemSlots(); i++){
+						if(tempSchmuck.getItems()[i] == null){
+							g.setColor(Color.black);
+							g.drawString("Nothing", 500, 260 + 40 * i);
+							g.fillRect(450, 240 + i * 40, 36, 36);
+						}
+						else{
+							g.setColor(Color.black);
+							g.drawString(tempSchmuck.getItems()[i].getName(), 500, 260 + 40 * i);
+							g.fillRect(450, 240 + i * 40, 36, 36);
+							g.drawImage(tempSchmuck.getItems()[i].getIcon(), 452, 242 + i * 40, null);
+						}
+					}
+					
+					//Equipment.
+					if(equipChosen && !progFlag){
+						//Show dialogue box indicating equipment usage.
+						g.setColor(Color.yellow);
+						Stroke oldStroke = ((Graphics2D) g).getStroke();
+						((Graphics2D) g).setStroke(new BasicStroke(3));
+						g.drawRect(450, 240 + itemslot * 40, 36, 36);
+						((Graphics2D) g).setStroke(oldStroke);
+						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);
+						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black, 492, 240 + itemslot * 40, 120, 25, true);
+					} else if(equipChosen && progFlag){
+						Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, true);
+					}
+					//Item usage.
+					if(useitemChosen && !progFlag){
+						//Show dialogue box indicating item usage.
+						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black,  150 + characterSelected * 100, 120, metrics.stringWidth(curItem.getName()) + 8, 25, true);
+					} else if(useitemChosen && progFlag){
+						Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, true);
+					}
 				}
 			}
-		
 	}
 
 	@Override
@@ -1030,5 +1245,39 @@ public class MenuState extends State {
 		
 	}
 	
-
+	private void refreshBackpack(){
+		tempBackpack.clear();
+		itemDisplayConsumable.clear();
+		itemDisplayEquip.clear();
+		itemDisplayMisc.clear();
+		itemDisplayKey.clear();
+		for(Item item : temp.toArray(new Item[10])){
+			if(item != null){
+				switch(item.getSlot()){
+				case 0:
+					//Consumable.
+					itemDisplayConsumable.add(item);
+					break;
+				case 1:
+					//Equipment.
+					itemDisplayEquip.add(item);
+					break;
+				case 2:
+					//Miscellaneous.
+					itemDisplayMisc.add(item);
+					break;
+				case 3:
+					//Key items.
+					itemDisplayKey.add(item);
+					break;
+				}
+			} else{
+				break;
+			}
+		}
+		tempBackpack.add(itemDisplayConsumable);
+		tempBackpack.add(itemDisplayEquip);
+		tempBackpack.add(itemDisplayMisc);
+		tempBackpack.add(itemDisplayKey);
+	}
 }

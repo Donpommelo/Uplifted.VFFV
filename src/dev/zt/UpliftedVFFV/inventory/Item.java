@@ -90,6 +90,7 @@ public class Item implements Comparable<Item>{
 		return usefromBattle;
 	}
 
+	//Zach can't spell.
 	public Boolean isConsummable() {
 		return consumable;
 	}

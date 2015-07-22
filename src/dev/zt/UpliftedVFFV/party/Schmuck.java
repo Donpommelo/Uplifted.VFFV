@@ -199,6 +199,27 @@ public class Schmuck {
 		
 	}
 	
+	public void unEquip(int slot, InventoryManager meep){
+		if(items[slot] != null){
+			if(slot < itemSlots){
+				if(items[slot] != null){
+					meep.loot(items[slot],1);
+					items[slot].unEnchantment(this);
+				}
+				items[slot] = null;
+				for(int j=0; j<this.statuses.size(); j++){
+					if(statuses.get(j) != null){
+						if(statuses.get(j).perp.equals(itemDummy)){
+							statuses.remove(j);
+							j--;
+						}
+					}					
+				}
+				calcBuffs(null);
+			}
+		}
+	}
+	
 	public Schmuck getItemDummy(){
 		return itemDummy;
 	}
