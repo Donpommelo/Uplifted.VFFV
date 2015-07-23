@@ -4,8 +4,6 @@ package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.FishWater;
-
 
 
 public class EventBackroomDesk1 extends Event {

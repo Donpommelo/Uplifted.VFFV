@@ -194,6 +194,7 @@ public class Player extends Creature{
 			runlast=0;
 			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].isDoor()){
 				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].run();
+				step = 16;
 			}
 		}
 		else if(game.getKeyManager().down && KeyManager.isCutsceneMode() == false){
@@ -202,6 +203,7 @@ public class Player extends Creature{
 			runlast=1;
 			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].isDoor()){
 				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].run();
+				step = 16;
 			}
 		}
 		else if(game.getKeyManager().left && KeyManager.isCutsceneMode() == false){
@@ -210,6 +212,7 @@ public class Player extends Creature{
 			runlast=2;
 			if(Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].isDoor()){
 				Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].run();
+				step = 16;
 			}
 		}
 		else if(game.getKeyManager().right && KeyManager.isCutsceneMode() == false){
@@ -218,6 +221,7 @@ public class Player extends Creature{
 			runlast=3;
 			if(Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].isDoor()){
 				Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].run();
+				step = 16;
 			}
 		}
 		

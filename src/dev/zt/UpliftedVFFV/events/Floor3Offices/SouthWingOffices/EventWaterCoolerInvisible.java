@@ -15,7 +15,10 @@ public class EventWaterCoolerInvisible extends Event {
 	}
 	
 	public void run(){
-//		super.Dialog(168, 168,this.getId());
+		if(!this.selfswitch1){
+			super.Dialog(289, 293,this.getId());
+			this.selfswitch1 = true;
+		}
 
 	}
 	

@@ -4,9 +4,9 @@ package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.party.PenPal;
-
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 
 
 public class EventElevatorPanel extends Event {
@@ -16,7 +16,6 @@ public class EventElevatorPanel extends Event {
 	public String[] Choices={"1: Reception","2: Bathhouse","3: Offices","4: Aquarium","5: Management","6: Food Services","7: Infirmary","8: Orchestral Cathedral","9: Little America","11: Justice Park","12: Gallery of Lights"};
 	public static int stage=0;
 	public static int finalstage=1;
-
 	public EventElevatorPanel(float x, float y, int idnum) {
 		super(Assets.ElevatorPanel,idnum,x, y);
 		
@@ -42,7 +41,12 @@ public class EventElevatorPanel extends Event {
 					}	
 				}
 				else{														//otherwise choices are present.
-					super.Dialog(63, 63,this.getId());
+//					super.Dialog(63, 63,this.getId());
+					int floor = super.getVar(1)+1;
+					Dialog[] d = new Dialog[1];
+					d[0] = new Dialog("Operator",ImageLoader.loadImage("/CharacterBusts/Player-1.png"),0,"To which Floor? (Current Floor: "+floor+")/");
+					super.Dialog(d,1, this.getId());
+					
 					super.ElevatorChoiceBranch(this.getId(), Choices, 200);
 				}
 				break;
