@@ -223,7 +223,7 @@ public class Player extends Creature{
 		
 		//space checks for events. depending on the orientation of the player, the event in an adjacent square is checked and ran.
 		//also step is reset again
-		else if(game.getKeyManager().space && KeyManager.isCutsceneMode() == false){
+		else if(game.getKeyManager().space && KeyManager.isCutsceneMode() == false && game.getKeyManager().isActive()){
 			Event e;
 			switch(runlast){
 			case 0: 

@@ -19,6 +19,7 @@ import dev.zt.UpliftedVFFV.ablities.SkillNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.UseItem;
+import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 //import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -31,6 +32,8 @@ import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
 
 
 public class BattleMenu{
+	
+	private AudioManager audio;
 	
 	public int currentlyTargeted;		//Schmuck being targeted for attack, skill use or item use
 	public int actionSelected;			//Action chosen 0:Attack | 1: Skill | 2: Item | 3: Wait | 4: Run
@@ -45,6 +48,10 @@ public class BattleMenu{
 	public StateManager sm;
 	public Game game;
 //	private BufferedImage window;
+	
+	//KeyListener delay variables.
+	private int delayCursor = 120;
+	private int delaySelection = 300;
 	
 	//Turned on by pressing "x" anytime. Moves one menu screen backwards. De-selects options.
 	public Boolean exit = false; 			
@@ -82,6 +89,7 @@ public class BattleMenu{
 		TurnOrderQueue=0;
 		phase = 1;
 //		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
+		audio = game.getAudiomanager();
 		if(bs.bp.pauseTOQ){
 			for(int i=0; i<currentSchmuck.statuses.size(); i++){
 				if(currentSchmuck.statuses.get(i)!=null){
@@ -93,381 +101,303 @@ public class BattleMenu{
 	}
 
 	public void tick() {
-		if(game.getKeyManager().x){
-			exit=true;
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		if(game.getKeyManager().isActive()){
+			if(game.getKeyManager().x){
+				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+				exit=true;
+				game.getKeyManager().disable(delayCursor);
 			}
-		}
 		
-		switch(phase){
-		case 1:
-			if(game.getKeyManager().down){
-				if(actionSelected<4){
-					actionSelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().up){
-				if(actionSelected>0){
-					actionSelected--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-			//Space selects an action, turning moveSelected on. 
-			//attackChosen is turned on unlike item or skill b/c it skips right into targeting phase with no additional selection.
-			//Otherwise, whatever menu or targeting depends on the actionSelected which is checked when moveSelected is true
-			if(game.getKeyManager().space){
-				switch(actionSelected){
-				case 0:
-					currentSkill = new StandardAttack(0);
-					phase+=2;
-					break;
-				case 1:
-					phase+=1;
-					break;
-				case 2:
-					phase+=1;
-					break;
-				case 3:
-					currentSkill = new DillyDally(0);
-					targetedSchmuck = currentSchmuck;
-					phase+=3;
-					break;
-				case 4:
-					currentSkill = new Runaway(0);
-					targetedSchmuck = currentSchmuck;
-					phase+=3;
-					break;
-				}
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			break;
-		case 2:
-			switch(actionSelected){
+			switch(phase){
 			case 1:
-				//Space selects the currently highlighted skill if mp is available, turning on skillchosen so you can start targeting
-				if(game.getKeyManager().space){
-					if(currentSchmuck.skills.size()==0){
-						currentSkill = new SkillNothing(1,gs);
+				if(game.getKeyManager().down){
+					if(actionSelected<4){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						actionSelected++;
+						game.getKeyManager().disable(delayCursor);
 					}
-					else{
-						if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
-								&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
-							bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
-						}
-						else{
-												
-							//This decides whether the targeting cursor starts off on an ally or enemy
-							if(!currentSchmuck.skills.isEmpty()){
-								currentSkill = currentSchmuck.skills.get(itemSelected);
-								teamTargeted =  currentSkill.startTarget(); // do to other stuff
-							}
-							phase++;
-						}
-					}
-					
-					
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				}
+				if(game.getKeyManager().up){
+					if(actionSelected>0){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						actionSelected--;
+						game.getKeyManager().disable(delayCursor);
 					}
 				}
 				
-				//Arrow keys navigate the skill menu
-				if(game.getKeyManager().up){
-					if(itemSelected>0){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected--;
-						if(itemPointer==0){
-							backpackLocation--;
-						}
-						else{
-							itemPointer--;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+				//Space selects an action, turning moveSelected on. 
+				//attackChosen is turned on unlike item or skill b/c it skips right into targeting phase with no additional selection.
+				//Otherwise, whatever menu or targeting depends on the actionSelected which is checked when moveSelected is true
+				if(game.getKeyManager().space){
+					switch(actionSelected){
+					case 0:
+						currentSkill = new StandardAttack(0);
+						phase+=2;
+						break;
+					case 1:
+						phase+=1;
+						break;
+					case 2:
+						phase+=1;
+						break;
+					case 3:
+						currentSkill = new DillyDally(0);
+						targetedSchmuck = currentSchmuck;
+						phase+=3;
+						break;
+					case 4:
+						currentSkill = new Runaway(0);
+						targetedSchmuck = currentSchmuck;
+						phase+=3;
+						break;
 					}
-					
-				}
-				if(game.getKeyManager().down){
-					if(itemSelected<currentSchmuck.skills.size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected++;
-						if(itemPointer==4){
-							backpackLocation++;
-						}
-						else{
-							itemPointer++;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
+					game.getKeyManager().disable(delaySelection);
 				}
 				break;
 			case 2:
-				if(game.getKeyManager().space){
-					if(gs.inventorymanager.backpack.size()==0){
-						currentSkill = new ItemNothing(1);
-					}
-					else{
-						currentSkill = new UseItem(1,gs.inventorymanager.battleItem().keySet().toArray(new Item[999])[itemSelected],gs);
-					}
-					teamTargeted = currentSkill.startTarget();
-					phase++;			
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().up){
-					if(itemSelected>0){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected--;
-						if(itemPointer==0){
-							backpackLocation--;
+				switch(actionSelected){
+				case 1:
+					//Space selects the currently highlighted skill if mp is available, turning on skillchosen so you can start targeting
+					if(game.getKeyManager().space){
+						if(currentSchmuck.skills.size()==0){
+							currentSkill = new SkillNothing(1,gs);
 						}
 						else{
-							itemPointer--;
+							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
+									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
+								bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
+							}
+							else{					
+								//This decides whether the targeting cursor starts off on an ally or enemy
+								if(!currentSchmuck.skills.isEmpty()){
+									currentSkill = currentSchmuck.skills.get(itemSelected);
+									teamTargeted =  currentSkill.startTarget(); // do to other stuff
+								}
+								phase++;
+							}
 						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+						game.getKeyManager().disable(delaySelection);
 					}
 					
-				}
-				if(game.getKeyManager().down){
-					if(itemSelected<gs.inventorymanager.battleItem().size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected++;
-						if(itemPointer==4){
-							backpackLocation++;
+					//Arrow keys navigate the skill menu
+					if(game.getKeyManager().up){
+						if(itemSelected>0){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected--;
+							if(itemPointer==0){
+								backpackLocation--;
+							}
+							else{
+								itemPointer--;
+							}
+							game.getKeyManager().disable(delayCursor);
 						}
-						else{
-							itemPointer++;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						
+					}
+					if(game.getKeyManager().down){
+						if(itemSelected<currentSchmuck.skills.size()-1){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected++;
+							if(itemPointer==4){
+								backpackLocation++;
+							}
+							else{
+								itemPointer++;
+							}
+							game.getKeyManager().disable(delayCursor);
 						}
 					}
+					break;
+				case 2:
+					if(game.getKeyManager().space){
+						if(gs.inventorymanager.backpack.size()==0){
+							currentSkill = new ItemNothing(1);
+						}
+						else{
+							audio.playSound("/Audio/option_toggle.wav", false);
+							currentSkill = new UseItem(1,gs.inventorymanager.battleItem().keySet().toArray(new Item[999])[itemSelected],gs);
+						}
+						teamTargeted = currentSkill.startTarget();
+						phase++;			
+						game.getKeyManager().disable(delaySelection);
+					}
+					if(game.getKeyManager().up){
+						if(itemSelected>0){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected--;
+							if(itemPointer==0){
+								backpackLocation--;
+							}
+							else{
+								itemPointer--;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+						
+					}
+					if(game.getKeyManager().down){
+						if(itemSelected<gs.inventorymanager.battleItem().size()-1){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected++;
+							if(itemPointer==4){
+								backpackLocation++;
+							}
+							else{
+								itemPointer++;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+					}
+					break;
 				}
 				break;
-			}
-			break;
-		case 3:
-			if(teamTargeted){
-				if(bs.bs.alliesTargets.isEmpty()){
-					teamTargeted = false;
+			case 3:
+				if(teamTargeted){
+					if(bs.bs.alliesTargets.isEmpty()){
+						teamTargeted = false;
+					}
 				}
-			}
-			else{
-				if(bs.bs.enemyTargets.isEmpty()){
-					teamTargeted = true;
+				else{
+					if(bs.bs.enemyTargets.isEmpty()){
+						teamTargeted = true;
+					}
 				}
-			}
-			switch(currentSkill.getTargetType()){
-	 		case 0:
-	 			if(game.getKeyManager().right){
-					if(teamTargeted==false){
-						if(currentlyTargeted>0){
-							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+				switch(currentSkill.getTargetType()){
+		 		case 0:
+		 			if(game.getKeyManager().right){
+						if(teamTargeted==false){
+							if(currentlyTargeted>0){
+								currentlyTargeted--;
+								game.getKeyManager().disable(delayCursor);
 							}
 						}
+						else{
+							if(currentlyTargeted<bs.bs.alliesTargets.size()-1){
+								currentlyTargeted++;
+							}
+						}
+						
 					}
-					else{
-						if(currentlyTargeted<bs.bs.alliesTargets.size()-1){
+					if(game.getKeyManager().left){
+						if(teamTargeted==false){
+							if(currentlyTargeted<bs.bs.enemyTargets.size()-1){
+								currentlyTargeted++;
+								game.getKeyManager().disable(delayCursor);
+							}
+							
+							
+							}
+						else {
+							if(currentlyTargeted>0){
+								currentlyTargeted--;
+								game.getKeyManager().disable(delayCursor);
+							}
+							
+						}
+					}
+					if(game.getKeyManager().up && teamTargeted==true && !bs.bs.enemyTargets.isEmpty()){
+						if(currentlyTargeted>=bs.bs.enemyTargets.size()){
+							currentlyTargeted=0;
+						}
+						else{
+							currentlyTargeted=bs.bs.enemyTargets.size()-1-currentlyTargeted;
+						}
+						teamTargeted=false;
+						game.getKeyManager().disable(delayCursor);
+					}
+					if(game.getKeyManager().down && teamTargeted==false && !bs.bs.alliesTargets.isEmpty()){
+						if(currentlyTargeted>=bs.bs.alliesTargets.size()){
+							currentlyTargeted=0;
+						}
+						else{
+							currentlyTargeted=bs.bs.alliesTargets.size()-currentlyTargeted-1;
+						}
+						teamTargeted=true;
+						game.getKeyManager().disable(delayCursor);
+					}
+					if(game.getKeyManager().space){
+						game.getKeyManager().disable(delaySelection);
+						if(teamTargeted){
+							targetedSchmuck = bs.bs.alliesTargets.get(currentlyTargeted);
+						}
+						else{
+							targetedSchmuck = bs.bs.enemyTargets.get(currentlyTargeted);
+						}
+						phase++;
+					}
+		 			break;
+		 		case 1:
+					targetedSchmuck = currentSchmuck;
+			 		phase++;
+		 			break;
+		 		case 2:
+		 			if(game.getKeyManager().right){
+		 				if(currentlyTargeted<allies.size()-1){
 							currentlyTargeted++;
 						}
+		 				game.getKeyManager().disable(delayCursor);
 					}
-					
-				}
-				if(game.getKeyManager().left){
-					if(teamTargeted==false){
-						if(currentlyTargeted<bs.bs.enemyTargets.size()-1){
-							currentlyTargeted++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						
-						
-						}
-					else {
+					if(game.getKeyManager().left){
 						if(currentlyTargeted>0){
 							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+												}	
+						game.getKeyManager().disable(delayCursor);
+					}
+					if(game.getKeyManager().space){
+						game.getKeyManager().disable(delaySelection);
+						targetedSchmuck = allies.get(currentlyTargeted);
+			 			phase++;
+			 			game.getKeyManager().disable(delaySelection);
+					}
+		 			break;
+		 		}
+				break;
+			case 4:
+				//if menu is being called by waiting, the action is in index 0 and will occur instantly.
+				if(bs.bp.pauseTOQ){
+					TurnOrderQueue=0;
+				}
+				//otherwise, if in planing stage, move will be placed according to user's sorted space in the TOQ
+				else{
+					TurnOrderQueue=bs.bp.currentlySelected;
+				}
+				if(actionSelected == 3 && bs.bp.pauseTOQ){
+					//if "Wait" is chosen, an extra pause at the beginning is given to prevent multiclicking as actions will be performed
+					//instantly. Change this later when keylistener is updated
+					game.getKeyManager().disable(delaySelection);				
+					bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new PassTurn(0),bs));
+				}
+				else{
+					bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
+				}
+				bs.bp.pauseTOQ=false;								//if dillydallying, end dillydally
+				if(bs.bp.currentlySelected < bs.bs.alliesSelectable.size()-1){		//Immediately selects next unit to give command to
+					bs.bp.currentlySelected++;						
+				}
+				else{
+					bs.bp.currentlySelected = 0;
+				}
+				ArrayList<Schmuck> temp = new ArrayList<Schmuck>();
+				for(Schmuck s : bs.bs.alliesSelectable){
+					temp.add(s);
+				}
+				for(Action a :bs.bp.TurnOrderQueue){				//If all allied schmucks have made actions, exit selection
+					if(a!=null){
+						if(temp.contains(a.user)){
+							temp.remove(a.user);
 							}
 						}
-						
 					}
+				if(!temp.isEmpty()){
+					bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(bs.bp.currentlySelected),gs);
+	
 				}
-				if(game.getKeyManager().up && teamTargeted==true && !bs.bs.enemyTargets.isEmpty()){
-					if(currentlyTargeted>=bs.bs.enemyTargets.size()){
-						currentlyTargeted=0;
-					}
-					else{
-						currentlyTargeted=bs.bs.enemyTargets.size()-1-currentlyTargeted;
-					}
-					teamTargeted=false;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-				}
-				if(game.getKeyManager().down && teamTargeted==false && !bs.bs.alliesTargets.isEmpty()){
-					if(currentlyTargeted>=bs.bs.alliesTargets.size()){
-						currentlyTargeted=0;
-					}
-					else{
-						currentlyTargeted=bs.bs.alliesTargets.size()-currentlyTargeted-1;
-					}
-					teamTargeted=true;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-				}
-				if(game.getKeyManager().space){
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					if(teamTargeted){
-						targetedSchmuck = bs.bs.alliesTargets.get(currentlyTargeted);
-					}
-					else{
-						targetedSchmuck = bs.bs.enemyTargets.get(currentlyTargeted);
-					}
-					phase++;
-				}
-	 			break;
-	 		case 1:
-				targetedSchmuck = currentSchmuck;
-		 		phase++;
-	 			break;
-	 		case 2:
-	 			if(game.getKeyManager().right){
-	 				if(currentlyTargeted<allies.size()-1){
-						currentlyTargeted++;
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().left){
-					if(currentlyTargeted>0){
-						currentlyTargeted--;
-											}	
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-				}
-				if(game.getKeyManager().space){
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					targetedSchmuck = allies.get(currentlyTargeted);
-		 			phase++;
-				}
-	 			break;
-	 		}
-			break;
-		case 4:
-			//if menu is being called by waiting, the action is in index 0 and will occur instantly.
-			if(bs.bp.pauseTOQ){
-				TurnOrderQueue=0;
+				else{
+					bs.bp.selected = false;	
+				}			
+				break;
 			}
-			//otherwise, if in planing stage, move will be placed according to user's sorted space in the TOQ
-			else{
-				TurnOrderQueue=bs.bp.currentlySelected;
-			}
-			if(actionSelected == 3 && bs.bp.pauseTOQ){
-				//if "Wait" is chosen, an extra pause at the beginning is given to prevent multiclicking as actions will be performed
-				//instantly. Change this later when keylistener is updated
-				try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}				
-				bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new PassTurn(0),bs));
-			}
-			else{
-				bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
-			}
-			bs.bp.pauseTOQ=false;								//if dillydallying, end dillydally
-			if(bs.bp.currentlySelected < bs.bs.alliesSelectable.size()-1){		//Immediately selects next unit to give command to
-				bs.bp.currentlySelected++;						
-			}
-			else{
-				bs.bp.currentlySelected = 0;
-			}
-			ArrayList<Schmuck> temp = new ArrayList<Schmuck>();
-			for(Schmuck s : bs.bs.alliesSelectable){
-				temp.add(s);
-			}
-			for(Action a :bs.bp.TurnOrderQueue){				//If all allied schmucks have made actions, exit selection
-				if(a!=null){
-					if(temp.contains(a.user)){
-						temp.remove(a.user);
-						}
-					}
-				}
-			if(!temp.isEmpty()){
-				bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(bs.bp.currentlySelected),gs);
-
-			}
-			else{
-				bs.bp.selected = false;	
-			}			
-			break;
-		}
-			
+		}		
 	}
 			
 
@@ -645,28 +575,28 @@ public class BattleMenu{
 		if(phase == 3){
 			pointed = currentSchmuck;
 			switch(currentSkill.getTargetType()){
-			case 0:
-				if(teamTargeted){
-					if(!bs.bs.alliesTargets.isEmpty()){
-						pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+				case 0:
+					if(teamTargeted){
+						if(!bs.bs.alliesTargets.isEmpty()){
+							pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+						}
 					}
-				}
-				else{
-					if(!bs.bs.enemyTargets.isEmpty()){
-						pointed = bs.bs.enemyTargets.get(currentlyTargeted);
-					}
-				} 
-				break;
-			case 2:
-				pointed = allies.get(currentlyTargeted);
-				break;
-			}	
+					else{
+						if(!bs.bs.enemyTargets.isEmpty()){
+							pointed = bs.bs.enemyTargets.get(currentlyTargeted);
+						}
+					} 
+					break;
+				case 1:
+					pointed = null;
+					break;
+				case 2:
+					pointed = allies.get(currentlyTargeted);
+					break;
+				}	
 		}
 	
 		itemnum++;	
 	}
-
-
-
 }
 

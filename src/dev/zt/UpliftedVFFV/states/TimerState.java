@@ -7,6 +7,9 @@ import dev.zt.UpliftedVFFV.events.Event;
 //Cutscene. This plays a series of pictures
 public class TimerState extends State {
 	
+	
+	private static final long serialVersionUID = 1L;
+	
 	public int time;
 	public int EventId;
 	public int timer;

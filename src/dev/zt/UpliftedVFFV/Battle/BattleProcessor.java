@@ -47,6 +47,10 @@ public class BattleProcessor {
 	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
 	private BufferedImage window;
 	
+	//KeyListener delay variables.
+	private int delaySelection = 200;
+	private int delayCursor = 100;
+	
 	public BattleProcessor(Game game,StateManager sm,ArrayList<Schmuck> party,ArrayList<Schmuck> enemy, Troop t,GameState gs,BattleState bs){
 		this.game=game;
 		this.sm=sm;
@@ -119,34 +123,22 @@ public class BattleProcessor {
 				}
 				else{
 					
-					if(game.getKeyManager().right){
+					if(game.getKeyManager().right && game.getKeyManager().isActive()){
 						if(currentlySelected<bs.bs.alliesSelectable.size()-1){
 							currentlySelected++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							game.getKeyManager().disable(delayCursor);
 						}
 					}
-					if(game.getKeyManager().left){
+					if(game.getKeyManager().left && game.getKeyManager().isActive()){
 						if(currentlySelected>0){
 							currentlySelected--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							game.getKeyManager().disable(delayCursor);
 						}
 					}
-					if(game.getKeyManager().space){
+					if(game.getKeyManager().space && game.getKeyManager().isActive()){
 						if(fightlost() || enemyded()){
 							bs.end(!fightlost());
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							game.getKeyManager().disable(delaySelection);
 						}
 						if(!stm.checkStatus(bs.bs.alliesSelectable.get(currentlySelected), new incapacitate(bs.bs.alliesSelectable.get(currentlySelected)))){	
 							selected=true;
@@ -155,21 +147,13 @@ public class BattleProcessor {
 						else{
 							bt.textList.add("he ded");
 						}
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+						game.getKeyManager().disable(delaySelection);
 					}
-					if(game.getKeyManager().enter){
+					if(game.getKeyManager().enter && game.getKeyManager().isActive()){
 						if(allReady){
 						if(fightlost() || enemyded()){
 							bs.end(!fightlost());
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
+							game.getKeyManager().disable(delaySelection);
 						}
 						
 							for(int i=0 ; i<bs.bs.enemySelectable.size();i++){
@@ -222,12 +206,8 @@ public class BattleProcessor {
 				if(pauseTOQ == true){ 				//for the purpose of dillydallying
 					bm.tick();
 				}				
-				if(game.getKeyManager().space){
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+				if(game.getKeyManager().space && game.getKeyManager().isActive()){
+					game.getKeyManager().disable(delaySelection);
 				}
 				if(fightlost() || enemyded()){
 					phase++;
@@ -365,11 +345,7 @@ public class BattleProcessor {
 				}
 				roundNum++;
 				phase=0;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				game.getKeyManager().disable(delaySelection);
 			}
 		}
 	}

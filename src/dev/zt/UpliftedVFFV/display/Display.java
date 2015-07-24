@@ -2,12 +2,13 @@ package dev.zt.UpliftedVFFV.display;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 
-public class Display {				//everything shows up here. consists of a canvas where stuff is drawn and a frame where the canvas is drawn
+public class Display{				//everything shows up here. consists of a canvas where stuff is drawn and a frame where the canvas is drawn
 
-	private JFrame frame;
+	private FocusFrame frame;
 	private Canvas canvas;
 	
 	private String title;
@@ -17,12 +18,11 @@ public class Display {				//everything shows up here. consists of a canvas where
 		this.title=title;
 		this.width=width;
 		this.height=height;
-		
 		createDisplay();
 	}
 
 	private void createDisplay() {
-		frame=new JFrame(title);								//controls name displayed in top left corner	
+		frame=new FocusFrame(title);								//controls name displayed in top left corner	
 		frame.setSize(width, height);							//controls size of frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//makes frame exit when x-ed out
 		frame.setResizable(false);								//makes frame size permanent
@@ -47,6 +47,7 @@ public class Display {				//everything shows up here. consists of a canvas where
 		return frame;
 	}
 	
-	
-	
+	public boolean getFocus(){
+		return frame.isFocused();
+	}
 }

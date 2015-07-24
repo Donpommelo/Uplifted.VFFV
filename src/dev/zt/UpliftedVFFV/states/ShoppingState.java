@@ -15,6 +15,8 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 //State for when the player is shoppin'. Modified version of ChoiceBranchState.
 public class ShoppingState extends State {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public int EventId;
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public int currentchoice, choicelocation,firstchoice, boxsize;
@@ -24,6 +26,11 @@ public class ShoppingState extends State {
 	public BufferedImage shopKeeper;
 	public GameState gs;
 	public String text;
+	
+	//KeyListener delay variables.
+	private int delayCursor = 120;
+	private int delaySelection = 200;
+	
 	public ShoppingState(Game game, GameState gs, StateManager sm, int eventId,TreeMap<Item, Integer> choices, BufferedImage sk){
 		super(game,sm);
 		this.EventId=eventId;
@@ -52,109 +59,79 @@ public class ShoppingState extends State {
 	}
 
 	public void tick() {
-		
-		//pressing x goes back
-		if(game.getKeyManager().x){
-			exit=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		//pressing space runs the currently selected option
-		if(!selected){
-			if(game.getKeyManager().space){
-				selected=true;
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		if(game.getKeyManager().isActive()){
+			//pressing x goes back
+			if(game.getKeyManager().x){
+				exit=true;
+				game.getKeyManager().disable(delayCursor);
 			}
 			
-			//up and down choose options
-			if(game.getKeyManager().up){
-				if(currentchoice>0){
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-					currentchoice--;
-					if(choicelocation==0){
-						firstchoice--;
-					}
-					else{
-						choicelocation--;
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					text = itemDisplay[choicelocation].getDescr();
+			//pressing space runs the currently selected option
+			if(!selected){
+				if(game.getKeyManager().space){
+					selected=true;
+					game.getKeyManager().disable(delaySelection);
 				}
 				
-			}
-			if(game.getKeyManager().down){
-				if(currentchoice<selection.size()-1){
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-					currentchoice++;
-					if(choicelocation==boxsize-1){
-						firstchoice++;
+				//up and down choose options
+				if(game.getKeyManager().up){
+					if(currentchoice>0){
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						currentchoice--;
+						if(choicelocation==0){
+							firstchoice--;
+						}
+						else{
+							choicelocation--;
+						}
+						game.getKeyManager().disable(delayCursor);
+						text = itemDisplay[choicelocation].getDescr();
 					}
-					else{
-						choicelocation++;
+					
+				}
+				if(game.getKeyManager().down){
+					if(currentchoice<selection.size()-1){
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						currentchoice++;
+						if(choicelocation==boxsize-1){
+							firstchoice++;
+						}
+						else{
+							choicelocation++;
+						}
+						game.getKeyManager().disable(delayCursor);
+						text = itemDisplay[choicelocation].getDescr();
 					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					text = itemDisplay[choicelocation].getDescr();
 				}
 			}
-		}
-		else{
-			if(game.getKeyManager().space){
-				game.getAudiomanager().playSound("/Audio/buy.wav", false);
-				gs.scriptChange(-amount*selection.get(itemDisplay[choicelocation]));
-				gs.inventorymanager.loot(itemDisplay[choicelocation], amount);
-				text = "Bought "+amount+" "+itemDisplay[choicelocation].getName()+" for "+amount*selection.get(itemDisplay[choicelocation])+" Script!";
-				exit = true;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			//up and down choose options
-			if(game.getKeyManager().up){
-				if((amount+1)*selection.get(itemDisplay[choicelocation])<=gs.Script){
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-					amount++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+			else{
+				if(game.getKeyManager().space){
+					game.getAudiomanager().playSound("/Audio/buy.wav", false);
+					gs.scriptChange(-amount*selection.get(itemDisplay[choicelocation]));
+					gs.inventorymanager.loot(itemDisplay[choicelocation], amount);
+					text = "Bought "+amount+" "+itemDisplay[choicelocation].getName()+" for "+amount*selection.get(itemDisplay[choicelocation])+" Script!";
+					exit = true;
+					game.getKeyManager().disable(delaySelection);
 				}
 				
-			}
-			if(game.getKeyManager().down){
-				if(amount>0){
-					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-					amount--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				//up and down choose options
+				if(game.getKeyManager().up){
+					if((amount+1)*selection.get(itemDisplay[choicelocation])<=gs.Script){
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						amount++;
+						game.getKeyManager().disable(delayCursor);
+					}
+					
+				}
+				if(game.getKeyManager().down){
+					if(amount>0){
+						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+						amount--;
+						game.getKeyManager().disable(delayCursor);
 					}
 				}
 			}
-		}
-		
-
-			
+		}		
 	}
 			
 

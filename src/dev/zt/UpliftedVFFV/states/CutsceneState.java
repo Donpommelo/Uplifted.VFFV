@@ -9,10 +9,15 @@ import dev.zt.UpliftedVFFV.events.Event;
 //Cutscene. This plays a series of pictures
 public class CutsceneState extends State {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public BufferedImage[] scenes;
 	public int image;
 	public int EventId;
 	public BufferedImage img;
+	
+	//KeyListener delay variables.
+	private int nextImageDelay = 100;
 	
 	//Dialogstates require an arraylist of BufferedImages
 	public CutsceneState(Game game, StateManager sm, BufferedImage[] slides,int eventId){
@@ -25,7 +30,7 @@ public class CutsceneState extends State {
 	public void tick() {
 		
 		//if space is pressed and the there re more images in the array, the next one will be displayed
-		if(game.getKeyManager().space){
+		if(game.getKeyManager().space && game.getKeyManager().isActive()){
 			game.getAudiomanager().playSound("/Audio/item_recipe_pickup_shop.wav", false);	
 			if(image>=scenes.length-1){
 					StateManager.getStates().pop();
@@ -41,11 +46,7 @@ public class CutsceneState extends State {
 				else{					
 					image++;
 				}
-				try {
-					Thread.sleep(300);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
+				game.getKeyManager().disable(nextImageDelay);
 		}	
 			
 	}

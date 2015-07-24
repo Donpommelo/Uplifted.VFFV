@@ -11,6 +11,8 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class ElevatorChoiceBranchState extends ChoiceBranchState{
 
+	private static final long serialVersionUID = 1L;
+	
 	private BufferedImage window, panel, cursor;
 	
 	public ElevatorChoiceBranchState(Game game, StateManager sm, int eventId, String[] choices) {

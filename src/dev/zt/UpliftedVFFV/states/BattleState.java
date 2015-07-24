@@ -20,6 +20,8 @@ import dev.zt.UpliftedVFFV.party.TroopManager;
 
 public class BattleState extends State {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public String prevSong;
 	private BufferedImage elevatorDoors;
 	private SpriteSheet animatedDoors;

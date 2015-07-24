@@ -19,7 +19,7 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 //Therefore, stuff that is universal should be kept track here; party, inventory, global variables, etc
 public class GameState extends State {
 	
-	private static final long serialVersionUID = 8;
+	private static final long serialVersionUID = 8L;
 	
 	private Player player;
 	private static World world;

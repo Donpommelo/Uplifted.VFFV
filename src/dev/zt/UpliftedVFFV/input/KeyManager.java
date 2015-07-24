@@ -7,12 +7,27 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	private boolean[] keys;
 	public boolean up, down, left, right, space, z,x,enter; //whether this button is currently being pressed
-	public boolean held;
+	public int lastPressed;
+	//Boolean and counter for built in button delay, and window minimization, and loss of control during cutscenes.
+	private boolean active;
+	private boolean keyFocus;
+	private double counter;
+	private double duration;
+
+	private double holdCounter;
+	
 	public static boolean cutsceneMode = false;
+	
+	public boolean printStuff = false;
 	
 	public KeyManager(){
 		keys = new boolean[256];
-		held=false;
+		lastPressed = -1;
+		active = true;
+		counter = 0;
+		duration = 0;
+
+		holdCounter = 0;
 	}
 	
 	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
@@ -24,14 +39,31 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 			enter = keys[KeyEvent.VK_ENTER];
 			z = keys[KeyEvent.VK_Z];
 			x = keys[KeyEvent.VK_X];
+			if(!active){
+				if(System.currentTimeMillis() - counter >= duration){
+					active = true;
+					if(printStuff){
+						System.out.println("Enabled");
+					}
+					if(printStuff){
+						System.out.println("Duration: " + duration);
+					}
+				}
+			}
+			if(printStuff){
+//				System.out.println("FOCUS: " + keyFocus);
+			}
+			
 	}
 
 	public void keyPressed(KeyEvent ev) {
 		keys[ev.getKeyCode()] = true;
+		holdCounter++;
 	}
 
 	public void keyReleased(KeyEvent ev) {
 		keys[ev.getKeyCode()] = false;
+		holdCounter = 0;
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -46,7 +78,39 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 		KeyManager.cutsceneMode = cutsceneMode;
 	}
 	
+	public void disable(int disableDuration){
+		if(active){
+			if(printStuff){
+				System.out.println("Disabled " + disableDuration);
+			}
+			counter = System.currentTimeMillis();
+			duration = disableDuration;
+			if(holdCounter > 5){
+				duration = duration / 2;
+			}
+			active = false;
+		}
+	}
 	
+	public void setFocus(boolean focus){
+		keyFocus = focus;
+		if(keyFocus == false){
+			loseFocus();
+		}
+	}
+	
+	public void loseFocus(){
+		for(int i = 0; i < keys.length; i++){
+			keys[i] = false;
+		}
+		if(printStuff){
+			System.out.println("Focus Lost");
+		}
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
 	
 
 }

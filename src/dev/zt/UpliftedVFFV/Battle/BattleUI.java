@@ -74,7 +74,7 @@ public class BattleUI {
 		}
 		
 		//Draw pointer.
-		if(bs.bp.bm != null && bs.bp.bm.phase == 3){
+		if(bs.bp.bm != null && bs.bp.bm.phase == 3 && bs.bp.bm.pointed != null){
 			int yoffset = 2;
 			if(bs.bs.alliesTargets.contains(bs.bp.bm.pointed)){
 				g.drawImage(Assets.Crosshair1, bs.bp.bm.pointed.getX() +(bs.bp.bm.pointed.getBattleSprite().getWidth() - Assets.Crosshair1.getWidth()) / 2, 

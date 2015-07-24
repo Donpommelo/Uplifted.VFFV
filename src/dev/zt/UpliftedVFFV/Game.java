@@ -35,8 +35,8 @@ public class Game implements Runnable{
 	
 	private GameCamera gameCamera;
 	
-	//Frame counting variables.
-	
+	//Print frames?
+	private boolean showFPS = true;
 	
 	public Game(String title, int width, int height){			//created by launcher. automatically runs init(), then tick and render
 		this.width = width;
@@ -74,6 +74,8 @@ public class Game implements Runnable{
 		
 		if(StateManager.getStates().peek() != null)
 			StateManager.getStates().peek().tick();
+
+			keyManager.setFocus(display.getFocus());
 	}
 	
 	private void render(){										//Every render, the game runs the render() of the current state
@@ -98,19 +100,19 @@ public class Game implements Runnable{
 		
 		init();													//runs own init() method
 		
-		int fps = 160;											//all this stuff controls tick intervals
+		int fps = 120;											//all this stuff controls tick intervals
 //		double timePerTick = 1000 / fps;
 //		double delta = 0;
 //		long now;
 //		long lastTime = System.nanoTime();
 //		long timer = 0;
-		int frameSkip = 1000/ fps;
+		int frameSkip = 1000 / fps;
 		int sleep = 0;
 		int frames = 0;
 		double start_time;
 		double end_time = 0;
 		double elapsed_time = 0;
-		double next_game_tick;
+//		double next_game_tick;
 		
 		while(running){
 //			now = System.nanoTime();
@@ -130,14 +132,14 @@ public class Game implements Runnable{
 //				timer = 0;
 //			}
 			//Run game loop;
-			next_game_tick = System.currentTimeMillis();
+//			next_game_tick = System.currentTimeMillis();
 			start_time = System.currentTimeMillis();
 			tick();
 			render();
 			++frames;
 			//Next update at this time.
-			next_game_tick += frameSkip;
-			sleep = (int)(next_game_tick - System.currentTimeMillis());
+//			next_game_tick += frameSkip;
+			sleep = (int)(frameSkip - (System.currentTimeMillis() - start_time));
 			//Wait for next update if needed.
 			if(sleep >= 0){
 				try{
@@ -150,9 +152,9 @@ public class Game implements Runnable{
 			}
 			end_time = System.currentTimeMillis();
 			elapsed_time = elapsed_time + (end_time - start_time);
-			if(elapsed_time >= 1000){
+			if(elapsed_time >= 1000 && showFPS){
 				//System.out.println(elapsed_time);
-				System.out.println(frames);
+				System.out.println((int)(frames / elapsed_time * 1000));
 				frames = 0;
 				elapsed_time = 0;
 			}
@@ -211,6 +213,10 @@ public class Game implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Display getDisplay(){
+		return display;
 	}
 
 }

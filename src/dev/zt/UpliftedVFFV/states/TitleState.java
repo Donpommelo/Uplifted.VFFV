@@ -9,14 +9,20 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
-//First state ran. This is a title screen
+//First state ran. This is a title screen.
 public class TitleState extends State {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private BufferedImage testImage, window;
 	private boolean controls, about;
 	private boolean exit;
 	private StateManager statemanager;
 	private int optionChosen;
+	
+	//KeyListener delay variables.
+	private int scrollDelay = 120;
+	private int selectionDelay = 200;
 	
 	public TitleState(Game game, StateManager sm){
 		super(game,sm);
@@ -29,66 +35,50 @@ public class TitleState extends State {
 
 	//receives input command to either begin or exit the game
 	public void tick() {
-		
-		if(game.getKeyManager().x){
-			exit=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(game.getKeyManager().down){
-			if(optionChosen < 4){
-				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-				optionChosen++;
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		if(game.getKeyManager().up){
-			if(optionChosen>0){
-				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-				optionChosen--;
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		if(game.getKeyManager().isActive()){
+			if(game.getKeyManager().x){
+				exit=true;
+				game.getKeyManager().disable(scrollDelay);
 			}
 			
-		}
-		if(game.getKeyManager().space){
-			if(about || controls){
-				exit = true;
-			}
-			else{
-				switch(optionChosen){
-				case 0:
-					StateManager.states.push(new GameState(game,statemanager));			//This pushes on a gamestate. The game begins.	
-					break;
-				//TODO: Load game.
-				case 1:
-					break;
-				case 2:
-					controls = true;
-					break;
-				case 3:
-					about = true;
-					break;
-				case 4:
-					System.exit(0);														//this exits the game
-					break;
+			if(game.getKeyManager().down){
+				if(optionChosen < 4){
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					optionChosen++;
 				}
-			}	
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				game.getKeyManager().disable(scrollDelay);
+			}
+			if(game.getKeyManager().up){
+				if(optionChosen>0){
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					optionChosen--;
+				}
+				game.getKeyManager().disable(scrollDelay);				
+			}
+			if(game.getKeyManager().space){
+				if(about || controls){
+					exit = true;
+				}
+				else{
+					switch(optionChosen){
+					case 0:
+						StateManager.states.push(new GameState(game,statemanager));			//This pushes on a gamestate. The game begins.	
+						break;
+					//TODO: Load game.
+					case 1:
+						break;
+					case 2:
+						controls = true;
+						break;
+					case 3:
+						about = true;
+						break;
+					case 4:
+						System.exit(0);														//this exits the game
+						break;
+					}
+				}
+				game.getKeyManager().disable(selectionDelay);
 			}
 		}
 		

@@ -23,7 +23,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 //This displays info about party, inventory and everything else later.
 public class MenuState extends State {
 	
-	private static final long serialVersionUID = 8;
+	private static final long serialVersionUID = 1L;
 
 	private AudioManager audio;
 	
@@ -37,6 +37,11 @@ public class MenuState extends State {
 	private boolean optionChosen,characterChosen, itemChosen, equipChosen, useitemChosen, exit;
 	//Menu logic indicators.
 	private boolean  toggleXtraInfo, bypassSelection, progFlag;
+	
+	//KeyListener delay variables.
+	private int delayCursor = 120;
+	private int delaySelection = 200;
+	
 	StateManager statemanager;
 	ArrayList<Character> party= new ArrayList<Character>();
 	
@@ -129,608 +134,458 @@ public class MenuState extends State {
 	}
 
 	public void tick() {
-		//pressing exit will move back one screen or deselect stuff.
-		if(game.getKeyManager().x){
-			audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
-			exit=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+		if(game.getKeyManager().isActive()){
+			//pressing exit will move back one screen or deselect stuff.
+			if(game.getKeyManager().x){
+				audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
+				exit=true;
+				game.getKeyManager().disable(delaySelection);
 			}
-		}
-		
-		//if you havent selected a subcategory yet, space, up and down will control that.
-		if(optionChosen==false){
-			if(game.getKeyManager().space){
-				audio.playSound("/Audio/paper_pickup_01.wav", false);
-				optionChosen=true;
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			if(game.getKeyManager().up){
-				if(optionSelected>0){
-					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-					optionSelected--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			if(game.getKeyManager().down){
-				if(optionSelected<5){			//4 options currently. change this number later wen more are added
-					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-					optionSelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		}
-		
-		//if you've selected an option, the space to the right displays whatever you've selected
-		else{
-			switch(optionSelected){
 			
-				//The party option. This navigates through your current party with the left, right and space keys
-				//This is used for viewing info about your party.
-				//Eventually, selecting a character with space will bring up more information
-				case 0: 
-					if(characterChosen == false){
-						if(game.getKeyManager().space){
-							audio.playSound("/Audio/paper_pickup_01.wav", false);
-							characterChosen=true;
-							characterTab = 0;
-							skillSelected = 0;
-							skillPointer=0;
-							skillLocation=0;
-							equipSelected = 0;
-							equipPointer = 0;
-							equipLocation = 0;
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						if(game.getKeyManager().right){
-						if(characterSelected<gamestate.partymanager.party.size()-1){
-							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-							characterSelected++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-								}
-						}
-						if(game.getKeyManager().left){
-							if(characterSelected>0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterSelected--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
+			//if you havent selected a subcategory yet, space, up and down will control that.
+			if(optionChosen==false){
+				if(game.getKeyManager().space){
+					audio.playSound("/Audio/paper_pickup_01.wav", false);
+					optionChosen=true;
+					game.getKeyManager().disable(delaySelection);
+				}
+				if(game.getKeyManager().up){
+					if(optionSelected>0){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						optionSelected--;
+						game.getKeyManager().disable(delayCursor);
 					}
-					else{
-						if(characterTab == 0){
-							//Skills tab.
+				}
+				if(game.getKeyManager().down){
+					if(optionSelected<5){			//4 options currently. change this number later wen more are added
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						optionSelected++;
+						game.getKeyManager().disable(delayCursor);
+					}
+				}
+			}
+			
+			//if you've selected an option, the space to the right displays whatever you've selected
+			else{
+				switch(optionSelected){
+				
+					//The party option. This navigates through your current party with the left, right and space keys
+					//This is used for viewing info about your party.
+					//Eventually, selecting a character with space will bring up more information
+					case 0: 
+						if(characterChosen == false){
 							if(game.getKeyManager().space){
-								//Extra skill info.
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								toggleXtraInfo = !toggleXtraInfo;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-							if(game.getKeyManager().down){
-								if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									skillSelected++;
-									if(skillPointer==3){
-										skillLocation++;
-									}
-									else{
-										skillPointer++;
-									}
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}
-							}
-							if(game.getKeyManager().up){
-								if(skillSelected>0){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									skillSelected--;
-									if(skillPointer==0){
-										skillLocation--;
-									}
-									else{
-										skillPointer--;
-									}
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}
+								audio.playSound("/Audio/paper_pickup_01.wav", false);
+								characterChosen=true;
+								characterTab = 0;
+								skillSelected = 0;
+								skillPointer=0;
+								skillLocation=0;
+								equipSelected = 0;
+								equipPointer = 0;
+								equipLocation = 0;
+								game.getKeyManager().disable(delaySelection);
 							}
 							if(game.getKeyManager().right){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterTab++;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
+								if(characterSelected<gamestate.partymanager.party.size()-1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected++;
+									game.getKeyManager().disable(delayCursor);
 								}
-							}						
-						} else if (characterTab == 1){
-							//Equipment tab.
-							if(!toggleXtraInfo){
+							}
+							if(game.getKeyManager().left){
+								if(characterSelected>0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected--;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+						}
+						else{
+							if(characterTab == 0){
+								//Skills tab.
 								if(game.getKeyManager().space){
-									//Toggle Equip/Unequip mode.
+									//Extra skill info.
 									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 									toggleXtraInfo = !toggleXtraInfo;
-									quipPointer = 0;
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
+									game.getKeyManager().disable(delaySelection);
 								}
 								if(game.getKeyManager().down){
-									if(equipSelected < gamestate.partymanager.party.get(characterSelected).getItemSlots() - 1){
+									if(skillSelected<gamestate.partymanager.party.get(characterSelected).skills.size()-1){
 										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-										equipSelected++;
-										if(equipPointer == 3){
-											equipLocation++;
-										} else {
-											equipPointer++;
+										skillSelected++;
+										if(skillPointer==3){
+											skillLocation++;
 										}
-										try {
-											Thread.sleep(100);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
+										else{
+											skillPointer++;
 										}
+										game.getKeyManager().disable(delayCursor);
 									}
 								}
 								if(game.getKeyManager().up){
-									if(equipSelected > 0){
+									if(skillSelected>0){
 										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-										equipSelected--;
-										if(equipPointer == 0){
-											equipLocation--;
-										} else {
-											equipPointer--;
+										skillSelected--;
+										if(skillPointer==0){
+											skillLocation--;
 										}
-										try {
-											Thread.sleep(100);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
+										else{
+											skillPointer--;
 										}
+										game.getKeyManager().disable(delayCursor);
 									}
 								}
 								if(game.getKeyManager().right){
 									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 									characterTab++;
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
+									game.getKeyManager().disable(delayCursor);
+								}						
+							} else if (characterTab == 1){
+								//Equipment tab.
+								if(!toggleXtraInfo){
+									if(game.getKeyManager().space){
+										//Toggle Equip/Unequip mode.
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										toggleXtraInfo = !toggleXtraInfo;
+										quipPointer = 0;
+										game.getKeyManager().disable(delaySelection);
 									}
+									if(game.getKeyManager().down){
+										if(equipSelected < gamestate.partymanager.party.get(characterSelected).getItemSlots() - 1){
+											audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+											equipSelected++;
+											if(equipPointer == 3){
+												equipLocation++;
+											} else {
+												equipPointer++;
+											}
+											game.getKeyManager().disable(delayCursor);
+										}
+									}
+									if(game.getKeyManager().up){
+										if(equipSelected > 0){
+											audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+											equipSelected--;
+											if(equipPointer == 0){
+												equipLocation--;
+											} else {
+												equipPointer--;
+											}
+											game.getKeyManager().disable(delayCursor);
+										}
+									}
+									if(game.getKeyManager().right){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										characterTab++;
+										game.getKeyManager().disable(delayCursor);
+									}
+									if(game.getKeyManager().left){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										characterTab--;
+										try {
+											Thread.sleep(delayCursor);
+										} catch (InterruptedException e) {
+											e.printStackTrace();
+										}
+									}
+								} else{
+									//Equip/Dequip menu.
+									if(game.getKeyManager().space){
+										//Equip/Unequip item.
+										audio.playSound("/Audio/paper_pickup_01.wav", false);
+										switch(quipPointer){
+											case 0: 
+												//Equip Item.
+												toggleXtraInfo = false;
+												bypassSelection = true;
+												//Go to inventory and set lock/bypass.
+												optionSelected = 1;
+												backpackTab = 1;
+												//Reset item pointer/location
+												itemPointer = 0;
+												itemSelected = 0;
+												backpackLocation = 0;
+												itemslot = equipSelected;
+												itemChosen = false;
+												break;
+											case 1:
+												//Unequip item.
+												gamestate.partymanager.party.get(characterSelected).unEquip(equipSelected, gamestate.inventorymanager);
+												refreshBackpack();
+												toggleXtraInfo = false;
+												break;
+											case 2:
+												toggleXtraInfo = false;
+												break;
+										}
+										game.getKeyManager().disable(delaySelection);
+									}	
+									if(game.getKeyManager().down){
+											if(quipPointer < 2){
+												audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+												quipPointer++;
+											}
+											game.getKeyManager().disable(delayCursor);
+									}
+									if(game.getKeyManager().up){
+										if(quipPointer > 0){
+											audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+											quipPointer--;
+											game.getKeyManager().disable(delayCursor);
+										}
+									}						
 								}
+							} else if(characterTab == 2){
+								//Biography tab.
 								if(game.getKeyManager().left){
 									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 									characterTab--;
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}
-							} else{
-								//Equip/Dequip menu.
-								if(game.getKeyManager().space){
-									//Equip/Unequip item.
-									audio.playSound("/Audio/paper_pickup_01.wav", false);
-									switch(quipPointer){
-										case 0: 
-											//Equip Item.
-											toggleXtraInfo = false;
-											bypassSelection = true;
-											//Go to inventory and set lock/bypass.
-											optionSelected = 1;
-											backpackTab = 1;
-											//Reset item pointer/location
-											itemPointer = 0;
-											itemSelected = 0;
-											backpackLocation = 0;
-											itemslot = equipSelected;
-											itemChosen = false;
-											break;
-										case 1:
-											//Unequip item.
-											gamestate.partymanager.party.get(characterSelected).unEquip(equipSelected, gamestate.inventorymanager);
-											refreshBackpack();
-											toggleXtraInfo = false;
-											break;
-										case 2:
-											toggleXtraInfo = false;
-											break;
-									}
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}	
-								if(game.getKeyManager().down){
-										if(quipPointer < 2){
-											audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-											quipPointer++;
-										}
-										try {
-											Thread.sleep(100);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-								}
-								if(game.getKeyManager().up){
-									if(quipPointer > 0){
-										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-										quipPointer--;
-										try {
-											Thread.sleep(100);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-									}
-								}						
-							}
-						} else if(characterTab == 2){
-							//Biography tab.
-							if(game.getKeyManager().left){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterTab--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-					}
-					break;
-				
-				//Option 2 is inventory.
-				case 1:
-					Item tempItem = null;
-					if(tempBackpack.get(backpackTab).size() > 0){	
-						tempItem = tempBackpack.get(backpackTab).get(itemSelected);
-					}
-					//Equip item. Choose party member/slot to equip item in.
-					if(equipChosen){
-						if(game.getKeyManager().space){
-							if(progFlag){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								progFlag = false;
-								exit = true;
-							} else{
-								audio.playSound("/Audio/option_toggle.wav", false);
-								gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
-								refreshBackpack();
-								progFlag = true;
-							}
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						if(game.getKeyManager().right){
-							if(characterSelected<gamestate.partymanager.party.size()-1){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterSelected++;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-						if(game.getKeyManager().left){
-							if(characterSelected>0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterSelected--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-						if(game.getKeyManager().up){
-							if(itemslot>0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemslot--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-						if(game.getKeyManager().down){
-							if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemslot++;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-					}
-					else if(useitemChosen){
-						//Use item. Select which party member to use item on.
-						if(game.getKeyManager().space){
-							if(progFlag){
-								progFlag = false;
-								exit = true;
-							} else{
-								audio.playSound("/Audio/option_toggle.wav", false);
-								tempItem.use(gamestate.partymanager.party.get(characterSelected));
-								if(tempItem.isConsummable()){
-									gamestate.inventorymanager.use(tempItem);
-									refreshBackpack();
-								}
-								progFlag = true;
-							}
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						if(game.getKeyManager().right){
-						if(characterSelected<gamestate.partymanager.party.size()-1){
-							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-							characterSelected++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-								}
-						}
-						if(game.getKeyManager().left){
-							if(characterSelected>0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								characterSelected--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-					}
-					else if(!itemChosen){
-						//No item selected. Arrows to navigate menu, space to select item.
-						if(game.getKeyManager().space){
-							//Select item;
-							if(!gamestate.inventorymanager.backpack.isEmpty() && !bypassSelection){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemChosen=true;
-							} else if(!gamestate.inventorymanager.backpack.isEmpty() && bypassSelection){
-								if(tempBackpack.get(backpackTab).size() > 0){	
-									tempItem = tempBackpack.get(backpackTab).get(itemSelected);
-								}
-								audio.playSound("/Audio/option_toggle.wav", false);
-								gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
-								refreshBackpack();
-								bypassSelection = false;
-								optionSelected = 0;
-								characterTab = 1;
-							}
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						if(game.getKeyManager().right){
-							//Change tab.
-							if(!bypassSelection){
-								if(backpackTab < 3){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									backpackTab++;
-									itemSelected = 0;
-									itemPointer = 0;
-									backpackLocation = 0;
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}
-							}
-						}
-						if(game.getKeyManager().left){
-							//Change tab.
-							if(!bypassSelection){
-								if(backpackTab > 0){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									backpackTab--;
-									itemSelected = 0;
-									itemPointer = 0;
-									backpackLocation = 0;
-									try {
-										Thread.sleep(100);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-								}
-							}
-						}
-						if(game.getKeyManager().down){
-							//Scroll through items.
-							if(itemSelected < tempBackpack.get(backpackTab).size() - 1){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemSelected++;
-								if(itemPointer >= backpackDisplaySize - 1){
-									backpackLocation++;
-								}
-								else{
-									itemPointer++;
-								}
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-							}
-						}
-						if(game.getKeyManager().up){
-							//Scroll through items.
-							if(itemSelected > 0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemSelected--;
-							if(itemPointer == 0){
-								backpackLocation--;
-							}
-							else{
-								itemPointer--;
-							}
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
+									game.getKeyManager().disable(delayCursor);
 								}
 							}
 						}
 						break;
-					}
-					else{
-						//Item selected. Up/Down to select what to do with item (itemOption 0 = use, 1 = equip).
-						if(game.getKeyManager().down){
-							if(itemOption < 1){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemOption++;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
+					
+					//Option 2 is inventory.
+					case 1:
+						Item tempItem = null;
+						if(tempBackpack.get(backpackTab).size() > 0){	
+							tempItem = tempBackpack.get(backpackTab).get(itemSelected);
+						}
+						//Equip item. Choose party member/slot to equip item in.
+						if(equipChosen){
+							if(game.getKeyManager().space){
+								if(progFlag){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									progFlag = false;
+									exit = true;
+								} else{
+									audio.playSound("/Audio/option_toggle.wav", false);
+									gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+									refreshBackpack();
+									progFlag = true;
 								}
-									}
+								game.getKeyManager().disable(delaySelection);
 							}
-						if(game.getKeyManager().up){
-							if(itemOption > 0){
-								audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-								itemOption--;
-								try {
-									Thread.sleep(100);
-								} catch (InterruptedException e) {
-									e.printStackTrace();
+							if(game.getKeyManager().right){
+								if(characterSelected<gamestate.partymanager.party.size()-1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected++;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().left){
+								if(characterSelected>0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected--;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().up){
+								if(itemslot>0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemslot--;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().down){
+								if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemslot++;
+									game.getKeyManager().disable(delayCursor);
 								}
 							}
 						}
-						if(game.getKeyManager().space){
-							if(itemOption == 0){
-								if(tempItem.isUsedfromMenu()){
-									itemChosen = false;
-									if(tempItem.targeted){
-										audio.playSound("/Audio/paper_pickup_01.wav", false);
-										useitemChosen = true;
-									}
-									else{
-										audio.playSound("/Audio/option_toggle.wav", false);
-										tempItem.use();
+						else if(useitemChosen){
+							//Use item. Select which party member to use item on.
+							if(game.getKeyManager().space){
+								if(progFlag){
+									progFlag = false;
+									exit = true;
+								} else{
+									audio.playSound("/Audio/option_toggle.wav", false);
+									tempItem.use(gamestate.partymanager.party.get(characterSelected));
+									if(tempItem.isConsummable()){
+										gamestate.inventorymanager.use(tempItem);
 										refreshBackpack();
 									}
-									
+									progFlag = true;
 								}
-							} else if(itemOption == 1){
-								if(tempItem.getSlot() == 1){
-									audio.playSound("/Audio/paper_pickup_01.wav", false);
-									itemChosen = false;
-									equipChosen = true;
+								game.getKeyManager().disable(delaySelection);
+							}
+							if(game.getKeyManager().right){
+								if(characterSelected<gamestate.partymanager.party.size()-1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected++;
+									game.getKeyManager().disable(delayCursor);
 								}
-							}					
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+							}
+							if(game.getKeyManager().left){
+								if(characterSelected>0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									characterSelected--;
+									game.getKeyManager().disable(delayCursor);
+								}
 							}
 						}
-					}
-					break;
-				case 2:
-					//TODO: Map.
-					break;
-				case 3:
-					//TODO: Employee Directory/Worstiary. Should have own state perhaps.
-					break;
-				case 4:
-					//TODO: Employee planner (Questlog).
-					break;
-				case 5:
-					//Exit game.
-					if(game.getKeyManager().space){
-						audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
-						if(quitPointer == 1){
-							optionChosen = false;
-						} else if(quitPointer == 0){
-							audio.playSound("/Audio/option_toggle.wav", false);
-							StateManager.getStates().pop();
-							StateManager.getStates().pop();
+						else if(!itemChosen){
+							//No item selected. Arrows to navigate menu, space to select item.
+							if(game.getKeyManager().space){
+								//Select item;
+								if(!gamestate.inventorymanager.backpack.isEmpty() && !bypassSelection){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemChosen=true;
+								} else if(!gamestate.inventorymanager.backpack.isEmpty() && bypassSelection){
+									if(tempBackpack.get(backpackTab).size() > 0){	
+										tempItem = tempBackpack.get(backpackTab).get(itemSelected);
+									}
+									audio.playSound("/Audio/option_toggle.wav", false);
+									gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+									refreshBackpack();
+									bypassSelection = false;
+									optionSelected = 0;
+									characterTab = 1;
+								}
+								game.getKeyManager().disable(delaySelection);
+							}
+							if(game.getKeyManager().right){
+								//Change tab.
+								if(!bypassSelection){
+									if(backpackTab < 3){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										backpackTab++;
+										itemSelected = 0;
+										itemPointer = 0;
+										backpackLocation = 0;
+										game.getKeyManager().disable(delayCursor);
+									}
+								}
+							}
+							if(game.getKeyManager().left){
+								//Change tab.
+								if(!bypassSelection){
+									if(backpackTab > 0){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										backpackTab--;
+										itemSelected = 0;
+										itemPointer = 0;
+										backpackLocation = 0;
+										game.getKeyManager().disable(delayCursor);
+									}
+								}
+							}
+							if(game.getKeyManager().down){
+								//Scroll through items.
+								if(itemSelected < tempBackpack.get(backpackTab).size() - 1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemSelected++;
+									if(itemPointer >= backpackDisplaySize - 1){
+										backpackLocation++;
+									}
+									else{
+										itemPointer++;
+									}
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().up){
+								//Scroll through items.
+								if(itemSelected > 0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemSelected--;
+								if(itemPointer == 0){
+									backpackLocation--;
+								}
+								else{
+									itemPointer--;
+								}
+								game.getKeyManager().disable(delayCursor);
+								}
+							}
+							break;
 						}
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						else{
+							//Item selected. Up/Down to select what to do with item (itemOption 0 = use, 1 = equip).
+							if(game.getKeyManager().down){
+								if(itemOption < 1){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemOption++;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().up){
+								if(itemOption > 0){
+									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+									itemOption--;
+									game.getKeyManager().disable(delayCursor);
+								}
+							}
+							if(game.getKeyManager().space){
+								if(itemOption == 0){
+									if(tempItem.isUsedfromMenu()){
+										itemChosen = false;
+										if(tempItem.targeted){
+											audio.playSound("/Audio/paper_pickup_01.wav", false);
+											useitemChosen = true;
+										}
+										else{
+											audio.playSound("/Audio/option_toggle.wav", false);
+											tempItem.use();
+											refreshBackpack();
+										}
+										
+									}
+								} else if(itemOption == 1){
+									if(tempItem.getSlot() == 1){
+										audio.playSound("/Audio/paper_pickup_01.wav", false);
+										itemChosen = false;
+										equipChosen = true;
+									}
+								}					
+								game.getKeyManager().disable(delaySelection);
+							}
 						}
-					}		
-					if(game.getKeyManager().up){
-						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-						if(quitPointer > 0){
-							quitPointer--;
+						break;
+					case 2:
+						//TODO: Map.
+						break;
+					case 3:
+						//TODO: Employee Directory/Worstiary. Should have own state perhaps.
+						break;
+					case 4:
+						//TODO: Employee planner (Questlog).
+						break;
+					case 5:
+						//Exit game.
+						if(game.getKeyManager().space){
+							audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
+							if(quitPointer == 1){
+								optionChosen = false;
+							} else if(quitPointer == 0){
+								audio.playSound("/Audio/option_toggle.wav", false);
+								StateManager.getStates().pop();
+								StateManager.getStates().pop();
+							}
+							game.getKeyManager().disable(delaySelection);
+						}		
+						if(game.getKeyManager().up){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							if(quitPointer > 0){
+								quitPointer--;
+							}
+							game.getKeyManager().disable(delayCursor);
 						}
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						if(game.getKeyManager().down){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							if(quitPointer < 1){
+								quitPointer++;
+							}
+							game.getKeyManager().disable(delayCursor);
 						}
-					}
-					if(game.getKeyManager().down){
-						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-						if(quitPointer < 1){
-							quitPointer++;
-						}
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-					break;				
-			}			
+						break;				
+				}			
+			}
 		}
 	}
 
@@ -745,6 +600,9 @@ public class MenuState extends State {
 			}
 			else if(characterChosen==true){
 				characterChosen=false;
+				if(bypassSelection){
+					optionChosen=false;
+				}
 			}
 			else if(itemChosen==true){
 				itemChosen=false;

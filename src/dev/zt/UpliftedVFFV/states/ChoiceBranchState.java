@@ -10,10 +10,17 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 //State for when the player must choose an option from a list of any size
 public class ChoiceBranchState extends State {
 	
+	private static final long serialVersionUID = 1L;
+	
 	public int EventId;
 	public String[] num;
 	public int currentchoice, choicelocation,firstchoice, boxsize, width;
 	public boolean selected,exit;
+	
+	//KeyListener delay variables.
+	private int delayCursor = 120;
+	private int delaySelection = 200;
+		
 	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
 		this.EventId=eventId;
@@ -50,66 +57,49 @@ public class ChoiceBranchState extends State {
 	}
 
 	public void tick() {
-		
-		//pressing x goes back
-		if(game.getKeyManager().x){
-			exit=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		//pressing space runs the currently selected option
-		if(game.getKeyManager().space){
-			
-			selected=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		//up and down choose options
-		if(game.getKeyManager().up){
-			if(currentchoice>0){
-				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-				currentchoice--;
-				if(choicelocation==0){
-					firstchoice--;
-				}
-				else{
-					choicelocation--;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		if(game.getKeyManager().isActive()){
+			//pressing x goes back
+			if(game.getKeyManager().x){
+				exit=true;
+				game.getKeyManager().disable(delayCursor);
 			}
 			
-		}
-		if(game.getKeyManager().down){
-			if(currentchoice<num.length-1){
-				game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-				currentchoice++;
-				if(choicelocation==boxsize-1){
-					firstchoice++;
+			//pressing space runs the currently selected option
+			if(game.getKeyManager().space){
+				
+				selected=true;
+				game.getKeyManager().disable(delaySelection);
+			}
+			
+			//up and down choose options
+			if(game.getKeyManager().up){
+				if(currentchoice>0){
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					currentchoice--;
+					if(choicelocation==0){
+						firstchoice--;
+					}
+					else{
+						choicelocation--;
+					}
+					game.getKeyManager().disable(delayCursor);
 				}
-				else{
-					choicelocation++;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				
+			}
+			if(game.getKeyManager().down){
+				if(currentchoice<num.length-1){
+					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+					currentchoice++;
+					if(choicelocation==boxsize-1){
+						firstchoice++;
+					}
+					else{
+						choicelocation++;
+					}
+					game.getKeyManager().disable(delayCursor);
 				}
 			}
-		}
-
-			
+		}			
 	}
 			
 
