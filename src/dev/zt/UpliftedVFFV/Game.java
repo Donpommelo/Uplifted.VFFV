@@ -15,6 +15,9 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 
 public class Game implements Runnable{
 	
+	//Determines method of fps control. (0 - Skip when ahead, 1 - Sleep when ahead, 2 - Render when ahead) 
+	private int runMethod = 1;
+	
 	private Display display;			
 	private int width, height;
 	public String title;
@@ -31,7 +34,6 @@ public class Game implements Runnable{
 	//Input
 	private KeyManager keyManager;
 	private WorldManager worldmanager;
-	
 	
 	private GameCamera gameCamera;
 	
@@ -98,69 +100,95 @@ public class Game implements Runnable{
 	
 	public void run(){											//first thing run after launching
 		
-		init();													//runs own init() method
+		init();	
 		
-		int fps = 120;											//all this stuff controls tick intervals
-//		double timePerTick = 1000 / fps;
-//		double delta = 0;
-//		long now;
-//		long lastTime = System.nanoTime();
-//		long timer = 0;
-		int frameSkip = 1000 / fps;
-		int sleep = 0;
+		int ticks = 0;
 		int frames = 0;
-		double start_time;
-		double end_time = 0;
-		double elapsed_time = 0;
-//		double next_game_tick;
 		
-		while(running){
-//			now = System.nanoTime();
-//			delta += (now - lastTime) / timePerTick;
-//			timer += now - lastTime;
-//			lastTime = now;
-//			
-//			if(delta >= 1){
-//				tick();
-//				render();
-//				ticks++;
-//				delta--;
-//			}
-//			
-//			if(timer>=1000000000){
-//				ticks = 0;
-//				timer = 0;
-//			}
-			//Run game loop;
-//			next_game_tick = System.currentTimeMillis();
-			start_time = System.currentTimeMillis();
-			tick();
-			render();
-			++frames;
-			//Next update at this time.
-//			next_game_tick += frameSkip;
-			sleep = (int)(frameSkip - (System.currentTimeMillis() - start_time));
-			//Wait for next update if needed.
-			if(sleep >= 0){
-				try{
-					Thread.sleep(sleep);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+		long start_time = 0;
+		long end_time = 0;
+		long elapsed_time = 0;
+		
+		if(runMethod == 0){
+			//all this stuff controls tick intervals
+			final int ticks_per_second = 80;	
+			final int max_skip = 5;
+			int tick_skip = 1000 / ticks_per_second;
+			
+			int loops = 0;
+			
+			long next_tick = 0;
+			
+			next_tick = System.currentTimeMillis();
+			while(running){
+				//Run game loop;
+				start_time = System.currentTimeMillis();
+				
+				//Don't Tick until next_tick is reached or loop cap is reached.
+				if(System.currentTimeMillis() < next_tick && loops < max_skip){
+					loops++;
+				} else{
+					//System.out.println(System.currentTimeMillis());
+					tick();
+					ticks++;
+					//Calc next tick time.
+					loops = 0;
+					next_tick = next_tick + tick_skip;
+					//System.out.println("next: " + next_tick);
 				}
-			} else{
-				//Game running slow.
-			}
-			end_time = System.currentTimeMillis();
-			elapsed_time = elapsed_time + (end_time - start_time);
-			if(elapsed_time >= 1000 && showFPS){
+				render();
+				frames++;
+				
+				end_time = System.currentTimeMillis();
+				elapsed_time = elapsed_time + (end_time - start_time);
 				//System.out.println(elapsed_time);
-				System.out.println((int)(frames / elapsed_time * 1000));
-				frames = 0;
-				elapsed_time = 0;
+				if(elapsed_time >= 1000 && showFPS){
+					System.out.println("Frames: " + frames);
+					System.out.println("Ticks: " + ticks);
+					System.out.println("");
+					frames = 0;
+					ticks = 0;
+					elapsed_time = 0;
+				}
 			}
+		} else if(runMethod == 1){
+			int fps = 80;
+			int frameSkip = 1000 / fps;
+			
+			while(running){
+				start_time = System.currentTimeMillis();
+				tick();
+				++ticks;
+				render();
+				++frames;
+				
+				//Wait for next update if needed.
+				while(frameSkip - (System.currentTimeMillis() - start_time) > 0){
+					try{
+						Thread.sleep(1);
+					} catch(Exception e){
+						System.out.println(e.getStackTrace());
+					}
+				}
+				
+				end_time = System.currentTimeMillis();
+				elapsed_time = elapsed_time + (end_time - start_time);
+				//System.out.println(elapsed_time);
+				if(elapsed_time >= 1000 && showFPS){
+					System.out.println("Frames: " + frames);
+					System.out.println("Ticks: " + ticks);
+					System.out.println("");
+					frames = 0;
+					ticks = 0;
+					elapsed_time = 0;
+				}
+			}
+		} else if(runMethod == 2){
+			
 		}
 		
 		stop();
+		
 		
 	}
 	

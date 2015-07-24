@@ -13,6 +13,8 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 //PenPal State. This state controls letters sent to your Pen Pal.
 public class PenPalLetterState extends State {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private boolean writing, exit;
 	private BufferedImage window;
 	private GameState gamestate;

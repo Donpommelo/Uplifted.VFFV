@@ -11,7 +11,7 @@ public class DialogState extends State {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int linenum, endline,dialognum, dialogamount;
+	private int linenum, endline, dialognum, dialogamount;
 	private Dialog[] dialogs;
 	private Dialog current;
 	private int yoffset, ybob;
@@ -19,8 +19,8 @@ public class DialogState extends State {
 	public int EventId;
 	
 	//KeyListener delay variables.
-	private int delayNext = 300;
-	private int delayScrolling = 100;
+	private int delayNext = 500;
+	private int delayScrolling = 120;
 	
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
 	public DialogState(Game game, StateManager sm, int start, int end,int eventId){
@@ -62,7 +62,7 @@ public class DialogState extends State {
 							current.charIndex=0;			
 						}
 						StateManager.getStates().pop();
-						game.getKeyManager().disable(delayScrolling);
+						game.getKeyManager().disable(delayNext);
 						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 						//increment and the event will be rerrun with the new stage.
 						if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
@@ -70,7 +70,7 @@ public class DialogState extends State {
 							Event.events[this.EventId].run();
 						}
 						
-						}						
+					}						
 					//if there is still dialog, pressing space will move on to the next dialog line
 					else{
 						linenum++;
@@ -86,19 +86,10 @@ public class DialogState extends State {
 					else{
 						dialognum++;
 					}
-					
+					game.getKeyManager().disable(delayScrolling);
 				}
-			}
-			
-			//if pressing space before the dialog is done scrolling, the text will speed up.
-			else{
-				if(current!=null){
-					current.charIndex+=10;
-				}
-				game.getKeyManager().disable(delayScrolling - 20);
-				}
-				
 			}	
+		}
 	}
 			
 	//rendering the DialogState consists of rendering whatever the current dialog is.

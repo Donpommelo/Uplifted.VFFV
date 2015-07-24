@@ -175,10 +175,15 @@ public class Assets {
 		//Fonts
 		try {
             //Create the font to use. Specify the size!
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(12f);
+            Font customFont1 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(18f);
+            Font customFont2 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/BPmono.ttf")).deriveFont(18f);
+            Font customFont3 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/epilog.ttf")).deriveFont(36f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //Register the font
-            ge.registerFont(customFont);
+            ge.registerFont(customFont1);
+            ge.registerFont(customFont2);
+            ge.registerFont(customFont3);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
