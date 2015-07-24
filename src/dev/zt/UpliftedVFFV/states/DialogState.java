@@ -31,6 +31,7 @@ public class DialogState extends State {
 		this.yoffset = 0;
 		this.ybob = 12;
 		this.yrise = false;
+		this.dialognum = 0;
 		dialogamount = 1;
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
@@ -61,8 +62,8 @@ public class DialogState extends State {
 						if (current!=null){					//This sets the charIndex at 0 so rereading dialog will still scroll
 							current.charIndex=0;			
 						}
+						game.getKeyManager().disable(delayNext);
 						StateManager.getStates().pop();
-						game.getKeyManager().disable(delayScrolling);
 						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 						//increment and the event will be rerrun with the new stage.
 						if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
@@ -70,35 +71,27 @@ public class DialogState extends State {
 							Event.events[this.EventId].run();
 						}
 						
-						}						
+					}						
 					//if there is still dialog, pressing space will move on to the next dialog line
 					else{
-						linenum++;
+						if(this.dialogs == null){
+							linenum++;
+						}
+						else{
+							dialognum++;
+						}
 						game.getKeyManager().disable(delayScrolling + 100);
 					}
 				}
-				
 				//if pressing space before the dialog is done scrolling, the text will speed up.
 				else{
-					if(this.dialogs == null){
-						linenum++;
+					if(current!=null){
+						current.charIndex+=10;
 					}
-					else{
-						dialognum++;
+					game.getKeyManager().disable(delayScrolling - 20);
 					}
-					
-				}
 			}
-			
-			//if pressing space before the dialog is done scrolling, the text will speed up.
-			else{
-				if(current!=null){
-					current.charIndex+=10;
-				}
-				game.getKeyManager().disable(delayScrolling - 20);
-				}
-				
-			}	
+		}	
 	}
 			
 	//rendering the DialogState consists of rendering whatever the current dialog is.
