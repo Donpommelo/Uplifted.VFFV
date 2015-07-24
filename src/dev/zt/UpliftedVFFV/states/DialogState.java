@@ -8,9 +8,11 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 //DialogState. This controls which dialog is displayed
 public class DialogState extends State {
 	
+
 	private static final long serialVersionUID = 1L;
 	
-	private int linenum,endline;
+	private int linenum, endline,dialognum, dialogamount;
+	private Dialog[] dialogs;
 	private Dialog current;
 	private int yoffset, ybob;
 	private boolean yrise;	//Booleans for arrow animation direction and frame skip.
@@ -29,6 +31,21 @@ public class DialogState extends State {
 		this.yoffset = 0;
 		this.ybob = 12;
 		this.yrise = false;
+		dialogamount = 1;
+		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+	}
+	
+	public DialogState(Game game, StateManager sm, Dialog[] d, int dialoglength ,int eventId){
+		super(game,sm);
+		this.dialogs = d;
+		this.dialognum = 0;
+		this.dialogamount = dialoglength;
+		this.EventId=eventId;
+		this.yoffset = 0;
+		this.ybob = 12;
+		this.yrise = false;
+		this.linenum = 1;
+		this.endline = 0;
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 
@@ -40,11 +57,10 @@ public class DialogState extends State {
 					game.getKeyManager().disable(delayNext);
 					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					//if the last line is shown, the dialogstate ends
-					if(linenum==endline){
+					if(linenum == endline || dialogamount == dialognum){
 						if (current!=null){					//This sets the charIndex at 0 so rereading dialog will still scroll
 							current.charIndex=0;			
 						}
-						game.getKeyManager().disable(delayScrolling);
 						StateManager.getStates().pop();
 						game.getKeyManager().disable(delayScrolling);
 						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
@@ -54,8 +70,7 @@ public class DialogState extends State {
 							Event.events[this.EventId].run();
 						}
 						
-						}	
-					
+						}						
 					//if there is still dialog, pressing space will move on to the next dialog line
 					else{
 						linenum++;
@@ -65,22 +80,38 @@ public class DialogState extends State {
 				
 				//if pressing space before the dialog is done scrolling, the text will speed up.
 				else{
-					if(current!=null){
-						current.charIndex+=10;
+					if(this.dialogs == null){
+						linenum++;
 					}
-					game.getKeyManager().disable(delayScrolling - 20);
+					else{
+						dialognum++;
+					}
+					
+				}
+			}
+			
+			//if pressing space before the dialog is done scrolling, the text will speed up.
+			else{
+				if(current!=null){
+					current.charIndex+=10;
+				}
+				game.getKeyManager().disable(delayScrolling - 20);
 				}
 				
 			}	
-		}
 	}
 			
 	//rendering the DialogState consists of rendering whatever the current dialog is.
 	//Also, because dialog does not take up the whole screen, the state underneath it must be rendered first
 	public void render(Graphics g) {
 
+		if(dialogs == null){
+			current = Assets.dialog[linenum];
 
-		current = Assets.dialog[linenum];
+		}
+		else{
+			current = dialogs[dialognum];
+		}
 			StateManager.getStates().pop();
 			StateManager.getStates().peek().render(g);
 			StateManager.getStates().push(this);

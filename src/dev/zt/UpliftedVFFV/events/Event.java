@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
@@ -313,7 +314,10 @@ public class Event{
 	public static Event event106 = new Event106(11,17,225);
 	public static Event event107 = new Event107(8,21,226);
 
-	
+	public static Event event110 = new Event110(3,8,229);
+	public static Event event111 = new Event111(7,5,230);
+	public static Event event112 = new Event112(22,5,231);
+
 	
 	
 	
@@ -450,6 +454,16 @@ public class Event{
 	//consider adding multiple text files later that will need to be specified
 	public static void Dialog(int firstline, int lastline,int eventId){
 		StateManager.states.push(new DialogState(game,statemanager,firstline,lastline,eventId));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void Dialog(Dialog[] d, int dialoglength, int eventId){
+		StateManager.states.push(new DialogState(game, statemanager, d, dialoglength ,eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

@@ -15,15 +15,10 @@ public class EventBackroomBed2 extends Event {
 	}
 	
 	public void run(){
-//	super.Dialog(163, 163,this.getId());
+		Event.events[79].run();
 	}
 	
 	public boolean isSolid(int i){
-		if(i == 0 || i == 1){
-			return false;
-		}
-		else{
-			return true;
-		}
+		return true;
 	}
 }
