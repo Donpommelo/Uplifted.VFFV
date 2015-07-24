@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 
+import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
@@ -13,6 +14,6 @@ public class Event19 extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 4, 12,"3rd Floor Hallway");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", (int)(Player.getPlayerX()/32)-7, 12,"3rd Floor Hallway");
 	}
 }

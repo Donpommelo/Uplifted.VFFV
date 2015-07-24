@@ -40,8 +40,8 @@ public class Player extends Creature{
 		this.y = y;
 		this.playerx = 256;
 		this.playery = 192;
-//		this.playerx = 128;
-//		this.playery = 128;
+//		this.playerx = 352;
+//		this.playery = 320;
 		wall = false;
 	} 
 
