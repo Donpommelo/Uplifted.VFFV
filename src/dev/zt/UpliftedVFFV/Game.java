@@ -38,7 +38,7 @@ public class Game implements Runnable{
 	private GameCamera gameCamera;
 	
 	//Print frames?
-	private boolean showFPS = true;
+	private boolean showFPS = false;
 	
 	public Game(String title, int width, int height){			//created by launcher. automatically runs init(), then tick and render
 		this.width = width;
@@ -103,6 +103,7 @@ public class Game implements Runnable{
 		init();	
 		
 		int ticks = 0;
+
 		int frames = 0;
 		
 		long start_time = 0;
