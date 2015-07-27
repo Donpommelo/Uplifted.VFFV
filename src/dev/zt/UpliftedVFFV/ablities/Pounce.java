@@ -10,18 +10,15 @@ public class Pounce extends Skills {
 	public static String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
 	public static String descrShort = "Deals damage and hits first.";
 	public static int cost = 1;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public Pounce(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic,6);
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

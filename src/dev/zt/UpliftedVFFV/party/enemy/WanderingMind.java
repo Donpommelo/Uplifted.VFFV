@@ -29,8 +29,11 @@ public class WanderingMind extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Wandering Mind";
+	public static String plural = "Wandering Minds";
+	public static String pronoun = "it";
 	public WanderingMind(int lvl) {
-		super("Wandering Mind",lvl,ImageLoader.loadImage("/BattleSprites/WanderingMind.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/WanderingMind.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "TEST.";
 	}

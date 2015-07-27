@@ -29,8 +29,11 @@ public class Lunk extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Lunk";
+	public static String plural = "Lunks";
+	public static String pronoun = "it";
 	public Lunk(int lvl) {
-		super("Lunk",lvl,ImageLoader.loadImage("/BattleSprites/Lunk.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Lunk.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "TEST.";
 	}

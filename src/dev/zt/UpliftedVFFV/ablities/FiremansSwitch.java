@@ -10,8 +10,10 @@ public class FiremansSwitch extends Skills {
 	public static String descr = "User releases energy from\noverheated machinery to\ndamage foes.";
 	public static String descrShort = "Deals Red damage to all\nenemies except target.";
 	public static int cost = 12;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public FiremansSwitch(int index) {
-		super(index,0,0, name, descr, descrShort, cost);
+		super(index,0,0, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

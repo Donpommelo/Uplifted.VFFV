@@ -9,7 +9,7 @@ public class DisarmedNothing extends Skills {
 public Item thing;
 
 	public DisarmedNothing(int index) {
-		super(index,1,6, "", "", "", 0);
+		super(index,1,6, "", "", "", 0,0,0,false,false);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

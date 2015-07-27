@@ -29,8 +29,11 @@ public class Midgeon extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Midgeon";
+	public static String plural = "Midgeons";
+	public static String pronoun = "it";
 	public Midgeon(int lvl) {
-		super("Midgeon",lvl,ImageLoader.loadImage("/BattleSprites/Midgeon.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Midgeon.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "TEST.";
 	}

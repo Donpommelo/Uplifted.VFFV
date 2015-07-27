@@ -9,7 +9,7 @@ public class SilencedNothing extends Skills {
 public Item thing;
 	public String moveReplaced;
 	public SilencedNothing(int index, String moveReplaced) {
-	super(index,1,6,"","","",0);
+	super(index,1,6,"","","", 0, 0,0, false, false);
 	this.moveReplaced = moveReplaced;
 	}
 	

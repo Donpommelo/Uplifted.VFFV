@@ -9,19 +9,16 @@ public class LifeDrain extends Skills {
 	public static String descr = "User sucks the lifeforce from a\ntargeted foe, dealing damage\n and restoring health.";
 	public static String descrShort = "Damages target and heals\nself.";
 	public static int cost = 7;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public LifeDrain(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Life Drain!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.em.hpChange(-(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3], perp, vic,6);
-			bs.bp.em.hpChange((int)((perp.buffedStats[2]*perp.buffedStats[2]*(1+perp.getHealPower()))/(vic.buffedStats[3]*2)), perp, perp,6);
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.em.hpChange(-(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3], perp, vic,6);
+		bs.bp.em.hpChange((int)((perp.buffedStats[2]*perp.buffedStats[2]*(1+perp.getHealPower()))/(vic.buffedStats[3]*2)), perp, perp,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

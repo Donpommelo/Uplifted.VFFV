@@ -216,17 +216,39 @@ public class BattleProcessor {
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						if(!stm.checkStatus(TurnOrderQueue.get(0).user, new incapacitate(TurnOrderQueue.get(0).user)) || stm.checkStatus(TurnOrderQueue.get(0).user, new Undead(TurnOrderQueue.get(0).user,50))){
 							for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
-								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
+								if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+									TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
+								}
 							}
 						}
 						if(!TurnOrderQueue.get(0).skill.getName().equals("Dilly Dally") && TurnOrderQueue.get(0) != null){
 							if((int)(TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost()))<=TurnOrderQueue.get(0).user.getCurrentBp()){								
 								em.bpChange((int)(-TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost())), TurnOrderQueue.get(0).user);
-								if(Math.random()<TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance()){
+								if(Math.random() < TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*
+										TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance() + 
+										TurnOrderQueue.get(0).skill.getBaseCrit()/100 && TurnOrderQueue.get(0).skill.canCrit()){
 									TurnOrderQueue.get(0).skill.runCrit(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+									for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+										if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+											TurnOrderQueue.get(0).user.statuses.get(i).onCrit(TurnOrderQueue.get(0).user, TurnOrderQueue.get(0).target, bs);
+										}
+									}
+									
 								}
 								else{
-									TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+									if(em.getAcc(TurnOrderQueue.get(0).user, TurnOrderQueue.get(0).target,TurnOrderQueue.get(0).skill.getBaseAcc())
+											&& TurnOrderQueue.get(0).skill.canMiss()){
+										bt.textList.add(TurnOrderQueue.get(0).user.getName()+" tried to use "+TurnOrderQueue.get(0).skill.getName()
+												+" but missed!");
+										for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+											if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+												TurnOrderQueue.get(0).user.statuses.get(i).onMiss(TurnOrderQueue.get(0),bs);
+											}
+										}
+									}
+									else{
+										TurnOrderQueue.get(0).skill.run(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).target,bs);
+									}
 								}
 								if(TurnOrderQueue.get(0) != null){
 									for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){

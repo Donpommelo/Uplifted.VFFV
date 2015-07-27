@@ -13,6 +13,8 @@ public class Skills {
 	public String descr;
 	public String descrShort;
 	public int cost;
+	public int baseAcc,baseCrit;
+	public boolean canMiss,canCrit;
 	
 	//0: All targets
 	//1: No target: automatically performs action
@@ -25,7 +27,8 @@ public class Skills {
 	public BufferedImage icon;
 	public boolean startTeamTarget;
 	
-	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost){
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost,int acc, int crit
+			,boolean canMiss, boolean canCrit){
 		this.name = name;
 		this.descr = descr;
 		this.descrShort = descrShort;
@@ -33,9 +36,14 @@ public class Skills {
 		targetType = t;
 		icon =Assets.skill;
 		element = elem;
+		this.baseAcc = acc;
+		this.baseCrit = crit;
+		this.canMiss = canMiss;
+		this.canCrit = canCrit;
 	}
 	
-	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, BufferedImage i){
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, BufferedImage i,int acc, int crit
+			,boolean canMiss, boolean canCrit){
 		this.name = name;
 		this.descr = descr;
 		this.descrShort = descrShort;
@@ -43,6 +51,10 @@ public class Skills {
 		targetType = t;
 		icon =i;
 		element = elem;
+		this.baseAcc = acc;
+		this.baseCrit = crit;
+		this.canMiss = canMiss;
+		this.canCrit = canCrit;
 	}
 	
 	
@@ -67,8 +79,23 @@ public class Skills {
 	}
 	
 	public int getCost() {
-
 		return cost;
+	}
+	
+	public int getBaseAcc(){
+		return baseAcc;
+	}
+	
+	public int getBaseCrit(){
+		return baseCrit;
+	}
+	
+	public boolean canMiss(){
+		return canMiss;
+	}
+	
+	public boolean canCrit(){
+		return canCrit;
 	}
 	
 	public int getTargetType(){

@@ -11,9 +11,10 @@ public class Query extends Skills {
 	public static String descr = "User researches a foe, gaining\nvaluable knowledge about its,\nelemental alignments and Hp.";
 	public static String descrShort = "Investigate enemy info.";
 	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public Query(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
-
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -27,6 +28,4 @@ public class Query extends Skills {
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-
 }

@@ -12,9 +12,10 @@ public class ForceWithin extends Skills {
 	public static String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
 	public static String descrShort = "Dazes all foes\n1 use per fight.";
 	public static int cost = 6;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public ForceWithin(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
-
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -29,10 +30,8 @@ public class ForceWithin extends Skills {
 							i--;
 						}
 					}
-					
 				}
 			}
-		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.ForeseeIll;
 import dev.zt.UpliftedVFFV.ablities.IntrusiveThought;
@@ -33,9 +34,12 @@ public class Augur extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Augur";
+	public static String plural = "Augurs";
+	public static String pronoun = "it";
 	public Augur(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Augur",lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Spectral bringer of bad news. Infects foes with insidious negativity.";
 		

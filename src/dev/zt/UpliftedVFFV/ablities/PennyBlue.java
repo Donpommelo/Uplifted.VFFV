@@ -9,8 +9,10 @@ public class PennyBlue extends Skills {
 	public static String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
 	public static String descrShort = "Buffs Red Resist and regen.";
 	public static int cost = 6;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public PennyBlue(int index) {
-		super(index,0,1, name, descr, descrShort, cost);
+		super(index,0,1, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -27,5 +29,4 @@ public class PennyBlue extends Skills {
 	public boolean startTarget(){
 		return true;
 	}
-
 }

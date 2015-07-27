@@ -11,21 +11,18 @@ public class DamnedDescent extends Skills {
 	public static String descr = "User drops a target a considerable\ndistance. If this attack\nincapacitates a foe, the\nuser gains an extra turn.";
 	public static String descrShort = "Deals Red damage and\nrefunds turn if lethal.";
 	public static int cost = 11;
+	public static int baseAcc = 80; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public DamnedDescent(int index) {
-		super(index,0,0, name, descr, descrShort, cost);
+		super(index,0,0, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
-		if(bs.bp.em.getAcc(perp, vic,80)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.5), perp, vic,0);
-			if(vic.tempStats[0]==0){
-				bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
-				bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
-			}
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.5), perp, vic,0);
+		if(vic.tempStats[0]==0){
+			bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
 		}
 	}
 	

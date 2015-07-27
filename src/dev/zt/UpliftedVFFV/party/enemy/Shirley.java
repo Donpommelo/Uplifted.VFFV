@@ -29,8 +29,11 @@ public class Shirley extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Shirley";
+	public static String plural = "Shirlies";
+	public static String pronoun = "her";
 	public Shirley(int lvl) {
-		super("Shirley",lvl,ImageLoader.loadImage("/BattleSprites/Shirley.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Shirley.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "TEst.";
 	}

@@ -56,11 +56,14 @@ public class Schmuck {
 	public Item[] items = {null,null,null,null,null};
 	public int itemSlots;
 	public Schmuck itemDummy;	
-	public String name;
+	public String name,plural,pronoun;
 	public String bio;
-	public Schmuck(String name,int lvl,BufferedImage sprite, int[] start, double[] growths,int[] elem, int exp, int script){	
+	public Schmuck(String name, String plural, String pronoun,int lvl,BufferedImage sprite, int[] start, double[] growths,
+			int[] elem, int exp, int script){	
 		this.BattleSprite=sprite;
 		this.name=name;
+		this.plural = plural;
+		this.pronoun = pronoun;
 		this.skills = new ArrayList<Skills>();
 		this.statuses = new ArrayList<status>();
 		this.Lvl=lvl;
@@ -76,10 +79,12 @@ public class Schmuck {
 		this.scrDrop = script;
 	}
 	
-	public Schmuck(String name,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elem){	
+	public Schmuck(String name,String plural, String pronoun,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elem){	
 		this.BattleSprite=sprite;
 		this.MenuSprite1 = msprite;
 		this.name=name;
+		this.plural = plural;
+		this.pronoun = pronoun;
 		this.skills = new ArrayList<Skills>();
 		this.statuses = new ArrayList<status>();
 		this.Lvl=lvl;
@@ -507,6 +512,48 @@ public class Schmuck {
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getPlural() {
+		return plural;
+	}
+	
+//	0:pronoun	1:possessive	2:plural possessive
+	public String getPronoun(int i) {
+		switch(pronoun){
+		case "it":
+			switch(i){
+			case 0:
+				return "it";
+			case 1:
+				return "its";
+			case 2:
+				return "their";
+			}
+			break;
+		case "he":
+			switch(i){
+			case 0:
+				return "he";
+			case 1:
+				return "his";
+			case 2:
+				return "their";
+			}
+			break;
+		case "she":
+			switch(i){
+			case 0:
+				return "she";
+			case 1:
+				return "her";
+			case 2:
+				return "their";
+			}
+			break;
+		}
+		return "";
+		
 	}
 	
 	public String getBio() {

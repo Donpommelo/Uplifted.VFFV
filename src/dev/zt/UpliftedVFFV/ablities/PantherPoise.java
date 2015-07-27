@@ -10,9 +10,10 @@ public class PantherPoise extends Skills {
 	public static String descr = "User gains the poise of a\npanther and gets ready to do\npanther things.";
 	public static String descrShort = "Redirects items to self.";
 	public static int cost = 8;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public PantherPoise(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
-
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

@@ -14,8 +14,10 @@ public class ChaosConjure extends Skills {
 	public static String descr = "User summons a storm damaging and\n scrambling and damaging foes\nLimit : One use per fight.";
 	public static String descrShort = "Damages all foes and\nScrambles order\n1 use per fight.";
 	public static int cost = 5;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public ChaosConjure(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -36,7 +38,6 @@ public class ChaosConjure extends Skills {
 				bs.bp.TurnOrderQueue.add(temp.get(rand));
 				temp.remove(rand);
 			}
-		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

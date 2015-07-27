@@ -9,7 +9,7 @@ public class RunawayNothing extends Skills {
 public Item thing;
 	public String moveReplaced;
 	public RunawayNothing(int index) {
-	super(index,1,6,"","","",0);
+	super(index,1,6,"","","",0, 0, 0,false, false);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

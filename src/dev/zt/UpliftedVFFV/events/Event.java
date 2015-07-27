@@ -313,7 +313,8 @@ public class Event{
 	public static Event event105 = new Event105(5,7,224);
 	public static Event event106 = new Event106(11,17,225);
 	public static Event event107 = new Event107(8,21,226);
-
+	public static Event event108 = new Event108(5,17,227);
+	public static Event event109 = new Event109(9,8,228);
 	public static Event event110 = new Event110(3,8,229);
 	public static Event event111 = new Event111(7,5,230);
 	public static Event event112 = new Event112(22,5,231);

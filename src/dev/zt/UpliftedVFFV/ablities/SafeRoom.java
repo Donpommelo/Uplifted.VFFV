@@ -10,8 +10,10 @@ public class SafeRoom extends Skills {
 	public static String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
 	public static String descrShort = "Banish and protect target.";
 	public static int cost = 5;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public SafeRoom(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -24,7 +26,5 @@ public class SafeRoom extends Skills {
 			}
 		}
 		bs.bp.stm.addStatus(vic, new Invuln(0, perp, 50));
-		
 	}
-	
 }

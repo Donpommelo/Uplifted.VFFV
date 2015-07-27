@@ -10,8 +10,10 @@ public class Ennervate extends Skills {
 	public static String descr = "User casts a fatiguing aura that\ncauses a targeted foe's Power\nand Speed to decrease.";
 	public static String descrShort = "Lowers single targets Pow\nand Spd.";
 	public static int cost = 4;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public Ennervate(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

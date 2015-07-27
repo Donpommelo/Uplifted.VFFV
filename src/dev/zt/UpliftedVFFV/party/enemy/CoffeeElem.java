@@ -34,8 +34,11 @@ public class CoffeeElem extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Coffee Elemental";
+	public static String plural = "Coffee Elementals";
+	public static String pronoun = "it";
 	public CoffeeElem(int lvl) {
-		super("Coffee Elemental",lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name,pronoun,plural,lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A  dangerously hot elemental. Maintains and enforces orderly conduct in the Offices.";
 		itemdrops.put(new CoffeeBean(), 1.0);

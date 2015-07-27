@@ -10,7 +10,7 @@ public class ActuallyNothing extends Skills {
 public Item thing;
 
 	public ActuallyNothing(int index) {
-		super(index, 1,6, "", "", "", 0);
+		super(index, 1,6, "", "", "", 0,0,0,false,false);
 
 	}
 	

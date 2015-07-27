@@ -11,7 +11,7 @@ public Item thing;
 public GameState gs;
 
 	public SkillNothing(int index, GameState gs) {
-		super(index,1,6,"","","",0);
+		super(index,1,6,"","","",0, 0, 0, false, false);
 		this.gs=gs;
 	}
 	

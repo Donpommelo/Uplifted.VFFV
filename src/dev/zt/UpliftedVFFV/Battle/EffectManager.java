@@ -82,6 +82,11 @@ public class EffectManager {
 				}
 				else{
 					bs.bs.flash(vic, 51);
+					for(int i=0; i<perp.statuses.size(); i++){
+						if(perp.statuses.get(i)!=null){
+							finalDamage = vic.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+						}
+					}
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
 							finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);

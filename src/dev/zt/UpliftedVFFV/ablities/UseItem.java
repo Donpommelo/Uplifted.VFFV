@@ -15,8 +15,10 @@ public static String name = "Use Item";
 public static String descr = "User uses an item.";
 public static String descrShort = "Use an item.";
 public static int cost = 0;
+public static int baseAcc = 100; public static int baseCrit = 0;
+public static boolean canMiss = true; public static boolean canCrit = false;
 public UseItem(int index, Item i, GameState gs) {
-	super(index, 0, 6, name, descr, descrShort, cost, Assets.item);
+	super(index, 0, 6, name, descr, descrShort, cost, Assets.item, baseAcc, baseCrit, canMiss, canCrit);
 	this.thing = i;
 	this.gs = gs;
 }

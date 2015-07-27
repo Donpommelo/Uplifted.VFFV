@@ -18,7 +18,7 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	public static boolean cutsceneMode = false;
 	
-	public boolean printStuff = true;
+	public boolean printStuff = false;
 	
 	public KeyManager(){
 		keys = new boolean[256];

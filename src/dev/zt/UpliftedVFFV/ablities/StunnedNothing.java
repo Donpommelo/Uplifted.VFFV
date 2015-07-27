@@ -9,7 +9,7 @@ public class StunnedNothing extends Skills {
 public Item thing;
 
 	public StunnedNothing(int index) {
-		super(index,1,6,"","","",0);
+		super(index,1,6,"","","",0, 0, 0, false, false);
 
 	}
 	

@@ -34,8 +34,11 @@ public class RotThought extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Rotthought";
+	public static String plural = "Rotthoughts";
+	public static String pronoun = "it";
 	public RotThought(int lvl) {
-		super("Rotthought",lvl,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Rot Thought.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A weakly malicious intention. Floats feebly thought the cubicles where it was born.";
 		itemdrops.put(new MentalLeakage(), .7);

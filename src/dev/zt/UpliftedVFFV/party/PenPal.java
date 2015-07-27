@@ -37,8 +37,11 @@ public class PenPal extends Schmuck{
 	public int exp=0;
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Pen Pal";
+	public static String plural = "Pen Pal";
+	public static String pronoun = "it";
 	public PenPal() {
-		super("Pen Pal",1,ImageLoader.loadImage("/BattleSprites/PenPal.png"),ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths, elemRes);
+		super(name,plural,pronoun,1,ImageLoader.loadImage("/BattleSprites/PenPal.png"),ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths, elemRes);
 		calcStats(1);
 		this.bio = "Your very own foreign correspondence. Looks leafy.";
 //		this.levelSkills = new TreeMap<Integer, Skills>();

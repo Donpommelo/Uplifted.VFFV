@@ -10,9 +10,10 @@ public class DayattheFair extends Skills {
 	public static String descr = "User summons a chaotic parade\nthat disturbs the fight and\nends the round.";
 	public static String descrShort = "Damages and ends round\nprematurely.";
 	public static int cost = 21;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public DayattheFair(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
-
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
