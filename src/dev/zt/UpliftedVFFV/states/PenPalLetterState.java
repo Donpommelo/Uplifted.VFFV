@@ -15,80 +15,65 @@ public class PenPalLetterState extends State {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private boolean writing, exit;
+	private boolean writing, exit, done;
 	private BufferedImage window;
-	private GameState gamestate;
 	private AudioManager audio;
-
-	private int optionSelected;
-	
 	private String prompt;
+	private Game game;
+	private int delayNext = 150;
 	
 	public PenPalLetterState(Game game, StateManager sm){
 		super(game,sm);
-		writing = false;
+		this.game = game;
+		done = false;
+		exit = false;
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		audio = game.getAudiomanager();
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-		optionSelected = 0;
 		prompt = "";
+		game.getKeyManager().typing = true;
 	}
 
 	public void tick() {
-		
-		if(game.getKeyManager().x){
-			audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
-			exit=true;
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		if(!writing){
-			if(game.getKeyManager().space){
-				audio.playSound("/Audio/paper_pickup_01.wav", false);
-				writing=true;
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+		if(game.getKeyManager().isActive()){
+			if(done){
+				if(game.getKeyManager().space){
+					exit = true;
+					game.getKeyManager().disable(delayNext);
 				}
 			}
-			if(game.getKeyManager().left){
-				if(optionSelected>0){
-					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-					optionSelected--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+			else{
+				String key = game.getKeyManager().keyTyped;
+				if(!key.equals("")){
+					if(key.equals("Backspace")){
+						if(prompt.length()>0){
+							prompt = prompt.substring(0, prompt.length()-1);
+						}
+						game.getKeyManager().disable(delayNext);
+					}
+					else if(key.equals("ENTER")){
+						done = true;
+						game.getKeyManager().disable(delayNext);
+					}
+					else if(key.equalsIgnoreCase("Q") || key.equalsIgnoreCase("W") || key.equalsIgnoreCase("E") || key.equalsIgnoreCase("R")
+							|| key.equalsIgnoreCase("T") || key.equalsIgnoreCase("Y") || key.equalsIgnoreCase("U") || key.equalsIgnoreCase("I")
+							|| key.equalsIgnoreCase("O") || key.equalsIgnoreCase("P") || key.equalsIgnoreCase("A") || key.equalsIgnoreCase("S")
+							|| key.equalsIgnoreCase("D") || key.equalsIgnoreCase("F") || key.equalsIgnoreCase("G") || key.equalsIgnoreCase("H")
+							|| key.equalsIgnoreCase("I") || key.equalsIgnoreCase("J") || key.equalsIgnoreCase("K") || key.equalsIgnoreCase("L")
+							|| key.equalsIgnoreCase("Z") || key.equalsIgnoreCase("X") || key.equalsIgnoreCase("C") || key.equalsIgnoreCase("V")
+							|| key.equalsIgnoreCase("B") || key.equalsIgnoreCase("N") || key.equalsIgnoreCase("M")){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						prompt = prompt.concat(game.getKeyManager().keyTyped);
+						game.getKeyManager().disable(delayNext);
 					}
 				}
-			}
-			if(game.getKeyManager().right){
-				if(optionSelected<1){			
-					audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-					optionSelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+			}	
 		}
-		else{
-			
-		}
-		
-
 	}
 			
 	
 	public void render(Graphics g) {
-		if(!exit){
+		if(exit){
 			if(writing){
 				writing = false;
 			}
@@ -96,25 +81,26 @@ public class PenPalLetterState extends State {
 				StateManager.getStates().pop();
 			}
 		}
-		
-		if(!writing){
-			String[] options = {"Yes","No"};
-			g.setColor(Color.black);
-			g.setFont(new Font("Chewy", Font.PLAIN, 12));
-			g.drawString("Write a letter to your Pen Pal?",200,160);
-			g.drawString(gamestate.inventorymanager.backpack.get(new PostageStamp())+" Postage Stamp(s) left", 200,200);
-			Utils.drawMenu(g, window, options, Color.black, 25, optionSelected, 5, 5, 125, 380, true);
-		}
-		else{
-			
-		}
-
 		StateManager.getStates().pop();
 		StateManager.getStates().peek().render(g);
 		StateManager.getStates().push(this);
 		
+		if(done){
+			
+		}
+		else{
+			g.setColor(Color.red);
+			g.setFont(new Font("Chewy", Font.PLAIN, 20));
+			g.drawString(prompt,200,160);
+		}
+
+		
 	}
 
+	public String findText(String prompt){
+		return "meep";
+	}
+	
 	@Override
 	public void init() {
 		

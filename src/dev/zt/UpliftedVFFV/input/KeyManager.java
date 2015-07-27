@@ -3,10 +3,14 @@ package dev.zt.UpliftedVFFV.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import dev.zt.UpliftedVFFV.Game;
+
 public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	private boolean[] keys;
 	public boolean up, down, left, right, space, z,x,enter; //whether this button is currently being pressed
+	public String keyTyped;
+	public boolean typing;
 	public int lastPressed;
 	//Boolean and counter for built in button delay, and window minimization, and loss of control during cutscenes.
 	private boolean active;
@@ -20,7 +24,9 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	public boolean printStuff = false;
 	
-	public KeyManager(){
+	public Game game;
+	
+	public KeyManager(Game g){
 		keys = new boolean[256];
 		lastPressed = -1;
 		active = true;
@@ -28,6 +34,11 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 		duration = 0;
 
 		holdCounter = 0;
+		
+		typing = false;
+		keyTyped = "";
+		
+		this.game = g;
 	}
 	
 	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
@@ -55,21 +66,35 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 			}
 			
 	}
-
+	
+	
 	public void keyPressed(KeyEvent ev) {
-		keys[ev.getKeyCode()] = true;
-		holdCounter++;
+		if(typing){
+			keyTyped = KeyEvent.getKeyText(ev.getKeyCode());
+			
+		}
+		else{
+			keys[ev.getKeyCode()] = true;
+			holdCounter++;
+		}
+	
 	}
 
 	public void keyReleased(KeyEvent ev) {
-		keys[ev.getKeyCode()] = false;
-		holdCounter = 0;
+		if(typing){
+			keyTyped = "";
+		}
+		else{
+			keys[ev.getKeyCode()] = false;
+			holdCounter = 0;
+		}
 	}
-
+	
 	public void keyTyped(KeyEvent e) {
 		
+		
 	}
-
+	
 	public static boolean isCutsceneMode() {
 		return cutsceneMode;
 	}
@@ -111,6 +136,8 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	public boolean isActive() {
 		return active;
 	}
+
+	
 	
 
 }

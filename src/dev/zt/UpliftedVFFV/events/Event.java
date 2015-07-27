@@ -366,22 +366,16 @@ public class Event{
 		walkCycle();
 	}
 	
-	
-
 	public void render(Graphics g, int x, int y) {
 		if(test==null){
 			g.drawImage(tex,x, y, tex.getWidth(), tex.getHeight(), null);
 		}
-		
 		if(test!=null){
 			test.render(g);
-			g.drawImage(test.imgShown, x, y, TILEWIDTH, TILEHEIGHT, null);
-			
-			
+			g.drawImage(test.imgShown, x, y, TILEWIDTH, TILEHEIGHT, null);			
 		}
 	}
 	
-
 	public float getX() {
 		return x;
 	}
@@ -566,6 +560,15 @@ public class Event{
 		}
 		else{
 			gamestate.inventorymanager.backpack.put(i, num);
+		}
+	}
+	
+	public int itemNumCheck(Item i){
+		if(gamestate.inventorymanager.backpack.containsKey(i)){
+			return gamestate.inventorymanager.backpack.get(i);
+		}
+		else{
+			return 0;
 		}
 	}
 	

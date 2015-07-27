@@ -100,7 +100,6 @@ public class DialogState extends State {
 
 		if(dialogs == null){
 			current = Assets.dialog[linenum];
-
 		}
 		else{
 			current = dialogs[dialognum];

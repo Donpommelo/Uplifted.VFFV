@@ -44,7 +44,7 @@ public class Game implements Runnable{
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		keyManager = new KeyManager();							//controls keyboard inputs
+		keyManager = new KeyManager(this);							//controls keyboard inputs
 
 	}
 	
