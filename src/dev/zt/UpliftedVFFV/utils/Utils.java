@@ -6,12 +6,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Utils {
 	
@@ -81,7 +81,7 @@ public class Utils {
 		g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g2d.setColor(fontColor);
 		for(int i = 0; i < options.length; i++){
-			g2d.drawString(options[i], x + 25, y + 35 + (25 * i));
+			g2d.drawString(options[i], x + 21, y + 35 + (25 * i));
 		}		
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
@@ -364,4 +364,31 @@ public class Utils {
 	}
 
 /*****END MENU DRAWING UTILS*****/
+	
+/*****GAME SAVING AND LOADING******/
+	//Function that saves state to file.
+	/* Parameters:
+	 * 	saveSlot - Number of file to save gamestate to.
+	 * 	gamestate - Object containing game information. 
+	 */
+	public static void saveState(int saveSlot, GameState gamestate) throws IOException{
+		FileOutputStream fos = new FileOutputStream("res/Saves/" + saveSlot + ".save");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		gamestate.writeObject(oos);
+		oos.close();
+	}
+	 
+	//Function that loads state from file.
+	/* Parameters:
+	 * 	saveSlot - Number of file to load gamestate from.
+	 */
+	public static GameState loadState(Game game, StateManager sm, int saveSlot) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream("res/Saves/" + saveSlot + ".save");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		GameState loadState = new GameState(game, sm);
+		loadState.readObject(ois);
+		ois.close();
+		return loadState;
+	}	
 }

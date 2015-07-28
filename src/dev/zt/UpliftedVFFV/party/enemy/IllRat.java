@@ -27,6 +27,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class IllRat extends Schmuck{
 
+	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {21,19,11,12,25,10,11,8};

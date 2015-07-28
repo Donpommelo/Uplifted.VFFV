@@ -42,7 +42,7 @@ public class EventEmployeeIntro extends Event {
 			Event.events[this.getId()].test.runlast = 2;
 		}
 			
-		if(Player.getPlayerX()==128 && Player.getPlayerY()==128){
+		if(gamestate.getPlayer().getPlayerX()==128 && gamestate.getPlayer().getPlayerY()==128){
 			switch(stage){
 			case 0: 
 				Event.events[this.getId()].test.runlast = 3;

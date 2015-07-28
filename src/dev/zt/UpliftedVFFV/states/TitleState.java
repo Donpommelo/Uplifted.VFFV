@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -16,7 +18,7 @@ public class TitleState extends State {
 	
 	private BufferedImage testImage, window;
 	private boolean controls, about;
-	private boolean exit;
+	private boolean fileNotFound, exit;
 	private StateManager statemanager;
 	private int optionChosen;
 	
@@ -26,10 +28,12 @@ public class TitleState extends State {
 	
 	public TitleState(Game game, StateManager sm){
 		super(game,sm);
+		setStateType("title");
 		testImage = ImageLoader.loadImage("/textures/title.png");
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		controls = false;
 		about = false;
+		fileNotFound = false;
 		exit = false;
 	}
 
@@ -37,19 +41,20 @@ public class TitleState extends State {
 	public void tick() {
 		if(game.getKeyManager().isActive()){
 			if(game.getKeyManager().x){
+				fileNotFound = false;
 				exit=true;
 				game.getKeyManager().disable(scrollDelay);
 			}
 			
 			if(game.getKeyManager().down){
-				if(optionChosen < 4){
+				if(optionChosen < 4 && !fileNotFound){
 					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionChosen++;
 				}
 				game.getKeyManager().disable(scrollDelay);
 			}
 			if(game.getKeyManager().up){
-				if(optionChosen>0){
+				if(optionChosen > 0 && !fileNotFound){
 					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 					optionChosen--;
 				}
@@ -58,30 +63,39 @@ public class TitleState extends State {
 			if(game.getKeyManager().space){
 				if(about || controls){
 					exit = true;
-				}
-				else{
+				} else if(fileNotFound){
+					fileNotFound = false;
+				} else{
 					switch(optionChosen){
-					case 0:
-						StateManager.states.push(new GameState(game,statemanager));			//This pushes on a gamestate. The game begins.	
-						break;
-					//TODO: Load game.
-					case 1:
-						break;
-					case 2:
-						controls = true;
-						break;
-					case 3:
-						about = true;
-						break;
-					case 4:
-						System.exit(0);														//this exits the game
-						break;
+						case 0:
+							StateManager.states.push(new GameState(game,statemanager));			//This pushes on a gamestate. The game begins.	
+							break;
+						//Load game.
+						case 1:
+							try {
+								StateManager.states.push(Utils.loadState(game, statemanager, 1));
+							} catch (FileNotFoundException e) {
+								fileNotFound = true;
+							} catch (IOException e) {
+								e.printStackTrace();
+							} catch (ClassNotFoundException e) {
+								fileNotFound = true;
+							}	
+							break;
+						case 2:
+							controls = true;
+							break;
+						case 3:
+							about = true;
+							break;
+						case 4:
+							System.exit(0);														//this exits the game
+							break;
 					}
 				}
 				game.getKeyManager().disable(selectionDelay);
 			}
-		}
-		
+		}	
 	}
 
 
@@ -98,7 +112,7 @@ public class TitleState extends State {
 		//g.setColor(new Color(102, 178,255));
 		//g.fillRect(360,200, 150, 100);
 
-		String[] options = {"New Game", "Load Game", "Controls", "About", "Quit"};
+		String[] options = {"New Game", "Continue Game", "Controls", "About", "Quit"};
 		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 144, true);
 		
 		if(controls){
@@ -138,6 +152,9 @@ public class TitleState extends State {
 			g.drawString("Send comments to donpommelo@gmail.com", 315, 325);			
 			g.drawImage(ImageLoader.loadImage("/CharacterBusts/Player-5.png"), -40, -139, null);
 			
+		}
+		if(fileNotFound){
+			Utils.drawDialogueBox(g, window, "Cannot find valid file.", 18, Color.white, 250, 200, 140, 28, 16, true);
 		}
 	}
 

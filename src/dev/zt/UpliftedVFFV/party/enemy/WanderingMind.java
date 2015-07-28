@@ -14,6 +14,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class WanderingMind extends Schmuck{
 
+	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {17,25,15,9,20,8,7,6};

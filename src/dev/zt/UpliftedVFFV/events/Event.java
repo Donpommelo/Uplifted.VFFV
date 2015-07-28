@@ -79,7 +79,7 @@ public class Event{
 	static EventManager eventmanager;
 	static StateManager statemanager;
 	protected static Game game;
-	static GameState gamestate;
+	protected static GameState gamestate;
 	static Player killme;
 	protected float x;
 	protected float y;
@@ -429,8 +429,8 @@ public class Event{
 		eventmanager = new EventManager(game, path);
 		GameState.setWorld(world);
 		GameState.setEventmanager(eventmanager);
-		Player.setPlayerX(x*32);
-		Player.setPlayerY(y*32);
+		gamestate.getPlayer().setPlayerX(x*32);
+		gamestate.getPlayer().setPlayerY(y*32);
 		
 	}
 	
@@ -497,7 +497,7 @@ public class Event{
 
 	}
 	
-	public static void ChoiceBranch(int EventId,String[] choices, int width){
+	public static void ChoiceBranch(int EventId, String[] choices, int width){
 		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices,width));
 		try {
 			Thread.sleep(200);
@@ -671,7 +671,7 @@ public class Event{
 	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
 	public void moveUp(){
 		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
-			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y)*32 || Player.getPlayerY()<=(y-2)*32){				
+			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y)*32 || gamestate.getPlayer().getPlayerY()<=(y-2)*32){				
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
 				this.setX(this.getX());this.setY(this.getY()-1);
@@ -684,7 +684,7 @@ public class Event{
 
 	public void moveDown(){
 		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid(1)){
-			if(Player.getPlayerX()<=(x-1)*32 || Player.getPlayerX()>=(x+1)*32 || Player.getPlayerY()>=(y+2)*32 || Player.getPlayerY()<=(y)*32){	
+			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y+2)*32 || gamestate.getPlayer().getPlayerY()<=(y)*32){	
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
 				this.setX(this.getX());this.setY(this.getY()+1);
@@ -698,7 +698,7 @@ public class Event{
 
 	public void moveLeft(){
 		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid(2)){
-			if(Player.getPlayerX()<=(x-2)*32 || Player.getPlayerX()>=(x)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
+			if(gamestate.getPlayer().getPlayerX()<=(x-2)*32 || gamestate.getPlayer().getPlayerX()>=(x)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
 				this.setX(this.getX()-1);this.setY(this.getY());
@@ -710,7 +710,7 @@ public class Event{
 	}
 	public void moveRight(){
 		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid(3)){
-			if(Player.getPlayerX()<=(x)*32 || Player.getPlayerX()>=(x+2)*32 || Player.getPlayerY()>=(y+1)*32 || Player.getPlayerY()<=(y-1)*32){
+			if(gamestate.getPlayer().getPlayerX()<=(x)*32 || gamestate.getPlayer().getPlayerX()>=(x+2)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
 				this.setX(this.getX()+1);this.setY(this.getY());

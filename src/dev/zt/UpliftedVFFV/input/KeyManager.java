@@ -18,7 +18,7 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	public static boolean cutsceneMode = false;
 	
-	public boolean printStuff = true;
+	public boolean printStuff = false;
 	
 	public KeyManager(){
 		keys = new boolean[256];
@@ -42,18 +42,14 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 			if(!active){
 				if(System.currentTimeMillis() - counter >= duration){
 					active = true;
-//					if(printStuff){
-//						System.out.println("Enabled");
-//					}
-//					if(printStuff){
-//						System.out.println("Duration: " + duration);
-//					}
+					if(printStuff){
+						System.out.println("Enabled");
+					}
+					if(printStuff){
+						System.out.println("Duration: " + duration);
+					}
 				}
-			}
-			if(printStuff){
-//				System.out.println("FOCUS: " + keyFocus);
-			}
-			
+			}			
 	}
 
 	public void keyPressed(KeyEvent ev) {
@@ -103,9 +99,9 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 		for(int i = 0; i < keys.length; i++){
 			keys[i] = false;
 		}
-//		if(printStuff){
-//			System.out.println("Focus Lost");
-//		}
+		if(printStuff){
+			System.out.println("Focus Lost");
+		}
 	}
 	
 	public boolean isActive() {

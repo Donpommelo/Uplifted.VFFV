@@ -52,6 +52,7 @@ public class MenuState extends State {
 	
 	public MenuState(Game game, StateManager sm, GameState gs){
 		super(game, sm);
+		setStateType("menu");
 		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		window2 = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");

@@ -1,12 +1,15 @@
 package dev.zt.UpliftedVFFV.party;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
 
-public class PartyManager {
+public class PartyManager implements Serializable{
 	 
-//	private Game game;
+	private static final long serialVersionUID = 1L;
+	
+	//	private Game game;
 	public ArrayList<Schmuck> party=new ArrayList<Schmuck>(5);
 	
 	

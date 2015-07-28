@@ -1,7 +1,5 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
-
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
@@ -15,6 +13,6 @@ public class Event20 extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt", (int)(Player.getPlayerX()/32)+7, 12,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt", (int)(gamestate.getPlayer().getPlayerX()/32)+7, 12,"");
 	}
 }

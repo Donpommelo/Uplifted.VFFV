@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.display.Display;
@@ -13,8 +14,10 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.states.TitleState;
 import dev.zt.UpliftedVFFV.world.WorldManager;
 
-public class Game implements Runnable{
+public class Game implements Runnable, Serializable{
 	
+	private static final long serialVersionUID = 8L;
+
 	//Determines method of fps control. (0 - Skip when ahead, 1 - Sleep when ahead, 2 - Render when ahead) 
 	private int runMethod = 1;
 	
@@ -185,7 +188,7 @@ public class Game implements Runnable{
 				}
 			}
 		} else if(runMethod == 2){
-			
+			//TODO: Find a way to render that doesn't suck.
 		}
 		
 		stop();

@@ -18,6 +18,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Augur extends Schmuck{
 
+	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {50,30,10,10,11,11,12,17};

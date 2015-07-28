@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.EventEmployeeIntro;
 import dev.zt.UpliftedVFFV.gfx.Assets;
@@ -98,7 +97,7 @@ public class Event3 extends Event {
 				frame++;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && Player.getPlayerX() == 96){
+				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX() == 96){
 					stage++;
 					run();
 				}	
@@ -109,7 +108,7 @@ public class Event3 extends Event {
 				frame--;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && Player.getPlayerX() == 96){
+				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX() == 96){
 					stage++;
 					run();
 				}	

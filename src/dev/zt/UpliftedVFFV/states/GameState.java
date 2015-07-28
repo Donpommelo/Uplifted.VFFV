@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.states;
 
 import java.awt.Graphics;
+import java.io.IOException;
+
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
@@ -21,7 +23,7 @@ public class GameState extends State {
 	
 	private static final long serialVersionUID = 8L;
 	
-	private Player player;
+	public Player player;
 	private static World world;
 	StateManager statemanager;
 	WorldManager worldmanager;
@@ -155,13 +157,57 @@ public class GameState extends State {
 		}
 	}
 
-
-
-
 	@Override
 	public void init() {
 		
 	}
 	
+	//Saving and loading.
+	public void readObject(java.io.ObjectInputStream stream) throws IOException, ClassNotFoundException{
+		//Load world data and recreate world.
+		String name= (String) stream.readObject();
+		String path = (String) stream.readObject();
+		world = new World(game, path, name);
+		
+		//Load player location.
+		player.setPlayerX(stream.readFloat());
+		player.setPlayerY(stream.readFloat());
+		
+		//TODO: Load music track.
+		
+		//Load party data.
+//		partymanager = (PartyManager) stream.readObject();
+		
+		//Load inventory data.
+//		inventorymanager = (InventoryManager) stream.readObject();
+		
+		//Load world/event flags.
+//		eventmanager = (EventManager) stream.readObject();
+//		switchmanager.switches = (boolean[]) stream.readObject();
+//		variablemanager.variables = (int[]) stream.readObject();
+	}
+	
+	public void writeObject(java.io.ObjectOutputStream stream) throws IOException{
+		//Save world data.
+		stream.writeObject(world.getName());
+		stream.writeObject(world.getPath());
+		
+		//Save Player location.
+		stream.writeFloat(player.getPlayerX());
+		stream.writeFloat(player.getPlayerY());
+		
+		//TODO: Save music track. Maybe tie music to world.
+		
+		//Save party data.
+//		stream.writeObject(partymanager);
+		
+		//Save inventory data.
+//		stream.writeObject(inventorymanager);
+		
+		//Save world/event flags.
+//		stream.writeObject(eventmanager);
+//		stream.writeObject(switchmanager.switches);
+//		stream.writeObject(variablemanager.variables);
+	}
 
 }

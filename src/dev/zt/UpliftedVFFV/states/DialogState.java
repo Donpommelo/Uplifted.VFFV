@@ -25,6 +25,7 @@ public class DialogState extends State {
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
 	public DialogState(Game game, StateManager sm, int start, int end,int eventId){
 		super(game,sm);
+		setStateType("dialogue");
 		this.linenum=start;
 		this.endline=end;
 		this.EventId=eventId;

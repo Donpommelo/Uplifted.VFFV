@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.party;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -13,7 +14,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
-public class Schmuck {
+public class Schmuck implements Serializable{
+	
+	private static final long serialVersionUID = -7556561902401868149L;
 	
 //	public int startHp=0,startBp=0,startPow=0, startDef=0, startSpd=0, startSkl=0, startLuk=0, startInt=0;
 	public int[] startStats;

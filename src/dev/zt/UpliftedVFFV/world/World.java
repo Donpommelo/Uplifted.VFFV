@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.world;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -10,14 +11,16 @@ import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
-public class World {
+public class World implements Serializable{
+	
+	private static final long serialVersionUID = 8L;
 	
 	private Game game;
 	private int width, height;					//size of world 
 //	private int spawnX, spawnY;					//default start location of player. Only used for testing
 	private int numEvents;
 	private int[][] tiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
-	public String Worldname;					//name that shows up in nameplate upon entering new location. ""=no nameplate
+	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
 	public int enemyrate, enemynum;
 //	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
@@ -27,6 +30,7 @@ public class World {
 	public World(Game game, String path, String name){
 		this.game = game;
 		this.Worldname=name;
+		this.path = path;
 		enemy = new TreeMap<Integer, Integer>();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		loadWorld(path);
@@ -109,5 +113,17 @@ public class World {
 		}		
 
 		
+	}
+	
+	public TreeMap<Integer, Integer> getEnemies(){
+		return enemy;
+	}
+	
+	public String getPath(){
+		return this.path;
+	}
+	
+	public String getName(){
+		return this.Worldname;
 	}
 }

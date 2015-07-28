@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices;
 
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
@@ -14,6 +13,6 @@ public class Event111 extends Event {
 	}
 
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtriaFloor2.txt", 25,(int)(Player.getPlayerY()/32)+7,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightAtriaFloor2.txt", 25,(int)(gamestate.getPlayer().getPlayerY()/32)+7,"");
 	}
 }

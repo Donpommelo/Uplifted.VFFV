@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.entities.creatures;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.Set;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -19,7 +20,9 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 
 //player is the controlled character that walks around in the overworld. 
 //ignore entities and creatures for now.
-public class Player extends Creature{
+public class Player extends Creature implements Serializable{
+	
+	private static final long serialVersionUID = -5988574578443659173L;
 	
 	protected boolean runup,runleft,runright,rundown=false;
 	public boolean wall;
@@ -31,7 +34,7 @@ public class Player extends Creature{
 	public static double bonusML;
 	public static double combatFreq;
 	public GameState gamestate;
-	public static float playerx, playery;
+	public float playerx, playery;
 	
 	public Player(Game game, float x, float y, GameState gs) {
 		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator, 0);
@@ -86,14 +89,14 @@ public class Player extends Creature{
 			e.printStackTrace();
 		}
 		int troop=0;
-		Set<Integer> temp= WorldManager.getWorld().enemy.keySet();
+		Set<Integer> temp= WorldManager.getWorld().getEnemies().keySet();
 		Integer[] troops= temp.toArray(new Integer[WorldManager.getWorld().enemynum]);	
 		// Compute the total weight of all items together
 		double totalWeight = 0.0d;
 		for (int t : troops)
 		{
 			if(Troop.troops[t]!=null){
-				totalWeight += WorldManager.getWorld().enemy.get(t);
+				totalWeight += WorldManager.getWorld().getEnemies().get(t);
 		    }
 		}
 		// Now choose a random item
@@ -102,7 +105,7 @@ public class Player extends Creature{
 		for (int i = 0; i < troops.length; ++i)
 		{
 //		    System.out.print(random+" ");
-			random -= WorldManager.getWorld().enemy.get(troops[i]);
+			random -= WorldManager.getWorld().getEnemies().get(troops[i]);
 		    if (random <= 0.0d)
 		    {
 		        randomIndex = i;
@@ -337,19 +340,19 @@ public class Player extends Creature{
 		
 	}
 	
-	public static float getPlayerX() {
+	public float getPlayerX() {
 		return playerx;
 	}
 
-	public static void setPlayerX(float newx) {
+	public void setPlayerX(float newx) {
 		playerx = newx;
 	}
 
-	public static float getPlayerY() {
+	public float getPlayerY() {
 		return playery;
 	}
 
-	public static void setPlayerY(float newy) {
+	public void setPlayerY(float newy) {
 		playery = newy;
 	}
 	

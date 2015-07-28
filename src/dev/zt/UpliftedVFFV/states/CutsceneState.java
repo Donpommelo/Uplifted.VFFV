@@ -22,6 +22,7 @@ public class CutsceneState extends State {
 	//Dialogstates require an arraylist of BufferedImages
 	public CutsceneState(Game game, StateManager sm, BufferedImage[] slides,int eventId){
 		super(game,sm);
+		setStateType("cutscene");
 		this.scenes = slides;
 		this.EventId=eventId;
 		this.image = 0;

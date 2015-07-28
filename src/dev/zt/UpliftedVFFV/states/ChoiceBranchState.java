@@ -1,17 +1,20 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
-import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 //State for when the player must choose an option from a list of any size
 public class ChoiceBranchState extends State {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private BufferedImage window;
 	public int EventId;
 	public String[] num;
 	public int currentchoice, choicelocation,firstchoice, boxsize, width;
@@ -23,8 +26,10 @@ public class ChoiceBranchState extends State {
 		
 	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
+		setStateType("choice");
 		this.EventId=eventId;
 		this.num=choices;
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		currentchoice=0;				//which item is selected
 		choicelocation=0;				//where does the item show up on the menu
 		firstchoice=0;					//where out of all the options is the list currently looking at
@@ -66,7 +71,6 @@ public class ChoiceBranchState extends State {
 			
 			//pressing space runs the currently selected option
 			if(game.getKeyManager().space){
-				
 				selected=true;
 				game.getKeyManager().disable(delaySelection);
 			}
@@ -113,20 +117,23 @@ public class ChoiceBranchState extends State {
 		//if x is pressed, the state is popped
 		if(exit==true){
 			StateManager.getStates().pop();
-			Event.events[this.EventId].ChoiceMade(currentchoice);
+//			Event.events[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
 				Event.events[this.EventId].run();
 			}*/
-			StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
+			if(StateManager.getStates().peek().getStateType() == "dialogue"){
+				StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
+			}
 			exit=false;
 		}
 		
 		//if space is pressed, the states are exited and the event that called the ChoiceBranch receives the selected int
-		
 		if(selected==true){
 			StateManager.getStates().pop();
-			StateManager.getStates().pop();
+			if(StateManager.getStates().peek().getStateType() == "dialogue"){
+				StateManager.getStates().pop();
+			}
 			Event.events[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
@@ -135,23 +142,23 @@ public class ChoiceBranchState extends State {
 
 		}
 		else{
-			g.setColor(new Color(102, 178,255, 200));
-			g.fillRect(5, 30, width, 25*boxsize);
-			g.setColor(new Color(200, 200,200, 200));
-			g.fillRect(5, 30+25*choicelocation, width, 25);
-			g.setFont(new Font("Chewy", Font.PLAIN, 18));
-			g.setColor(Color.BLACK);
-			for(int i=0;i<boxsize;i++){
-				g.drawString(num[firstchoice+i], 5, 50+25*i);
-			}
-
+//			g.setColor(new Color(102, 178,255, 200));
+//			g.fillRect(5, 30, width, 25*boxsize);
+//			g.setColor(new Color(200, 200,200, 200));
+//			g.fillRect(5, 30+25*choicelocation, width, 25);
+//			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+//			g.setColor(Color.BLACK);
+//			for(int i=0;i<boxsize;i++){
+//				g.drawString(num[firstchoice+i], 5, 50+25*i);
+//			}
+			Utils.drawMenu(g, window, num, Color.black, 18, choicelocation, 5, 150, width, 30 * boxsize, 1, 5, firstchoice, 16, true);
 		}
-		if(firstchoice!=0){
-			g.drawImage(Assets.Uparrow,width/2,25,null);
-		}
-		if(firstchoice!=num.length-boxsize){
-			g.drawImage(Assets.Downarrow,width/2,20+25*boxsize,null);
-		}
+//		if(firstchoice != 0){
+//			g.drawImage(Assets.Uparrow, width/2, 25, null);
+//		}
+//		if(firstchoice != num.length - boxsize){
+//			g.drawImage(Assets.Downarrow, width/2, 20 + 25 * boxsize, null);
+//		}
 	
 	}
 
