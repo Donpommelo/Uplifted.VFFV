@@ -36,9 +36,12 @@ public class Midge extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Midge";
+	public static String plural = "Midges";
+	public static String pronoun = "it";
 	public Midge(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super("Midge",lvl,ImageLoader.loadImage("/BattleSprites/Midge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Midge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";
 		itemdrops.put(new MidgeBlood(), .3);

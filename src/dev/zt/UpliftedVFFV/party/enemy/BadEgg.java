@@ -30,8 +30,11 @@ public class BadEgg extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Bad Egg";
+	public static String plural = "Bad Eggs";
+	public static String pronoun = "it";
 	public BadEgg(int lvl) {
-		super("Bad Egg",lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "The uncouth spirit of an unborn chicken.";
 	}

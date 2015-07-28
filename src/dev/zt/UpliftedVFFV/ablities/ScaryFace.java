@@ -11,19 +11,16 @@ public class ScaryFace extends Skills {
 	public static String descr = "User flashes an intimidating face.";
 	public static String descrShort = "Intimidates target.";
 	public static int cost = 7;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public ScaryFace(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost);
+		super(index, 0, 6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Scary Face!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.stm.addStatus(vic, new Intimidated(3, perp, 40));
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.stm.addStatus(vic, new Intimidated(3, perp, 40));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

@@ -14,8 +14,10 @@ public Item thing;
 	public static String descr = "User contemplates life.";
 	public static String descrShort = "Skips turn.";
 	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public PassTurn(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost, Assets.nothing);
+		super(index, 0, 6, name, descr, descrShort, cost, Assets.nothing, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

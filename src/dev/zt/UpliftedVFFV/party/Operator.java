@@ -38,8 +38,11 @@ public class Operator extends Schmuck{
 	public ArrayList<Skills> skills;
 	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
 	public ArrayList<status> statuses;
+	public static String name = "Operator";
+	public static String plural = "Operators";
+	public static String pronoun = "he";
 	public Operator() {
-		super("Operator",1,ImageLoader.loadImage("/BattleSprites/Operator.png"),ImageLoader.loadImage("/CharacterBusts/Player-1.png"), startStats, statGrowths,elemRes);
+		super(name,plural,pronoun,1,ImageLoader.loadImage("/BattleSprites/Operator.png"),ImageLoader.loadImage("/CharacterBusts/Player-1.png"), startStats, statGrowths,elemRes);
 		super.calcStats(1);
 		this.bio = "The building's dependable and friendly elevator Operator.";
 		this.skills = new ArrayList<Skills>(1);

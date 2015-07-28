@@ -10,8 +10,10 @@ public class Fade extends Skills {
 	public static String descr = "User fades from existance\n becomming untargetable.";
 	public static String descrShort = "User becomes untargetable.";
 	public static int cost = 8;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public Fade(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

@@ -13,8 +13,10 @@ public class Petrify extends Skills {
 	public static String descr = "User petrifies a target, disabling\nthem for a long duration\nLimit : One use per fight.";
 	public static String descrShort = "Stuns target\n1 use per fight.";
 	public static int cost = 10;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss =  false; public static boolean canCrit = false;
 	public Petrify(int index) {
-		super(index,0,2, name, descr, descrShort, cost);
+		super(index,0,2, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

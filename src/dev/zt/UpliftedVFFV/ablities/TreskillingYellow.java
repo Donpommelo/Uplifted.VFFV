@@ -10,25 +10,21 @@ public class TreskillingYellow extends Skills {
 	public static String descr = "User strikes foe with a bolt.\nof aether that tends to gain\ninitiative.";
 	public static String descrShort = "Deals Yellow damage and\nhits first.";
 	public static int cost = 5;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public TreskillingYellow(int index) {
-		super(index,0,3, name, descr, descrShort, cost);
+		super(index,0,3, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" uses Treskilling Yellow!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],perp, vic,3);
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3],perp, vic,3);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Treskilling Yellow!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2]*.6)/vic.buffedStats[3])*(1.5+perp.getCritMulti())), perp, vic,3);
-				
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

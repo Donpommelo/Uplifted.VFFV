@@ -74,6 +74,12 @@ public class status {
 		
 	}
 	
+	//upon dealing damage from any source. 
+	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
+	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		return damage;
+	}
+	
 	//upon taking damage from any source. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
@@ -102,6 +108,15 @@ public class status {
 	
 	//Upon standard attack is used
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+		
+	}
+	//Upon any action critting
+	public void onCrit(Schmuck perp,Schmuck vic, BattleState bs){
+		
+	}
+	
+	//Upon any action missing
+	public void onMiss(Action a, BattleState bs){
 		
 	}
 	

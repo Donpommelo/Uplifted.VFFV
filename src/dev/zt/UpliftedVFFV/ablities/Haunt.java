@@ -10,8 +10,10 @@ public class Haunt extends Skills {
 	public static String descr = "User returns from the grave\nto damage and unnerve foes.";
 	public static String descrShort = "Damages and debuffs all enemies.";
 	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public Haunt(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

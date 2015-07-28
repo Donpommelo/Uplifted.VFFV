@@ -13,8 +13,10 @@ public class GodsBreath extends Skills {
 	public static String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
 	public static String descrShort = "Protects all allies\n1 use per fight.";
 	public static int cost = 15;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public GodsBreath(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
+		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

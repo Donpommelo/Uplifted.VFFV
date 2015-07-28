@@ -10,19 +10,16 @@ public class MotorGrinder extends Skills {
 	public static String descr = "User summons crushing gears to\nbatter a foe and lower the\ntarget's Defense.";
 	public static String descrShort = "Damage and lower Def.";
 	public static int cost = 7;
+	public static int baseAcc = 80; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public MotorGrinder(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Motorgrinder!");
-		if(bs.bp.em.getAcc(perp, vic,80)){
-			bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,.8, perp,60));
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2), perp, vic,6);
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,.8, perp,60));
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2), perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

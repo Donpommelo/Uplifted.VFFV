@@ -9,9 +9,10 @@ public class BoxCutter extends Skills {
 	public static String descr = "A quick and reliable stab with a\nbox-opening blade. This attack\nwill deal consistent damage\nscaling to its user's Level.";
 	public static String descrShort = "Weak single target attack\nthat never misses.";
 	public static int cost = 1;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public BoxCutter(int index) {
-		super(index, 0 , 6 , name, descr, descrShort, cost);
-
+		super(index, 0 , 6 , name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

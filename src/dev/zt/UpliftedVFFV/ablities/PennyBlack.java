@@ -10,8 +10,10 @@ public class PennyBlack extends Skills {
 	public static String descr = "User grants a target a\nBlack-aligned shield that\nsucks away the souls of\nenemies.";
 	public static String descrShort = "Grants Void-bonus damage.";
 	public static int cost = 28;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public PennyBlack(int index) {
-		super(index,0,5, name, descr, descrShort, cost);
+		super(index,0,5, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

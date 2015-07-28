@@ -10,20 +10,17 @@ public class BlightBite extends Skills {
 	public static String descr = "User refrains from brushi\nhis/her teeth and bites an\nenemy.";
 	public static String descrShort = "Damages and poisons target.";
 	public static int cost = 5;
+	public static int baseAcc = 90; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public BlightBite(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost);
+		super(index, 0, 6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
-		if(bs.bp.em.getAcc(perp, vic,90)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic,6);
-			bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp, 40));
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic,6);
+		bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp, 40));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

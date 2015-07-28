@@ -9,8 +9,10 @@ public class ArcherRoulette extends Skills {
 	public static String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
 	public static String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
 	public static int cost = 17;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public ArcherRoulette(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost);
+		super(index, 0, 6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

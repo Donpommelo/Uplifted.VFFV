@@ -9,8 +9,10 @@ public class VariableVoltage extends Skills {
 	public static String descr = "User strikes the enemy team\nwith random bursts of\nelectricity.";
 	public static String descrShort = "Deals random Yellow\ndamage to enemies.";
 	public static int cost = 15;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public VariableVoltage(int index) {
-		super(index,1,3, name, descr, descrShort, cost);
+		super(index,1,3, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

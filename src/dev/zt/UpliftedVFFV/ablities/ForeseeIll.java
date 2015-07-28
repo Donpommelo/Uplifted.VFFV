@@ -10,8 +10,10 @@ public class ForeseeIll extends Skills {
 	public static String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy\ndamage that scales with target's\nIntrusive Thoughts.";
 	public static String descrShort = "Release built up Intrusive\nThoughts.";
 	public static int cost = 4;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public ForeseeIll(int index) {
-		super(index,0,4, name, descr, descrShort, cost);
+		super(index,0,4, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

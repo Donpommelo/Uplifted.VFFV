@@ -11,8 +11,10 @@ public class Runaway extends Skills {
 	public static String descr = "User attempts to escape.";
 	public static String descrShort = "Run away from battle.";
 	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
 	public Runaway(int index) {
-		super(index, 1, 6, name, descr, descrShort, cost, Assets.run);
+		super(index, 1, 6, name, descr, descrShort, cost, Assets.run, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

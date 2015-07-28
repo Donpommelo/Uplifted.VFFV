@@ -12,19 +12,16 @@ public class Scald extends Skills {
 	public static String descr = "A spray of boiling hot liquid that\ncan inflict nasty burns.";
 	public static String descrShort = "Red damage and Ablaze.";
 	public static int cost = 5;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public Scald(int index) {
-		super(index,0,0, name, descr, descrShort, cost);
+		super(index,0,0, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Scald!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.2), perp,vic,0);
-			bs.bp.stm.addStatus(vic, new Ablaze(3, perp, 70));
-		}		
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.2), perp,vic,0);
+		bs.bp.stm.addStatus(vic, new Ablaze(3, perp, 70));	
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

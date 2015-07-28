@@ -9,8 +9,10 @@ public class DoubleGeneva extends Skills {
 	public static String descr = "User summons a barrage of\nmissles and will do massive damage\n to unscathed target.";
 	public static String descrShort = "Damages two random foes.\nIf this attack targeted\nneither,target is damaged. ";
 	public static int cost = 12;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public DoubleGeneva(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
+		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

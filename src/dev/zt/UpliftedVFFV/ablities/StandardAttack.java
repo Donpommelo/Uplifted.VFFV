@@ -10,29 +10,26 @@ public class StandardAttack extends Skills {
 	public static String descr = "User attacks a foe.";
 	public static String descrShort = "Deals damage target.";
 	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public StandardAttack(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost, Assets.attack);
+		super(index, 0, 6, name, descr, descrShort, cost, Assets.attack, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+"!");
 		int statAttack = (int)(perp.getDamageStat()+2);
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			if((int)perp.getElemAlignment() == 0 ){
-				bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,6);
-				}
-			else{
-				bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,(int)(perp.getElemAlignment()-1));				
+		if((int)perp.getElemAlignment() == 0 ){
+			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,6);
 			}
-			for(int i=0; i<perp.statuses.size(); i++){
-				if(perp.statuses.get(i)!=null){
-					perp.statuses.get(i).attackModify(perp, vic, bs,-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]);
-				}
-			}
-		}		
 		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}		
+			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,(int)(perp.getElemAlignment()-1));				
+		}
+		for(int i=0; i<perp.statuses.size(); i++){
+			if(perp.statuses.get(i)!=null){
+				perp.statuses.get(i).attackModify(perp, vic, bs,-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]);
+			}
+		}	
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){

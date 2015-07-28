@@ -9,7 +9,7 @@ public class OutofUsesNothing extends Skills {
 public Item thing;
 	public Skills move;;
 	public OutofUsesNothing(int index, Skills move) {
-	super(index,1,6,"" ,"" ,"", 0);
+	super(index,1,6,"" ,"" ,"", 0, 0, 0,false, false);
 	this.move = move;
 	}
 	

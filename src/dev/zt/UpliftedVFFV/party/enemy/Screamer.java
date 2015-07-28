@@ -30,8 +30,11 @@ public class Screamer extends Schmuck{
 	public static int[] tempStats={startStats[0],startStats[1]};
 	public ArrayList<Skills> skills;
 	public ArrayList<status> statuses;
+	public static String name = "Screamers";
+	public static String plural = "Screamers";
+	public static String pronoun = "it";
 	public Screamer(int lvl) {
-		super("Screamer",lvl,ImageLoader.loadImage("/BattleSprites/Screamer.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Screamer.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "TEST.";
 	}

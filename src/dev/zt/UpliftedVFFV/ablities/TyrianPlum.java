@@ -10,19 +10,16 @@ public class TyrianPlum extends Skills {
 	public static String descr = "User plants a seed into a target\nthat saps health over time.";
 	public static String descrShort = "Drains health from target\nwhen using Mp";
 	public static int cost = 13;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
 	public TyrianPlum(int index) {
-		super(index,0,2, name, descr, descrShort, cost);
+		super(index,0,2, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Tyrian Plum!");
-		if(bs.bp.em.getAcc(perp, vic,100)){
-			bs.bp.stm.addStatus(vic, new TyrianPlumEffect(6,perp, 70));
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		bs.bp.stm.addStatus(vic, new TyrianPlumEffect(6,perp, 70));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
