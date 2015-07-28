@@ -9,8 +9,11 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	
 	private boolean[] keys;
 	public boolean up, down, left, right, space, z,x,enter; //whether this button is currently being pressed
-	public String keyTyped;
-	public boolean typing;
+	
+	//Stores string from keyboard input if desired.
+	private String keyTyped;
+	private boolean typing;
+	
 	public int lastPressed;
 	//Boolean and counter for built in button delay, and window minimization, and loss of control during cutscenes.
 	private boolean active;
@@ -23,8 +26,6 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	public static boolean cutsceneMode = false;
 	
 	public boolean printStuff = false;
-	
-	public Game game;
 
 	public KeyManager(Game g){
 		keys = new boolean[256];
@@ -37,37 +38,34 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 		
 		typing = false;
 		keyTyped = "";
-		
-		this.game = g;
 	}
 	
 	public void tick(){						//add keys here. Change wasd to arrow keys later when done testing.
-			up = keys[KeyEvent.VK_UP];
-			down = keys[KeyEvent.VK_DOWN];
-			left = keys[KeyEvent.VK_LEFT];
-			right = keys[KeyEvent.VK_RIGHT];
-			space = keys[KeyEvent.VK_SPACE];
-			enter = keys[KeyEvent.VK_ENTER];
-			z = keys[KeyEvent.VK_Z];
-			x = keys[KeyEvent.VK_X];
-			if(!active){
-				if(System.currentTimeMillis() - counter >= duration){
-					active = true;
-					if(printStuff){
-						System.out.println("Enabled");
-					}
-					if(printStuff){
-						System.out.println("Duration: " + duration);
-					}
+		up = keys[KeyEvent.VK_UP];
+		down = keys[KeyEvent.VK_DOWN];
+		left = keys[KeyEvent.VK_LEFT];
+		right = keys[KeyEvent.VK_RIGHT];
+		space = keys[KeyEvent.VK_SPACE];
+		enter = keys[KeyEvent.VK_ENTER];
+		z = keys[KeyEvent.VK_Z];
+		x = keys[KeyEvent.VK_X];
+		if(!active){
+			if(System.currentTimeMillis() - counter >= duration){
+				active = true;
+				if(printStuff){
+					System.out.println("Enabled");
 				}
-			}			
+				if(printStuff){
+					System.out.println("Duration: " + duration);
+				}
+			}
+		}			
 	}
 	
-	
 	public void keyPressed(KeyEvent ev) {
+		//Two modes, one for generic input and one for typing.
 		if(typing){
 			keyTyped = KeyEvent.getKeyText(ev.getKeyCode());
-			
 		}
 		else{
 			keys[ev.getKeyCode()] = true;
@@ -91,12 +89,23 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 		
 	}
 	
+	public String getKeyTyped(){
+		return keyTyped;
+	}
+	
 	public static boolean isCutsceneMode() {
 		return cutsceneMode;
 	}
 
 	public static void setCutsceneMode(boolean cutsceneMode) {
 		KeyManager.cutsceneMode = cutsceneMode;
+	}
+	
+	public void setTypeMode(boolean type){
+		typing = type;
+		for(int i = 0; i < keys.length; i++){
+			keys[i] = false;
+		}
 	}
 	
 	public void disable(int disableDuration){
@@ -132,8 +141,4 @@ public class KeyManager implements KeyListener {  //takes keyboard input.
 	public boolean isActive() {
 		return active;
 	}
-
-	
-	
-
 }

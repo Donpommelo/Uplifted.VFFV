@@ -11,59 +11,11 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event1;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event2;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.Event3;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomBed1;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomBed2;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomCalendar;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomCalendarInvisible;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomDesk1;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomDesk2;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventBackroomTv;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventElevatorPanel;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventPenPal;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventStory3;
-import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.EventTvInvisible;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventClock;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventElevatorFloor;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventElevatorWallWave;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventEmployeePlant;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventFemaleSign;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventFilingCabinet;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventInvisWall;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventMaleSign;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventMirror;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSink;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSinkMirror;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSmudge1;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSmudge2;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSofa1;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventSofa2;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable0;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable1;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable2;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable3;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable4;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable5;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable6;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable7;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable8;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventTable9;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventToilet;
-import dev.zt.UpliftedVFFV.events.EventsCommon.EventWorkDesk1;
+import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.*;
+import dev.zt.UpliftedVFFV.events.EventsCommon.*;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.states.ChoiceBranchState;
-import dev.zt.UpliftedVFFV.states.CutsceneState;
-import dev.zt.UpliftedVFFV.states.DialogState;
-import dev.zt.UpliftedVFFV.states.ElevatorChoiceBranchState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.PenPalLetterState;
-import dev.zt.UpliftedVFFV.states.ShoppingState;
-import dev.zt.UpliftedVFFV.states.StateManager;
-import dev.zt.UpliftedVFFV.states.TimerState;
+import dev.zt.UpliftedVFFV.states.*;
 import dev.zt.UpliftedVFFV.world.EventManager;
 import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
@@ -335,8 +287,6 @@ public class Event{
 
 	}
 	
-
-	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	protected BufferedImage tex;
 	public Creature test;
@@ -447,24 +397,41 @@ public class Event{
 	
 	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.
 	//consider adding multiple text files later that will need to be specified
-	public static void Dialog(int firstline, int lastline,int eventId){
-		StateManager.states.push(new DialogState(game,statemanager,firstline,lastline,eventId));
+	public static void Dialog(int firstline, int lastline, int eventId){
+		StateManager.states.push(new DialogState(game, statemanager, firstline, lastline, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
-	public static void Dialog(Dialog[] d, int dialoglength, int eventId){
-		StateManager.states.push(new DialogState(game, statemanager, d, dialoglength ,eventId));
+	public static void Dialog(int firstline, int lastline, int eventId, boolean arrow){
+		StateManager.states.push(new DialogState(game, statemanager, firstline, lastline, eventId, arrow));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public static void Dialog(Dialog[] d, int dialoglength, int eventId, boolean arrow){
+		StateManager.states.push(new DialogState(game, statemanager, d, dialoglength, eventId, arrow));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Pushes a simple notification window.
+	public static void Notification(String message, int eventId){
+		StateManager.states.push(new NotificationState(game, statemanager, message, eventId));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void Cutscene(BufferedImage[] scenes,int eventId){

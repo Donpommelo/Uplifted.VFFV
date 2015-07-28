@@ -8,14 +8,13 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 //DialogState. This controls which dialog is displayed
 public class DialogState extends State {
 	
-
 	private static final long serialVersionUID = 1L;
 	
 	private int linenum, endline, dialognum, dialogamount;
 	private Dialog[] dialogs;
 	private Dialog current;
 	private int yoffset, ybob;
-	private boolean yrise;	//Booleans for arrow animation direction and frame skip.
+	private boolean yrise, showArrow;	//Booleans for arrow animation direction and frame skip.
 	public int EventId;
 	
 	//KeyListener delay variables.
@@ -23,7 +22,7 @@ public class DialogState extends State {
 	private int delayScrolling = 120;
 	
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
-	public DialogState(Game game, StateManager sm, int start, int end,int eventId){
+	public DialogState(Game game, StateManager sm, int start, int end, int eventId){
 		super(game,sm);
 		setStateType("dialogue");
 		this.linenum=start;
@@ -34,10 +33,26 @@ public class DialogState extends State {
 		this.yrise = false;
 		this.dialognum = 0;
 		dialogamount = 1;
+		showArrow = true;	//Arrow displays by default.
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 	
-	public DialogState(Game game, StateManager sm, Dialog[] d, int dialoglength ,int eventId){
+	public DialogState(Game game, StateManager sm, int start, int end, int eventId, boolean arrow){
+		super(game,sm);
+		setStateType("dialogue");
+		this.linenum=start;
+		this.endline=end;
+		this.EventId=eventId;
+		this.yoffset = 0;
+		this.ybob = 12;
+		this.yrise = false;
+		this.dialognum = 0;
+		dialogamount = 1;
+		showArrow = arrow;
+		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
+	}
+	
+	public DialogState(Game game, StateManager sm, Dialog[] d, int dialoglength, int eventId, boolean arrow){
 		super(game,sm);
 		this.dialogs = d;
 		this.dialognum = 0;
@@ -48,6 +63,7 @@ public class DialogState extends State {
 		this.yrise = false;
 		this.linenum = 1;
 		this.endline = 0;
+		showArrow = arrow;
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 
@@ -105,14 +121,14 @@ public class DialogState extends State {
 		else{
 			current = dialogs[dialognum];
 		}
-			StateManager.getStates().pop();
-			StateManager.getStates().peek().render(g);
-			StateManager.getStates().push(this);
-			if(current!=null){
-				current.render(g);
-			}
+		StateManager.getStates().pop();
+		StateManager.getStates().peek().render(g);
+		StateManager.getStates().push(this);
+		if(current!=null){
+			current.render(g);
+		}
 			
-		if(Dialog.scrolling==false){
+		if(Dialog.scrolling==false && showArrow){
 			g.drawImage(Assets.Downarrow, 320 - Assets.Downarrow.getWidth() / 2, 416 - Assets.Downarrow.getHeight() + yoffset / 4, null);
 			//Edit y offsets for animation.
 			
@@ -126,11 +142,8 @@ public class DialogState extends State {
 				if (yoffset >= ybob){
 					yrise = true;
 				}
-			}
-				
-			
+			}			
 		}		
-		
 	}
 
 	@Override

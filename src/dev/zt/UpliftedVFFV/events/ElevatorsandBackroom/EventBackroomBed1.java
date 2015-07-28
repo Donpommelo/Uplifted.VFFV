@@ -15,18 +15,19 @@ public class EventBackroomBed1 extends Event {
 	public boolean selfswitch1=false;
 	
 	private String[] choices = {"Sleep", "Save", "Nevermind"};			//list of choices used in the choicebranch
-	private static int stage = 0;						//stage is the variable that determines which stage the event is in
+	private int stage = 0;						//stage is the variable that determines which stage the event is in
 //	private static int finalstage = 3;
 	
 	public EventBackroomBed1(float x, float y, int idnum) {
 		super(Assets.Bed1,idnum,x, y);
+		stage = 0;
 	}
 	
 	public void run(){
 		switch(stage){
 			case 0:
 				//Select options.
-				super.ChoiceBranch(this.getId(), choices);
+				super.ChoiceBranch(this.getId(), choices, 120);
 				break;
 			case 1:
 				//"Sleep" option.

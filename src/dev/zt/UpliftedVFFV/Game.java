@@ -48,12 +48,11 @@ public class Game implements Runnable, Serializable{
 		this.height = height;
 		this.title = title;
 		keyManager = new KeyManager(this);							//controls keyboard inputs
-
 	}
 	
 	private void init(){
 	
-		display =new Display(title, width, height);				//creates canvas. Stuff is drawn in this window
+		display = new Display(title, width, height);				//creates canvas. Stuff is drawn in this window
 		display.getFrame().addKeyListener(keyManager);			//this makes window respond to keyboard commands set up in keymanager
 		Assets.init();											//preloads all textures and other art assets
 		

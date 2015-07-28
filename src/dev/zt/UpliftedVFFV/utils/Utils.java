@@ -108,10 +108,10 @@ public class Utils {
 		 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 		 */
 		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor, int fontHeight,
-				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, int squareSize,
+				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, int customSquareSize,
 				boolean priority){
 			Graphics2D g2d = (Graphics2D) g;
-			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, squareSize, priority);
+			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, customSquareSize, priority);
 			
 			//Set transparency according to priority.
 			if(!priority){

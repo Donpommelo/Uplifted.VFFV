@@ -12,6 +12,7 @@ public class Skills {
 	public String name;
 	public String descr;
 	public String descrShort;
+	private int id;
 	public int cost;
 	public int baseAcc,baseCrit;
 	public boolean canMiss,canCrit;
@@ -76,6 +77,10 @@ public class Skills {
 	
 	public String getDescrShort() {
 		return descrShort;
+	}
+	
+	public int getID(){
+		return id;
 	}
 	
 	public int getCost() {
