@@ -13,6 +13,6 @@ public class Event65 extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightStairwell.txt", 1,5,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightStairwell.txt", 1,7,"");
 	}
 }
