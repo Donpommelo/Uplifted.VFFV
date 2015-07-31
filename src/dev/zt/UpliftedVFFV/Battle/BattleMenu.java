@@ -431,7 +431,7 @@ public class BattleMenu{
 		int menux = currentSchmuck.getX();
 		int menuy = currentSchmuck.getY();
 		
-		if(phase == 1 || phase == 3){
+		if(phase == 1 || (phase == 3 && actionSelected == 0)){
 			g.setColor(new Color(0, 128, 255, 200));
 			//g.setColor(new Color(0, 0, 0, 200));
 			g.fillRect(menux, menuy - 40, 110, 160);
@@ -479,10 +479,10 @@ public class BattleMenu{
 		if(phase == 2 || phase == 3){
 			switch(actionSelected){
 			case 0:
-				//If attack is chosen, nothing is displayed, skips right to targeting phase
+				//If attack is chosen, nothing is displayed, skips right to targeting phase.
 				break;
 			case 1:
-				//if Skill is chosen, a list of skills covers up the actions menu
+				//if Skill is chosen, a list of skills covers up the actions menu.
 				g.setColor(new Color(0, 128, 255, 200));
 				//g.setColor(new Color(0, 0, 0, 200));
 				g.fillRect(menux, menuy - 40, 120, 160);
@@ -506,7 +506,7 @@ public class BattleMenu{
 						skillnum++;
 					}
 					
-					//Short descriptions are also visible at the bottom
+					//Short descriptions are also visible to the side.
 					g.setColor(Color.white);
 					g.fillRect(menux + 120, menuy - 35, 125, 75);
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));

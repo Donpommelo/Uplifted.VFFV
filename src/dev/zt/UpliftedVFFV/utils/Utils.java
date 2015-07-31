@@ -11,6 +11,7 @@ import java.io.*;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Utils {
@@ -371,10 +372,11 @@ public class Utils {
 	 * 	saveSlot - Number of file to save gamestate to.
 	 * 	gamestate - Object containing game information. 
 	 */
-	public static void saveState(int saveSlot, GameState gamestate) throws IOException{
+	public static void saveState(int saveSlot, GameState gamestate, int eventID) throws IOException{
 		FileOutputStream fos = new FileOutputStream("res/Saves/" + saveSlot + ".save");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		gamestate.writeObject(oos);
+		StateManager.states.push(new NotificationState(gamestate.getGame(), gamestate.getStateManager(), " Game Saved ", eventID));
 		oos.close();
 	}
 	 

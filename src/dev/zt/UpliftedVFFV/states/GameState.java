@@ -83,29 +83,26 @@ public class GameState extends State {
 		return partymanager;
 	}
 
-
 	public void setPartymanager(PartyManager partymanager) {
 		this.partymanager = partymanager;
 	}
-
 	
-
-
+	public StateManager getStateManager(){
+		return statemanager;
+	}
+	
+	public WorldManager getWorldManager(){
+		return worldmanager;
+	}
 
 	public Player getPlayer() {
 		return player;
 	}
 
-
-
-
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-
-
-
-
+	
 	public void tick() {
 
 		world.tick();
@@ -130,8 +127,6 @@ public class GameState extends State {
 		}
 		
 //			StateManager.states.push(new BattleState(game,statemanager));
-			
-		
 	}
 
 	public int getVar(int i) {
@@ -183,8 +178,8 @@ public class GameState extends State {
 		
 		//Load world/event flags.
 //		eventmanager = (EventManager) stream.readObject();
-//		switchmanager.switches = (boolean[]) stream.readObject();
-//		variablemanager.variables = (int[]) stream.readObject();
+		switchmanager.switches = (boolean[]) stream.readObject();
+		variablemanager.variables = (int[]) stream.readObject();
 	}
 	
 	public void writeObject(java.io.ObjectOutputStream stream) throws IOException{
@@ -206,8 +201,7 @@ public class GameState extends State {
 		
 		//Save world/event flags.
 //		stream.writeObject(eventmanager);
-//		stream.writeObject(switchmanager.switches);
-//		stream.writeObject(variablemanager.variables);
+		stream.writeObject(switchmanager.switches);
+		stream.writeObject(variablemanager.variables);
 	}
-
 }

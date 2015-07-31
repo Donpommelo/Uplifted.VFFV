@@ -8,18 +8,15 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.Queried;
 
-
-
 public class BattleUI {
 	
-	private BufferedImage uihealth, enemyhealth;
+	private BufferedImage uihealth, enemyhealth, crosshair;
 	public StateManager sm;
 	public Game game;
 	public ArrayList<Schmuck> allies = new ArrayList<Schmuck>();
@@ -35,6 +32,7 @@ public class BattleUI {
 		
 		uihealth = ImageLoader.loadImage("/ui/PlayerGauge.png");
 		enemyhealth = ImageLoader.loadImage("/ui/EnemyGaugeQueried.png");
+		crosshair = ImageLoader.loadImage("/ui/Crosshair.png");
 	}
 	
 	public void tick(){
@@ -77,10 +75,10 @@ public class BattleUI {
 		if(bs.bp.bm != null && bs.bp.bm.phase == 3 && bs.bp.bm.pointed != null){
 			int yoffset = 2;
 			if(bs.bs.alliesTargets.contains(bs.bp.bm.pointed)){
-				g.drawImage(Assets.Crosshair1, bs.bp.bm.pointed.getX() +(bs.bp.bm.pointed.getBattleSprite().getWidth() - Assets.Crosshair1.getWidth()) / 2, 
+				g.drawImage(crosshair, bs.bp.bm.pointed.getX() +(bs.bp.bm.pointed.getBattleSprite().getWidth() - crosshair.getWidth()) / 2, 
 						bs.bp.bm.pointed.getY() + bs.bp.bm.pointed.getBattleSprite().getHeight() / yoffset, null);
 			} else if(bs.bs.enemyTargets.contains(bs.bp.bm.pointed)){
-				g.drawImage(Assets.Crosshair1, bs.bp.bm.pointed.getX() +(bs.bp.bm.pointed.getBattleSprite().getWidth() - Assets.Crosshair1.getWidth()) / 2, 
+				g.drawImage(crosshair, bs.bp.bm.pointed.getX() +(bs.bp.bm.pointed.getBattleSprite().getWidth() - crosshair.getWidth()) / 2, 
 						bs.bp.bm.pointed.getY() + bs.bp.bm.pointed.getBattleSprite().getHeight() / yoffset, null);
 			}
 			

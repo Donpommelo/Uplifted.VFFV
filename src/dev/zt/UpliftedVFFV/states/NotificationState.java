@@ -27,7 +27,7 @@ public class NotificationState extends State{
 		myMessage = message;
 		audio = game.getAudiomanager();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
-		width = 225;
+		width = game.getGraphics().getFontMetrics().stringWidth(message) + 32;
 		height = 80;
 	}
 

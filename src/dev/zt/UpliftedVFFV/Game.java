@@ -249,5 +249,9 @@ public class Game implements Runnable, Serializable{
 	public Display getDisplay(){
 		return display;
 	}
+	
+	public Graphics getGraphics(){
+		return g;
+	}
 
 }

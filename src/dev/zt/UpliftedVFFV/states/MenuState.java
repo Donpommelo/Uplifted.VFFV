@@ -53,7 +53,7 @@ public class MenuState extends State {
 	public MenuState(Game game, StateManager sm, GameState gs){
 		super(game, sm);
 		setStateType("menu");
-		testImage = ImageLoader.loadImage("/textures/title.png");			//atm, this uses the title screen a a background.
+		testImage = ImageLoader.loadImage("/Screens/Menu.png");			
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		window2 = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 		window3 = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
@@ -622,7 +622,7 @@ public class MenuState extends State {
 		//background consists of black with an image in front. Def change this later
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 640, 416);
-		g.drawImage(testImage, 48, 0, null);
+		g.drawImage(testImage, 0, 0, null);
 		
 		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
 		Utils.drawMenu(g, window, options, Color.black, 25, optionSelected, 5, 5, 125, 380, !optionChosen);

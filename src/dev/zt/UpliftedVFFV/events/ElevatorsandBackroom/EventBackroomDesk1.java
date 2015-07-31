@@ -38,7 +38,7 @@ public class EventBackroomDesk1 extends Event {
 				}
 				break;
 			case 1:
-				super.Notification("   You don't have the stamps!  ", this.getId());
+				super.Notification("  You don't have the stamps!  ", this.getId());
 				stage = 0;
 				break;
 		}

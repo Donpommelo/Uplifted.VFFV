@@ -57,4 +57,7 @@ public abstract class State implements Serializable{
 		this.stateType = stateType;
 	}
 	
+	public Game getGame(){
+		return game;
+	}
 }

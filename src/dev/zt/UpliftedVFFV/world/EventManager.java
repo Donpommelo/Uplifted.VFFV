@@ -9,26 +9,26 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 
 	public class EventManager {
 	
-	private Game game;
-	private int width, height;
-//	private int X, Y;
-	private int numevents;
-	public static int[][] events;
-	public static Event[] EventTracker;
-	
-	public EventManager(Game game, String path) {
-		this.game=game;
-		loadEvent(path);
+		private Game game;
+		private int width, height;
+	//	private int X, Y;
+		private int numevents;
+		public static int[][] events;
+		public static Event[] EventTracker;
+		
+		public EventManager(Game game, String path) {
+			this.game=game;
+			loadEvent(path);
 	}
 
-public void tick(){
-	for(int y = 0;y<height;y++){
-		for(int x = 0;x < width;x++){
-			if(events[x][y] != 0 && getEvent(x,y) != null){
-				getEvent(x, y).tick();
+	public void tick(){
+		for(int y = 0;y<height;y++){
+			for(int x = 0;x < width;x++){
+				if(events[x][y] != 0 && getEvent(x,y) != null){
+					getEvent(x, y).tick();
+				}
 			}
 		}
-	}
 	}
 	
 	public void render(Graphics g){
@@ -45,7 +45,6 @@ public void tick(){
 				}
 			}
 		}
-		
 	}
 	
 	public static Event getEvent(int x,int y){
@@ -54,7 +53,6 @@ public void tick(){
 			return Event.event0;
 		return e;
 	}
-	
 	
 	private void loadEvent(String path){
 		String file = Utils.loadFileAsString(path);
@@ -78,7 +76,6 @@ public void tick(){
 				}
 			}
 		}
-
 	}
 
 	public static int[][] getEvents() {
@@ -88,7 +85,4 @@ public void tick(){
 	public static void setEvents(int[][] events) {
 		EventManager.events = events;
 	}
-	
-	
-
 }
