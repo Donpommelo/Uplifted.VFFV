@@ -270,6 +270,10 @@ public class Event{
 	public static Event event110 = new Event110(3,8,229);
 	public static Event event111 = new Event111(7,5,230);
 	public static Event event112 = new Event112(22,5,231);
+	
+	//event 113,114,115 East Wing Right Atria exits
+	
+	public static Event event116 = new Event116(26,13,235);
 
 	
 	
