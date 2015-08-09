@@ -1,8 +1,9 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
 
 public class StandardAttack extends Skills {
 
@@ -13,7 +14,7 @@ public class StandardAttack extends Skills {
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public StandardAttack(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost, Assets.attack, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, 0, 6, name, descr, descrShort, cost, 0, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
@@ -48,6 +49,13 @@ public class StandardAttack extends Skills {
 		int statAttack = (int)(perp.getDamageStat()+2);
 		int damage = -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/(vic.buffedStats[3]));
 		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
+	}
+	
+	public void TOQChange(Action a, BattleState bs){
+		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(a.user,50))){
+			bs.bp.TurnOrderQueue.remove(a);
+			bs.bp.TurnOrderQueue.add(0, a);
+		}
 	}
 		
 }

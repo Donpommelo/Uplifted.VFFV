@@ -1,13 +1,13 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.ElemPointsBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class EightBall extends Item{
 
 	static String descr = "A black cue ball that some jerk threw at you.";
-	static String descrShort="10% ??? Resistance.";
+	static String descrShort="10% ??? Alignment.";
 	public status[] enchantment = new status[1];
 	public EightBall() {
 		super(2, "8-Ball", false, false, false, false, descr, descrShort, 111, 1);

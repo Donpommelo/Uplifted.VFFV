@@ -11,10 +11,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 
 //A simple state that displays a message in the middle of the screen that can be dismissed with a press of a button.
 public class NotificationState extends State{
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 7963740710059253953L;
 	
 	private String myMessage;

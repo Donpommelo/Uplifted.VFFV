@@ -1,8 +1,8 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.EmpathyLinkStatus;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EmpathyLinkStatus;
 
 public class EmpathyLink extends Item{
 

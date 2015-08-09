@@ -1,10 +1,10 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.AddStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Cannabalism;
 import dev.zt.UpliftedVFFV.statusEffects.StatusAbsorb;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
 
 public class GGG extends Item{
 

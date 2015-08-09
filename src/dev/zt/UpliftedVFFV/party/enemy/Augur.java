@@ -2,24 +2,18 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 
 import java.util.ArrayList;
-
-
-
-
-
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.ForeseeIll;
 import dev.zt.UpliftedVFFV.ablities.IntrusiveThought;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Augur extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {50,30,10,10,11,11,12,17};
@@ -40,7 +34,7 @@ public class Augur extends Schmuck{
 	public static String pronoun = "it";
 	public Augur(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Augur.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name, plural, pronoun, lvl, 3, startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Spectral bringer of bad news. Infects foes with insidious negativity.";
 		

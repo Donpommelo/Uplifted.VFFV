@@ -77,7 +77,11 @@ public class EventBackroomCalendarInvisible extends Event {
 		super.loot(new SummonConch(), 1);
 		super.loot(new SummonLotus(), 1);
 		super.loot(new SummonTwofish(), 1);
-	}
+		super.loot(new BandagedSword(),2);
+		super.loot(new RecyclerBolus(),2);
+		super.loot(new BackpackBaphomet(),2);
+
+}
 	
 	public boolean isSolid(int i){
 		return true;

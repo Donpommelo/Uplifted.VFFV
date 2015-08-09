@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.PantherPoiseEffect;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PantherPoiseEffect;
 
 public class PantherPoise extends Skills {
 

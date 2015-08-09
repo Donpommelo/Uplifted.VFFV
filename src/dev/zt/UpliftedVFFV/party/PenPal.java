@@ -15,13 +15,12 @@ import dev.zt.UpliftedVFFV.ablities.Query;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.TreskillingYellow;
 import dev.zt.UpliftedVFFV.ablities.TyrianPlum;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.ablities.PennyBlue;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PenPal extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	//	public final static int startHp=42,startBp=40,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
 	public final static int[] startStats = {53, 38, 15, 17, 12, 22, 25, 16};
@@ -41,7 +40,7 @@ public class PenPal extends Schmuck{
 	public static String plural = "Pen Pal";
 	public static String pronoun = "it";
 	public PenPal() {
-		super(name,plural,pronoun,1,ImageLoader.loadImage("/BattleSprites/PenPal.png"),ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths, elemRes);
+		super(name, plural, pronoun, 1, 1, 2, startStats, statGrowths, elemRes);
 		calcStats(1);
 		this.bio = "Your very own foreign correspondence. Looks leafy.";
 //		this.levelSkills = new TreeMap<Integer, Skills>();

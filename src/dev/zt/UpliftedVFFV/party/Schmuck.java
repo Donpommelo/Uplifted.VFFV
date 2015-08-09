@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -50,8 +51,11 @@ public class Schmuck implements Serializable{
 	public int flashDuration;
 	public int x = 0;
 	public int y = 0;
-	public BufferedImage BattleSprite;
-	public BufferedImage MenuSprite1;
+	
+	//Index of BattleSprite and Dialogue Sprite to use.
+	public int battleSprite;
+	public int menuSprite;
+	
 	public ArrayList<Skills> skills;
 	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
 	public ArrayList<status> statuses;
@@ -61,9 +65,12 @@ public class Schmuck implements Serializable{
 	public Schmuck itemDummy;	
 	public String name,plural,pronoun;
 	public String bio;
-	public Schmuck(String name, String plural, String pronoun,int lvl,BufferedImage sprite, int[] start, double[] growths,
+	
+	public Schmuck(String name, String plural, String pronoun,int lvl, int spriteIndex, int[] start, double[] growths,
 			int[] elem, int exp, int script){	
-		this.BattleSprite=sprite;
+		this.battleSprite = spriteIndex;
+		//Character does not have a menu sprite. Use a default one.
+		this.menuSprite = 0;
 		this.name=name;
 		this.plural = plural;
 		this.pronoun = pronoun;
@@ -82,9 +89,9 @@ public class Schmuck implements Serializable{
 		this.scrDrop = script;
 	}
 	
-	public Schmuck(String name,String plural, String pronoun,int lvl,BufferedImage sprite, BufferedImage msprite, int[] start, double[] growths,int[] elem){	
-		this.BattleSprite=sprite;
-		this.MenuSprite1 = msprite;
+	public Schmuck(String name,String plural, String pronoun,int lvl, int spriteIndex, int mspriteIndex, int[] start, double[] growths,int[] elem){	
+		this.battleSprite = spriteIndex;
+		this.menuSprite = mspriteIndex;
 		this.name=name;
 		this.plural = plural;
 		this.pronoun = pronoun;
@@ -564,11 +571,19 @@ public class Schmuck implements Serializable{
 	}
 
 	public BufferedImage getBattleSprite() {
-		return BattleSprite;
+		if(Assets.battleSprites != null && battleSprite < Assets.battleSprites.length && Assets.battleSprites[battleSprite] != null){
+			return Assets.battleSprites[battleSprite];
+		} else{
+			return Assets.battleSprites[0];
+		}
 	}
 	
 	public BufferedImage getMenuSprite() {
-		return MenuSprite1;
+		if(Assets.stickers != null && menuSprite < Assets.stickers.length && Assets.stickers[menuSprite] != null){	
+			return Assets.stickers[menuSprite];
+		} else{
+			return Assets.stickers[0];
+		}
 	}
 	
 	public int getX() {

@@ -16,7 +16,7 @@ public class TrueSight extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.bonusStats[0]+=100;
+		s.bonusStats[0]+=1000;
 	}
 	
 	public String inflictText(Schmuck s){

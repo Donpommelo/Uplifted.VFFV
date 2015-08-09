@@ -10,13 +10,10 @@ public class BeefedUp extends status{
 	public BeefedUp(int i, Schmuck perp, int pr){
 		super(i, "Beefed Up", false, true, false, perp,pr);
 	}
-	
-	public BeefedUp(Schmuck perp, int pr){
-		super("Beefed Up", true, false, perp,pr);
-	}
-		
+			
 	public void statchanges(Schmuck s){
-		s.buffedStats[2]*=1.5;
+		int bonus = (10-3*duration)*(10-3*duration)/100;
+		s.buffedStats[2] *= (1+bonus);
 	}
 	
 	public String inflictText(Schmuck s){

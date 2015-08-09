@@ -8,7 +8,6 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Scald;
 import dev.zt.UpliftedVFFV.ablities.Skills;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.BossMug;
 import dev.zt.UpliftedVFFV.inventory.CoffeeBean;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -18,7 +17,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CoffeeElem extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {70,29,15,21,24,12,8,6};
@@ -39,7 +38,7 @@ public class CoffeeElem extends Schmuck{
 	public static String plural = "Coffee Elementals";
 	public static String pronoun = "it";
 	public CoffeeElem(int lvl) {
-		super(name,pronoun,plural,lvl,ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name, pronoun,  plural, lvl, 7, startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A  dangerously hot elemental. Maintains and enforces orderly conduct in the Offices.";
 		itemdrops.put(new CoffeeBean(), 1.0);

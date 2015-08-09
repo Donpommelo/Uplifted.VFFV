@@ -376,7 +376,7 @@ public class Utils {
 		FileOutputStream fos = new FileOutputStream("res/Saves/" + saveSlot + ".save");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		gamestate.writeObject(oos);
-		StateManager.states.push(new NotificationState(gamestate.getGame(), gamestate.getStateManager(), " Game Saved ", eventID));
+		StateManager.states.push(new NotificationState(gamestate.getGame(), gamestate.getStateManager(), "Game Saved", eventID));
 		oos.close();
 	}
 	 

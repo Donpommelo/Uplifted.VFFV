@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.gfx.Assets;
@@ -10,8 +11,10 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 //items class.
 //change usefrommenu to consumable later
-public class Item implements Comparable<Item>{
-	public BufferedImage ItemSprite, ItemImage;
+public class Item implements Comparable<Item>, Serializable{
+	
+	private static final long serialVersionUID = -4363739757604804621L;
+	
 	public String name,descr,descrShort;
 	public int Id;
 	public int value;
@@ -150,20 +153,22 @@ public class Item implements Comparable<Item>{
 	}
 	
 	public BufferedImage getIcon(){
-		if(ItemSprite != null){
-			return ItemSprite;
+		//Return image icon if it exists, otherwise use a placeholder.
+		if(Assets.itemIcons!= null && Assets.itemIcons.length > Id && Assets.itemIcons[Id] != null){
+			return Assets.itemIcons[Id];
 		}
 		else{
-			return Assets.item;
+			return Assets.skillIcons[4];
 		}
 	}
 	
 	public BufferedImage getImage(){
-		if(ItemSprite != null){
-			return ItemImage;
+		//Return image picture if it exists, otherwise use a placeholder.
+		if(Assets.itemSprites!= null && Assets.itemSprites.length > Id && Assets.itemSprites[Id] != null){
+			return Assets.itemSprites[Id];
 		}
 		else{
-			return Assets.item;
+			return Assets.skillIcons[4];
 		}
 	}
 	

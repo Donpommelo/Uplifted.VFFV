@@ -1,8 +1,8 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class FadedSash extends Item{
 
@@ -15,8 +15,8 @@ public class FadedSash extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new TestStatBuff(2,.5, s.itemDummy,20);
-		enchantment[1] =  new TestStatBuff(3,1.5, s.itemDummy,20);
+		enchantment[0] =  new BonusStatBuff(7,-.5, s.itemDummy,20);
+		enchantment[1] =  new BonusStatBuff(8,.5, s.itemDummy,20);
 		return enchantment;
 	}
 }

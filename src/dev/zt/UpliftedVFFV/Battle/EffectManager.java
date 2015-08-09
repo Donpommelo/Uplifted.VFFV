@@ -73,6 +73,11 @@ public class EffectManager {
 				}
 				else{
 					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
+					for(int i=0; i<vic.statuses.size(); i++){
+						if(vic.statuses.get(i)!=null){
+							finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
+						}
+					}
 					vic.tempStats[0]+=finalDamage;
 				}
 			}
@@ -84,7 +89,7 @@ public class EffectManager {
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<perp.statuses.size(); i++){
 						if(perp.statuses.get(i)!=null){
-							finalDamage = vic.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+							finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
 						}
 					}
 					for(int i=0; i<vic.statuses.size(); i++){

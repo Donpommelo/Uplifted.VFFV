@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -17,7 +16,7 @@ public Item thing;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public PassTurn(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost, Assets.nothing, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, 0, 6, name, descr, descrShort, cost, 2, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

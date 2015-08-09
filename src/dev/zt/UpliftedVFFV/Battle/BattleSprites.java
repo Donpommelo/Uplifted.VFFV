@@ -36,7 +36,7 @@ public class BattleSprites {
 		//Place allies.
 		for(int i=0;i<allies.size();i++){
 			if(allies.get(i).getX()==0){
-				sumSize1 += (allies.get(i).BattleSprite.getWidth() - 28);
+				sumSize1 += (allies.get(i).getBattleSprite().getWidth() - 28);
 				allies.get(i).setX(sumSize1-80);
 			}
 			if(allies.get(i).getY()==0){
@@ -47,7 +47,7 @@ public class BattleSprites {
 		int sumSize2 = 0;
 		for(int i=0;i<enemy.size();i++){
 			if(enemy.get(i).getX()==0){
-				sumSize2 += (enemy.get(i).BattleSprite.getWidth()-40);
+				sumSize2 += (enemy.get(i).getBattleSprite().getWidth()-40);
 				enemy.get(i).setX(610-sumSize2);
 			}
 			if(enemy.get(i).getY()==0){

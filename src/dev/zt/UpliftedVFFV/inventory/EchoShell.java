@@ -1,9 +1,9 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.AddStatBuff;
-import dev.zt.UpliftedVFFV.statusEffects.EchoShellStatus;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EchoShellStatus;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
 
 public class EchoShell extends Item{
 

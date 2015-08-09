@@ -2,8 +2,8 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.IntrusiveThoughtEffect;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.IntrusiveThoughtEffect;
 
 public class IntrusiveThought extends Skills {
 

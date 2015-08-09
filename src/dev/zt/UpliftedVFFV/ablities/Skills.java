@@ -1,13 +1,16 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
-public class Skills {
+public class Skills implements Serializable{
+	
+	private static final long serialVersionUID = -3907480109509424751L;
 	
 	public String name;
 	public String descr;
@@ -25,17 +28,18 @@ public class Skills {
 	//0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:No Alignment
 	public int element = 6;
 	
-	public BufferedImage icon;
 	public boolean startTeamTarget;
 	
-	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost,int acc, int crit
-			,boolean canMiss, boolean canCrit){
+	private int iconIndex;
+	
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost,int acc, int crit,
+			boolean canMiss, boolean canCrit){
 		this.name = name;
 		this.descr = descr;
 		this.descrShort = descrShort;
 		this.cost = cost;
 		targetType = t;
-		icon =Assets.skill;
+		iconIndex = 1;
 		element = elem;
 		this.baseAcc = acc;
 		this.baseCrit = crit;
@@ -43,14 +47,14 @@ public class Skills {
 		this.canCrit = canCrit;
 	}
 	
-	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, BufferedImage i,int acc, int crit
-			,boolean canMiss, boolean canCrit){
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, int icon, int acc, int crit,
+			boolean canMiss, boolean canCrit){
 		this.name = name;
 		this.descr = descr;
 		this.descrShort = descrShort;
 		this.cost = cost;
 		targetType = t;
-		icon =i;
+		iconIndex = icon;
 		element = elem;
 		this.baseAcc = acc;
 		this.baseCrit = crit;
@@ -116,7 +120,7 @@ public class Skills {
 	}
 	
 	public BufferedImage getIcon(){
-		return icon;
+		return Assets.skillIcons[iconIndex];
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

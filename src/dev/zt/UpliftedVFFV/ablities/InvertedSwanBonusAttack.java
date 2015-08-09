@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -14,7 +13,7 @@ public class InvertedSwanBonusAttack extends Skills {
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public InvertedSwanBonusAttack(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost, Assets.attack, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, 0, 6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){

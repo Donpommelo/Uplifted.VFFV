@@ -236,7 +236,7 @@ public class BattleProcessor {
 									
 								}
 								else{
-									if(em.getAcc(TurnOrderQueue.get(0).user, TurnOrderQueue.get(0).target,TurnOrderQueue.get(0).skill.getBaseAcc())
+									if(!em.getAcc(TurnOrderQueue.get(0).user, TurnOrderQueue.get(0).target,TurnOrderQueue.get(0).skill.getBaseAcc()) 
 											&& TurnOrderQueue.get(0).skill.canMiss()){
 										bt.textList.add(TurnOrderQueue.get(0).user.getName()+" tried to use "+TurnOrderQueue.get(0).skill.getName()
 												+" but missed!");

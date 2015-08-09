@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -27,8 +26,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
-import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
-//import dev.zt.UpliftedVFFV.utils.Utils;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CatoWantStatus;
 
 
 public class BattleMenu{
@@ -60,7 +58,7 @@ public class BattleMenu{
 	public Boolean teamTargeted = false;
 	
 	//Pointer that appears over the head of whoever is being targeted
-	public BufferedImage pointer = Assets.pointer;
+//	public BufferedImage pointer = Assets.pointer;
 	
 	//Arraylist of all allies and enemies, targetable or untargetable. (Actual targets: bs.bs.alliesTargets and bs.bs.enemyTargets)
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
@@ -454,24 +452,24 @@ public class BattleMenu{
 			//Displays mini-icons for actions
 			switch(actionSelected){
 			case 0:
-				g.drawImage(Assets.attack, menux + 8, menuy - 40, null);
+				g.drawImage(Assets.skillIcons[0], menux + 8, menuy - 40, null);
 				break;
 			case 1:
-				g.drawImage(Assets.skill, menux + 8, menuy - 8, null);
+				g.drawImage(Assets.skillIcons[1], menux + 8, menuy - 8, null);
 				break;
 			case 2:
-				g.drawImage(Assets.item, menux + 8, menuy + 24, null);
+				g.drawImage(Assets.skillIcons[4], menux + 8, menuy + 24, null);
 				break;
 			case 3:
 				if(bs.bp.pauseTOQ){
-					g.drawImage(Assets.nothing, menux + 8, menuy + 56, null);
+					g.drawImage(Assets.skillIcons[2], menux + 8, menuy + 56, null);
 				}
 				else{
-					g.drawImage(Assets.wait, menux + 8, menuy + 56, null);
+					g.drawImage(Assets.skillIcons[3], menux + 8, menuy + 56, null);
 				}
 				break;
 			case 4:
-				g.drawImage(Assets.run, menux + 8, menuy + 88, null);
+				g.drawImage(Assets.skillIcons[5], menux + 8, menuy + 88, null);
 				break;
 			}
 			

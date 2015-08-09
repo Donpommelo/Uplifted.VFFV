@@ -15,12 +15,11 @@ import dev.zt.UpliftedVFFV.ablities.SafeRoom;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.Terraform;
 import dev.zt.UpliftedVFFV.ablities.VariableVoltage;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Operator extends Schmuck{
 	
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	//	public final static int startHp=50,startBp=35,startPow=17, startDef=18, startSpd=17, startSkl=13, startLuk=12, startInt=18;
 	public final static int[] startStats = {56,30,17,18,17,13,18,12};
@@ -42,7 +41,7 @@ public class Operator extends Schmuck{
 	public static String plural = "Operators";
 	public static String pronoun = "he";
 	public Operator() {
-		super(name,plural,pronoun,1,ImageLoader.loadImage("/BattleSprites/Operator.png"),ImageLoader.loadImage("/CharacterBusts/Player-1.png"), startStats, statGrowths,elemRes);
+		super(name, plural, pronoun, 1, 0, 1, startStats, statGrowths,elemRes);
 		super.calcStats(1);
 		this.bio = "The building's dependable and friendly elevator Operator.";
 		this.skills = new ArrayList<Skills>(1);

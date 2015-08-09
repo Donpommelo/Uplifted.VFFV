@@ -48,7 +48,7 @@ public class BattleUI {
 		for(Action a : bs.bp.TurnOrderQueue){
 			if(a != null){
 				if(allies.contains(a.user)){
-					g.drawImage(a.skill.icon, allies.get(allies.indexOf(a.user)).getX() + 9, allies.get(allies.indexOf(a.user)).getY() + 121, null);
+					g.drawImage(a.skill.getIcon(), allies.get(allies.indexOf(a.user)).getX() + 9, allies.get(allies.indexOf(a.user)).getY() + 121, null);
 				}
 			}
 			

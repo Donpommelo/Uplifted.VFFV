@@ -18,14 +18,18 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	//Item icons big/small.
-//	private BufferedImage[] itemIcons;
-//	private BufferedImage[] itemSprites;
-	
+	public static BufferedImage[] itemIcons;
+	public static BufferedImage[] itemSprites;
+
 	//Character stickers.
-//	private BufferedImage[] stickers;
+	public static BufferedImage[] stickers;
 	
 	//Global UI elements.
 	public static BufferedImage Uparrow, Downarrow;
+	
+	//Battle sprites and skill icons.
+	public static BufferedImage[] battleSprites;
+	public static BufferedImage[] skillIcons;
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorCeiling, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, ActuallyWhite, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
@@ -39,7 +43,7 @@ public class Assets {
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
-	public static BufferedImage attack, skill, nothing, wait, item, run, pointer;
+	
 	
 	public static Dialog[] dialog;
 	
@@ -58,7 +62,8 @@ public class Assets {
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
 		
-		//character walking sprites
+		//Load system resources, reused resources and stuff.
+		//Character walking Sprites.
 		Operator=sheet.crop(0, 0, 3*width, 4*height);
 		PenPal=sheet.crop(3*width, 0, 3*width, 4*height);
 		EmployeeM1=sheet.crop(6*width, 0, 3*width, 4*height);
@@ -67,6 +72,79 @@ public class Assets {
 		
 		Jorge1=Jorge.crop(0,0,128,64);
 		
+		//Dialogue and character portraits.
+		//TODO: Load character stickers from individual images to global array.
+		int numImages = 5;
+		stickers = new BufferedImage[numImages];
+		stickers[0] = ImageLoader.loadImage("/CharacterBusts/Arturo.png");		//0 - Empty.
+		stickers[1] = ImageLoader.loadImage("/CharacterBusts/Player-1.png");	//1 - Operator.
+		stickers[2] = ImageLoader.loadImage("/CharacterBusts/Player-5.png");	//2 - Pen Pal.
+		
+		//Item icons.
+		//TODO: Load item and skill icons from icon sheet.
+//		int numItems = 100;
+//		itemIcons = new BufferedImage[numItems];
+//		itemSprites = new BufferedImage[numItems];
+		itemIcons = null;
+		itemSprites = null;		
+		
+		//Skill Icons.
+		int numSkills = 10;
+		skillIcons = new BufferedImage[numSkills];
+		skillIcons[0] = ActionIcons.crop(0,0,32,32);			//0 - Attack.
+		skillIcons[1] = ActionIcons.crop(32,0,32,32);			//1 - Skill.
+		skillIcons[2] = ActionIcons.crop(64,0,32,32);			//2 - Nothing.
+		skillIcons[3] = ActionIcons.crop(96,0,32,32);			//3 - Wait.
+		skillIcons[4] = ActionIcons.crop(128,0,32,32);			//4 - Item.
+		skillIcons[5] = ActionIcons.crop(160,0,32,32);			//5 - Run.
+		
+		//Battle Sprites.
+		int numSprites = 16;
+		battleSprites = new BufferedImage[numSprites];
+		battleSprites[0] = ImageLoader.loadImage("/BattleSprites/Operator.png");			//0 - Operator.
+		battleSprites[1] = ImageLoader.loadImage("/BattleSprites/PenPal.png");				//1 - Pen Pal.
+		battleSprites[2] = ImageLoader.loadImage("/BattleSprites/Midge.png");				//2 - Midge.
+		battleSprites[3] = ImageLoader.loadImage("/BattleSprites/Augur.png");				//3 - Augur.
+		battleSprites[4] = ImageLoader.loadImage("/BattleSprites/Rot Thought.png");			//4 - Rot Thought.
+		battleSprites[5] = ImageLoader.loadImage("/BattleSprites/Ill Rat.png");				//5 - Ill Rat.
+		battleSprites[6] = ImageLoader.loadImage("/BattleSprites/Bad Egg.png");				//6 - Bad Egg.
+		battleSprites[7] = ImageLoader.loadImage("/BattleSprites/Coffee Elemental.png");	//7 - Coffee Elemental.
+		battleSprites[8] = ImageLoader.loadImage("/BattleSprites/Eye Catcher.png");			//8 - Eye Catcher.
+		battleSprites[9] = ImageLoader.loadImage("/BattleSprites/Jorge.png");				//9 - Jorge.
+		battleSprites[10] = ImageLoader.loadImage("/BattleSprites/Midgeon.png");			//10 - Midgeon.
+		battleSprites[11] = ImageLoader.loadImage("/BattleSprites/Portent.png");			//11 - Portent.
+		battleSprites[12] = ImageLoader.loadImage("/BattleSprites/Screamer.png");			//12 - Screamer.
+		battleSprites[13] = ImageLoader.loadImage("/BattleSprites/Shirley.png");			//13 - Shirley.
+		battleSprites[14] = ImageLoader.loadImage("/BattleSprites/WanderingMind.png");		//14 - Wandering Mind.
+		battleSprites[15] = ImageLoader.loadImage("/BattleSprites/Lunk.png");				//15 - Lunk.
+		
+		//UI elements and other icons.
+		Uparrow = arrowup.crop(0, 0 ,32, 32);
+		Downarrow = arrowdown.crop(0, 0 ,32, 32);
+		
+		//System Fonts.
+		try {
+            //Create the font to use. Specify the size!
+            Font customFont1 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(27f);
+            Font customFont2 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/nunito.bold.ttf")).deriveFont(18f);
+            Font customFont3 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Signika-Semibold.otf")).deriveFont(12f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            //Register the font
+            ge.registerFont(customFont1);
+            ge.registerFont(customFont2);
+            ge.registerFont(customFont3);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch(FontFormatException e)
+        {
+            e.printStackTrace();
+        }
+		
+		
+		//Props and Tiles.
+		//TODO: Relocated to world asset loader. Only load tiles for one world at a time.
 		//prop sprites
 		ElevatorDoor1=door.crop(16, 0, 96, 64);
 		ElevatorDoor2=door.crop(16, 64, 96, 64);
@@ -150,20 +228,8 @@ public class Assets {
 		FemaleSign = Furniture3rdFloor.crop(4*width, 5*height, width, height);
 		SinkMirror = Furniture3rdFloor.crop(5*width, 5*height, width, height*2);
 		
-		//arrows and stuff
-		Uparrow = arrowup.crop(0, 0 ,32, 32);
-		Downarrow = arrowdown.crop(0, 0 ,32, 32);
-		
-		//skill+item mini-icons
-		attack = ActionIcons.crop(0,0,32,32);
-		skill = ActionIcons.crop(32,0,32,32);
-		nothing = ActionIcons.crop(64,0,32,32);
-		wait = ActionIcons.crop(96,0,32,32);
-		item = ActionIcons.crop(128,0,32,32);
-		run = ActionIcons.crop(160,0,32,32);
-		pointer = ActionIcons.crop(256, 0, 32, 32);		
-		
 		//Dialog loaded from text files.
+		//TODO: Relocate to world asset loader? Only load dialogue for specific area.
 		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines
 		//next, a long list of quadruplets containing the character's name that shows up in text boxes ("meep"=no name box)
 		//then an image that serves as their talking sprite
@@ -175,26 +241,6 @@ public class Assets {
 		for(int i = 0;i<Utils.parseInt(tokens[0]);i++){
 			dialog[i]=new Dialog((tokens[4*i+1]),ImageLoader.loadImage("/CharacterBusts/"+tokens[4*i+2]),Utils.parseInt(tokens[4*i+3]),tokens[4*i+4]);
 		}
-		
-		//Fonts
-		try {
-            //Create the font to use. Specify the size!
-            Font customFont1 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Chewy.ttf")).deriveFont(27f);
-            Font customFont2 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/nunito.bold.ttf")).deriveFont(18f);
-            Font customFont3 = Font.createFont(Font.TRUETYPE_FONT, Assets.class.getResourceAsStream("/Font/Signika-Semibold.otf")).deriveFont(12f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            //Register the font
-            ge.registerFont(customFont1);
-            ge.registerFont(customFont2);
-            ge.registerFont(customFont3);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch(FontFormatException e)
-        {
-            e.printStackTrace();
-        }
 	}
 
 }

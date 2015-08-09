@@ -7,14 +7,13 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BadEgg extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {17,25,15,9,20,8,7,6};
@@ -34,7 +33,7 @@ public class BadEgg extends Schmuck{
 	public static String plural = "Bad Eggs";
 	public static String pronoun = "it";
 	public BadEgg(int lvl) {
-		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name, plural, pronoun, lvl, 6, startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "The uncouth spirit of an unborn chicken.";
 	}

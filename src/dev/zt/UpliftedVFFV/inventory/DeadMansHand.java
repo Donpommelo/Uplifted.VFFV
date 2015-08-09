@@ -1,10 +1,10 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.DeadMansHandStatus;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DeadMansHandStatus;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuffMult;
 
 public class DeadMansHand extends Item{
 
@@ -19,7 +19,7 @@ public class DeadMansHand extends Item{
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new DeadMansHandStatus(s.getItemDummy(),80);
 		enchantment[1] = new Undead(s.getItemDummy(),80);
-		enchantment[2] = new TestStatBuff(6,1.08,s.getItemDummy(),80);
+		enchantment[1] = new ElemPointsBuffMult(4,1.1, s.itemDummy,50);
 		return enchantment;
 	}
 

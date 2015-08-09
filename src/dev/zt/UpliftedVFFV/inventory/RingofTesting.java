@@ -1,9 +1,9 @@
 package dev.zt.UpliftedVFFV.inventory;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.BonusStatBuff;
-import dev.zt.UpliftedVFFV.statusEffects.ElemPointsBuff;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class RingofTesting extends Item{
 

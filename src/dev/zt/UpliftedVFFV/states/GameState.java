@@ -171,10 +171,10 @@ public class GameState extends State {
 		//TODO: Load music track.
 		
 		//Load party data.
-//		partymanager = (PartyManager) stream.readObject();
+		partymanager = (PartyManager) stream.readObject();
 		
 		//Load inventory data.
-//		inventorymanager = (InventoryManager) stream.readObject();
+		inventorymanager = (InventoryManager) stream.readObject();
 		
 		//Load world/event flags.
 //		eventmanager = (EventManager) stream.readObject();
@@ -194,10 +194,10 @@ public class GameState extends State {
 		//TODO: Save music track. Maybe tie music to world.
 		
 		//Save party data.
-//		stream.writeObject(partymanager);
+		stream.writeObject(partymanager);
 		
 		//Save inventory data.
-//		stream.writeObject(inventorymanager);
+		stream.writeObject(inventorymanager);
 		
 		//Save world/event flags.
 //		stream.writeObject(eventmanager);

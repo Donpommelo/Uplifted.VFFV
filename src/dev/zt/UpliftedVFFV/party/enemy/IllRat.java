@@ -2,23 +2,13 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 
 import java.util.ArrayList;
-
-
-
-
-
-
-
-
 import java.util.TreeMap;
-
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.BlightBite;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Pounce;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Disease;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -27,7 +17,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class IllRat extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {21,19,11,12,25,10,11,8};
@@ -48,7 +38,7 @@ public class IllRat extends Schmuck{
 	public static String plural = "Ill Rats";
 	public static String pronoun = "it";
 	public IllRat(int lvl) {
-		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Ill Rat.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
+		super(name, plural,pronoun, lvl, 5, startStats, statGrowths,elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Filthy bringer of plague. Thrive due to lack of natural predators.";
 		itemdrops.put(new Disease(), .6);

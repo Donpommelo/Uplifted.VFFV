@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.TyrianPlumEffect;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.TyrianPlumEffect;
 
 public class TyrianPlum extends Skills {
 

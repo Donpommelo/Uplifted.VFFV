@@ -1,16 +1,20 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
+import java.io.Serializable;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
-public class status {
+public class status implements Serializable{
+	
+	private static final long serialVersionUID = -51248655534544301L;
+	
 	public int duration = 0;
 	public String name;
 	public Boolean perm = false;
 	public Boolean visible = true;
 	public Boolean removedEnd = true;
-	public BattleState bs;
 	public int stack;
 	public int priority;
 	public Schmuck perp;	
@@ -85,6 +89,12 @@ public class status {
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return damage;
 	}	
+	
+	//upon being healed by any Schmuck. 
+	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
+	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		return damage;
+	}
 	
 	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
 	public void onAction(BattleState bs, Action a){

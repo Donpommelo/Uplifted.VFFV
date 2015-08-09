@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.PennyBlackStatus;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PennyBlackStatus;
 
 public class PennyBlack extends Skills {
 

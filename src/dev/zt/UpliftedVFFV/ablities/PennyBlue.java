@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.PennyBlueStatus;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PennyBlueStatus;
 public class PennyBlue extends Skills {
 
 	public static String name = "Penny Blue";

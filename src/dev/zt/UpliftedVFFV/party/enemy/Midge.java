@@ -9,7 +9,6 @@ import dev.zt.UpliftedVFFV.ablities.LifeDrain;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.MidgeBlood;
 import dev.zt.UpliftedVFFV.inventory.MidgeProboscis;
@@ -19,7 +18,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Midge extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {12,22,8,6,22,11,13,4};
@@ -41,7 +40,7 @@ public class Midge extends Schmuck{
 	public static String pronoun = "it";
 	public Midge(int lvl) {
 //		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Midge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name, plural, pronoun, lvl, 2, startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";
 		itemdrops.put(new MidgeBlood(), .3);

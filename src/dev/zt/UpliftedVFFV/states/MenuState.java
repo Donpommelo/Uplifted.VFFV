@@ -991,23 +991,28 @@ public class MenuState extends State {
 		for(int i = 0; i < tempSchmuck.baseStats.length; i++){
 			if(i <= 1){
 				if(i == 0){
-					g.drawString(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp(), 340, 220);
+					g.setColor(Color.black);
+					g.drawString(tempSchmuck.getCurrentHp() + "/", 340, 220);
+					if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
+						if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
+							g.setColor(Color.green);
+						} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
+							g.setColor(Color.red);
+						}
+					}
+					g.drawString(tempSchmuck.getMaxHp() + "", 340 + metrics.stringWidth(tempSchmuck.getCurrentHp() + "/"), 220);
 				}
 				else{
-					g.drawString(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp(), 340, 220 + 25);
-				}
-				if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
-					if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
-						g.setColor(Color.green);
-					} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
-						g.setColor(Color.red);
+					g.setColor(Color.black);
+					g.drawString(tempSchmuck.getCurrentBp() + "/", 340, 220 + 25);
+					if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
+						if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
+							g.setColor(Color.green);
+						} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
+							g.setColor(Color.red);
+						}
 					}
-					if(i == 0){
-						g.drawString("(" + tempSchmuck.getMaxHp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentHp() + "/" + tempSchmuck.getBaseHp()), 220 + 25 * i);
-					}
-					else{
-						g.drawString("(" + tempSchmuck.getMaxBp() + ")", 345 + metrics.stringWidth(tempSchmuck.getCurrentBp() + "/" + tempSchmuck.getBaseBp()), 220 + 25 * i);
-					}
+					g.drawString(tempSchmuck.getMaxBp() + "", 340 + metrics.stringWidth(tempSchmuck.getCurrentBp() + "/"), 220 + 25);
 				}
 			} else{
 				g.drawString(tempSchmuck.baseStats[i] + "", 340, 220 + 25 * i);

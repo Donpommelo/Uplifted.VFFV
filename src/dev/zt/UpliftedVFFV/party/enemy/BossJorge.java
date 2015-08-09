@@ -10,7 +10,6 @@ import dev.zt.UpliftedVFFV.ablities.FlexileStrike;
 import dev.zt.UpliftedVFFV.ablities.PantherPoise;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.LetterOpener;
 import dev.zt.UpliftedVFFV.inventory.PostageStamp;
@@ -20,7 +19,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BossJorge extends Schmuck{
 
-	private static final long serialVersionUID = -7556561902401868149L;
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
 	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
 	public final static int[] startStats = {110,100,15,20,16,16,10,5};
@@ -43,7 +42,7 @@ public class BossJorge extends Schmuck{
 	public static String plural = "Jorge";
 	public static String pronoun = "he";
 	public BossJorge(int lvl) {
-		super(name,plural,pronoun,lvl,ImageLoader.loadImage("/BattleSprites/Jorge.png"), startStats, statGrowths, elemRes, expDrop, scrDrop);
+		super(name, plural,  pronoun, lvl, 9, startStats, statGrowths, elemRes, expDrop, scrDrop);
 		calcStats(lvl);
 		this.bio = "Unhelpful middle manager. Foul-tempered and steals food from coworkers.";
 		itemdrops.put(new PostageStamp(), 1.0);

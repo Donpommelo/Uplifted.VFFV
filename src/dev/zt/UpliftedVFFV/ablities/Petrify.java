@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 import dev.zt.UpliftedVFFV.statusEffects.Stunned;
-import dev.zt.UpliftedVFFV.statusEffects.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
 
 
 public class Petrify extends Skills {
