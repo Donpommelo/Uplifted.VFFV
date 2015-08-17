@@ -382,7 +382,9 @@ public class Utils {
 	 
 	//Function that loads state from file.
 	/* Parameters:
-	 * 	saveSlot - Number of file to load gamestate from.
+	 * game - Current game existing object.
+	 * sm - Current existing StateManager object. Along with "game", needed to construct new GameState.	
+	 * saveSlot - Number of file to load gamestate from.
 	 */
 	public static GameState loadState(Game game, StateManager sm, int saveSlot) throws IOException, ClassNotFoundException{
 		FileInputStream fis = new FileInputStream("res/Saves/" + saveSlot + ".save");
@@ -393,4 +395,33 @@ public class Utils {
 		ois.close();
 		return loadState;
 	}	
+
+/*****GAME SAVING AND LOADING******/
+
+/*****ANIMATIONS*****/
+	//Function that returns an array of frames from an image for animations.
+	/* Parameters:
+	 * g - Graphics object
+	 * image - Image file containing animation frames with dimensions as specified by sheetWidth and numFrames.
+	 * width - Width of each frame.
+	 * height -Height of each frame.
+	 * numFrames - Total number of frames in the animation.
+	 * frameSkip - Numer of render cycles to spend on each frame. Affects animation speed and smoothness.
+	 */
+	
+	//Constants.
+	private static int sheetWidth = 1;		//Number of frames horizontally in each image.
+	
+	public static BufferedImage[] getFrames(Graphics g, BufferedImage image, int width, int height, int numFrames, int frameSkip){
+		//Create array of frames.
+		BufferedImage[] frames = new BufferedImage[numFrames];
+		SpriteSheet animation = new SpriteSheet(image);	
+		for(int i = 0; i < numFrames; i++){
+			frames[i] = animation.crop(i % sheetWidth, i / sheetWidth, width, height);
+		}
+		
+		return frames;
+	}
+
+/*****ANIMATIONS*****/
 }
