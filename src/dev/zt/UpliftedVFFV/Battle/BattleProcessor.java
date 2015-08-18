@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
+
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
@@ -18,6 +19,7 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.Misaligned;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
+import dev.zt.UpliftedVFFV.statusEffects.TrueSight;
 import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.utils.Utils;
@@ -237,7 +239,7 @@ public class BattleProcessor {
 								}
 								else{
 									if(!em.getAcc(TurnOrderQueue.get(0).user, TurnOrderQueue.get(0).target,TurnOrderQueue.get(0).skill.getBaseAcc()) 
-											&& TurnOrderQueue.get(0).skill.canMiss()){
+											&& TurnOrderQueue.get(0).skill.canMiss() && stm.checkStatus(TurnOrderQueue.get(0).user, new TrueSight(TurnOrderQueue.get(0).user,50))){
 										bt.textList.add(TurnOrderQueue.get(0).user.getName()+" tried to use "+TurnOrderQueue.get(0).skill.getName()
 												+" but missed!");
 										for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
