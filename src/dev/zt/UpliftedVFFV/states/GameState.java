@@ -53,8 +53,8 @@ public class GameState extends State {
 		
 //		world = new World(game, "/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt","Home Sweet Home");
 //		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt");
-//		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt","");
-//		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt");
+		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt","");
+		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt");
 		player = new Player(game, 256, 288, this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
 	}
