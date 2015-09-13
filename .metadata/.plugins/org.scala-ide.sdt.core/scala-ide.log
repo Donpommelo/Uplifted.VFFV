@@ -1,0 +1,56 @@
+2015-09-13 13:16:03,693 ERROR [Worker-4] - System.err - java.lang.VerifyError: Illegal type at constant pool entry 47 in class com.yattasolutions.umllab.validation.a$b
+Exception Details:
+  Location:
+    com/yattasolutions/umllab/validation/a$b.a(Lorg/objectweb/asm/ClassWriter;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V @112: invokeinterface
+  Reason:
+    Constant pool index 47 is invalid
+  Bytecode:
+    0x0000000: 1906 b800 383a 0902 360a 1909 be04 6436
+    0x0000010: 0ba7 0021 1909 150b 32b6 0039 3a0c 1205
+    0x0000020: 190c b600 2599 000a 150b 360a a700 0b84
+    0x0000030: 0bff 150b 9cff e015 0a02 a000 21bb 000c
+    0x0000040: 59bb 000f 5912 04b7 0029 1905 b600 2a19
+    0x0000050: 06b6 002a b600 2bb7 0023 bf2b 1504 1010
+    0x0000060: 6019 0519 0619 0719 08b6 002d 3a0b 190b
+    0x0000070: b900 2f01 0019 0b10 1903 b900 3703 0019
+    0x0000080: 0b19 05b9 0034 0200 190b 1019 0415 0a60
+    0x0000090: b900 3703 0019 0b11 00b6 2c12 0612 02b9
+    0x00000a0: 0036 0500 bb00 1359 b700 2e3a 0c19 0b11
+    0x00000b0: 009a 190c b900 3203 0019 0b07 b900 3102
+    0x00000c0: 0019 0b11 00ac b900 3102 0019 0b19 0cb9
+    0x00000d0: 0033 0200 0336 0da7 004d 150d 9a00 0810
+    0x00000e0: 0aa7 000d 1909 150d 0464 32b6 003a 360e
+    0x00000f0: 150e aa00 0000 0024 0000 0009 0000 000a
+    0x0000100: 0000 0016 0000 0016 190b 1019 150d b900
+    0x0000110: 3703 00a7 000e 190b 1015 150d b900 3703
+    0x0000120: 0084 0d01 150d 1909 bea4 ffb1 190b 1100
+    0x0000130: b72d 1905 1906 b900 3605 0019 0b11 00ac
+    0x0000140: b900 3102 0019 0b03 03b9 0035 0300 190b
+    0x0000150: b900 3001 00b1                         
+  Stackmap Table:
+    full_frame(@20,{Top,Object[#18],Object[#14],Object[#14],Integer,Object[#14],Object[#14],Object[#14],Object[#7],Object[#8],Integer,Integer},{})
+    same_frame(@47)
+    same_frame(@50)
+    chop_frame(@55,1)
+    same_frame(@91)
+    full_frame(@218,{Top,Top,Top,Object[#14],Top,Object[#14],Object[#14],Top,Top,Object[#8],Top,Object[#20],Top,Integer},{})
+    same_frame(@228)
+    same_locals_1_stack_item_frame(@238,Integer)
+    same_frame(@264)
+    same_frame(@278)
+    same_frame(@289)
+    same_frame(@292)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.a.a(SourceFile:206)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.a.S(SourceFile:149)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.a$1.adA(SourceFile:101)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.a$1.findClass(SourceFile:91)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at java.lang.ClassLoader.loadClass(Unknown Source)
+2015-09-13 13:16:03,695 ERROR [Worker-4] - System.err - at java.lang.ClassLoader.loadClass(Unknown Source)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.a.R(SourceFile:119)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at com.yattasolutions.umllab.validation.f.<clinit>(SourceFile:40)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at com.yattasolutions.obf.os.a.earlyStartup(SourceFile:17)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:90)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:68)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at org.eclipse.ui.internal.Workbench$56.run(Workbench.java:2812)
+2015-09-13 13:16:03,696 ERROR [Worker-4] - System.err - at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
