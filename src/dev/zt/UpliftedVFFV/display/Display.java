@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.display;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -30,8 +31,11 @@ public class Display{				//everything shows up here. consists of a canvas where 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//makes frame exit when x-ed out
 		frame.setResizable(false);								//makes frame size permanent
 		frame.setLocationRelativeTo(null);
-		BufferedImage myImg = ImageLoader.loadImage("/ui/UpliftedSmall.png");
-		frame.setIconImage(myImg);
+		ArrayList<BufferedImage> iconList = new ArrayList<BufferedImage>(); 
+		iconList.add(ImageLoader.loadImage("/ui/Icon/icon16.png"));
+		iconList.add(ImageLoader.loadImage("/ui/Icon/icon48.png"));
+		
+		frame.setIconImages(iconList);
 		frame.setVisible(true);									//makes frame visible
 		
 		canvas=new Canvas();
