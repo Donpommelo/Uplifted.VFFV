@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.SmellingSalt;
+import dev.zt.UpliftedVFFV.inventory.consummables.SmellingSalt;
 
 public class EventEmployee26 extends Event {
 

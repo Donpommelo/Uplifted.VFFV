@@ -10,13 +10,13 @@ public class ElemPointsBuff extends status{
 	public Boolean visible = true;
 	public int statChanged;
 	public double statIncrement;
-	public ElemPointsBuff(int i, int stat, double amount, Schmuck perp, int pr){
+	public ElemPointsBuff(int i, int stat, int amount, Schmuck perp, int pr){
 		super(i, "Elementally Aligned", false, false, true, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public ElemPointsBuff(int stat, double amount, Schmuck perp, int pr){
+	public ElemPointsBuff(int stat, int amount, Schmuck perp, int pr){
 		super("Elementally Aligned", false, false, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;

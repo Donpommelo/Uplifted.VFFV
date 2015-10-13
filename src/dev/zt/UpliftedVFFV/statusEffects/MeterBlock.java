@@ -18,4 +18,8 @@ public class MeterBlock extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" can regain Mp again!";
 	}
+	
+	public Boolean isBad(){
+		return true;
+	}
 }

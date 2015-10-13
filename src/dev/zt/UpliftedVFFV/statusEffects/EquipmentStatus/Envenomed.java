@@ -1,6 +1,6 @@
 package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
-import dev.zt.UpliftedVFFV.inventory.EnvenomEarth;
+import dev.zt.UpliftedVFFV.inventory.equipables.EnvenomEarth;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
@@ -26,13 +26,18 @@ public class Envenomed extends status{
 	}
 	
 	public void endoffightEffect(Schmuck s, BattleState bs){
-		if(e.getPoints() <50){
+		if(e.getPoints() <201){
 			e.setPoints(e.getPoints()+1);
 			s.calcBuffs(bs);
 		}
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedStats[3]+=(int)(e.getPoints()/5);
+		s.bonusStats[19]+=(int)(e.getPoints()/10)*(1+s.getEquipPow());
+		s.bonusStats[20]+=(int)(e.getPoints()/10)*(1+s.getEquipPow());
+		s.bonusStats[21]+=(int)(e.getPoints()/10)*(1+s.getEquipPow());
+		s.bonusStats[22]+=(int)(e.getPoints()/10)*(1+s.getEquipPow());
+		s.bonusStats[23]+=(int)(e.getPoints()/10)*(1+s.getEquipPow());
+
 	}
 }

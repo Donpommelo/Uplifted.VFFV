@@ -22,4 +22,8 @@ public class HealBlock extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" can heal again!";
 	}
+	
+	public Boolean isBad(){
+		return true;
+	}
 }

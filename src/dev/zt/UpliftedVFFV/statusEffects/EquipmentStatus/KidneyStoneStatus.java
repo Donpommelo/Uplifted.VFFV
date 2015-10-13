@@ -9,29 +9,29 @@ public class KidneyStoneStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public int cooldown;
 	public KidneyStoneStatus(Schmuck perp, int pr){
 		super("Filtering", false, false, perp, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		cooldown = 0;
+		setCooldown(0);
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		if(cooldown == 0){
-			if(st.getName().equals("Stunned") || st.getName().equals("Silenced") || st.getName().equals("Ablaze") || st.getName().equals("Disarmed")
-			 || st.getName().equals("HealBlock") || st.getName().equals("Impatient")){
-				bs.bp.bt.textList.add(s.getName()+"'s Kidney Stone removes the ailment!");
-				bs.bp.stm.removeStatus(s, st);
-				cooldown +=4;
+		if(getCooldown() == 0){
+			if(st.isBad()){
+				if(!st.perm){
+					bs.bp.bt.textList.add(s.getName()+"'s Kidney Stone removes the ailment!");
+					bs.bp.stm.removeStatus(s, st);
+					setCooldown((int)(4 - s.getCooldownBonus()));
+				}
 			}
 		}
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(cooldown >0){
-			cooldown--;
+		if(getCooldown() >0){
+			setCooldown(getCooldown()-1);
 		}
 	}	
 }

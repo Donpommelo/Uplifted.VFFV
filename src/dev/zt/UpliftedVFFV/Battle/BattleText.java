@@ -55,7 +55,6 @@ public class BattleText {
 				}
 			}
 			if(ranAway){
-				bs.bp.stm.endofFite();
 				bs.end(false);
 			}
 			

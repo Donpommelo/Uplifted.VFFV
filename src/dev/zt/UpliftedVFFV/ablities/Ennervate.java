@@ -26,7 +26,7 @@ public class Ennervate extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Ennervate!");
 		bs.bp.bt.textList.add(vic.getName()+" was Critically Ennervated!");
-		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti())),2,.9, perp,60));
-		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti())),4,.9, perp,60));		
+		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),2,.9, perp,60));
+		bs.bp.stm.addStatus(vic, new TestStatBuff((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),4,.9, perp,60));		
 	}
 }

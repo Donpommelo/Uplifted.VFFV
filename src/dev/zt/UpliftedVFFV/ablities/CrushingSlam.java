@@ -36,7 +36,7 @@ public class CrushingSlam extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Crushing Slam!");
 		bs.bp.bt.textList.add(vic.getName()+" was critically dazed by the blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti())), perp, vic,6);
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 		bs.bp.stm.addStatus(vic, new Stunned(2,perp, 80));
 	}
 	

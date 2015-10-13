@@ -25,8 +25,8 @@ public class MotorGrinder extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Motorgrinder!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,(int)(.8*(1-perp.getCritMulti())), perp,60));
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, vic,6);
+		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,(int)(.8*(1-perp.getCritMulti()-vic.getCritRes())), perp,60));
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 	}
 	
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){

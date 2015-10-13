@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.FireExtinguisher;
+import dev.zt.UpliftedVFFV.inventory.consummables.FireExtinguisher;
 
 public class EventSafe2 extends Event {
 

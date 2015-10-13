@@ -362,10 +362,17 @@ public class MenuState extends State {
 									progFlag = false;
 									exit = true;
 								} else{
-									audio.playSound("/Audio/option_toggle.wav", false);
-									gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
-									refreshBackpack();
-									progFlag = true;
+//									if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
+										audio.playSound("/Audio/option_toggle.wav", false);
+										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+										refreshBackpack();
+										progFlag = true;
+//									}
+//									else{
+//										audio.playSound("/Audio/option_toggle.wav", false);//meep merp sound
+//										progFlag = true;
+//									}
+									
 								}
 								game.getKeyManager().disable(delaySelection);
 							}
@@ -441,8 +448,13 @@ public class MenuState extends State {
 									if(tempBackpack.get(backpackTab).size() > 0){	
 										tempItem = tempBackpack.get(backpackTab).get(itemSelected);
 									}
-									audio.playSound("/Audio/option_toggle.wav", false);
-									gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+//									if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
+										audio.playSound("/Audio/option_toggle.wav", false);
+										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+//									}
+//									else{
+//										audio.playSound("/Audio/option_toggle.wav", false); // lets get some meep merp in here
+//									}
 									refreshBackpack();
 									bypassSelection = false;
 									optionSelected = 0;
@@ -614,6 +626,7 @@ public class MenuState extends State {
 			else{
 				StateManager.getStates().pop();
 			}
+			progFlag = false;		//This line fixes "Custom Message" staying around if x is pressed.
 			toggleXtraInfo = false;
 			bypassSelection = false;
 			exit=false;
@@ -674,7 +687,7 @@ public class MenuState extends State {
 						}
 						for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
 							g.drawString(tempSchmuck.skills.get(i).getName() + "  " +
-									(int)(tempSchmuck.skills.get(i).getCost() * (1+tempSchmuck.getMpCost())) + " Mp", 
+									(int)(tempSchmuck.skills.get(i).getCost() * (1-tempSchmuck.getMpCost())) + " Mp", 
 									150, 274 + 36 * skillnum);
 		
 							skillnum++;
@@ -914,7 +927,7 @@ public class MenuState extends State {
 						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);
 						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black, 492, 240 + itemslot * 40, 120, 25, 16, true);
 					} else if(equipChosen && progFlag){
-						Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);
+							Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);						
 					}
 					//Item usage.
 					if(useitemChosen && !progFlag){
@@ -1109,5 +1122,9 @@ public class MenuState extends State {
 		tempBackpack.add(itemDisplayEquip);
 		tempBackpack.add(itemDisplayMisc);
 		tempBackpack.add(itemDisplayKey);
+		if(itemSelected == tempBackpack.get(backpackTab).size()){
+			itemPointer--;
+			itemSelected = tempBackpack.get(backpackTab).size()-1;
+		}
 	}
 }

@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.CaffeinePatch;
+import dev.zt.UpliftedVFFV.inventory.consummables.CaffeinePatch;
 
 
 public class EventSafe6 extends Event {

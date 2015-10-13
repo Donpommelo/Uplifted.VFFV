@@ -43,4 +43,8 @@ public class Intimidated extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" doesn't look intimidated any more.";
 	}
+	
+	public Boolean isBad(){
+		return true;
+	}
 }

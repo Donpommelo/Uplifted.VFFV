@@ -31,9 +31,10 @@ public class Schmuck implements Serializable{
 	
 	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
-	//PurpRes,VoidRes, RunawayBonus, DiscountBonus, SummonPower, DamageStat
+	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus!
+	//cooldownBonus!
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	
 //	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
@@ -82,7 +83,7 @@ public class Schmuck implements Serializable{
 //		this.buffedStats=start;
 		this.elemPoints = elem;
 		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 		this.expDrop = exp;
@@ -103,7 +104,7 @@ public class Schmuck implements Serializable{
 //		this.buffedStats=start;
 		this.exp=0;
 		this.elemPoints = elem;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 		this.itemSlots = 4;
 		this.itemDummy = new Schmuck();
 	}
@@ -184,10 +185,16 @@ public class Schmuck implements Serializable{
 	
 	public void equip(Item i, int slot, InventoryManager meep){
 		if(meep.backpack.containsKey(i)){
+/*			if(Lvl >= i.getLvlReq()){
+				System.out.print("meep");
+			}
+			else{
+				System.out.print("mierp");
+			}*/
 			if(slot < itemSlots){
 				if(items[slot] != null){
 					meep.loot(items[slot],1);
-					items[slot].unEnchantment(this);
+					items[slot].unEnchantment(this, meep);
 				}
 				meep.use(i);
 				items[slot] = i;
@@ -219,7 +226,7 @@ public class Schmuck implements Serializable{
 			if(slot < itemSlots){
 				if(items[slot] != null){
 					meep.loot(items[slot],1);
-					items[slot].unEnchantment(this);
+					items[slot].unEnchantment(this, meep);
 				}
 				items[slot] = null;
 				for(int j=0; j<this.statuses.size(); j++){
@@ -229,6 +236,14 @@ public class Schmuck implements Serializable{
 							j--;
 						}
 					}					
+				}
+				for(Item it : items){
+					if(it != null){
+						for(status s : it.getEnchantment(this)){
+							this.statuses.add(s);
+						}
+					}
+					
 				}
 				calcBuffs(null);
 			}
@@ -814,6 +829,46 @@ public class Schmuck implements Serializable{
 
 	public void setDamageStat(double stat) {
 		bonusStats[26] = stat;
+	}
+	
+	public double getLvlReqMod() {
+		return bonusStats[27];
+	}
+
+	public void setLvlReqMod(double bonus) {
+		bonusStats[27] = bonus;
+	}
+	
+	public double getCritRes(){
+		return bonusStats[28];
+	}
+	
+	public void setCritRes(double bonus){
+		bonusStats[28] = bonus;
+	}
+	
+	public double getRegenBonus(){
+		return bonusStats[29];
+	}
+	
+	public void setRegenBonus(double bonus){
+		bonusStats[29] = bonus;
+	}
+	
+	public double getChargeBonus(){
+		return bonusStats[30];
+	}
+	
+	public void setChargeBonus(double bonus){
+		bonusStats[30] = bonus;
+	}
+	
+	public double getCooldownBonus(){
+		return bonusStats[31];
+	}
+	
+	public void setCooldownBonus(double bonus){
+		bonusStats[31] = bonus;
 	}
 	
 	public int getRedPoints(){

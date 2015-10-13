@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.LetterOpener;
-import dev.zt.UpliftedVFFV.inventory.PostageStamp;
+import dev.zt.UpliftedVFFV.inventory.equipables.LetterOpener;
+import dev.zt.UpliftedVFFV.inventory.misc.PostageStamp;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.BossJorge;

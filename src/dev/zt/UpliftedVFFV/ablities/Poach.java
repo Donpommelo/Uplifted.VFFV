@@ -33,7 +33,7 @@ public class Poach extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" uses Poach!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti())), perp, vic,6);	
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);	
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 			if(bs.bp.TurnOrderQueue.get(i)!=null){
 				if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && bs.bp.TurnOrderQueue.get(i).getSkill().getName().equals("Use Item")){

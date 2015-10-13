@@ -25,7 +25,7 @@ public class TyrianPlum extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Tyrian Plum!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.stm.addStatus(vic, new TyrianPlumEffect((int)(6*(1+perp.getCritMulti())),perp, 70));	
+		bs.bp.stm.addStatus(vic, new TyrianPlumEffect((int)(6*(1+perp.getCritMulti()-vic.getCritRes())),perp, 70));	
 	}
 
 }

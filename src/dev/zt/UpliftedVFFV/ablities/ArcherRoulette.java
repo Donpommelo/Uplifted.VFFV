@@ -32,7 +32,7 @@ public class ArcherRoulette extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		bs.bp.bt.textList.add("A Critical Blow!");	
-		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti())),perp,vic,6);
+		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())),perp,vic,6);
 	}
 	
 

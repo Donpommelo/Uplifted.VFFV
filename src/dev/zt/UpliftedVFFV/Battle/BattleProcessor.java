@@ -99,12 +99,12 @@ public class BattleProcessor {
 			case 0:
 				if(roundNum == 1){
 					for(Schmuck s : battlers){
-						if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
-							for(int i=0; i<s.statuses.size(); i++){
-								if(s.statuses.get(i)!=null){
+						for(int i=0; i<s.statuses.size(); i++){
+							if(s.statuses.get(i)!=null){
+								if(!(stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !stm.checkStatus(s, new Undead(s, 10)))){
 									s.statuses.get(i).startoffightEffect(s,bs);
 								}
-							}
+							}	
 						}
 					}
 				}
@@ -167,13 +167,13 @@ public class BattleProcessor {
 								}
 							}
 							for(Schmuck s : battlers){
-								if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
-									for(int i=0; i<s.statuses.size(); i++){
-										if(s.statuses.get(i)!=null){
-											s.statuses.get(i).preBattlePhase(s, bs);
+								for(int i=0; i<s.statuses.size(); i++){
+									if(s.statuses.get(i)!=null){
+										if(!(stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !stm.checkStatus(s, new Undead(s, 10)))){
+											s.statuses.get(i).preBattlePhase(s,bs);
 										}
-									}
-								}			
+									}	
+								}
 							}
 							sort(TurnOrderQueue);
 							
@@ -216,16 +216,14 @@ public class BattleProcessor {
 
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
-						if(!stm.checkStatus(TurnOrderQueue.get(0).user, new incapacitate(TurnOrderQueue.get(0).user)) || stm.checkStatus(TurnOrderQueue.get(0).user, new Undead(TurnOrderQueue.get(0).user,50))){
-							for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
-								if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
-									TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
-								}
-							}
+						for(int i=0; i<TurnOrderQueue.get(0).user.statuses.size(); i++){
+							if(TurnOrderQueue.get(0).user.statuses.get(i)!=null){
+								TurnOrderQueue.get(0).user.statuses.get(i).restrict(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0),bs);	
+							}	
 						}
 						if(!TurnOrderQueue.get(0).skill.getName().equals("Dilly Dally") && TurnOrderQueue.get(0) != null){
-							if((int)(TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost()))<=TurnOrderQueue.get(0).user.getCurrentBp()){								
-								em.bpChange((int)(-TurnOrderQueue.get(0).skill.getCost()*(1+TurnOrderQueue.get(0).user.getMpCost())), TurnOrderQueue.get(0).user);
+							if((int)(TurnOrderQueue.get(0).skill.getCost()*(1-TurnOrderQueue.get(0).user.getMpCost()))<=TurnOrderQueue.get(0).user.getCurrentBp()){								
+								em.bpChange((int)(-TurnOrderQueue.get(0).skill.getCost()*(1-TurnOrderQueue.get(0).user.getMpCost())), TurnOrderQueue.get(0).user);
 								if(Math.random() < TurnOrderQueue.get(0).user.getBuffedSkl()/(TurnOrderQueue.get(0).target.getBuffedLuk()*
 										TurnOrderQueue.get(0).target.getBuffedLuk())+TurnOrderQueue.get(0).user.getCritChance() + 
 										TurnOrderQueue.get(0).skill.getBaseCrit()/100 && TurnOrderQueue.get(0).skill.canCrit()){
@@ -260,12 +258,12 @@ public class BattleProcessor {
 									}
 									
 									for(Schmuck s : battlers){
-										if(!stm.checkStatus(s, new incapacitate(s)) || stm.checkStatus(s, new Undead(s, 10))){
-											for(int i=0; i<s.statuses.size(); i++){
-												if(s.statuses.get(i)!=null){
+										for(int i=0; i<s.statuses.size(); i++){
+											if(s.statuses.get(i)!=null){
+												if(!(stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !stm.checkStatus(s, new Undead(s, 10)))){
 													s.statuses.get(i).endofAnyAction(bs,TurnOrderQueue.get(0),s);
 												}
-											}
+											}	
 										}
 									}
 								}

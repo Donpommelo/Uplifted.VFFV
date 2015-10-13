@@ -32,4 +32,8 @@ public class Delicious extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+" doesn't look delicious anymore.";
 	}
+	
+	public Boolean isBad(){
+		return true;
+	}
 }

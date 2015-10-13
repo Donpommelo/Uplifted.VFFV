@@ -161,7 +161,7 @@ public class BattleMenu{
 							currentSkill = new SkillNothing(1,gs);
 						}
 						else{
-							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
+							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
 									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
 								bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 							}
@@ -500,7 +500,7 @@ public class BattleMenu{
 					skillnum = 0;                                                                                                                                                                                                                                                                                       
 					for(int i = backpackLocation; i <= backpackLocation + 4 && i < currentSchmuck.skills.size(); i++){			
 						g.setColor(Color.white);
-						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", menux + 3, menuy - 10 + 25 * (skillnum));
+						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1-currentSchmuck.getMpCost()))+" Mp", menux + 3, menuy - 10 + 25 * (skillnum));
 						skillnum++;
 					}
 					

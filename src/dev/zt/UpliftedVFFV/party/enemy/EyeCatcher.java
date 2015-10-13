@@ -3,12 +3,13 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.SeeingEye;
+import dev.zt.UpliftedVFFV.inventory.consummables.SeeingEye;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;

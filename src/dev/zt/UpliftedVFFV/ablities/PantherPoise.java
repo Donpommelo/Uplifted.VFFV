@@ -28,7 +28,7 @@ public class PantherPoise extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Panther Poise!");
 		bs.bp.bt.textList.add(perp.getName()+" looks critically poised to strike!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(1.5+perp.getCritMulti()),perp, 90));
+			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(1.5+perp.getCritMulti()-s.getCritRes()),perp, 90));
 		}
 	}
 }

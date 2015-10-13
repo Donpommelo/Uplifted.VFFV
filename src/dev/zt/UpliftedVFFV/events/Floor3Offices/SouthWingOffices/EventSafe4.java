@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.FadedSash;
+import dev.zt.UpliftedVFFV.inventory.equipables.FadedSash;
 
 public class EventSafe4 extends Event {
 

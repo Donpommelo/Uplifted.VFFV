@@ -37,10 +37,10 @@ public class StandardAttack extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+"!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		int statAttack = (int)(perp.getDamageStat()+2);
-		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti())), perp, vic,6);
+		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 		for(int i=0; i<perp.statuses.size(); i++){
 			if(perp.statuses.get(i)!=null){
-				perp.statuses.get(i).attackModify(perp, vic, bs, -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti())));
+				perp.statuses.get(i).attackModify(perp, vic, bs, -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())));
 			}
 		}		
 	}

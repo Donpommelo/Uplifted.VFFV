@@ -12,8 +12,8 @@ public class EventTestBattle extends Event {
 	}
 	
 	public void run(){
-//		super.fite(11, this.id, true, true);
-		super.fite((int)(Math.random()*13), this.id, true, true);
+		super.fite(0, this.id, true, true);
+//		super.fite((int)(Math.random()*13), this.id, true, true);
 
 	}
 	

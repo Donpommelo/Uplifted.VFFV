@@ -43,8 +43,8 @@ public class MadnessMantraStatus extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedStats[2] += 5*stack;
-		s.bonusStats[5] += .2*stack;
-		s.bonusStats[13] += .2*stack;
+		s.buffedStats[2] += 5*stack*(1+s.getEquipPow());
+		s.bonusStats[5] += .2*stack*(1+s.getEquipPow());
+		s.bonusStats[13] -= .2*stack;
 	}
 }

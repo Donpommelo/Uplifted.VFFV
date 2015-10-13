@@ -25,7 +25,7 @@ public class CentriDischarge extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Centrifuge Discharge!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*(1.5+perp.getCritMulti())), perp, vic,3);
+		bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,3);
 		bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,2, perp,25));	
 	}
 	

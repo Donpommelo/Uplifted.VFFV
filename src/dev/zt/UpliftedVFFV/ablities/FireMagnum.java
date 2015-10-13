@@ -1,6 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.inventory.MetalRations;
+import dev.zt.UpliftedVFFV.inventory.misc.MetalRations;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 

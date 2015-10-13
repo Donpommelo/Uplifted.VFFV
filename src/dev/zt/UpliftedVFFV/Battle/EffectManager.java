@@ -75,9 +75,12 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
+							if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
+								finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
+							}
 						}
 					}
+					finalDamage *= (1+vic.getRegenBonus());
 					vic.tempStats[0]+=finalDamage;
 				}
 			}
@@ -89,12 +92,16 @@ public class EffectManager {
 					bs.bs.flash(vic, 51);
 					for(int i=0; i<perp.statuses.size(); i++){
 						if(perp.statuses.get(i)!=null){
-							finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+							if(!(bs.bp.stm.checkStatus(perp, new incapacitate(perp)) && !perp.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(perp, new Undead(perp, 10)))){
+								finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+							}
 						}
 					}
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
+							if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
+								finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
+							}
 						}
 					}
 					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
@@ -104,15 +111,15 @@ public class EffectManager {
 			if(vic.tempStats[0]<=0){
 				vic.tempStats[0]=0;				
 				for(int i=0; i<perp.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(perp.statuses.get(i)!=null){
+					if(perp.statuses.get(i)!=null){
+						if(!(bs.bp.stm.checkStatus(perp, new incapacitate(perp)) && !perp.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(perp, new Undead(perp, 10)))){
 							perp.statuses.get(i).onKill(perp,vic, bs);
 						}
 					}
 				}
 				for(int i=0; i<vic.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(vic.statuses.get(i)!=null){
+					if(vic.statuses.get(i)!=null){
+						if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
 							vic.statuses.get(i).onDeath(perp,vic, bs);
 						}
 					}
@@ -159,8 +166,29 @@ public class EffectManager {
 	}
 	
 	public void bpChange(int bp, Schmuck s){
+		int meterChange = bp;
 		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s,50))){
-			s.tempStats[1]+=bp;
+			
+			if(meterChange < 0){
+				for(int i=0; i<s.statuses.size(); i++){
+					if(s.statuses.get(i)!=null){
+						if(!(bs.bp.stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(s, new Undead(s, 10)))){
+							meterChange = s.statuses.get(i).spendMeterEffect(s, bs, meterChange);
+						}
+					}
+				}
+			}
+			else{
+				for(int i=0; i<s.statuses.size(); i++){
+					if(s.statuses.get(i)!=null){
+						if(!(bs.bp.stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(s, new Undead(s, 10)))){
+							meterChange = s.statuses.get(i).gainMeterEffect(s, bs, meterChange);
+						}
+					}
+				}
+				meterChange *= (1 + s.getRegenBonus());
+			}
+			s.tempStats[1]+=meterChange;
 			if(s.getCurrentBp()<0){
 				s.setCurrentBp(0);
 			}

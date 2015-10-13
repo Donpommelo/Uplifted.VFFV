@@ -12,23 +12,22 @@ public class RingofGygesStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public int damage = 0;
-	public Boolean used;	
+	public int uses;	
 	public RingofGygesStatus(Schmuck perp, int pr){
 		super("Defensive Invisibility", false, false, perp,pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){//
-		used = false;
+		uses = (int)(1 + s.getChargeBonus());
 	}
 			
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		if(!used){
-			if(vic.getCurrentHp()-damage <= .1*vic.getMaxHp()){
+		if(uses > 0 ){
+			if(vic.getCurrentHp() + damage <= .1*vic.getMaxHp()){
 				bs.bp.bt.textList.add(vic.getName()+"'s Ring of Gyges grants Invisibility!");
 				bs.bp.stm.addStatus(vic, new Untouchable(2, vic.getItemDummy(), 50));
+				uses--;
 			}
-			used = true;
 		}		
 		return damage;
 	}

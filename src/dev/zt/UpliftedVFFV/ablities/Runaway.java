@@ -26,10 +26,11 @@ public class Runaway extends Skills {
 			bonus += s.getRunawayBonus();
 		}
 		for(Schmuck m : bs.bs.enemySelectable){
-			enemyLevel += m.getLvl();
+			enemyLevel += (m.getLvl());
 		}
-		double chance = .8 *(partyLevel/enemyLevel)*(1+bonus);
-		if(bs.runnable && Math.random()<=chance){	
+		double chance = (partyLevel/enemyLevel)*(1+bonus);
+		if(bs.runnable && Math.random()<=chance){
+			bs.bp.stm.endofFite();
 			bs.bp.bt.ranAway = true;
 		}
 		else{

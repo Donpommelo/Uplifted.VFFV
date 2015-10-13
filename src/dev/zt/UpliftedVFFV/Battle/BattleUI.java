@@ -106,8 +106,8 @@ public class BattleUI {
 			//Draw status circle.
 			g.setColor(Color.white);
 			g.fillOval(s.getX() - 5, s.getY() + 107, 59, 59);
-			if(bs.bs.alliesSelectable.size() > 0){
-				if(bs.bs.alliesSelectable.get(bs.bp.currentlySelected).equals(s)){
+			if(bs.bs.alliesSelectable.size() > 0 && bs.bp.currentlySelected < bs.bs.alliesSelectable.size()){
+				if(bs.bs.alliesSelectable.get(bs.bp.currentlySelected).equals(s)){	//*BUG Sometimes when you character is incapacitated, returns index oob error
 					g.setColor(Color.green);
 					g.fillOval(bs.bs.alliesSelectable.get(bs.bp.currentlySelected).getX() - 5, 
 							bs.bs.alliesSelectable.get(bs.bp.currentlySelected).getY() + 107, 59, 59);

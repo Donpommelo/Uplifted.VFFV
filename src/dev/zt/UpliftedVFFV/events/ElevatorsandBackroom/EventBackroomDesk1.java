@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.inventory.PostageStamp;
+import dev.zt.UpliftedVFFV.inventory.misc.PostageStamp;
 import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class EventBackroomDesk1 extends Event {

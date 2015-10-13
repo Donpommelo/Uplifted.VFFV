@@ -17,7 +17,7 @@ public class CatoWantStatus extends status{
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
-		int overkill = s.getCurrentBp() - (int)(a.skill.getCost()*(1+a.user.getMpCost()));
+		int overkill = s.getCurrentBp() - (int)(a.skill.getCost()*(1-a.user.getMpCost()));
 		if(overkill <= 0){
 			if(s.getCurrentHp() >= -(overkill*2+5)){
 				bs.bp.bt.textList.add(s.getName()+" doesn't have the Motivation to cast "+a.getSkill().getName()+"!");

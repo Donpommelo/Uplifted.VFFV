@@ -8,11 +8,11 @@ import java.util.TreeMap;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.inventory.CarrotJuice;
-import dev.zt.UpliftedVFFV.inventory.CoffeedIce;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.LemonyFresh;
-import dev.zt.UpliftedVFFV.inventory.MeltedIcecream;
+import dev.zt.UpliftedVFFV.inventory.consummables.CarrotJuice;
+import dev.zt.UpliftedVFFV.inventory.consummables.CoffeedIce;
+import dev.zt.UpliftedVFFV.inventory.consummables.LemonyFresh;
+import dev.zt.UpliftedVFFV.inventory.consummables.MeltedIcecream;
 
 
 

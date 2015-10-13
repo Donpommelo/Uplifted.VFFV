@@ -1,7 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.DisarmedNothing;
+import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -20,7 +20,7 @@ public class Disarmed extends status{
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Attack")){
-			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new DisarmedNothing(0),bs));
+			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use attack, but was Disarmed."),bs));
 		}
 	}
 
@@ -30,5 +30,9 @@ public class Disarmed extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s arms grew back.";
+	}
+	
+	public Boolean isBad(){
+		return true;
 	}
 }

@@ -10,27 +10,26 @@ public class HoGStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public int cooldown;
 	public HoGStatus(Schmuck perp, int pr){
 		super("Glorious", false, false, perp, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		cooldown = 0;
+		setCooldown(0);
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){
-		if(cooldown == 0){
+		if(getCooldown() == 0){
 			bs.bp.bt.textList.add(s.getName()+"'s Hand of Glory Activates!");
 			Schmuck target = bs.bp.getSelectableEnemies(s).get((int)(Math.random()*bs.bp.getSelectableEnemies(s).size()));
 			bs.bp.stm.addStatus(target, new Stunned(2,perp, 50));				
-			cooldown +=8;
+			setCooldown((int)(7 - s.getCooldownBonus()));
 		}
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(cooldown >0){
-			cooldown--;
+		if(getCooldown() >0){
+			setCooldown(getCooldown()-1);
 		}
 	}	
 }

@@ -26,6 +26,6 @@ public class ScaryFace extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Initmidate!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti())), perp, 40));	
+		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 40));	
 	}
 }

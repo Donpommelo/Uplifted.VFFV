@@ -23,7 +23,7 @@ public class PennyBlue extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Penny Blue!");
 		bs.bp.bt.textList.add("A Critical buff!");
-		bs.bp.stm.addStatus(vic, new PennyBlueStatus((int)(3*(1+perp.getCritMulti())), perp, 60));	
+		bs.bp.stm.addStatus(vic, new PennyBlueStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 60));	
 	}
 	
 	public boolean startTarget(){

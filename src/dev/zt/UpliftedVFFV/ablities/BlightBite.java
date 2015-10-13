@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
+import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 
 public class BlightBite extends Skills {
 
@@ -20,14 +20,14 @@ public class BlightBite extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic,6);
-		bs.bp.stm.addStatus(vic, new Regendegen(3,true,-3, perp, 40));
+		bs.bp.stm.addStatus(vic, new Poisoned(3, perp, 40));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Blight Bite!");
 		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti())), perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Regendegen((int)(3*(1.5+perp.getCritMulti())),true,-3, perp, 80));	
+		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
+		bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
 	}
 	
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){

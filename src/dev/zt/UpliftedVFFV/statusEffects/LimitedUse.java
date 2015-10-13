@@ -1,7 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.OutofUsesNothing;
+import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -16,7 +16,7 @@ public class LimitedUse extends status{
 	public LimitedUse(int i,Skills m, int uses, Schmuck perp, int pr){
 		super(999,"MoveLimit",true, false, true, perp, pr);
 		this.move = m;
-		this.usesLeft = uses;
+		this.usesLeft = (int)(uses + perp.getChargeBonus());
 	}
 	
 	public LimitedUse(Schmuck perp, int pr){
@@ -30,7 +30,7 @@ public class LimitedUse extends status{
 				bs.bp.bt.textList.add(s.getName()+"'s  "+move.getName()+" has "+usesLeft+" uses left.");
 			}
 			else{
-				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new OutofUsesNothing(0,a.skill),bs));				
+				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s "+move.getName()+" has no more uses left!"),bs));				
 			}
 		}
 	}

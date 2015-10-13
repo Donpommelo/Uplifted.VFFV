@@ -18,7 +18,7 @@ public class Item implements Comparable<Item>, Serializable{
 	public String name,descr,descrShort;
 	public int Id;
 	public int value;
-	
+	public int lvlReq;
 	public String janitorText;
 	
 	//0: Consumable 1: Equipment 2: Misc 3: Key Item
@@ -26,7 +26,7 @@ public class Item implements Comparable<Item>, Serializable{
 	public Boolean usedfromMenu, usefromBattle, consumable, targeted = true;
 	
 	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, String description,String descrShort,
-			int value, int slot){
+			int value, int slot, int lvlReq){
 		this.Id=id;
 		this.name=name;
 		this.usedfromMenu=menu;
@@ -37,6 +37,7 @@ public class Item implements Comparable<Item>, Serializable{
 		this.descrShort = descrShort;
 		this.value = value;
 		this.slot = slot;
+		this.lvlReq = lvlReq;
 	}	
 
 	//ran when an item is used. Every item will override this method with whatever effect it has,
@@ -102,7 +103,7 @@ public class Item implements Comparable<Item>, Serializable{
 		return null;
 	}
 	
-	public void unEnchantment(Schmuck s) {
+	public void unEnchantment(Schmuck s, InventoryManager meep) {
 		
 	}
 
@@ -120,6 +121,10 @@ public class Item implements Comparable<Item>, Serializable{
 	
 	public int getSlot(){
 		return slot;
+	}
+	
+	public int getLvlReq(){
+		return lvlReq;
 	}
 	
 	public boolean isSellable(){

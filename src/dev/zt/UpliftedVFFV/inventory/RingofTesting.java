@@ -7,11 +7,20 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class RingofTesting extends Item{
 
+	static int id = 2;
+	static String name = "Ring of Testing";
+	static boolean menu = false;
+	static boolean battle = false;
+	static boolean consume = false;
+	static boolean target = false;
+	static int value = 322;
+	static int slot = 1;
+	static int lvlReq = -1;
 	static String descr="A ring that grants it bearer the ability to help me test this\ngoddamn game.";
 	static String descrShort="Anything, really.";
 	public status[] enchantment = new status[4];
 	public RingofTesting() {
-		super(2, "Ring of Testing",false,false,false, false,descr, descrShort,322,1);
+		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 		
 	}
 	

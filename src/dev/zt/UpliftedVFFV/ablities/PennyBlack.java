@@ -24,7 +24,7 @@ public class PennyBlack extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.textList.add(perp.getName()+" used Penny Black!");
 		bs.bp.bt.textList.add("A Critical buff!");
-		bs.bp.stm.addStatus(vic, new PennyBlackStatus((int)(3*(1+perp.getCritMulti())), perp, 20));	
+		bs.bp.stm.addStatus(vic, new PennyBlackStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 20));	
 	}
 	
 	public boolean startTarget(){

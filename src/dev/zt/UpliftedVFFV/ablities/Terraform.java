@@ -43,7 +43,7 @@ public class Terraform extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
 		bs.bp.bt.textList.add("All battlers look critically discombobulated.");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s,6);
+			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, s,6);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);

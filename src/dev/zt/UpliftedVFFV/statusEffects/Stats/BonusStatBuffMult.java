@@ -71,7 +71,7 @@ public class BonusStatBuffMult extends status{
 			stat = "Combat Frequency";
 			break;
 		case 13:
-			stat = "Motivation Costs";
+			stat = "Motivation Cost Reduction";
 			break;
 		case 14:
 			stat = "Combat Initiative";
@@ -87,6 +87,33 @@ public class BonusStatBuffMult extends status{
 			break;
 		case 18:
 			stat = "Heal Power";
+			break;
+		case 19:
+			stat = "Red Resistance";
+			break;
+		case 20:
+			stat = "Blue Resistance";
+			break;
+		case 21:
+			stat = "Green Resistance";
+			break;
+		case 22:
+			stat = "Yellow Resistance";
+			break;
+		case 23:
+			stat = "Purple Resistance";
+			break;
+		case 24:
+			stat = "??? Resistance";
+			break;
+		case 25:
+			stat = "Runaway Chance";
+			break;
+		case 26:
+			stat = "Primary Damage Stat";
+			break;
+		case 27:
+			stat = "Level Requirement Modification";
 			break;
 		}
 		if(statIncrement>1){

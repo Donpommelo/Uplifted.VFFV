@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.*;
+import dev.zt.UpliftedVFFV.inventory.misc.FishWater;
 
 //This is commented as an example of slightly more complex event processing.
 //This contains a choicebranch that branches into different dialog and event running

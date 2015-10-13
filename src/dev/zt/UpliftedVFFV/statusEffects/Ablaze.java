@@ -26,11 +26,15 @@ public class Ablaze extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" was set on fire.";
+		return s.getName()+" was set on fire!";
 
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s fire was extinguished.";
+		return s.getName()+"'s fire was extinguished!";
+	}
+	
+	public Boolean isBad(){
+		return true;
 	}
 }
