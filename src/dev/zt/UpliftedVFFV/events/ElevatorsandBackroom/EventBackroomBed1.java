@@ -15,7 +15,7 @@ public class EventBackroomBed1 extends Event {
 //	private static int finalstage = 3;
 	
 	public EventBackroomBed1(float x, float y, int idnum) {
-		super(Assets.Bed1,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		stage = 0;
 	}
 	

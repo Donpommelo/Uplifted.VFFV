@@ -215,7 +215,6 @@ public class Creature extends Entity {
 	public void setyMove(float yMove) {
 		this.yMove = yMove;
 	}
-
 	
 	public float getSpeed() {
 		return speed;
@@ -233,7 +232,4 @@ public class Creature extends Entity {
 		this.imgShown = imgShown;
 	}
 	
-	
-	 
-
 }

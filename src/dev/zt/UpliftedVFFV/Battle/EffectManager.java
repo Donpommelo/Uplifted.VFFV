@@ -3,12 +3,14 @@ package dev.zt.UpliftedVFFV.Battle;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.statusEffects.HealBlock;
 import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.MeterBlock;
+import dev.zt.UpliftedVFFV.statusEffects.Purified;
 import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
@@ -21,9 +23,7 @@ public class EffectManager {
 	
 	public EffectManager(Game g, BattleState bs, GameState gs){
 		this.gs=gs;
-		this.bs=bs;
-//		this.team=bs.bp.allies;
-//		this.enemy=bs.bp.enemy;		
+		this.bs=bs;	
 	}
 		
 	public void hpChange(int hp, Schmuck perp, Schmuck vic, int elem){
@@ -75,8 +75,10 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
-								finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
+							if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
+								if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
+									finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
+								}
 							}
 						}
 					}
@@ -89,18 +91,22 @@ public class EffectManager {
 					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prevented damage!");
 				}
 				else{
-					bs.bs.flash(vic, 51);
+					bs.bs.flash(vic, 80);
 					for(int i=0; i<perp.statuses.size(); i++){
 						if(perp.statuses.get(i)!=null){
-							if(!(bs.bp.stm.checkStatus(perp, new incapacitate(perp)) && !perp.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(perp, new Undead(perp, 10)))){
-								finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+							if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || perp.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
+								if(!bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
+									finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
+								}
 							}
 						}
 					}
 					for(int i=0; i<vic.statuses.size(); i++){
 						if(vic.statuses.get(i)!=null){
-							if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
-								finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
+							if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
+								if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
+									finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
+								}
 							}
 						}
 					}
@@ -112,15 +118,19 @@ public class EffectManager {
 				vic.tempStats[0]=0;				
 				for(int i=0; i<perp.statuses.size(); i++){
 					if(perp.statuses.get(i)!=null){
-						if(!(bs.bp.stm.checkStatus(perp, new incapacitate(perp)) && !perp.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(perp, new Undead(perp, 10)))){
-							perp.statuses.get(i).onKill(perp,vic, bs);
+						if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || perp.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
+							if(!bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
+								perp.statuses.get(i).onKill(perp,vic, bs);
+							}
 						}
 					}
 				}
 				for(int i=0; i<vic.statuses.size(); i++){
 					if(vic.statuses.get(i)!=null){
-						if(!(bs.bp.stm.checkStatus(vic, new incapacitate(vic)) && !vic.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(vic, new Undead(vic, 10)))){
-							vic.statuses.get(i).onDeath(perp,vic, bs);
+						if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
+							if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
+								vic.statuses.get(i).onDeath(perp,vic, bs);
+							}
 						}
 					}
 				}
@@ -133,7 +143,7 @@ public class EffectManager {
 					}
 					
 				}
-//				bs.bs.targetUpdate();
+				bs.bs.targetUpdate();
 			}
 			if(vic.tempStats[0]>vic.buffedStats[0]){
 				vic.tempStats[0]=vic.buffedStats[0];
@@ -172,8 +182,10 @@ public class EffectManager {
 			if(meterChange < 0){
 				for(int i=0; i<s.statuses.size(); i++){
 					if(s.statuses.get(i)!=null){
-						if(!(bs.bp.stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(s, new Undead(s, 10)))){
-							meterChange = s.statuses.get(i).spendMeterEffect(s, bs, meterChange);
+						if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
+							if(!bs.bp.stm.checkStatus(s, new Purified(s,0))){
+								meterChange = s.statuses.get(i).spendMeterEffect(s, bs, meterChange);
+							}
 						}
 					}
 				}
@@ -181,8 +193,10 @@ public class EffectManager {
 			else{
 				for(int i=0; i<s.statuses.size(); i++){
 					if(s.statuses.get(i)!=null){
-						if(!(bs.bp.stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(s, new Undead(s, 10)))){
-							meterChange = s.statuses.get(i).gainMeterEffect(s, bs, meterChange);
+						if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
+							if(!bs.bp.stm.checkStatus(s, new Purified(s,0))){
+								meterChange = s.statuses.get(i).gainMeterEffect(s, bs, meterChange);
+							}
 						}
 					}
 				}
@@ -203,6 +217,7 @@ public class EffectManager {
 		
 	}
 	
+	//Returns true or false if a given ability hits or misses.
 	public Boolean getAcc(Schmuck perp, Schmuck vic, int baseAcc){
 		int acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
 		if((int)(Math.random()*100) <= acc){
@@ -213,6 +228,14 @@ public class EffectManager {
 		}
 	}
 	
-	
-
+	//returns true or false if a given ability crits or not.
+	public Boolean getCrit(Schmuck perp, Schmuck vic, Skills s){
+		double crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() + s.getBaseCrit()/100;
+		if(Math.random() <= crit){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

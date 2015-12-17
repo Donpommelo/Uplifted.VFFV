@@ -11,4 +11,5 @@ public class Event0 extends Event {
 	public Event0(float x, float y, int idnum) {
 		super(Assets.Black,idnum,x, y);
 	}
+
 }

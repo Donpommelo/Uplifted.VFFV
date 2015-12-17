@@ -55,8 +55,10 @@ public class StatusManager {
 		}
 		for(int i=0; i<s.statuses.size(); i++){
 			if(s.statuses.get(i)!=null){
-				if(!(bs.bp.stm.checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !bs.bp.stm.checkStatus(s, new Undead(s, 10)))){
-					s.statuses.get(i).onStatusInflict(s,stat,bs);
+				if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
+					if(!checkStatus(s,new Purified(s,0))){
+						s.statuses.get(i).onStatusInflict(s,stat,bs);
+					}
 				}
 			}
 		}
@@ -123,8 +125,10 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
-					if(!(checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !checkStatus(s, new Undead(s, 10)))){
-						s.statuses.get(i).endofturnEffect(s, bs);
+					if(!checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(s, 10))){
+						if(checkStatus(s, new Purified(s,0))){
+							s.statuses.get(i).endofturnEffect(s, bs);
+						}
 						if(s.statuses.get(i).perm==false){
 							if(s.statuses.get(i).duration==0){
 								if(!s.statuses.get(i).cureText(s).equals("")){
@@ -147,8 +151,10 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 				for(int i=0; i<s.statuses.size(); i++){
 					if(s.statuses.get(i)!=null){	
-						if(!(checkStatus(s, new incapacitate(s)) && !s.statuses.get(i).runWhenDead() && !checkStatus(s, new Undead(s, 10)))){
-							s.statuses.get(i).endoffightEffect(s, bs);
+						if(!checkStatus(s, new incapacitate(s)) || !s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(s, 10))){
+							if(checkStatus(s, new Purified(s,0))){
+								s.statuses.get(i).endoffightEffect(s, bs);
+							}
 						}	
 					}
 				}

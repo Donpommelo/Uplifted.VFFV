@@ -21,7 +21,7 @@ public class Intimidated extends status{
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		int temp = (int)(Math.random()*vic.getMaxHp());
-		if(5*damage <= -temp){
+		if(3*damage <= -temp){
 			for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 				if(bs.bp.TurnOrderQueue.get(i)!=null){
 					if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp) && !bs.bp.TurnOrderQueue.get(0).user.equals(vic)){

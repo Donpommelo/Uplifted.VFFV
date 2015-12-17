@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.party;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.party.troops.Troop;
 
 public class TroopManager {
 //	private Game game;

@@ -187,10 +187,8 @@ public class Assets {
 		ElevatorDoorWall = walls.crop(8*width, 2*width, 2*width, 3*height);
 		ElevatorWall = walls.crop(10*width, 2*height, 2*width, 3*height);
 		
-		WritingDesk1 = FurnitureBackroom.crop(0,0,32,32);
-		WritingDesk2 = FurnitureBackroom.crop(32,0,32,32);
-		Bed1 = FurnitureBackroom.crop(64,0,32,32);
-		Bed2 = FurnitureBackroom.crop(64,32,32,32);
+		WritingDesk1 = FurnitureBackroom.crop(0,0,64,32);
+		Bed1 = FurnitureBackroom.crop(64,0,32,64);
 		Tv = FurnitureBackroom.crop(96,0,32,64);
 		Calendar = FurnitureBackroom.crop(128,0,32,32);
 		Stairs = FurnitureBackroom.crop(0,288,32,32);

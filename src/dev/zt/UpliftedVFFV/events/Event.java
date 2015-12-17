@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
@@ -24,12 +25,17 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 //This manages all events. it can be compared to the Tile class. 
 //instead of taking an id and a Tilesorter number, events contain 3 variables, an x-y location and an id number
 //besides that, the process of loading in all the events is just like the Tile class.
+
+//Events are anything that can be interacted with. Each event occupies one square in the map grid. Only one event can exist in a square
+//at once. 
+
 public class Event{
 
 	int id;
 	static World world;
 	static EventManager eventmanager;
 	static StateManager statemanager;
+	static DecorManager decormanager;
 	protected static Game game;
 	protected static GameState gamestate;
 	static Player killme;
@@ -118,17 +124,17 @@ public class Event{
 	public static Event eventemployee32 = new EventEmployee32(4,13,78);
 	
 	public static Event eventemployeeBed1 = new EventBackroomBed1(9,8,79);
-	public static Event eventemployeeBed2 = new EventBackroomBed2(9,9,80);
+//	public static Event eventemployeeBed2 = new EventBackroomBed2(9,9,80);
 	public static Event eventemployeeDesk1 = new EventBackroomDesk1(2,10,81);
-	public static Event eventemployeeDesk2 = new EventBackroomDesk2(3,10,82);
+//	public static Event eventemployeeDesk2 = new EventBackroomDesk2(3,10,82);
 	public static Event eventemployeeTv = new EventBackroomTv(9,2,83);
-	public static Event eventemployeeCalandar = new EventBackroomCalendar(3,10,84);
+//	public static Event eventemployeeCalandar = new EventBackroomCalendar(3,10,84);
 	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendarInvisible(3,11,85);
 	
 	public static Event eventSmudge1= new EventSmudge1(0,0,86);
 	public static Event eventSmudge2= new EventSmudge2(0,0,87);	
 	public static Event eventElevatorWave= new EventElevatorWallWave(0,0,88);
-	public static Event eventElevatorFloor = new EventElevatorFloor(2,4,89);
+//	public static Event eventElevatorFloor = new EventElevatorFloor(2,4,89);
 	
 	public static Event eventClock = new EventClock(0,0,90);
 	public static Event eventSofa1 = new EventSofa1(0,0,91);
@@ -225,7 +231,7 @@ public class Event{
 	public static Event event63 = new Event63(7,31,182);
 	public static Event event64 = new Event64(27,15,183);
 	public static Event event65 = new Event65(27,23,184);
-//64,65,66 to right east offices
+//66 to right east offices
 	public static Event event67 = new Event67(0,42,186);
 	public static Event event68 = new Event68(6,42,187);
 	public static Event event69 = new Event69(20,5,188);
@@ -275,6 +281,9 @@ public class Event{
 	
 	public static Event event116 = new Event116(26,13,235);
 
+	//event 117,118,119,120 East Wing 2ndFloor Atria
+	
+	
 	
 	
 	
@@ -310,9 +319,9 @@ public class Event{
 		this.x = x;
 		this.y = y;
 		events[id] = this;
-		
 	}
 	
+	//If the event is attached to a Creature object, tick the Creature and make it walk around.
 	public void tick() {
 		if(test!=null){
 			test.tick();		
@@ -324,12 +333,15 @@ public class Event{
 		if(test==null){
 			g.drawImage(tex,x, y, tex.getWidth(), tex.getHeight(), null);
 		}
+		//If the event is attached to a Creature object, render it and draw the image attached to it. Rendering creature does not
+		//draw anything. It only changes test.imgShown to match the creature's walk cycle.
 		if(test!=null){
 			test.render(g);
 			g.drawImage(test.imgShown, x, y, TILEWIDTH, TILEHEIGHT, null);			
 		}
 	}
 	
+	//Affects the x,y coordinate of the event. 
 	public float getX() {
 		return x;
 	}
@@ -343,28 +355,35 @@ public class Event{
 		this.y = y;
 	}
 	
+	//Tex is the image that the event is represented by.
 	public BufferedImage getTex() {
 		return tex;
 	}
+	
 	public void setTex(BufferedImage tex) {
 		this.tex = tex;
 	}
 	
+	//test is a creature that may be tied to the event such as an npc. This is relevant for npcs that walk around like the player.
 	public Creature getTest() {
 		return test;
 	}
+	
 	public void setTest(Creature test) {
 		this.test = test;
 	}
 	
+	//Returns whether the event can be walked through or not.
 	public boolean isSolid(int direction){
 		return false;
 	}
 	
+	//Returns whether the event is visible and existent.
 	public boolean drawn(){
 		return true;
 	}
 	
+	//Returns whether the event will be run when stepped on or not.
 	public boolean runnable(){
 		return true;
 	}
@@ -376,8 +395,10 @@ public class Event{
 	public static void transport(String path, int x, int y,String name){
 		world = new World(game, path,name);
 		eventmanager = new EventManager(game, path);
+		decormanager = new DecorManager(game, path);
 		GameState.setWorld(world);
 		GameState.setEventmanager(eventmanager);
+		GameState.setDecormanager(decormanager);
 		gamestate.getPlayer().setPlayerX(x*32);
 		gamestate.getPlayer().setPlayerY(y*32);
 		
@@ -438,6 +459,7 @@ public class Event{
 		}
 	}
 	
+	//Simple cutscene state that goes through multiple pictures.
 	public static void Cutscene(BufferedImage[] scenes,int eventId){
 		StateManager.states.push(new CutsceneState(game,statemanager,scenes,eventId));
 		try {
@@ -445,9 +467,9 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
+	//Causes screen to shake for a duration
 	public void screenShake(int shake){
 		game.getGameCamera().screenShake(shake);
 	}
@@ -460,9 +482,9 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-
 	}
 	
+	//Choicebranch state, lets player make decision between a list of choices.
 	public static void ChoiceBranch(int EventId, String[] choices, int width){
 		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices,width));
 		try {
@@ -473,6 +495,7 @@ public class Event{
 
 	}
 	
+	//Special version of choicebranch state with special art.
 	public static void ElevatorChoiceBranch(int EventId,String[] choices, int width){
 		StateManager.states.push(new ElevatorChoiceBranchState(game,statemanager,EventId,choices));
 		try {
@@ -482,6 +505,7 @@ public class Event{
 		}
 	}
 	
+	//State for exchanging letters with your Pen Pal
 	public static void PenPalState(){
 		StateManager.states.push(new PenPalLetterState(game,statemanager));
 		try {
@@ -491,6 +515,7 @@ public class Event{
 		}
 	}
 	
+	//State that just exists for a certain time than stops.
 	public static void Timer(int EventId,int time){
 		StateManager.states.push(new TimerState(game,statemanager,EventId,time));
 		try {
@@ -498,9 +523,9 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-
 	}
 	
+	//Shopping state with list of items and prices.
 	public static void shop(int EventId,TreeMap<Item, Integer> choices, BufferedImage sk){
 		StateManager.states.push(new ShoppingState(game,gamestate,statemanager,EventId,choices,sk));
 		try {
@@ -508,10 +533,9 @@ public class Event{
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
-
 	}
 	
-	
+	//Moves schmucks to and from your party.
 	public void recruit(Schmuck recruit){
 		if(gamestate.partymanager.party.size()<5){
 		gamestate.partymanager.party.add(recruit);
@@ -524,6 +548,7 @@ public class Event{
 		}
 	}
 	
+	//Adds num items i to your inventory
 	public void loot(Item i,int num){
 		if(gamestate.inventorymanager.backpack.containsKey(i)){
 			int temp = gamestate.inventorymanager.backpack.get(i);
@@ -534,6 +559,7 @@ public class Event{
 		}
 	}
 	
+	//Return how much of a given item you have.
 	public int itemNumCheck(Item i){
 		if(gamestate.inventorymanager.backpack.containsKey(i)){
 			return gamestate.inventorymanager.backpack.get(i);
@@ -543,10 +569,12 @@ public class Event{
 		}
 	}
 	
+	//Add/remove currency
 	public void scriptChange(int i){
 		gamestate.scriptChange(i);
 	}
 	
+	//Look at or change any global variable or switch
 	public void setVar(int i, int set){
 		gamestate.setVar(i, set);
 	}
@@ -563,6 +591,7 @@ public class Event{
 		return gamestate.getSwitch(i);
 	}
 	
+	//checks id of event.
 	public int getId() {
 		return id;
 	}
@@ -570,6 +599,7 @@ public class Event{
 		this.id = id;
 	}
 	
+	//is the event a door. probably not.
 	public boolean isDoor(){
 		return false;
 	}
@@ -579,13 +609,15 @@ public class Event{
 		
 	}
 	
+	//Used for events that have a creature attached. 
+	//Overridden by events like the above where it contains walking patters of a given creature.
 	public void walkCycle(){
 
-		
 	}
 	
+	//Used for animated events.
+	//Will be overridden in these cases.
 	public void animate(BufferedImage[] frames, int framenum){
-		
 		
 	}
 	
@@ -597,6 +629,13 @@ public class Event{
 		
 	}
 	
+	//Returns game. not used as of now.
+	public Game getGame(){
+		return game;
+	}
+	
+	//stage is used for multi-stage events that contain transitions between multiple different states.
+	//Events that use this override these methods.
 	public int getfinalstage() {
 		return 1;
 		
@@ -606,15 +645,11 @@ public class Event{
 		return 1;		
 	}
 	
-	public Game getGame(){
-		return game;
-	}
-	
 	public void setstage(int i) {
 				
 	}
-	
-	
+
+	//drawn determines whether an event is drawn to the world map or not.
 	public boolean isDrawn() {
 		return drawn;
 	}
@@ -623,6 +658,7 @@ public class Event{
 		this.drawn = drawn;
 	}
 	
+	//If the event is a door, the open boolean determines whether the door is open or closed.
 	public boolean isOpen() {
 		return open;
 	}
@@ -631,8 +667,7 @@ public class Event{
 		this.open = open;
 	}
 	
-	
-	
+	//If an event leads to a Battle State, fightwon determines whether the fight was won or not when the fight ends.
 	public boolean isFightwon() {
 		return fightwon;
 	}
@@ -641,9 +676,10 @@ public class Event{
 		this.fightwon = fightwon;
 	}
 	
-	
-
 	//used to make events walk around. change the x,y coordinates of an event and play their walking animation
+	//First, checks of the tile being walked into is solid or not, then whether the event would be walking into the Player
+	//Then, it moves its event to the square designated and updates x-y coordinates.
+	//Finally, if a creature is attached to the event, update its walk cycle in the given direction.
 	public void moveUp(){
 		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y)*32 || gamestate.getPlayer().getPlayerY()<=(y-2)*32){				
@@ -696,11 +732,13 @@ public class Event{
 		}
 	}
 	
+	//Moves event to new coordinates
 	public void moveTo(int x, int y){
 		EventManager.getEvents()[x][y]=this.getId();
 		this.setX(x);this.setY(y);
 	}
 
+	//These affect each events individual self switches.
 	public boolean isSelfswitch1() {
 		return selfswitch1;
 	}

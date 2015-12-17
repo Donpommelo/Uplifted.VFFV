@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DreamEaterStatus;
 
 public class Asleep extends status{
 	
@@ -23,8 +24,13 @@ public class Asleep extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.stm.removeStatus(vic, new Asleep(vic,0));
-		bs.bp.bt.textList.add(vic.getName()+" was startled awake!");
+		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(perp,0))){
+			bs.bp.stm.removeStatus(vic, new Asleep(vic,0));
+			bs.bp.bt.textList.add(vic.getName()+" was startled awake!");
+		}
+		else{
+			bs.bp.bt.textList.add(vic.getName()+" tosses and turns in "+vic.getPronoun(1)+" sleep, but cannot wake.");
+		}
 		return damage;
 	}	
 

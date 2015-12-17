@@ -241,5 +241,9 @@ public class Tile {
 		return 0;
 	}
 	
+	//Sound played when stepping into this tile.
+	public String stepSound(){
+		return "i'll finish coding this later";
+	}	
 
 }

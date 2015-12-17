@@ -45,7 +45,7 @@ public class EventElevatorPanel extends Event {
 					int floor = super.getVar(1)+1;
 					Dialog[] d = new Dialog[1];
 					d[0] = new Dialog("Operator",ImageLoader.loadImage("/CharacterBusts/Player-1.png"),0,"To which Floor? (Current Floor: "+floor+")/");
-					super.Dialog(d, 1, this.getId(), false);
+					super.Dialog(d, 0, this.getId(), false);
 					
 					super.ElevatorChoiceBranch(this.getId(), Choices, 200);
 				}

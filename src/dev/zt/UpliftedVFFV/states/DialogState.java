@@ -70,7 +70,7 @@ public class DialogState extends State {
 	public void tick() {
 		if(game.getKeyManager().isActive()){
 			//if space is pressed and the dialog is done scrolling, the next dialog will begin displaying if there is one
-			if(game.getKeyManager().space){
+			if(game.getKeyManager().space || game.getKeyManager().down){
 				if(Dialog.scrolling==false){
 					game.getKeyManager().disable(delayNext);
 					game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
@@ -114,7 +114,10 @@ public class DialogState extends State {
 	//rendering the DialogState consists of rendering whatever the current dialog is.
 	//Also, because dialog does not take up the whole screen, the state underneath it must be rendered first
 	public void render(Graphics g) {
-
+		
+		int width = game.getWidth();
+		int height = game.getHeight();
+		
 		if(dialogs == null){
 			current = Assets.dialog[linenum];
 		}
@@ -125,11 +128,11 @@ public class DialogState extends State {
 		StateManager.getStates().peek().render(g);
 		StateManager.getStates().push(this);
 		if(current!=null){
-			current.render(g);
+			current.render(g, width, height);
 		}
 			
 		if(Dialog.scrolling==false && showArrow){
-			g.drawImage(Assets.Downarrow, 320 - Assets.Downarrow.getWidth() / 2, 416 - Assets.Downarrow.getHeight() + yoffset / 4, null);
+			g.drawImage(Assets.Downarrow, width/2 - Assets.Downarrow.getWidth() / 2, height - Assets.Downarrow.getHeight() + yoffset / 4, null);
 			//Edit y offsets for animation.
 			
 			if(yrise){

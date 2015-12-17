@@ -17,26 +17,19 @@ public class WorldManager implements Serializable{
 //		world=new World(g, "/Worlds/SouthElevator.txt");
 //		setWorld(world);
 	}
-	
-	
-	
+		
 	public static World getWorld() {
 		return GameState.getWorld();
 	}
-
-
 
 	public static void setWorld(World world) {
 		GameState.setWorld(world);
 	}
 	
-
 	public static void setLoc(int x, int y) {
 //		Player.setX(x);
 //		Player.setY(y);
 	}
-
-
 
 	public void tick(){
 	}

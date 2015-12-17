@@ -13,7 +13,6 @@ public class EventBackroomTv extends Event {
 	public EventBackroomTv(float x, float y, int idnum) {
 		super(Assets.Tv,idnum,x, y);
 		
-	
 	}
 	
 

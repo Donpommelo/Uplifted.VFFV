@@ -14,8 +14,8 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.TroopManager;
+import dev.zt.UpliftedVFFV.party.troops.Troop;
 
 
 public class BattleState extends State {

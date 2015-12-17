@@ -27,7 +27,7 @@ public class MenuState extends State {
 
 	private AudioManager audio;
 	
-	private BufferedImage testImage, window, window2, window3, window4;
+	private BufferedImage window, window2, window3, window4;
 	private GameState gamestate;
 	//Menu cursor and option pointers.
 	private int optionSelected, characterSelected, itemSelected, itemPointer, 
@@ -53,7 +53,6 @@ public class MenuState extends State {
 	public MenuState(Game game, StateManager sm, GameState gs){
 		super(game, sm);
 		setStateType("menu");
-		testImage = ImageLoader.loadImage("/Screens/Menu.png");			
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		window2 = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 		window3 = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
@@ -605,6 +604,10 @@ public class MenuState extends State {
 
 	public void render(Graphics g) {
 		
+		StateManager.getStates().pop();
+		StateManager.getStates().peek().render(g);
+		StateManager.getStates().push(this);
+		
 		//if x is pressed, the menu will go back one screen.
 		if(exit==true){
 			if(equipChosen || useitemChosen){
@@ -631,16 +634,17 @@ public class MenuState extends State {
 			bypassSelection = false;
 			exit=false;
 		}
-		
+			
 		//background consists of black with an image in front. Def change this later
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 640, 416);
-		g.drawImage(testImage, 0, 0, null);
+//		g.setColor(Color.BLACK);
+//		g.fillRect(0, 0, 640, 416);
+//		g.drawImage(testImage, 0, 0, null);
 		
 		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
 		Utils.drawMenu(g, window, options, Color.black, 25, optionSelected, 5, 5, 125, 380, !optionChosen);
 		g.drawString(gamestate.Script + " Script", 25, 375);
 		
+		if(optionChosen){
 		switch(optionSelected){
 			//Character view screen.
 			case 0:
@@ -957,6 +961,7 @@ public class MenuState extends State {
 				}
 				break;				
 		}
+	}
 	}
 
 	@Override

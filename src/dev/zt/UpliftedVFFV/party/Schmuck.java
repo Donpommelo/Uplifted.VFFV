@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeMap;
-
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -77,6 +76,29 @@ public class Schmuck implements Serializable{
 		this.pronoun = pronoun;
 		this.skills = new ArrayList<Skills>();
 		this.statuses = new ArrayList<status>();
+		this.Lvl=lvl;
+		this.startStats=start;
+		this.statGrowths=growths;
+//		this.buffedStats=start;
+		this.elemPoints = elem;
+		this.exp=0;
+		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+		this.itemSlots = 4;
+		this.itemDummy = new Schmuck();
+		this.expDrop = exp;
+		this.scrDrop = script;
+	}
+	
+	public Schmuck(String name, String plural, String pronoun,int lvl, int spriteIndex, int[] start, double[] growths,
+			int[] elem, int exp, int script, ArrayList<status> statuses){	
+		this.battleSprite = spriteIndex;
+		//Character does not have a menu sprite. Use a default one.
+		this.menuSprite = 0;
+		this.name=name;
+		this.plural = plural;
+		this.pronoun = pronoun;
+		this.skills = new ArrayList<Skills>();
+		this.statuses = statuses;
 		this.Lvl=lvl;
 		this.startStats=start;
 		this.statGrowths=growths;
@@ -337,11 +359,22 @@ public class Schmuck implements Serializable{
 				}
 			}
 		}
-		for(status s : this.statuses){
-			if(s != null){
-				s.statchanges(this);
+		Boolean pure = false;
+		for(status st : this.statuses){
+			if(st.getName()!=null){			
+				if(st.getName().equals("Purified")){					
+					pure = true;
+				}
 			}
 		}
+		if(!pure){
+			for(status s : this.statuses){
+				if(s != null){
+					s.statchanges(this);
+				}
+			}
+		}
+		
 		this.setRedRes((this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()-this.getGreenPoints()-this.getPurplePoints()));
 		this.setBlueRes((-this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()-this.getPurplePoints()));
 		this.setGreenRes((this.getRedPoints()-this.getBluePoints()-this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
@@ -349,11 +382,11 @@ public class Schmuck implements Serializable{
 		this.setPurpleRes((this.getRedPoints()+this.getBluePoints()-this.getYellowPoints()-this.getGreenPoints()+this.getPurplePoints()));
 		this.setVoidRes(this.getVoidPoints()/100);
 		for(int i = 0 ; i< this.getBuffedElemPoints().length; i++){
-			if(this.buffedElemPoints[i] > this.getPrismaticPoints()){
+			if(this.buffedElemPoints[i] > this.getPrismaticPoints()/2){
 				this.setElemAlignment(i+1);
 				i = this.getBuffedElemPoints().length;
 				if(bs != null){
-					bs.bp.bt.textList.add(this.getName()+" became elementally aligned! "+i);
+					bs.bp.bt.textList.add(this.getName()+" became elementally aligned!");
 				}
 			}
 			else{

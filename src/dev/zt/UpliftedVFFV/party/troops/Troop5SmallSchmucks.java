@@ -1,11 +1,7 @@
 package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.IllRat;
 import dev.zt.UpliftedVFFV.party.enemy.Midge;
 import dev.zt.UpliftedVFFV.party.enemy.RotThought;
@@ -37,15 +33,9 @@ public class Troop5SmallSchmucks extends Troop{
 		this.troop = troop;
 		return troop;
 	}
-	
-	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
-		return super.getDrops(bonusDrop);
-	}
-	
+
 	public String encounterText(){
-		return "You are beset by an assortment of foe!";
-		
-		
+		return "You are beset by an assortment of foe!";		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

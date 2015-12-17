@@ -14,7 +14,7 @@ public class Event2 extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/ElevatorsandBackroom/backroom.txt", 3, 3,"Home Sweet Home");
+		super.transport("/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt", 12, 14,"Home Sweet Home");
 		super.setVar(2, 0);
 	}
 }

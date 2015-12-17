@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
+import dev.zt.UpliftedVFFV.party.troops.Troop;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
@@ -39,12 +39,10 @@ public class Player extends Creature implements Serializable{
 	public Player(Game game, float x, float y, GameState gs) {
 		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT, Assets.Operator, 0);
 		this.gamestate = gs;
-		this.x = x;
-		this.y = y;
-		this.playerx = 256;
-		this.playery = 192;
-//		this.playerx = 352;
-//		this.playery = 320;
+		this.playerx = x;
+		this.playery = y;
+//		this.playerx = 256;
+//		this.playery = 192;
 		wall = false;
 	} 
 
@@ -200,6 +198,10 @@ public class Player extends Creature implements Serializable{
 				step = 16;
 			}
 		}
+		
+		//To each of these, add a check on the tile being walked into to have different stepping sounds for different tiles
+		
+		
 		else if(game.getKeyManager().down && KeyManager.isCutsceneMode() == false){
 			rundown = true;
 			rightleft++;

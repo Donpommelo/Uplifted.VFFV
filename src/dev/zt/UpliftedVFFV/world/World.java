@@ -17,7 +17,7 @@ public class World implements Serializable{
 	
 	private Game game;
 	private int width, height;					//size of world 
-//	private int spawnX, spawnY;					//default start location of player. Only used for testing
+	private int spawnX, spawnY;					//default start location of player. Only used for testing
 	private int numEvents;
 	private int[][] tiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
 	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
@@ -54,7 +54,7 @@ public class World implements Serializable{
 					getTile(x, y).render(g, (int)(x*Tile.TILEWIDTH - game.getGameCamera().getxOffset()),(int)(y*Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
 					
 				}
-		}
+			}
 		}
 		
 		//renders scrolling nameplate. 
@@ -92,15 +92,15 @@ public class World implements Serializable{
 		String[] tokens = file.split("\\s+");			
 		width = Utils.parseInt(tokens[0]);
 		height = Utils.parseInt(tokens[1]);
-//		spawnX = Utils.parseInt(tokens[2]);
-//		spawnY = Utils.parseInt(tokens[3]);
+		spawnX = Utils.parseInt(tokens[2]);
+		spawnY = Utils.parseInt(tokens[3]);
 		numEvents = Utils.parseInt(tokens[4]);
-		enemyrate = Utils.parseInt(tokens[5]);
-		enemynum = Utils.parseInt(tokens[6]);
+		enemyrate = Utils.parseInt(tokens[6]);
+		enemynum = Utils.parseInt(tokens[7]);
 		tiles = new int[width][height];
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				tiles[x][y] = Utils.parseInt(tokens[(x+y*width)+7]);
+				tiles[x][y] = Utils.parseInt(tokens[(x+y*width)+8]);
 				
 			}
 		}
@@ -109,7 +109,7 @@ public class World implements Serializable{
 	//this fills a treemap with these pairs of integers which is checked in the player class when moving
 		
 		for(int i=0; i<enemynum; i++){
-			enemy.put(Utils.parseInt(tokens[height*width+7+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+8+3*numEvents+2*i]));
+			enemy.put(Utils.parseInt(tokens[height*width+8+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+9+3*numEvents+2*i]));
 		}		
 
 		
@@ -126,4 +126,13 @@ public class World implements Serializable{
 	public String getName(){
 		return this.Worldname;
 	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+	
 }

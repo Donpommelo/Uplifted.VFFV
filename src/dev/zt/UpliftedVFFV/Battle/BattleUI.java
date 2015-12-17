@@ -50,7 +50,9 @@ public class BattleUI {
 				if(allies.contains(a.user)){
 					g.drawImage(a.skill.getIcon(), allies.get(allies.indexOf(a.user)).getX() + 9, allies.get(allies.indexOf(a.user)).getY() + 121, null);
 				}
+				//If there's going to be any mind-reading abilities, it could go right here.
 			}
+			
 			
 			//Write out skills for debugging.
 			g.setColor(new Color(0,0,0));
@@ -106,11 +108,11 @@ public class BattleUI {
 			//Draw status circle.
 			g.setColor(Color.white);
 			g.fillOval(s.getX() - 5, s.getY() + 107, 59, 59);
-			if(bs.bs.alliesSelectable.size() > 0 && bs.bp.currentlySelected < bs.bs.alliesSelectable.size()){
-				if(bs.bs.alliesSelectable.get(bs.bp.currentlySelected).equals(s)){	//*BUG Sometimes when you character is incapacitated, returns index oob error
+			if(bs.bs.alliesSelectable.size() > 0 && bs.bp.currentlySelected < allies.size()){
+				if(allies.get(bs.bp.currentlySelected).equals(s)){
 					g.setColor(Color.green);
-					g.fillOval(bs.bs.alliesSelectable.get(bs.bp.currentlySelected).getX() - 5, 
-							bs.bs.alliesSelectable.get(bs.bp.currentlySelected).getY() + 107, 59, 59);
+					g.fillOval(allies.get(bs.bp.currentlySelected).getX() - 5, 
+							allies.get(bs.bp.currentlySelected).getY() + 107, 59, 59);
 				}
 			}
 			if(!bs.bs.alliesSelectable.contains(s)){

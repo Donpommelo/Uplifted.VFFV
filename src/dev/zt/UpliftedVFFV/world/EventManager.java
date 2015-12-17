@@ -7,18 +7,18 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 
-	public class EventManager {
-	
-		private Game game;
-		private int width, height;
+public class EventManager {
+
+	private Game game;
+	private int width, height;
 	//	private int X, Y;
-		private int numevents;
-		public static int[][] events;
-		public static Event[] EventTracker;
-		
-		public EventManager(Game game, String path) {
-			this.game=game;
-			loadEvent(path);
+	private int numevents;
+	public static int[][] events;
+	public static Event[] EventTracker;
+	
+	public EventManager(Game game, String path) {
+		this.game=game;
+		loadEvent(path);
 	}
 
 	public void tick(){
@@ -46,7 +46,8 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 			}
 		}
 	}
-	
+		
+	//Returns the event at a given x,y coordinate
 	public static Event getEvent(int x,int y){
 		Event e = Event.events[events[x][y]];
 		if(e == null)
@@ -54,6 +55,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 		return e;
 	}
 	
+	//Loads all the events in a given map.
 	private void loadEvent(String path){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");
@@ -67,12 +69,12 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 			}
 		}
 		for(int i=0;i<numevents;i++){
-			if(Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].drawn()){
-				events[Utils.parseInt(tokens[(height*width)+8+3*i])][Utils.parseInt(tokens[(height*width)+9+3*i])]=Utils.parseInt(tokens[(height*width)+7+3*i]);
-				Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+8+3*i]),Utils.parseInt(tokens[(height*width)+9+3*i]));
-				if(Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest()!=null){
-					Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest().setX(Utils.parseInt(tokens[(height*width)+8+3*i]));
-					Event.events[Utils.parseInt(tokens[(height*width)+7+3*i])].getTest().setY(Utils.parseInt(tokens[(height*width)+9+3*i]));
+			if(Event.events[Utils.parseInt(tokens[(height*width)+8+3*i])].drawn()){
+				events[Utils.parseInt(tokens[(height*width)+9+3*i])][Utils.parseInt(tokens[(height*width)+10+3*i])]=Utils.parseInt(tokens[(height*width)+8+3*i]);
+				Event.events[Utils.parseInt(tokens[(height*width)+8+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+9+3*i]),Utils.parseInt(tokens[(height*width)+10+3*i]));
+				if(Event.events[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest()!=null){
+					Event.events[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setX(Utils.parseInt(tokens[(height*width)+9+3*i]));
+					Event.events[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setY(Utils.parseInt(tokens[(height*width)+10+3*i]));
 				}
 			}
 		}

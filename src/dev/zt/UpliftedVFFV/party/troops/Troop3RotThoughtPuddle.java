@@ -1,11 +1,7 @@
 package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.RotThought;
 
 public class Troop3RotThoughtPuddle extends Troop{
@@ -25,14 +21,8 @@ public class Troop3RotThoughtPuddle extends Troop{
 		return troop;
 	}
 	
-	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
-		return super.getDrops(bonusDrop);
-	}
-	
 	public String encounterText(){
-		return "You were surrounded by Rot Thoughts!";
-		
-		
+		return "You were surrounded by Rot Thoughts!";		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

@@ -2,8 +2,8 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.statusEffects.DamageCap;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.DamageCap;
 
 public class EmaudelinesRaincoat extends Item{
 

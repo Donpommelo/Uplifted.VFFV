@@ -54,10 +54,14 @@ public class BattleSprites {
 				enemy.get(i).setY(10-15*i+enemy.size()*15);
 			}
 		}
+		
+		//Update valid selectable/targetable allies + enemies.
 		targetUpdate();
 	}
 	
 	public void tick() {
+		
+		//Causes Schmucks to flash.
 		for(Schmuck s : allies){
 			if(s.getFlashDuration()>0){
 				flash(s,s.getFlashDuration()-1);
@@ -77,10 +81,8 @@ public class BattleSprites {
 				g.drawImage(allies.get(i).getBattleSprite(), allies.get(i).getX(), allies.get(i).getY(), allies.get(i).getBattleSprite().getWidth(), allies.get(i).getBattleSprite().getHeight(), null);
 			}
 		}
-		
-		
-		
-		//Draw enemy bars.
+			
+		//Draw enemy bars. Only selectable(not incapacitated) enemies are drawn.
 		for(int i = 0; i < enemySelectable.size(); i++){
 			Schmuck temp = enemySelectable.get(i);
 			//Draw sprite.
@@ -90,6 +92,10 @@ public class BattleSprites {
 		}
 	}
 	
+	//Updates lists of targetable and selectable allies and enemies. 
+	//This should be called whenever a schmuck is incapacitated or becomes untargetable.
+	//This is called after every action in the Battle Processor as well as in the EffectManager upon incapacitation.
+	//Call this whenever you change a Schmuck's Hp in battle without using the EffectManager.
 	public void targetUpdate(){
 		alliesTargets.clear();
 		alliesSelectable.clear();
@@ -100,7 +106,6 @@ public class BattleSprites {
 					alliesTargets.add(s);
 				}				
 			}
-			
 		}
 		
 		enemyTargets.clear();

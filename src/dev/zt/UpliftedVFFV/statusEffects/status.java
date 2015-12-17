@@ -81,118 +81,126 @@ public class status implements Serializable{
 	}
 
 	//Activates upon selecting a move. Prolly should rename. Atm used for restricting; if certain moves are selected, they are replaced
+	//Implemented in Phase 2 of Battle Processor
 	public void restrict(Schmuck s, Action a, BattleState bs){
 
 	}
 	
 	//Activates at the end of round in stm.endofRound
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implements in endOfRound function in Status Manager.
 	public void endofturnEffect(Schmuck s, BattleState bs){
 	
 	}
 	
 	//Activates right before sorting and TOQ changes
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in Phase 1 of Battle Processor
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		
 	}
 	
 	//When fight starts.
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in Phase 0 of Battle Processor
 	public void startoffightEffect(Schmuck s, BattleState bs){//
 		
 	}
 	
 	//Executed at the end of fights before item + script calculations
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implements in endOfFight function in Status Manager.
 	public void endoffightEffect(Schmuck s, BattleState bs){
 		
 	}
 	
 	//upon dealing damage from any source. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in hpChange function in EffectManager
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return damage;
 	}
 	
 	//upon taking damage from any source. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in hpChange function in EffectManager
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return damage;
 	}	
 	
 	//upon being healed by any Schmuck. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in hpChange function in EffectManager
 	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return damage;
 	}
 	
 	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
+	//Implemented in Phase 2 of Battle Processor
 	public void onAction(BattleState bs, Action a){
 		
 	}
 	
 	//Takes place after any action, whether ally or enemy.
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in Phase 2 of Battle Processor
 	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
 		
 	}
 	
 	//Upon incapacitating any character
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in hpChange function in EffectManager
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
 		
 	}
 	
 	//upon being incapacitated
-	//Will not occur if owner is (already) incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in hpChange function in EffectManager
 	public void onDeath(Schmuck perp, Schmuck vic, BattleState bs){
 		
 	}
 	
 	//Upon standard attack is used
+	//Implemented in run and runCrit methods of StandardAttack
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}
 	//Upon any action critting
+	//Implemented in Phase 2 of Battle Processor
 	public void onCrit(Schmuck perp,Schmuck vic, BattleState bs){
 		
 	}
 	
 	//Upon any action missing
+	//Implemented in Phase 2 of Battle Processor
 	public void onMiss(Action a, BattleState bs){
 		
 	}
 	
-	//When calcStats is called. This includes all passive changes to any Schmuck's stat	
+	//When calcStats is called. This includes all passive changes to any Schmuck's stat
+	//Implemented in calcStats function of Schmucks which is called after every action in the Battle Processor, equiping/unequiping
+	// and at the end of fights.
 	public void statchanges(Schmuck s){
 
 	}
 	
 	//Occurs right before a character makes a delayed move
+	//Implemented upon initializing a battleMenu
 	public void onDillyDally(Schmuck s, BattleState bs){
 		
 	}
 	
 	//Occurs after status is inflicted
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in the addStatus function of the StatusManager
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
 			
 	}
 	
 	//upon dealing damage from any source. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in the bpChange method of the EffectManager
 	public int spendMeterEffect(Schmuck s, BattleState bs, int mp){
 		return mp;
 	}
 	
 	//upon taking damage from any source. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
-	//Will not occur if owner is incapacitated unless status is marked runWhenDead or owner has Undead status.
+	//Implemented in the bpChange method of the EffectManager
 	public int gainMeterEffect(Schmuck s, BattleState bs, int mp){
 		return mp;
 	}	
@@ -202,9 +210,7 @@ public class status implements Serializable{
 	public void run(Schmuck s){
 		
 	}
-	
-	
-	
+		
 	public String inflictText(Schmuck s){
 		return "";
 	}
@@ -232,6 +238,7 @@ public class status implements Serializable{
 		return false;
 	}
 	
+	//Does this status run if its owner is incapacitated?
 	public Boolean runWhenDead(){
 		return false;
 	}

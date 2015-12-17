@@ -1,16 +1,11 @@
 package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.IllRat;
 
 public class Troop2IllRatHorde extends Troop{
 
-//	public static ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 	public Troop2IllRatHorde(int id) {
 		super(id);
 	}
@@ -26,14 +21,8 @@ public class Troop2IllRatHorde extends Troop{
 		return troop;
 	}
 	
-	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
-		return super.getDrops(bonusDrop);
-	}
-	
 	public String encounterText(){
-		return "A gang of Ill Rats attack!";
-		
-		
+		return "A gang of Ill Rats attack!";		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

@@ -18,7 +18,7 @@ public class Poisoned extends status{
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+" take damage from Poison!");
+		bs.bp.bt.textList.add(s.getName()+" takes damage from Poison!");
 		bs.bp.em.hpChange(-s.getCurrentHp()/10,perp,s,6);	
 	}
 

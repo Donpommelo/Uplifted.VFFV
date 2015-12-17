@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.io.IOException;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
@@ -27,6 +28,7 @@ public class GameState extends State {
 	private static World world;
 	StateManager statemanager;
 	WorldManager worldmanager;
+	static DecorManager decormanager;
 	static EventManager eventmanager;
 	public PartyManager partymanager;
 	public InventoryManager inventorymanager;
@@ -48,19 +50,17 @@ public class GameState extends State {
 		ugh = new Event(game, sm,this);												//creates a new Event class that controls all events
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
-		world = new World(game, "/Worlds/ElevatorsandBackroom/backroom.txt","Home Sweet Home");		
-		eventmanager = new EventManager(game,"/Worlds/ElevatorsandBackroom/backroom.txt");
 		
-//		world = new World(game, "/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt","Home Sweet Home");
-//		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt");
-//		world = new World(game, "/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt","");
-//		eventmanager = new EventManager(game,"/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightTopEntrance.txt");
-		player = new Player(game, 256, 288, this);										//creates player
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt";
+		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+		
+		world = new World(game, StartingFloor,"Home Sweet Home");		
+		eventmanager = new EventManager(game,StartingFloor);
+		decormanager = new DecorManager(game, StartingFloor);
+
+		player = new Player(game, 32*world.getSpawnX(), 32*world.getSpawnY(), this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
 	}
-
-	
-
 
 	public static World getWorld() {
 		return world;
@@ -68,7 +68,6 @@ public class GameState extends State {
 
 	public static void setWorld(World w) {
 		world = w;
-
 	}
 	
 	public static EventManager getEventmanager() {
@@ -78,7 +77,15 @@ public class GameState extends State {
 	public static void setEventmanager(EventManager e) {
 		eventmanager = e;
 	}
-	
+		
+	public static DecorManager getDecormanager() {
+		return decormanager;
+	}
+
+	public static void setDecormanager(DecorManager d) {
+		decormanager = d;
+	}
+
 	public PartyManager getPartymanager() {
 		return partymanager;
 	}
@@ -115,8 +122,10 @@ public class GameState extends State {
 	
 	public void render(Graphics g) {
 		world.render(g);
+		decormanager.renderBelow(g);
 		eventmanager.render(g);
 		player.render(g);
+		decormanager.renderAbove(g);
 		if(!game.getGameCamera().cameraControl){
 			if(game.getGameCamera().getShakeDuration()<1){
 				game.getGameCamera().setCameraControl(true);
@@ -124,9 +133,8 @@ public class GameState extends State {
 			else{
 				game.getGameCamera().screenShake(game.getGameCamera().getShakeDuration());
 			}
-		}
+		}		
 		
-//			StateManager.states.push(new BattleState(game,statemanager));
 	}
 
 	public int getVar(int i) {

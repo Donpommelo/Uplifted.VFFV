@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.ablities;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Purified;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
 
 public class StandardAttack extends Skills {
@@ -27,7 +28,7 @@ public class StandardAttack extends Skills {
 			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,(int)(perp.getElemAlignment()-1));				
 		}
 		for(int i=0; i<perp.statuses.size(); i++){
-			if(perp.statuses.get(i)!=null){
+			if(perp.statuses.get(i)!=null && !bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
 				perp.statuses.get(i).attackModify(perp, vic, bs,-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]);
 			}
 		}	
@@ -39,7 +40,7 @@ public class StandardAttack extends Skills {
 		int statAttack = (int)(perp.getDamageStat()+2);
 		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 		for(int i=0; i<perp.statuses.size(); i++){
-			if(perp.statuses.get(i)!=null){
+			if(perp.statuses.get(i)!=null && !bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
 				perp.statuses.get(i).attackModify(perp, vic, bs, -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())));
 			}
 		}		

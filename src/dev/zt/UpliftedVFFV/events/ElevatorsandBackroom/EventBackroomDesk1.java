@@ -13,7 +13,7 @@ public class EventBackroomDesk1 extends Event {
 	public String[] Choices={"Yes","No"};
 	private int stage = 0;
 	public EventBackroomDesk1(float x, float y, int idnum) {
-		super(Assets.WritingDesk1,idnum,x, y);
+		super(Assets.White,idnum,x, y);
 		stage = 0;
 	}
 	
@@ -65,4 +65,5 @@ public class EventBackroomDesk1 extends Event {
 	public boolean isSolid(int i){
 		return true;
 	}
+	
 }

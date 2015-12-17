@@ -1,11 +1,7 @@
 package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.Augur;
 
 public class Troop7Augurs extends Troop{
@@ -24,15 +20,9 @@ public class Troop7Augurs extends Troop{
 		this.troop = troop;
 		return troop;
 	}
-	
-	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
-		return super.getDrops(bonusDrop);
-	}
-	
+		
 	public String encounterText(){
-		return "A group of Augurs foresee a terrible fate for you!";
-		
-		
+		return "A group of Augurs foresee a terrible fate for you!";		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

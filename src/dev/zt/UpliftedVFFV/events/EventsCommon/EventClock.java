@@ -16,10 +16,7 @@ public class EventClock extends Event {
 	
 	}
 	
-
-	
 	public void run(){
-//		super.Dialog(165, 165,this.getId());
 
 	}
 

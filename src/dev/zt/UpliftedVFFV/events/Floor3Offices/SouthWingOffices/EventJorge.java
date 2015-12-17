@@ -35,7 +35,7 @@ public class EventJorge extends Event {
 				game.getAudiomanager().playMusic(4, true);
 				break;
 			case 2:
-				super.fite(0,this.getId(), false, false);
+				super.fite(15,this.getId(), false, false);
 				break;
 			case 3:
 				if(fightwon){

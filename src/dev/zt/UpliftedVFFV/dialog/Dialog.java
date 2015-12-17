@@ -49,31 +49,31 @@ public class Dialog {
 	}
 	
 	//dialog is rendered here. 
-	public void render(Graphics g){
+	public void render(Graphics g, int width, int height){
 		if(charIndex>text.length()){				//controls how much of the dialog is rendered. 
 			charIndex=text.length();				//charIndex increases as time passes, causing text to scroll
 		}
 		if(position==0){
-			g.drawImage(speaker, 0, 416-speaker.getHeight(), null);
+			g.drawImage(speaker, 0, height-speaker.getHeight(), null);
 		}
 		else{		
-			g.drawImage(speaker, 640-speaker.getWidth(), 416-speaker.getHeight(), null);
+			g.drawImage(speaker, width-speaker.getWidth(), height-speaker.getHeight(), null);
 		}
 //		g.setColor(new Color(102, 178,255, 200));
 //		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 //		g.fillRect(0, 316, 640, 100);
-		Utils.drawDialogueBox(g, window, "", 18, Color.black, 0, 316, 625, 80, 16, true);
+		Utils.drawDialogueBox(g, window, "", 18, Color.black, 0, height - 100, width - 15, 80, 16, true);
 		
 		if(!SpeakerName.equals("meep"))				//displays speaker's name in a box.
 		{
 //			g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
 //			g.setColor(Color.BLACK);
 //			g.drawString(SpeakerName, 8, 304);
-			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, 280, 25 + SpeakerName.length() * 8, 32, 16, true);
+			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, height - 136, 25 + SpeakerName.length() * 8, 32, 16, true);
 		}
 		g.setColor(Color.black);					//displays text. / indicates a new line
 		for(int i = 1; i < charIndex; i++){
-			int y = 320;
+			int y = height - 96;
 			String temp = text.substring(0, i);
 			for (String line : temp.split("/"))
 		        g.drawString(line, 10, y += g.getFontMetrics().getHeight());		//causes text to form new lines

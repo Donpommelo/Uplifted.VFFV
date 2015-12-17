@@ -19,7 +19,7 @@ public class VariableManager {
  8: Wonder
  9: Ennui
  10: Ennui Ceiling
- 11: 
+ 11: Janitor Points
  12: 
  13: 
  14: 
