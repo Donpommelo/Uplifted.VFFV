@@ -11,8 +11,8 @@ public class Deplorable extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public Deplorable(Schmuck perp, int pr){
-		super("Deplorable", false, false, perp, pr);
+	public Deplorable(int pr){
+		super("Deplorable", pr);
 	}
 	
 	public void endofAnyAction(BattleState bs, Action a, Schmuck s){

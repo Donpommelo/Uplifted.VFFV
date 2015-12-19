@@ -7,15 +7,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Disarmed extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Disarmed";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public Disarmed(int i, Schmuck perp, int pr){
-		super(i, "Disarmed", false, true, false, perp,pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Disarmed(Schmuck perp, int pr){
-		super("Disarmed", true, false, perp, pr);
+	public Disarmed(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

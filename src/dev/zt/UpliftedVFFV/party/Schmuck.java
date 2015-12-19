@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeMap;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -11,6 +12,8 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Purified;
+import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -222,7 +225,7 @@ public class Schmuck implements Serializable{
 				items[slot] = i;
 				for(int j=0; j<this.statuses.size(); j++){
 					if(statuses.get(j) != null){
-						if(statuses.get(j).perp.equals(itemDummy)){
+						if(statuses.get(j).perp.name.equals("Item Dummy")){
 							statuses.remove(j);
 							j--;
 						}
@@ -239,8 +242,7 @@ public class Schmuck implements Serializable{
 				
 				calcBuffs(null);
 			}
-		}
-		
+		}		
 	}
 	
 	public void unEquip(int slot, InventoryManager meep){
@@ -270,6 +272,340 @@ public class Schmuck implements Serializable{
 				calcBuffs(null);
 			}
 		}
+	}
+	
+	public void startofFightEffects(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.startoffightEffect(this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void preBattlePhaseEffects(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.preBattlePhase(this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void restrictEffects(Action a, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.restrict(this,a, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onCritEffects(Schmuck vic, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onCrit(this, vic, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onMissEffects(Action a, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onMiss(a, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onActionEffects(Action a, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onAction(bs, a);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void afterEveryActionEffects(Schmuck target, Action a, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.endofAnyAction(bs, a, target);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onDillyDallyEffects(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onDillyDally(this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public int onHealEffects(BattleState bs, Schmuck perp, int Hp, int elem){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		int finaldamage = Hp;
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finaldamage = tempStatus.onHealEffect(perp, this, bs, finaldamage, elem);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finaldamage;
+	}
+	
+	public int takeDamageEffects(BattleState bs, Schmuck perp, int Hp, int elem){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		int finaldamage = Hp;
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finaldamage = tempStatus.takedamageEffect(perp, this, bs, finaldamage, elem);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finaldamage;
+	}
+	
+	public int dealDamageEffects(BattleState bs, Schmuck vic, int Hp, int elem){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		int finaldamage = Hp;
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finaldamage = tempStatus.dealdamageEffect(this, vic, bs, finaldamage, elem);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finaldamage;
+	}
+	
+	public void onKillEffects(Schmuck vic, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onKill(this, vic, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onDeathEffects(Schmuck perp, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onDeath(perp, this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+
+	public int onMeterLossEffects(int meter, BattleState bs){
+		int finalmeter = meter;
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finalmeter = tempStatus.spendMeterEffect(this, bs, finalmeter);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finalmeter;
+	}
+	
+	public int onMeterGainEffects(int meter, BattleState bs){
+		int finalmeter = meter;
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finalmeter = tempStatus.gainMeterEffect(this, bs, finalmeter);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finalmeter;
+	}
+	
+	public void endofRoundEffects(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.endofturnEffect(this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void endofFightEffects(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.endoffightEffect(this, bs);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onStandardAttackEffects(Schmuck vic, int damage, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.attackModify(this, vic, bs, damage);
+				}
+			}
+			this.statuses.remove(tempStatus);
+			tempStatuses.add(tempStatus);
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
 	}
 	
 	public Schmuck getItemDummy(){
@@ -343,6 +679,8 @@ public class Schmuck implements Serializable{
 		for(int i=0; i<bonusStats.length; i++){
 			bonusStats[i] = 0;
 		}
+		
+		//Sorts statuses by priority
 		int j;
 		boolean flag = true;
 		status temp;
@@ -359,6 +697,8 @@ public class Schmuck implements Serializable{
 				}
 			}
 		}
+		
+		//Applies statuses if Schmuck does not have the Purity status
 		Boolean pure = false;
 		for(status st : this.statuses){
 			if(st.getName()!=null){			
@@ -375,12 +715,13 @@ public class Schmuck implements Serializable{
 			}
 		}
 		
+		//Set resistances according to buffed elemental points. Also sets alignment if any one color is large enough
 		this.setRedRes((this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()-this.getGreenPoints()-this.getPurplePoints()));
 		this.setBlueRes((-this.getRedPoints()+this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()-this.getPurplePoints()));
 		this.setGreenRes((this.getRedPoints()-this.getBluePoints()-this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
 		this.setYellowRes((-this.getRedPoints()-this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
 		this.setPurpleRes((this.getRedPoints()+this.getBluePoints()-this.getYellowPoints()-this.getGreenPoints()+this.getPurplePoints()));
-		this.setVoidRes(this.getVoidPoints()/100);
+		this.setVoidRes(this.getVoidPoints());
 		for(int i = 0 ; i< this.getBuffedElemPoints().length; i++){
 			if(this.buffedElemPoints[i] > this.getPrismaticPoints()/2){
 				this.setElemAlignment(i+1);
@@ -702,6 +1043,7 @@ public class Schmuck implements Serializable{
 		return bonusStats[6];
 	}
 	
+	//0: None, 1: Red, 2: Blue, 3: Green, 4: Yellow, 5: Purple, 6: Void
 	public void setElemAlignment(double bonus){
 		bonusStats[6] = bonus;
 	}
@@ -856,6 +1198,7 @@ public class Schmuck implements Serializable{
 		bonusStats[25] = runaway;
 	}
 	
+	//0: Pow, 1: Def, 2: Spd, 3: Skl, 4: Int, 5: Luk
 	public double getDamageStat() {
 		return bonusStats[26];
 	}

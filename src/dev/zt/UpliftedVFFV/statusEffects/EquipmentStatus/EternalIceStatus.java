@@ -6,13 +6,9 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 
 public class EternalIceStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public int cooldown;
-	public EternalIceStatus(Schmuck perp, int pr){
-		super("Eternally Icy", false, false, perp, pr);
+
+	public EternalIceStatus(int pr){
+		super("Eternally Icy", pr);
 	}
 	
 	public void statchanges(Schmuck s){

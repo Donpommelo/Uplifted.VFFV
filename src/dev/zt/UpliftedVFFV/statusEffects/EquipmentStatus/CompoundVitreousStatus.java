@@ -8,16 +8,13 @@ import dev.zt.UpliftedVFFV.statusEffects.Unresistant;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CompoundVitreousStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public CompoundVitreousStatus(Schmuck perp, int pr){
-		super("Compound Vitreous", false, false, perp, pr);
+
+	public CompoundVitreousStatus(int pr){
+		super("Compound Vitreous", pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
-		if(!bs.bp.em.getAcc(a.user, a.target,a.skill.getBaseAcc()) && a.skill.canMiss() && !bs.bp.stm.checkStatus(a.user, new TrueSight(a.user,50))){
+		if(!bs.bp.em.getAcc(a.user, a.target,a.skill.getBaseAcc()) && a.skill.canMiss() && !bs.bp.stm.checkStatus(a.user, new TrueSight(50))){
 			bs.bp.bt.textList.add(s.getName()+"'s Compound Vitreous focuses!");
 			bs.bp.stm.addStatus(s, new TrueSight(0,s.itemDummy, 50));
 			bs.bp.stm.addStatus(s, new Unresistant(2, s.itemDummy, 5));

@@ -25,11 +25,11 @@ public class DeploreApp extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Deplorable(s.itemDummy, 5);
+		enchantment[0] = new Deplorable(5);
 		return enchantment;
 	}
 	
 	public boolean isLegendary(){
-		return false;
+		return true;
 	}
 }

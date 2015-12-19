@@ -5,20 +5,21 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class AddStatBuff extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Stats Changed";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public int statChanged;
 	public double statIncrement;
 	public AddStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, "Stats Changed",false, false, true, perp,pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
-//		this.perp = perp;
 	}
 	
-	public AddStatBuff(int stat, int amount, Schmuck perp, int pr){
-		super("Stats Changed",false,false, perp,pr);
+	public AddStatBuff(int stat, int amount, int pr){
+		super(name, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}	
@@ -67,5 +68,9 @@ public class AddStatBuff extends status{
 
 	public String cureText(Schmuck s){
 		return "";//s.getName()+"'s stats went back to normal";
+	}
+	
+	public int stackingEffect(){
+		return 2;
 	}
 }

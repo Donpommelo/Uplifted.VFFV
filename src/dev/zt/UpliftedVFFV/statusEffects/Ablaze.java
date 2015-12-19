@@ -5,16 +5,18 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Ablaze extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-//	public BattleState bs;
+	public static String name = "Ablaze";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public Ablaze(int i, Schmuck perp, int pr){
-		super(i, "Ablaze", false, true, true, perp,pr);
-//		this.perp = perp;
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	
+	public Ablaze(int pr){
+		super(name, pr);
+	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+" continues to immolate.");

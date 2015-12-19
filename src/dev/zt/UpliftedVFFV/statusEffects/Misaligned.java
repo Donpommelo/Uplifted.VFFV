@@ -1,19 +1,21 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Misaligned extends status{
 	
 	
-	public int stack;
-	public BattleState bs;
+	public static String name = "Misaligned";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Misaligned(int i, Schmuck perp, int pr){
-		super(i,"Misaligned", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Misaligned(Schmuck perp, int pr){
-		super("Misaligned", false, false, perp, pr);
+	public Misaligned(int pr){
+		super(name, pr);
 	}	
 		
 	public String inflictText(Schmuck s){
@@ -22,5 +24,9 @@ public class Misaligned extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is correctly aligned again.";
+	}
+	
+	public int stackingEffect(){
+		return 4;
 	}
 }

@@ -22,12 +22,11 @@ public class HandofGlory extends Item{
 	public status[] enchantment = new status[2];
 	public HandofGlory() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new HoGStatus(s.getItemDummy(),5);
-		enchantment[1] = new BonusStatBuff(0,.12*(1+s.getEquipPow()), s.itemDummy,25);
+		enchantment[0] = new HoGStatus(5);
+		enchantment[1] = new BonusStatBuff(0,.12*(1+s.getEquipPow()), 25);
 		return enchantment;
 	}
 	

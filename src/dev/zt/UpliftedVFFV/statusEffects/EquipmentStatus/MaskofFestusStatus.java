@@ -7,11 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class MaskofFestusStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;	
-	public MaskofFestusStatus(Schmuck perp, int pr){
-		super("Silencing Strikes", false, false, perp, pr);
+	public MaskofFestusStatus(int pr){
+		super("Silencing Strikes", pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

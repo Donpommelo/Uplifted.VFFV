@@ -29,8 +29,8 @@ public class FensClippedWings extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		s.learnSkill(test);
-		enchantment[0] = new BonusStatBuff(1, .2*(1+s.getEquipPow()), s.itemDummy, 25);
-		enchantment[1] = new BonusStatBuff(14, .15*(1+s.getEquipPow()), s.itemDummy, 25);
+		enchantment[0] = new BonusStatBuff(1, .2*(1+s.getEquipPow()), 25);
+		enchantment[1] = new BonusStatBuff(14, .15*(1+s.getEquipPow()), 25);
 		return enchantment;
 	}
 	

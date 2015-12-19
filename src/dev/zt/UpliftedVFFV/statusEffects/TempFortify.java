@@ -5,7 +5,6 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class TempFortify extends status{
 	
-	public int duration;
 /*	0: Red
   	1: Blue
   	2: Green
@@ -16,25 +15,22 @@ public class TempFortify extends status{
   	7: All
   */
 	public int elem;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public TempFortify(int i, int elem, Schmuck perp, int pr){
-		super(i, "Fortified", false, false, true, perp, pr);
-		this.elem = elem;
-	}
-	
+	public static String name = "Fortified";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = false;
 	public TempFortify(int elem, Schmuck perp, int pr){
-		super("Fortified", false, false, perp, pr);
+		super(1, name, perm, visible, removedEnd, decay, perp, pr);
 		this.elem = elem;
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		int finaldamage = damage;
 		if(elem == this.elem || this.elem == 7){
-			finaldamage = 1;
+			finaldamage = -1;
 			bs.bp.stm.removeStatus(vic, this);
 		}
-		
 		return finaldamage;
 	}	
 	
@@ -43,6 +39,11 @@ public class TempFortify extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" is not longer Fortified.";
+		return "";
 	}
+	
+	public int stackingEffect(){
+		return 3;
+	}
+	
 }

@@ -8,11 +8,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class InvertedSwanEffect extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Inverted Swan";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public InvertedSwanEffect(int i, Schmuck perp, int pr){
-		super(i, "Inverted Swan",false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
@@ -26,5 +28,9 @@ public class InvertedSwanEffect extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Inverted Swan wore off.";
-	}	
+	}
+	
+	public int stackingEffect(){
+		return 3;
+	}
 }

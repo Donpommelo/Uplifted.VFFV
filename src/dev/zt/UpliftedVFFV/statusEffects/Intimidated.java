@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Intimidated extends status{
 	
-	public int duration;
 	public double percent;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Intimidated";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Intimidated(int i, double percent, Schmuck perp, int pr){
-		super(i, "Intimidated", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Intimidated(double percent, Schmuck perp, int pr){
-		super("Intimidated", false, false, perp, pr);
+	public Intimidated(double percent, int pr){
+		super(name, pr);
 		this.percent = percent;
 	}
 	

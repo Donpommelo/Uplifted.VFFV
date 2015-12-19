@@ -5,16 +5,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Volatile extends status{
 	
-	public int duration;
-
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Volatile";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Volatile(int i, Schmuck perp, int pr){
-		super(i, "Volatile", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Volatile(Schmuck perp, int pr){
-		super("Volatile", false, false, perp, pr);
+	public Volatile(int pr){
+		super(name, pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
@@ -32,10 +33,10 @@ public class Volatile extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" is reflecting damage!";
+		return s.getName()+" looks unstable!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" is not longer reflecting damage.";
+		return s.getName()+" looks stable again!";
 	}
 }

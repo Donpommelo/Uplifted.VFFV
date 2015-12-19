@@ -5,12 +5,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class KinhunterStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public KinhunterStatus(Schmuck perp, int pr){
-		super("Kin Hunter", false, false, perp, pr);
+
+	public KinhunterStatus(int pr){
+		super("Kin Hunter", pr);
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

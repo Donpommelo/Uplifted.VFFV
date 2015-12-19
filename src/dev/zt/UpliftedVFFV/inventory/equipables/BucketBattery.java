@@ -26,8 +26,8 @@ public class BucketBattery extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Volatile(s.itemDummy, 25);
-		enchantment[1] = new ElemPointsBuffMult(3,1.1*(1+s.getEquipPow()), s.itemDummy,50);
+		enchantment[0] = new Volatile(25);
+		enchantment[1] = new ElemPointsBuffMult(3,1.1*(1+s.getEquipPow()), 50);
 		return enchantment;
 	}
 }

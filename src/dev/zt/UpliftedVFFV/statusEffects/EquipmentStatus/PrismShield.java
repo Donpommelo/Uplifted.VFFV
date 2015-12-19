@@ -5,11 +5,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PrismShield extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public PrismShield(Schmuck perp, int pr){
-		super("Prism Shield", false, false, perp, pr);
+	public PrismShield(int pr){
+		super("Prism Shield", pr);
 	}
 	
 	public void statchanges(Schmuck s){

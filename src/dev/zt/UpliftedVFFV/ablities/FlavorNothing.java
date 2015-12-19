@@ -1,16 +1,21 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FlavorNothing extends Skills {
 	
-public Item thing;
-
 	String flavorText = "";
+	public static String name = "";
+	public static String descr = ".";
+	public static String descrShort = "";
+	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 6;	//Physical
+	public static int targetType = 1;	//No Target
 	public FlavorNothing(int index, String text) {
-		super(index,1,6, "", "", "", 0,0,0,false,false);
+		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 		flavorText = text;
 	}
 	

@@ -7,15 +7,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Stunned extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Stunned";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Stunned(int i, Schmuck perp, int pr){
-		super(i, "Stunned", false, true, false, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Stunned(Schmuck perp, int pr){
-		super("Stunned", true, false, perp, pr);
+	public Stunned(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

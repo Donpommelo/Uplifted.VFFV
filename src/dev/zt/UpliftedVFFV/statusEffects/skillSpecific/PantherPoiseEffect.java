@@ -7,11 +7,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PantherPoiseEffect extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Poised";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public PantherPoiseEffect(int i, Schmuck perp, int pr){
-		super(i, "PantherPoiseEffect", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.perp = perp;
 	}
 	
@@ -24,11 +26,7 @@ public class PantherPoiseEffect extends status{
 		}
 	}
 
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
+	public int stackingEffect(){
+		return 3;
 	}
 }

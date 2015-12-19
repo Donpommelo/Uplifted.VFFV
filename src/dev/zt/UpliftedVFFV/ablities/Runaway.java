@@ -12,8 +12,10 @@ public class Runaway extends Skills {
 	public static int cost = 0;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 6;	//Physical
+	public static int targetType = 1;	//No Target
 	public Runaway(int index) {
-		super(index, 1, 6, name, descr, descrShort, cost, 5, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, 5, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
@@ -28,8 +30,10 @@ public class Runaway extends Skills {
 		for(Schmuck m : bs.bs.enemySelectable){
 			enemyLevel += (m.getLvl());
 		}
+		partyLevel /= bs.bs.alliesSelectable.size();
+		enemyLevel /= bs.bs.enemySelectable.size();
 		double chance = (partyLevel/enemyLevel)*(1+bonus);
-		if(bs.runnable && Math.random()<=chance){
+		if(bs.runnable && Math.random() <= chance){
 			bs.bp.stm.endofFite();
 			bs.bp.bt.ranAway = true;
 		}
@@ -42,6 +46,4 @@ public class Runaway extends Skills {
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-
 }

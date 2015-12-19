@@ -23,16 +23,15 @@ public class BloodSeal extends Item{
 	public status[] enchantment = new status[6];
 	public BloodSeal() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BloodSealStatus(s.getItemDummy(),10);
-		enchantment[1] = new TestStatBuff(2,1.15*(1+s.getEquipPow()), s.itemDummy,25);
-		enchantment[2] = new TestStatBuff(3,1.15*(1+s.getEquipPow()), s.itemDummy,25);
-		enchantment[3] = new TestStatBuff(4,1.15*(1+s.getEquipPow()), s.itemDummy,25);
-		enchantment[4] = new Regendegen(true, 8, s.itemDummy, 50);
-		enchantment[5] = new Regendegen(false, 8, s.itemDummy, 50);
+		enchantment[0] = new BloodSealStatus(10);
+		enchantment[1] = new TestStatBuff(2,1.15*(1+s.getEquipPow()), 25);
+		enchantment[2] = new TestStatBuff(3,1.15*(1+s.getEquipPow()), 25);
+		enchantment[3] = new TestStatBuff(4,1.15*(1+s.getEquipPow()), 25);
+		enchantment[4] = new Regendegen(true, (int)(8*(1+s.getEquipPow())), 50);
+		enchantment[5] = new Regendegen(false, (int)(8*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 

@@ -12,8 +12,10 @@ public class TyrianPlum extends Skills {
 	public static int cost = 13;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 2;	//Green
+	public static int targetType = 0;	//Any Single Target
 	public TyrianPlum(int index) {
-		super(index,0,2, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

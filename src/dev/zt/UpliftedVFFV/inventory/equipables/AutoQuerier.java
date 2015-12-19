@@ -21,12 +21,10 @@ public class AutoQuerier extends Item{
 	public status[] enchantment = new status[1];
 	public AutoQuerier() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AutoQuery(s.getItemDummy(),100);
+		enchantment[0] = new AutoQuery(100);
 		return enchantment;
 	}
-	
 }

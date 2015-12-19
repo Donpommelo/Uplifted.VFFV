@@ -25,7 +25,7 @@ public class FalseFace extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(27,.30*(1+s.getEquipPow()),s.itemDummy,0);
+		enchantment[0] = new BonusStatBuff(27,.30*(1+s.getEquipPow()), 0);
 		return enchantment;
 	}
 	

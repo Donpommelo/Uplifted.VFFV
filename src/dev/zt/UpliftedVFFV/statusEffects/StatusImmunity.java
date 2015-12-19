@@ -5,20 +5,21 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class StatusImmunity extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Status Immune";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public status immune;
 	public StatusImmunity(int i, status imm, Schmuck perp, int pr){
-		super(i, "Status Immunity", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.immune = imm;
 	}
 	
-	public StatusImmunity(status imm, Schmuck perp, int pr){
-		super("Status Immunity", true, false, perp, pr);
+	public StatusImmunity(status imm, int pr){
+		super(name, pr);
 		this.immune = imm;
 	}
-	
 
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
 		if(!st.perm && st.getName().equals(this.immune.getName())){
@@ -35,5 +36,7 @@ public class StatusImmunity extends status{
 		return s.getName()+" is no longer Immune to "+this.immune.getName();
 	}
 	
-	
+	public int stackingEffect(){
+		return 2;
+	}
 }

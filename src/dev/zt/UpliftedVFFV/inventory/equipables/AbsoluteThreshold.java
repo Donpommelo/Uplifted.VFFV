@@ -21,11 +21,14 @@ public class AbsoluteThreshold extends Item{
 	public status[] enchantment = new status[1];
 	public AbsoluteThreshold() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AbsoluteThresholdStatus(.05*(1+s.getEquipPow()), s.itemDummy, 80);
+		enchantment[0] = new AbsoluteThresholdStatus(.05*(1+s.getEquipPow()), 80);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }

@@ -18,17 +18,16 @@ public class FracturePlate extends Item{
 	static int slot = 1;
 	static int lvlReq = 45;
 	static String descr="A thick, bony plate, eternally mending its ever growing collection of cracks.";
-	static String descrShort="Uses meter to reduce damage.";
+	static String descrShort="+55 Hp. Blocks the first instance of damage.";
 	public status[] enchantment = new status[3];
 	public FracturePlate() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new FracturePlateStatus(s.itemDummy, 75);
-		enchantment[1] = new AddStatBuff(3, (int)(11*(1+s.getEquipPow())), s.itemDummy, 50);
-		enchantment[2] = new AddStatBuff(0, (int)(55*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] = new FracturePlateStatus(75);
+		enchantment[1] = new AddStatBuff(3, (int)(11*(1+s.getEquipPow())), 50);
+		enchantment[2] = new AddStatBuff(0, (int)(55*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 	

@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Impatient extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
 	public double percent;
+	public static String name = "Impatient";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public Impatient(int i, double percent, Schmuck perp, int pr){
-		super(i, "Impatient", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Impatient(double percent, Schmuck perp, int pr){
-		super("Impatient", false, false, perp, pr);
+	public Impatient(double percent, int pr){
+		super(name, pr);
 		this.percent = percent;
 	}
 	

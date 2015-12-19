@@ -8,8 +8,8 @@ public class AbyssalInsigniaStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public AbyssalInsigniaStatus(Schmuck perp, int pr){
-		super("Abyssal Alignment", false, false, perp, pr);
+	public AbyssalInsigniaStatus(int pr){
+		super("Abyssal Alignment", pr);
 	}
 	
 	public void statchanges(Schmuck s){

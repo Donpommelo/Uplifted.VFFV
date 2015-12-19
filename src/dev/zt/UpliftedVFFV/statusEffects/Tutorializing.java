@@ -9,15 +9,17 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Tutorializing extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Tutorializing";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = false;
 	public Tutorializing(int i, Schmuck perp, int pr){
-		super(i, "Tutorializing", false, false, false, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Tutorializing(Schmuck perp, int pr){
-		super("Tutorializing", true, false, perp, pr);
+	public Tutorializing(int pr){
+		super(name, pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

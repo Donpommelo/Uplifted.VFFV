@@ -28,32 +28,37 @@ public class status implements Serializable{
 	
 	
 	
-	public int duration = 0;
-	public String name;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public Boolean removedEnd = true;
-	public int stack;
-	public int priority;
-	public int cooldown;
-	public Schmuck perp;	
-	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Schmuck p, int pr){
+	public int duration = 0;			//The amount of turns of the status remaining
+	public String name;					//The name of the status
+	public Boolean perm = false;		//Whether the status is purgeable by generic status removal.
+	public Boolean visible = true;		//Whether the status is visible in the UI
+	public Boolean removedEnd = true;	//Whether the status is removed at the end of combat.
+	public Boolean decay = true;		//Whether the status's duration decreases at the end of each round.
+	public int stack;					//For stackable statuses
+	public int priority;				//Status priority. Higher priority statuses have their effects applied first.
+	public Schmuck perp;				//Schmuck who inflicted this status
+		
+	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Boolean dec, Schmuck p, int pr){
 		this.duration=i;
 		this.name = n;
 		this.perm = perm;
 		this.visible = vis;
 		this.removedEnd = end;
+		this.decay = dec;
 		this.perp = p;
 		this.priority = pr;
 	}
 	
-	public status(String n, Boolean vis, Boolean end, Schmuck p, int pr){
+	//For creating Equipment Statuses
+	public status(String n, int pr){
 		this.name = n;
-		this.perm = true;
-		this.visible = vis;
-		this.removedEnd = end;
-		this.perp = p;
 		this.priority = pr;
+		this.duration = 1;
+		this.perm = true;
+		this.visible = false;
+		this.removedEnd = false;
+		this.decay = false;
+		this.perp = new Schmuck();
 	}
 	
 	public int getDuration() {
@@ -72,14 +77,6 @@ public class status implements Serializable{
 		this.priority = priority;
 	}
 	
-	public int getCooldown() {
-		return cooldown;
-	}
-
-	public void setCooldown(int cd) {
-		this.cooldown = cd;
-	}
-
 	//Activates upon selecting a move. Prolly should rename. Atm used for restricting; if certain moves are selected, they are replaced
 	//Implemented in Phase 2 of Battle Processor
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -221,6 +218,16 @@ public class status implements Serializable{
 	
 	public String getName(){
 		return name;
+	}
+	
+	//What will happen if you gain this status while already having a status with the same name?
+	//0: Nothing happens. (Most statuses)
+	//1: The duration of the status is increased. (Poison)
+	//2: You gain a new instance of the status. (Stat changes, Limited Use, Status Immunity, etc)
+	//3: The new status replaces the old one. (Statuses with some numeric modifier like Vampirism or Damage Reflect)
+	//4: Both statuses are removed. (Misaligned)
+	public int stackingEffect(){
+		return 0;
 	}
 	
 	//Generic status curing stuff removes statuses if this returns true.

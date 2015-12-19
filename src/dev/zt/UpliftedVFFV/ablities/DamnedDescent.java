@@ -13,8 +13,10 @@ public class DamnedDescent extends Skills {
 	public static int cost = 11;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 0;	//Red
+	public static int targetType = 0;	//Any Single Target
 	public DamnedDescent(int index) {
-		super(index,0,0, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

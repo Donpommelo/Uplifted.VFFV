@@ -10,8 +10,8 @@ public class CatoNeedStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public CatoNeedStatus(Schmuck perp, int pr){
-		super("Needs Met", false, false, perp,pr);
+	public CatoNeedStatus(int pr){
+		super("Needs Met",pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

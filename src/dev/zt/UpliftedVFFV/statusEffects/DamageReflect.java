@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageReflect extends status{
 	
-	public int duration;
+	public static String name = "Reflecting";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public double percent;
-	public Boolean perm = false;
-	public Boolean visible = true;
 	public DamageReflect(int i, double percent, Schmuck perp, int pr){
-		super(i, "Damage Reflect", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 	}
 	
-	public DamageReflect(double percent, Schmuck perp, int pr){
-		super("Damage Reflect", false, false, perp, pr);
+	public DamageReflect(double percent, int pr){
+		super(name, pr);
 		this.percent = percent;
 	}
 	
@@ -34,5 +36,9 @@ public class DamageReflect extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer reflecting damage.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

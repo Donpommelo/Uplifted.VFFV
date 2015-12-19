@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Delicious extends status{
 	
-	public int duration;
 	public double percent;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Delicious";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public Delicious(int i, double percent, Schmuck perp, int pr){
-		super(i, "Delicious", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Delicious(double percent, Schmuck perp, int pr){
-		super("Delicious", false, false, perp, pr);
+	public Delicious(double percent, int pr){
+		super(name, pr);
 		this.percent = percent;
 	}
 	
@@ -35,5 +37,9 @@ public class Delicious extends status{
 	
 	public Boolean isBad(){
 		return true;
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

@@ -3,14 +3,20 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class BeefedUp extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+
+	public static String name = "Beefed Up";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public BeefedUp(int i, Schmuck perp, int pr){
-		super(i, "Beefed Up", false, true, false, perp,pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
-			
+	
+	public BeefedUp(int pr){
+		super(name, pr);
+	}	
+	
 	public void statchanges(Schmuck s){
 		int bonus = (10-3*duration)*(10-3*duration)/100;
 		s.buffedStats[2] *= (1+bonus);

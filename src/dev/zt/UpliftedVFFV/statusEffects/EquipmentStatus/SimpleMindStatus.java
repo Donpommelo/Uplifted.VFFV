@@ -6,15 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class SimpleMindStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public SimpleMindStatus(int i, Schmuck perp, int pr){
-		super(i, "Simple", false, true, true, perp, pr);
-	}
-	
-	public SimpleMindStatus(Schmuck perp, int pr){
-		super("Simple", true, false, perp, pr);
+	public SimpleMindStatus(int pr){
+		super("Simple", pr);
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
@@ -24,14 +17,5 @@ public class SimpleMindStatus extends status{
 			}
 		}
 		bs.bp.stm.addStatus(s, st);
-	}
-	
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+"";
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+"";
 	}
 }

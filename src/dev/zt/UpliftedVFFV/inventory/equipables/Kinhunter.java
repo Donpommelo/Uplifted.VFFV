@@ -24,7 +24,7 @@ public class Kinhunter extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new KinhunterStatus( s.itemDummy,0);
+		enchantment[0] = new KinhunterStatus(0);
 		return enchantment;
 	}
 	

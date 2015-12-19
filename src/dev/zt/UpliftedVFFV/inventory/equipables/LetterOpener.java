@@ -21,12 +21,11 @@ public class LetterOpener extends Item{
 	public status[] enchantment = new status[2];
 	public LetterOpener() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AddStatBuff(4,(int)(3*(1+s.getEquipPow())), s.itemDummy, 50);
-		enchantment[1] = new AddStatBuff(5,(int)(3*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] = new AddStatBuff(4,(int)(3*(1+s.getEquipPow())), 50);
+		enchantment[1] = new AddStatBuff(5,(int)(3*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 }

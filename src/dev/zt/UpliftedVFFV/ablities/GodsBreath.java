@@ -15,14 +15,16 @@ public class GodsBreath extends Skills {
 	public static int cost = 15;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 3;	//Yellow
+	public static int targetType = 1;	//No Target
 	public GodsBreath(int index) {
-		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Gods Breath!");
 		bs.bp.bt.textList.add("All allies were fortified!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp, 50));
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
 				bs.bp.stm.addStatus(s, new Invuln(0, perp, 50));
 			}

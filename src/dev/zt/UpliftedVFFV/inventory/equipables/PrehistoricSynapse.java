@@ -22,18 +22,16 @@ public class PrehistoricSynapse extends Item{
 	public status[] enchantment = new status[3];
 	public PrehistoricSynapse() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new PrehistSynapse(s.getItemDummy(),5);
-		enchantment[1] = new BonusStatBuff(1,0.11*(1+s.getEquipPow()), s.itemDummy,80);
-		enchantment[2] = new BonusStatBuff(16,0.11*(1+s.getEquipPow()), s.itemDummy,80);
+		enchantment[0] = new PrehistSynapse(5);
+		enchantment[1] = new BonusStatBuff(1,0.11*(1+s.getEquipPow()), 80);
+		enchantment[2] = new BonusStatBuff(16,0.11*(1+s.getEquipPow()), 80);
 		return enchantment;
 	}
 	
 	public boolean isLegendary(){
 		return true;
 	}
-	
 }

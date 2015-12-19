@@ -22,14 +22,12 @@ public class SimmerResent extends Item{
 	public status[] enchantment = new status[3];
 	public SimmerResent() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TestStatBuff(2,(int)(1.2*(1+s.getEquipPow())), s.itemDummy, 25);
-		enchantment[1] = new TestStatBuff(4,(int)(1.2*(1+s.getEquipPow())), s.itemDummy, 25);
-		enchantment[2] = new HealBlock(s.itemDummy,25);
+		enchantment[0] = new TestStatBuff(2,(int)(1.2*(1+s.getEquipPow())), 25);
+		enchantment[1] = new TestStatBuff(4,(int)(1.2*(1+s.getEquipPow())), 25);
+		enchantment[2] = new HealBlock(25);
 		return enchantment;
 	}
-
 }

@@ -9,12 +9,9 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class RingofGygesStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
 	public int uses;	
-	public RingofGygesStatus(Schmuck perp, int pr){
-		super("Defensive Invisibility", false, false, perp,pr);
+	public RingofGygesStatus(int pr){
+		super("Defensive Invisibility", pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){//

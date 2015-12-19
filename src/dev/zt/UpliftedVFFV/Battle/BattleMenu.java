@@ -26,7 +26,6 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
-import dev.zt.UpliftedVFFV.statusEffects.Purified;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CatoWantStatus;
 
 
@@ -88,11 +87,7 @@ public class BattleMenu{
 		
 		//If the Schmuck chose to Wait in the Planning phase, all onDillyDally statuses activate.
 		if(bs.bp.pauseTOQ){
-			for(int i=0; i<currentSchmuck.statuses.size(); i++){
-				if(currentSchmuck.statuses.get(i)!=null && !bs.bp.stm.checkStatus(currentSchmuck, new Purified(currentSchmuck,0))){
-					currentSchmuck.statuses.get(i).onDillyDally(currentSchmuck,bs);
-				}	
-			}
+			currentSchmuck.onDillyDallyEffects(bs);
 		}
 		pointed = chosen;
 	}
@@ -166,12 +161,12 @@ public class BattleMenu{
 						
 						//If Schmuck has no skills, use "Do Nothing"
 						if(currentSchmuck.skills.size()==0){
-							currentSkill = new SkillNothing(1,gs);
+							currentSkill = new SkillNothing(1);
 						}
 						else{
 							//Message for not having Mp while not having the Catalog of Want
 							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
-									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
+									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(100))){
 								bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 							}
 							else{					
@@ -344,9 +339,14 @@ public class BattleMenu{
 						phase++;
 					}
 		 			break;
-		 		//Case 1: Skill has no target. Automatically targets self and moves on to the next phase.	
+		 		//Case 1: Skill has no target. Automatically targets first enemy and moves on to the next phase.	
 		 		case 1:
-					targetedSchmuck = currentSchmuck;
+		 			if(!bs.bp.getSelectableEnemies(currentSchmuck).isEmpty()){
+						targetedSchmuck = bs.bp.getSelectableEnemies(currentSchmuck).get(0);
+					}
+					else{
+						targetedSchmuck = currentSchmuck;
+					}
 			 		phase++;
 		 			break;
 		 		//Case 2: Rare. Can only target allies, even incapacitated ones. (Used in revives)

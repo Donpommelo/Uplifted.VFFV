@@ -115,6 +115,7 @@ public class Skills implements Serializable{
 		return element;
 	}
 	
+	//If this skill starts of targeting your own team, this function returns true.
 	public boolean startTarget(){
 		return false;
 	}
@@ -130,7 +131,5 @@ public class Skills implements Serializable{
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
 		return 0;//-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3];
 	}
-	
-
 
 }

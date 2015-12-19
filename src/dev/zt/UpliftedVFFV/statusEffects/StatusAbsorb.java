@@ -5,15 +5,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class StatusAbsorb extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Status Absorbent";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public StatusAbsorb(int i, Schmuck perp, int pr){
-		super(i, "Status Absorb", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public StatusAbsorb(Schmuck perp, int pr){
-		super("Status Absorb", true, false, perp, pr);
+	public StatusAbsorb(int pr){
+		super(name, pr);
 	}
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
@@ -28,10 +30,10 @@ public class StatusAbsorb extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+"";
+		return s.getName()+" became Absorbent!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"";
+		return s.getName()+" is no longer Absobent!";
 	}
 }

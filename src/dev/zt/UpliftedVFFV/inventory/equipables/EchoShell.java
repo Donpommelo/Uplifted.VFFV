@@ -26,8 +26,8 @@ public class EchoShell extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EchoShellStatus(s.getItemDummy(),40);
-		enchantment[1] = new AddStatBuff(3,(int)(11*(1+s.getEquipPow())),s.getItemDummy(),40);
+		enchantment[0] = new EchoShellStatus(40);
+		enchantment[1] = new AddStatBuff(3,(int)(11*(1+s.getEquipPow())), 40);
 		return enchantment;
 	}
 	

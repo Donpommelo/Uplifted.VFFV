@@ -8,18 +8,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class FestusClawStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public int cooldown;
-	public FestusClawStatus(Schmuck perp, int pr){
-		super("Claws of Festus Status", false, false, perp, pr);
+
+	public FestusClawStatus(int pr){
+		super("Claws of Festus Status", pr);
 	}
 	public void restrict(Schmuck s, Action a, BattleState bs){
 		if(!a.skill.getName().equals("Item") && !a.skill.getName().equals("Dilly Dally") && !a.skill.getName().equals("Run Away")&& !a.skill.getName().equals("Pass Turn")){
-			if(Math.random() < (float)(a.user.getBuffedSkl()/(a.target.getBuffedLuk()*a.target.getBuffedLuk()))+a.user.getCritChance() + 
-					a.skill.getBaseCrit()/100 && a.skill.canCrit()){
+			if(bs.bp.calcCrit(a)){
 				bs.bp.stm.addStatus(s, new BonusStatBuff(0,16,10,s,100));
 			}
 			else{

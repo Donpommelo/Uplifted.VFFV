@@ -7,14 +7,11 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class MadnessMantraStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+
 	public int stack;
 	public Skills lastUsed;
-	public MadnessMantraStatus(Schmuck perp, int pr){
-		super("Maddening", false, false, perp, pr);
+	public MadnessMantraStatus(int pr){
+		super("Maddening", pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

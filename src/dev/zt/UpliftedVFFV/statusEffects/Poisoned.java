@@ -6,15 +6,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Poisoned extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Poisoned";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public Poisoned(int i, Schmuck perp, int pr){
-		super(i, "Poisoned", false, true, false, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Poisoned(Schmuck perp, int pr){
-		super("Poisoned", true, false, perp, pr);
+	public Poisoned(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -28,6 +30,10 @@ public class Poisoned extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+" was cured of Poison!";
+	}
+	
+	public int stackingEffect(){
+		return 1;
 	}
 	
 	public Boolean isBad(){

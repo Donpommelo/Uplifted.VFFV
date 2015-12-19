@@ -4,15 +4,17 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class HealBlock extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Heal Blocked";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public HealBlock(int i, Schmuck perp, int pr){
-		super(i, "Heal Block", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public HealBlock(Schmuck perp, int pr){
-		super("Heal Block", false, false, perp, pr);
+	public HealBlock(int pr){
+		super(name, pr);
 	}
 
 	public String inflictText(Schmuck s){

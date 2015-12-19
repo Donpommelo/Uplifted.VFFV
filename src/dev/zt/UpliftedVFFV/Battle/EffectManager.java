@@ -10,8 +10,6 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.statusEffects.HealBlock;
 import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.MeterBlock;
-import dev.zt.UpliftedVFFV.statusEffects.Purified;
-import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class EffectManager {
@@ -26,22 +24,36 @@ public class EffectManager {
 		this.bs=bs;	
 	}
 		
+	//Function called when hp is changed in battle. (Except in the case of Pure Damage)
+	//if the input hp is negative, that means damage is being done.
 	public void hpChange(int hp, Schmuck perp, Schmuck vic, int elem){
+		
+		//finalDamage is the number that will be returned at the end.
 		int finalDamage = hp;
+		
+		//If damage is being dealt, Damage Amplification and Resistance modify it.
 		if(finalDamage < 0){
 			finalDamage += (int)(perp.getDamAmp()*hp);
 			finalDamage -= (int)(vic.getDamRes()*hp);
+			
+			//If elemental damage is being dealt, elemental alignment anf resistance are calculated.
 			if(elem != 6){
 				finalDamage -= (int)(hp*(double)(vic.getBonusStats()[elem+19]/100));
 				finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));
 			}	
 		}
 		else{
+			
+			//Elementally aligned healing is also modified by alignment
 			if( elem != 6){
 				finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
 			}
 		}
+		
+		//Damage variance is calculated
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
+		
+		//Elements
 		String element = "";
 		switch(elem){
 		case 0:
@@ -66,74 +78,59 @@ public class EffectManager {
 			element = "";
 			break;
 		}
+		
+		//Extra check to ensure that the target is not incapacitated.
 		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
 			if(finalDamage > 0){
+				
+				//If the Hp change is positive, the HealBlock status will cancel it.
 				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic,50))){
 					bs.bp.bt.textList.add(vic.getName()+" was prevented from healing!");
 				}
+				
+				//Otherwise, healing is done and the target's on-heal effects activate.
 				else{
 					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
-					for(int i=0; i<vic.statuses.size(); i++){
-						if(vic.statuses.get(i)!=null){
-							if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
-								if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
-									finalDamage = vic.statuses.get(i).onHealEffect(perp,vic, bs, finalDamage,elem);
-								}
-							}
-						}
-					}
+					finalDamage = vic.onHealEffects(bs, perp, finalDamage, elem);
+					
+					//Final healing amount is finally modified by the target's regen bonus.
 					finalDamage *= (1+vic.getRegenBonus());
 					vic.tempStats[0]+=finalDamage;
 				}
 			}
+			
+			//If thte hp change is negative, the Invulnerability status will nullify it
 			else{
 				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic,50))){
 					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prevented damage!");
 				}
+				
+				//Otherwise, the target flashes and takes damage.
 				else{
 					bs.bs.flash(vic, 80);
-					for(int i=0; i<perp.statuses.size(); i++){
-						if(perp.statuses.get(i)!=null){
-							if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || perp.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-								if(!bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
-									finalDamage = perp.statuses.get(i).dealdamageEffect(perp,vic, bs, finalDamage,elem);
-								}
-							}
-						}
-					}
-					for(int i=0; i<vic.statuses.size(); i++){
-						if(vic.statuses.get(i)!=null){
-							if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
-								if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
-									finalDamage = vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
-								}
-							}
-						}
-					}
+					
+					//perp's damage-dealt effects and target's on-damage effects activate.
+					finalDamage = perp.dealDamageEffects(bs, vic, finalDamage, elem);
+					
+					finalDamage = vic.takeDamageEffects(bs, perp, finalDamage, elem);
+					
+					//Display text and do damage.
 					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 					vic.tempStats[0]+=finalDamage;
 				}				
-			}	
+			}
+			
+			//After hp change, check if target is incapacitated
 			if(vic.tempStats[0]<=0){
-				vic.tempStats[0]=0;				
-				for(int i=0; i<perp.statuses.size(); i++){
-					if(perp.statuses.get(i)!=null){
-						if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || perp.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-							if(!bs.bp.stm.checkStatus(perp, new Purified(perp,0))){
-								perp.statuses.get(i).onKill(perp,vic, bs);
-							}
-						}
-					}
-				}
-				for(int i=0; i<vic.statuses.size(); i++){
-					if(vic.statuses.get(i)!=null){
-						if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic)) || vic.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(vic, new Undead(vic, 10))){
-							if(!bs.bp.stm.checkStatus(vic, new Purified(vic,0))){
-								vic.statuses.get(i).onDeath(perp,vic, bs);
-							}
-						}
-					}
-				}
+				
+				//If so, set Hp to 0 and apply perp's on-kill effects and vic's on-death effects.
+				vic.tempStats[0]=0;
+				
+				perp.onKillEffects(vic, bs);
+				
+				vic.onDeathEffects(perp, bs);
+				
+				//Add incapacitate status and remove all of the target's actions from the TOQ
 				bs.bp.stm.addStatus(vic, new incapacitate(perp));
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
@@ -143,14 +140,19 @@ public class EffectManager {
 					}
 					
 				}
+				
+				//Update target for good measure
 				bs.bs.targetUpdate();
 			}
+			
+			//Prevent overheal.
 			if(vic.tempStats[0]>vic.buffedStats[0]){
 				vic.tempStats[0]=vic.buffedStats[0];
 			}
 		}
 	}
 
+	//Simulates damage. Will be eventually used for enemy AI.
 	public int damageSimulation(int hp, Schmuck perp, Schmuck vic, int elem, int acc){
 		int finalDamage = hp;
 		if(!bs.bp.em.getAcc(perp, vic,acc) || bs.bp.stm.checkStatus(perp, new Invuln(0,vic,50))){
@@ -175,33 +177,24 @@ public class EffectManager {
 		return finalDamage;
 	}
 	
+	
+	//For changes in Mp.
 	public void bpChange(int bp, Schmuck s){
 		int meterChange = bp;
+		
+		//Mp change will be blocked by the MeterBlock status.
 		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s,50))){
 			
+			//Activate all on-gain-meter or on-spend-meter effects accordingly.
 			if(meterChange < 0){
-				for(int i=0; i<s.statuses.size(); i++){
-					if(s.statuses.get(i)!=null){
-						if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
-							if(!bs.bp.stm.checkStatus(s, new Purified(s,0))){
-								meterChange = s.statuses.get(i).spendMeterEffect(s, bs, meterChange);
-							}
-						}
-					}
-				}
+				meterChange = s.onMeterLossEffects(meterChange, bs);
 			}
 			else{
-				for(int i=0; i<s.statuses.size(); i++){
-					if(s.statuses.get(i)!=null){
-						if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
-							if(!bs.bp.stm.checkStatus(s, new Purified(s,0))){
-								meterChange = s.statuses.get(i).gainMeterEffect(s, bs, meterChange);
-							}
-						}
-					}
-				}
+				meterChange = s.onMeterGainEffects(meterChange, bs);
 				meterChange *= (1 + s.getRegenBonus());
 			}
+			
+			//Prevent Mp from being negative or more that max.
 			s.tempStats[1]+=meterChange;
 			if(s.getCurrentBp()<0){
 				s.setCurrentBp(0);

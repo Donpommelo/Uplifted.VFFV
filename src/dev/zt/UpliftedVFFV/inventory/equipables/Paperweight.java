@@ -21,12 +21,10 @@ public class Paperweight extends Item{
 	public status[] enchantment = new status[1];
 	public Paperweight() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 		
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new AddStatBuff(3,(int)(3*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] =  new AddStatBuff(3,(int)(3*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
-	
 }

@@ -8,12 +8,9 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PrehistSynapse extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
 	public int damage = 0;
-	public PrehistSynapse(Schmuck perp, int pr){
-		super("Delayed Response", false, false, perp,pr);
+	public PrehistSynapse(int pr){
+		super("Delayed Response", pr);
 	}
 			
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

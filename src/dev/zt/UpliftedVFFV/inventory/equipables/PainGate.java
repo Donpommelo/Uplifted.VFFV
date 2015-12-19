@@ -26,8 +26,8 @@ public class PainGate extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new PainGateStatus(s.itemDummy, 15);
-		enchantment[1] = new AddStatBuff(0,(int)(25*(1+s.getEquipPow())), s.itemDummy,50);
+		enchantment[0] = new PainGateStatus(15);
+		enchantment[1] = new AddStatBuff(0,(int)(25*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 	

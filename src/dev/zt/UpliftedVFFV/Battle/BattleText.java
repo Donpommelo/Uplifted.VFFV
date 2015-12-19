@@ -38,11 +38,10 @@ public class BattleText {
 		if(game.getKeyManager().space){
 			
 			if(!textList.isEmpty()){
+				
+				//Indicates that battle is lost.
 				if(textList.get(0).contains("You and everyone you care about are dead.")){
 					bs.end(false);
-				}
-				if(scrolling){
-//					charIndex+=5;
 				}
 				else{
 					charIndex = 0;
@@ -54,6 +53,10 @@ public class BattleText {
 					}
 				}
 			}
+			
+			//Battle is lost upon running away.
+			//Incase you're wondering why loss conditions are done here, its because we didn't want the battle state to pop before
+			//the loss text was read.
 			if(ranAway){
 				bs.end(false);
 			}
@@ -63,15 +66,13 @@ public class BattleText {
 			
 
 	public void render(Graphics g) {
-		if(charIndex>textList.get(0).length()){				//controls how much of the dialog is rendered. 
-			charIndex=textList.get(0).length();				//charIndex increases as time passes, causing text to scroll
+		if(charIndex > textList.get(0).length()){				//controls how much of the dialog is rendered. 
+			charIndex = textList.get(0).length();				//charIndex increases as time passes, causing text to scroll
 		}	
 		g.setColor(new Color(160, 160, 160, 200));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g.fillRect(0, 0, 640, 28);
 		g.setColor(new Color(0,0,0));
-//		g.drawString(textList.get(0),0,20);	
-//		g.drawString(textList.get(1),0,45);	
 		
 		for(int i = 1; i <= charIndex; i++){
 			g.drawString(textList.get(0).substring(0, i), 6, 24);		//causes text to form new lines

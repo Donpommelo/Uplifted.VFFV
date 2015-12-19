@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Cleave extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Cleaving";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public double cleave;
 	public Cleave(int i, double amount, Schmuck perp, int pr){
-		super(i, "Cleave", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.cleave = amount;
 	}
 	
-	public Cleave(double amount, Schmuck perp, int pr){
-		super("Cleave", true, false, perp, pr);
+	public Cleave(double amount, int pr){
+		super(name, pr);
 		this.cleave = amount;
 	}
 	
@@ -34,5 +36,9 @@ public class Cleave extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s attacks no longer cleave.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

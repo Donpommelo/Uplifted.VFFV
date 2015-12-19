@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.IntrusiveThoughtEffect;
 
 public class ForeseeIll extends Skills {
 
@@ -12,22 +12,18 @@ public class ForeseeIll extends Skills {
 	public static int cost = 4;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 4;	//Purple
+	public static int targetType = 0;	//Any Single Target
 	public ForeseeIll(int index) {
-		super(index,0,4, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" Foresees Ill!");
-		int stacked = -1;
-		for(status s : vic.statuses){
-			if(s.getName().equals("Intrusive Thoughts")){
-				stacked = vic.statuses.indexOf(s);
-			}					
-		}
-		if(stacked != -1){
-			bs.bp.em.hpChange(-(int)Math.pow(2, vic.statuses.get(stacked).stack)+1, perp, vic,6);
-			bs.bp.stm.removeStatus(vic, vic.statuses.get(stacked));
+		if(bs.bp.stm.checkStatus(vic, new IntrusiveThoughtEffect(perp,50))){
+			bs.bp.em.hpChange(-(int)Math.pow(2, bs.bp.stm.findStatus(vic, new IntrusiveThoughtEffect(perp,50)).stack)+1, perp, vic,6);
+			bs.bp.stm.removeStatus(vic, new IntrusiveThoughtEffect(perp,50));
 		}
 		else{
 			bs.bp.bt.textList.add("But it failed.");

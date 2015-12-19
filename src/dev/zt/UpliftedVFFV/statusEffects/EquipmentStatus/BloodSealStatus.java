@@ -5,12 +5,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BloodSealStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public BloodSealStatus(Schmuck perp, int pr){
-		super("Blood Pact Made", false, false, perp, pr);
+
+	public BloodSealStatus(int pr){
+		super("Blood Pact Made", pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

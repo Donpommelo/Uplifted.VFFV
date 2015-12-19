@@ -23,13 +23,12 @@ public class DeadMansHand extends Item{
 	public status[] enchantment = new status[3];
 	public DeadMansHand() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DeadMansHandStatus(s.getItemDummy(),80);
-		enchantment[1] = new Undead(s.getItemDummy(),80);
-		enchantment[2] = new ElemPointsBuff(4,(int)(10*(1+s.getEquipPow())), s.itemDummy,50);
+		enchantment[0] = new DeadMansHandStatus(80);
+		enchantment[1] = new Undead(80);
+		enchantment[2] = new ElemPointsBuff(4,(int)(10*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 

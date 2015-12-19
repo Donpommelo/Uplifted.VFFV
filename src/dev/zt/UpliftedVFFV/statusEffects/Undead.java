@@ -4,22 +4,24 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Undead extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Undead";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Undead(int i, Schmuck perp, int pr){
-		super(i, "Undead", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Undead(Schmuck perp, int pr){
-		super("Undead", false, false, perp,pr);
+	public Undead(int pr){
+		super(name, pr);
 	}	
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" became undead.";
+		return s.getName()+" became Undead.";
 	}
 
 	public String cureText(Schmuck s){
-		return "";
+		return s.getName()+" became either dead or alive again.";
 	}
 }

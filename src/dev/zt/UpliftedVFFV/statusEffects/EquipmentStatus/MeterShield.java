@@ -6,12 +6,9 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class MeterShield extends status{
 	
-	public int duration;
-	public double percent;
-	public Boolean perm = false;
-	public Boolean visible = true;	
-	public MeterShield(double percent, Schmuck perp, int pr){
-		super("Meter Shield", false, false, perp, pr);
+	public double percent;	
+	public MeterShield(double percent, int pr){
+		super("Meter Shield", pr);
 		this.percent = percent;
 	}
 	

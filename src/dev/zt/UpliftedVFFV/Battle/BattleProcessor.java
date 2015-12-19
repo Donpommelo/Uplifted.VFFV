@@ -18,10 +18,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.Misaligned;
-import dev.zt.UpliftedVFFV.statusEffects.Purified;
 import dev.zt.UpliftedVFFV.statusEffects.StatusManager;
 import dev.zt.UpliftedVFFV.statusEffects.TrueSight;
-import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -102,21 +100,13 @@ public class BattleProcessor {
 				//On the first round of battle, run all start-of-fight effects
 				if(roundNum == 1){
 					for(Schmuck s : battlers){
-						for(int i=0; i<s.statuses.size(); i++){
-							if(s.statuses.get(i)!=null){
-								if(!stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || stm.checkStatus(s, new Undead(s, 10))){
-									if(!stm.checkStatus(s, new Purified(s,0))){
-										s.statuses.get(i).startoffightEffect(s,bs);
-									}
-								}
-							}	
-						}
+						s.startofFightEffects(bs);
 					}
 				}
 				
 				currentlySelected=0;		//Index of ally selected to make an action. Starts at 0.
 				//Starts out with menu selected for selected ally if there are still enemies left.
-				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(currentlySelected),gs);
+				bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
 				if(!enemyded()){					
 					selected=true;					
 				}
@@ -184,15 +174,7 @@ public class BattleProcessor {
 							
 							//After decisions are made, pre-battle statuses activate.
 							for(Schmuck s : battlers){
-								for(int i=0; i<s.statuses.size(); i++){
-									if(s.statuses.get(i)!=null){
-										if(!stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || stm.checkStatus(s, new Undead(s, 10))){
-											if(!stm.checkStatus(s, new Purified(s,0))){
-												s.statuses.get(i).preBattlePhase(s,bs);
-											}
-										}
-									}	
-								}
+								s.preBattlePhaseEffects(bs);
 							}
 							
 							//TOQ sorted
@@ -212,8 +194,8 @@ public class BattleProcessor {
 							}
 							
 							//The first character in the sorted TOQ may get an extra turn if they are fast enough.
-							if(TurnOrderQueue.size() >= 2){
-								if(TurnOrderQueue.get(0).user.getBuffedSpd() >= (1.5)*(TurnOrderQueue.get(1).user.getBuffedSpd())){
+							if(TurnOrderQueue.size() >= 2 && TurnOrderQueue.get(0).user != null && TurnOrderQueue.get(1).user != null){
+								if(TurnOrderQueue.get(0).user.getBuffedSpd() >= (1.5)*(TurnOrderQueue.get(1).user.getBuffedSpd())){	//null pointer here sometimes
 									bt.textList.add(TurnOrderQueue.get(0).user.getName()+"'s speed grants an extra turn!");
 									TurnOrderQueue.add(new Action(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).user,new DillyDally(0),bs));
 								}
@@ -253,11 +235,7 @@ public class BattleProcessor {
 						Schmuck tempVic = TurnOrderQueue.get(0).target;		//Schmuck being targeted
 						
 						//Before action happens, tempPerp's status restrictions activate.
-						for(int i=0; i<tempPerp.statuses.size(); i++){
-							if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-								tempPerp.statuses.get(i).restrict(tempPerp,tempAction,bs);	
-							}	
-						}
+						tempPerp.restrictEffects(tempAction, bs);
 						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
@@ -271,11 +249,7 @@ public class BattleProcessor {
 									tempSkill.runCrit(tempPerp,tempVic,bs);
 									
 									//If a critical hit occurred, run the perp's on-crit status effects.
-									for(int i=0; i<tempPerp.statuses.size(); i++){
-										if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-											tempPerp.statuses.get(i).onCrit(tempPerp, tempVic, bs);
-										}
-									}
+									tempPerp.onCritEffects(tempVic, bs);
 								}
 								
 								//Otherwise, check if the action missed or not.
@@ -284,11 +258,7 @@ public class BattleProcessor {
 										bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
 										
 										//If the ability missed, activate perp's on-miss effects
-										for(int i=0; i<tempPerp.statuses.size(); i++){
-											if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-												tempPerp.statuses.get(i).onMiss(tempAction,bs);
-											}
-										}
+										tempPerp.onMissEffects(tempAction, bs);
 									}
 									//Otherwise, run the action normally.
 									else{
@@ -301,23 +271,11 @@ public class BattleProcessor {
 									if(tempAction != null){
 										
 										//After action, run all of the perp's on-action effects.
-										for(int i=0; i<tempPerp.statuses.size(); i++){
-											if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-												tempPerp.statuses.get(i).onAction(bs,tempAction);
-											}
-										}
+										tempPerp.onActionEffects(tempAction, bs);
 										
 										//Also, run everyone's on-any-action effects
 										for(Schmuck s : battlers){
-											for(int i=0; i<s.statuses.size(); i++){
-												if(s.statuses.get(i)!=null){
-													if(!stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || stm.checkStatus(s, new Undead(s, 10))){
-														if(!stm.checkStatus(s, new Purified(s,0))){
-															s.statuses.get(i).endofAnyAction(bs,tempAction,s);
-														}
-													}
-												}	
-											}
+											s.afterEveryActionEffects(s, tempAction, bs); 
 										}
 									}
 								}
@@ -352,22 +310,14 @@ public class BattleProcessor {
 									tempSkill.runCrit(tempPerp,tempVic,bs);
 									
 									//If a critical hit occurred, run the perp's on-crit status effects.
-									for(int i=0; i<tempPerp.statuses.size(); i++){
-										if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-											tempPerp.statuses.get(i).onCrit(tempPerp, tempVic, bs);
-										}
-									}
+									tempPerp.onCritEffects(tempVic, bs);
 								}
 								else {
 									if(!calcHit(tempAction)){
 										bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
 										
 										//If the ability missed, activate perp's on-miss effects
-										for(int i=0; i<tempPerp.statuses.size(); i++){
-											if(tempPerp.statuses.get(i)!=null && !stm.checkStatus(tempPerp, new Purified(tempPerp,0))){
-												tempPerp.statuses.get(i).onMiss(tempAction,bs);
-											}
-										}
+										tempPerp.onMissEffects(tempAction, bs);
 										
 									}
 									else{
@@ -528,7 +478,7 @@ public class BattleProcessor {
 	
 	//Returns true if an input action hits and false otherwise
 	public Boolean calcHit(Action a){
-		if(em.getAcc(a.user, a.target, a.skill.getBaseAcc()) || !a.skill.canMiss() || stm.checkStatus(a.user, new TrueSight(a.user,50))){
+		if(em.getAcc(a.user, a.target, a.skill.getBaseAcc()) || !a.skill.canMiss() || stm.checkStatus(a.user, new TrueSight(50))){
 			return true;
 		}
 		else{

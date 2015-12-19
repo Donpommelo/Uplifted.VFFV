@@ -25,7 +25,7 @@ public class EnvenomEarth extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Envenomed(.15, s.getItemDummy(), this, 1);
+		enchantment[0] = new Envenomed(.15, this, 1);
 		return enchantment;
 	}
 
@@ -35,7 +35,5 @@ public class EnvenomEarth extends Item{
 
 	public void setPoints(int points) {
 		this.points = points;
-	}
-	
-	
+	}	
 }

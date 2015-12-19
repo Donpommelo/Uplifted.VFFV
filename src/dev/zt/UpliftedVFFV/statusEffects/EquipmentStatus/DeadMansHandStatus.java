@@ -8,12 +8,9 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class DeadMansHandStatus extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;	
-	public DeadMansHandStatus(Schmuck perp, int pr){
-		super("Haunting", false, false, perp,pr);
+		
+	public DeadMansHandStatus(int pr){
+		super("Haunting", pr);
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){

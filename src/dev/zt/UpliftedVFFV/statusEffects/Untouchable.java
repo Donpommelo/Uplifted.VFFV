@@ -4,10 +4,13 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Untouchable extends status{
 	
-	
-
+	public static String name = "Untouchable";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Untouchable(int i, Schmuck perp, int pr){
-		super(i, "Untouchable", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 		
 	public String inflictText(Schmuck s){

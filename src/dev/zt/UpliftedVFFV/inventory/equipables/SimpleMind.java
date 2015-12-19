@@ -24,8 +24,11 @@ public class SimpleMind extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SimpleMindStatus(s.itemDummy,0);
+		enchantment[0] = new SimpleMindStatus(0);
 		return enchantment;
 	}
-
+	
+	public boolean isLegendary(){
+		return true;
+	}
 }

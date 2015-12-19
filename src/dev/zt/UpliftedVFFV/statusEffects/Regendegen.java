@@ -5,20 +5,21 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Regendegen extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Regeneration";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Boolean HpBp;
-//	public BattleState bs;
 	public int regen;
 	public Regendegen(int i, Boolean stat, int amount, Schmuck perp, int pr){
-		super(i, "Regeneration",  false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
 	
-	public Regendegen(Boolean stat, int amount, Schmuck perp, int pr){
-		super("Regeneration", false, false,perp, pr);
+	public Regendegen(Boolean stat, int amount, int pr){
+		super(name, pr);
 		this.HpBp = stat;
 		this.regen = amount;
 	}
@@ -50,5 +51,9 @@ public class Regendegen extends status{
 			plus = "regenerating";
 		}
 		return s.getName()+" stopped "+plus;
+	}
+	
+	public int stackingEffect(){
+		return 2;
 	}
 }

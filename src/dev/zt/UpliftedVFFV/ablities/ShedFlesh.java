@@ -15,15 +15,17 @@ public class ShedFlesh extends Skills {
 	public static int cost = 10;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 3;	//Yellow
+	public static int targetType = 1;	//Any Single Target
 	public ShedFlesh(int index) {
-		super(index,1,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Shed Flesh!");
 		bs.bp.bt.textList.add(perp.getName()+" was Purified");
-		bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp, 50));
+		bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
 		bs.bp.stm.addStatus(perp, new Purified(3,perp,50));
 	}
 	

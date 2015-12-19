@@ -23,7 +23,6 @@ public class Magnum extends Item{
 	public status[] enchantment = new status[0];
 	public Magnum() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {

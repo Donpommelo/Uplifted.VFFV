@@ -6,12 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EchoShellStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-
-	public EchoShellStatus(Schmuck perp, int pr){
-		super("Echoing", false, false, perp, pr);
+	public EchoShellStatus(int pr){
+		super("Echoing", pr);
 	}
 		
 	public void endofturnEffect(Schmuck s, BattleState bs){

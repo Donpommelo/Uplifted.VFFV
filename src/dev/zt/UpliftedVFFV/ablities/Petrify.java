@@ -15,15 +15,17 @@ public class Petrify extends Skills {
 	public static int cost = 10;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss =  false; public static boolean canCrit = false;
+	public static int element = 2;	//Green
+	public static int targetType = 0;	//Any Single Target
 	public Petrify(int index) {
-		super(index,0,2, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Petrify!");
 		bs.bp.bt.textList.add(vic.getName()+" was petrified!");
-		bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp, 50));
-		bs.bp.stm.addStatus(vic, new Stunned(3,perp, 60));	
-		bs.bp.stm.addStatus(vic, new TestStatBuff(3,1.5,perp,10));
+		bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
+		bs.bp.stm.addStatus(vic, new Stunned(2,perp, 60));	
+		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,1.5,perp,10));
 	}	
 }

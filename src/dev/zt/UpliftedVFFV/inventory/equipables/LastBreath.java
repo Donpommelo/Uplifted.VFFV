@@ -24,7 +24,7 @@ public class LastBreath extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new LastBreathStatus( s.itemDummy,0);
+		enchantment[0] = new LastBreathStatus(0);
 		return enchantment;
 	}
 	

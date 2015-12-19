@@ -24,7 +24,7 @@ public class HnHFake extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CopyItem(s.itemDummy,0);
+		enchantment[0] = new CopyItem(0);
 		return enchantment;
 	}
 	

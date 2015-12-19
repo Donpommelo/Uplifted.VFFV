@@ -12,19 +12,19 @@ public class LastBreathStatus extends status{
 	public Boolean perm = false;
 	public Boolean visible = true;
 	int numSilenced;
-	public LastBreathStatus(Schmuck perp, int pr){
-		super("Last Breath", false, false, perp, pr);
+	public LastBreathStatus(int pr){
+		super("Last Breath", pr);
 		numSilenced = 0;
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){//
 		numSilenced = 0;
 		for(Schmuck guy : bs.bs.alliesSelectable){
-			if(bs.bp.stm.checkStatus(guy, new Silenced(guy,0)));
+			if(bs.bp.stm.checkStatus(guy, new Silenced(0)));
 			numSilenced++;
 		}
 		for(Schmuck guy : bs.bs.enemySelectable){
-			if(bs.bp.stm.checkStatus(guy, new Silenced(guy,0)));
+			if(bs.bp.stm.checkStatus(guy, new Silenced(0)));
 			numSilenced++;
 		}
 	}
@@ -32,11 +32,11 @@ public class LastBreathStatus extends status{
 	public void onAction(BattleState bs, Action a){
 		numSilenced = 0;
 		for(Schmuck guy : bs.bs.alliesSelectable){
-			if(bs.bp.stm.checkStatus(guy, new Silenced(guy,0)));
+			if(bs.bp.stm.checkStatus(guy, new Silenced(0)));
 			numSilenced++;
 		}
 		for(Schmuck guy : bs.bs.enemySelectable){
-			if(bs.bp.stm.checkStatus(guy, new Silenced(guy,0)));
+			if(bs.bp.stm.checkStatus(guy, new Silenced(0)));
 			numSilenced++;
 		}
 	}

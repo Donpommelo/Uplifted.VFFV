@@ -22,17 +22,15 @@ public class RingofGyges extends Item{
 	public status[] enchantment = new status[2];
 	public RingofGyges() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new RingofGygesStatus(s.getItemDummy(),40);
-		enchantment[1] = new BonusStatBuff(1,.12*(1+s.getEquipPow()),s.getItemDummy(),50);
+		enchantment[0] = new RingofGygesStatus(40);
+		enchantment[1] = new BonusStatBuff(1,.12*(1+s.getEquipPow()), 50);
 		return enchantment;
 	}
 	
 	public boolean isLegendary(){
 		return true;
 	}
-	
 }

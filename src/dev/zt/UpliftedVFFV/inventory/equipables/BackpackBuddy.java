@@ -25,7 +25,7 @@ public class BackpackBuddy extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(10,0.25, s.itemDummy,50);
+		enchantment[0] = new BonusStatBuff(10,0.25, 50);
 		return enchantment;
 	}
 }

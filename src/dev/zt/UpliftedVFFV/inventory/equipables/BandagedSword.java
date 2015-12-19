@@ -23,12 +23,15 @@ public class BandagedSword extends Item{
 	public status[] enchantment = new status[2];
 	public BandagedSword() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BandagedSwordStatus(s.itemDummy, 50);
-		enchantment[1] = new AddStatBuff(3,(int)(7*(1+s.getEquipPow())), s.itemDummy, 20);
+		enchantment[0] = new BandagedSwordStatus(50);
+		enchantment[1] = new AddStatBuff(3,(int)(7*(1+s.getEquipPow())), 20);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }

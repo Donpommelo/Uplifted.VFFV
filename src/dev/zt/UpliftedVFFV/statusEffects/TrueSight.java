@@ -4,15 +4,17 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class TrueSight extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "All-Seeing";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public TrueSight(int i, Schmuck perp, int pr){
-		super(i, "True Sight",  false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public TrueSight(Schmuck perp, int pr){
-		super("True Sight", true, true, perp, pr);
+	public TrueSight(int pr){
+		super(name, pr);
 	}
 
 	public String inflictText(Schmuck s){

@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Vampirism extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Vampiric";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public double lifesteal;
 	public Vampirism(int i, double amount, Schmuck perp, int pr){
-		super(i, "Lifesteal", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.lifesteal = amount;
 	}
 	
-	public Vampirism(double amount, Schmuck perp, int pr){
-		super("Lifesteal", true, false, perp, pr);
+	public Vampirism(double amount, int pr){
+		super("Vampiric", pr);
 		this.lifesteal = amount;
 	}
 	
@@ -25,10 +27,15 @@ public class Vampirism extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" gained the ability to lifesteal.";
+		return s.getName()+" became Vampiric!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" lost the ability to Lifesteal.";
+		return s.getName()+" is no longer Vampiric!";
 	}
+	
+	public int stackingEffect(){
+		return 3;
+	}
+	
 }

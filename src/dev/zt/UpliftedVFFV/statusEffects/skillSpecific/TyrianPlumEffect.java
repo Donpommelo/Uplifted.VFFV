@@ -8,11 +8,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class TyrianPlumEffect extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Plum Outta Luck";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public TyrianPlumEffect(int i, Schmuck perp, int pr){
-		super(i, "Plum Outta Luck", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
 	public void onAction(BattleState bs, Action a){
@@ -31,5 +33,9 @@ public class TyrianPlumEffect extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s seeds passed away.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

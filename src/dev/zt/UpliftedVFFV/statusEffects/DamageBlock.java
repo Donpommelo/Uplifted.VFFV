@@ -5,7 +5,11 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageBlock extends status{
 	
-	public int duration;
+	public static String name = "Damage Blocking";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public double percent;
 	public int amount;
 /*	0: Red
@@ -18,17 +22,16 @@ public class DamageBlock extends status{
   	7: All
   */
 	public int elem;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	
 	public DamageBlock(int i, double percent, int amount, int elem, Schmuck perp, int pr){
-		super(i, "Damage Block", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 		this.amount = amount;
 		this.elem = elem;
 	}
 	
-	public DamageBlock(double percent, int amount, int elem, Schmuck perp, int pr){
-		super("Damage Block", false, false, perp, pr);
+	public DamageBlock(double percent, int amount, int elem, int pr){
+		super(name, pr);
 		this.percent = percent;
 		this.amount = amount;
 		this.elem = elem;
@@ -53,5 +56,9 @@ public class DamageBlock extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer blocking damage.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

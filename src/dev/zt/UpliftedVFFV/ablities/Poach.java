@@ -12,8 +12,10 @@ public class Poach extends Skills {
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 0;	//Physical
+	public static int targetType = 0;	//No Target
 	public Poach(int index) {
-		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

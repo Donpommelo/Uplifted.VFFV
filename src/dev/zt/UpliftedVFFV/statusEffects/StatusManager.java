@@ -37,31 +37,71 @@ public class StatusManager {
 			if(bs.bs.alliesSelectable.contains(s) && !checkStatus(s,new incapacitate(s)) && bs.bs.alliesSelectable.size() == 1){
 				bs.bp.bt.textList.add("You and everyone you care about are dead.");
 			}			
-		}		
-		if(stat.getName().equals("Stats Changed") || stat.getName().equals("Regeneration") || stat.getName().equals("Elementally Aligned")){
-			s.statuses.add(stat);
+		}
+		
+		//What happens if you gain a status you already had?
+		
+		//Case 0: New stat is not applied.
+		if(stat.stackingEffect() == 0 && checkStatus(s,stat)){
+			bs.bp.bt.textList.add(s.getName()+" is already "+stat.getName()+"!");
 		}
 		else{
-			if(checkStatus(s,stat)){
-				findStatus(s,stat).setDuration(findStatus(s,stat).getDuration()+stat.duration);
-			}
-			else{
+			switch(stat.stackingEffect()){
+			
+			//Case 1: Old stat's duration is increased
+			case 1:
+				if(checkStatus(s,stat)){
+					if(!findStatus(s,stat).perm){
+						findStatus(s,stat).setDuration(findStatus(s,stat).getDuration()+stat.duration);
+					}
+				}
+				else{
+					s.statuses.add(stat);
+				}
+				break;
+			
+			//Case 2: Both stats are added.
+			case 2:
 				s.statuses.add(stat);
-//				bs.bs.targetUpdate();
+				break;
+			
+			//Case 3: The New stat replaces the old one.	
+			case 3:
+				if(checkStatus(s,stat)){
+					if(!findStatus(s,stat).perm){
+						s.statuses.remove(findStatus(s,stat));
+					}
+				}
+				s.statuses.add(stat);	
+				break;
+				
+			//Case 4: Both stats are removed.
+			case 4:
+				if(checkStatus(s,stat)){
+					if(!findStatus(s,stat).perm){
+						s.statuses.remove(findStatus(s,stat));
+					}
+				}
+				break;
 			}
-		}
-		if(!stat.inflictText(s).equals("")){
-			bs.bp.bt.textList.add(stat.inflictText(s));
-		}
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i)!=null){
-				if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(s, 10))){
-					if(!checkStatus(s,new Purified(s,0))){
-						s.statuses.get(i).onStatusInflict(s,stat,bs);
+			
+			if(!stat.inflictText(s).equals("")){
+				bs.bp.bt.textList.add(stat.inflictText(s));
+			}
+			
+			//Activate all of the target's on-status effects.
+			int size = s.statuses.size();
+			for(int i=0; i<size; i++){
+				if(s.statuses.get(i)!=null){
+					if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(10))){
+						if(!checkStatus(s,new Purified(0))){
+							s.statuses.get(i).onStatusInflict(s,stat,bs);
+						}
 					}
 				}
 			}
-		}
+		}		
+		
 		int j;
 		boolean flag = true;
 		status temp;
@@ -80,7 +120,28 @@ public class StatusManager {
 		}
 	}
 	
+	//Removes a nonpermanent status.
 	public void removeStatus(Schmuck s, status stat){
+		for(int i=0; i<s.statuses.size(); i++){
+			if(s.statuses.get(i).getName()!=null){
+				if(s.statuses.get(i).getName().equals(stat.getName())){
+					if(s.statuses.get(i).perm){
+						bs.bp.bt.textList.add(stat.getName()+" could not be removed!");
+					}
+					else{
+						if(!s.statuses.get(i).cureText(s).equals("")){
+							bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+						}
+						s.statuses.remove(i);
+						i--;
+					}
+				}
+			}
+		}
+	}
+	
+	//Removes permanent stuff too
+	public void hardRemoveStatus(Schmuck s, status stat){
 		for(int i=0; i<s.statuses.size(); i++){
 			if(s.statuses.get(i).getName()!=null){
 				if(s.statuses.get(i).getName().equals(stat.getName())){
@@ -88,12 +149,10 @@ public class StatusManager {
 						bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
 					}
 					s.statuses.remove(i);
-//					bs.bs.targetUpdate();
-					i--;
+					i--;	
 				}
 			}
 		}
-		
 	}
 	
 	public Boolean checkStatus(Schmuck s, status stat){
@@ -121,49 +180,39 @@ public class StatusManager {
 	}
 	
 	public void endofRound(BattleState bs){
-		
+		for(Schmuck s : battlers){
+			s.endofRoundEffects(bs);
+		}
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
-					if(!checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(s, 10))){
-						if(checkStatus(s, new Purified(s,0))){
-							s.statuses.get(i).endofturnEffect(s, bs);
+					if(!checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(10))){
+						if(s.statuses.get(i).duration==0){
+							if(!s.statuses.get(i).cureText(s).equals("")){
+								bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+							}
+							hardRemoveStatus(s, s.statuses.get(i));
+							i--;
 						}
-						if(s.statuses.get(i).perm==false){
-							if(s.statuses.get(i).duration==0){
-								if(!s.statuses.get(i).cureText(s).equals("")){
-									bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
-								}
-								s.statuses.remove(i);
-								i--;
-							}
-							else{
-								s.statuses.get(i).duration--;
-							}
+						else if(s.statuses.get(i).decay){
+							s.statuses.get(i).duration--;
 						}
 					}
 				}
 			}
 		}
+		
 	}
 	
 	public void endofFite(){
 		for(Schmuck s : battlers){
-				for(int i=0; i<s.statuses.size(); i++){
-					if(s.statuses.get(i)!=null){	
-						if(!checkStatus(s, new incapacitate(s)) || !s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(s, 10))){
-							if(checkStatus(s, new Purified(s,0))){
-								s.statuses.get(i).endoffightEffect(s, bs);
-							}
-						}	
-					}
-				}
+			s.endofFightEffects(bs);
 		}
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){					
 					if(s.statuses.get(i).removedEnd){
-						s.statuses.remove(i);
+						hardRemoveStatus(s,s.statuses.get(i));
 						s.calcBuffs(bs);
 						i--;
 					}

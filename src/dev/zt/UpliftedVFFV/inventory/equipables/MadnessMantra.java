@@ -21,16 +21,14 @@ public class MadnessMantra extends Item{
 	public status[] enchantment = new status[1];
 	public MadnessMantra() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new MadnessMantraStatus(s.getItemDummy(),75);
+		enchantment[0] = new MadnessMantraStatus(75);
 		return enchantment;
 	}
 	
 	public boolean isLegendary(){
 		return true;
 	}
-	
 }

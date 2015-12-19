@@ -12,8 +12,10 @@ public class CrushingSlam extends Skills {
 	public static int cost = 8;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 6;	//Physical
+	public static int targetType = 0;	//Any Single Target
 	public CrushingSlam(int index) {
-		super(index,0,6, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	

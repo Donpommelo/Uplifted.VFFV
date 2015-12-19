@@ -8,21 +8,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class LimitedUse extends status{
 	
-	public int duration;
-	public Boolean perm = true;
-	public Boolean visible = false;
+	public static String name = "Move Limited";
+	public static Boolean perm = true;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = false;
 	public int usesLeft;
 	public Skills move;
-	public LimitedUse(int i,Skills m, int uses, Schmuck perp, int pr){
-		super(999,"MoveLimit",true, false, true, perp, pr);
+	public LimitedUse(Skills m, int uses, Schmuck perp, int pr){
+		super(1, name, perm, visible, removedEnd, decay, perp, pr);
 		this.move = m;
 		this.usesLeft = (int)(uses + perp.getChargeBonus());
 	}
-	
-	public LimitedUse(Schmuck perp, int pr){
-		super("Limited Use Move", false, true, perp, pr);
-	}
-	
+		
 	public void restrict(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals(move.getName())){
 			if(usesLeft>0){
@@ -33,5 +31,9 @@ public class LimitedUse extends status{
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s "+move.getName()+" has no more uses left!"),bs));				
 			}
 		}
+	}
+	
+	public int stackingEffect(){
+		return 2;
 	}
 }

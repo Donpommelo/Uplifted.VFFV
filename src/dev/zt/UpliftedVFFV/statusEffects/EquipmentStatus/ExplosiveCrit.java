@@ -5,13 +5,10 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class ExplosiveCrit extends status{
-	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+
 	public int damage;
-	public ExplosiveCrit(int damage,Schmuck perp, int pr){
-		super("Explosive Crits", false, false, perp, pr);
+	public ExplosiveCrit(int damage, int pr){
+		super("Explosive Crits", pr);
 		this.damage = damage;
 	}
 	

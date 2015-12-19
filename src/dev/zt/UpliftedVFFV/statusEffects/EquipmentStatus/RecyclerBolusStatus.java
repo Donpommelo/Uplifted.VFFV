@@ -6,11 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class RecyclerBolusStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;	
-	public RecyclerBolusStatus(Schmuck perp, int pr){
-		super("Recycler Bolus Effect", false, false, perp, pr);
+	public RecyclerBolusStatus(int pr){
+		super("Recycler Bolus Effect", pr);
 	}
 	
 	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

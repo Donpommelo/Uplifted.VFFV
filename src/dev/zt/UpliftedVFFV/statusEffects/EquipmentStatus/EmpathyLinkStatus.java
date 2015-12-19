@@ -6,15 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EmpathyLinkStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public EmpathyLinkStatus(int i, Schmuck perp, int pr){
-		super(i, "Empathy", false, false, true, perp, pr);
-	}
-	
-	public EmpathyLinkStatus(Schmuck perp, int pr){
-		super("Empathy", false, false, perp,pr);
+	public EmpathyLinkStatus(int pr){
+		super("Empathy", pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
@@ -26,13 +19,5 @@ public class EmpathyLinkStatus extends status{
 		for(Schmuck e : bs.bp.getSelectableAllies(s)){
 			e.hpChange(totalHp/bs.bp.getSelectableAllies(s).size()-e.getCurrentHp());
 		}
-	}
-	
-	public String inflictText(Schmuck s){
-		return s.getName()+" became Empathetic!";
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+" is not longer Empathetic.";
 	}
 }

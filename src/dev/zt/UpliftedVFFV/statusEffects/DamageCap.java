@@ -5,19 +5,21 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageCap extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Damage Capped";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public int statChanged;
 	public int capAmount;
 	public DamageCap(int i, int stat, int cap, Schmuck perp, int pr){
-		super(i, "Damage Cap", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.statChanged = stat;
 		this.capAmount = cap;
 	}
 	
-	public DamageCap(int stat, int cap, Schmuck perp, int pr){
-		super("Damage Cap", false, false, perp, pr);
+	public DamageCap(int stat, int cap, int pr){
+		super(name, pr);
 		this.statChanged = stat;
 	}
 	
@@ -63,6 +65,10 @@ public class DamageCap extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return "";//s.getName()+"'s elemental alignments went back to normal";
+		return "'s Damage Cap went away!";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

@@ -4,11 +4,13 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Invuln extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Invulnerable";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Invuln(int i, Schmuck perp, int pr){
-		super(i, "Invulnerable", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
 	public String inflictText(Schmuck s){

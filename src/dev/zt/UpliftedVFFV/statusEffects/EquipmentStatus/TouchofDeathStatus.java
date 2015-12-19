@@ -8,12 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class TouchofDeathStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public int cooldown;
-	public TouchofDeathStatus(Schmuck perp, int pr){
-		super("Killing Touch", false, false, perp, pr);
+	public TouchofDeathStatus(int pr){
+		super("Killing Touch", pr);
 	}
 	
 	public void onHit(Schmuck perp,Schmuck vic, BattleState bs){

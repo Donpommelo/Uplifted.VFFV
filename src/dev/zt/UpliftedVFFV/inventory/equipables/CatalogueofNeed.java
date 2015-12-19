@@ -21,11 +21,10 @@ public class CatalogueofNeed extends Item{
 	public status[] enchantment = new status[1];
 	public CatalogueofNeed() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CatoNeedStatus(s.getItemDummy(),100);
+		enchantment[0] = new CatoNeedStatus(100);
 		return enchantment;
 	}
 	

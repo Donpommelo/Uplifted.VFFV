@@ -5,17 +5,19 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Masochist extends status{
 	
-	public int duration;
 	public double percent;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Masochistic";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Masochist(int i, double percent, Schmuck perp, int pr){
-		super(i, "Masochist", false, false, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.percent = percent;
 	}
 	
-	public Masochist(double percent, Schmuck perp, int pr){
-		super("Masochist", false, false, perp, pr);
+	public Masochist(double percent, int pr){
+		super(name, pr);
 		this.percent = percent;
 	}
 	
@@ -33,5 +35,9 @@ public class Masochist extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+" is not longer masochistic.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

@@ -1,15 +1,16 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class incapacitate extends status{
 	
-	
-	public int stack;
-	public BattleState bs;
+	public static String name = "incapacitated";
+	public static Boolean perm = true;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = false;
 	public incapacitate(Schmuck perp){
-		super("incapacitated", true, false, perp,999);
+		super(1, name, perm, visible, removedEnd, decay, perp, 100);
 	}
 	
 	public String inflictText(Schmuck s){

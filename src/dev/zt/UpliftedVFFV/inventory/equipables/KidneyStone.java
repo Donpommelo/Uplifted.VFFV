@@ -23,15 +23,17 @@ public class KidneyStone extends Item{
 	public status[] enchantment = new status[3];
 	public KidneyStone() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new KidneyStoneStatus(s.getItemDummy(),5);
-		enchantment[1] = new AddStatBuff(0,(int)(18*(1+s.getEquipPow())), s.itemDummy,50);
-		enchantment[2] = new Regendegen(true, (int)(5*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] = new KidneyStoneStatus(5);
+		enchantment[1] = new AddStatBuff(0,(int)(18*(1+s.getEquipPow())), 50);
+		enchantment[2] = new Regendegen(true, (int)(5*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
-
+	
+	public boolean isLegendary(){
+		return true;
+	}
 	
 }

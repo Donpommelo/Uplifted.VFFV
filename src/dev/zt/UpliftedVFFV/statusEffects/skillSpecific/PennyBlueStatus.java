@@ -6,13 +6,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PennyBlueStatus extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-//	public BattleState bs;
+	public static String name = "Penny Blue";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public PennyBlueStatus(int i, Schmuck perp, int pr){
-		super(i, "Penny Blue", false, true, true, perp, pr);
-//		this.bs = bs;
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
@@ -31,5 +31,9 @@ public class PennyBlueStatus extends status{
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Blue energy wore off.";
+	}
+	
+	public int stackingEffect(){
+		return 3;
 	}
 }

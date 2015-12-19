@@ -8,15 +8,17 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DreamEaterStatus;
 
 public class Asleep extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Asleep";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Asleep(int i, Schmuck perp, int pr){
-		super(i, "Asleep", false, true, false, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Asleep(Schmuck perp, int pr){
-		super("Asleep", true, false, perp, pr);
+	public Asleep(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -24,8 +26,8 @@ public class Asleep extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(perp,0))){
-			bs.bp.stm.removeStatus(vic, new Asleep(vic,0));
+		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(0))){
+			bs.bp.stm.removeStatus(vic, new Asleep(0));
 			bs.bp.bt.textList.add(vic.getName()+" was startled awake!");
 		}
 		else{

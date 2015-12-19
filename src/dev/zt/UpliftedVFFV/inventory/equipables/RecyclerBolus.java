@@ -22,11 +22,10 @@ public class RecyclerBolus extends Item{
 	public status[] enchantment = new status[1];
 	public RecyclerBolus() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new RecyclerBolusStatus( s.itemDummy, 50);
+		enchantment[0] = new RecyclerBolusStatus(50);
 		return enchantment;
 	}
 	

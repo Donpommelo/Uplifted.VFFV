@@ -7,15 +7,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Frozen extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Frozen";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Frozen(int i, Schmuck perp, int pr){
-		super(i, "Frozen", false, true, false, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Frozen(Schmuck perp, int pr){
-		super("Frozen", true, false, perp, pr);
+	public Frozen(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
@@ -36,5 +38,9 @@ public class Frozen extends status{
 	
 	public Boolean isBad(){
 		return true;
+	}
+	
+	public int stackingEffect(){
+		return 1;
 	}
 }

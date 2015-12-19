@@ -16,7 +16,7 @@ public class Troop0Test extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		Schmuck tutorial = new RotThoughtTutorial(1+ML);
-		tutorial.statuses.add(new Tutorializing(tutorial,50));
+		tutorial.statuses.add(new Tutorializing(50));
 		troop.add(tutorial);
 		this.troop = troop;
 		return troop;

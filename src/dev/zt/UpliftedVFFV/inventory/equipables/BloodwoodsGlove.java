@@ -22,13 +22,12 @@ public class BloodwoodsGlove extends Item{
 	public status[] enchantment = new status[3];
 	public BloodwoodsGlove() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BloodwoodsGloveStatus(s.getItemDummy(),80);
-		enchantment[1] = new AddStatBuff(5,(int)(13*(1+s.getEquipPow())), s.itemDummy,25);
-		enchantment[2] = new AddStatBuff(6,(int)(13*(1+s.getEquipPow())), s.itemDummy,25);
+		enchantment[0] = new BloodwoodsGloveStatus(80);
+		enchantment[1] = new AddStatBuff(5,(int)(13*(1+s.getEquipPow())), 25);
+		enchantment[2] = new AddStatBuff(6,(int)(13*(1+s.getEquipPow())), 25);
 		return enchantment;
 	}
 

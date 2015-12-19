@@ -4,15 +4,17 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Unresistant extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Unresistant";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Unresistant(int i, Schmuck perp, int pr){
-		super(i, "Unresistant",  false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Unresistant(Schmuck perp, int pr){
-		super("Unresistant", true, true, perp, pr);
+	public Unresistant(int pr){
+		super(name, pr);
 	}
 	
 	public void statchanges(Schmuck s){

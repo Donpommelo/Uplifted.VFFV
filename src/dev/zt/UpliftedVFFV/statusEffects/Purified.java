@@ -1,19 +1,20 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Purified extends status{
 	
-	
-	public int stack;
-	public BattleState bs;
+	public static String name = "Purified";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;	
 	public Purified(int i, Schmuck perp, int pr){
-		super(i,"Purified", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Purified(Schmuck perp, int pr){
-		super("Purified", false, false, perp, pr);
+	public Purified(int pr){
+		super(name, pr);
 	}	
 		
 	public String inflictText(Schmuck s){

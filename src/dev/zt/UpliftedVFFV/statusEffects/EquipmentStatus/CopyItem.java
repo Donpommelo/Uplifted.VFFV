@@ -11,12 +11,9 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CopyItem extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
 	public ArrayList<status> copiedStatuses = new ArrayList<status>();
-	public CopyItem(Schmuck perp,int pr){
-		super("Imitation Item", false, false, perp, pr);
+	public CopyItem(int pr){
+		super("Imitation Item", pr);
 	}
 	
 		public void startoffightEffect(Schmuck s, BattleState bs){//

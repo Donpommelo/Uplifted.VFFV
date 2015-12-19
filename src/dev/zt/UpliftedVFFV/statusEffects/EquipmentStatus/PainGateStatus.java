@@ -6,12 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PainGateStatus extends status{
 	
-	public int duration;
-
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public PainGateStatus(Schmuck perp, int pr){
-		super("Damage Round", false, false, perp, pr);
+	public PainGateStatus(int pr){
+		super("Damage Round", pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

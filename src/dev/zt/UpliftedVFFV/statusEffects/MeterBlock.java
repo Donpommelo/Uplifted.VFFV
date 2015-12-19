@@ -4,11 +4,17 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class MeterBlock extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
+	public static String name = "Meter Blocked";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
 	public MeterBlock(int i, Schmuck perp, int pr){
-		super(i, "Meter Block", false, true, true, perp, pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	}
+	
+	public MeterBlock(int pr){
+		super(name, pr);
 	}
 	
 	public String inflictText(Schmuck s){

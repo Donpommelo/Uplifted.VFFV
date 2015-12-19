@@ -22,12 +22,11 @@ public class CursedCilice extends Item{
 	public status[] enchantment = new status[2];
 	public CursedCilice() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Masochist(.40*(1+s.getEquipPow()), s.itemDummy, 25);
-		enchantment[1] = new AddStatBuff(1,(int)(15*(1+s.getEquipPow())), s.itemDummy, 20);
+		enchantment[0] = new Masochist(.40*(1+s.getEquipPow()), 25);
+		enchantment[1] = new AddStatBuff(1,(int)(15*(1+s.getEquipPow())), 20);
 		return enchantment;
 	}
 }

@@ -27,9 +27,9 @@ public class CactusSuit extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DamageReflect(.3*(1+s.getEquipPow()), s.itemDummy, 75);
-		enchantment[1] = new AddStatBuff(0,(int)(15*(1+s.getEquipPow())), s.itemDummy, 20);
-		enchantment[2] = new ElemPointsBuff(2,5, s.itemDummy,65);
+		enchantment[0] = new DamageReflect(.25*(1+s.getEquipPow()), 75);
+		enchantment[1] = new AddStatBuff(0,(int)(15*(1+s.getEquipPow())), 20);
+		enchantment[2] = new ElemPointsBuff(2,(int)(5*(1+s.getEquipPow())),65);
 		return enchantment;
 	}
 }

@@ -25,7 +25,7 @@ public class EightBall extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemPointsBuff(5,(int)(10*(1+s.getEquipPow())), s.itemDummy, 50);
+		enchantment[0] = new ElemPointsBuff(5,(int)(10*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 

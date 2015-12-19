@@ -21,12 +21,15 @@ public class AbyssalInsignia extends Item{
 	public status[] enchantment = new status[1];
 	public AbyssalInsignia() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
-
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AbyssalInsigniaStatus(s.getItemDummy(),100);
+		enchantment[0] = new AbyssalInsigniaStatus(100);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 	
 }

@@ -25,8 +25,7 @@ public class TouchofDeath extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TouchofDeathStatus( s.itemDummy,0);
-
+		enchantment[0] = new TouchofDeathStatus(0);
 		return enchantment;
 	}
 	

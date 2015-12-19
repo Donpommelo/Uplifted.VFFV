@@ -7,15 +7,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Pursued extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Pursued";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public Pursued(int i, Schmuck perp, int pr){
-		super(i, "Pursued", false, true, false, perp,pr);
+		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public Pursued(Schmuck perp, int pr){
-		super("Pursued", true, false, perp, pr);
+	public Pursued(int pr){
+		super(name, pr);
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){

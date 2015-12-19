@@ -26,8 +26,12 @@ public class AtomicPunchThrusters extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ExplosiveCrit((int)(s.getBuffedPow()*(1+s.getEquipPow())),s.itemDummy, 75);
-		enchantment[1] = new BonusStatBuff(16,.15*(1+s.getEquipPow()),s.itemDummy,75);
+		enchantment[0] = new ExplosiveCrit((int)(s.getBuffedPow()*(1+s.getEquipPow())), 75);
+		enchantment[1] = new BonusStatBuff(16,.15*(1+s.getEquipPow()), 75);
 		return enchantment;
+	}
+	
+	public boolean isLegendary(){
+		return true;
 	}
 }
