@@ -15,9 +15,9 @@ public class PartyManager implements Serializable{
 	
 	public PartyManager(Game game){
 //		this.game=game;
-		Schmuck operator=new Operator();
+		Schmuck operator=new Operator(1);
 		party.add(operator);
-		Schmuck penpal=new PenPal();
+		Schmuck penpal=new PenPal(1);
 		party.add(penpal);
 //		Schmuck penpal1=new PenPal();
 //		party.add(penpal1);

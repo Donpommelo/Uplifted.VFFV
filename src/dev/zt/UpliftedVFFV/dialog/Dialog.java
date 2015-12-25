@@ -23,8 +23,8 @@ public class Dialog {
 	public int currentLine, lastIndex;
 	public static boolean scrolling;
 	
-	public Dialog(String name, BufferedImage img, int pos, String text){
-		this.speaker = img;
+	public Dialog(String name, String path, int pos, String text){
+		this.speaker = ImageLoader.loadImage(path);
 		this.position = pos;
 		this.text = text;
 		this.charIndex=0;

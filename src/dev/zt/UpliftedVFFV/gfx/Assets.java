@@ -31,19 +31,27 @@ public class Assets {
 	public static BufferedImage[] battleSprites;
 	public static BufferedImage[] skillIcons;
 	
-	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorCeiling, ElevatorDoorWall,ElevatorWall;
-	public static BufferedImage White, ActuallyWhite, Black, Void, BlackTile,CheckerTile,AquaTile,RedCarpet,WoodBoard,StoneFloor,BlueDiagonal,PelicanPlate,WhiteTile, GlassTile,BlueCarpet,CheckerCarpet, DiagCarpet,CircleCarpet,RowCarpet;
+	//Tilesets
+	
+	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorDoorWall,ElevatorWall;
+	public static BufferedImage White, ActuallyWhite, Black, Void,RedCarpet,WoodBoard, BlueCarpet, StoneFloor, AquaTile,WhiteTile
+	,RowCarpet,	WhiteCarpet;
+	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	
-	public static BufferedImage WritingDesk1, WritingDesk2, Bed1,Bed2,Tv,Calendar, Stairs, StairsDown;
+	public static BufferedImage WritingDesk1, Bed1,Tv, Trashcan, Calendar, WelcomeMat,Dresser, HatRack, Sign, StairsUp, StairsDown,
+		HorizRug, VertiRug;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, MoverSofa1,MoverSofa2,MoverGag, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
+	//New Stuff
 	
+	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls;
+		
 	
 	public static Dialog[] dialog;
 	
@@ -52,7 +60,6 @@ public class Assets {
 		//spritesheets loaded from files
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/WalkingSprites.png"));
 		SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorFloor.png"));
-		SpriteSheet walls = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorWalls.png"));
 		SpriteSheet prop=new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorProps.png"));
 		SpriteSheet arrowup = new SpriteSheet(ImageLoader.loadImage("/ui/Arrow.png"));
 		SpriteSheet arrowdown = new SpriteSheet(ImageLoader.loadImage("/ui/ArrowDown.png"));
@@ -60,7 +67,15 @@ public class Assets {
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
+		SpriteSheet FurnitureBackroom2 = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
+		
+		//Newer Spritesheets
+		SpriteSheet TilesetBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorsAndBackroom.png"));
+		SpriteSheet TilesetBackroomWalls = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorsAndBackroomWalls.png"));
+		SpriteSheet ThirdFloorTiles = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloor.png"));
+		SpriteSheet ThirdFloorWalls = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorWalls.png"));
+
 		
 		//Load system resources, reused resources and stuff.
 		//Character walking Sprites.
@@ -158,44 +173,52 @@ public class Assets {
 		Smudge2 = prop.crop(9*width, 0 , width, height);
 		
 		//Tile textures
-		White = floor.crop(0, 0, width, height);
-		ActuallyWhite = FurnitureBackroom.crop(480, 0, width, height);
-		Black = floor.crop(2*width, 0, width, height);
-		Void = floor.crop(2*width, 0, width, height);
-		BlackTile = floor.crop(4*width, 0, 2*width, 3*height);
-		CheckerTile = floor.crop(6*width, 0, 2*width, 3*height);
-		AquaTile = floor.crop(8*width, 0, 2*width, 3*height);
-		RedCarpet = floor.crop(10*width, 0, 2*width, 3*height);
-		WoodBoard = floor.crop(12*width, 0, 2*width, 3*height);
-		StoneFloor = floor.crop(14*width, 0, 2*width, 3*height);
-		BlueDiagonal = floor.crop(0, 3*height, 2*width, 3*height);
-		PelicanPlate = floor.crop(2*width, 3*height, 2*width, 3*height);
-		WhiteTile = floor.crop(4*width, 3*height, 2*width, 3*height);
-		GlassTile = floor.crop(6*width, 3*height, 2*width, 3*height);
-		BlueCarpet = floor.crop(8*width, 3*height, 2*width, 3*height);
-		CheckerCarpet = floor.crop(10*width, 3*height, 2*width, 3*height);
-		DiagCarpet = floor.crop(12*width, 3*height, 2*width, 3*height);
-		CircleCarpet = floor.crop(14*width, 3*height, 2*width, 3*height);
-		RowCarpet = floor.crop(0, 6*height, 2*width, 3*height);
+		White = floor.crop(0, 0, 2*width, 3*height);
+		ActuallyWhite = FurnitureBackroom.crop(160, 0, 2*width, 3*height);
+		Black = floor.crop(2*width, 0, 2*width, 3*height);
+		Void = floor.crop(2*width, 0, 2*width, 3*height);
 		
-		Wall1 = walls.crop(4*width, 2*height, 2*width, 3*height);
-		Wall2 = walls.crop(6*width, 2*height, 2*width, 3*height);
 		
-		Ceiling1 = walls.crop(4*width, 0, 2*width, 3*height);
-		Ceiling2 = walls.crop(6*width, 0, 2*width, 3*height);
-		ElevatorCeiling = walls.crop(8*width, 0, 2*width, 3*height);
-		ElevatorDoorWall = walls.crop(8*width, 2*width, 2*width, 3*height);
-		ElevatorWall = walls.crop(10*width, 2*height, 2*width, 3*height);
+		//New Tilesets
 		
-		WritingDesk1 = FurnitureBackroom.crop(0,0,64,32);
-		Bed1 = FurnitureBackroom.crop(64,0,32,64);
+		WoodBoard = TilesetBackroom.crop(0, 0, 2*width, 3*height);
+		WhiteTile = TilesetBackroom.crop(2*width, 0, 2*width, 3*height);
+		RedCarpet = TilesetBackroom.crop(4*width, 0, 2*width, 3*height);
+		BlueCarpet = TilesetBackroom.crop(6*width, 0, 2*width, 3*height);
+		AquaTile = TilesetBackroom.crop(8*width, 0, 2*width, 3*height);
+		StoneFloor = TilesetBackroom.crop(6*width, 3*height, 2*width, 3*height);
+
+		RowCarpet = ThirdFloorTiles.crop(0, 0, 2*width, 3*height);
+		WhiteCarpet = ThirdFloorTiles.crop(2*width, 0, 2*width, 3*height);
+		
+		Ceiling1 = TilesetBackroomWalls.crop(0, 0, 2*width, 3*height);
+		Wall1 = TilesetBackroomWalls.crop(0, 3*height, 2*width, 2*height);
+		Ceiling2 = TilesetBackroomWalls.crop(2*width, 0, 2*width, 3*height);
+		Wall2 = TilesetBackroomWalls.crop(2*width, 3*height, 2*width, 2*height);
+		ElevatorCeiling = TilesetBackroomWalls.crop(4*width, 0, 2*width, 3*height);
+		ElevatorWalls = TilesetBackroomWalls.crop(4*width, 3*height, 2*width, 2*height);
+		
+		OfficeCeiling = ThirdFloorWalls.crop(0, 0, 2*width, 3*height);
+		OfficeWalls = ThirdFloorWalls.crop(0, 3*height, 2*width, 2*height);
+		
+		//Furniture
+		
+		WritingDesk1 = FurnitureBackroom2.crop(0,0,2*width,2*height);
+		Bed1 = FurnitureBackroom2.crop(2*width,0,width,3*height);
+		Calendar = FurnitureBackroom2.crop(4*width,0,width,height);
+		Trashcan = FurnitureBackroom2.crop(3*width,0,width,height);
+		WelcomeMat = FurnitureBackroom2.crop(7*width,0,2*width,height);
+		Dresser = FurnitureBackroom2.crop(9*width,0,width,3*height);
+		HatRack = FurnitureBackroom2.crop(10*width,0,width,3*height);
+		Sign =  FurnitureBackroom2.crop(11*width,0,width,height);
+		HorizRug = FurnitureBackroom2.crop(5*width,0,2*width,height);
+		VertiRug = FurnitureBackroom2.crop(12*width,0,width,2*height);
+		
 		Tv = FurnitureBackroom.crop(96,0,32,64);
-		Calendar = FurnitureBackroom.crop(128,0,32,32);
-		Stairs = FurnitureBackroom.crop(0,288,32,32);
+		StairsUp = FurnitureBackroom.crop(0,288,32,32);
 		StairsDown = FurnitureBackroom.crop(32,288,32,32);
 		
 		WorkDesk1 = Furniture3rdFloor.crop(0, 0, width*2, height);
-//		WorkDesk2 = Furniture3rdFloor.crop(32, 0, width, height);
 		FilingCabinet = Furniture3rdFloor.crop(64, 0, width, height);
 		Sofa1 = Furniture3rdFloor.crop(96, 0, width*2, height);
 		Sofa2 = Furniture3rdFloor.crop(288, 0, width, height*2); 
@@ -206,7 +229,7 @@ public class Assets {
 		VendingMachine = Furniture3rdFloor.crop(256, 0, width, height*2);
 		MoverSofa1 = Furniture3rdFloor.crop(288, 0, width, height);
 		MoverSofa2 = Furniture3rdFloor.crop(288, 32, width, height);
-		MoverGag = walls.crop(5*width, 2*height, width, 3*height);
+		MoverGag = TilesetBackroomWalls.crop(0, 2*height, width, 3*height);
 		
 		Table0 = Furniture3rdFloor.crop(10*width, 0, width, height);
 		Table1 = Furniture3rdFloor.crop(11*width, 0, width, height);
@@ -237,7 +260,7 @@ public class Assets {
 		String[] tokens = file.split("\\r?\\n");
 		dialog=new Dialog[Utils.parseInt(tokens[0])];
 		for(int i = 0;i<Utils.parseInt(tokens[0]);i++){
-			dialog[i]=new Dialog((tokens[4*i+1]),ImageLoader.loadImage("/CharacterBusts/"+tokens[4*i+2]),Utils.parseInt(tokens[4*i+3]),tokens[4*i+4]);
+			dialog[i]=new Dialog((tokens[4*i+1]),"/CharacterBusts/"+tokens[4*i+2],Utils.parseInt(tokens[4*i+3]),tokens[4*i+4]);
 		}
 	}
 

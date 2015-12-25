@@ -116,6 +116,21 @@ public class BonusStatBuffMult extends status{
 		case 27:
 			stat = "Level Requirement Modification";
 			break;
+		case 28:
+			stat = "Critical Resistance";
+			break;
+		case 29:
+			stat = "Regeneration Bonus";
+			break;
+		case 30:
+			stat = "Charge Bonus";
+			break;
+		case 31:
+			stat = "Cooldown Bonus";
+			break;
+		case 32:
+			stat = "Crit Avoidance";
+			break;
 		}
 		if(statIncrement>1){
 			plusminus = "raised";

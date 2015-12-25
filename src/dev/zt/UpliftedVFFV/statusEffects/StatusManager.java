@@ -48,6 +48,9 @@ public class StatusManager {
 		else{
 			switch(stat.stackingEffect()){
 			
+			case 0:
+				s.statuses.add(stat);
+				break;
 			//Case 1: Old stat's duration is increased
 			case 1:
 				if(checkStatus(s,stat)){

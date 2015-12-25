@@ -23,7 +23,7 @@ public class Query extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Query!");
 		bs.bp.stm.addStatus(vic, new Queried(perp, 50));
 		bs.bp.bt.textList.add("A(n) "+ vic.getName()+". "+ vic.getCurrentHp()+"/"+vic.getMaxHp()+" Hp");
-		bs.bp.bt.textList.add(vic.getBio());
+		bs.bp.bt.textList.add(vic.getBioShort());
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

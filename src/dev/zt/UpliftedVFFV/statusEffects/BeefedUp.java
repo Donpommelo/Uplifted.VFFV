@@ -23,10 +23,10 @@ public class BeefedUp extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" looks beefed up.";
+		return s.getName()+" looks beefed up!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" no longer looks notably beefy.";
+		return s.getName()+" no longer looks notably beefy!";
 	}
 }

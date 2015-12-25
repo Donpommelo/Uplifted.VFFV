@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
+import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -18,6 +19,7 @@ public class NotificationState extends State{
 	private AudioManager audio;
 	private BufferedImage window;
 	private int width, height;
+	private int EventId;
 	
 	public NotificationState(Game game, StateManager sm, String message, int eventID){
 		super(game, sm);
@@ -26,6 +28,7 @@ public class NotificationState extends State{
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		width = game.getGraphics().getFontMetrics().stringWidth(message) + 32;
 		height = 80;
+		EventId = eventID;
 	}
 
 	@Override
@@ -34,6 +37,12 @@ public class NotificationState extends State{
 			if(game.getKeyManager().space){
 				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 				StateManager.getStates().pop();
+				
+				if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
+					Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
+					Event.events[this.EventId].run();
+				}
+				
 			}
 		}
 	}

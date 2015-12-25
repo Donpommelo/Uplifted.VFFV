@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DayattheFair extends Skills {
 
 	public static String name = "Day at the Fair";
-	public static String descr = "User summons a chaotic parade\nthat disturbs the fight and\nends the round.";
+	public static String descr = "User summons a raucous parade\nthat disturbs the fight and\nends the round.";
 	public static String descrShort = "Damages and ends round\nprematurely.";
 	public static int cost = 21;
 	public static int baseAcc = 100; public static int baseCrit = 0;

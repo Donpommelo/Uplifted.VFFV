@@ -15,8 +15,6 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
-import dev.zt.UpliftedVFFV.world.WorldManager;
-
 
 //player is the controlled character that walks around in the overworld. 
 //ignore entities and creatures for now.
@@ -60,7 +58,7 @@ public class Player extends Creature implements Serializable{
 			//if the player isn't on top of an event, the player checks for input and runs move()
 			getInput();	
 			int [] tent = {(int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)};
-			if(!WorldManager.getWorld().getTile(tent[0],tent[1]).isSolid() && !EventManager.getEvent(tent[0],tent[1]).isSolid(runlast)){
+			if(!gamestate.getWorld().getTile(tent[0],tent[1]).isSolid() && !EventManager.getEvent(tent[0],tent[1]).isSolid(runlast)){
 				this.move();
 			}
 			else{
@@ -87,14 +85,14 @@ public class Player extends Creature implements Serializable{
 			e.printStackTrace();
 		}
 		int troop=0;
-		Set<Integer> temp= WorldManager.getWorld().getEnemies().keySet();
-		Integer[] troops= temp.toArray(new Integer[WorldManager.getWorld().enemynum]);	
+		Set<Integer> temp= gamestate.getWorld().getEnemies().keySet();
+		Integer[] troops= temp.toArray(new Integer[gamestate.getWorld().enemynum]);	
 		// Compute the total weight of all items together
 		double totalWeight = 0.0d;
 		for (int t : troops)
 		{
 			if(Troop.troops[t]!=null){
-				totalWeight += WorldManager.getWorld().getEnemies().get(t);
+				totalWeight += gamestate.getWorld().getEnemies().get(t);
 		    }
 		}
 		// Now choose a random item
@@ -102,8 +100,7 @@ public class Player extends Creature implements Serializable{
 		double random = Math.random() * totalWeight;
 		for (int i = 0; i < troops.length; ++i)
 		{
-//		    System.out.print(random+" ");
-			random -= WorldManager.getWorld().getEnemies().get(troops[i]);
+			random -= gamestate.getWorld().getEnemies().get(troops[i]);
 		    if (random <= 0.0d)
 		    {
 		        randomIndex = i;
@@ -148,7 +145,7 @@ public class Player extends Creature implements Serializable{
 				encounter();
 			}
 			else{
-				if(enemyChance<(double)(WorldManager.getWorld().enemyrate)){
+				if(enemyChance<(double)(gamestate.getWorld().enemyrate)){
 					enemyChance++;
 				}
 			}
@@ -166,20 +163,20 @@ public class Player extends Creature implements Serializable{
 		}
 		else if(runleft==true){
 			xMove = -speed;
-			if(WorldManager.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == 1){
+			if(gamestate.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == 1){
 				yMove = speed;
 			}
-			if(WorldManager.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == -1){
+			if(gamestate.getWorld().getTile((int)((playerx+31/2-17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == -1){
 				yMove = -speed;
 			}
 			step++;
 		}
 		else if(runright==true){
 			xMove = speed;
-			if(WorldManager.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == 1){
+			if(gamestate.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2-17)/32)).isDiagMove() == 1){
 				yMove = -speed;
 			}
-			if(WorldManager.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == -1){
+			if(gamestate.getWorld().getTile((int)((playerx+31/2+17)/32),(int)((playery+31/2+17)/32)).isDiagMove() == -1){
 				yMove = speed;
 			}
 			step++;

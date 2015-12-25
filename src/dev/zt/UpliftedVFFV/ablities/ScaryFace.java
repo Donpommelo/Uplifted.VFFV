@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Intimidated;
 public class ScaryFace extends Skills {
 
 	public static String name = "Scary Face";
-	public static String descr = "User flashes an intimidating face.";
+	public static String descr = "User flashes an intimidating face,\n making them likely to flinch.";
 	public static String descrShort = "Intimidates target.";
 	public static int cost = 7;
 	public static int baseAcc = 100; public static int baseCrit = 0;
@@ -26,7 +26,7 @@ public class ScaryFace extends Skills {
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Initmidate!");
+		bs.bp.bt.textList.add(perp.getName()+" used Scary Face");
 		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), 40));	
 	}

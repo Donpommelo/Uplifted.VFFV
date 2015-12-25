@@ -20,6 +20,10 @@ public class DecorManager {
 		this.game = g;
 	}
 	
+	public void setWorld(String path){
+		loadDecor(path);
+	}
+	
 	public void tick(){
 		
 	}

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.world.World;
+import dev.zt.UpliftedVFFV.world.WorldManager;
 
 //This manages Decorations. Decorations are cosmetic things that can be drawn anywhere and cannot be interacted with.
 //Unlike events and tiles, the locations of Decorations are specified by the pixel for more precision.
@@ -14,7 +14,7 @@ import dev.zt.UpliftedVFFV.world.World;
 
 public class Decor {
 	int id;
-	static World world;
+	static WorldManager world;
 	protected static Game game;
 	protected static GameState gamestate;
 	protected BufferedImage tex;
@@ -39,6 +39,13 @@ public class Decor {
 	public static Decor table7 = new DecorTable7(16);
 	public static Decor table8 = new DecorTable8(17);
 	public static Decor table9 = new DecorTable9(18);
+	public static Decor trashcan = new DecorTrashCan(19);
+	public static Decor horizrug = new DecorHorizRug(20);
+	public static Decor welcomemat = new DecorWelcomeMat(21);
+	public static Decor dresser = new DecorDresser(22);
+	public static Decor hatrack = new DecorHatRack(23);
+	public static Decor sign = new DecorSign(24);
+	public static Decor vertirug = new DecorVertiRug(25);
 
 
 

@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 public class ChaosConjure extends Skills {
 
 	public static String name = "Chaos Conjure";
-	public static String descr = "User summons a storm damaging and\n scrambling and damaging foes\nLimit : One use per fight.";
+	public static String descr = "User summons a chaotic storm\n scrambling and damaging foes\nLimit : Three uses per fight.";
 	public static String descrShort = "Damages all foes and\nScrambles order\n1 use per fight.";
 	public static int cost = 5;
 	public static int baseAcc = 100; public static int baseCrit = 0;
@@ -25,7 +25,7 @@ public class ChaosConjure extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Chaos Conjure!");
 		bs.bp.bt.textList.add("All battlers were discombobulated!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,2, perp, 50));
 			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 				bs.bp.em.hpChange(-15, perp, s,6);
 			}

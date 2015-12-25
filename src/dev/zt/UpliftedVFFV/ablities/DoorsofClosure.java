@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -20,7 +21,7 @@ public class DoorsofClosure extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2]*2)/(s.buffedStats[3]*5), perp, s,6);
+			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s,6);
 		}
 	}
 	
@@ -28,8 +29,13 @@ public class DoorsofClosure extends Skills {
 		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
 		bs.bp.bt.textList.add("A Critical blow!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*5)*(1.5+perp.getCritMulti()-s.getCritRes())), perp, s,6);
+			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*2)*(1.5+perp.getCritMulti()-s.getCritRes())), perp, s,6);
 		}		
+	}
+	
+	public void TOQChange(Action a, BattleState bs){
+		bs.bp.TurnOrderQueue.remove(a);
+		bs.bp.TurnOrderQueue.add(a);
 	}
 		
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){

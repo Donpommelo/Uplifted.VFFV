@@ -21,33 +21,29 @@ public class Schmuck implements Serializable{
 	
 	private static final long serialVersionUID = -7556561902401868149L;
 	
-//	public int startHp=0,startBp=0,startPow=0, startDef=0, startSpd=0, startSkl=0, startLuk=0, startInt=0;
 	public int[] startStats;
-//	public static double hpGrowth=0, bpGrowth=0, powGrowth=0, defGrowth=0, spdGrowth=0, sklGrowth=0, intGrowth=0, lukGrowth=0;
 	public double[] statGrowths;
-//	public int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
 	public int[] baseStats = {0,0,0,0,0,0,0,0};
 	public int[] buffedStats = {0,0,0,0,0,0,0,0};
 	public int[] tempStats = {10,10};
 	
-	
-	//public int bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
+	//Bonus stats:
+	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
 	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus!
-	//cooldownBonus!
+	//cooldownBonus, critAvoid
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-	
-//	public double RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
 	public int[] elemPoints;
 	public int[] buffedElemPoints = {0,0,0,0,0,0};
 	
-	public int Lvl,exp,expCurrent;
+	public int Lvl;
+	public int exp = 0;
 	
 	public int expDrop;
 	public int scrDrop;
-	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
+	public TreeMap<Item, Double> itemdrops;// = new TreeMap<>();
 	
 	public boolean targetable;
 	public boolean visible = true;
@@ -60,78 +56,51 @@ public class Schmuck implements Serializable{
 	public int menuSprite;
 	
 	public ArrayList<Skills> skills;
-	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
+	public TreeMap<Integer, Skills> levelSkills;// = new TreeMap<>();
 	public ArrayList<status> statuses;
 	
 	public Item[] items = {null,null,null,null,null};
-	public int itemSlots;
+	public int itemSlots = 4;
 	public Schmuck itemDummy;	
 	public String name,plural,pronoun;
-	public String bio;
-	
-	public Schmuck(String name, String plural, String pronoun,int lvl, int spriteIndex, int[] start, double[] growths,
-			int[] elem, int exp, int script){	
-		this.battleSprite = spriteIndex;
-		//Character does not have a menu sprite. Use a default one.
-		this.menuSprite = 0;
-		this.name=name;
-		this.plural = plural;
-		this.pronoun = pronoun;
-		this.skills = new ArrayList<Skills>();
-		this.statuses = new ArrayList<status>();
-		this.Lvl=lvl;
-		this.startStats=start;
-		this.statGrowths=growths;
-//		this.buffedStats=start;
-		this.elemPoints = elem;
-		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-		this.itemSlots = 4;
-		this.itemDummy = new Schmuck();
-		this.expDrop = exp;
-		this.scrDrop = script;
-	}
-	
-	public Schmuck(String name, String plural, String pronoun,int lvl, int spriteIndex, int[] start, double[] growths,
-			int[] elem, int exp, int script, ArrayList<status> statuses){	
-		this.battleSprite = spriteIndex;
-		//Character does not have a menu sprite. Use a default one.
-		this.menuSprite = 0;
-		this.name=name;
-		this.plural = plural;
-		this.pronoun = pronoun;
-		this.skills = new ArrayList<Skills>();
-		this.statuses = statuses;
-		this.Lvl=lvl;
-		this.startStats=start;
-		this.statGrowths=growths;
-//		this.buffedStats=start;
-		this.elemPoints = elem;
-		this.exp=0;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-		this.itemSlots = 4;
-		this.itemDummy = new Schmuck();
-		this.expDrop = exp;
-		this.scrDrop = script;
-	}
-	
-	public Schmuck(String name,String plural, String pronoun,int lvl, int spriteIndex, int mspriteIndex, int[] start, double[] growths,int[] elem){	
+	public String bioS,bioL;
+
+	public Schmuck(String name,String plural, String pronoun,int lvl, int spriteIndex, int mspriteIndex, int[] start,
+			double[] growths,int[] elem, int exp, int script, Skills[] skills, int[] lvlReqs,Item[] items, 
+			double[]dropRates, status[] intrinsics, String bioS, String bioL){	
 		this.battleSprite = spriteIndex;
 		this.menuSprite = mspriteIndex;
 		this.name=name;
 		this.plural = plural;
 		this.pronoun = pronoun;
 		this.skills = new ArrayList<Skills>();
-		this.statuses = new ArrayList<status>();
-		this.Lvl=lvl;
+		this.Lvl = lvl;
 		this.startStats=start;
 		this.statGrowths=growths;
-//		this.buffedStats=start;
-		this.exp=0;
 		this.elemPoints = elem;
-		this.bonusStats = new double[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-		this.itemSlots = 4;
+		this.expDrop = exp;
+		this.scrDrop = script;
 		this.itemDummy = new Schmuck();
+		this.bioS = bioS;
+		this.bioL = bioL;
+		this.levelSkills = new TreeMap<>();
+		for(int i = 0; i<skills.length;i++){
+			this.levelSkills.put(lvlReqs[i], skills[i]);
+		}
+		for(int i = 0; i<skills.length;i++){
+			if(lvlReqs[i] <= lvl){
+				learnSkill(skills[i]);
+			}
+		}
+		this.itemdrops = new TreeMap<>();
+		for(int i = 0; i<items.length;i++){
+			this.itemdrops.put(items[i], dropRates[i]);
+		}
+		this.statuses = new ArrayList<status>();
+		for(status intr : intrinsics){
+			statuses.add(intr);
+		}
+		calcStats(lvl);
 	}
 	
 	public Schmuck(){
@@ -928,6 +897,8 @@ public class Schmuck implements Serializable{
 				return "its";
 			case 2:
 				return "their";
+			case 3:
+				return "it";
 			}
 			break;
 		case "he":
@@ -938,6 +909,8 @@ public class Schmuck implements Serializable{
 				return "his";
 			case 2:
 				return "their";
+			case 3:
+				return "him";
 			}
 			break;
 		case "she":
@@ -948,6 +921,8 @@ public class Schmuck implements Serializable{
 				return "her";
 			case 2:
 				return "their";
+			case 3:
+				return "her";
 			}
 			break;
 		}
@@ -955,10 +930,14 @@ public class Schmuck implements Serializable{
 		
 	}
 	
-	public String getBio() {
-		return bio;
+	public String getBioShort() {
+		return bioS;
 	}
 
+	public String getBioLong() {
+		return bioL;
+	}
+	
 	public BufferedImage getBattleSprite() {
 		if(Assets.battleSprites != null && battleSprite < Assets.battleSprites.length && Assets.battleSprites[battleSprite] != null){
 			return Assets.battleSprites[battleSprite];
@@ -1245,6 +1224,14 @@ public class Schmuck implements Serializable{
 	
 	public void setCooldownBonus(double bonus){
 		bonusStats[31] = bonus;
+	}
+	
+	public double getCritAvoid(){
+		return bonusStats[32];
+	}
+	
+	public void setCritAvoid(double bonus){
+		bonusStats[32] = bonus;
 	}
 	
 	public int getRedPoints(){

@@ -12,7 +12,6 @@ import dev.zt.UpliftedVFFV.gfx.GameCamera;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.states.TitleState;
-import dev.zt.UpliftedVFFV.world.WorldManager;
 
 public class Game implements Runnable, Serializable{
 	
@@ -36,7 +35,6 @@ public class Game implements Runnable, Serializable{
 	
 	//Input
 	private KeyManager keyManager;
-	private WorldManager worldmanager;
 	
 	private GameCamera gameCamera;
 	
@@ -64,7 +62,6 @@ public class Game implements Runnable, Serializable{
 		statemanager=new StateManager(this);							//creates statemanager. This manages the states of the game
 		StateManager.getStates().push(new TitleState(this,statemanager));	//upon initializing, the first state should be the TitleState 
 		
-		worldmanager=new WorldManager(this);					//creates a worldmanager. This manages the world.
 	//	statemanager.init();
 		
 	}
@@ -205,10 +202,6 @@ public class Game implements Runnable, Serializable{
 	
 	public StateManager getStatemanager() {
 		return statemanager;
-	}
-
-	public WorldManager getWorldManager(){
-		return worldmanager;
 	}
 		
 	public AudioManager getAudiomanager() {

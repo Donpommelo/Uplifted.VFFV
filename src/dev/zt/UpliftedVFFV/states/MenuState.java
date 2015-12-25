@@ -768,7 +768,7 @@ public class MenuState extends State {
 						g.drawString("Bio", 302, 232);
 						
 						//Draw info box.
-						Utils.drawDialogueBox(g, window2, tempSchmuck.getBio(), 18, Color.black, 140, 240, 480, 150, 16, characterChosen);
+						Utils.drawDialogueBox(g, window2, tempSchmuck.getBioShort(), 18, Color.black, 140, 240, 480, 150, 16, characterChosen);
 					}
 					
 					//Draw Alignment bars.

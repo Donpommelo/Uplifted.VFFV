@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.party.troops;
 import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.enemy.RotThoughtTutorial;
-import dev.zt.UpliftedVFFV.statusEffects.Tutorializing;
 
 public class Troop0Test extends Troop{
 
@@ -16,7 +15,6 @@ public class Troop0Test extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		Schmuck tutorial = new RotThoughtTutorial(1+ML);
-		tutorial.statuses.add(new Tutorializing(50));
 		troop.add(tutorial);
 		this.troop = troop;
 		return troop;

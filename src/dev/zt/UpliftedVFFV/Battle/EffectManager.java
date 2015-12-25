@@ -223,7 +223,7 @@ public class EffectManager {
 	
 	//returns true or false if a given ability crits or not.
 	public Boolean getCrit(Schmuck perp, Schmuck vic, Skills s){
-		double crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() + s.getBaseCrit()/100;
+		double crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() - vic.getCritAvoid() + s.getBaseCrit()/100;
 		if(Math.random() <= crit){
 			return true;
 		}

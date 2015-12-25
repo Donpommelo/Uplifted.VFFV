@@ -1,7 +1,5 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
-
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
@@ -9,6 +7,7 @@ import dev.zt.UpliftedVFFV.ablities.LifeDrain;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.ablities.Swarm;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.consummables.MidgeBlood;
 import dev.zt.UpliftedVFFV.inventory.equipables.MidgeProboscis;
@@ -20,34 +19,41 @@ public class Midge extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {12,22,8,6,22,11,13,4};
-	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
-	public final static double[] statGrowths = {1 , .7 , 1.7 , .6 , 3.1 , 1.4 , 1 , .9};
+	public final static int startHp=12,startBp=22,startPow=8, startDef=6, startSpd=22, startSkl=11, startLuk=13, startInt=4;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.7, defGrowth=.6, spdGrowth=3.1, sklGrowth=1.4, intGrowth=1, lukGrowth=.9;
+	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=2;
 	public final static int scrDrop=1;
+	
+	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 20, basePurple = 10, baseVoid = 0;
+	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
+	
 	public TreeMap<Item, Double> itemdrops = new TreeMap<>();
-	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static int[] elemRes = {10,10,10,10,10,0};
-	public static int[] baseStats=startStats;
-	public static int[] buffedStats=baseStats;
-	public static int[] tempStats={startStats[0],startStats[1]};
-	public ArrayList<Skills> skills;
-	public ArrayList<status> statuses;
+
 	public static String name = "Midge";
 	public static String plural = "Midges";
 	public static String pronoun = "it";
-	public Midge(int lvl) {
-//		super("Jorge",100,50, 12, 20, 17, 8, 10, 5,ImageLoader.loadImage("/CharacterBusts/3rdSouthOffices-5.png"));
-		super(name, plural, pronoun, lvl, 2, startStats, statGrowths, elemRes, expDrop, scrDrop);
-		calcStats(lvl);
-		this.bio = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";
+	
+	public static int sprite = 2;
+	public static int menusprite = 0;
+	
+	public static Skills[] levelSkills = {new LifeDrain(0), new Swarm(0)};
+	public static int[] levelReqs = {0,0};
+	
+	public final static Item[] itemDrops = {new MidgeBlood(), new MidgeProboscis()};
+	public final static double[] dropRates = {.3, .1};
+	public final static status[] intrinsicStatuses = {};
+	
+	public final static String bioShort = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";
+	public final static String bioLong = "";
+	
+	public Midge(int level) {
+		super(name, plural, pronoun, level, sprite, menusprite, startStats, statGrowths,baseElem, expDrop, scrDrop, levelSkills,
+				levelReqs,itemDrops, dropRates, intrinsicStatuses, bioShort, bioLong);
 		itemdrops.put(new MidgeBlood(), .3);
 		itemdrops.put(new MidgeProboscis(), .1);
 	}
-	
-	
 	
 	public Action getAction(BattleState bs){
 		int random = (int)(Math.random()*2);
@@ -67,13 +73,4 @@ public class Midge extends Schmuck{
 		}	
 		return act;
 	}
-
-	public TreeMap<Item, Double> getItemdrops() {
-		return itemdrops;
-	}
-
-	public void setItemdrops(TreeMap<Item, Double> itemdrops) {
-		this.itemdrops = itemdrops;
-	}
-	
 }

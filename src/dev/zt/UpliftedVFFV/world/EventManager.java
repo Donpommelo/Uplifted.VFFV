@@ -20,6 +20,10 @@ public class EventManager {
 		this.game=game;
 		loadEvent(path);
 	}
+	
+	public void setWorld(String path){
+		loadEvent(path);
+	}
 
 	public void tick(){
 		for(int y = 0;y<height;y++){

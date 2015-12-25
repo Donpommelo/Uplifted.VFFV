@@ -13,7 +13,6 @@ import dev.zt.UpliftedVFFV.party.PartyManager;
 import dev.zt.UpliftedVFFV.quest.SwitchManager;
 import dev.zt.UpliftedVFFV.quest.VariableManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
-import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
 
 //the most important state of the game. This is active whenever walking around and exploring the main game.
@@ -25,9 +24,8 @@ public class GameState extends State {
 	private static final long serialVersionUID = 8L;
 	
 	public Player player;
-	private static World world;
+	private static WorldManager worldmanager;
 	StateManager statemanager;
-	WorldManager worldmanager;
 	static DecorManager decormanager;
 	static EventManager eventmanager;
 	public PartyManager partymanager;
@@ -35,10 +33,10 @@ public class GameState extends State {
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
 	public VariableManager variablemanager;
+	Event ugh;
 	
 //	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
-	Event ugh;
 	
 	//Upon creation, the gamestate will load the starting World and events. Other worlds are loaded through events and such
 	//This can be temporarily changed for the purpose of testing
@@ -51,23 +49,23 @@ public class GameState extends State {
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
-//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt";
-		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt";
+//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 		
-		world = new World(game, StartingFloor,"Home Sweet Home");		
+		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
 		eventmanager = new EventManager(game,StartingFloor);
 		decormanager = new DecorManager(game, StartingFloor);
 
-		player = new Player(game, 32*world.getSpawnX(), 32*world.getSpawnY(), this);										//creates player
+		player = new Player(game, 32*worldmanager.getSpawnX(), 32*worldmanager.getSpawnY(), this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
 	}
 
-	public static World getWorld() {
-		return world;
+	public WorldManager getWorld() {
+		return worldmanager;
 	}
 
-	public static void setWorld(World w) {
-		world = w;
+	public static void setWorld(WorldManager w) {
+		worldmanager = w;
 	}
 	
 	public static EventManager getEventmanager() {
@@ -98,10 +96,6 @@ public class GameState extends State {
 		return statemanager;
 	}
 	
-	public WorldManager getWorldManager(){
-		return worldmanager;
-	}
-
 	public Player getPlayer() {
 		return player;
 	}
@@ -112,7 +106,7 @@ public class GameState extends State {
 	
 	public void tick() {
 
-		world.tick();
+		worldmanager.tick();
 		eventmanager.tick();
 		player.tick();
 		if(game.getKeyManager().z){												//opens up a menu.
@@ -121,7 +115,7 @@ public class GameState extends State {
 	}
 	
 	public void render(Graphics g) {
-		world.render(g);
+		worldmanager.render(g);
 		decormanager.renderBelow(g);
 		eventmanager.render(g);
 		player.render(g);
@@ -170,7 +164,7 @@ public class GameState extends State {
 		//Load world data and recreate world.
 		String name= (String) stream.readObject();
 		String path = (String) stream.readObject();
-		world = new World(game, path, name);
+		worldmanager = new WorldManager(game, path, name);
 		
 		//Load player location.
 		player.setPlayerX(stream.readFloat());
@@ -192,8 +186,8 @@ public class GameState extends State {
 	
 	public void writeObject(java.io.ObjectOutputStream stream) throws IOException{
 		//Save world data.
-		stream.writeObject(world.getName());
-		stream.writeObject(world.getPath());
+		stream.writeObject(worldmanager.getName());
+		stream.writeObject(worldmanager.getPath());
 		
 		//Save Player location.
 		stream.writeFloat(player.getPlayerX());

@@ -8,7 +8,6 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
-import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
@@ -18,7 +17,6 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.*;
 import dev.zt.UpliftedVFFV.world.EventManager;
-import dev.zt.UpliftedVFFV.world.World;
 import dev.zt.UpliftedVFFV.world.WorldManager;
 
 
@@ -32,68 +30,46 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 public class Event{
 
 	int id;
-	static World world;
+	static WorldManager worldmanager;
 	static EventManager eventmanager;
 	static StateManager statemanager;
 	static DecorManager decormanager;
 	protected static Game game;
 	protected static GameState gamestate;
-	static Player killme;
 	protected float x;
 	protected float y;
 	public static Event[] events = new Event[256];
 	public static Event event0 = new Event0(0,0,0);
-	public static Event event1 = new Event1(3,2,1);
-	public static Event event2 = new Event2(3,7,2);
-	public static Event event3 = new Event3(3,3,3);
-	public static Event event4 = new Event4(7,11,4);
-	public static Event event5 = new Event5(0,4,5);
-	public static Event event6 = new Event6(14,4,6);
-	public static Event event7 = new Event7(13,21,7);
-	public static Event event8 = new Event8(0,23,8);
-	public static Event event9 = new Event9(0,7,9);
-	public static Event event10 = new Event10(2,5,10);
-	public static Event event11 = new Event11(0,15,11);
-	public static Event event12 = new Event12(5,4,12);
-	public static Event event13 = new Event13(2,7,13);
-	public static Event event14 = new Event14(0,8,14);
-	public static Event event15 = new Event15(6,8,15);
-	public static Event event16 = new Event16(19 ,4,16);
-	public static Event event17 = new Event17(3 ,1,17);
-	public static Event event18 = new Event18(3 ,15,18);
-	public static Event event19 = new Event19(3 ,1,19);
-	public static Event event20 = new Event20(3, 14,20);
-	public static Event event21 = new Event21(38, 42,21);
-	public static Event event22 = new Event22(0, 8,22);
-	public static Event event23 = new Event23(0, 17,23);
-	public static Event event24 = new Event24(6, 17,24);
-	public static Event event25 = new Event25(10, 7,25);
-	public static Event event26 = new Event26(10, 30,26);
-	public static Event event27 = new Event27(20, 7,27);
-	public static Event event28 = new Event28(18, 0,28);
-	public static Event event29 = new Event29(26, 0,29);
-	public static Event event30 = new Event30(6, 10,30);
-	public static Event event31 = new Event31(23, 10,31);
-	public static Event event32 = new Event32(0, 4,32);
-	public static Event event33 = new Event33(44, 3,33);
-	public static Event event34 = new Event34(11, 6,34);
-	public static Event event35 = new Event35(0, 6,35);
-	public static Event event36 = new Event36(38, 56,36);
-	public static Event event37 = new Event37(0, 4,37);
-	public static Event event38 = new Event38(36, 0,38);
-	public static Event event39 = new Event39(3, 8,39);
+	public static Event event1 = new WarpBackroomtoElevator(10,5,1);
+	public static Event event2 = new WarpSElevatortoBackroom(5,10,2);
+	public static Event event3 = new WarpSElevatortoLobby(5,6,3);
+	public static Event event4 = new WarpLobbytoSElevator(9,15,4);
+	public static Event event5 = new WarpLobbytoSouthOffice1(2,8,5);
+	public static Event event6 = new WarpLobbytoSouthOfficeHall(16,8,6);
+	public static Event event7 = new WarpSouthOfficetoLobby(25,8,7);
+	public static Event event8 = new WarpSouthOfficetoSouthCubicles(3,27,8);
+	public static Event event9 = new WarpSouthOfficestoSouthWestHall(3,10,9);
+	public static Event event10 = new WarpSouthOfficetoBoardroom(10,15,10);
+	public static Event event11 = new WarpSouthOfficestoJCloset(13,16,11);
+	public static Event event12 = new WarpSouthCubiclestoSouthHallSmall(3,21,12);
+	public static Event event13 = new WarpSouthCubiclestoSouthOffices(23,21,13);
+	public static Event event14 = new WarpSouthWestHalltoSouthOffices(19,9,14);
+	//Event 15: South West Hall to West Offices 
+	public static Event event16 = new WarpBoardroom1toSouthOffices(5,19,16);
+	public static Event event17 = new WarpJClosettoSouthOffices(5,19,17);
+
 	
-	public static Event eventpenpal = new EventPenPal(2,4,40);
-	public static Event eventreceptionist = new EventReceptionist(7,4,41);
-	public static Event eventreceptionistdesk = new EventReceptionistDesk(7,5,42);
+	public static Event eventpenpal = new EventPenPal(5,7,40);
+	public static Event eventreceptionist = new EventReceptionist(9,9,41);
+	public static Event eventreceptionistdesk = new EventReceptionistDesk(9,10,42);
 	
-	public static Event eventemployee1 = new EventEmployee1(3,7,43);
-	public static Event eventemployee2 = new EventEmployee2(11,4,44);
-	public static Event eventelevatorpanel = new EventElevatorPanel(4,3,45);
-	public static Event eventemployee3 = new EventEmployee3(8,19,46);
-	public static Event eventemployee4 = new EventEmployee4(4,26,47);
-	public static Event eventemployee5 = new EventEmployee5(3,31,48);
-	public static Event eventemployee6 = new EventEmployee6(6,9,49);
+	public static Event eventemployee1 = new EmpCartographer(5,12,43);
+	public static Event eventemployee2 = new EmpMover(13,7,44);
+	public static Event eventelevatorpanel = new EventElevatorPanel(6,6,45);
+	public static Event eventemployee3 = new EmpJack1(8,19,46);
+	public static Event eventemployee4 = new EmpEmily1(4,26,47);
+	public static Event eventemployee5 = new EmpJerome1(3,31,48);
+	public static Event eventemployee6 = new EmpAndretheTall(6,9,49);
 	
 	public static Event eventemployee10 = new EventEmployee10(12,12,53);
 	public static Event eventemployee11 = new EventEmployee11(12,8,54);
@@ -107,7 +83,7 @@ public class Event{
 	public static Event eventemployee19 = new EventEmployee19(8,4,62);
 	public static Event eventemployee20 = new EventEmployee20(8,21,63);
 	public static Event eventemployee21 = new EventEmployee21(12,21,64);
-	public static Event eventemployeeIntro = new EventEmployeeIntro(2,6,65);
+	public static Event eventemployeeIntro = new EventEmployeeIntro(4,9,65);
 	public static Event eventemployeeJorge = new EventJorge(2,6,66);
 	public static Event eventemployeeJorgeInvisible = new EventJorgeInvisible(2,6,67);
 	
@@ -123,26 +99,14 @@ public class Event{
 	public static Event eventemployee31 = new EventEmployee31(4,13,77);
 	public static Event eventemployee32 = new EventEmployee32(4,13,78);
 	
-	public static Event eventemployeeBed1 = new EventBackroomBed1(9,8,79);
-//	public static Event eventemployeeBed2 = new EventBackroomBed2(9,9,80);
-	public static Event eventemployeeDesk1 = new EventBackroomDesk1(2,10,81);
-//	public static Event eventemployeeDesk2 = new EventBackroomDesk2(3,10,82);
-	public static Event eventemployeeTv = new EventBackroomTv(9,2,83);
-//	public static Event eventemployeeCalandar = new EventBackroomCalendar(3,10,84);
-	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendarInvisible(3,11,85);
+	public static Event eventemployeeBed1 = new EventBackroomBed(9,8,79);
+	public static Event eventemployeeDesk1 = new EventBackroomDesk(2,10,81);
+	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendar(3,11,85);
 	
-	public static Event eventSmudge1= new EventSmudge1(0,0,86);
-	public static Event eventSmudge2= new EventSmudge2(0,0,87);	
-	public static Event eventElevatorWave= new EventElevatorWallWave(0,0,88);
-//	public static Event eventElevatorFloor = new EventElevatorFloor(2,4,89);
 	
-	public static Event eventClock = new EventClock(0,0,90);
-	public static Event eventSofa1 = new EventSofa1(0,0,91);
-	public static Event eventSofa2 = new EventSofa2(0,0,92);
 	public static Event eventVending1 = new EventVending1(0,0,93);
 	public static Event eventVending1Invisible = new EventVending1Invisible(0,0,94);
-	public static Event eventWorkDesk1 = new EventWorkDesk1(0,0,95);
-	public static Event eventTvInvis = new EventTvInvisible(9,3,96);
+	public static Event eventTvInvis = new EventBackroomTv(9,3,96);
 	public static Event eventWaterCooler = new EventWaterCooler(0,0,97);
 	public static Event eventWaterCoolerInvisible = new EventWaterCoolerInvisible(0,0,98);
 	
@@ -153,19 +117,7 @@ public class Event{
 	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,103);
 	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,104);
 	public static Event eventMoverGag = new EventMoverGag(13,1,105);
-	
-	public static Event eventFilingCabinet = new EventFilingCabinet(0,0,106);
-	public static Event table0 = new EventTable0(0,0,107);
-	public static Event table1 = new EventTable1(0,0,108);
-	public static Event table2 = new EventTable2(0,0,109);
-	public static Event table3 = new EventTable3(0,0,110);
-	public static Event table4 = new EventTable4(0,0,111);
-	public static Event table5 = new EventTable5(0,0,112);
-	public static Event table6 = new EventTable6(0,0,113);
-	public static Event table7 = new EventTable7(0,0,114);
-	public static Event table8 = new EventTable8(0,0,115);
-	public static Event table9 = new EventTable9(0,0,116);
-	
+		
 	public static Event safe1 = new EventSafe1(10,30,117);
 	public static Event safe2 = new EventSafe2(16,13,118);
 	public static Event safe3 = new EventSafe3(6,3,119);
@@ -182,7 +134,6 @@ public class Event{
 	
 	public static Event eventemployee37 = new EventEmployee37(7,7,128);
 	public static Event eventemployee38 = new EventEmployee38(21,5,129);
-	public static Event eventemployeePlant = new EventEmployeePlant(15,9,130);
 	public static Event eventemployee39 = new EventEmployee39(21,5,131);
 	public static Event eventemployee40 = new EventEmployee40(21,5,132);
 	public static Event eventemployee41 = new EventEmployee41(21,5,133);
@@ -193,14 +144,7 @@ public class Event{
 	public static Event eventstory1 = new EventStory1(7,8,137);
 	public static Event eventstory2 = new EventStory2(40,3,138);
 	public static Event eventstory3 = new EventStory3(21,5,139);
-	
-	public static Event eventMirror = new EventMirror(21,5,140);
-	public static Event eventToilet = new EventToilet(21,5,141);
-	public static Event eventSink = new EventSink(21,5,142);
-	public static Event eventSinkMirror = new EventSinkMirror(21,5,143);
-	public static Event eventMaleSign = new EventMaleSign(17,2,144);
-	public static Event eventFemaleSign = new EventFemaleSign(27,2,145);
-	
+
 	public static Event eventemployee45 = new EventEmployee45(21,5,146);
 	public static Event eventemployee46 = new EventEmployee46(21,5,147);
 	public static Event eventemployee47 = new EventEmployee47(21,5,148);
@@ -285,21 +229,6 @@ public class Event{
 	
 	
 	
-	
-	
-	public Event(Game g, StateManager sm,GameState gs) {
-		game=g;
-		statemanager=sm;
-		gamestate=gs;
-//		this.id=idnum;
-//		this.x=x;
-//		this.y=y;
-		if(Event.game!=null){
-
-		}
-
-	}
-	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	protected BufferedImage tex;
 	public Creature test;
@@ -307,7 +236,9 @@ public class Event{
 	boolean drawn;
 	boolean fightwon;
 	boolean selfswitch1,selfswitch2,selfswitch3,selfswitch4;
-
+	int stage;						
+	int finalstage;
+	
 	public Event(BufferedImage texture, int idnum, float x, float y) {
 		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
 			this.test = new Creature(game, x ,y, 32, 32, texture, idnum);		
@@ -318,7 +249,36 @@ public class Event{
 		this.id = idnum;
 		this.x = x;
 		this.y = y;
+		this.selfswitch1 = false;
+		this.selfswitch2 = false;
+		this.selfswitch3 = false;
+		this.selfswitch4 = false;
 		events[id] = this;
+	}
+	
+	public Event(BufferedImage texture, int idnum, float x, float y, int stageNum) {
+		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
+			this.test = new Creature(game, x ,y, 32, 32, texture, idnum);		
+		}
+		else{
+			this.tex = texture;
+		}
+		this.id = idnum;
+		this.x = x;
+		this.y = y;
+		this.selfswitch1 = false;
+		this.selfswitch2 = false;
+		this.selfswitch3 = false;
+		this.selfswitch4 = false;
+		events[id] = this;
+		this.stage = 0;
+		this.finalstage = stageNum;
+	}
+	
+	public Event(Game g, StateManager sm,GameState gs) {
+		game=g;
+		statemanager=sm;
+		gamestate=gs;
 	}
 	
 	//If the event is attached to a Creature object, tick the Creature and make it walk around.
@@ -393,10 +353,10 @@ public class Event{
 	
 	//If an events running calls this, the player is transported to the given x-y location of the world corresponding to the path name
 	public static void transport(String path, int x, int y,String name){
-		world = new World(game, path,name);
+		worldmanager = new WorldManager(game, path,name);
 		eventmanager = new EventManager(game, path);
 		decormanager = new DecorManager(game, path);
-		GameState.setWorld(world);
+		GameState.setWorld(worldmanager);
 		GameState.setEventmanager(eventmanager);
 		GameState.setDecormanager(decormanager);
 		gamestate.getPlayer().setPlayerX(x*32);
@@ -637,16 +597,16 @@ public class Event{
 	//stage is used for multi-stage events that contain transitions between multiple different states.
 	//Events that use this override these methods.
 	public int getfinalstage() {
-		return 1;
-		
+		return finalstage;
 	}
-	
+
 	public int getstage() {
-		return 1;		
+		return stage;
 	}
 	
-	public void setstage(int i) {
-				
+	
+	public void setstage(int st) {
+		this.stage = st;
 	}
 
 	//drawn determines whether an event is drawn to the world map or not.
@@ -681,7 +641,7 @@ public class Event{
 	//Then, it moves its event to the square designated and updates x-y coordinates.
 	//Finally, if a creature is attached to the event, update its walk cycle in the given direction.
 	public void moveUp(){
-		if(!WorldManager.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
+		if(!gamestate.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y)*32 || gamestate.getPlayer().getPlayerY()<=(y-2)*32){				
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
@@ -694,7 +654,7 @@ public class Event{
 	}
 
 	public void moveDown(){
-		if(!WorldManager.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid(1)){
+		if(!gamestate.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid(1)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y+2)*32 || gamestate.getPlayer().getPlayerY()<=(y)*32){	
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
@@ -708,7 +668,7 @@ public class Event{
 	}
 
 	public void moveLeft(){
-		if(!WorldManager.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid(2)){
+		if(!gamestate.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid(2)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-2)*32 || gamestate.getPlayer().getPlayerX()>=(x)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
@@ -720,7 +680,7 @@ public class Event{
 		}
 	}
 	public void moveRight(){
-		if(!WorldManager.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid(3)){
+		if(!gamestate.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid(3)){
 			if(gamestate.getPlayer().getPlayerX()<=(x)*32 || gamestate.getPlayer().getPlayerX()>=(x+2)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
