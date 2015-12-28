@@ -77,7 +77,7 @@ public class EventEmployeeIntro extends Event {
 				break;
 			case 6:		
 				Event.events[3].setOpen(false);
-				Event.events[40].setDrawn(true);
+				Event.events[52].setDrawn(true);
 				super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 6, 7,"");
 				super.Timer(this.getId(), 75);
 				KeyManager.setCutsceneMode(false);

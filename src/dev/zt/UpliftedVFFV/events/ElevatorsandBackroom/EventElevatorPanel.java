@@ -19,7 +19,7 @@ public class EventElevatorPanel extends Event {
 	public void run(){	
 		reset();
 		Choices[super.getVar(1)] = Choices[super.getVar(1)]+" (current)";
-		if(!Event.events[40].isSelfswitch1() && Event.events[65].isSelfswitch1()){		//if EmployeeIntro has already left + Pen
+		if(!Event.events[52].isSelfswitch1() && Event.events[54].isSelfswitch1()){		//if EmployeeIntro has already left + Pen
 																						//Pal has not been talked to, nothing happens
 		}
 		else{
@@ -47,7 +47,7 @@ public class EventElevatorPanel extends Event {
 				break;
 			case 1:
 				if(this.isSelfswitch2()){										//if Pen Pal has been recruited, its event is erased
-					Event.events[40].setDrawn(false);
+					Event.events[52].setDrawn(false);
 					super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 6, 7,"");
 				}
 				this.setstage(0);
@@ -66,12 +66,12 @@ public class EventElevatorPanel extends Event {
 		
 		}
 		
-		else if(!Event.events[40].isSelfswitch1()){
-			if(!Event.events[65].isSelfswitch1()){
+		else if(!Event.events[52].isSelfswitch1()){
+			if(!Event.events[54].isSelfswitch1()){
 				if(i == 5){
 					super.screenShake(50);
 					super.setVar(1,5);
-					Event.events[65].run();	
+					Event.events[54].run();	
 					this.setSelfswitch1(true);
 				}
 				else{
@@ -82,7 +82,7 @@ public class EventElevatorPanel extends Event {
 			}
 		}
 		else{
-			if(Event.events[40].isSelfswitch1()){
+			if(Event.events[52].isSelfswitch1()){
 				switch(i){
 				case 0:
 					Dialog[] d1 = new Dialog[1];

@@ -4,7 +4,6 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.misc.PostageStamp;
-import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class EventBackroomDesk extends Event {
 
@@ -41,7 +40,6 @@ public class EventBackroomDesk extends Event {
 		switch(i){
 		case 0:
 			if(super.itemNumCheck(new PostageStamp()) > 0){
-				StateManager.getStates().pop();
 				super.PenPalState();
 			}
 			else{
@@ -49,8 +47,6 @@ public class EventBackroomDesk extends Event {
 			}
 			break;
 		case 1:
-			//Pop off the dialogue state.
-			StateManager.getStates().pop();
 			this.setstage(0);		
 			break;
 		}

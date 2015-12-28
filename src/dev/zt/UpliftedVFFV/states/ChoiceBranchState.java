@@ -133,6 +133,7 @@ public class ChoiceBranchState extends State {
 		//if space is pressed, the states are exited and the event that called the ChoiceBranch receives the selected int
 		if(selected==true){
 			StateManager.getStates().pop();
+			StateManager.getStates().pop();
 			if(StateManager.getStates().peek().getStateType() == "dialogue"){
 				StateManager.getStates().pop();
 			}

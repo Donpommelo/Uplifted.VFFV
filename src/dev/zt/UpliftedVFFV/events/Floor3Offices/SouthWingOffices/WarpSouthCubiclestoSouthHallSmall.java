@@ -19,7 +19,7 @@ public class WarpSouthCubiclestoSouthHallSmall extends Event {
 
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt", 10, 25,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt", 10, 24,"");
 	}
 
 }

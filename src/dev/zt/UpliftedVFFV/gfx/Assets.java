@@ -35,7 +35,7 @@ public class Assets {
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, ActuallyWhite, Black, Void,RedCarpet,WoodBoard, BlueCarpet, StoneFloor, AquaTile,WhiteTile
-	,RowCarpet,	WhiteCarpet;
+	,RowCarpet,	WhiteCarpet, GlassTile;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
@@ -43,14 +43,16 @@ public class Assets {
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	
 	public static BufferedImage WritingDesk1, Bed1,Tv, Trashcan, Calendar, WelcomeMat,Dresser, HatRack, Sign, StairsUp, StairsDown,
-		HorizRug, VertiRug;
+		HorizRug, VertiRug, Cupboard, Fridge, KitchenCounter, FlowerTable, Monolith, notPenPal, Cuidado, InfoPanel, Board, Projector,
+		StairsRight0, StairsRight1, StairsRight2, StairsRight3, StairsLeft0, StairsLeft1, StairsLeft2, StairsLeft3,
+		Poster1, Poster2;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, MoverSofa1,MoverSofa2,MoverGag, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
 	//New Stuff
 	
-	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls;
+	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls, LobbyCeiling, LobbyWalls;
 		
 	
 	public static Dialog[] dialog;
@@ -67,7 +69,6 @@ public class Assets {
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
-		SpriteSheet FurnitureBackroom2 = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
 		
 		//Newer Spritesheets
@@ -187,9 +188,20 @@ public class Assets {
 		BlueCarpet = TilesetBackroom.crop(6*width, 0, 2*width, 3*height);
 		AquaTile = TilesetBackroom.crop(8*width, 0, 2*width, 3*height);
 		StoneFloor = TilesetBackroom.crop(6*width, 3*height, 2*width, 3*height);
+		GlassTile = ThirdFloorTiles.crop(12*width,0,2*width,3*height);
 
 		RowCarpet = ThirdFloorTiles.crop(0, 0, 2*width, 3*height);
 		WhiteCarpet = ThirdFloorTiles.crop(2*width, 0, 2*width, 3*height);
+		StairsUp = ThirdFloorTiles.crop(4*width,0,2*width,2*height);
+		StairsDown = ThirdFloorTiles.crop(6*width,0,2*width,2*height);
+		StairsRight0 = ThirdFloorTiles.crop(9*width,0,width,height);
+		StairsRight1 = ThirdFloorTiles.crop(9*width,height,width,height);
+		StairsRight2 = ThirdFloorTiles.crop(9*width,2*height,width,height);
+		StairsRight3 = ThirdFloorTiles.crop(9*width,3*height,width,height);
+		StairsLeft0 = ThirdFloorTiles.crop(10*width,0,width,height);
+		StairsLeft1 = ThirdFloorTiles.crop(10*width,height,width,height);
+		StairsLeft2 = ThirdFloorTiles.crop(10*width,2*height,width,height);
+		StairsLeft3 = ThirdFloorTiles.crop(10*width,3*height,width,height);
 		
 		Ceiling1 = TilesetBackroomWalls.crop(0, 0, 2*width, 3*height);
 		Wall1 = TilesetBackroomWalls.crop(0, 3*height, 2*width, 2*height);
@@ -197,27 +209,38 @@ public class Assets {
 		Wall2 = TilesetBackroomWalls.crop(2*width, 3*height, 2*width, 2*height);
 		ElevatorCeiling = TilesetBackroomWalls.crop(4*width, 0, 2*width, 3*height);
 		ElevatorWalls = TilesetBackroomWalls.crop(4*width, 3*height, 2*width, 2*height);
+		LobbyCeiling = TilesetBackroomWalls.crop(6*width, 0, 2*width, 3*height);
+		LobbyWalls = TilesetBackroomWalls.crop(6*width, 3*height, 2*width, 2*height);
 		
 		OfficeCeiling = ThirdFloorWalls.crop(0, 0, 2*width, 3*height);
 		OfficeWalls = ThirdFloorWalls.crop(0, 3*height, 2*width, 2*height);
 		
 		//Furniture
 		
-		WritingDesk1 = FurnitureBackroom2.crop(0,0,2*width,2*height);
-		Bed1 = FurnitureBackroom2.crop(2*width,0,width,3*height);
-		Calendar = FurnitureBackroom2.crop(4*width,0,width,height);
-		Trashcan = FurnitureBackroom2.crop(3*width,0,width,height);
-		WelcomeMat = FurnitureBackroom2.crop(7*width,0,2*width,height);
-		Dresser = FurnitureBackroom2.crop(9*width,0,width,3*height);
-		HatRack = FurnitureBackroom2.crop(10*width,0,width,3*height);
-		Sign =  FurnitureBackroom2.crop(11*width,0,width,height);
-		HorizRug = FurnitureBackroom2.crop(5*width,0,2*width,height);
-		VertiRug = FurnitureBackroom2.crop(12*width,0,width,2*height);
-		
-		Tv = FurnitureBackroom.crop(96,0,32,64);
-		StairsUp = FurnitureBackroom.crop(0,288,32,32);
-		StairsDown = FurnitureBackroom.crop(32,288,32,32);
-		
+		WritingDesk1 = FurnitureBackroom.crop(0,0,2*width,2*height);
+		Bed1 = FurnitureBackroom.crop(2*width,0,width,3*height);
+		Calendar = FurnitureBackroom.crop(4*width,0,width,height);
+		Trashcan = FurnitureBackroom.crop(3*width,0,width,height);
+		WelcomeMat = FurnitureBackroom.crop(7*width,0,2*width,height);
+		Dresser = FurnitureBackroom.crop(9*width,0,width,3*height);
+		HatRack = FurnitureBackroom.crop(10*width,0,width,3*height);
+		Sign =  FurnitureBackroom.crop(11*width,0,width,height);
+		HorizRug = FurnitureBackroom.crop(5*width,0,2*width,height);
+		VertiRug = FurnitureBackroom.crop(12*width,0,2*width,3*height);
+		Cupboard = FurnitureBackroom.crop(0,3*height,2*width,2*height);
+		Fridge = FurnitureBackroom.crop(2*width,3*height,width,2*height);
+		KitchenCounter = FurnitureBackroom.crop(3*width,3*height,3*width,2*height);
+		FlowerTable = FurnitureBackroom.crop(14*width,0,2*width,2*height);
+		Monolith = FurnitureBackroom.crop(6*width,4*height,width,height);
+		notPenPal = FurnitureBackroom.crop(7*width,3*height,width,2*height);
+		Cuidado = FurnitureBackroom.crop(8*width,4*height,width,height);
+		InfoPanel = Furniture3rdFloor.crop(14*width, 0, width, height);
+		Poster1 = Furniture3rdFloor.crop(0, 2*height, width, height);
+		Poster2 = Furniture3rdFloor.crop(width, 2*height, width, height);
+		Board = Furniture3rdFloor.crop(6*width, 5*height, 2*width, height);
+		Projector = Furniture3rdFloor.crop(8*width, 5*height, 2*width, 2*height);
+
+
 		WorkDesk1 = Furniture3rdFloor.crop(0, 0, width*2, height);
 		FilingCabinet = Furniture3rdFloor.crop(64, 0, width, height);
 		Sofa1 = Furniture3rdFloor.crop(96, 0, width*2, height);
@@ -229,18 +252,17 @@ public class Assets {
 		VendingMachine = Furniture3rdFloor.crop(256, 0, width, height*2);
 		MoverSofa1 = Furniture3rdFloor.crop(288, 0, width, height);
 		MoverSofa2 = Furniture3rdFloor.crop(288, 32, width, height);
-		MoverGag = TilesetBackroomWalls.crop(0, 2*height, width, 3*height);
 		
-		Table0 = Furniture3rdFloor.crop(10*width, 0, width, height);
-		Table1 = Furniture3rdFloor.crop(11*width, 0, width, height);
-		Table2 = Furniture3rdFloor.crop(12*width, 0, width, height);
-		Table3 = Furniture3rdFloor.crop(13*width, 0, width, height);
-		Table4 = Furniture3rdFloor.crop(11*width, height, width, height);
-		Table5 = Furniture3rdFloor.crop(12*width, height, width, height);
-		Table6 = Furniture3rdFloor.crop(13*width, height, width, height);
-		Table7 = Furniture3rdFloor.crop(11*width, 2*height, width, height);
-		Table8 = Furniture3rdFloor.crop(12*width, 2*height, width, height);
-		Table9 = Furniture3rdFloor.crop(13*width, 2*height, width, height);
+		Table0 = FurnitureBackroom.crop(9*width, 3*height, width, height);
+		Table1 = FurnitureBackroom.crop(9*width, 3*height, width, height);
+		Table2 = FurnitureBackroom.crop(10*width, 3*height, width, height);
+		Table3 = FurnitureBackroom.crop(11*width, 3*height, width, height);
+		Table4 = FurnitureBackroom.crop(9*width, 4*height, width, height);
+		Table5 = FurnitureBackroom.crop(10*width, 4*height, width, height);
+		Table6 = FurnitureBackroom.crop(11*width, 4*height, width, height);
+		Table7 = FurnitureBackroom.crop(9*width, 5*height, width, height);
+		Table8 = FurnitureBackroom.crop(10*width, 5*height, width, height);
+		Table9 = FurnitureBackroom.crop(11*width, 5*height, width, height);
 		
 		Mirror = Furniture3rdFloor.crop(0, 5*height, width, height);
 		Toilet = Furniture3rdFloor.crop(width, 5*height, width, height);

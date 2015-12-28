@@ -15,6 +15,6 @@ public class WarpJClosettoSouthOffices extends Event {
 
 	public void run(){
 		game.getAudiomanager().playMusic(1, true);
-		super.transport("/Worlds/ElevatorsandBackroom/SouthWingSection1.txt", 5, 7,"South Elevator");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt", 13, 16,"");
 	}
 }

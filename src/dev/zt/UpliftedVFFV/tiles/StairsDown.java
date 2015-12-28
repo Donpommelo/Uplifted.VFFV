@@ -6,14 +6,15 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 
 public class StairsDown extends Tile {
 	
-	public final static int id = 12;
+	public final static int id = 19;
 	public final static BufferedImage texture = Assets.StairsDown;
 	
 	public StairsDown() {
 		super(texture, id);
 	}
 	
-	public boolean isSolid(){
+	public boolean isWall(){
 		return true;
 	}
+	
 }

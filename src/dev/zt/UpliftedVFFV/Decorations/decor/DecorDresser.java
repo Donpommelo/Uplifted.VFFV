@@ -9,6 +9,6 @@ public class DecorDresser extends Decor{
 	}
 	
 	public boolean renderBelow(){
-		return true;
+		return false;
 	}
 }

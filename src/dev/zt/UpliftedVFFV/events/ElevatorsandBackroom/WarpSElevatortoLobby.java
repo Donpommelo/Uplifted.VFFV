@@ -27,7 +27,7 @@ public class WarpSElevatortoLobby extends Event {
 		else{
 			
 		}
-		if(Event.events[45].isSelfswitch1()){
+		if(Event.events[52].isSelfswitch1()){
 			switch(this.getstage()){
 			case 0: 				
 				if(!open){

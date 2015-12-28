@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
@@ -11,10 +12,10 @@ public class EmpAndretheTall extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeM2;
-	public boolean selfswitch1;
+	public static int stagenum = 0;
 	public int move;
 	public EmpAndretheTall(float x, float y, int idnum) {
-		super(img,idnum,x, y);
+		super(img,idnum,x, y, stagenum);
 		xPos=x;
 		yPos=y;
 		move = 0;
@@ -35,13 +36,17 @@ public class EmpAndretheTall extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].test.runlast = 2;
 		}
-		if(selfswitch1==false){
-			super.Dialog(72, 73,this.getId());
-			selfswitch1=true;
+		if(!this.isSelfswitch1()){
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Excuse me sir, do you know where Suite 521 is?/");
+			d[1] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"What was that?/Sorry, you're going to have to speak up./");
+			super.Dialog(d, 1, this.getId(), true);
+			this.setSelfswitch1(true);
 		}
 		else{
-			super.Dialog(73, 73,this.getId());
-		}
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Whatever you're looking for, it isn't up here./");
+			super.Dialog(d,0, this.getId(), true);		}
 	}
 	
 	public void walkCycle(){

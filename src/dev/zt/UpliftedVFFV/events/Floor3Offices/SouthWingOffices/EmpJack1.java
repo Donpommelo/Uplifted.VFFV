@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
@@ -11,10 +12,10 @@ public class EmpJack1 extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeM1;
-	public boolean selfswitch1;
+	public static int stagenum = 0;
 	public int move;
 	public EmpJack1(float x, float y, int idnum) {
-		super(img,idnum,x, y);
+		super(img,idnum,x, y, stagenum);
 		xPos=x;
 		yPos=y;
 		move = 0;
@@ -35,12 +36,20 @@ public class EmpJack1 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].test.runlast = 2;
 		}
-		if(selfswitch1==false){
-			super.Dialog(57, 61,this.getId());
-			selfswitch1=true;
+		if(!this.isSelfswitch1()){
+			Dialog[] d = new Dialog[4];
+			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hey there! Are you looking for something?/");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Yes. Yes I was. Do you know where Suite 521 is?/");
+			d[2] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hmm. Doesn't ring a bell. Sorry./");
+			d[3] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"But best of luck in finding it, wherever it is./There are some mighty strange places in thie building./Some that even management doesn't know about./");
+			super.Dialog(d, 3, this.getId(), true);
+			this.setSelfswitch1(true);;
 		}
 		else{
-			super.Dialog(62, 62,this.getId());
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Did you find what you were looking for yet?/Well, don't give up./");
+			super.Dialog(d, 0, this.getId(), true);
+
 		}
 	}
 	

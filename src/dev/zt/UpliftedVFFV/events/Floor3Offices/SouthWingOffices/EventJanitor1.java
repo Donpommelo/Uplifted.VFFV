@@ -5,6 +5,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
@@ -12,10 +13,8 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.consummables.CaffeinePatch;
-import dev.zt.UpliftedVFFV.inventory.consummables.LemonyFresh;
 import dev.zt.UpliftedVFFV.inventory.consummables.MedPak;
 import dev.zt.UpliftedVFFV.inventory.consummables.SmellingSalt;
-import dev.zt.UpliftedVFFV.inventory.equipables.DeploreApp;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
 import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
 
@@ -23,21 +22,14 @@ import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
 
 public class EventJanitor1 extends Event {
 
-	public boolean selfswitch1=false;
 	public String[] Choices={"Save","Shop","Never Mind"};
-	public static int stage=0;						
-	public static int finalstage=2;	
+	public static int stagenum = 2;
 	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Janitor1small.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public EventJanitor1(float x, float y, int idnum) {
-		super(Assets.EmployeeM2,idnum,x, y);
-		selection.put(new MedPak(), 1);
-		selection.put(new CaffeinePatch(),2);
-		selection.put(new SmellingSalt(), 5);
-		selection.put(new LemonyFresh(), 5);
-		selection.put(new SummonSauce(), 5);
-		selection.put(new SleepingPills(), 6);
-		selection.put(new DeploreApp(), 960);
+		super(Assets.EmployeeM2,idnum,x, y, stagenum);
+
+					
 	}
 	
 	public void run(){
@@ -53,58 +45,71 @@ public class EventJanitor1 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
 		}
-//		super.shop(this.getId(),selection,shopKeeper);
-//		if(selfswitch1==false){
-			switch(stage){
-			case 0: 
-				if(!selfswitch1){
-					super.Dialog(169, 175,this.getId());
-					selfswitch1 = true;
-				}
-				else{
-					super.Dialog(178, 178,this.getId());
-				}
-				break;
-			case 1:
-				super.Dialog(176, 176,this.getId());
-				super.ChoiceBranch(this.getId(), Choices);
-	//			stage=0;
-				break;
-			case 2:
-				stage = 0;
-				break;
+		switch(this.getstage()){
+		case 0: 
+			if(!this.isSelfswitch1()){
+				Dialog[] d = new Dialog[7];
+				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Hmm? I don't believe we've met before./");
+				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Hello. I am the Operator. I was looking for Suite 521./");
+				d[2] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Oh. Sadly I've never heard of the place before./But maybe I can provide you some other services. . ./");
+				d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What sort of . . .services?/");
+				d[4] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"I am the humble janitor of this facility, but I also do all manner of odd jobs too./");
+				d[5] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Well, mostly I run my own little business. Y'know, just to make a bit of money on the side./Feel free to purchase anything that interests you./Just don't mention anything to Management./");
+				d[6] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Oh, and if you ever need your game saved, come to me and I can help./Free of charge!/");
+				super.Dialog(d, 6, this.getId(), true);
+				this.setSelfswitch1(true);
 			}
+			else{
+				Dialog[] d = new Dialog[1];
+				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Well, if it isn't my favorite customer./");
+				super.Dialog(d, 0, this.getId(), true);
+				}
+			break;
+		case 1:
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"So, what'll it be?/");
+			super.Dialog(d, 0, this.getId(), true);
+			super.ChoiceBranch(this.getId(), Choices);
+			break;
+		case 2:
+			this.setstage(0);
+			break;
+		}
 	}
 	
 	public boolean isSolid(int i){
 		return true;
 	}
-	
-	public int getfinalstage() {
-		return finalstage;
-	}
-
-	public int getstage() {
-		return stage;
-	}
-
-	public void setstage(int stage) {
-		EventJanitor1.stage = stage;
-	}
 
 	public void ChoiceMade(int i){
 		switch(i){
 		case 0:
-			stage = 2;
+			this.setstage(2);
 			break;
 		case 1:
+			getGoods();
 			super.shop(this.getId(),selection,shopKeeper);
-			stage = 2;
+			this.setstage(2);
 			break;
 		case 2:
-			super.Dialog(177, 177,this.getId());
-			stage = 2;
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"See you again soon./");
+			super.Dialog(d, 0, this.getId(), true);
+			this.setstage(2);
 			break;
+		}
+	}
+	
+	public void getGoods(){
+		if(super.getVar(12) >= 1){
+			selection.put(new MedPak(), 1);
+			selection.put(new CaffeinePatch(),2);
+			selection.put(new SmellingSalt(), 5);
+			selection.put(new SummonSauce(), 5);
+			selection.put(new SleepingPills(), 6);
+		}
+		if(super.getVar(12) >= 2){
+
 		}
 	}
 }

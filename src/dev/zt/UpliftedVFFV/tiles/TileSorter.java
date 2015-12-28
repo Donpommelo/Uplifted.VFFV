@@ -116,7 +116,12 @@ public class TileSorter {
 	public static void adjacencyWallCheck(Tile tile, WorldManager world, int x, int y){
 		if(tile.texture != Assets.Void){
 			spritesheet = new SpriteSheet(tile.texture);
-			if(world.getTile(x-1, y).id == tile.id){
+			int height = y;
+			while(world.getTile(x, height-1).id == tile.id){
+				height--;
+			}
+			
+			if(world.getTile(x-1, height).id == tile.id){
 				if(world.getTile(x, y-1).isWall()){
 					tile.setTex1(spritesheet.crop(2*miniLength, 2*miniLength, miniLength, miniLength));
 				}
@@ -133,7 +138,7 @@ public class TileSorter {
 				}
 			}
 			
-			if(world.getTile(x+1, y).id == tile.id){
+			if(world.getTile(x+1, height).id == tile.id){
 				if(world.getTile(x, y-1).isWall()){
 					tile.setTex2(spritesheet.crop(1*miniLength, 2*miniLength, miniLength, miniLength));
 				}
@@ -150,7 +155,7 @@ public class TileSorter {
 				}
 			}
 			
-			if(world.getTile(x-1, y).id == tile.id){
+			if(world.getTile(x-1, height).id == tile.id){
 				if(world.getTile(x, y+1).isWall()){
 					tile.setTex3(spritesheet.crop(2*miniLength, 1*miniLength, miniLength, miniLength));
 				}
@@ -167,7 +172,7 @@ public class TileSorter {
 				}
 			}
 			
-			if(world.getTile(x+1, y).id == tile.id){
+			if(world.getTile(x+1, height).id == tile.id){
 				if(world.getTile(x, y+1).isWall()){
 					tile.setTex4(spritesheet.crop(1*miniLength, 1*miniLength, miniLength, miniLength));
 				}
@@ -182,7 +187,7 @@ public class TileSorter {
 				else{
 					tile.setTex4(spritesheet.crop(3*miniLength, 3*miniLength, miniLength, miniLength));
 				}
-			}
+			}		
 			
 		}
 	}

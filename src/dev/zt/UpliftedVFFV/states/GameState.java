@@ -49,8 +49,8 @@ public class GameState extends State {
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
-		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt";
-//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt";
+		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 		
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
 		eventmanager = new EventManager(game,StartingFloor);
@@ -136,7 +136,7 @@ public class GameState extends State {
 	}
 
 	public void setVar(int i, int set) {
-		variablemanager.setVar(i, set);;
+		variablemanager.setVar(i, set);
 	}
 	
 	public boolean getSwitch(int i) {
@@ -144,7 +144,7 @@ public class GameState extends State {
 	}
 
 	public void setSwitch(int i, boolean set) {
-		switchmanager.setSwitch(i, set);;
+		switchmanager.setSwitch(i, set);
 	}
 	
 	public void scriptChange(int change){

@@ -14,7 +14,10 @@ public class WarpSouthOfficestoJCloset extends Event {
 	}
 
 	public void run(){
-		game.getAudiomanager().playMusic(1, true);
+		if(!this.isSelfswitch1()){
+			super.setVar(12, super.getVar(12)+1);
+			this.setSelfswitch1(true);
+		}
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/JanitorClosetTutorial.txt", 5, 10,"Broom Closet");
 	}
 	

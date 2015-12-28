@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
@@ -11,10 +12,10 @@ public class EmpEmily1 extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeF;
-	public boolean selfswitch1;
+	public static int numstage = 0;
 	public int move;
 	public EmpEmily1(float x, float y, int idnum) {
-		super(img,idnum,x, y);
+		super(img,idnum,x, y, numstage);
 		xPos=x;
 		yPos=y;
 		move = 0;
@@ -22,7 +23,7 @@ public class EmpEmily1 extends Event {
 	}
 	
 	public void run(){
-		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
+		test.setImgShown(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
 		if (Player.runlast==0){
 			Event.events[this.getId()].test.runlast = 1;
 		}
@@ -35,12 +36,19 @@ public class EmpEmily1 extends Event {
 		if (Player.runlast==3){
 			Event.events[this.getId()].test.runlast = 2;
 		}
-		if(selfswitch1==false){
-			super.Dialog(52, 54,this.getId());
-			selfswitch1=true;
+		if(!this.isSelfswitch1()){
+			Dialog[] d = new Dialog[3];
+			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"?/");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning. Is something wrong?/");
+			d[2] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"Oh, no. Not at all. Its just that. . . I didn't know you ever left your elevator./Seeing you out here just came to me as a bit of a shock./");
+			super.Dialog(d, 2, this.getId(), true);
+			this.setSelfswitch1(true);
 		}
 		else{
-			super.Dialog(55, 55,this.getId());
+			Dialog[] d = new Dialog[3];
+			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"Good to see you. You ought to get out of your elevator more often.//");
+			super.Dialog(d, 0, this.getId(), true);
+
 		}
 	}
 	

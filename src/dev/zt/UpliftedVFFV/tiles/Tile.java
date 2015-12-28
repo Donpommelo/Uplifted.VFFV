@@ -89,6 +89,21 @@ public class Tile {
 		case 19:
 			t = new StairsDown();
 			break;
+		case 20:
+			t = new StairsRight();
+			break;
+		case 21:
+			t = new StairsLeft();
+			break;
+		case 22:
+			t = new LobbyCeiling();
+			break;
+		case 23:
+			t = new LobbyWalls();
+			break;
+		case 24:
+			t = new GlassTile();
+			break;
 			
 		}
 		return t;

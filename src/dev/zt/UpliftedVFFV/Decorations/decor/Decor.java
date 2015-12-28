@@ -23,7 +23,7 @@ public class Decor {
 	public static Decor decorclock = new DecorClock(0);
 	public static Decor decorbed = new DecorBed(1);
 	public static Decor decorwritingdesk = new DecorWritingDesk(2);
-	public static Decor decortv = new DecorTv(3);
+	public static Decor decorkitchencounter = new DecorKitchenCounter(3);
 	public static Decor decorcalendar = new DecorCalender(4);
 	public static Decor decorpelicanfloor = new DecorElevatorPelican(5);
 	public static Decor decorwallpanel = new DecorWallPanel(6);
@@ -46,8 +46,25 @@ public class Decor {
 	public static Decor hatrack = new DecorHatRack(23);
 	public static Decor sign = new DecorSign(24);
 	public static Decor vertirug = new DecorVertiRug(25);
-
-
+	public static Decor fridge= new DecorFridge(26);
+	public static Decor flowertable = new DecorFlowerTable(27);
+	public static Decor cupboard = new DecorCupboard(28);
+	public static Decor monolith= new DecorMonolith(29);
+	public static Decor tallplant = new DecorTallPlant(30);
+	public static Decor cautionsign = new DecorCuidadoSign(31);
+	public static Decor stairsright0 = new DecorStairsRight0(32);
+	public static Decor stairsright1 = new DecorStairsRight1(33);
+	public static Decor stairsright2 = new DecorStairsRight2(34);
+	public static Decor stairsright3 = new DecorStairsRight3(35);
+	public static Decor stairsleft0 = new DecorStairsLeft0(36);
+	public static Decor stairsleft1 = new DecorStairsLeft1(37);
+	public static Decor stairsleft2 = new DecorStairsLeft2(38);
+	public static Decor stairsleft3 = new DecorStairsLeft3(39);
+	public static Decor announcementboard = new DecorAnnouncementBoard(40);
+	public static Decor infopanel = new DecorInfoPanel(41);
+	public static Decor poster1 = new DecorPoster1(42);
+	public static Decor poster2 = new DecorPoster2(43);
+	public static Decor projector = new DecorProjectorScreen(44);
 
 
 

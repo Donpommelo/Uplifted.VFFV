@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.Game;
 public class VariableManager {
 
 	public Game game;
-	public int[] variables = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public int[] variables = new int[256];
 	
 /*
  0: Meep
@@ -20,7 +20,7 @@ public class VariableManager {
  9: Ennui
  10: Ennui Ceiling
  11: Janitor Points
- 12: 
+ 12: Number of Janitor Closets found.
  13: 
  14: 
  15: 
@@ -31,6 +31,9 @@ public class VariableManager {
 	
 	public VariableManager(Game g){
 		this.game = g;
+		for(int i = 0; i < variables.length; i++){
+			variables[i] = 0;
+		}
 	}
 	
 	public int getVar(int i){

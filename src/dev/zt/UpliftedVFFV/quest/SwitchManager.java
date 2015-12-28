@@ -13,7 +13,7 @@ public class SwitchManager {
  1: OpeningSceneDone
  2: JorgeBeaten
  3: TutorialBeaten
- 4: Map Found
+ 4: Tutorial Fight done
  5: Quest Begin: Find Suite 521
  6: Quest Begin: Carloc's Errand
  7: Quest Begin: Return envelope to Carloc (Informant Talked to)

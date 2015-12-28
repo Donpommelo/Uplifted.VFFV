@@ -39,7 +39,7 @@ public class DecorManager {
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(!Decorations[i].renderBelow()){
-				Decorations[i].render(g, DecorCoords[0][i], DecorCoords[1][i]);
+				Decorations[i].render(g, (int)(DecorCoords[0][i] - game.getGameCamera().getxOffset()), (int)(DecorCoords[1][i] - game.getGameCamera().getyOffset()));
 			}
 		}
 	}

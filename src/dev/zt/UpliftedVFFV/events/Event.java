@@ -10,7 +10,6 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
-import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.*;
 import dev.zt.UpliftedVFFV.events.EventsCommon.*;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -50,74 +49,138 @@ public class Event{
 	public static Event event8 = new WarpSouthOfficetoSouthCubicles(3,27,8);
 	public static Event event9 = new WarpSouthOfficestoSouthWestHall(3,10,9);
 	public static Event event10 = new WarpSouthOfficetoBoardroom(10,15,10);
-	public static Event event11 = new WarpSouthOfficestoJCloset(13,16,11);
+	public static Event event11 = new WarpSouthOfficestoJCloset(13,15,11);
 	public static Event event12 = new WarpSouthCubiclestoSouthHallSmall(3,21,12);
 	public static Event event13 = new WarpSouthCubiclestoSouthOffices(23,21,13);
 	public static Event event14 = new WarpSouthWestHalltoSouthOffices(19,9,14);
-	//Event 15: South West Hall to West Offices 
+	public static Event event15 = new WarpSouthWestHalltoWestOffices(3,9,15);
 	public static Event event16 = new WarpBoardroom1toSouthOffices(5,19,16);
 	public static Event event17 = new WarpJClosettoSouthOffices(5,19,17);
+	public static Event event18 = new WarpSouthHallSmalltoSouthCubicles(11,24,18);
+	public static Event event19 = new WarpSouthHallSmalltoGameRoom(13,17,19);
+	public static Event event20 = new WarpSouthHallSmalltoWorkRoom1(3,24,20);
+	public static Event event21 = new WarpSouthHallSmalltoWorkRoom2(3,17,21);
+	//Event 22: South Small Hall to Bath house
+	public static Event event23 = new WarpSouthHallSmalltoAquaHall(13,7,23);
+	
+	public static Event event24 = new WarpGameRoomtoSouthHallSmall(3,14,24);
+	public static Event event25 = new WarpWorkRoom1toSouthHallSmall(13,13,25);
+	public static Event event26 = new WarpWorkRoom2toSouthHallSmall(13,13,26);
+	
+	//Event 27: Bath House to South Small Hall
+	public static Event event28 = new WarpAquaHalltoSouthHallShort(15,26,28);
+	public static Event event29 = new WarpAquaHalltoSouthHallLong(29,15,29);
 
 	
-	public static Event eventpenpal = new EventPenPal(5,7,40);
-	public static Event eventreceptionist = new EventReceptionist(9,9,41);
-	public static Event eventreceptionistdesk = new EventReceptionistDesk(9,10,42);
+	public static Event event30 = new WarpSouthHallLongtoAquaHall(7,21,30);
+	public static Event event31 = new WarpSouthHallLongtoStorageRoom(3,12,31);
+	public static Event event32 = new WarpSouthHallLongtoBathroomMens(13, 25,32);
+	public static Event event33 = new WarpSouthHallLongtoBathroomWomens(23,25,33);
+	public static Event event34 = new WarpSouthHallLongtoJCloset(26,10,34);
+	public static Event event35 = new WarpSouthHallLongtoMailroom(30,11,35);
+	public static Event event36 = new WarpSouthHallLongtoLobby(26,37,36);
+	public static Event event37 = new WarpSouthHallLongtoEastFacade(34,37,37);
+	public static Event event38 = new WarpStorageRoomtoSouthHallLong(14,11,38);
+	public static Event event39 = new WarpBathroomMenstoSouthHallLong(14,9,39);
+	public static Event event40 = new WarpBathroomWomenstoSouthHallLong(3,9,40);
+	public static Event event41 = new WarpJClosettoSouthHallLong(5,11,41);
+	public static Event event42 = new WarpMailroomtoSouthHallLong(3,12,42);	
+	public static Event eventBed = new EventBackroomBed(7,8,43);
+	public static Event eventDesk = new EventBackroomDesk(5,7,44);
+	public static Event eventCalandar = new EventBackroomCalendar(12,9,45);
+	public static Event eventAward = new EventBackroomAward(13,9,46);
+	public static Event eventDresser = new EventBackroomDresser(4,10,47);
+	public static Event eventHatrack = new EventBackroomHatrack(8,10,48);
+	public static Event eventTrashcan = new EventBackroomTrashcan(4,7,49);
+	public static Event eventTv = new EventBackroomTv(16,7,50);
+	public static Event eventstory3 = new EventStory3(6,7,51);
+
+	public static Event eventpenpal = new EventPenPal(5,7,52);
+	public static Event eventelevatorpanel = new EventElevatorPanel(6,6,53);
+	public static Event eventemployeeIntro = new EventEmployeeIntro(4,9,54);
+	//Event 55: Elevator Conversations?
+
+	public static Event eventreceptionist = new EmpReceptionist(9,9,56);
+	public static Event eventreceptionistdesk = new EventReceptionistDesk(9,10,57);
+	public static Event eventempCarto = new EmpCartographer(5,12,58);
+	public static Event eventempMover = new EmpMover(13,7,59);
+	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,60);
+	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,61);
+	public static Event eventstory1 = new EventStory1(9,13,62);
+
+	//Event 63: Tutorial Fight
 	
-	public static Event eventemployee1 = new EmpCartographer(5,12,43);
-	public static Event eventemployee2 = new EmpMover(13,7,44);
-	public static Event eventelevatorpanel = new EventElevatorPanel(6,6,45);
-	public static Event eventemployee3 = new EmpJack1(8,19,46);
-	public static Event eventemployee4 = new EmpEmily1(4,26,47);
-	public static Event eventemployee5 = new EmpJerome1(3,31,48);
-	public static Event eventemployee6 = new EmpAndretheTall(6,9,49);
+	public static Event empJack = new EmpJack1(20,16,64);
+	public static Event empEmily = new EmpEmily1(16,12,65);
+	public static Event empJerome = new EmpJerome1(20,30,66);
+	public static Event empAndre = new EmpAndretheTall(14,21,67);
+	public static Event empHelpful = new EmpHelpful(6,10,68);
+	public static Event empVenda = new EmpVenda(8,25,69);
+	public static Event eventVending1 = new EventVending1(0,0,70);
+	//Event 71: 2nd Vending Machine?
+	public static Event empLocksley = new EmpLocksley(5,8,72);
+	public static Event empRussell = new EmpRussell(6,16,73);
+	public static Event empAnderson = new EmpAnderson(8,16,74);
+	public static Event empBrown = new EmpBrown(5,15,75);
+	public static Event empGladys = new EmpGladys(5,13,76);
+	public static Event empTaylor = new EmpTaylor(5,11,77);
+	public static Event empIvan = new EmpIvan(5,7,78);
+	public static Event empSleepy = new EmpSleepy(11,15,79);
+	public static Event empLin = new EmpLin(6,8,80);
+	public static Event empLance = new EmpLance(10,16,81);
+
+	public static Event empAccountant = new EmpAccountant(14,18,82);
+	public static Event empBlottley= new EmpBlottley(14,14,83);
+	public static Event empChester = new EmpChester(14,10,84);
+	public static Event empDonutGuy = new EmpDonutGuy(20,1,85);
+	public static Event empHero = new EmpHero(20,10,86);
+	public static Event empNepo = new EmpNepotist(12,18,87);
+	public static Event empPlum = new EmpPlum(12,14,88);
+	public static Event empQuiddity= new EmpQuiddity(12,10,89);
+	public static Event empSaneone = new EmpSaneone(6,14,90);
+	public static Event empShivers = new EmpShivers(6,10,91);
+	public static Event empVane = new EmpVane(20,27,92);
+	//93: I feel like adding another employee
+	public static Event empWade = new EmpWade(11,27,94);
+	public static Event empCooley = new EmpCooley(6,18,95);
+
+	public static Event empNorm = new EmpNorm(10,15,96);
+	public static Event empPaprika = new EmpPaprika(5,10,97);	
+	public static Event eventfridge = new EventBackroomFridge(14,7,98);	
+	public static Event eventemployeeJorgeInvisible = new EventJorgeInvisible(0,0,99);
+	public static Event eventemployeeJorge = new EventJorge(8,8,100);
+	public static Event eventInvisWall = new EventInvisWall(0,0,101);
+	public static Event empJanitor1 = new EventJanitor1(5,8,102);
+
+	public static Event empGuilliot = new EmpGuilliot(6,10,103);
+	public static Event empHobbes = new EmpHobbes(7,12,104);
+	public static Event empLateNeet = new EmpLateNeet(12,14,105);
+	public static Event empSalty = new EmpSalty(8,10,106);
+	public static Event empWalker = new EmpWalker(5,10,107);
+	public static Event empZ = new EmpZ(7,10,108);
+
+	public static Event empVitor = new EmpVitor(11,16,109);
+	public static Event empFlammable = new EmpFlammable(15,9,110);
+	public static Event empGymnist = new EmpGymnist(17,28,111);
 	
-	public static Event eventemployee10 = new EventEmployee10(12,12,53);
-	public static Event eventemployee11 = new EventEmployee11(12,8,54);
-	public static Event eventemployee12 = new EventEmployee12(12,4,55);
-	public static Event eventemployee13 = new EventEmployee13(16,4,56);
-	public static Event eventemployee14 = new EventEmployee14(16,8,57);
-	public static Event eventemployee15 = new EventEmployee15(8,12,58);
-	public static Event eventemployee16 = new EventEmployee16(8,8,59);
-	public static Event eventemployee17 = new EventEmployee17(8,8,60);
-	public static Event eventemployee18 = new EventEmployee18(8,8,61);
-	public static Event eventemployee19 = new EventEmployee19(8,4,62);
-	public static Event eventemployee20 = new EventEmployee20(8,21,63);
-	public static Event eventemployee21 = new EventEmployee21(12,21,64);
-	public static Event eventemployeeIntro = new EventEmployeeIntro(4,9,65);
-	public static Event eventemployeeJorge = new EventJorge(2,6,66);
-	public static Event eventemployeeJorgeInvisible = new EventJorgeInvisible(2,6,67);
+	public static Event empDowner = new EmpDowner(34,30,112);
+	public static Event empFearful = new EmpFearful(34,27,113);
+	public static Event empHavingaBadDay = new EmpHavinaBadDay(34,24,114);
+	public static Event empJade = new EmpJade(34,21,115);
+	public static Event empNostalgic= new EmpNostalgic(30,21,116);
+	public static Event empTuck = new EmpTuck(30,24,117);
+	public static Event empWeAllKnowOne = new EmpWeAllKnowOne(30,27,118);
+	public static Event empBallpitGuy= new EmpBallpitGuy(9,11,119);
+
 	
-	public static Event eventemployee22 = new EventEmployee22(3,7,68);
-	public static Event eventemployee23 = new EventEmployee23(5,6,69);
-	public static Event eventemployee24 = new EventEmployee24(1,6,70);
-	public static Event eventemployee25 = new EventEmployee25(1,3,71);
-	public static Event eventemployee26 = new EventEmployee26(7,3,72);
-	public static Event eventemployee27 = new EventEmployee27(10,5,73);
-	public static Event eventemployee28 = new EventEmployee28(3,6,74);
-	public static Event eventemployee29 = new EventEmployee29(17,6,75);
-	public static Event eventemployee30 = new EventEmployee30(4,3,76);
-	public static Event eventemployee31 = new EventEmployee31(4,13,77);
-	public static Event eventemployee32 = new EventEmployee32(4,13,78);
-	
-	public static Event eventemployeeBed1 = new EventBackroomBed(9,8,79);
-	public static Event eventemployeeDesk1 = new EventBackroomDesk(2,10,81);
-	public static Event eventemployeeCalandarInvisible = new EventBackroomCalendar(3,11,85);
-	
-	
-	public static Event eventVending1 = new EventVending1(0,0,93);
-	public static Event eventVending1Invisible = new EventVending1Invisible(0,0,94);
-	public static Event eventTvInvis = new EventBackroomTv(9,3,96);
-	public static Event eventWaterCooler = new EventWaterCooler(0,0,97);
+
+
+/*		
+		
 	public static Event eventWaterCoolerInvisible = new EventWaterCoolerInvisible(0,0,98);
 	
 	public static Event fitemeh = new EventTestBattle(0,0,100);
-	
-	public static Event eventInvisWall = new EventInvisWall(0,0,101);
-	public static Event eventemployeeJanitor1 = new EventJanitor1(3,5,102);
-	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,103);
-	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,104);
-	public static Event eventMoverGag = new EventMoverGag(13,1,105);
-		
+			
 	public static Event safe1 = new EventSafe1(10,30,117);
 	public static Event safe2 = new EventSafe2(16,13,118);
 	public static Event safe3 = new EventSafe3(6,3,119);
@@ -125,108 +188,8 @@ public class Event{
 	public static Event safe5 = new EventSafe5(3,3,121);
 	public static Event safe6 = new EventSafe6(0,0,122);
 	
-	public static Event eventemployee33 = new EventEmployee33(4,13,123);
-	public static Event eventemployee34 = new EventEmployee34(4,13,124);
-	public static Event eventemployee35 = new EventEmployee35(4,13,125);
-	public static Event eventemployee36 = new EventEmployee36(4,6,126);
-
-	public static Event event40 = new Event40(1,13,127);
-	
-	public static Event eventemployee37 = new EventEmployee37(7,7,128);
-	public static Event eventemployee38 = new EventEmployee38(21,5,129);
-	public static Event eventemployee39 = new EventEmployee39(21,5,131);
-	public static Event eventemployee40 = new EventEmployee40(21,5,132);
-	public static Event eventemployee41 = new EventEmployee41(21,5,133);
-	public static Event eventemployee42 = new EventEmployee42(21,5,134);
-	public static Event eventemployee43 = new EventEmployee43(21,5,135);
-	public static Event eventemployee44 = new EventEmployee44(21,5,136);
-	
-	public static Event eventstory1 = new EventStory1(7,8,137);
 	public static Event eventstory2 = new EventStory2(40,3,138);
-	public static Event eventstory3 = new EventStory3(21,5,139);
-
-	public static Event eventemployee45 = new EventEmployee45(21,5,146);
-	public static Event eventemployee46 = new EventEmployee46(21,5,147);
-	public static Event eventemployee47 = new EventEmployee47(21,5,148);
-	public static Event eventemployee48 = new EventEmployee48(21,5,149);
-	public static Event eventemployee49 = new EventEmployee49(21,5,150);
-	public static Event eventemployee50 = new EventEmployee50(21,5,151);
-	
-	public static Event event41 = new Event41(0,4,160);
-	public static Event event42 = new Event42(5,2,161);
-	public static Event event43 = new Event43(9,2,162);
-	public static Event event44 = new Event44(11,2,163);
-	public static Event event45 = new Event45(2,9,164);
-	public static Event event46 = new Event46(6,9,165);
-	public static Event event47 = new Event47(11,29,166);
-	public static Event event48 = new Event48(11,15,167);
-	public static Event event49= new Event49(0,0,168);
-	public static Event event50 = new Event50(6,18,169);
-	public static Event event51 = new Event51(6,1,170);
-	public static Event event52 = new Event52(3,11,171);
-	public static Event event53 = new Event53(3,2,172);
-	public static Event event54 = new Event54(6,2,173);
-	//55,56,57 to other bus stops
-	
-	public static Event event59 = new Event59(3,9,178);
-	public static Event event60 = new Event60(6,2,179);
-	public static Event event61 = new Event61(7,15,180);
-	public static Event event62 = new Event62(7,23,181);
-	public static Event event63 = new Event63(7,31,182);
-	public static Event event64 = new Event64(27,15,183);
-	public static Event event65 = new Event65(27,23,184);
-//66 to right east offices
-	public static Event event67 = new Event67(0,42,186);
-	public static Event event68 = new Event68(6,42,187);
-	public static Event event69 = new Event69(20,5,188);
-	public static Event event70 = new Event70(0,5,189);
-	public static Event event71 = new Event71(7,20,190);
-	public static Event event72 = new Event72(20,20,191);
-	
-	public static Event event73 = new Event73(14,4,192);
-	public static Event event74 = new Event74(14,22,193);
-	public static Event event75 = new Event75(5,8,194);
-	public static Event event76 = new Event76(5,15,195);
-	public static Event event77 = new Event77(4,12,196);
-	public static Event event78 = new Event78(14,6,197);
-	public static Event event79 = new Event79(4,4,198);
-	
-	public static Event event80 = new Event80(17,14,199);
-	public static Event event81 = new Event81(4,6,200);
-	public static Event event82 = new Event82(4,15,201);
-	public static Event event83 = new Event83(4,20,202);
-	public static Event event84 = new Event84(9,7,203);
-	public static Event event85 = new Event85(4,3,204);
-	public static Event event86 = new Event86(10,7,205);
-	public static Event event87 = new Event87(0,7,206);
-	
-	public static Event event88 = new Event88(10,34,207);
-	
-	//events 89-96 east wing left lvl3 rooms
-	public static Event event97 = new Event97(0,9,216);
-	public static Event event98 = new Event98(7,12,217);
-	public static Event event99 = new Event99(14,9,218);
-	public static Event event100 = new Event100(4,3,219);
-	public static Event event101 = new Event101(13,15,220);
-	//event 102 :East Wing right room1 path
-	
-	public static Event event103 = new Event103(0,11,222);
-	public static Event event104 = new Event104(4,24,223);
-	public static Event event105 = new Event105(5,7,224);
-	public static Event event106 = new Event106(11,17,225);
-	public static Event event107 = new Event107(8,21,226);
-	public static Event event108 = new Event108(5,17,227);
-	public static Event event109 = new Event109(9,8,228);
-	public static Event event110 = new Event110(3,8,229);
-	public static Event event111 = new Event111(7,5,230);
-	public static Event event112 = new Event112(22,5,231);
-	
-	//event 113,114,115 East Wing Right Atria exits
-	
-	public static Event event116 = new Event116(26,13,235);
-
-	//event 117,118,119,120 East Wing 2ndFloor Atria
-	
+*/
 	
 	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
