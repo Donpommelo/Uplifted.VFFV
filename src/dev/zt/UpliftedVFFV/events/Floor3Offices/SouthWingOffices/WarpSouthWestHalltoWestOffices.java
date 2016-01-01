@@ -14,11 +14,14 @@ public class WarpSouthWestHalltoWestOffices extends Event {
 	}
 	
 	public void run(){
-		if(Event.events[66].isSelfswitch1()){
+//		if(!super.getSwitch(2)){
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"This door is locked from the other side./");
 			super.Dialog(d, 0, this.getId(), true);
-		}
+//		}
+//		else{
+			
+//		}
 	}
 
 

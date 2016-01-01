@@ -7,19 +7,12 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.tiles.TileSorter;
 import dev.zt.UpliftedVFFV.utils.Utils;
-import dev.zt.UpliftedVFFV.world.Maps.*;
 
 
 //Tentative World class. Unused right now.
 
 
 public class World {
-	public static World[] worldsElevators = new World[100];
-	
-	public static World homesweetelevator = new WorldHomeSweetElevator(0);
-
-			
-	public static World[] worlds3rdFloor = new World[100];
 	
 	public WorldManager worldmanager;
 	private int width, height;					//size of world 
@@ -32,14 +25,6 @@ public class World {
 	
 	public World(String path, int id, int floor){
 		
-		switch(floor){
-		case 0:
-			worldsElevators[id] = this;
-		case 3:
-			worlds3rdFloor[id] = this;
-			break;
-				
-		}
 	}
 	
 	public void tick(){

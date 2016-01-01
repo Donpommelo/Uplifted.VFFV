@@ -13,6 +13,12 @@ public class WarpSouthOfficetoLobby extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 3, 8,"South Lobby");
+		if(!super.getSwitch(2)){
+			super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 3, 8,"South Lobby");
+
+		}
+		else{
+			super.transport("/Worlds/Floor3Offices/SouthWingOffices/PostJorgeLobby.txt", 3, 8,"South Lobby");
+		}
 	}
 }

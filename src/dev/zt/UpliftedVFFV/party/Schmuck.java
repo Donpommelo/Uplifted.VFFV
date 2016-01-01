@@ -31,9 +31,9 @@ public class Schmuck implements Serializable{
 	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
 	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus!
-	//cooldownBonus, critAvoid
+	//cooldownBonus, critAvoid, channelingBonus
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	public int[] elemPoints;
 	public int[] buffedElemPoints = {0,0,0,0,0,0};
@@ -1232,6 +1232,14 @@ public class Schmuck implements Serializable{
 	
 	public void setCritAvoid(double bonus){
 		bonusStats[32] = bonus;
+	}
+	
+	public double getChannelBonus(){
+		return bonusStats[33];
+	}
+	
+	public void setChannelBonus(double bonus){
+		bonusStats[33] = bonus;
 	}
 	
 	public int getRedPoints(){

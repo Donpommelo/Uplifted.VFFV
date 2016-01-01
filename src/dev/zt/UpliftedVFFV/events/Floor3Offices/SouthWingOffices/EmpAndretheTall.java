@@ -55,9 +55,12 @@ public class EmpAndretheTall extends Event {
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:
-				super.moveUp();
+				if(super.getY()>14){
+					super.moveUp();
+				}
 				break;
 			case 1:
+				if(super.getY()<21)
 				super.moveDown();
 				break;
 			case 2:

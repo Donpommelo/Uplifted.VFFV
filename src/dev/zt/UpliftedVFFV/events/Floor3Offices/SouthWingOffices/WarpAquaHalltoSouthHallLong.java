@@ -13,6 +13,6 @@ public class WarpAquaHalltoSouthHallLong extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 7, 20,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 7, 20,"South Offices");
 	}
 }

@@ -14,7 +14,7 @@ public class WarpSouthHallLongtoMailroom extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/Mailroom.txt", 4, 12,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/Mailroom.txt", 4, 12,"Mailroom");
 	
 	}
 	

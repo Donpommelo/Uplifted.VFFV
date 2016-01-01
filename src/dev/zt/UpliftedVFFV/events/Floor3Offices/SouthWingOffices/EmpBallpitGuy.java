@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 
 public class EmpBallpitGuy extends Event {
 
-	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeM2);
+	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM2);
 	public static int stagenum = 0;
 	public EmpBallpitGuy(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);

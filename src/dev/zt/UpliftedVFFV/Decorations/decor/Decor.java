@@ -28,7 +28,7 @@ public class Decor {
 	public static Decor decorpelicanfloor = new DecorElevatorPelican(5);
 	public static Decor decorwallpanel = new DecorWallPanel(6);
 	public static Decor decorsofa1 = new DecorSofa1(7);
-	public static Decor decorsofa2 = new DecorSofa1(8);
+	public static Decor decorsofa2 = new DecorSofa2(8);
 	public static Decor table0 = new DecorTable0(9);
 	public static Decor table1 = new DecorTable1(10);
 	public static Decor table2 = new DecorTable2(11);
@@ -65,7 +65,35 @@ public class Decor {
 	public static Decor poster1 = new DecorPoster1(42);
 	public static Decor poster2 = new DecorPoster2(43);
 	public static Decor projector = new DecorProjectorScreen(44);
-
+	public static Decor watercooler = new DecorWaterCooler(45);
+	public static Decor vendingmachine = new DecorVendingMachine(46);
+	public static Decor filingcabinet = new DecorFilingCabinet(47);
+	public static Decor workdesk1 = new DecorWorkDesk1(48);
+	public static Decor transparenttable= new DecorTransparentTable(49);
+	public static Decor smallpokertable = new DecorSmallPokerTable(50);
+	public static Decor snookertable = new DecorSnookerTable(51);
+	public static Decor decorsofa3 = new DecorSofa3(52);
+	public static Decor decorsofa4 = new DecorSofa4(53);
+	public static Decor workdesk2 = new DecorWorkDesk2(54);
+	public static Decor malesign = new DecorMaleSign(55);
+	public static Decor femalesign = new DecorFemaleSign(56);
+	public static Decor sink = new DecorSink(57);
+	public static Decor sinkmirror = new DecorSinkMirror(58);
+	public static Decor toilet = new DecorToilet(59);
+	public static Decor bigpokertable = new DecorBigPokerTable(60);
+	public static Decor aquatunnelarchvert1 = new DecorAquaTunnelArchVert1(61);
+	public static Decor aquatunnelarchvert2 = new DecorAquaTunnelArchVert2(62);
+	public static Decor aquatunnelarchvert3 = new DecorAquaTunnelArchVert3(63);
+	public static Decor aquatunnelarchhorz1 = new DecorAquaTunnelArchHorz1(64);
+	public static Decor aquatunnelarchhorz2 = new DecorAquaTunnelArchHorz2(65);
+	public static Decor aquatunnelarchhorz3 = new DecorAquaTunnelArchHorz3(66);
+	public static Decor aquatunnelarchcorner = new DecorAquaTunnelArchCorner(67);
+	public static Decor janitorbench = new DecorJanitorBench(68);
+	public static Decor janitorcart = new DecorJanitorCart(69);
+	public static Decor janitorshelves = new DecorJanitorShelves(70);
+	public static Decor filterunderwater = new FilterUnderwater(71);
+	public static Decor filterfog = new FilterFog(72);
+	public static Decor filterdark = new FilterDark(73);
 
 
 	public Decor(Game g, GameState gs){
@@ -101,5 +129,10 @@ public class Decor {
 	//as well as other events.
 	public boolean renderBelow(){
 		return true;
+	}
+	
+	//Returns whether decoration moves when the player moves or not. Default is yes.
+	public boolean followCamera(){
+		return false;
 	}
 }

@@ -14,7 +14,7 @@ public class WarpJClosettoSouthHallLong extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 26, 11,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 26, 11,"South Offices");
 	}
 
 }

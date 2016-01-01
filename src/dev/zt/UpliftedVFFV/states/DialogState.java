@@ -37,21 +37,6 @@ public class DialogState extends State {
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 	
-	public DialogState(Game game, StateManager sm, int start, int end, int eventId, boolean arrow){
-		super(game,sm);
-		setStateType("dialogue");
-		this.linenum=start;
-		this.endline=end;
-		this.EventId=eventId;
-		this.yoffset = 0;
-		this.ybob = 12;
-		this.yrise = false;
-		this.dialognum = 0;
-		dialogamount = 1;
-		showArrow = arrow;
-		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-	}
-	
 	public DialogState(Game game, StateManager sm, Dialog[] d, int dialoglength, int eventId, boolean arrow){
 		super(game,sm);
 		this.dialogs = d;

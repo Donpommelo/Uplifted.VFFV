@@ -11,7 +11,7 @@ public class EmpReceptionist extends Event {
 	public boolean selfswitch1=false;
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeF);
 	public EmpReceptionist(float x, float y, int idnum) {
-		super(img,idnum,x, y);
+		super(img,idnum,x, y,0);
 	}
 	
 	public void run(){

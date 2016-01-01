@@ -104,6 +104,21 @@ public class Tile {
 		case 24:
 			t = new GlassTile();
 			break;
+		case 25:
+			t = new BlueSquareCarpet();
+			break;
+		case 26:
+			t = new BlueDiagCarpet();
+			break;
+		case 27:
+			t = new CircleCarpet();
+			break;
+		case 28:
+			t = new SandTile();
+			break;
+		case 29:
+			t = new DarkSandTile();
+			break;
 			
 		}
 		return t;

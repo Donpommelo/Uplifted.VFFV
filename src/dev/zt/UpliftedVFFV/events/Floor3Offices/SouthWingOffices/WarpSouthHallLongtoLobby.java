@@ -16,8 +16,8 @@ public class WarpSouthHallLongtoLobby extends Event {
 	}
 		
 	public void run(){
-		if(Event.events[100].isSelfswitch1()){
-			super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 15, 8,"");
+		if(!super.getSwitch(2)){
+			super.transport("/Worlds/Floor3Offices/SouthWingOffices/PostJorgeLobby.txt", 15, 8,"South Lobby");
 		}
 		else{
 			Dialog[] d = new Dialog[1];
@@ -26,7 +26,10 @@ public class WarpSouthHallLongtoLobby extends Event {
 	}
 	
 	public boolean isSolid(){
-		return !Event.events[66].isSelfswitch1();
+		return true;
 	}
-	
+
+	public boolean isDoor(){
+		return true;
+	}
 }

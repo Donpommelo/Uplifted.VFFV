@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import dev.zt.UpliftedVFFV.dialog.Dialog;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 //This is initialized upon opening the game
@@ -35,7 +34,7 @@ public class Assets {
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, ActuallyWhite, Black, Void,RedCarpet,WoodBoard, BlueCarpet, StoneFloor, AquaTile,WhiteTile
-	,RowCarpet,	WhiteCarpet, GlassTile;
+	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
@@ -45,8 +44,9 @@ public class Assets {
 	public static BufferedImage WritingDesk1, Bed1,Tv, Trashcan, Calendar, WelcomeMat,Dresser, HatRack, Sign, StairsUp, StairsDown,
 		HorizRug, VertiRug, Cupboard, Fridge, KitchenCounter, FlowerTable, Monolith, notPenPal, Cuidado, InfoPanel, Board, Projector,
 		StairsRight0, StairsRight1, StairsRight2, StairsRight3, StairsLeft0, StairsLeft1, StairsLeft2, StairsLeft3,
-		Poster1, Poster2;
-	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, MoverSofa1,MoverSofa2,MoverGag, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
+		Poster1, Poster2, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart, JanitorShelves,
+		VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3, TunnelArchCorner;
+	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
@@ -54,6 +54,7 @@ public class Assets {
 	
 	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls, LobbyCeiling, LobbyWalls;
 		
+	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter;
 	
 	public static Dialog[] dialog;
 	
@@ -76,6 +77,7 @@ public class Assets {
 		SpriteSheet TilesetBackroomWalls = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorsAndBackroomWalls.png"));
 		SpriteSheet ThirdFloorTiles = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloor.png"));
 		SpriteSheet ThirdFloorWalls = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorWalls.png"));
+		SpriteSheet ThirdFloorMisc = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorMisc.png"));
 
 		
 		//Load system resources, reused resources and stuff.
@@ -194,6 +196,12 @@ public class Assets {
 		WhiteCarpet = ThirdFloorTiles.crop(2*width, 0, 2*width, 3*height);
 		StairsUp = ThirdFloorTiles.crop(4*width,0,2*width,2*height);
 		StairsDown = ThirdFloorTiles.crop(6*width,0,2*width,2*height);
+		BlueSquareCarpet = ThirdFloorTiles.crop(14*width, 0, 2*width, 3*height);
+		BlueDiagCarpet = ThirdFloorTiles.crop(0, 3*height, 2*width, 3*height);
+		CircleCarpet = ThirdFloorTiles.crop(2*width, 3*height, 2*width, 3*height);
+		SandTile = ThirdFloorTiles.crop(4*width, 3*height, 2*width, 3*height);
+		DarkSandTile = ThirdFloorTiles.crop(6*width, 3*height, 2*width, 3*height);
+
 		StairsRight0 = ThirdFloorTiles.crop(9*width,0,width,height);
 		StairsRight1 = ThirdFloorTiles.crop(9*width,height,width,height);
 		StairsRight2 = ThirdFloorTiles.crop(9*width,2*height,width,height);
@@ -234,24 +242,41 @@ public class Assets {
 		Monolith = FurnitureBackroom.crop(6*width,4*height,width,height);
 		notPenPal = FurnitureBackroom.crop(7*width,3*height,width,2*height);
 		Cuidado = FurnitureBackroom.crop(8*width,4*height,width,height);
+		JanitorBench = FurnitureBackroom.crop(12*width,3*height,width,height);
+		JanitorCart = FurnitureBackroom.crop(13*width,3*height,2*width,2*height);
+		JanitorShelves = FurnitureBackroom.crop(15*width,3*height,width,2*height);
+
 		InfoPanel = Furniture3rdFloor.crop(14*width, 0, width, height);
 		Poster1 = Furniture3rdFloor.crop(0, 2*height, width, height);
 		Poster2 = Furniture3rdFloor.crop(width, 2*height, width, height);
 		Board = Furniture3rdFloor.crop(6*width, 5*height, 2*width, height);
 		Projector = Furniture3rdFloor.crop(8*width, 5*height, 2*width, 2*height);
+		TransparentTable = Furniture3rdFloor.crop(10*width, 5*height, 2*width, height);
+		SmallPokerTable = Furniture3rdFloor.crop(12*width, 5*height, 2*width, height);
+		SnookerTable = Furniture3rdFloor.crop(14*width, 5*height, 2*width, height);
+		BigPokerTable = Furniture3rdFloor.crop(0, 6*height, 3*width, 6*height);
+		
+		
+		WorkDesk1 = Furniture3rdFloor.crop(0, 3*height, width*2, height*2);
+		WorkDesk2 = Furniture3rdFloor.crop(0, 0, width*2, height*2);
 
-
-		WorkDesk1 = Furniture3rdFloor.crop(0, 0, width*2, height);
 		FilingCabinet = Furniture3rdFloor.crop(64, 0, width, height);
-		Sofa1 = Furniture3rdFloor.crop(96, 0, width*2, height);
-		Sofa2 = Furniture3rdFloor.crop(288, 0, width, height*2); 
-		SafeClosed = Furniture3rdFloor.crop(160, 0, width, height);
-		SafeOpened = Furniture3rdFloor.crop(160, 32, width, height);
-		WaterCooler = Furniture3rdFloor.crop(192, 0, width, height*2);
-		Clock = Furniture3rdFloor.crop(224, 0, width, height);
-		VendingMachine = Furniture3rdFloor.crop(256, 0, width, height*2);
-		MoverSofa1 = Furniture3rdFloor.crop(288, 0, width, height);
-		MoverSofa2 = Furniture3rdFloor.crop(288, 32, width, height);
+		Sofa1 = Furniture3rdFloor.crop(3*width, 0, width*2, 2*height);
+		Sofa2 = Furniture3rdFloor.crop(9*width, 0, width, height*2); 
+		Sofa3 = Furniture3rdFloor.crop(3*width, 2*height, width*2, 2*height);
+		Sofa4 = Furniture3rdFloor.crop(9*width, 2*height, width, height*2); 
+		SafeClosed = Furniture3rdFloor.crop(5*width, 0, width, height);
+		SafeOpened = Furniture3rdFloor.crop(5*width, height, width, height);
+		WaterCooler = Furniture3rdFloor.crop(6*width, 0, width, height*2);
+		Clock = Furniture3rdFloor.crop(7*width, 0, width, height);
+		VendingMachine = Furniture3rdFloor.crop(8*width, 0, width, height*2);
+		VertTunnelArch1 = ThirdFloorMisc.crop(0, 0, 7*width, height);
+		VertTunnelArch2 = ThirdFloorMisc.crop(0,1*height, 7*width, 3*height);
+		VertTunnelArch3 = ThirdFloorMisc.crop(0, 4*height, 7*width, height);
+		HorzTunnelArch1 = ThirdFloorMisc.crop(7*width, 0, width, 7*height);
+		HorzTunnelArch2 = ThirdFloorMisc.crop(8*width, 0, 3*width, 7*height);
+		HorzTunnelArch3 = ThirdFloorMisc.crop(11*width, 0, width, 7*height);
+		TunnelArchCorner = ThirdFloorMisc.crop(0, 5*height, 7*width, 7*height);
 		
 		Table0 = FurnitureBackroom.crop(9*width, 3*height, width, height);
 		Table1 = FurnitureBackroom.crop(9*width, 3*height, width, height);
@@ -270,20 +295,11 @@ public class Assets {
 		MaleSign = Furniture3rdFloor.crop(3*width, 5*height, width, height);
 		FemaleSign = Furniture3rdFloor.crop(4*width, 5*height, width, height);
 		SinkMirror = Furniture3rdFloor.crop(5*width, 5*height, width, height*2);
-		
-		//Dialog loaded from text files.
-		//TODO: Relocate to world asset loader? Only load dialogue for specific area.
-		//File consists of first, a number equal to the number of dialog lines. update this when adding new lines
-		//next, a long list of quadruplets containing the character's name that shows up in text boxes ("meep"=no name box)
-		//then an image that serves as their talking sprite
-		//after that,  a 1 or 0 to determine whether they stand on the left or right respectively
-		//finally, the actual dialog of what they say. / indicates a skipping of line
-		String file = Utils.loadFileAsString("/Text/DialogV2.txt");
-		String[] tokens = file.split("\\r?\\n");
-		dialog=new Dialog[Utils.parseInt(tokens[0])];
-		for(int i = 0;i<Utils.parseInt(tokens[0]);i++){
-			dialog[i]=new Dialog((tokens[4*i+1]),"/CharacterBusts/"+tokens[4*i+2],Utils.parseInt(tokens[4*i+3]),tokens[4*i+4]);
-		}
+			
+		UnderwaterFilter = ImageLoader.loadImage("/textures/UnderwaterFilter.png");
+		DarkFilter = ImageLoader.loadImage("/textures/DarkFilter.png");
+		FogFilter = ImageLoader.loadImage("/textures/FogFilter.png");
+
 	}
 
 }

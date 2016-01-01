@@ -202,6 +202,12 @@ public class status implements Serializable{
 		return mp;
 	}	
 	
+	//Upon completing the channeling of any channeling move.
+	//Implemented in the Channeling Status
+	public void doneChanneling(Schmuck s, BattleState bs){
+		
+	}
+	
 
 	//not currently used
 	public void run(Schmuck s){

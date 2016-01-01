@@ -7,5 +7,8 @@ public class DecorSofa1 extends Decor{
 	public DecorSofa1(int idnum) {
 		super(Assets.Sofa1, idnum);
 	}
-
+	
+	public boolean renderBelow(){
+		return false;
+	}
 }

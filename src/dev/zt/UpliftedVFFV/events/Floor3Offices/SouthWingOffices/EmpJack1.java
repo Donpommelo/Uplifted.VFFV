@@ -65,11 +65,14 @@ public class EmpJack1 extends Event {
 				super.moveDown();
 				break;
 			case 2:
-				super.moveLeft();
-				 break;
-			case 3:
-				super.moveRight();
+				if(super.getX()>17){
+					super.moveLeft();
+				}
 				break;
+			case 3:
+				if(super.getX()<23){
+					super.moveRight();
+				}
 			}
 			move = 0;
 		}

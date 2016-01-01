@@ -59,10 +59,14 @@ public class EmpCartographer extends Event {
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:
-				super.moveUp();
+				if(this.getY()>10){
+					super.moveUp();
+				}
 				break;
 			case 1:
-				super.moveDown();
+				if(this.getX()<12){
+					super.moveDown();
+				}
 				break;
 			case 2:
 				super.moveLeft();

@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
@@ -50,7 +51,19 @@ public class WarpSElevatortoLobby extends Event {
 					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 6, 16,"Bathhouse");
 					break;
 				case 2:
-					super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 9, 14,"South Lobby");
+					if(!super.getSwitch(2)){
+						super.transport("/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt", 9, 14,"South Lobby");
+						if(!this.isSelfswitch3()){
+							this.setSelfswitch3(true);
+							Dialog[] d = new Dialog[2];
+							d[0] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ," Floor 3! This place certainly seems familiar!/We should ask around to see if anyone can help us find Suite 521./");
+							d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll look around for someone knowledgable./");
+							super.Dialog(d, 1, this.getId(), true);
+						}
+					}
+					else{
+						super.transport("/Worlds/Floor3Offices/SouthWingOffices/PostJorgeLobby.txt", 9, 14,"South Lobby");
+					}
 					break;
 				case 3:
 					break;

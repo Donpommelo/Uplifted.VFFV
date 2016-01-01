@@ -67,8 +67,10 @@ public class EmpJerome1 extends Event {
 				super.moveDown();
 				break;
 			case 2:
-				super.moveLeft();
-				 break;
+				if(super.getX()>16){
+					super.moveLeft();
+				}
+				break;
 			case 3:
 				super.moveRight();
 				break;

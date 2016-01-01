@@ -16,7 +16,7 @@ public class WarpSouthOfficetoBoardroom extends Event {
 
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,18,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,16,"");
 	}
 
 

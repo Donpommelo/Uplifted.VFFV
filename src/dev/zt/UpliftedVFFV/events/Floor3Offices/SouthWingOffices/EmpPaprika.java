@@ -14,7 +14,7 @@ import dev.zt.UpliftedVFFV.inventory.equipables.Paperweight;
 public class EmpPaprika extends Event {
 
 	public static int stagenum = 1;
-	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeF);
+	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.EmployeeF);
 	public EmpPaprika(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
@@ -45,7 +45,7 @@ public class EmpPaprika extends Event {
 				super.loot(new Paperweight(), 1);
 				break;
 			case 1:
-				Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
+				Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 				this.setSelfswitch1(true);
 				this.setstage(0);
 				break;

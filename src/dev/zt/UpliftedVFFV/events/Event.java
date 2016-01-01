@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
-import dev.zt.UpliftedVFFV.events.Floor3Offices.*;
+import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.*;
 import dev.zt.UpliftedVFFV.events.EventsCommon.*;
@@ -68,9 +68,8 @@ public class Event{
 	public static Event event26 = new WarpWorkRoom2toSouthHallSmall(13,13,26);
 	
 	//Event 27: Bath House to South Small Hall
-	public static Event event28 = new WarpAquaHalltoSouthHallShort(15,26,28);
-	public static Event event29 = new WarpAquaHalltoSouthHallLong(29,15,29);
-
+	public static Event event28 = new WarpAquaHalltoSouthHallShort(15,25,28);
+	public static Event event29 = new WarpAquaHalltoSouthHallLong(29,18,29);
 	
 	public static Event event30 = new WarpSouthHallLongtoAquaHall(7,21,30);
 	public static Event event31 = new WarpSouthHallLongtoStorageRoom(3,12,31);
@@ -93,8 +92,8 @@ public class Event{
 	public static Event eventHatrack = new EventBackroomHatrack(8,10,48);
 	public static Event eventTrashcan = new EventBackroomTrashcan(4,7,49);
 	public static Event eventTv = new EventBackroomTv(16,7,50);
-	public static Event eventstory3 = new EventStory3(6,7,51);
-
+	public static Event eventMonolith = new EventMonolith(9,11,51);
+	
 	public static Event eventpenpal = new EventPenPal(5,7,52);
 	public static Event eventelevatorpanel = new EventElevatorPanel(6,6,53);
 	public static Event eventemployeeIntro = new EventEmployeeIntro(4,9,54);
@@ -102,11 +101,11 @@ public class Event{
 
 	public static Event eventreceptionist = new EmpReceptionist(9,9,56);
 	public static Event eventreceptionistdesk = new EventReceptionistDesk(9,10,57);
-	public static Event eventempCarto = new EmpCartographer(5,12,58);
+	public static Event eventempCarto = new EmpCartographer(5,11,58);
 	public static Event eventempMover = new EmpMover(13,7,59);
-	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,60);
-	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,61);
-	public static Event eventstory1 = new EventStory1(9,13,62);
+//	public static Event eventMoverSofa1 = new EventMoverSofa1(12,3,60);
+//	public static Event eventMoverSofa2 = new EventMoverSofa2(12,4,61);
+//	public static Event eventstory1 = new EventStory1(9,13,62);
 
 	//Event 63: Tutorial Fight
 	
@@ -119,33 +118,33 @@ public class Event{
 	public static Event eventVending1 = new EventVending1(0,0,70);
 	//Event 71: 2nd Vending Machine?
 	public static Event empLocksley = new EmpLocksley(5,8,72);
-	public static Event empRussell = new EmpRussell(6,16,73);
-	public static Event empAnderson = new EmpAnderson(8,16,74);
-	public static Event empBrown = new EmpBrown(5,15,75);
-	public static Event empGladys = new EmpGladys(5,13,76);
-	public static Event empTaylor = new EmpTaylor(5,11,77);
-	public static Event empIvan = new EmpIvan(5,7,78);
-	public static Event empSleepy = new EmpSleepy(11,15,79);
-	public static Event empLin = new EmpLin(6,8,80);
-	public static Event empLance = new EmpLance(10,16,81);
+	public static Event empRussell = new EmpRussell(7,14,73);
+	public static Event empAnderson = new EmpAnderson(8,14,74);
+	public static Event empBrown = new EmpBrown(6,13,75);
+	public static Event empGladys = new EmpGladys(6,12,76);
+	public static Event empTaylor = new EmpTaylor(6,11,77);
+	public static Event empIvan = new EmpIvan(6,10,78);
+	public static Event empSleepy = new EmpSleepy(10,13,79);
+	public static Event empLin = new EmpLin(7,7,80);
+	public static Event empLance = new EmpLance(9,14,81);
 
 	public static Event empAccountant = new EmpAccountant(14,18,82);
 	public static Event empBlottley= new EmpBlottley(14,14,83);
 	public static Event empChester = new EmpChester(14,10,84);
-	public static Event empDonutGuy = new EmpDonutGuy(20,1,85);
-	public static Event empHero = new EmpHero(20,10,86);
-	public static Event empNepo = new EmpNepotist(12,18,87);
-	public static Event empPlum = new EmpPlum(12,14,88);
-	public static Event empQuiddity= new EmpQuiddity(12,10,89);
+	public static Event empDonutGuy = new EmpDonutGuy(19,14,85);
+	public static Event empHero = new EmpHero(19,10,86);
+	public static Event empNepo = new EmpNepotist(11,18,87);
+	public static Event empPlum = new EmpPlum(11,14,88);
+	public static Event empQuiddity= new EmpQuiddity(11,10,89);
 	public static Event empSaneone = new EmpSaneone(6,14,90);
 	public static Event empShivers = new EmpShivers(6,10,91);
-	public static Event empVane = new EmpVane(20,27,92);
-	//93: I feel like adding another employee
+	public static Event empVane = new EmpVane(19,27,92);
+	public static Event eventwatercooler = new EventWaterCooler(7,18,93);
 	public static Event empWade = new EmpWade(11,27,94);
 	public static Event empCooley = new EmpCooley(6,18,95);
 
 	public static Event empNorm = new EmpNorm(10,15,96);
-	public static Event empPaprika = new EmpPaprika(5,10,97);	
+	public static Event empPaprika = new EmpPaprika(5,13,97);	
 	public static Event eventfridge = new EventBackroomFridge(14,7,98);	
 	public static Event eventemployeeJorgeInvisible = new EventJorgeInvisible(0,0,99);
 	public static Event eventemployeeJorge = new EventJorge(8,8,100);
@@ -171,27 +170,22 @@ public class Event{
 	public static Event empTuck = new EmpTuck(30,24,117);
 	public static Event empWeAllKnowOne = new EmpWeAllKnowOne(30,27,118);
 	public static Event empBallpitGuy= new EmpBallpitGuy(9,11,119);
+	public static Event empMrClean = new EmpMrClean(11,7,120);
+	public static Event empBothered= new EmpBothered(6,7,121);
+	
+	public static Event safe1 = new EventSafe1(18,23,130);
+	public static Event safe2 = new EventSafe2(11,8,131);
+	public static Event safe3 = new EventSafe3(0,0,132);
+	public static Event safe4 = new EventSafe3(8,7,133);
 
+	public static Event sign1 = new EventSign1(7,10,134);
+	public static Event sign2 = new EventSign2(29,32,135);
 	
+	
+	public static Event event136 = new WarpLobbytoSouthOfficeHallway(3,8,136);
+	public static Event event137 = new WarpLobbytoFacade(8,6,137);
+	public static Event event138 = new WarpLobbytoActualEast(17,7,138);
 
-
-/*		
-		
-	public static Event eventWaterCoolerInvisible = new EventWaterCoolerInvisible(0,0,98);
-	
-	public static Event fitemeh = new EventTestBattle(0,0,100);
-			
-	public static Event safe1 = new EventSafe1(10,30,117);
-	public static Event safe2 = new EventSafe2(16,13,118);
-	public static Event safe3 = new EventSafe3(6,3,119);
-	public static Event safe4 = new EventSafe4(5,3,120);
-	public static Event safe5 = new EventSafe5(3,3,121);
-	public static Event safe6 = new EventSafe6(0,0,122);
-	
-	public static Event eventstory2 = new EventStory2(40,3,138);
-*/
-	
-	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	protected BufferedImage tex;
 	public Creature test;
@@ -354,15 +348,6 @@ public class Event{
 		}
 	}
 	
-	public static void Dialog(int firstline, int lastline, int eventId, boolean arrow){
-		StateManager.states.push(new DialogState(game, statemanager, firstline, lastline, eventId, arrow));
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public static void Dialog(Dialog[] d, int dialoglength, int eventId, boolean arrow){
 		StateManager.states.push(new DialogState(game, statemanager, d, dialoglength, eventId, arrow));
 		try {
@@ -375,6 +360,16 @@ public class Event{
 	//Pushes a simple notification window.
 	public static void Notification(String message, int eventId){
 		StateManager.states.push(new NotificationState(game, statemanager, message, eventId));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//Pushes a examiniation window.
+	public static void Examine(BufferedImage i, int eventId){
+		StateManager.states.push(new ExamineState(game, statemanager, i, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

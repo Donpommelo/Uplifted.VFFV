@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
@@ -9,17 +10,19 @@ public class EventSafe3 extends Event {
 
 
 	static BufferedImage img = Assets.SafeClosed;
-	boolean selfswitch1 = false;
+	public static int stagenum = 0;
 	public EventSafe3(float x, float y, int idnum) {
-		super(img,idnum,x, y);
+		super(img,idnum,x, y, stagenum);
 	}
 	
 	public void run(){
-		if(!selfswitch1){
-			super.Dialog(180, 180,this.getId());
-			super.scriptChange(11);
+		if(!this.isSelfswitch1()){
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe was filled with Company Script!/Finders keepers!/");
+			super.Dialog(d, 0, this.getId(), true);
+			super.scriptChange(15);
 			Event.events[this.getId()].setTex(Assets.SafeOpened);
-			selfswitch1 = true;
+			this.setSelfswitch1(true);
 		}
 	}
 	

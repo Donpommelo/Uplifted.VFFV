@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EmpIvan extends Event {
 	
 	public static int stagenum = 1;
-	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM1);
+	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeM1);
 	public EmpIvan(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
@@ -37,7 +37,7 @@ public class EmpIvan extends Event {
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM1));
 			this.setstage(0);
 			break;
 			
