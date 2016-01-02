@@ -56,7 +56,7 @@ public class EmpPaprika extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Drat. All my paperwork blew away./");
 			super.Dialog(d, 0, this.getId(), true);
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 			this.setstage(1);
 		}
 

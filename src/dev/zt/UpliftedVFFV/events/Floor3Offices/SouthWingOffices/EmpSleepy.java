@@ -38,7 +38,7 @@ public class EmpSleepy extends Event {
 			case 0: 
 				Dialog[] d = new Dialog[4];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Aw shucks. Just my luck./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I left my phone in this room, but when I came back to get it, there was a meeting going on/that I was supposed to attend, and now I'm stuck here./");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I left my phone in this room, but when I came back to get it, there was a meeting going/on that I was supposed to attend, and now I'm stuck here./");
 				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey, why don't you take one of these?/I always keep a couple on me in case I pass out from boredom./");
 				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Smellingsalt!/Consume to revive incapacitated allies!/");
 				super.Dialog(d, 3, this.getId(), true);	

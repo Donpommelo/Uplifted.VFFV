@@ -55,7 +55,7 @@ public class EventJorge extends Event {
 					game.getAudiomanager().playMusic(2, true);
 				}
 				Dialog[] d2 = new Dialog[1];
-				d2[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",1,"Arrggh. . .  I'm calling security!/");
+				d2[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Arrggh. . .  I'm calling security!/");
 				super.Dialog(d2, 0, this.getId(), true);
 
 				break;

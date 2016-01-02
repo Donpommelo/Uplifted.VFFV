@@ -28,9 +28,12 @@ public class EventManager {
 	public void tick(){
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				if(events[x][y] != 0 && getEvent(x,y) != null){
-					getEvent(x, y).tick();
-				}
+				if(x<events.length-1 && y<events[x].length-1){ 
+					//go fuck urself
+					if(events[x][y] != 0 && getEvent(x,y) != null){
+						getEvent(x, y).tick();
+					}
+				}	
 			}
 		}
 	}

@@ -12,9 +12,7 @@ public class WarpSElevatortoLobby extends Event {
 
 	public static BufferedImage img=Assets.ElevatorDoor1;
 	public static int frame = 0;
-	public boolean elevatorOn = false;
 	public boolean open = false;
-	public boolean solid = true;
 	public static int stagenum = 1;
 	public WarpSElevatortoLobby(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
@@ -22,12 +20,6 @@ public class WarpSElevatortoLobby extends Event {
 	}
 	
 	public void run(){
-		if(elevatorOn){
-			
-		}
-		else{
-			
-		}
 		if(Event.events[52].isSelfswitch1()){
 			switch(this.getstage()){
 			case 0: 				

@@ -41,12 +41,12 @@ public class EmpLin extends Event {
 				Dialog[] d = new Dialog[3];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Greetings fellow coworker. Please tell me you are here for the meeting./");
 				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I don't believe so. What is the meeting about?/");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It's top secret. If you don't already know, I can't tell you./");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It's top secret. If you don't already know, I can't tell you./So don't bother asking me again./");
 				super.Dialog(d, 2, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
-				Dialog[] d = new Dialog[13];
+				Dialog[] d = new Dialog[14];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . ./");
 				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Well, alright. Seeing as we can't start until the South Office representatives show up,/I may as well tell you. I would be idle otherwise and idleness is intolerable./");
 				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"We were discussing plans to revive one of the company's Lost Departments./The Department of Violence specifically./");
@@ -60,8 +60,8 @@ public class EmpLin extends Event {
 				d[10] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Well, nobody knows for sure, But I think they were the Departments of/Passivity, Apathy and Suffering./");
 				d[11] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Those sound terrible! What were our Founders thinking?/");
 				d[12] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Hmm. It makes sense if you think about it. We couldn't have a department of Happiness/because Happiness is a nice thing that the whole company should experience,/not just one department./");
-				d[12] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Management only isolates things into their own department if the rest of the/building wants nothing to do with them./");
-				super.Dialog(d, 12, this.getId(), true);
+				d[13] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Management only isolates things into their own department if the rest of the/building wants nothing to do with them./");
+				super.Dialog(d, 13, this.getId(), true);
 				this.setSelfswitch2(true);
 			}
 			break;

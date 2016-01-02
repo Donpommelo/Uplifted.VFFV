@@ -16,7 +16,7 @@ public class WarpSouthHallLongtoLobby extends Event {
 	}
 		
 	public void run(){
-		if(!super.getSwitch(2)){
+		if(super.getSwitch(2)){
 			super.transport("/Worlds/Floor3Offices/SouthWingOffices/PostJorgeLobby.txt", 15, 8,"South Lobby");
 		}
 		else{

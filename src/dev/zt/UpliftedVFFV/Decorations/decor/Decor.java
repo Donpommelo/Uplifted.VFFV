@@ -62,8 +62,8 @@ public class Decor {
 	public static Decor stairsleft3 = new DecorStairsLeft3(39);
 	public static Decor announcementboard = new DecorAnnouncementBoard(40);
 	public static Decor infopanel = new DecorInfoPanel(41);
-	public static Decor poster1 = new DecorPoster1(42);
-	public static Decor poster2 = new DecorPoster2(43);
+	public static Decor rightarrow = new DecorRightArrow(42);
+	public static Decor leftarrow = new DecorLeftArrow(43);
 	public static Decor projector = new DecorProjectorScreen(44);
 	public static Decor watercooler = new DecorWaterCooler(45);
 	public static Decor vendingmachine = new DecorVendingMachine(46);
@@ -94,6 +94,15 @@ public class Decor {
 	public static Decor filterunderwater = new FilterUnderwater(71);
 	public static Decor filterfog = new FilterFog(72);
 	public static Decor filterdark = new FilterDark(73);
+	public static Decor exitsign = new DecorExitSign(74);
+	public static Decor bigtv = new DecorTvBig(75);
+	public static Decor vidya = new DecorVidya(76);
+	public static Decor vent = new DecorVent(77);
+	public static Decor puddle = new DecorPuddle(78);
+	public static Decor mailcabinet = new DecorBigMailCabinet(79);
+	public static Decor poster1 = new DecorPoster1(80);
+	public static Decor poster2 = new DecorPoster2(81);
+	public static Decor poster3 = new DecorPoster3(82);
 
 
 	public Decor(Game g, GameState gs){

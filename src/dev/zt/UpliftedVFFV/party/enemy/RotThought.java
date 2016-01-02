@@ -41,7 +41,7 @@ public class RotThought extends Schmuck{
 	public final static double[] dropRates = {.7};
 	public final static status[] intrinsicStatuses = {};
 	
-	public final static String bioShort = "A weakly malicious intention. Floats feebly thought the cubicles where it was born.";
+	public final static String bioShort = "A weakly malicious intention. Floats feebly through the cubicles where it was born.";
 	public final static String bioLong = "";
 	
 	public RotThought(int level) {

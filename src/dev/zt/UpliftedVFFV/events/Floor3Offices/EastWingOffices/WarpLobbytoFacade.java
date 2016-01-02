@@ -12,7 +12,7 @@ public class WarpLobbytoFacade extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingFacade.txt", (int)(gamestate.getPlayer().getPlayerX()/32)-4,12,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingFacade.txt", (int)(gamestate.getPlayer().getPlayerX()/32)-3,12,"");
 		
 	}
 }

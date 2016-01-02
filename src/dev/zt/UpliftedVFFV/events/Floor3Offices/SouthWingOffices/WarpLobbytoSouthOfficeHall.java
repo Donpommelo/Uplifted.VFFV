@@ -13,6 +13,6 @@ public class WarpLobbytoSouthOfficeHall extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 43, 38,"South Offices");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 27, 37,"South Offices");
 	}
 }

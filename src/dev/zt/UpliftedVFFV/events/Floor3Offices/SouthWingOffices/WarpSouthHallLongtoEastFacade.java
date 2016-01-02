@@ -17,7 +17,7 @@ public class WarpSouthHallLongtoEastFacade extends Event {
 	public void run(){
 		if(!super.getSwitch(2)){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Hold on!/Weren't we supposed to be going to the Mailroom to talk to that Jorge fellow?/");
+			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Hold on!/Weren't we supposed to be going to the Mailroom to talk to that Jorge fellow?/We should head back North first./");
 			super.Dialog(d, 0, this.getId(), true);
 		}
 		else{

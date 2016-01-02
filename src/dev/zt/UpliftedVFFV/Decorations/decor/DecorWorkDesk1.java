@@ -7,5 +7,8 @@ public class DecorWorkDesk1 extends Decor{
 	public DecorWorkDesk1(int idnum) {
 		super(Assets.WorkDesk1, idnum);
 	}
-
+	
+	public boolean renderBelow(){
+		return false;
+	}
 }

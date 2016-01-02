@@ -7,5 +7,7 @@ public class DecorSnookerTable extends Decor{
 	public DecorSnookerTable(int idnum) {
 		super(Assets.SnookerTable, idnum);
 	}
-
+	public boolean renderBelow(){
+		return false;
+	}
 }

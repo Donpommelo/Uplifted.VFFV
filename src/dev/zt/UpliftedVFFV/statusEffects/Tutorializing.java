@@ -30,7 +30,7 @@ public class Tutorializing extends status{
 			d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"First is 'Attack'. This act of violence can be directed towards a single target;/a simple and effective (hopefully) method of imposing your will upon others./");
 			d[4] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Next is 'Skill'. This brings up a character's collection of special talents./These can have all manner of effects, so be sure to carefully read their descriptions!/");
 			d[5] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Most skills require Motivation Points (Mp) in order to use./Remember that an unmotivated employee is a soon-to-be-fired one./");
-			d[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Moving on, we have the 'Item' option. You don't seem to have the most items right now,/but when you do, keep this option in mind in case you feel the need for a mid-battle/snack./");
+			d[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Moving on, we have the 'Item' option. You don't seem to any items right now,/but when you do, keep this option in mind in case you feel the need for a mid-battle/snack./");
 			d[7] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"The next option is 'Wait' and is my personal favorite./Making a decision is never easy, and post-poning those decisions can be a great relief./");
 			d[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"That, is precisely what the 'Wait' option allows you to do!/When choosing to wait, a character will delay the decision-making process until his or/her turn to act comes, when the action is executed immediately./");
 			d[9] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Bear in mind that Waiting will lose you some initiative./Wait too much and you may miss a golden opportunity!/");
@@ -67,7 +67,7 @@ public class Tutorializing extends status{
 		d[0] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Well, that wasn't so bad./Hopefully that doesn't happen too often around here./");
 		d[1] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"And now to enjoy the spoils of victory!/Combat is an easy way to acquire Company Script./");
 		d[2] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Hopefully we can find somewhere to spend it./");
-		d[3] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Combat also provides to its participants valuable Work Experience./Gain enough Exp to level up and rise the corporate ladder./Become a more valuable company asset and gain more transferable job skills!");
+		d[3] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Combat also provides to its participants valuable Work Experience./Gain enough Exp to level up and climb the corporate ladder./Become a more valuable company asset and gain more transferable job skills!/");
 		d[4] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Lastly, enemies will sometimes drop valuable loot!/These items can be examined closer in your inventory, viewable from the menu!/");
 
 		DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,4,0,true);

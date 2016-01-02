@@ -40,12 +40,15 @@ public class Assets {
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
-	
+	public static BufferedImage WoodDoor1,WoodDoor2,WoodDoor3,WoodDoor4, ClearDoor1, ClearDoor2, ClearDoor3, ClearDoor4,
+	 PushDoor1, PushDoor2, PushDoor3, PushDoor4;
+
 	public static BufferedImage WritingDesk1, Bed1,Tv, Trashcan, Calendar, WelcomeMat,Dresser, HatRack, Sign, StairsUp, StairsDown,
 		HorizRug, VertiRug, Cupboard, Fridge, KitchenCounter, FlowerTable, Monolith, notPenPal, Cuidado, InfoPanel, Board, Projector,
 		StairsRight0, StairsRight1, StairsRight2, StairsRight3, StairsLeft0, StairsLeft1, StairsLeft2, StairsLeft3,
-		Poster1, Poster2, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart, JanitorShelves,
-		VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3, TunnelArchCorner;
+		Poster1, Poster2, Poster3, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart,
+		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
+		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
@@ -78,6 +81,7 @@ public class Assets {
 		SpriteSheet ThirdFloorTiles = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloor.png"));
 		SpriteSheet ThirdFloorWalls = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorWalls.png"));
 		SpriteSheet ThirdFloorMisc = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorMisc.png"));
+		SpriteSheet Doors = new SpriteSheet(ImageLoader.loadImage("/textures/Doors1.png"));
 
 		
 		//Load system resources, reused resources and stuff.
@@ -169,6 +173,21 @@ public class Assets {
 		ElevatorDoor3=door.crop(16, 128, 96, 64);
 		ElevatorDoor4=door.crop(16, 192, 96, 64);
 		
+		WoodDoor1=Doors.crop(0, 0, width, 2*height);
+		WoodDoor2=Doors.crop(0, 2*height, width, 2*height);
+		WoodDoor3=Doors.crop(0, 4*height, width, 2*height);
+		WoodDoor4=Doors.crop(0, 6*height, width, 2*height);
+		
+		ClearDoor1=Doors.crop(width, 0, width, 2*height);
+		ClearDoor2=Doors.crop(width, 2*height, width, 2*height);
+		ClearDoor3=Doors.crop(width, 4*height, width, 2*height);
+		ClearDoor4=Doors.crop(width, 6*height, width, 2*height);
+		
+		PushDoor1=Doors.crop(2*width, 0, width, 2*height);
+		PushDoor2=Doors.crop(2*width, 2*height, width, 2*height);
+		PushDoor3=Doors.crop(2*width, 4*height, width, 2*height);
+		PushDoor4=Doors.crop(2*width, 6*height, width, 2*height);
+		
 		ElevatorPanel = prop.crop(7*width,0,width,height);
 		ElevatorFloorMark = prop.crop(width, 0 , 3*width, 3*height);
 		ElevatorWave = prop.crop(5*width, 0 , width, height);
@@ -249,18 +268,19 @@ public class Assets {
 		InfoPanel = Furniture3rdFloor.crop(14*width, 0, width, height);
 		Poster1 = Furniture3rdFloor.crop(0, 2*height, width, height);
 		Poster2 = Furniture3rdFloor.crop(width, 2*height, width, height);
+		Poster3 = Furniture3rdFloor.crop(2*width, 2*height, width, height);
 		Board = Furniture3rdFloor.crop(6*width, 5*height, 2*width, height);
 		Projector = Furniture3rdFloor.crop(8*width, 5*height, 2*width, 2*height);
 		TransparentTable = Furniture3rdFloor.crop(10*width, 5*height, 2*width, height);
 		SmallPokerTable = Furniture3rdFloor.crop(12*width, 5*height, 2*width, height);
-		SnookerTable = Furniture3rdFloor.crop(14*width, 5*height, 2*width, height);
+		SnookerTable = Furniture3rdFloor.crop(14*width, 4*height, 2*width, 2*height);
 		BigPokerTable = Furniture3rdFloor.crop(0, 6*height, 3*width, 6*height);
 		
 		
 		WorkDesk1 = Furniture3rdFloor.crop(0, 3*height, width*2, height*2);
 		WorkDesk2 = Furniture3rdFloor.crop(0, 0, width*2, height*2);
 
-		FilingCabinet = Furniture3rdFloor.crop(64, 0, width, height);
+		FilingCabinet = Furniture3rdFloor.crop(2*width, 0, width, 2*height);
 		Sofa1 = Furniture3rdFloor.crop(3*width, 0, width*2, 2*height);
 		Sofa2 = Furniture3rdFloor.crop(9*width, 0, width, height*2); 
 		Sofa3 = Furniture3rdFloor.crop(3*width, 2*height, width*2, 2*height);
@@ -270,6 +290,15 @@ public class Assets {
 		WaterCooler = Furniture3rdFloor.crop(6*width, 0, width, height*2);
 		Clock = Furniture3rdFloor.crop(7*width, 0, width, height);
 		VendingMachine = Furniture3rdFloor.crop(8*width, 0, width, height*2);
+		LeftArrowSign = Furniture3rdFloor.crop(2*width, 3*height, width, height);
+		RightArrowSign = Furniture3rdFloor.crop(3*width, 3*height, width, height);
+		BigScreenTv = Furniture3rdFloor.crop(6*width, 2*height, 2*width, 2*height);
+		Vidya = Furniture3rdFloor.crop(6*width, 4*height, width, height);
+		ExitSign = Furniture3rdFloor.crop(2*width, 3*height, width, height);
+		AirVent = Furniture3rdFloor.crop(5*width, 3*height, width, height);
+		BigMailThing = Furniture3rdFloor.crop(3*width, 7*height, 2*width, 3*height);
+		Puddle = Furniture3rdFloor.crop(10*width, 3*height, 2*width, 2*height);
+		
 		VertTunnelArch1 = ThirdFloorMisc.crop(0, 0, 7*width, height);
 		VertTunnelArch2 = ThirdFloorMisc.crop(0,1*height, 7*width, 3*height);
 		VertTunnelArch3 = ThirdFloorMisc.crop(0, 4*height, 7*width, height);

@@ -21,8 +21,8 @@ public class VariableManager {
  10: Ennui Ceiling
  11: Janitor Points
  12: Number of Janitor Closets found.
- 13: 
- 14: 
+ 13: Carloc's Quest: Number of loops done
+ 14: Carloc's Quest: Bus stop number
  15: 
  16: 
  17: 

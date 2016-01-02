@@ -38,17 +38,18 @@ public class EmpWade extends Event {
 			
 			//This is the dialog that first occurs when the npc is spoken to
 			case 0: 
-				super.Dialog(88, 89,this.getId());
+				Dialog[] d1 = new Dialog[2];
+				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Splash. Splash./");
+				d1[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Why is your cubical filled with water?/");
+				super.Dialog(d1, 1, this.getId(), true);
 				break;
 				
 			//when a dialogstate is done running, it will increment the event stage if possible, then rerun the event.
 			//this allow for the event to consist of many different parts.
 			case 1:
-				Dialog[] d = new Dialog[3];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Splash. Splash./");
-				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Why is your cubical filled with water?/");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I got it as a souvenir from the Aquarium. Want some?/");
-				super.Dialog(d, 2, this.getId(), true);
+				Dialog[] d = new Dialog[1];
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I got it as a souvenir from the Aquarium. Want some?/");
+				super.Dialog(d, 0, this.getId(), true);
 				super.ChoiceBranch(this.getId(), Choices);
 				break;
 			case 2:
