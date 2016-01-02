@@ -41,11 +41,11 @@ public class DamageBlock extends status{
 		int finaldamage = damage;
 		if(elem == this.elem || this.elem == 7){
 			if(Math.random() <= this.percent){
-				finaldamage -= this.amount;
+				finaldamage += this.amount;
 			}
 		}
-		if(finaldamage <= 0){
-			finaldamage = 1;
+		if(finaldamage >= 0){
+			finaldamage = -1;
 		}
 		return finaldamage;
 	}	

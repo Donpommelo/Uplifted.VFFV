@@ -40,7 +40,7 @@ public class Dialog {
 			speaker = op.filter(speaker, null);
 		}
 		
-		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 
 	}
 	

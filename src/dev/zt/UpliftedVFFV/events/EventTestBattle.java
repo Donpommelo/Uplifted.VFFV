@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EventTestBattle extends Event {
 
 	public EventTestBattle(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.VendingMachine,idnum,x, y);
 		
 	}
 	

@@ -47,7 +47,7 @@ public class Channeling extends status{
 			bs.bp.stm.hardRemoveStatus(vic, this);
 			bs.bp.stm.hardRemoveStatus(vic, Status);
 			if(activateonBreak){
-				Status.doneChanneling(vic, bs);
+				vic.onChannelComplete(bs);
 			}
 		}
 		return damage;
@@ -57,7 +57,7 @@ public class Channeling extends status{
 		duration--;
 		if(duration <= 0){
 			bs.bp.bt.textList.add(Channeler.getName()+" completes "+s.getPronoun(1)+" Channeling!");
-			Status.doneChanneling(Channeler, bs);
+			s.onChannelComplete(bs);
 			bs.bp.stm.hardRemoveStatus(Channeler, this);
 			bs.bp.stm.hardRemoveStatus(Channeler, Status);
 		}

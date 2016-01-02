@@ -93,16 +93,7 @@ public class StatusManager {
 			}
 			
 			//Activate all of the target's on-status effects.
-			int size = s.statuses.size();
-			for(int i=0; i<size; i++){
-				if(s.statuses.get(i)!=null){
-					if(!bs.bp.stm.checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || bs.bp.stm.checkStatus(s, new Undead(10))){
-						if(!checkStatus(s,new Purified(0))){
-							s.statuses.get(i).onStatusInflict(s,stat,bs);
-						}
-					}
-				}
-			}
+			s.onNewStatus(stat, bs);
 		}		
 		
 		int j;

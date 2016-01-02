@@ -12,10 +12,9 @@ public class SimpleMindStatus extends status{
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
 		for(status meep : s.statuses){
-			if(!meep.perm && !meep.getName().equals("incapacitated")) {
+			if(!meep.perm && !meep.getName().equals("incapacitated") && !meep.getName().equals(st.getName())) {
 				bs.bp.stm.removeStatus(s, meep);
 			}
 		}
-		bs.bp.stm.addStatus(s, st);
 	}
 }

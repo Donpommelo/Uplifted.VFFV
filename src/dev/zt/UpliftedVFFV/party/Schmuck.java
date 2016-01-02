@@ -252,8 +252,10 @@ public class Schmuck implements Serializable{
 					tempStatus.startoffightEffect(this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -270,8 +272,10 @@ public class Schmuck implements Serializable{
 					tempStatus.preBattlePhase(this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -288,8 +292,10 @@ public class Schmuck implements Serializable{
 					tempStatus.restrict(this,a, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -306,8 +312,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onCrit(this, vic, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -324,8 +332,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onMiss(a, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -342,8 +352,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onAction(bs, a);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -360,8 +372,10 @@ public class Schmuck implements Serializable{
 					tempStatus.endofAnyAction(bs, a, target);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -378,8 +392,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onDillyDally(this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -397,8 +413,10 @@ public class Schmuck implements Serializable{
 					finaldamage = tempStatus.onHealEffect(perp, this, bs, finaldamage, elem);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -417,8 +435,10 @@ public class Schmuck implements Serializable{
 					finaldamage = tempStatus.takedamageEffect(perp, this, bs, finaldamage, elem);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -437,8 +457,10 @@ public class Schmuck implements Serializable{
 					finaldamage = tempStatus.dealdamageEffect(this, vic, bs, finaldamage, elem);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -456,8 +478,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onKill(this, vic, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -474,8 +498,10 @@ public class Schmuck implements Serializable{
 					tempStatus.onDeath(perp, this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -493,8 +519,10 @@ public class Schmuck implements Serializable{
 					finalmeter = tempStatus.spendMeterEffect(this, bs, finalmeter);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -513,8 +541,10 @@ public class Schmuck implements Serializable{
 					finalmeter = tempStatus.gainMeterEffect(this, bs, finalmeter);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -532,8 +562,10 @@ public class Schmuck implements Serializable{
 					tempStatus.endofturnEffect(this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -550,8 +582,10 @@ public class Schmuck implements Serializable{
 					tempStatus.endoffightEffect(this, bs);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);
@@ -568,8 +602,50 @@ public class Schmuck implements Serializable{
 					tempStatus.attackModify(this, vic, bs, damage);
 				}
 			}
-			this.statuses.remove(tempStatus);
-			tempStatuses.add(tempStatus);
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onNewStatus(status st, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.onStatusInflict(this, st, bs);
+				}
+			}
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void onChannelComplete(BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.doneChanneling(this, bs);
+				}
+			}
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
 		}
 		for(status s : tempStatuses){
 			this.statuses.add(s);

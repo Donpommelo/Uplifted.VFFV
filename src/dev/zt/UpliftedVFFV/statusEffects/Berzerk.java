@@ -32,11 +32,11 @@ public class Berzerk extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Disarmed.";
+		return s.getName()+" went Berzerk.";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s arms grew back.";
+		return s.getName()+" calmed down.";
 	}
 	
 	public Boolean isBad(){

@@ -37,7 +37,7 @@ public class Event{
 	protected static GameState gamestate;
 	protected float x;
 	protected float y;
-	public static Event[] events = new Event[256];
+	public static Event[] events = new Event[1200];
 	public static Event event0 = new Event0(0,0,0);
 	public static Event event1 = new WarpBackroomtoElevator(10,5,1);
 	public static Event event2 = new WarpSElevatortoBackroom(5,10,2);
@@ -83,7 +83,7 @@ public class Event{
 	public static Event event42 = new WarpMailroomtoSouthHallLong(3,12,42);	
 	public static Event eventBed = new EventBackroomBed(7,8,43);
 	public static Event eventDesk = new EventBackroomDesk(5,7,44);
-	public static Event eventCalandar = new EventBackroomCalendar(12,9,45);
+	public static Event eventCalandar = new EventTestItems(12,9,45);
 	public static Event eventAward = new EventBackroomAward(13,9,46);
 	public static Event eventDresser = new EventBackroomDresser(4,10,47);
 	public static Event eventHatrack = new EventBackroomHatrack(8,10,48);
@@ -187,6 +187,9 @@ public class Event{
 	public static Event event144 = new WarpEastBreakroomtoBus(5,6,144);
 	public static Event event145 = new WarpBustoWherever(5,11,145);
 	//event 146-151 = bus to 5 stops and bus ramp.
+	
+	public static Event testBattle = new EventTestBattle(0,0,1000);
+	public static Event testItems = new EventTestItems(0,0,1001);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	protected BufferedImage tex;
