@@ -8,4 +8,8 @@ public class DecorStairsRight1 extends Decor{
 		super(Assets.StairsRight1, idnum);
 	}
 
+	public int renderBelow(){
+		return -1;
+	}
+	
 }

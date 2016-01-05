@@ -8,4 +8,8 @@ public class DecorVidya extends Decor{
 		super(Assets.Vidya, idnum);
 	}
 
+	public int renderBelow(){
+		return -1;
+	}
+	
 }

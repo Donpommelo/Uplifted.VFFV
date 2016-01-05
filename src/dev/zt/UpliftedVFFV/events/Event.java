@@ -49,7 +49,7 @@ public class Event{
 	public static Event event8 = new WarpSouthOfficetoSouthCubicles(3,27,8);
 	public static Event event9 = new WarpSouthOfficestoSouthWestHall(3,10,9);
 	public static Event event10 = new WarpSouthOfficetoBoardroom(15,6,10);
-	public static Event event11 = new WarpSouthOfficestoJCloset(13,15,11);
+	public static Event event11 = new WarpBustoJCloset(13,15,11);
 	public static Event event12 = new WarpSouthCubiclestoSouthHallSmall(3,21,12);
 	public static Event event13 = new WarpSouthCubiclestoSouthOffices(23,21,13);
 	public static Event event14 = new WarpSouthWestHalltoSouthOffices(19,9,14);
@@ -83,7 +83,7 @@ public class Event{
 	public static Event event42 = new WarpMailroomtoSouthHallLong(3,12,42);	
 	public static Event eventBed = new EventBackroomBed(7,8,43);
 	public static Event eventDesk = new EventBackroomDesk(5,7,44);
-	public static Event eventCalandar = new EventTestItems(12,9,45);
+	public static Event eventCalandar = new EventBackroomCalendar(12,9,45);
 	public static Event eventAward = new EventBackroomAward(13,9,46);
 	public static Event eventDresser = new EventBackroomDresser(4,10,47);
 	public static Event eventHatrack = new EventBackroomHatrack(8,10,48);
@@ -168,6 +168,14 @@ public class Event{
 	public static Event empMrClean = new EmpMrClean(11,7,120);
 	public static Event empBothered= new EmpBothered(6,7,121);
 	
+	public static Event eventcommonsnooker = new EventSnookerTable(0,0,122);
+	public static Event eventcommonssofa1 = new EventSofaDown(0,0,123);
+	public static Event eventcommonsofa3 = new EventSofaUp(0,0,124);
+	public static Event eventcommonplant = new EventTallPlant(0,0,125);
+	public static Event eventcommonworkdesk1 = new EventWorkDesk1(0,0,126);
+	public static Event eventcommonworkdesk2 = new EventWorkDesk2(0,0,127);
+	public static Event eventcommoncuidado = new EventCuidado(0,0,128);
+
 	public static Event safe1 = new EventSafe1(18,23,130);
 	public static Event safe2 = new EventSafe2(11,8,131);
 	public static Event safe3 = new EventSafe3(0,0,132);
@@ -186,12 +194,18 @@ public class Event{
 	public static Event event143 = new WarpEastBreakroomtoActualEast(5,19,143);
 	public static Event event144 = new WarpEastBreakroomtoBus(5,6,144);
 	public static Event event145 = new WarpBustoWherever(5,11,145);
-	//event 146-151 = bus to 5 stops and bus ramp.
+	public static Event event146 = new WarpBustoJCloset(5,5,146);
+	public static Event event147 = new WarpBustoCentralLeft(8,5,147);
+	public static Event event148 = new WarpBustoCentralRight(11,5,148);
+	//event 149-150 = bus to 2 remaining stops.
+	public static Event event151 = new WarpBustoRamp(17,11,151);
+	public static Event event152 = new WarpJClosettoBus(5,11,152);
 	
+
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
 
-	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
+	public static final int TILEWIDTH = 32, TILEHEIGHT = 64;
 	protected BufferedImage tex;
 	public Creature test;
 	boolean open;
@@ -202,8 +216,8 @@ public class Event{
 	int finalstage;
 	
 	public Event(BufferedImage texture, int idnum, float x, float y) {
-		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
-			this.test = new Creature(game, x ,y, 32, 32, texture, idnum);		
+		if(texture.getHeight() == 256 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
+			this.test = new Creature(game, x ,y, 32, 64, texture, idnum);		
 		}
 		else{
 			this.tex = texture;
@@ -219,8 +233,8 @@ public class Event{
 	}
 	
 	public Event(BufferedImage texture, int idnum, float x, float y, int stageNum) {
-		if(texture.getHeight() == 128 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
-			this.test = new Creature(game, x ,y, 32, 32, texture, idnum);		
+		if(texture.getHeight() == 256 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
+			this.test = new Creature(game, x ,y, 32, 64, texture, idnum);		
 		}
 		else{
 			this.tex = texture;
@@ -253,13 +267,13 @@ public class Event{
 	
 	public void render(Graphics g, int x, int y) {
 		if(test==null){
-			g.drawImage(tex,x, y, tex.getWidth(), tex.getHeight(), null);
+			g.drawImage(tex,x, y+32-tex.getHeight(), tex.getWidth(), tex.getHeight(), null);
 		}
 		//If the event is attached to a Creature object, render it and draw the image attached to it. Rendering creature does not
 		//draw anything. It only changes test.imgShown to match the creature's walk cycle.
 		if(test!=null){
 			test.render(g);
-			g.drawImage(test.imgShown, x, y, TILEWIDTH, TILEHEIGHT, null);			
+			g.drawImage(test.imgShown, x, y-32, TILEWIDTH, TILEHEIGHT, null);			
 		}
 	}
 	
@@ -316,8 +330,8 @@ public class Event{
 	//If an events running calls this, the player is transported to the given x-y location of the world corresponding to the path name
 	public static void transport(String path, int x, int y,String name){
 		worldmanager = new WorldManager(game, path,name);
-		eventmanager = new EventManager(game, path);
-		decormanager = new DecorManager(game, path);
+		eventmanager = new EventManager(game, gamestate,path);
+		decormanager = new DecorManager(game, gamestate, path);
 		GameState.setWorld(worldmanager);
 		GameState.setEventmanager(eventmanager);
 		GameState.setDecormanager(decormanager);

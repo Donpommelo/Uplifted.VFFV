@@ -8,8 +8,8 @@ public class DecorAquaTunnelArchVert1 extends Decor{
 		super(Assets.VertTunnelArch1, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
+	public int renderBelow(){
+		return 1;
 	}
 
 }

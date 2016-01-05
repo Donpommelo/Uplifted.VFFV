@@ -7,5 +7,9 @@ public class DecorPuddle extends Decor{
 	public DecorPuddle(int idnum) {
 		super(Assets.Puddle, idnum);
 	}
+	
+	public int renderBelow(){
+		return -1;
+	}
 
 }

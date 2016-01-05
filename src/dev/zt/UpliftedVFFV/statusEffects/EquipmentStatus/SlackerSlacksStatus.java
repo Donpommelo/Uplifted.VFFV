@@ -18,7 +18,7 @@ public class SlackerSlacksStatus extends status{
 	
 	public void onDillyDally(Schmuck s, BattleState bs){
 		bs.bp.bt.textList.add(s.getName()+"'s Slacker Slacks make waiting more comfortable!");
-		bs.bp.em.hpChange((int)(s.getMaxHp()*.1), s, s, 0);
+		bs.bp.em.hpChange((int)(s.getMaxHp()*.1*(1+s.getEquipPow())), s, s, 0);
 	}
 	
 }

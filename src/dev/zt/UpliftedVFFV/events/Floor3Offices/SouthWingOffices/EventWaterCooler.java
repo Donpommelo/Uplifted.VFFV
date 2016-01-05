@@ -12,7 +12,7 @@ public class EventWaterCooler extends Event {
 
 	public static int stagenum = 0;
 	public EventWaterCooler(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y, stagenum);
+		super(Assets.WaterCooler,idnum,x, y, stagenum);
 	}
 	
 	public void run(){

@@ -11,23 +11,23 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EmpMover extends Event {
 
 	public static int stagenum = 0;
-	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeM2);
+	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.Mover);
 	public EmpMover(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
 		
 	public void run(){
 		if (Player.runlast==0){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.Mover));
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.Mover));
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.Mover));
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.Mover));
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[7];

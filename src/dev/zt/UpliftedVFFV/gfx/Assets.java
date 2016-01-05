@@ -37,7 +37,7 @@ public class Assets {
 	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
-	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF;
+	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	public static BufferedImage WoodDoor1,WoodDoor2,WoodDoor3,WoodDoor4, ClearDoor1, ClearDoor2, ClearDoor3, ClearDoor4,
@@ -48,7 +48,8 @@ public class Assets {
 		StairsRight0, StairsRight1, StairsRight2, StairsRight3, StairsLeft0, StairsLeft1, StairsLeft2, StairsLeft3,
 		Poster1, Poster2, Poster3, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart,
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
-		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing;
+		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
+		RailLeft, RailMiddle, RailRight;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
@@ -64,7 +65,10 @@ public class Assets {
 	public static void init(){
 		
 		//spritesheets loaded from files
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/WalkingSprites.png"));
+//		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/WalkingSprites.png"));
+		SpriteSheet WalkingSprites1 = new SpriteSheet(ImageLoader.loadImage("/textures/Sheet2.png"));
+		SpriteSheet WalkingSprites2 = new SpriteSheet(ImageLoader.loadImage("/textures/Sheet3.png"));
+
 		SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorFloor.png"));
 		SpriteSheet prop=new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorProps.png"));
 		SpriteSheet arrowup = new SpriteSheet(ImageLoader.loadImage("/ui/Arrow.png"));
@@ -86,11 +90,15 @@ public class Assets {
 		
 		//Load system resources, reused resources and stuff.
 		//Character walking Sprites.
-		Operator=sheet.crop(0, 0, 3*width, 4*height);
-		PenPal=sheet.crop(3*width, 0, 3*width, 4*height);
-		EmployeeM1=sheet.crop(6*width, 0, 3*width, 4*height);
-		EmployeeF=sheet.crop(9*width, 0, 3*width, 4*height);
-		EmployeeM2=sheet.crop(0, 4*height, 3*width, 4*height);
+		Operator=WalkingSprites1.crop(0, 0, 3*width, 8*height);
+		
+		PenPal=WalkingSprites1.crop(3*width, 0, 3*width, 8*height);//=sheet.crop(3*width, 0, 3*width, 4*height);
+		EmployeeM1=WalkingSprites1.crop(6*width, 0, 3*width, 8*height);//=sheet.crop(6*width, 0, 3*width, 4*height);
+		EmployeeF=WalkingSprites1.crop(9*width, 0, 3*width, 8*height);//=sheet.crop(9*width, 0, 3*width, 4*height);
+		EmployeeM2=WalkingSprites1.crop(6*width, 0, 3*width, 8*height);//=sheet.crop(0, 4*height, 3*width, 4*height);
+		Mover = WalkingSprites2.crop(0, 0, 3*width, 8*height);
+		Wiper = WalkingSprites2.crop(3*width, 0, 3*width, 8*height);
+
 		
 		Jorge1=Jorge.crop(0,0,128,64);
 		
@@ -307,6 +315,10 @@ public class Assets {
 		HorzTunnelArch3 = ThirdFloorMisc.crop(11*width, 0, width, 7*height);
 		TunnelArchCorner = ThirdFloorMisc.crop(0, 5*height, 7*width, 7*height);
 		
+		RailLeft = Furniture3rdFloor.crop(14*width, height, width/2, height);
+		RailMiddle = Furniture3rdFloor.crop((int)(14.5*width), height, width, height);
+		RailRight = Furniture3rdFloor.crop((int)(15.5*width), height, width/2, height);
+
 		Table0 = FurnitureBackroom.crop(9*width, 3*height, width, height);
 		Table1 = FurnitureBackroom.crop(9*width, 3*height, width, height);
 		Table2 = FurnitureBackroom.crop(10*width, 3*height, width, height);

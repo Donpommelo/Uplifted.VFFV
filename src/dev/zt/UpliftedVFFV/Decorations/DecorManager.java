@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Decorations.decor.Decor;
+import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class DecorManager {
@@ -12,12 +13,14 @@ public class DecorManager {
 	//width,height and enemy info only useful for parsing the text file.
 	private int textBlock;
 	private Game game;
+	private GameState gs;
 	public static Decor[] Decorations;
 	public static int[][] DecorCoords;
 
-	public DecorManager(Game g, String path) {
+	public DecorManager(Game g, GameState gamestate, String path) {
 		loadDecor(path);
 		this.game = g;
+		this.gs = gamestate;
 	}
 	
 	public void setWorld(String path){
@@ -30,7 +33,7 @@ public class DecorManager {
 	
 	public void renderBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow()){
+			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
 				if(!Decorations[i].followCamera()){
 					Decorations[i].render(g, (int)(DecorCoords[0][i] - game.getGameCamera().getxOffset()), (int)(DecorCoords[1][i] - game.getGameCamera().getyOffset()));
 				}
@@ -43,7 +46,7 @@ public class DecorManager {
 	
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(!Decorations[i].renderBelow()){
+			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){
 				if(!Decorations[i].followCamera()){
 					Decorations[i].render(g, (int)(DecorCoords[0][i] - game.getGameCamera().getxOffset()), (int)(DecorCoords[1][i] - game.getGameCamera().getyOffset()));
 				}

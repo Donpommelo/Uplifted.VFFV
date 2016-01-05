@@ -8,4 +8,8 @@ public class DecorTable5 extends Decor{
 		super(Assets.Table5, idnum);
 	}
 
+	public int renderBelow(){
+		return -1;
+	}
+	
 }

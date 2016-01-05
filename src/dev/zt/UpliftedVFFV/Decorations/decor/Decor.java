@@ -103,6 +103,9 @@ public class Decor {
 	public static Decor poster1 = new DecorPoster1(80);
 	public static Decor poster2 = new DecorPoster2(81);
 	public static Decor poster3 = new DecorPoster3(82);
+	public static Decor railleft = new DecorRailLeft(83);
+	public static Decor railcenter = new DecorRailCenter(84);
+	public static Decor railright = new DecorRailRight(85);
 
 
 	public Decor(Game g, GameState gs){
@@ -134,10 +137,12 @@ public class Decor {
 		this.tex = tex;
 	}
 	
-	//Returns whether a decoration is rendered below the player. Most events are. Otherwise, override and return false to draw above player
-	//as well as other events.
-	public boolean renderBelow(){
-		return true;
+	//Returns where a decoration is rendered compared to the player. 
+	//-1: Always under player and events
+	//0: Depends on y-location of decor compared to event.
+	//1: Always above player and events
+	public int renderBelow(){
+		return 0;
 	}
 	
 	//Returns whether decoration moves when the player moves or not. Default is yes.

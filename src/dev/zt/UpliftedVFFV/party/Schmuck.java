@@ -30,7 +30,7 @@ public class Schmuck implements Serializable{
 	//Bonus stats:
 	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
-	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus!
+	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus
 	//cooldownBonus, critAvoid, channelingBonus
 
 	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};

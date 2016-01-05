@@ -7,9 +7,5 @@ public class DecorTallPlant extends Decor{
 	public DecorTallPlant(int idnum) {
 		super(Assets.notPenPal, idnum);
 	}
-	
-	public boolean renderBelow(){
-		return false;
-	}
 
 }

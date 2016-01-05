@@ -270,16 +270,16 @@ public class Player extends Creature implements Serializable{
 //		super.render(g);
 				if(runup==false && rundown==false && runleft==false && runright==false){
 			if(runlast==0){
-				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			if(runlast==1){
-				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			if(runlast==2){
-				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			if(runlast==3){
-				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 		}
 		
@@ -287,51 +287,51 @@ public class Player extends Creature implements Serializable{
 		//consider adding a separate animationmanager later for all animations
 		if(runup==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(9,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(9,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}				
 		}
 		if(rundown==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(0,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(0,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(2,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(2,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}	
 				
 		}
 		if(runleft==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(3,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(3,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}	
 		}
 		if(runright==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
-				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			else if(rightleft%2==0){
-				g.drawImage(SpriteSorter.SpriteSort(6,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(6,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
 			
 			else if(rightleft%2==1){
-				g.drawImage(SpriteSorter.SpriteSort(8,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()), width, height, null);
+				g.drawImage(SpriteSorter.SpriteSort(8,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}	
 		}
 					

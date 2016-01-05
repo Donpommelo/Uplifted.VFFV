@@ -8,9 +8,10 @@ public class FilterUnderwater extends Decor{
 		super(Assets.UnderwaterFilter, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
+	public int renderBelow(){
+		return 1;
 	}
+	
 	public boolean followCamera(){
 		return true;
 	}

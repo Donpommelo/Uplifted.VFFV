@@ -14,6 +14,6 @@ public class WarpSouthHallLongtoAquaHall extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt", 29, 19,"Aquarium Tunnel");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt", 29, 10,"Aquarium Tunnel");
 	}
 }

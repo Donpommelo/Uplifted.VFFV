@@ -22,7 +22,7 @@ public class EventVending1 extends Event {
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public static int stagenum = 0;
 	public EventVending1(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y, stagenum);
+		super(Assets.VendingMachine,idnum,x, y, stagenum);
 		selection.put(new CoffeedIce(), 3);
 		selection.put(new CarrotJuice(), 3);
 		selection.put(new MeltedIcecream(), 4);

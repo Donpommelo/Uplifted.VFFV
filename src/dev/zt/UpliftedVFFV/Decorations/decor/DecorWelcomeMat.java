@@ -7,5 +7,9 @@ public class DecorWelcomeMat extends Decor{
 	public DecorWelcomeMat(int idnum) {
 		super(Assets.WelcomeMat, idnum);
 	}
+	
+	public int renderBelow(){
+		return -1;
+	}
 
 }

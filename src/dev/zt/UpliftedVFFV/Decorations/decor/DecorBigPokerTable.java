@@ -8,7 +8,5 @@ public class DecorBigPokerTable extends Decor{
 		super(Assets.BigPokerTable, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
-	}
+
 }

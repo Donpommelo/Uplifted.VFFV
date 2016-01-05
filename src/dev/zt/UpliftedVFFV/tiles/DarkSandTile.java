@@ -12,4 +12,8 @@ public class DarkSandTile extends Tile{
 	public DarkSandTile() {
 		super(texture, id);
 	}
+	
+	public boolean isSolid(){
+		return true;
+	}
 }

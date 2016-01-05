@@ -8,9 +8,10 @@ public class FilterDark extends Decor{
 		super(Assets.DarkFilter, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
+	public int renderBelow(){
+		return 1;
 	}
+	
 	public boolean followCamera(){
 		return true;
 	}

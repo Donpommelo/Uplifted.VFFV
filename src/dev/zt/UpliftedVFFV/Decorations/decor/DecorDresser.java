@@ -8,7 +8,4 @@ public class DecorDresser extends Decor{
 		super(Assets.Dresser, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
-	}
 }

@@ -12,7 +12,7 @@ public class Creature extends Entity {
 	
 	public static final float DEFAULT_SPEED = 2.0f;
 	public static final int DEFAULT_CREATURE_WIDTH = 32;
-	public static final int DEFAULT_CREATURE_HEIGHT = 32;
+	public static final int DEFAULT_CREATURE_HEIGHT = 64;
 	public BufferedImage img;
 	public BufferedImage imgShown;
 	protected boolean runup,runleft,runright,rundown=false;

@@ -4,20 +4,23 @@ import java.awt.Graphics;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
+import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class EventManager {
 
 	private Game game;
+	private GameState gs;
 	private int width, height;
 	//	private int X, Y;
 	private int numevents;
 	public static int[][] events;
 	public static Event[] EventTracker;
 	
-	public EventManager(Game game, String path) {
+	public EventManager(Game game, GameState gamestate, String path) {
 		this.game=game;
+		this.gs = gamestate;
 		loadEvent(path);
 	}
 	
@@ -40,6 +43,38 @@ public class EventManager {
 	
 	public void render(Graphics g){
 		for(int y = 0;y<height;y++){
+			for(int x = 0;x < width;x++){
+				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
+					if(getEvent(x,y).getTest()!=null){
+						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+					}
+					else{
+						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
+					}
+					
+				}
+			}
+		}
+	}
+	
+	public void renderBelow(Graphics g){
+		for(int y = 0;y<(int)(gs.getPlayer().getPlayerY()/32);y++){
+			for(int x = 0;x < width;x++){
+				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
+					if(getEvent(x,y).getTest()!=null){
+						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+					}
+					else{
+						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
+					}
+					
+				}
+			}
+		}
+	}
+	
+	public void renderAbove(Graphics g){
+		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y<height;y++){
 			for(int x = 0;x < width;x++){
 				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
 					if(getEvent(x,y).getTest()!=null){

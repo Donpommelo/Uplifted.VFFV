@@ -8,8 +8,4 @@ public class DecorSofa2 extends Decor{
 		super(Assets.Sofa2, idnum);
 	}
 	
-	public boolean renderBelow(){
-		return false;
-	}
-	
 }

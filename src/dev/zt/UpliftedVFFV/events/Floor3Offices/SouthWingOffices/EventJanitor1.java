@@ -26,24 +26,25 @@ public class EventJanitor1 extends Event {
 	public static int stagenum = 2;
 	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Janitor1small.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
+	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.Wiper);
 	public EventJanitor1(float x, float y, int idnum) {
-		super(Assets.EmployeeM2,idnum,x, y, stagenum);
+		super(img,idnum,x, y, stagenum);
 
 					
 	}
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.Wiper));
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.Wiper));
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.Wiper));
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
+			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.Wiper));
 		}
 		switch(this.getstage()){
 		case 0: 

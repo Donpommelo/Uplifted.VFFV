@@ -49,14 +49,14 @@ public class GameState extends State {
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
-//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/Mailroom.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt";
 //		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingLobby.txt";
-//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
-		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
+		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+//		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 		
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
-		eventmanager = new EventManager(game,StartingFloor);
-		decormanager = new DecorManager(game, StartingFloor);
+		eventmanager = new EventManager(game,this,StartingFloor);
+		decormanager = new DecorManager(game, this, StartingFloor);
 
 		player = new Player(game, 32*worldmanager.getSpawnX(), 32*worldmanager.getSpawnY(), this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
@@ -119,8 +119,9 @@ public class GameState extends State {
 	public void render(Graphics g) {
 		worldmanager.render(g);
 		decormanager.renderBelow(g);
-		eventmanager.render(g);
+		eventmanager.renderBelow(g);
 		player.render(g);
+		eventmanager.renderAbove(g);
 		decormanager.renderAbove(g);
 		if(!game.getGameCamera().cameraControl){
 			if(game.getGameCamera().getShakeDuration()<1){
