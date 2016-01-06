@@ -41,7 +41,7 @@ public class WarpBustoCentralRight extends Event {
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);
 			}
-			super.transport("/Worlds/Floor3Offices/SouthWingOffices/EastOfficesCenter.txt", 33, 12,"East Offices");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt", 5, 12,"East Offices");
 			open = false;
 			break;
 		}
@@ -54,7 +54,7 @@ public class WarpBustoCentralRight extends Event {
 				frame++;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 352){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -65,7 +65,7 @@ public class WarpBustoCentralRight extends Event {
 				frame--;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 352){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

@@ -50,14 +50,19 @@ public class WorldManager implements Serializable{
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, game.getWidth(), game.getHeight());
 		
-		//renders every tile in the matrix. 	
-		for(int y = 0;y<height;y++){
-			for(int x = 0;x < width;x++){
+		//renders every tile in the matrix if the map is larger than the screen (For optimality).
+		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y < (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
 				if(game!=null){
-					actualTiles[x][y].render(g, (int)(x*Tile.TILEWIDTH - game.getGameCamera().getxOffset()),(int)(y*Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
+					if(0<=x && x< width && 0<=y && y<height){
+						actualTiles[x][y].render(g, (int)(x*Tile.TILEWIDTH - game.getGameCamera().getxOffset()),(int)(y*Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
+					}
 				}
 			}
 		}
+		
+
+		
 		
 		//renders scrolling nameplate. 
 		if(!this.Worldname.equals("")){

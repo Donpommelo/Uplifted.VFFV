@@ -50,8 +50,8 @@ public class GameState extends State {
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
 //		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingLobby.txt";
-		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt";
+//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 		
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
@@ -60,6 +60,7 @@ public class GameState extends State {
 
 		player = new Player(game, 32*worldmanager.getSpawnX(), 32*worldmanager.getSpawnY(), this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
+		game.getGameCamera().centerOnEntity(player);
 	}
 
 	public WorldManager getWorld() {

@@ -41,7 +41,7 @@ public class WarpBustoJCloset extends Event {
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);
 			}
-			super.transport("/Worlds/Floor3Offices/SouthWingOffices/JanitorClosetEast.txt", 5, 10,"Broom Closet");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/JanitorClosetEast.txt", 5, 10,"Broom Closet");
 			open = false;
 			break;
 		}
@@ -54,7 +54,7 @@ public class WarpBustoJCloset extends Event {
 				frame++;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 160){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -65,7 +65,7 @@ public class WarpBustoJCloset extends Event {
 				frame--;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gamestate.getPlayer().getPlayerX()) == 160){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

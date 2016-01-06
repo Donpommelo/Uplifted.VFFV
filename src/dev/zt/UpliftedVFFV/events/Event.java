@@ -48,7 +48,7 @@ public class Event{
 	public static Event event7 = new WarpSouthOfficetoLobby(25,8,7);
 	public static Event event8 = new WarpSouthOfficetoSouthCubicles(3,27,8);
 	public static Event event9 = new WarpSouthOfficestoSouthWestHall(3,10,9);
-	public static Event event10 = new WarpSouthOfficetoBoardroom(15,6,10);
+	public static Event event10 = new WarpRightMain1toExtraRoom1(15,6,10);
 	public static Event event11 = new WarpBustoJCloset(13,15,11);
 	public static Event event12 = new WarpSouthCubiclestoSouthHallSmall(3,21,12);
 	public static Event event13 = new WarpSouthCubiclestoSouthOffices(23,21,13);
@@ -200,6 +200,60 @@ public class Event{
 	//event 149-150 = bus to 2 remaining stops.
 	public static Event event151 = new WarpBustoRamp(17,11,151);
 	public static Event event152 = new WarpJClosettoBus(5,11,152);
+	public static Event event153 = new WarpCentraltoBusLeft1(5,13,153);
+	public static Event event154 = new WarpCentraltoBusRight1(33,13,154);
+	public static Event event155 = new WarpCentraltoRight1(29,21,155);
+	public static Event event156 = new WarpCentraltoRight2(29,29,156);
+	public static Event event157 = new WarpCentraltoRight3(29,37,157);
+	public static Event event158 = new WarpCentraltoLeft1(9,21,158);
+	public static Event event159 = new WarpCentraltoLeft2(9,29,159);
+	public static Event event160 = new WarpCentraltoLeft3(9,37,160);
+	public static Event event161 = new WarpCentraltoBusLeft2(5,45,161);
+	public static Event event162 = new WarpCentraltoBusRight2(33,45,162);
+	public static Event event163 = new WarpRightMain1toCentral1(3,8,163);
+	public static Event event164 = new WarpRightMain1toCentral2(3,27,164);
+	public static Event event165 = new WarpRightMain1toExtraRoom1(12,12,165);
+	public static Event event166 = new WarpExtraRoom1toRightMain1(7,16,166);
+	public static Event event167 = new WarpInnerRightoCentral(3,9,167);
+	public static Event event168 = new WarpInnerRightoRightBasement(13,7,168);
+	public static Event event169 = new WarpRightBasementtoInnerRight(23,16,169);
+	public static Event event170 = new WarpRightBasementtoRightBusStop(3,8,170);
+	public static Event event171 = new WarpRightBasementtoLeftSide(3,16,171);
+	public static Event event172 = new WarpRightBasementtoShop(3,25,172);
+	public static Event event173 = new WarpRightBusStoptoBasement(12,12,173);
+	public static Event event174 = new WarpRightBusStoptoBus(7,16,174);
+	public static Event event175 = new WarpBasementTransitiontoBasement(12,13,175);
+	public static Event event176 = new WarpBasementTransitiontoStairsRoom(13,6,176);
+	public static Event event177 = new WarpShoptoBasement(12,12,177);
+	public static Event event178 = new WarpCarlocsHalltoCentral(24,9,178);
+	public static Event event179 = new WarpCarlocsHalltoStairsRoom(5,13,179);
+	public static Event event180 = new WarpCarlocsOfficetoBusRamp(17,16,180);
+	public static Event event181 = new WarpCarlocsOfficetoCentral(24,17,181);
+//Event 182: Carloc's office to East Elevator
+	public static Event event183 = new WarpAtriatoCentral(24,17,183);
+	public static Event event184 = new WarpAtriatoStairsRoom(6,12,184);
+	public static Event event185 = new WarpAtriatoOuterFloor2(25,8,185);
+	public static Event event186 = new WarpAtriatoRightFloor2(11,9,186);
+	public static Event event187 = new WarpStairsRoomtoAtria(10,15,187);
+	public static Event event188 = new WarpStairsRoomtoCarlocsHall(10,6,188);
+	public static Event event189 = new WarpStairsRoomStairsDown(3,9,189);
+	public static Event event190 = new WarpStairsRoomStairsUp(17,5,190);
+	public static Event event191 = new WarpOuterFloor2toAtria(5,16,191);
+	public static Event event192 = new WarpOuterFloor2toBalcony(20,22,192);
+	public static Event event193 = new WarpBalconytoOuterFloor2(18,28,193);
+	public static Event event194 = new WarpBalconytoStairsRoom(3,15,194);
+//Event 195: Balcony to warehouse
+//Event 196: Warehouse to Balcony
+	public static Event event197 = new WarpAtriaFloor2toAtriaFloor1(28,10,197);
+	public static Event event198 = new WarpAtriaFloor2toBusRamp(6,20,198);
+//Event 199: Atria Floor 2 to extra room
+//Event 200: Extra room to Atria Floor 2
+	public static Event event201 = new WarpBusRamptoAtriaFloor2(25,16,201);
+	public static Event event202 = new WarpBusRamptoCarlocsOffice(20,12,202);
+	public static Event event203 = new WarpBusRamptoBus(31,38,203);
+//Event 204: Bus Ramp to extra room? 
+//Event 205: Bus Ramp to West Offices
+
 	
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);
