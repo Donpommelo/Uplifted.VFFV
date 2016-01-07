@@ -18,11 +18,17 @@ public class BattleText {
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public ArrayList<String> textList=new ArrayList<String>();
+	public ArrayList<BattleScene> scenes=new ArrayList<BattleScene>();
+
 	public BattleState bs;
 	
-	public int  charIndex;
+	public int charIndex;
 	public boolean scrolling;
 
+	
+	public int frame;
+	public int maxFrame;
+	
 	public BattleText(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy, BattleState bs){
 		this.game=game;
 		this.sm=sm;
@@ -86,6 +92,14 @@ public class BattleText {
 		else{					
 			scrolling=false;					//if the text is done scrolling, charIndex stops increasing
 		}
+	}
+	
+	public void addScene(String text, Action a){
+		this.scenes.add(new BattleScene(text,a));
+	}
+	
+	public void addScene(String text){
+		this.scenes.add(new BattleScene(text,null));
 	}
 
 }

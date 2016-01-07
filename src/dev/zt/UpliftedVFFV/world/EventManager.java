@@ -40,23 +40,7 @@ public class EventManager {
 			}
 		}
 	}
-	
-	public void render(Graphics g){
-		for(int y = 0;y<height;y++){
-			for(int x = 0;x < width;x++){
-				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
-					if(getEvent(x,y).getTest()!=null){
-						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
-					}
-					else{
-						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
-					}
-					
-				}
-			}
-		}
-	}
-	
+		
 	public void renderBelow(Graphics g){
 		for(int y = 0;y<(int)(gs.getPlayer().getPlayerY()/32);y++){
 			for(int x = 0;x < width;x++){

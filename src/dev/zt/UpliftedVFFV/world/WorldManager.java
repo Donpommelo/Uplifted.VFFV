@@ -20,7 +20,7 @@ public class WorldManager implements Serializable{
 	private Game game;
 	private int width, height;					//size of world 
 	private int spawnX, spawnY;					//default start location of player. Only used for testing
-	private int numEvents;
+	private int numEvents, numDecor;
 	public Tile[][] actualTiles;				//matrix of tiles.
 	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
@@ -97,6 +97,7 @@ public class WorldManager implements Serializable{
 		spawnX = Utils.parseInt(tokens[2]);
 		spawnY = Utils.parseInt(tokens[3]);
 		numEvents = Utils.parseInt(tokens[4]);
+		numDecor = Utils.parseInt(tokens[5]);
 		enemyrate = Utils.parseInt(tokens[6]);
 		enemynum = Utils.parseInt(tokens[7]);
 		actualTiles = new Tile[width][height];
@@ -120,7 +121,7 @@ public class WorldManager implements Serializable{
 	//this fills a treemap with these pairs of integers which is checked in the player class when moving
 		
 		for(int i=0; i<enemynum; i++){
-			enemy.put(Utils.parseInt(tokens[height*width+8+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+9+3*numEvents+2*i]));
+			enemy.put(Utils.parseInt(tokens[height*width+8+3*numEvents+3*numDecor+2*i]),Utils.parseInt(tokens[(height*width)+9+3*numEvents+3*numDecor+2*i]));
 		}		
 	}
 	

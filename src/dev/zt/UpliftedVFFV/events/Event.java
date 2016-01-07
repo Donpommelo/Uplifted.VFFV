@@ -48,8 +48,8 @@ public class Event{
 	public static Event event7 = new WarpSouthOfficetoLobby(25,8,7);
 	public static Event event8 = new WarpSouthOfficetoSouthCubicles(3,27,8);
 	public static Event event9 = new WarpSouthOfficestoSouthWestHall(3,10,9);
-	public static Event event10 = new WarpRightMain1toExtraRoom1(15,6,10);
-	public static Event event11 = new WarpBustoJCloset(13,15,11);
+	public static Event event10 = new WarpSouthOfficetoBoardroom(15,6,10);
+	public static Event event11 = new WarpSouthOfficestoJCloset(13,15,11);
 	public static Event event12 = new WarpSouthCubiclestoSouthHallSmall(3,21,12);
 	public static Event event13 = new WarpSouthCubiclestoSouthOffices(23,21,13);
 	public static Event event14 = new WarpSouthWestHalltoSouthOffices(19,9,14);

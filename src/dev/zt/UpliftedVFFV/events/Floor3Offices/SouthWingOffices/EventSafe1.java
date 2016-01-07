@@ -11,9 +11,13 @@ public class EventSafe1 extends Event {
 
 
 	static BufferedImage img = Assets.SafeClosed;
+	public static int frame;
+	public static boolean blinking;
 	public static int stagenum = 0;
 	public EventSafe1(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
+		frame = 0;
+		blinking = false;
 	}
 	
 	public void run(){
@@ -24,6 +28,23 @@ public class EventSafe1 extends Event {
 			super.loot(new MedPak(), 3);
 			Event.events[this.getId()].setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
+		}
+	}
+	
+	public void tick(){
+		if(!this.isSelfswitch1()){
+			frame++;
+			if(frame>=50){
+				frame = 0;
+				if(blinking){
+					this.setTex(Assets.SafeClosed);
+					blinking = false;
+				}
+				else{
+					this.setTex(Assets.SafeClosed2);
+					blinking = true;
+				}
+			}
 		}
 	}
 	

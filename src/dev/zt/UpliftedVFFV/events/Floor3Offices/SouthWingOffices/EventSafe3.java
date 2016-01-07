@@ -10,9 +10,13 @@ public class EventSafe3 extends Event {
 
 
 	static BufferedImage img = Assets.SafeClosed;
+	public static int frame;
+	public static boolean blinking;
 	public static int stagenum = 0;
 	public EventSafe3(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
+		frame = 0;
+		blinking = false;
 	}
 	
 	public void run(){
@@ -25,6 +29,24 @@ public class EventSafe3 extends Event {
 			this.setSelfswitch1(true);
 		}
 	}
+	
+	public void tick(){
+		if(!this.isSelfswitch1()){
+			frame++;
+			if(frame>=50){
+				frame = 0;
+				if(blinking){
+					this.setTex(Assets.SafeClosed);
+					blinking = false;
+				}
+				else{
+					this.setTex(Assets.SafeClosed2);
+					blinking = true;
+				}
+			}
+		}
+	}
+	
 	
 	public boolean isSolid(int i){
 		return true;

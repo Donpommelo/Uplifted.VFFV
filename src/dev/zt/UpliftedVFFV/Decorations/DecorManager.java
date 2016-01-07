@@ -61,7 +61,7 @@ public class DecorManager {
 	private void loadDecor(String path){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");
-		textBlock = Utils.parseInt(tokens[0])*Utils.parseInt(tokens[1]) + 8 + 3*Utils.parseInt(tokens[4]) + 2*Utils.parseInt(tokens[7]);
+		textBlock = Utils.parseInt(tokens[0])*Utils.parseInt(tokens[1]) + 8 + 3*Utils.parseInt(tokens[4]);
 		numdecor=Utils.parseInt(tokens[5]);
 		Decorations = new Decor[numdecor];
 		DecorCoords = new int[2][numdecor];

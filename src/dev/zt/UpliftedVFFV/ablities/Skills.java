@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
@@ -18,6 +19,7 @@ public class Skills implements Serializable{
 	private int id;
 	public int cost;
 	public int baseAcc,baseCrit;
+	public int maxFrames;
 	public boolean canMiss,canCrit;
 	
 	//0: All targets
@@ -45,6 +47,7 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
+		this.maxFrames = 0;
 	}
 	
 	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, int icon, int acc, int crit,
@@ -60,6 +63,7 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
+		this.maxFrames = 0;
 	}
 	
 	
@@ -69,6 +73,10 @@ public class Skills implements Serializable{
 		
 	public void runCrit(Schmuck user, Schmuck target, BattleState bs){
 		run(user,target,bs);
+	}
+	
+	public void animate(int frame, Action a, Graphics g){
+		
 	}
 	
 	public String getName() {

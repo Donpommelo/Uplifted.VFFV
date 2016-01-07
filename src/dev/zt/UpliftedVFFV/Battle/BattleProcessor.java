@@ -230,65 +230,14 @@ public class BattleProcessor {
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
-						Skills tempSkill = TurnOrderQueue.get(0).skill;		//Skill being performed
 						Schmuck tempPerp = TurnOrderQueue.get(0).user;		//Schmuck that performs the above action
-						Schmuck tempVic = TurnOrderQueue.get(0).target;		//Schmuck being targeted
 						
 						//Before action happens, tempPerp's status restrictions activate.
 						tempPerp.restrictEffects(tempAction, bs);
 						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
-							
-							//Check if schmuck has adequate Mp to use ability. If so, deduct Mp and perform action.
-							if((int)(tempSkill.getCost()*(1-tempPerp.getMpCost())) <= tempPerp.getCurrentBp()){
-								em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
-								
-								//Check if the action was a Critical Hit
-								if(calcCrit(tempAction)){
-									tempSkill.runCrit(tempPerp,tempVic,bs);
-									
-									//If a critical hit occurred, run the perp's on-crit status effects.
-									tempPerp.onCritEffects(tempVic, bs);
-								}
-								
-								//Otherwise, check if the action missed or not.
-								else{
-									if(!calcHit(tempAction)){
-										bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
-										
-										//If the ability missed, activate perp's on-miss effects
-										tempPerp.onMissEffects(tempAction, bs);
-									}
-									//Otherwise, run the action normally.
-									else{
-										tempSkill.run(tempPerp,tempVic,bs);
-									}
-								}
-								
-								//Extra check of TOQ emptiness in case it becomes empty as a result of skill being run.
-								if(!TurnOrderQueue.isEmpty()){		
-									if(tempAction != null){
-										
-										//After action, run all of the perp's on-action effects.
-										tempPerp.onActionEffects(tempAction, bs);
-										
-										//Also, run everyone's on-any-action effects
-										for(Schmuck s : battlers){
-											s.afterEveryActionEffects(s, tempAction, bs); 
-										}
-									}
-								}
-								
-								//Update targets for good measure.
-								bs.bs.targetUpdate();
-
-							}
-							
-							//No Mp gives this message.
-							else{
-								bt.textList.add(tempPerp.getName()+" didn't have the Motivation to use "+tempSkill.getName()+"!");
-							}
+							runAction(tempAction);
 						}
 						
 						//Else, the action being processed is a dilly-dally used by an ally, pull up the battle menu.
@@ -303,28 +252,7 @@ public class BattleProcessor {
 							//Because actions are processed instantly, do the crit/miss calculations here.
 							else{
 								tempAction = tempPerp.getAction(bs);
-								tempSkill = tempAction.skill;		
-								tempPerp = tempAction.user;		
-								tempVic = tempAction.target;		
-								if(calcCrit(tempAction)){
-									tempSkill.runCrit(tempPerp,tempVic,bs);
-									
-									//If a critical hit occurred, run the perp's on-crit status effects.
-									tempPerp.onCritEffects(tempVic, bs);
-								}
-								else {
-									if(!calcHit(tempAction)){
-										bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
-										
-										//If the ability missed, activate perp's on-miss effects
-										tempPerp.onMissEffects(tempAction, bs);
-										
-									}
-									else{
-										tempSkill.run(tempPerp,tempVic,bs);
-									}
-								}
-								
+								runAction(tempAction);
 							}
 						}
 					}
@@ -474,6 +402,55 @@ public class BattleProcessor {
 				break;
 			}
 		}
+	}
+	
+	public void runAction(Action tempAction){
+		
+		Skills tempSkill = tempAction.skill;		
+		Schmuck tempPerp = tempAction.user;		
+		Schmuck tempVic = tempAction.target;
+		if((int)(tempSkill.getCost()*(1-tempPerp.getMpCost())) <= tempPerp.getCurrentBp()){
+			em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
+			if(calcCrit(tempAction)){
+				tempSkill.runCrit(tempPerp,tempVic,bs);
+				
+				//If a critical hit occurred, run the perp's on-crit status effects.
+				tempPerp.onCritEffects(tempVic, bs);
+			}
+			else {
+				if(!calcHit(tempAction)){
+					bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
+					
+					//If the ability missed, activate perp's on-miss effects
+					tempPerp.onMissEffects(tempAction, bs);
+					
+				}
+				else{
+					tempSkill.run(tempPerp,tempVic,bs);
+				}
+			}
+			//Extra check of TOQ emptiness in case it becomes empty as a result of skill being run.
+			if(!TurnOrderQueue.isEmpty()){		
+				if(tempAction != null){
+					
+					//After action, run all of the perp's on-action effects.
+					tempPerp.onActionEffects(tempAction, bs);
+					
+					//Also, run everyone's on-any-action effects
+					for(Schmuck s : battlers){
+						s.afterEveryActionEffects(s, tempAction, bs); 
+					}
+				}
+			}
+			
+			//Update targets for good measure.
+			bs.bs.targetUpdate();
+		}
+		
+		else{
+			bt.textList.add(tempPerp.getName()+" didn't have the Motivation to use "+tempSkill.getName()+"!");
+		}
+		
 	}
 	
 	//Returns true if an input action hits and false otherwise

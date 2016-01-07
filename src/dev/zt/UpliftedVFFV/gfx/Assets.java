@@ -37,7 +37,7 @@ public class Assets {
 	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
-	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper;
+	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper, Emaudeline, Informant;
 	public static BufferedImage Jorge1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	public static BufferedImage WoodDoor1,WoodDoor2,WoodDoor3,WoodDoor4, ClearDoor1, ClearDoor2, ClearDoor3, ClearDoor4,
@@ -50,7 +50,8 @@ public class Assets {
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
 		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
 		RailLeft, RailMiddle, RailRight;
-	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened, WaterCooler,Clock, VendingMachine;
+	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened,SafeClosed2,
+	WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
 	public static BufferedImage Mirror, Toilet, Sink, MaleSign, FemaleSign, SinkMirror;
 	
@@ -98,6 +99,8 @@ public class Assets {
 		EmployeeM2=WalkingSprites1.crop(6*width, 0, 3*width, 8*height);//=sheet.crop(0, 4*height, 3*width, 4*height);
 		Mover = WalkingSprites2.crop(0, 0, 3*width, 8*height);
 		Wiper = WalkingSprites2.crop(3*width, 0, 3*width, 8*height);
+		Emaudeline = WalkingSprites2.crop(6*width, 0, 3*width, 8*height);
+		Informant = WalkingSprites2.crop(9*width, 0, 3*width, 8*height);
 
 		
 		Jorge1=Jorge.crop(0,0,128,64);
@@ -294,6 +297,7 @@ public class Assets {
 		Sofa3 = Furniture3rdFloor.crop(3*width, 2*height, width*2, 2*height);
 		Sofa4 = Furniture3rdFloor.crop(9*width, 2*height, width, height*2); 
 		SafeClosed = Furniture3rdFloor.crop(5*width, 0, width, height);
+		SafeClosed2 = Furniture3rdFloor.crop(5*width, 2*height, width, height);
 		SafeOpened = Furniture3rdFloor.crop(5*width, height, width, height);
 		WaterCooler = Furniture3rdFloor.crop(6*width, 0, width, height*2);
 		Clock = Furniture3rdFloor.crop(7*width, 0, width, height);

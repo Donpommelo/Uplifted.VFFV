@@ -49,10 +49,10 @@ public class GameState extends State {
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
-//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthAquaHall.txt";
-		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt";
 //		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
-//		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
+		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 		
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
 		eventmanager = new EventManager(game,this,StartingFloor);
