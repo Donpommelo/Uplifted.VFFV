@@ -714,13 +714,14 @@ public class Schmuck implements Serializable{
 	}
 
 	public void calcBuffs(BattleState bs){
-
 		for(int i=0; i <baseStats.length; i++){
 			buffedStats[i] = baseStats[i];
 		}
 		for(int i=0; i<elemPoints.length; i++){
 			buffedElemPoints[i] = elemPoints[i];
 		}
+		
+		double origAlignment = this.getElemAlignment();
 		for(int i=0; i<bonusStats.length; i++){
 			bonusStats[i] = 0;
 		}
@@ -767,21 +768,24 @@ public class Schmuck implements Serializable{
 		this.setYellowRes((-this.getRedPoints()-this.getBluePoints()+this.getYellowPoints()+this.getGreenPoints()+this.getPurplePoints()));
 		this.setPurpleRes((this.getRedPoints()+this.getBluePoints()-this.getYellowPoints()-this.getGreenPoints()+this.getPurplePoints()));
 		this.setVoidRes(this.getVoidPoints());
+		this.setElemAlignment(origAlignment);
+
 		for(int i = 0 ; i< this.getBuffedElemPoints().length; i++){
 			if(this.buffedElemPoints[i] > this.getPrismaticPoints()/2){
 				if(this.getElemAlignment() != i+1){
 					this.setElemAlignment(i+1);
+					bs.bp.bt.addScene(this.getName()+" is elementally aligned!");
 					i = this.getBuffedElemPoints().length;
-					if(bs != null){
-						bs.bp.bt.addScene(this.getName()+" became elementally aligned!");
-					}
 				}
 			}
-			else{
+		}
+		if(this.getElemAlignment() != 0){
+			if(this.getPrismaticPoints()/2 >= this.buffedElemPoints[(int)(this.getElemAlignment()-1)]){
+				bs.bp.bt.addScene(this.getName()+" lost "+this.getPronoun(1)+" elemental alignment!");
 				this.setElemAlignment(0);
 			}
 		}
-
+		
 		if(this.getCurrentHp()>this.getMaxHp()){
 			this.setCurrentHp(this.getMaxHp());
 		}
