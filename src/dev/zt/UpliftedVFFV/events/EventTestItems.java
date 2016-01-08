@@ -5,7 +5,7 @@ package dev.zt.UpliftedVFFV.events;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.*;
-import dev.zt.UpliftedVFFV.inventory.consummables.*;
+import dev.zt.UpliftedVFFV.inventory.consumables.*;
 import dev.zt.UpliftedVFFV.inventory.equipables.*;
 import dev.zt.UpliftedVFFV.inventory.keyitems.*;
 import dev.zt.UpliftedVFFV.inventory.misc.*;

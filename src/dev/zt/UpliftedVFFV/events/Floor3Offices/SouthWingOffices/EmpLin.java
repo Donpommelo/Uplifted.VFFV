@@ -41,7 +41,7 @@ public class EmpLin extends Event {
 				Dialog[] d = new Dialog[3];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Greetings fellow coworker. Please tell me you are here for the meeting./");
 				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I don't believe so. What is the meeting about?/");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It's top secret. If you don't already know, I can't tell you./So don't bother asking me again./");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It's top secret. If you don't already know, I can't tell you./So definitely don't bother asking me again./");
 				super.Dialog(d, 2, this.getId(), true);
 				this.setSelfswitch1(true);
 			}

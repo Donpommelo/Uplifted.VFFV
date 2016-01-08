@@ -18,9 +18,9 @@ public class Operator extends Schmuck{
 	
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=56,startBp=30,startPow=17, startDef=18, startSpd=17, startSkl=13, startInt=18, startLuk=12;
+	public final static int startHp=46,startBp=20,startPow=17, startDef=18, startSpd=17, startSkl=13, startInt=18, startLuk=12;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.2, defGrowth=1.3, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
+	public final static double hpGrowth=3.0, bpGrowth=1.7, powGrowth=1.8, defGrowth=1.7, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	
 	public final static int expDrop = 2000;
@@ -38,8 +38,8 @@ public class Operator extends Schmuck{
 	
 	public final static Skills[] levelSkills = {new DoorsofClosure(0), new MotorGrinder(0), new SafeRoom(0), new FiremansSwitch(0),
 		new CentriDischarge(0), new VariableVoltage(0), new DamnedDescent(0), new Terraform(0), new DayattheFair(0)};
-//	public final static int[] levelReqs = {0,0,2,3,5,10,15,18,21};
-	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0};
+	public final static int[] levelReqs = {0,0,2,3,5,10,15,18,21};
+//	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0};
 	
 	public final static Item[] itemDrops = {};
 	public final static double[] dropRates = {};

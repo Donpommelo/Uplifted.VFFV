@@ -13,7 +13,7 @@ public class MeterShield extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.bt.textList.add(vic.getName()+"'s Faraday Cage absorbs damage!");
+		bs.bp.bt.addScene(vic.getName()+"'s Faraday Cage absorbs damage!");
 		bs.bp.em.bpChange((int)(damage*percent),vic);
 		return (int)(damage *(1-percent));
 	}	

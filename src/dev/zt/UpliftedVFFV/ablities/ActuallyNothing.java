@@ -17,4 +17,9 @@ public Item thing;
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 	
 	}
+	
+	public boolean useName(){
+		return false;
+	}
+	
 }

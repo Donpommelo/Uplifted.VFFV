@@ -21,7 +21,6 @@ public class Deafen extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Deafen!");
 		for(Schmuck s : bs.bp.battlers){
 			if(!bs.bp.stm.checkStatus(s, new incapacitate(perp))){
 				bs.bp.stm.addStatus(s, new Silenced(3, perp, 50));

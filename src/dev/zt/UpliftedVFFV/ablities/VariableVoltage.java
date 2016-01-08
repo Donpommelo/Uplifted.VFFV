@@ -21,7 +21,6 @@ public class VariableVoltage extends Skills {
 		Schmuck target1;
 		Schmuck target2;
 		Schmuck target3;
-		bs.bp.bt.textList.add(perp.getName()+" used Variable Voltage!");
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target3 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
@@ -52,8 +51,6 @@ public class VariableVoltage extends Skills {
 		Schmuck target1;
 		Schmuck target2;
 		Schmuck target3;
-		bs.bp.bt.textList.add(perp.getName()+" used Variable Voltage!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target3 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));

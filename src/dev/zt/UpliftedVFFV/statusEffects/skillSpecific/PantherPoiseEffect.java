@@ -20,7 +20,7 @@ public class PantherPoiseEffect extends status{
 	public void restrict(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Item")){
 			if(!perp.equals(bs.bp.TurnOrderQueue.get(0).user)){
-				bs.bp.bt.textList.add(perp.getName()+" snatched the item. And ate it.");
+				bs.bp.bt.addScene(perp.getName()+" snatched the item. And ate it.");
 			}
 			bs.bp.TurnOrderQueue.get(0).setTarget(perp);
 		}

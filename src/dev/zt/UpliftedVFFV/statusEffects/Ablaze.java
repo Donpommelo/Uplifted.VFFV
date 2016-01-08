@@ -19,7 +19,7 @@ public class Ablaze extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+" continues to immolate.");
+		bs.bp.bt.addScene(s.getName()+" continues to immolate.");
 		bs.bp.em.hpChange(-4,perp,s,0);	
 	}
 

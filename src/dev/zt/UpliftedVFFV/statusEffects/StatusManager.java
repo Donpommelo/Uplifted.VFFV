@@ -35,7 +35,7 @@ public class StatusManager {
 				}
 			}
 			if(bs.bs.alliesSelectable.contains(s) && !checkStatus(s,new incapacitate(s)) && bs.bs.alliesSelectable.size() == 1){
-				bs.bp.bt.textList.add("You and everyone you care about are dead.");
+				bs.bp.bt.addScene("You and everyone you care about are dead.");
 			}			
 		}
 		
@@ -43,7 +43,7 @@ public class StatusManager {
 		
 		//Case 0: New stat is not applied.
 		if(stat.stackingEffect() == 0 && checkStatus(s,stat)){
-			bs.bp.bt.textList.add(s.getName()+" is already "+stat.getName()+"!");
+			bs.bp.bt.addScene(s.getName()+" is already "+stat.getName()+"!");
 		}
 		else{
 			switch(stat.stackingEffect()){
@@ -89,7 +89,7 @@ public class StatusManager {
 			}
 			
 			if(!stat.inflictText(s).equals("")){
-				bs.bp.bt.textList.add(stat.inflictText(s));
+				bs.bp.bt.addScene(stat.inflictText(s));
 			}
 			
 			//Activate all of the target's on-status effects.
@@ -120,11 +120,11 @@ public class StatusManager {
 			if(s.statuses.get(i).getName()!=null){
 				if(s.statuses.get(i).getName().equals(stat.getName())){
 					if(s.statuses.get(i).perm){
-						bs.bp.bt.textList.add(stat.getName()+" could not be removed!");
+						bs.bp.bt.addScene(stat.getName()+" could not be removed!");
 					}
 					else{
 						if(!s.statuses.get(i).cureText(s).equals("")){
-							bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+							bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
 						}
 						s.statuses.remove(i);
 						i--;
@@ -140,7 +140,7 @@ public class StatusManager {
 			if(s.statuses.get(i).getName()!=null){
 				if(s.statuses.get(i).getName().equals(stat.getName())){
 					if(!s.statuses.get(i).cureText(s).equals("")){
-						bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+						bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
 					}
 					s.statuses.remove(i);
 					i--;	
@@ -183,7 +183,7 @@ public class StatusManager {
 					if(!checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(10))){
 						if(s.statuses.get(i).duration==0){
 							if(!s.statuses.get(i).cureText(s).equals("")){
-								bs.bp.bt.textList.add(s.statuses.get(i).cureText(s));
+								bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
 							}
 							hardRemoveStatus(s, s.statuses.get(i));
 							i--;

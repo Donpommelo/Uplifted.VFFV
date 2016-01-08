@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.events.Event;
+import dev.zt.UpliftedVFFV.gfx.Assets;
 
 
 //A state that displays an image and allows the player to use arrow keys to move it around, examining it.
@@ -24,8 +25,18 @@ public class ExamineState extends State{
 		this.image = i;
 		this.width = i.getWidth();
 		this.height = i.getHeight();
-		this.x = 0;
-		this.y = 0;
+		if(width<640){
+			this.x = 320-width/2;
+		}
+		else{
+			this.x = 0;
+		}
+		if(height<416){
+			this.y = 208-height/2;
+		}
+		else{
+			this.y = 0;
+		}
 	}
 
 	@Override
@@ -41,24 +52,24 @@ public class ExamineState extends State{
 				}
 				
 			}
-			if(game.getKeyManager().left){
-				if(x>0){
-					x-=5;
-				}
-			}
 			if(game.getKeyManager().right){
-				if(x<640-width){
-					x+=5;
+				if(x+width>640){
+					x-=3;
 				}
 			}
-			if(game.getKeyManager().up){
-				if(y>0){
-					y-=5;
+			if(game.getKeyManager().left){
+				if(x<0){
+					x+=3;
 				}
 			}
 			if(game.getKeyManager().down){
-				if(y<416-height){
-					y+=5;
+				if(y+height>416){
+					y-=3;
+				}
+			}
+			if(game.getKeyManager().up){
+				if(y<0){
+					y+=3;
 				}
 			}
 			
@@ -69,8 +80,15 @@ public class ExamineState extends State{
 	public void render(Graphics g) {
 		StateManager.getStates().pop();
 		StateManager.getStates().peek().render(g);
+		g.drawImage(Assets.DarkFilter,0,0,null);
 		StateManager.getStates().push(this);
 		g.drawImage(image, x, y, null);
+		if(y+height>416){
+			g.drawImage(Assets.Downarrow, 315, 390, null);
+		}
+		if(y<0){
+			g.drawImage(Assets.Uparrow, 315, 0, null);
+		}
 	}
 
 	@Override

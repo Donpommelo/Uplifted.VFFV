@@ -20,7 +20,6 @@ public class CleansingSpray extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Cleansing Spray!");
 		int statusesRemoved = 0;
 		for(status st : vic.statuses){
 			if(!st.perm){

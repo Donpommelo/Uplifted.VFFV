@@ -4,10 +4,12 @@ public class BattleScene {
 
 	public String text;
 	public Action a;
+	public boolean auto;
 	
-	public BattleScene(String t, Action act){
+	public BattleScene(String t, Action act, Boolean au){
 		this.text = t;
 		this.a = act;
+		this.auto = au;
 	}
 	
 	public String getText() {
@@ -25,6 +27,16 @@ public class BattleScene {
 	public void setA(Action a) {
 		this.a = a;
 	}
+
+	public boolean isAuto() {
+		return auto;
+	}
+
+	public void setAuto(boolean auto) {
+		this.auto = auto;
+	}
+	
+	
 
 	
 }

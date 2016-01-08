@@ -28,6 +28,14 @@ public class Action {
 	public void setSkill(Skills skill) {
 		this.skill = skill;
 	}
+	
+	public Schmuck getUser() {
+		return user;
+	}
+
+	public void setUser(Schmuck user) {
+		this.user = user;
+	}
 
 	public Schmuck getTarget() {
 		return target;

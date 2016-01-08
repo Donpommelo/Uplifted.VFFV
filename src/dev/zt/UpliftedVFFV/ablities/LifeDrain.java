@@ -18,15 +18,12 @@ public class LifeDrain extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Life Drain!");
 		int damage = -(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3];
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Life Drain!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		int damage = -(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,6);

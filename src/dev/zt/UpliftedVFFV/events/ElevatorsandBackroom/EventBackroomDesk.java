@@ -15,19 +15,19 @@ public class EventBackroomDesk extends Event {
 	}
 	
 	public void run(){
-			if(!super.getSwitch(3)){
+			if(super.getSwitch(3)){
 				Dialog[] d = new Dialog[1];
-	/*			if(super.itemNumCheck(new PostageStamp()) == 0){
-					d[0] = new Dialog("meep",ImageLoader.loadImage("/CharacterBusts/Arturo.png"),0,"You don't have any Postage Stamps./");
-					super.Dialog(d,0, this.getId());
-				}*/
-	//			else{
+				if(super.itemNumCheck(new PostageStamp()) == 0){
+					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",0,"You don't have any Postage Stamps./");
+					super.Dialog(d,0, this.getId(),true);
+				}
+				else{
 					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png", 0, "Write to your Pen Pal?/" +
 					"Stamps Remaining: " + super.itemNumCheck(new PostageStamp()) + "/");
 					super.Dialog(d, 0, this.getId(), true);
 					super.ChoiceBranch(this.getId(), Choices);
 				}	
-	//		}
+			}
 			else{
 				Dialog[] d = new Dialog[1];
 				d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"An old Writing Desk./But you have nothing to write and no one to write to./");

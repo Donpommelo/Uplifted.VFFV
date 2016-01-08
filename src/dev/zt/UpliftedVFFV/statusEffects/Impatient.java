@@ -22,7 +22,7 @@ public class Impatient extends status{
 	}
 	
 	public void onDillyDally(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+" is filled with burning impatience from waiting!");
+		bs.bp.bt.addScene(s.getName()+" is filled with burning impatience from waiting!");
 		bs.bp.em.hpChange((int)(-s.getMaxHp()*percent), s, s, 0);
 	}
 	

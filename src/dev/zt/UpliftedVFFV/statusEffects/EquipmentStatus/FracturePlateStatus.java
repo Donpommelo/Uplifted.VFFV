@@ -12,7 +12,7 @@ public class FracturePlateStatus extends status{
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+"'s Fracture Plate fused together!");
+		bs.bp.bt.addScene(s.getName()+"'s Fracture Plate fused together!");
 		bs.bp.stm.addStatus(s, new TempFortify(7,s,50));
 	}	
 }

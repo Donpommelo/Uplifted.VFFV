@@ -16,13 +16,12 @@ public class PennyBlueStatus extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+"'s Penny Blue regenerates vitality.");
-		bs.bp.em.hpChange((int)((s.getMaxHp()/10)*(1+perp.getHealPower())),perp,s,6);
+		bs.bp.bt.addScene(s.getName()+"'s Penny Blue regenerates vitality.");
 		bs.bp.em.bpChange(s.getMaxBp()/10,s);		
 	}
 
 	public void statchanges(Schmuck s){
-		s.buffedElemPoints[1]+=8;
+		s.buffedElemPoints[1]+=10;
 	}
 	
 	public String inflictText(Schmuck s){

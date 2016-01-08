@@ -85,12 +85,12 @@ public class EffectManager {
 				
 				//If the Hp change is positive, the HealBlock status will cancel it.
 				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic,50))){
-					bs.bp.bt.textList.add(vic.getName()+" was prevented from healing!");
+					bs.bp.bt.addScene(vic.getName()+" was prevented from healing!");
 				}
 				
 				//Otherwise, healing is done and the target's on-heal effects activate.
 				else{
-					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
+					bs.bp.bt.addScene(vic.getName()+" restored "+finalDamage+" health!");
 					finalDamage = vic.onHealEffects(bs, perp, finalDamage, elem);
 					
 					//Final healing amount is finally modified by the target's regen bonus.
@@ -102,7 +102,7 @@ public class EffectManager {
 			//If thte hp change is negative, the Invulnerability status will nullify it
 			else{
 				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic,50))){
-					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prevented damage!");
+					bs.bp.bt.addScene(vic.getName()+"'s Invulnerability prevented damage!");
 				}
 				
 				//Otherwise, the target flashes and takes damage.
@@ -115,7 +115,7 @@ public class EffectManager {
 					finalDamage = vic.takeDamageEffects(bs, perp, finalDamage, elem);
 					
 					//Display text and do damage.
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
+					bs.bp.bt.addScene(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 					vic.tempStats[0]+=finalDamage;
 				}				
 			}
@@ -204,7 +204,7 @@ public class EffectManager {
 			}
 		}
 		else{
-			bs.bp.bt.textList.add(s.getName()+" was prevented from restoring meter!");
+			bs.bp.bt.addScene(s.getName()+" was prevented from restoring meter!");
 
 		}
 		
@@ -212,7 +212,13 @@ public class EffectManager {
 	
 	//Returns true or false if a given ability hits or misses.
 	public Boolean getAcc(Schmuck perp, Schmuck vic, int baseAcc){
-		int acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
+		int acc = 0;
+		if(vic.getBuffedLuk() != 0){
+			acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
+		}
+		else{
+			acc = 1;
+		}
 		if((int)(Math.random()*100) <= acc){
 			return true;
 		}
@@ -223,7 +229,13 @@ public class EffectManager {
 	
 	//returns true or false if a given ability crits or not.
 	public Boolean getCrit(Schmuck perp, Schmuck vic, Skills s){
-		double crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() - vic.getCritAvoid() + s.getBaseCrit()/100;
+		double crit = 0;
+		if(vic.getBuffedLuk() != 0){
+			crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() - vic.getCritAvoid() + s.getBaseCrit()/100;
+		}
+		else{
+			crit = 1;
+		}
 		if(Math.random() <= crit){
 			return true;
 		}

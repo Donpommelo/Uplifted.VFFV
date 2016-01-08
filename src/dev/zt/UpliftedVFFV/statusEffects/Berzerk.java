@@ -24,8 +24,8 @@ public class Berzerk extends status{
 			Schmuck newTarget = bs.bp.battlers.get((int)(Math.random()*bs.bp.battlers.size()));
 			if(bs.bp.stm.checkStatus(newTarget, new incapacitate(newTarget))){
 				a.target = newTarget;
-				bs.bp.bt.textList.add(s.getName()+" is going Berzerk!");
-				bs.bp.bt.textList.add(s.getName()+" targeted a random character!");
+				bs.bp.bt.addScene(s.getName()+" is going Berzerk!");
+				bs.bp.bt.addScene(s.getName()+" targeted a random character!");
 			}
 		}
 		

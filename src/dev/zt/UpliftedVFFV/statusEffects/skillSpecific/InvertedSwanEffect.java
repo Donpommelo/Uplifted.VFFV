@@ -18,7 +18,7 @@ public class InvertedSwanEffect extends status{
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
-		bs.bp.bt.textList.add(perp.getName()+"'s Inverted Swan grants a double-attack.");
+		bs.bp.bt.addScene(perp.getName()+"'s Inverted Swan grants a double-attack.");
 		bs.bp.TurnOrderQueue.add(1, new Action(perp, vic, new InvertedSwanBonusAttack(0),bs));
 	}
 

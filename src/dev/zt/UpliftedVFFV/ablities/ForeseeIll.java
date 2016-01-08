@@ -20,13 +20,12 @@ public class ForeseeIll extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" Foresees Ill!");
 		if(bs.bp.stm.checkStatus(vic, new IntrusiveThoughtEffect(perp,50))){
 			bs.bp.em.hpChange(-(int)Math.pow(2, bs.bp.stm.findStatus(vic, new IntrusiveThoughtEffect(perp,50)).stack)+1, perp, vic,6);
 			bs.bp.stm.removeStatus(vic, new IntrusiveThoughtEffect(perp,50));
 		}
 		else{
-			bs.bp.bt.textList.add("But it failed.");
+			bs.bp.bt.addScene("But it failed.");
 		}
 	}
 

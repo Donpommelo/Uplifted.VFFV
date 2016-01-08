@@ -19,8 +19,12 @@ public class SkillNothing extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" did nothing in "+vic.getName()+"'s general direction.");
-		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
+		bs.bp.bt.addScene(vic.getName()+" doesn't seem impressed.");
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" did nothing in "+vic.getName()+"'s general direction.";
+	}
+	
 
 }

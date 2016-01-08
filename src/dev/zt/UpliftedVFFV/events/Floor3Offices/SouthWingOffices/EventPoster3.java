@@ -14,7 +14,7 @@ public class EventPoster3 extends Event {
 	}
 	
 	public void run(){
-		super.Examine(Assets.Jorge1, this.getId());
+//		colors poster
 	}
 	
 	public boolean isSolid(int i){

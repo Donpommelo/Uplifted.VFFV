@@ -7,7 +7,7 @@ public class PennyBlue extends Skills {
 
 	public static String name = "Penny Blue";
 	public static String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
-	public static String descrShort = "Buffs Red Resist and regen.";
+	public static String descrShort = "Heals and boosts Mp regeneration.";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;
@@ -18,13 +18,12 @@ public class PennyBlue extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Penny Blue!");
+		bs.bp.em.hpChange((int)(perp.getBuffedInt()*(1+perp.getHealPower())), perp, vic, 1);
 		bs.bp.stm.addStatus(vic, new PennyBlueStatus(3, perp, 35));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Penny Blue!");
-		bs.bp.bt.textList.add("A Critical buff!");
+		bs.bp.em.hpChange((int)(1.5*perp.getBuffedInt()*(1+perp.getHealPower())), perp, vic, 1);
 		bs.bp.stm.addStatus(vic, new PennyBlueStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 60));	
 	}
 	

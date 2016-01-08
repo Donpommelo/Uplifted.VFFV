@@ -21,25 +21,23 @@ public class FireMagnum extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		if(bs.gs.inventorymanager.backpack.containsKey(new MetalRations())){
-			bs.bp.bt.textList.add(perp.getName()+" fired a Magnum at "+vic.getName()+"!");
 			bs.bp.em.hpChange((int)(-45*(1+perp.getEquipPow())),perp,vic,6);
 			bs.gs.inventorymanager.use(new MetalRations());
-			bs.bp.bt.textList.add(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
+			bs.bp.bt.addScene(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
 		}
 		else{
-			bs.bp.bt.textList.add(perp.getName()+" is out of ammunition!");
+			bs.bp.bt.addScene(perp.getName()+" is out of ammunition!");
 		}		
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		if(bs.gs.inventorymanager.backpack.containsKey(new MetalRations())){
-			bs.bp.bt.textList.add(perp.getName()+" fired a Magnum at "+vic.getName()+"!");
 			bs.bp.em.hpChange((int)(-45*(1+perp.getEquipPow())*(1+perp.getCritMulti())*(1+perp.getCritMulti())),perp,vic,6);
 			bs.gs.inventorymanager.use(new MetalRations());
-			bs.bp.bt.textList.add(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
+			bs.bp.bt.addScene(bs.gs.inventorymanager.backpack.get(new MetalRations())+" Metal Rations left!");
 		}
 		else{
-			bs.bp.bt.textList.add(perp.getName()+" is out of ammunition!");
+			bs.bp.bt.addScene(perp.getName()+" is out of ammunition!");
 		}	
 	}	
 	

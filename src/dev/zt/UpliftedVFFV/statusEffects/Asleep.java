@@ -28,10 +28,10 @@ public class Asleep extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(0))){
 			bs.bp.stm.removeStatus(vic, new Asleep(0));
-			bs.bp.bt.textList.add(vic.getName()+" was startled awake!");
+			bs.bp.bt.addScene(vic.getName()+" was startled awake!");
 		}
 		else{
-			bs.bp.bt.textList.add(vic.getName()+" tosses and turns in "+vic.getPronoun(1)+" sleep, but cannot wake.");
+			bs.bp.bt.addScene(vic.getName()+" tosses and turns in "+vic.getPronoun(1)+" sleep, but cannot wake.");
 		}
 		return damage;
 	}	

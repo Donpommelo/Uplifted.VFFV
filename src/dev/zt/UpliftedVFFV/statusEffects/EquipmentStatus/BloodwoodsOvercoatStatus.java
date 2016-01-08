@@ -13,7 +13,7 @@ public class BloodwoodsOvercoatStatus extends status{
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
 		int cost = (int)(s.getMaxHp() * 0.2);
 		if(s.getCurrentHp() > cost && st.isBad() && !st.perm){
-			bs.bp.bt.textList.add("Bloodwood's Overcoat cleanses "+s.getName()+" of "+s.getPronoun(1)+" debuff.");
+			bs.bp.bt.addScene("Bloodwood's Overcoat cleanses "+s.getName()+" of "+s.getPronoun(1)+" debuff.");
 			s.hpChange(-cost);
 			bs.bp.stm.removeStatus(s, st);
 		}

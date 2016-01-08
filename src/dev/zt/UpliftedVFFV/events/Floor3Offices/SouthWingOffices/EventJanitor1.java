@@ -12,9 +12,9 @@ import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.consummables.CaffeinePatch;
-import dev.zt.UpliftedVFFV.inventory.consummables.MedPak;
-import dev.zt.UpliftedVFFV.inventory.consummables.SmellingSalt;
+import dev.zt.UpliftedVFFV.inventory.consumables.CaffeinePatch;
+import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
+import dev.zt.UpliftedVFFV.inventory.consumables.SmellingSalt;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
 import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
 

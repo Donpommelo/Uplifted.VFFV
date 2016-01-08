@@ -16,12 +16,15 @@ public class Troop12Thoughts extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		for(int i = 0; i < 5; i++){
-			int num = (int)(Math.random()*2);
+			int num = (int)(Math.random()*3);
 			switch(num){
 			case 0:
 				troop.add(new RotThought(2+ML));
 				break;
 			case 1:
+				troop.add(new Augur(2+ML));
+				break;
+			case 2:
 				troop.add(new Augur(2+ML));
 				break;
 			}

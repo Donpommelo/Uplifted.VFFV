@@ -19,7 +19,7 @@ public class Contagious extends status{
 	}	
 		
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+"'s Contagion spreads!");
+		bs.bp.bt.addScene(s.getName()+"'s Contagion spreads!");
 		for(Schmuck ally : bs.bp.getSelectableAllies(s)){
 			if(!bs.bp.stm.checkStatus(ally, st) && st.name != "Contagious"){
 				bs.bp.stm.addStatus(ally, st);

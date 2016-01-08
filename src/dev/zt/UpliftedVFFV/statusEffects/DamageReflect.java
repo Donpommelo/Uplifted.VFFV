@@ -23,7 +23,7 @@ public class DamageReflect extends status{
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!perp.equals(vic) && !perp.getName().equals("Item Dummy")){
-			bs.bp.bt.textList.add(vic.getName()+" reflected some damage back at "+perp.getName());
+			bs.bp.bt.addScene(vic.getName()+" reflected some damage back at "+perp.getName());
 			perp.hpChange((int)(damage*percent));
 		}
 		bs.bs.targetUpdate();

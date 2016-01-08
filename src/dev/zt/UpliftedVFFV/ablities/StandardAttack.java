@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.Battle.Animations.StandardAttackAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
@@ -15,12 +17,13 @@ public class StandardAttack extends Skills {
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 6;	//Physical
 	public static int targetType = 0;	//Any Single Target
+	public static int maxFrames = 30;
+	public static BattleAnimation ba = new StandardAttackAnim();
 	public StandardAttack(int index) {
-		super(index, targetType, element, name, descr, descrShort, cost, 0, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, 0, baseAcc, baseCrit, canMiss, canCrit, ba);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+"!");
 		int statAttack = (int)(perp.getDamageStat()+2);
 		if((int)perp.getElemAlignment() == 0 ){
 			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,6);
@@ -32,8 +35,6 @@ public class StandardAttack extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+"!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		int statAttack = (int)(perp.getDamageStat()+2);
 		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 		perp.onStandardAttackEffects(vic, -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())), bs);
@@ -51,6 +52,10 @@ public class StandardAttack extends Skills {
 			bs.bp.TurnOrderQueue.remove(a);
 			bs.bp.TurnOrderQueue.add(0, a);
 		}
+	}
+		
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" attacks "+vic.getName()+"!";
 	}
 		
 }

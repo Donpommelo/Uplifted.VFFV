@@ -176,6 +176,9 @@ public class Event{
 	public static Event eventcommonworkdesk2 = new EventWorkDesk2(0,0,127);
 	public static Event eventcommoncuidado = new EventCuidado(0,0,128);
 
+	public static Event eventcontrols = new EventControlIntro(7,9,129);
+
+	
 	public static Event safe1 = new EventSafe1(18,23,130);
 	public static Event safe2 = new EventSafe2(11,8,131);
 	public static Event safe3 = new EventSafe3(0,0,132);

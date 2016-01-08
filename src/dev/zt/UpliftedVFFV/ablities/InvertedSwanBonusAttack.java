@@ -19,13 +19,10 @@ public class InvertedSwanBonusAttack extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+" again!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic,1);		
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+" again!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,1);		
 	}
 	
@@ -34,4 +31,9 @@ public class InvertedSwanBonusAttack extends Skills {
 		int damage = -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/(vic.buffedStats[3]));
 		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" attacks "+vic.getName()+" again!";
+	}
+		
 }

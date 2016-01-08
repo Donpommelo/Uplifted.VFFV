@@ -11,10 +11,10 @@ public class RecyclerBolusStatus extends status{
 	}
 	
 	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.bt.textList.add(vic.getName()+"'s Recycler Bolus radiates foul energy!");
+		bs.bp.bt.addScene(vic.getName()+"'s Recycler Bolus radiates foul energy!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(vic)){
 			damage *= (1+s.getEquipPow());
-			bs.bp.em.hpChange(-damage/bs.bp.getSelectableEnemies(vic).size(), vic, s, elem);
+			bs.bp.em.hpChange(-damage/bs.bp.getSelectableEnemies(vic).size(), vic, s, 6);
 		}
 		return damage;
 	}	

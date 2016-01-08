@@ -19,7 +19,6 @@ public class ColorDrain extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Color Drain!");
 		for(int i = 0; i < 5; i++){
 			bs.bp.stm.addStatus(vic, new ElemPointsBuffMult(5,i,.9,perp,50));
 		}

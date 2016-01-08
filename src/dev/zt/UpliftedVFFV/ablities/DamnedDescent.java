@@ -20,20 +20,17 @@ public class DamnedDescent extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.5), perp, vic,0);
 		if(vic.tempStats[0]==0){
-			bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
+			bs.bp.bt.addScene(perp.getName()+" claims "+vic.getName()+"'s soul!");
 			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]), perp, vic,0);
 		if(vic.tempStats[0]==0){
-			bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
+			bs.bp.bt.addScene(perp.getName()+" claims "+vic.getName()+"'s soul!");
 			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
 			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
 		}	

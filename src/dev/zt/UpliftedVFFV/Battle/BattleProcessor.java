@@ -10,7 +10,6 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ActuallyNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.ablities.DillyDally;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.party.troops.Troop;
@@ -70,7 +69,7 @@ public class BattleProcessor {
 		TurnOrderQueue = new ArrayList<Action>();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 
-		bt.textList.add(t.encounterText());
+		bt.addScene(t.encounterText());
 		for(Schmuck s : allies){
 			battlers.add(s);
 		}
@@ -86,7 +85,7 @@ public class BattleProcessor {
 	public void tick() {
 		
 		//Display text if any is queued up
-		if(!bt.textList.isEmpty()){
+		if(!bt.scenes.isEmpty()){
 			bt.tick();
 		}
 		
@@ -148,7 +147,7 @@ public class BattleProcessor {
 							bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
 						}
 						else{
-							bt.textList.add(allies.get(currentlySelected).getName()+" is Incapacitated!");
+							bt.addScene(allies.get(currentlySelected).getName()+" is Incapacitated!");
 						}
 						game.getKeyManager().disable(delaySelection);
 					}
@@ -193,14 +192,6 @@ public class BattleProcessor {
 								}				
 							}
 							
-							//The first character in the sorted TOQ may get an extra turn if they are fast enough.
-							if(TurnOrderQueue.size() >= 2 && TurnOrderQueue.get(0).user != null && TurnOrderQueue.get(1).user != null){
-								if(TurnOrderQueue.get(0).user.getBuffedSpd() >= (1.5)*(TurnOrderQueue.get(1).user.getBuffedSpd())){	//null pointer here sometimes
-									bt.textList.add(TurnOrderQueue.get(0).user.getName()+"'s speed grants an extra turn!");
-									TurnOrderQueue.add(new Action(TurnOrderQueue.get(0).user,TurnOrderQueue.get(0).user,new DillyDally(0),bs));
-								}
-							}
-							
 							//Next phase begins. Variables reset.
 							phase++;
 							allReady = false;
@@ -237,7 +228,13 @@ public class BattleProcessor {
 						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
-							runAction(tempAction);
+							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
+								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
+							}
+							else{//later add custom text
+								bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
+							}
+//							runAction(tempAction);
 						}
 						
 						//Else, the action being processed is a dilly-dally used by an ally, pull up the battle menu.
@@ -252,11 +249,10 @@ public class BattleProcessor {
 							//Because actions are processed instantly, do the crit/miss calculations here.
 							else{
 								tempAction = tempPerp.getAction(bs);
-								runAction(tempAction);
+								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction,false);
 							}
 						}
 					}
-					
 					//After the action is done processing, remove it, recalculate buffs
 					if(pauseTOQ == false){
 						if(!TurnOrderQueue.isEmpty()){
@@ -273,7 +269,7 @@ public class BattleProcessor {
 				else{					
 					stm.endofRound(bs);
 					for(Schmuck s : battlers){
-						s.bpChange(s.getBuffedInt()/5); //mp regen gain. Tweak numbers later
+						s.bpChange(s.getBuffedInt()/10); //mp regen gain. Tweak numbers later
 					}
 					phase++;
 				}
@@ -284,13 +280,13 @@ public class BattleProcessor {
 				
 				//If all allies are defeated, display losing text.
 				if(fightlost()){
-					bt.textList.add("The fight was lost.");
-					bt.textList.add("Everything goes black.");
+					bt.addScene("The fight was lost.");
+					bt.addScene("Everything goes black.");
 				}
 				
 				//If all enemies are defeated, get loot and stuff.
 				else if(enemyded()){
-					bt.textList.add("You won!");
+					bt.addScene("You won!");
 					double exp = 0;
 					double script = 0;
 					double expMult = 0;
@@ -310,12 +306,12 @@ public class BattleProcessor {
 					
 					//Gain Exp. Level up and gain new skills accordingly.
 					for(Schmuck s : allies){
-						bt.textList.add(s.getName()+" gains "+(int)(exp/allies.size())+" exp!");
+						bt.addScene(s.getName()+" gains "+(int)(exp/allies.size())+" exp!");
 						if(s.exp+(int)(exp/allies.size())>=Math.pow(s.Lvl,2)*10){
-							bt.textList.add(s.getName()+" received a raise!");
-							bt.textList.add(s.getName()+" is now level "+ (s.Lvl+1)+"!");
+							bt.addScene(s.getName()+" received a raise!");
+							bt.addScene(s.getName()+" is now level "+ (s.Lvl+1)+"!");
 							if(s.getLevelSkills().containsKey(s.Lvl+1)){
-								bt.textList.add(s.getName()+" learned "+ s.getLevelSkills().get(s.Lvl+1).getName()+"!");	
+								bt.addScene(s.getName()+" learned "+ s.getLevelSkills().get(s.Lvl+1).getName()+"!");	
 							}
 						}
 						s.expGain(s.getStartStats(),s.getStatGrowths(),(int)(exp/allies.size()));
@@ -323,7 +319,7 @@ public class BattleProcessor {
 					}
 					
 					//Gain Script
-					bt.textList.add((int)script+" Company Script looted!");
+					bt.addScene((int)script+" Company Script looted!");
 					gs.scriptChange((int)script);
 					
 					
@@ -334,10 +330,10 @@ public class BattleProcessor {
 					
 					for(int i=0; i<drops.size();i++){		
 						if(drops.get(itemDisplay[i]) == 1){		
-							bt.textList.add("Looted a(n) "+itemDisplay[i].getName()+"!");
+							bt.addScene("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}
 						else{
-							bt.textList.add("Looted "+drops.get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
+							bt.addScene("Looted "+drops.get(itemDisplay[i])+" "+itemDisplay[i].getName()+"(s)!");
 						}				
 						gs.inventorymanager.loot(itemDisplay[i], drops.get(itemDisplay[i]));
 					}
@@ -358,7 +354,7 @@ public class BattleProcessor {
 	//Render method. 
 	public void render(Graphics g) {
 		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 75, 28, 16, true);
-		if(!bt.textList.isEmpty()){
+		if(!bt.scenes.isEmpty()){
 			bt.render(g);
 		}
 		else{
@@ -412,6 +408,7 @@ public class BattleProcessor {
 		if((int)(tempSkill.getCost()*(1-tempPerp.getMpCost())) <= tempPerp.getCurrentBp()){
 			em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
 			if(calcCrit(tempAction)){
+				bt.addScene("A Critical hit!");
 				tempSkill.runCrit(tempPerp,tempVic,bs);
 				
 				//If a critical hit occurred, run the perp's on-crit status effects.
@@ -419,7 +416,7 @@ public class BattleProcessor {
 			}
 			else {
 				if(!calcHit(tempAction)){
-					bt.textList.add(tempPerp.getName() + " tried to use " + tempSkill.getName() + " but missed!");
+					bt.addScene(tempPerp.getName() + " missed!");
 					
 					//If the ability missed, activate perp's on-miss effects
 					tempPerp.onMissEffects(tempAction, bs);
@@ -446,9 +443,8 @@ public class BattleProcessor {
 			//Update targets for good measure.
 			bs.bs.targetUpdate();
 		}
-		
 		else{
-			bt.textList.add(tempPerp.getName()+" didn't have the Motivation to use "+tempSkill.getName()+"!");
+			bt.addScene(tempPerp.getName()+" didn't have the Motivation to use "+tempSkill.getName()+"!");
 		}
 		
 	}

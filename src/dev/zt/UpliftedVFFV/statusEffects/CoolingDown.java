@@ -19,7 +19,7 @@ public class CoolingDown extends status{
 
 	public void restrict(Schmuck s, Action a, BattleState bs){
 		if(turnsLeft <= (int)(0+s.getCooldownBonus())){
-			bs.bp.bt.textList.add(s.getName()+" is done cooling down!");
+			bs.bp.bt.addScene(s.getName()+" is done cooling down!");
 			bs.bp.stm.hardRemoveStatus(s, this);
 		}
 		else{

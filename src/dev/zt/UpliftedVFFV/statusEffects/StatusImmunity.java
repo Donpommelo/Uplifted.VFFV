@@ -23,7 +23,7 @@ public class StatusImmunity extends status{
 
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
 		if(!st.perm && st.getName().equals(this.immune.getName())){
-			bs.bp.bt.textList.add(s.getName()+"'s Immunity to being "+st.getName()+" removed the status!");
+			bs.bp.bt.addScene(s.getName()+"'s Immunity to being "+st.getName()+" removed the status!");
 			bs.bp.stm.removeStatus(s, st);
 		}
 	}

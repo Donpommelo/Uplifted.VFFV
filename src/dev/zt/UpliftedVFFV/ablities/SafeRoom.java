@@ -19,8 +19,7 @@ public class SafeRoom extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" uses Safe Room!");
-		bs.bp.bt.textList.add(vic.getName()+" was banished.");
+		bs.bp.bt.addScene(vic.getName()+" was banished.");
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 			if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp)){
 				bs.bp.TurnOrderQueue.remove(i);

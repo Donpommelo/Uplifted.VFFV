@@ -24,7 +24,7 @@ public class AbsoluteThresholdStatus extends status{
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(-damage <= percent * vic.getMaxHp()){
-			bs.bp.bt.textList.add(vic.getName()+"'s Absolute Threshold blocks damage!");
+			bs.bp.bt.addScene(vic.getName()+"'s Absolute Threshold blocks damage!");
 			return 0;
 		}
 		else{

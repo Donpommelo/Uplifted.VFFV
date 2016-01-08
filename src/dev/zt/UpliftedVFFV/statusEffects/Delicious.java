@@ -22,7 +22,7 @@ public class Delicious extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.bt.textList.add(perp.getName()+" looks replenished.");
+		bs.bp.bt.addScene(perp.getName()+" looks replenished.");
 		bs.bp.em.hpChange((int)(damage*percent), vic, perp,6);
 		return damage;
 	}	

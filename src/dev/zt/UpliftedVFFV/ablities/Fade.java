@@ -19,7 +19,6 @@ public class Fade extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Fade!");
 		bs.bp.stm.addStatus(perp, new Untouchable(2, perp, 50));
 
 	}

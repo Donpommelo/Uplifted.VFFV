@@ -22,12 +22,12 @@ public class MadnessMantraStatus extends status{
 		if(lastUsed != null){
 			if(a.skill.getName().equals(lastUsed.getName())){
 				if(stack < 5){
-					bs.bp.bt.textList.add(a.user.getName()+"'s Madness Mantra glows ominously.");
+					bs.bp.bt.addScene(a.user.getName()+"'s Madness Mantra glows ominously.");
 					stack++;
 				}
 			}
 			else{
-				bs.bp.bt.textList.add(a.user.getName()+"'s Madness Mantra stopped glowing.");
+				bs.bp.bt.addScene(a.user.getName()+"'s Madness Mantra stopped glowing.");
 				lastUsed = a.skill;
 				stack = 0;
 			}

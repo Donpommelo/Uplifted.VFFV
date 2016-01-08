@@ -20,7 +20,6 @@ public class Coalesce extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Coalesce!");
 		for(int i = 0; i < 2; i++){
 			int random = (int)(Math.random()*6);
 			switch(random){
@@ -47,8 +46,6 @@ public class Coalesce extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Ennervate!");
-		bs.bp.bt.textList.add(vic.getName()+" Coalesced a Critical amount!");
 		for(int i = 0; i < 5*(1+(perp.getCritMulti()-vic.getCritRes())); i++){
 			int random = (int)(Math.random()*6);
 			switch(random){

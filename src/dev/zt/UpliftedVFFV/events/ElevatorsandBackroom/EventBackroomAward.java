@@ -17,7 +17,7 @@ public class EventBackroomAward extends Event {
 	
 	public void run(){
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"An Employee of the Month Award./");
+		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"An Employee of the Month Award./Go you!/");
 		super.Dialog(d, 0, this.getId(), true);
 	}
 	

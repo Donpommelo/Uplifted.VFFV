@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.consummables.SeeingEye;
+import dev.zt.UpliftedVFFV.inventory.consumables.SeeingEye;
 import dev.zt.UpliftedVFFV.inventory.equipables.CatchersGlove;
 import dev.zt.UpliftedVFFV.inventory.equipables.CatchersMask;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -20,11 +20,11 @@ public class EyeCatcher extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=60,startBp=50,startPow=11, startDef=12, startSpd=28, startSkl=29, startLuk=0, startInt=11;
+	public final static int startHp=60,startBp=50,startPow=11, startDef=12, startSpd=28, startSkl=29, startLuk=3, startInt=11;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=2.3, bpGrowth=1.7, powGrowth=2.7, defGrowth=.9, spdGrowth=3.7, sklGrowth=1.9, intGrowth=.1, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=17;
+	public final static int expDrop=10;
 	public final static int scrDrop=15;
 	
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 10, baseVoid = 0;
@@ -56,13 +56,21 @@ public class EyeCatcher extends Schmuck{
 	
 	
 	public Action getAction(BattleState bs){
-		if(!bs.bs.alliesTargets.isEmpty()){
-			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		int random = (int)(Math.random()*2);
+		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
+		if(bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,this,new PassTurn(0),bs);
 		}
 		else{
-			return new Action(this,this,new PassTurn(0),bs);
-
-		}
-		
+			switch (random){
+			case 0:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+				break;
+			case 1:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new BlindingStrike(0),bs);
+				break;
+			}
+		}	
+		return act;
 	}
 }

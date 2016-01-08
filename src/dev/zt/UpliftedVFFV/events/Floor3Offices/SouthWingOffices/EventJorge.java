@@ -12,9 +12,11 @@ public class EventJorge extends Event {
 
 	public boolean fightwon=false;
 	public static int stagenum = 4;
+	public int frame;
 	public static BufferedImage img = Assets.Jorge1;
 	public EventJorge(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
+		this.frame = 0;
 	}
 	
 	public void run(){
@@ -63,6 +65,26 @@ public class EventJorge extends Event {
 				this.setstage(0);
 				break;
 			}			
+	}
+	
+	public void tick(){
+		frame++;
+		if(frame>=150){
+			this.setTex(Assets.Jorge4);
+		}
+		else if(frame>=100){
+			this.setTex(Assets.Jorge3);
+		}
+		else if(frame>=50){
+			this.setTex(Assets.Jorge2);
+		}
+		else {
+			this.setTex(Assets.Jorge1);
+		}
+		if(frame >= 200){
+			frame = 0;
+		}
+		
 	}
 	
 	public boolean isSolid(int i){

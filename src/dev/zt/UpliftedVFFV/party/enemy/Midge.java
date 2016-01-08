@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.Swarm;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.consummables.MidgeBlood;
+import dev.zt.UpliftedVFFV.inventory.consumables.MidgeBlood;
 import dev.zt.UpliftedVFFV.inventory.equipables.MidgeProboscis;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -23,7 +23,7 @@ public class Midge extends Schmuck{
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.7, defGrowth=.6, spdGrowth=3.1, sklGrowth=1.4, intGrowth=1, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=2;
+	public final static int expDrop=1;
 	public final static int scrDrop=1;
 	
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 20, basePurple = 10, baseVoid = 0;
@@ -56,7 +56,7 @@ public class Midge extends Schmuck{
 	}
 	
 	public Action getAction(BattleState bs){
-		int random = (int)(Math.random()*2);
+		int random = (int)(Math.random()*3);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
 		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);
@@ -68,6 +68,9 @@ public class Midge extends Schmuck{
 				break;
 			case 1:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+				break;
+			case 2:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Swarm(0),bs);
 				break;
 			}
 		}	

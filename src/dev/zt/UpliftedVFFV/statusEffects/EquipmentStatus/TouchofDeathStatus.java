@@ -14,7 +14,7 @@ public class TouchofDeathStatus extends status{
 	
 	public void onHit(Schmuck perp,Schmuck vic, BattleState bs){
 		if(Math.random()<.01*(1+perp.getEquipPow())){
-			bs.bp.bt.textList.add(perp.getName()+"'s Touch of Death inflicts Death");
+			bs.bp.bt.addScene(perp.getName()+"'s Touch of Death inflicts Death");
 			bs.bp.em.hpChange(-9999, perp, vic, 6);
 		}
 	}

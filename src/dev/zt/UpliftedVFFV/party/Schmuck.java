@@ -772,7 +772,7 @@ public class Schmuck implements Serializable{
 				this.setElemAlignment(i+1);
 				i = this.getBuffedElemPoints().length;
 				if(bs != null){
-					bs.bp.bt.textList.add(this.getName()+" became elementally aligned!");
+					bs.bp.bt.addScene(this.getName()+" became elementally aligned!");
 				}
 			}
 			else{
@@ -785,7 +785,12 @@ public class Schmuck implements Serializable{
 		}
 		if(this.getCurrentBp()>this.getMaxBp()){
 			this.setCurrentBp(this.getMaxBp());
-		}		
+		}
+		for(int stat = 2; stat<8; stat++){
+			if(this.buffedStats[stat] == 0){
+				this.buffedStats[stat] = 1;
+			}
+		}
 	}
 	
 	public int getMaxHp() {

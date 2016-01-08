@@ -19,9 +19,9 @@ public class PenPal extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=53,startBp=38,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
+	public final static int startHp=43,startBp=28,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=1, bpGrowth=1.5, powGrowth=1.4, defGrowth=1.3, spdGrowth=2, sklGrowth=2.1, intGrowth=2.6, lukGrowth=1.3;
+	public final static double hpGrowth=2.5, bpGrowth=2.9, powGrowth=1.4, defGrowth=1.3, spdGrowth=2, sklGrowth=2.1, intGrowth=2.6, lukGrowth=1.3;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop = 2000;
 	public final static int scrDrop = 0;
@@ -37,8 +37,8 @@ public class PenPal extends Schmuck{
 	
 	public static Skills[] levelSkills = {new BoxCutter(0), new Query(0), new PennyBlue(0), new TreskillingYellow(0),
 		new HeresHow(0), new TyrianPlum(0), new ArcherRoulette(0), new InvertedSwan(0), new DoubleGeneva(0), new PennyBlack(0)};
-//	public static int[] levelReqs = {0,0,1,2,6,12,19,23,29,32};
-	public static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
+	public static int[] levelReqs = {0,0,1,3,9,15,19,23,29,32};
+//	public static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
 
 	public final static Item[] itemDrops = {};
 	public final static double[] dropRates = {};

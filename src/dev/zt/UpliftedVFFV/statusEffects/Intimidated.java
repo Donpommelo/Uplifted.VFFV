@@ -28,7 +28,7 @@ public class Intimidated extends status{
 				if(bs.bp.TurnOrderQueue.get(i)!=null){
 					if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && !vic.equals(perp) && !bs.bp.TurnOrderQueue.get(0).user.equals(vic)){
 						bs.bp.TurnOrderQueue.remove(i);
-						bs.bp.bt.textList.add(vic.getName()+" was too intimidated to move!");
+						bs.bp.bt.addScene(vic.getName()+" was too intimidated to move!");
 						i--;
 					}
 				}

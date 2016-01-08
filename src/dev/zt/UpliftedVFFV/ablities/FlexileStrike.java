@@ -20,7 +20,6 @@ public class FlexileStrike extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		Schmuck target1;
 		Schmuck target2;
-		bs.bp.bt.textList.add(perp.getName()+" used Flexile Strike!");
 		
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
@@ -35,8 +34,7 @@ public class FlexileStrike extends Skills {
 		Schmuck target2;
 		Schmuck target3;
 		Schmuck target4;
-		bs.bp.bt.textList.add(perp.getName()+" used Flexile Strike!");
-		bs.bp.bt.textList.add("A Critical blow!");
+
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target3 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));

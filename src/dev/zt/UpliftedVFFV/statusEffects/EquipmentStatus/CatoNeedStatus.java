@@ -18,7 +18,7 @@ public class CatoNeedStatus extends status{
 		int overkill = vic.getCurrentHp() + damage;
 		if(overkill <= 0){
 			if(vic.getCurrentBp() >= -(overkill*2+5)){
-				bs.bp.bt.textList.add(vic.getName()+"'s Catalogue of Need restores vital processes!");
+				bs.bp.bt.addScene(vic.getName()+"'s Catalogue of Need restores vital processes!");
 				bs.bp.em.bpChange((overkill*2-5), vic);
 				return -vic.getCurrentHp()+1;
 			}

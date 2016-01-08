@@ -13,9 +13,9 @@ public class AutoQuery extends status{
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+"'s Auto Querier scans all foes!");
+		bs.bp.bt.addScene(s.getName()+"'s Auto Querier scans all foes!");
 		for(Schmuck e : bs.bp.getSelectableEnemies(s)){
-			bs.bp.bt.textList.add("A(n) "+ e.getName()+". "+ e.getCurrentHp()+"/"+e.getMaxHp()+" Hp");
+			bs.bp.bt.addScene("A(n) "+ e.getName()+". "+ e.getCurrentHp()+"/"+e.getMaxHp()+" Hp");
 			bs.bp.stm.addStatus(e, new Queried(s,50));
 		}
 	}

@@ -22,21 +22,13 @@ public class BadYolk extends Item{
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return perp.getName()+" throws the Bad Yolk at "+vic.getName();
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return vic.getName()+" has got egg on his face!.";
-	}
-	
+
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.textList.add(perp.getName()+" uses the Bad Yolk on "+perp.getPronoun(1)+"self");
+			bs.bp.bt.addScene(perp.getName()+" uses the Bad Yolk on "+perp.getPronoun(1)+"self");
 		}
 		else{
-			bs.bp.bt.textList.add(perp.getName()+" throws the Bad Yolk at "+vic.getName());
+			bs.bp.bt.addScene(perp.getName()+" throws the Bad Yolk at "+vic.getName());
 		}
 		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,28,-.3,perp,50));
 		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,32,-.3,perp,50));

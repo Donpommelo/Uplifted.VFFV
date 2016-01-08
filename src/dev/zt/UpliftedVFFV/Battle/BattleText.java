@@ -14,20 +14,17 @@ public class BattleText {
 	
 	public StateManager sm;
 	public Game game;
-	public boolean ranAway;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
-	public ArrayList<String> textList=new ArrayList<String>();
 	public ArrayList<BattleScene> scenes=new ArrayList<BattleScene>();
 
 	public BattleState bs;
 	
 	public int charIndex;
-	public boolean scrolling;
+	public boolean scrolling, actionRun;
 
 	
-	public int frame;
-	public int maxFrame;
+	public int frame, autoWait;
 	
 	public BattleText(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy, BattleState bs){
 		this.game=game;
@@ -37,34 +34,49 @@ public class BattleText {
 		this.bs = bs;
 		this.charIndex = 0;
 		this.scrolling = false;
-
+		this.actionRun = false;
+		this.frame = 0;
+		this.autoWait = 0;
 	}
 	
 	public void tick() {
-		if(game.getKeyManager().space){
-			
-			if(!textList.isEmpty()){
-				
-				//Indicates that battle is lost.
-				if(textList.get(0).contains("You and everyone you care about are dead.")){
-					bs.end(false);
+		if(!scenes.isEmpty()){
+			if(scenes.get(0).isAuto() && !scrolling && actionRun){
+				if(this.autoWait<=80){
+					this.autoWait++;
 				}
 				else{
 					charIndex = 0;
-					textList.remove(0);
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					autoWait = 0;
+					scenes.remove(0);
+					actionRun = false;
 				}
 			}
-			
-			//Battle is lost upon running away.
-			//Incase you're wondering why loss conditions are done here, its because we didn't want the battle state to pop before
-			//the loss text was read.
-			if(ranAway){
-				bs.end(false);
+		}
+		if(!scenes.isEmpty()){
+			if(scenes.get(0).getA() == null){
+				actionRun = true;
+			}	
+		}
+		if(game.getKeyManager().space){
+			if(!scenes.isEmpty()){
+				
+				//Indicates that battle is lost.
+				if(scenes.get(0).getText().contains("You and everyone you care about are dead.")){
+					bs.end(false);
+				}
+				else{
+					if(!scrolling && actionRun){
+						charIndex = 0;
+						scenes.remove(0);
+						actionRun = false;
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 			}
 			
 		}
@@ -72,8 +84,8 @@ public class BattleText {
 			
 
 	public void render(Graphics g) {
-		if(charIndex > textList.get(0).length()){				//controls how much of the dialog is rendered. 
-			charIndex = textList.get(0).length();				//charIndex increases as time passes, causing text to scroll
+		if(charIndex > scenes.get(0).getText().length()){				//controls how much of the dialog is rendered. 
+			charIndex = scenes.get(0).getText().length();				//charIndex increases as time passes, causing text to scroll
 		}	
 		g.setColor(new Color(160, 160, 160, 200));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
@@ -81,25 +93,39 @@ public class BattleText {
 		g.setColor(new Color(0,0,0));
 		
 		for(int i = 1; i <= charIndex; i++){
-			g.drawString(textList.get(0).substring(0, i), 6, 24);		//causes text to form new lines
+			g.drawString(scenes.get(0).getText().substring(0, i), 6, 24);		//causes text to form new lines
 
 		}
 		
-		if(charIndex < textList.get(0).length()){			//charIndex increases each time it is rendered so text scrolls
+		if(charIndex < scenes.get(0).getText().length()){			//charIndex increases each time it is rendered so text scrolls
 			scrolling=true;
 			charIndex+=2;
 		}
 		else{					
 			scrolling=false;					//if the text is done scrolling, charIndex stops increasing
 		}
+		
+		if(scenes.get(0).getA() != null){
+			if(!actionRun){
+				if(frame < scenes.get(0).getA().skill.ba.frames){
+					scenes.get(0).getA().skill.ba.animate(frame, scenes.get(0).getA(), g);
+					frame++;
+				}
+				else{
+					frame = 0;
+					actionRun = true;
+					bs.bp.runAction(scenes.get(0).getA());
+				}
+			}
+		}
 	}
 	
-	public void addScene(String text, Action a){
-		this.scenes.add(new BattleScene(text,a));
+	public void addScene(String text, Action a, Boolean auto){
+		this.scenes.add(new BattleScene(text,a, true));//later change to auto
 	}
 	
 	public void addScene(String text){
-		this.scenes.add(new BattleScene(text,null));
+		this.scenes.add(new BattleScene(text,null, true));
 	}
 
 }

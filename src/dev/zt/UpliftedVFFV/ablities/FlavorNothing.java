@@ -20,7 +20,12 @@ public class FlavorNothing extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(flavorText);
+		
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	flavorText;
+	}
+	
 	
 }

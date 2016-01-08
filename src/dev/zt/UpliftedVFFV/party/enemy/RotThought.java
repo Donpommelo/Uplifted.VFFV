@@ -1,13 +1,15 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
 import java.util.TreeMap;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Coalesce;
 import dev.zt.UpliftedVFFV.ablities.Ennervate;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.consummables.MentalLeakage;
+import dev.zt.UpliftedVFFV.inventory.consumables.MentalLeakage;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -20,7 +22,7 @@ public class RotThought extends Schmuck{
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=3.6, bpGrowth=4.7, powGrowth=5.7, defGrowth=4.7, spdGrowth=.8, sklGrowth=1.9, intGrowth=3.1, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=4;
+	public final static int expDrop=2;
 	public final static int scrDrop=4;
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 20, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
@@ -34,8 +36,8 @@ public class RotThought extends Schmuck{
 	public static int sprite = 4;
 	public static int menusprite = 0;
 	
-	public static Skills[] levelSkills = {new Ennervate(0)};
-	public static int[] levelReqs = {0};
+	public static Skills[] levelSkills = {new Ennervate(0), new Coalesce(0)};
+	public static int[] levelReqs = {0,3};
 	
 	public final static Item[] itemDrops = {new MentalLeakage()};
 	public final static double[] dropRates = {.7};
@@ -64,7 +66,7 @@ public class RotThought extends Schmuck{
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
 				break;
 			case 2:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Ennervate(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Coalesce(0),bs);
 				break;
 			}
 		}	

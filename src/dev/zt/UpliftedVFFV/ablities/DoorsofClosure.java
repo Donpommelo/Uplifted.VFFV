@@ -19,15 +19,12 @@ public class DoorsofClosure extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s,6);
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Doors of Closure!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*2)*(1.5+perp.getCritMulti()-s.getCritRes())), perp, s,6);
 		}		

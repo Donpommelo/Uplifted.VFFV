@@ -33,10 +33,10 @@ public class Disease extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.textList.add(perp.getName()+" eats the Disease.");
+			bs.bp.bt.addScene(perp.getName()+" eats the Disease. Why?");
 		}
 		else{
-			bs.bp.bt.textList.add(perp.getName()+" throws the Disease at "+vic.getName());
+			bs.bp.bt.addScene(perp.getName()+" throws the Disease at "+vic.getName());
 		}
 		bs.bp.stm.addStatus(vic, new Regendegen(4,true,(int)(-6*(1+perp.getItemPow())), perp, 50));
 	}

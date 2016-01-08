@@ -38,7 +38,8 @@ public class Assets {
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper, Emaudeline, Informant;
-	public static BufferedImage Jorge1;
+	public static BufferedImage Jorge1, Jorge2, Jorge3, Jorge4;
+	public static BufferedImage Speros1, Speros2, Speros3, Speros4, Speros5, Speros6;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	public static BufferedImage WoodDoor1,WoodDoor2,WoodDoor3,WoodDoor4, ClearDoor1, ClearDoor2, ClearDoor3, ClearDoor4,
 	 PushDoor1, PushDoor2, PushDoor3, PushDoor4;
@@ -61,6 +62,8 @@ public class Assets {
 		
 	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter;
 	
+	public static BufferedImage southMonolith;
+	
 	public static Dialog[] dialog;
 	
 	public static void init(){
@@ -75,7 +78,9 @@ public class Assets {
 		SpriteSheet arrowup = new SpriteSheet(ImageLoader.loadImage("/ui/Arrow.png"));
 		SpriteSheet arrowdown = new SpriteSheet(ImageLoader.loadImage("/ui/ArrowDown.png"));
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
-		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/JorgeRough.png"));
+		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/Jorge.png"));
+		SpriteSheet Speros = new SpriteSheet(ImageLoader.loadImage("/textures/Speros.png"));
+
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
@@ -88,7 +93,8 @@ public class Assets {
 		SpriteSheet ThirdFloorMisc = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorMisc.png"));
 		SpriteSheet Doors = new SpriteSheet(ImageLoader.loadImage("/textures/Doors1.png"));
 
-		
+		southMonolith = ImageLoader.loadImage("/textures/SouthMonolith.png");
+
 		//Load system resources, reused resources and stuff.
 		//Character walking Sprites.
 		Operator=WalkingSprites1.crop(0, 0, 3*width, 8*height);
@@ -103,8 +109,18 @@ public class Assets {
 		Informant = WalkingSprites2.crop(9*width, 0, 3*width, 8*height);
 
 		
-		Jorge1=Jorge.crop(0,0,128,64);
-		
+		Jorge1=Jorge.crop(0,0,5*width,4*height);
+		Jorge2=Jorge.crop(0,4*height,5*width,4*height);
+		Jorge3=Jorge.crop(5*width,0,5*width,4*height);
+		Jorge4=Jorge.crop(5*width,4*height,5*width,4*height);
+
+		Speros1 = Speros.crop(0, 0, 4*width, 3*height);
+		Speros2 = Speros.crop(0, 3*height, 4*width, 3*height);
+		Speros3 = Speros.crop(4*width, 0, 4*width, 3*height);
+		Speros4 = Speros.crop(4*width, 3*height, 4*width, 3*height);
+		Speros5 = Speros.crop(8*width, 0, 4*width, 3*height);
+		Speros6 = Speros.crop(8*width, 3*height, 4*width, 3*height);
+
 		//Dialogue and character portraits.
 		//TODO: Load character stickers from individual images to global array.
 		int numImages = 5;

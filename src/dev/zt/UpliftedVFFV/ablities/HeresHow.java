@@ -19,8 +19,7 @@ public class HeresHow extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" uses Here's How!");
-		bs.bp.bt.textList.add(vic.getName()+" gains an additional turn!");
+		bs.bp.bt.addScene(vic.getName()+" gains an additional turn!");
 		bs.bp.TurnOrderQueue.add(new Action(vic,vic,new DillyDally(0),bs));
 	}
 		

@@ -22,7 +22,13 @@ public Item thing;
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" does absolutely nothing.");
+
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" does absolutely nothing.";
+	}
+	
+	
 	
 }

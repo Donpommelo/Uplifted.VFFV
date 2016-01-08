@@ -9,10 +9,10 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.inventory.consummables.CarrotJuice;
-import dev.zt.UpliftedVFFV.inventory.consummables.CoffeedIce;
-import dev.zt.UpliftedVFFV.inventory.consummables.LemonyFresh;
-import dev.zt.UpliftedVFFV.inventory.consummables.MeltedIcecream;
+import dev.zt.UpliftedVFFV.inventory.consumables.CarrotJuice;
+import dev.zt.UpliftedVFFV.inventory.consumables.CoffeedIce;
+import dev.zt.UpliftedVFFV.inventory.consumables.LemonyFresh;
+import dev.zt.UpliftedVFFV.inventory.consumables.MeltedIcecream;
 
 
 

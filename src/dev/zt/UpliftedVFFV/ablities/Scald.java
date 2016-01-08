@@ -21,14 +21,11 @@ public class Scald extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" uses Scald!");
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.2), perp,vic,0);
 		bs.bp.stm.addStatus(vic, new Ablaze(3, perp, 70));	
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" uses Scald!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3])), perp,vic,0);
 		bs.bp.stm.addStatus(vic, new Ablaze((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 70));
 	}

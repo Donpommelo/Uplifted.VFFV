@@ -20,7 +20,7 @@ public class StatusAbsorb extends status{
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
 		if(!perp.equals(vic)){
-			bs.bp.bt.textList.add(perp.getName()+" copied "+vic.getName()+"'s statuses!");
+			bs.bp.bt.addScene(perp.getName()+" copied "+vic.getName()+"'s statuses!");
 			for(status s : vic.statuses){
 				if(!s.perm && !s.getName().equals("incapacitated")) {
 					bs.bp.stm.addStatus(perp, s);

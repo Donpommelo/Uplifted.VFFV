@@ -25,7 +25,7 @@ public class LimitedUse extends status{
 		if(a.skill.getName().equals(move.getName())){
 			if(usesLeft>0){
 				usesLeft--;
-				bs.bp.bt.textList.add(s.getName()+"'s  "+move.getName()+" has "+usesLeft+" uses left.");
+				bs.bp.bt.addScene(s.getName()+"'s  "+move.getName()+" has "+usesLeft+" uses left.");
 			}
 			else{
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s "+move.getName()+" has no more uses left!"),bs));				

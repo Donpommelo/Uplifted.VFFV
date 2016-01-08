@@ -21,7 +21,7 @@ public class RingofGygesStatus extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(uses > 0 ){
 			if(vic.getCurrentHp() + damage <= .1*vic.getMaxHp()){
-				bs.bp.bt.textList.add(vic.getName()+"'s Ring of Gyges grants Invisibility!");
+				bs.bp.bt.addScene(vic.getName()+"'s Ring of Gyges grants Invisibility!");
 				bs.bp.stm.addStatus(vic, new Untouchable(2, vic.getItemDummy(), 50));
 				uses--;
 			}

@@ -13,7 +13,7 @@ public class MaskofFestusStatus extends status{
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		if(Math.random()<.5*(1+perp.getEquipPow())*(float)(perp.getBuffedLuk()/vic.getBuffedLuk())){
-			bs.bp.bt.textList.add(vic.getName()+" was Silenced by the blow!");
+			bs.bp.bt.addScene(vic.getName()+" was Silenced by the blow!");
 			bs.bp.stm.addStatus(vic, new Silenced(1, perp, 50));
 		}
 	}

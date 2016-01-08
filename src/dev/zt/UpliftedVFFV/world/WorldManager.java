@@ -25,7 +25,7 @@ public class WorldManager implements Serializable{
 	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
 	public int enemyrate, enemynum;
-	public static TreeMap<Integer, Integer> enemy = new TreeMap<Integer, Integer>();
+	public static TreeMap<Integer, Integer> enemy;
 	private BufferedImage window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 	public WorldManager(Game game, String path, String name){
 		this.game = game;
@@ -60,16 +60,15 @@ public class WorldManager implements Serializable{
 				}
 			}
 		}
-		
-
-		
-		
+			
+	}
+	
+	public void renderNameplate(Graphics g){
 		//renders scrolling nameplate. 
 		if(!this.Worldname.equals("")){
 			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 520, 
 					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), 112, 25, 16, true);
 		}
-		
 	}
 	
 	//used in rendering tiles. searches the array of tiles in the Tile class for a tile that corresponds to the index of a specific x-y coordinate in the world
@@ -119,7 +118,7 @@ public class WorldManager implements Serializable{
 		
 	//enemy encounters are loaded. Each troop consists of a pair of numbers, their id and relative frequency respectively
 	//this fills a treemap with these pairs of integers which is checked in the player class when moving
-		
+		enemy = new TreeMap<Integer, Integer>();
 		for(int i=0; i<enemynum; i++){
 			enemy.put(Utils.parseInt(tokens[height*width+8+3*numEvents+3*numDecor+2*i]),Utils.parseInt(tokens[(height*width)+9+3*numEvents+3*numDecor+2*i]));
 		}		

@@ -43,7 +43,7 @@ public class Channeling extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		damageThreshold-=damage*(1-vic.getChannelBonus());
 		if(damageThreshold <=0){
-			bs.bp.bt.textList.add(vic.getName()+"'s Channeling was interrupted!");
+			bs.bp.bt.addScene(vic.getName()+"'s Channeling was interrupted!");
 			bs.bp.stm.hardRemoveStatus(vic, this);
 			bs.bp.stm.hardRemoveStatus(vic, Status);
 			if(activateonBreak){
@@ -56,7 +56,7 @@ public class Channeling extends status{
 	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
 		duration--;
 		if(duration <= 0){
-			bs.bp.bt.textList.add(Channeler.getName()+" completes "+s.getPronoun(1)+" Channeling!");
+			bs.bp.bt.addScene(Channeler.getName()+" completes "+s.getPronoun(1)+" Channeling!");
 			s.onChannelComplete(bs);
 			bs.bp.stm.hardRemoveStatus(Channeler, this);
 			bs.bp.stm.hardRemoveStatus(Channeler, Status);

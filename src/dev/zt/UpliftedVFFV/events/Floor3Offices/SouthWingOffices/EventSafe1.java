@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.consummables.MedPak;
+import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 
 public class EventSafe1 extends Event {
 

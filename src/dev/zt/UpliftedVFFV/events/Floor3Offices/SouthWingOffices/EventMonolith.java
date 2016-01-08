@@ -14,7 +14,7 @@ public class EventMonolith extends Event {
 	}
 	
 	public void run(){
-		super.Examine(Assets.Jorge1, this.getId());
+		super.Examine(Assets.southMonolith, this.getId());
 	}
 	
 	public boolean isSolid(int i){

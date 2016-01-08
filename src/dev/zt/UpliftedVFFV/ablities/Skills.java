@@ -1,10 +1,11 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.Battle.Animations.DefaultAnim;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -19,7 +20,6 @@ public class Skills implements Serializable{
 	private int id;
 	public int cost;
 	public int baseAcc,baseCrit;
-	public int maxFrames;
 	public boolean canMiss,canCrit;
 	
 	//0: All targets
@@ -34,6 +34,8 @@ public class Skills implements Serializable{
 	
 	private int iconIndex;
 	
+	public BattleAnimation ba;
+	
 	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost,int acc, int crit,
 			boolean canMiss, boolean canCrit){
 		this.name = name;
@@ -47,7 +49,7 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
-		this.maxFrames = 0;
+		this.ba = new DefaultAnim();
 	}
 	
 	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, int icon, int acc, int crit,
@@ -63,7 +65,23 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
-		this.maxFrames = 0;
+		this.ba = new DefaultAnim();
+	}
+	
+	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, int icon, int acc, int crit,
+			boolean canMiss, boolean canCrit, BattleAnimation ba){
+		this.name = name;
+		this.descr = descr;
+		this.descrShort = descrShort;
+		this.cost = cost;
+		targetType = t;
+		iconIndex = icon;
+		element = elem;
+		this.baseAcc = acc;
+		this.baseCrit = crit;
+		this.canMiss = canMiss;
+		this.canCrit = canCrit;
+		this.ba = ba;
 	}
 	
 	
@@ -73,10 +91,6 @@ public class Skills implements Serializable{
 		
 	public void runCrit(Schmuck user, Schmuck target, BattleState bs){
 		run(user,target,bs);
-	}
-	
-	public void animate(int frame, Action a, Graphics g){
-		
 	}
 	
 	public String getName() {
@@ -113,6 +127,10 @@ public class Skills implements Serializable{
 	
 	public boolean canCrit(){
 		return canCrit;
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return "";
 	}
 	
 	public int getTargetType(){

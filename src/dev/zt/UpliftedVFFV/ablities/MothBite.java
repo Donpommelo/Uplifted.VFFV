@@ -19,14 +19,11 @@ public class MothBite extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Mothbite!");
 		bs.bp.stm.addStatus(vic, new Unresistant(0, perp,50));
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*2), perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Mothbite!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new Unresistant(1, perp,50));
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 	}

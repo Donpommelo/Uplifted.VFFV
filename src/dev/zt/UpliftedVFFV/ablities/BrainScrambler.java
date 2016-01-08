@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class BrainScrambler extends Skills {
 
-	public static String name = "Brain Scramble";
+	public static String name = "Brain Scrambler";
 	public static String descr = "User batters a foe's skull/making them a little less intellectually/inclined./";
 	public static String descrShort = "Damage and lower Purple Alignment.";
 	public static int cost = 14;
@@ -19,14 +19,11 @@ public class BrainScrambler extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Brain Scrambler!");
 		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,-12,4, perp,50));
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]), perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Brain Scrambler!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,-24,4, perp,50));
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 	}

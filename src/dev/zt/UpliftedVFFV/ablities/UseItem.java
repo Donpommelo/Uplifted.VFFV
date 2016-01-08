@@ -36,7 +36,7 @@ public UseItem(int index, Item i, GameState gs) {
 					}
 				}
 				else{
-					bs.bp.bt.textList.add("But the item "+perp.getName()+ " wanted to use was not there!");//running out of planned-to-use item
+					bs.bp.bt.addScene("But the item "+perp.getName()+ " wanted to use was not there!");//running out of planned-to-use item
 				}
 				
 				}
@@ -71,5 +71,10 @@ public UseItem(int index, Item i, GameState gs) {
 	public void TOQChange(Action a, BattleState bs){
 		thing.TOQChange(a, bs);
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" used "+thing.getName()+"!";
+	}
+	
 	
 }

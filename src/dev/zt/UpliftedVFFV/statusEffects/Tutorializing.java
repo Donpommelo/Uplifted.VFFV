@@ -39,12 +39,12 @@ public class Tutorializing extends status{
 			DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,11,0,true);
 			StateManager.getStates().push(firstfite);
 		}
-		bs.bp.bt.textList.add(" ");
+		bs.bp.bt.addScene(" ");
 
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){//
-		bs.bp.bt.textList.add(" ");
+		bs.bp.bt.addScene(" ");
 		Dialog[] d = new Dialog[10];
 		d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"!!! What . . . What is going on?/");
 		d[1] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"An attack! It seems some things never change./");
@@ -58,8 +58,8 @@ public class Tutorializing extends status{
 		d[9] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,". . ./ Ah, yes! Right over . . .");
 		DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,9,0,true);
 		StateManager.getStates().push(firstfite);
-		bs.bp.bt.textList.add("Pen Pal: Here!");
-		bs.bp.bt.textList.add("Pen Pal: Let us get right into it!");
+		bs.bp.bt.addScene("Pen Pal: Here!");
+		bs.bp.bt.addScene("Pen Pal: Let us get right into it!");
 	}
 	
 	public void endoffightEffect(Schmuck s, BattleState bs){

@@ -32,7 +32,7 @@ public class FishWater extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.textList.add(perp.getName()+" throws the Fishwater at "+vic.getName());
+			bs.bp.bt.addScene(perp.getName()+" throws the Fishwater at "+vic.getName());
 		}
 		bs.bp.em.hpChange(-22,perp,vic,6);
 	}

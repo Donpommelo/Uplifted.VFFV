@@ -19,21 +19,18 @@ public class ArcherRoulette extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		Schmuck target;
-		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		if(Math.random()>.5){
-			bs.bp.bt.textList.add(perp.getName()+"'s aim was true!");
+			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
 			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,vic,6);
 		}
 		else{
 			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
-			bs.bp.bt.textList.add(perp.getName()+"'s aim was was off target!");
+			bs.bp.bt.addScene(perp.getName()+"'s aim was was off target!");
 			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,target,6);
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
-		bs.bp.bt.textList.add("A Critical Blow!");	
 		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())),perp,vic,6);
 	}
 	

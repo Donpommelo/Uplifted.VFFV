@@ -16,15 +16,15 @@ public class Paperweight extends Item{
 	static int value = 30;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="This is a solid metal paperweight. It weighs down stacks of paperwork\nthat, consequently, weigh down your hopes and dreams.";
-	static String descrShort="Def+3";
+	static String descr="This is a solid metal paperweight. It weighs down stacks of\npaperwork that, consequently, weigh down your hopes\nand dreams.";
+	static String descrShort="Def+5";
 	public status[] enchantment = new status[1];
 	public Paperweight() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 	}
 		
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new AddStatBuff(3,(int)(3*(1+s.getEquipPow())), 50);
+		enchantment[0] =  new AddStatBuff(3,(int)(5*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 }

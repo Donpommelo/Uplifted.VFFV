@@ -19,13 +19,10 @@ public class InvertedSwan extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Inverted Swan!");
 		bs.bp.stm.addStatus(vic, new InvertedSwanEffect(1, perp, 15));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Inverted Swan!");
-		bs.bp.bt.textList.add("A Critical buff!");
 		bs.bp.stm.addStatus(vic, new InvertedSwanEffect((int)(1+perp.getCritMulti()-vic.getCritRes()), perp, 15));		
 	}
 

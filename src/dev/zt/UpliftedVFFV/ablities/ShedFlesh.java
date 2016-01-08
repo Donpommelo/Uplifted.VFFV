@@ -23,8 +23,7 @@ public class ShedFlesh extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Shed Flesh!");
-		bs.bp.bt.textList.add(perp.getName()+" was Purified");
+		bs.bp.bt.addScene(perp.getName()+" was Purified");
 		bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
 		bs.bp.stm.addStatus(perp, new Purified(3,perp,50));
 	}

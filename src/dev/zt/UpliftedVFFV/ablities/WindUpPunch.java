@@ -19,7 +19,6 @@ public class WindUpPunch extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Wind-Up Punch!");
 		bs.bp.stm.addStatus(perp, new WindUpPunchEffect(0,perp,vic, 50));
 	}
 

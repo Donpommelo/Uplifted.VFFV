@@ -17,7 +17,7 @@ public class Envenomed extends status{
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.textList.add(s.getName()+" was poisoned by Envenomed Earth!");
+		bs.bp.bt.addScene(s.getName()+" was poisoned by Envenomed Earth!");
 		bs.bp.stm.addStatus(s, new Poisoned(4, s.itemDummy, 50));
 	}
 	

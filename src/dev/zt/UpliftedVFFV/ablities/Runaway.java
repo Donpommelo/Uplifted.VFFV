@@ -19,7 +19,6 @@ public class Runaway extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" ran away!");	
 		int partyLevel = 0;
 		double bonus = 0;
 		int enemyLevel = 0;
@@ -35,10 +34,10 @@ public class Runaway extends Skills {
 		double chance = (partyLevel/enemyLevel)*(1+bonus);
 		if(bs.runnable && Math.random() <= chance){
 			bs.bp.stm.endofFite();
-			bs.bp.bt.ranAway = true;
+			bs.end(false);
 		}
 		else{
-			bs.bp.bt.textList.add("Runaway failed!");
+			bs.bp.bt.addScene("Runaway failed!");
 		}
 	}
 	

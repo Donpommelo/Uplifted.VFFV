@@ -20,8 +20,8 @@ public class CatoWantStatus extends status{
 		int overkill = s.getCurrentBp() - (int)(a.skill.getCost()*(1-a.user.getMpCost()));
 		if(overkill <= 0){
 			if(s.getCurrentHp() >= -(overkill*2+5)){
-				bs.bp.bt.textList.add(s.getName()+" doesn't have the Motivation to cast "+a.getSkill().getName()+"!");
-				bs.bp.bt.textList.add(s.getName()+" casts it anyways using Catalogue of Want!");
+				bs.bp.bt.addScene(s.getName()+" doesn't have the Motivation to cast "+a.getSkill().getName()+"!");
+				bs.bp.bt.addScene(s.getName()+" casts it anyways using Catalogue of Want!");
 				bs.bp.em.hpChange((int)(overkill*2-5),s.itemDummy,s,6);
 				s.setCurrentBp((int)(a.skill.getCost()*(1+a.user.getMpCost())));
 			}

@@ -87,6 +87,7 @@ public class BattleMenu{
 		
 		//If the Schmuck chose to Wait in the Planning phase, all onDillyDally statuses activate.
 		if(bs.bp.pauseTOQ){
+			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
 			currentSchmuck.onDillyDallyEffects(bs);
 		}
 		pointed = chosen;
@@ -167,7 +168,7 @@ public class BattleMenu{
 							//Message for not having Mp while not having the Catalog of Want
 							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
 									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(100))){
-								bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
+								bs.bp.bt.addScene(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
 							}
 							else{					
 								//Sets currentSkill to skill selected.
@@ -389,6 +390,12 @@ public class BattleMenu{
 				}
 				//otherwise, if in planning stage, move will be added to the TOQ.
 				else{
+					for(Action a:bs.bp.TurnOrderQueue){
+						if(a.getUser() == currentSchmuck){
+							bs.bp.TurnOrderQueue.remove(a);
+							break;
+						}
+					}
 					bs.bp.TurnOrderQueue.add(new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
 				}
 				

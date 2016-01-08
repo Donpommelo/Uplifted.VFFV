@@ -15,11 +15,11 @@ public class Augur extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=50,startBp=30,startPow=10, startDef=10, startSpd=11, startSkl=1, startLuk=12, startInt=17;
+	public final static int startHp=50,startBp=30,startPow=10, startDef=10, startSpd=11, startSkl=13, startLuk=12, startInt=17;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=2.2, bpGrowth=1.7, powGrowth=1.3, defGrowth=1.4, spdGrowth=1, sklGrowth=1.5, intGrowth=1.9, lukGrowth=3.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=8;
+	public final static int expDrop=3;
 	public final static int scrDrop=3;
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 30, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};

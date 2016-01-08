@@ -2,12 +2,14 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 
 import java.util.TreeMap;
+
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.CrushingSlam;
 import dev.zt.UpliftedVFFV.ablities.FlexileStrike;
 import dev.zt.UpliftedVFFV.ablities.PantherPoise;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
+import dev.zt.UpliftedVFFV.ablities.WindUpPunch;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.equipables.LetterOpener;
 import dev.zt.UpliftedVFFV.inventory.misc.PostageStamp;
@@ -23,7 +25,7 @@ public class BossJorge extends Schmuck{
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.2, defGrowth=1.3, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=100;
+	public final static int expDrop=50;
 	public final static int scrDrop=25;
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 10, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
@@ -37,8 +39,8 @@ public class BossJorge extends Schmuck{
 	public static int sprite = 9;
 	public static int menusprite = 0;
 	
-	public static Skills[] levelSkills = {new FlexileStrike(0), new CrushingSlam(0), new PantherPoise(0)};
-	public static int[] levelReqs = {0,0,1};
+	public static Skills[] levelSkills = {new FlexileStrike(0), new WindUpPunch(0), new PantherPoise(0), new CrushingSlam(0)};
+	public static int[] levelReqs = {0,0,1,3};
 	
 	public final static Item[] itemDrops = {new PostageStamp(), new PostageStamp(), new LetterOpener()};
 	public final static double[] dropRates = {1.0, 1.0, 1.0};
@@ -71,7 +73,7 @@ public class BossJorge extends Schmuck{
 				act = new Action(this,this,new PantherPoise(0),bs);
 				break;
 			case 3:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CrushingSlam(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new WindUpPunch(0),bs);
 				break;
 			}
 		}

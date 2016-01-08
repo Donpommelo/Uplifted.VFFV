@@ -21,7 +21,7 @@ public class TyrianPlumEffect extends status{
 		int amount = a.skill.getCost();
 		if(amount!=0){
 			if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
-				bs.bp.bt.textList.add(perp.getName()+"'s Tyrian Plum drains health");
+				bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
 				bs.bp.em.hpChange((int)(amount*1.5*(1+perp.getHealPower())), perp, perp,2);
 			}
 		}

@@ -21,7 +21,6 @@ public class DoubleGeneva extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		Schmuck target1;
 		Schmuck target2;
-		bs.bp.bt.textList.add(perp.getName()+" used Double Geneva!");
 		
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
@@ -33,8 +32,6 @@ public class DoubleGeneva extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		Schmuck target1;
 		Schmuck target2;
-		bs.bp.bt.textList.add(perp.getName()+" used Double Geneva!");
-		bs.bp.bt.textList.add("A Critical blow!");
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		

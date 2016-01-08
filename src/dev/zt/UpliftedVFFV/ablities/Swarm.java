@@ -19,15 +19,12 @@ public class Swarm extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Swarm!");
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
 			bs.bp.stm.addStatus(ally, new TestStatBuff(2, 4, 1.25, perp, 50));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Swarm!");
-		bs.bp.bt.textList.add(perp.getName()+"'s Swawrm reaches Critical mass!");
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
 			bs.bp.stm.addStatus(ally, new TestStatBuff(2, 4, 1.75, perp, 50));
 		}	

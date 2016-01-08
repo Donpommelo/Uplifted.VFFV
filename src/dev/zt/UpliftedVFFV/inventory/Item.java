@@ -61,11 +61,47 @@ public class Item implements Comparable<Item>, Serializable{
 	public String getName() {
 		return name;
 	}
-	
+		
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public void setJanitorText(String janitorText) {
+		this.janitorText = janitorText;
+	}
+
+	public void setUsedfromMenu(Boolean usedfromMenu) {
+		this.usedfromMenu = usedfromMenu;
+	}
+
+	public void setUsefromBattle(Boolean usefromBattle) {
+		this.usefromBattle = usefromBattle;
+	}
+
+	public void setConsumable(Boolean consumable) {
+		this.consumable = consumable;
+	}
+
+	public void setTargeted(Boolean targeted) {
+		this.targeted = targeted;
+	}
+
 	public String getDescr() {
 		return descr;
 	}
-	
+		
+	public void setDescr(String descr) {
+		this.descr = descr;
+	}
+
 	public String getDescrShort() {
 		return descrShort;
 	}
