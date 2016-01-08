@@ -76,10 +76,7 @@ public class BattleProcessor {
 		for(Schmuck s : enemy){
 			battlers.add(s);
 		}
-		for(Schmuck s: battlers){
-			s.calcBuffs(bs);
-		}
-						
+							
 	}
 	
 	public void tick() {
@@ -98,6 +95,9 @@ public class BattleProcessor {
 				
 				//On the first round of battle, run all start-of-fight effects
 				if(roundNum == 1){
+					for(Schmuck s: battlers){
+						s.calcBuffs(bs);
+					}
 					for(Schmuck s : battlers){
 						s.startofFightEffects(bs);
 					}

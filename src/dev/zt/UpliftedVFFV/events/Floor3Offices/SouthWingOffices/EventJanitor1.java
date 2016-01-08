@@ -106,11 +106,11 @@ public class EventJanitor1 extends Event {
 			selection.put(new MedPak(), 1);
 			selection.put(new CaffeinePatch(),2);
 			selection.put(new SmellingSalt(), 5);
+			
+		}
+		if(super.getVar(12) >= 3){
 			selection.put(new SummonSauce(), 5);
 			selection.put(new SleepingPills(), 6);
-		}
-		if(super.getVar(12) >= 2){
-
 		}
 	}
 }

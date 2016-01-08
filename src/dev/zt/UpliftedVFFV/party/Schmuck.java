@@ -769,10 +769,12 @@ public class Schmuck implements Serializable{
 		this.setVoidRes(this.getVoidPoints());
 		for(int i = 0 ; i< this.getBuffedElemPoints().length; i++){
 			if(this.buffedElemPoints[i] > this.getPrismaticPoints()/2){
-				this.setElemAlignment(i+1);
-				i = this.getBuffedElemPoints().length;
-				if(bs != null){
-					bs.bp.bt.addScene(this.getName()+" became elementally aligned!");
+				if(this.getElemAlignment() != i+1){
+					this.setElemAlignment(i+1);
+					i = this.getBuffedElemPoints().length;
+					if(bs != null){
+						bs.bp.bt.addScene(this.getName()+" became elementally aligned!");
+					}
 				}
 			}
 			else{
