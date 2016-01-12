@@ -234,7 +234,9 @@ public class BattleProcessor {
 							else{//later add custom text
 								bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
 							}
-//							runAction(tempAction);
+							if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target)) && tempAction.getSkill().getTargetType()==0){
+								bt.addScene("But the target was already incapacitated!");
+							}
 						}
 						
 						//Else, the action being processed is a dilly-dally used by an ally, pull up the battle menu.

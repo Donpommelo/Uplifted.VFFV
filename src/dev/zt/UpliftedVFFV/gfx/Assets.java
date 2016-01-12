@@ -40,6 +40,7 @@ public class Assets {
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper, Emaudeline, Informant;
 	public static BufferedImage Jorge1, Jorge2, Jorge3, Jorge4;
 	public static BufferedImage Speros1, Speros2, Speros3, Speros4, Speros5, Speros6;
+	public static BufferedImage Carloc1;
 	public static BufferedImage ElevatorDoor1,ElevatorDoor2,ElevatorDoor3,ElevatorDoor4;
 	public static BufferedImage WoodDoor1,WoodDoor2,WoodDoor3,WoodDoor4, ClearDoor1, ClearDoor2, ClearDoor3, ClearDoor4,
 	 PushDoor1, PushDoor2, PushDoor3, PushDoor4;
@@ -50,7 +51,7 @@ public class Assets {
 		Poster1, Poster2, Poster3, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart,
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
 		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
-		RailLeft, RailMiddle, RailRight;
+		RailLeft, RailMiddle, RailRight, BlackDoor;
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened,SafeClosed2,
 	WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
@@ -79,6 +80,7 @@ public class Assets {
 		SpriteSheet arrowdown = new SpriteSheet(ImageLoader.loadImage("/ui/ArrowDown.png"));
 		SpriteSheet door =new SpriteSheet(ImageLoader.loadImage("/textures/BlueElevatorDoor.png"));
 		SpriteSheet Jorge = new SpriteSheet(ImageLoader.loadImage("/textures/Jorge.png"));
+		SpriteSheet Carloc = new SpriteSheet(ImageLoader.loadImage("/textures/Carloc.png"));
 		SpriteSheet Speros = new SpriteSheet(ImageLoader.loadImage("/textures/Speros.png"));
 
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
@@ -114,6 +116,8 @@ public class Assets {
 		Jorge3=Jorge.crop(5*width,0,5*width,4*height);
 		Jorge4=Jorge.crop(5*width,4*height,5*width,4*height);
 
+		Carloc1 = Carloc.crop(0, 0, 2*width, 4*height);
+				
 		Speros1 = Speros.crop(0, 0, 4*width, 3*height);
 		Speros2 = Speros.crop(0, 3*height, 4*width, 3*height);
 		Speros3 = Speros.crop(4*width, 0, 4*width, 3*height);
@@ -121,6 +125,8 @@ public class Assets {
 		Speros5 = Speros.crop(8*width, 0, 4*width, 3*height);
 		Speros6 = Speros.crop(8*width, 3*height, 4*width, 3*height);
 
+		
+		
 		//Dialogue and character portraits.
 		//TODO: Load character stickers from individual images to global array.
 		int numImages = 5;
@@ -214,6 +220,8 @@ public class Assets {
 		PushDoor2=Doors.crop(2*width, 2*height, width, 2*height);
 		PushDoor3=Doors.crop(2*width, 4*height, width, 2*height);
 		PushDoor4=Doors.crop(2*width, 6*height, width, 2*height);
+		
+		BlackDoor = Furniture3rdFloor.crop(width*14, height*2, width, height*2);
 		
 		ElevatorPanel = prop.crop(7*width,0,width,height);
 		ElevatorFloorMark = prop.crop(width, 0 , 3*width, 3*height);

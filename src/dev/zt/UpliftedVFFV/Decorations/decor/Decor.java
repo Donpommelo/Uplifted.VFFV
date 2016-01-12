@@ -106,6 +106,7 @@ public class Decor {
 	public static Decor railleft = new DecorRailLeft(83);
 	public static Decor railcenter = new DecorRailCenter(84);
 	public static Decor railright = new DecorRailRight(85);
+	public static Decor blackdoor = new DecorBlackDoor(86);
 
 
 	public Decor(Game g, GameState gs){

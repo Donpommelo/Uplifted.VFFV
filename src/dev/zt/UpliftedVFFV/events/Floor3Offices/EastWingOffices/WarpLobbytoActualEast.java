@@ -12,7 +12,7 @@ public class WarpLobbytoActualEast extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt", 4, 12,"South Offices");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt", 4, 12,"");
 		
 	}
 }

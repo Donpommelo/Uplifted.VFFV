@@ -12,7 +12,7 @@ public class WarpCentraltoLeft3 extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtria.txt",23,18,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtria.txt",29,18,"");
 		
 	}
 }

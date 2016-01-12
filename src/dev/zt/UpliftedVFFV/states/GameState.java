@@ -50,7 +50,7 @@ public class GameState extends State {
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
 //		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeft1Room1.txt";
 		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 		

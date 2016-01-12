@@ -241,8 +241,11 @@ public class Utils {
 		//Draw text.
 		g2d.setFont(new Font("Chewy", Font.PLAIN, fontSize));
 		g2d.setColor(fontColor);
-		g2d.drawString(text, x + 12, y + 25);
-		
+//		g2d.drawString(text, x + 12, y + 25);
+		//Wrapping text
+		int yLine = y;
+		for (String line : text.split("\n"))
+	        g2d.drawString(line, x+12, yLine += g.getFontMetrics().getHeight());
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 		

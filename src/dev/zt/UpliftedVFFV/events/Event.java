@@ -233,7 +233,7 @@ public class Event{
 	public static Event event180 = new WarpCarlocsOfficetoBusRamp(17,16,180);
 	public static Event event181 = new WarpCarlocsOfficetoCentral(24,17,181);
 //Event 182: Carloc's office to East Elevator
-	public static Event event183 = new WarpAtriatoCentral(24,17,183);
+	public static Event event183 = new WarpAtriatoCentral(30,17,183);
 	public static Event event184 = new WarpAtriatoStairsRoom(6,12,184);
 	public static Event event185 = new WarpAtriatoOuterFloor2(25,8,185);
 	public static Event event186 = new WarpAtriatoRightFloor2(11,9,186);
@@ -249,14 +249,15 @@ public class Event{
 //Event 196: Warehouse to Balcony
 	public static Event event197 = new WarpAtriaFloor2toAtriaFloor1(28,10,197);
 	public static Event event198 = new WarpAtriaFloor2toBusRamp(6,20,198);
-//Event 199: Atria Floor 2 to extra room
-//Event 200: Extra room to Atria Floor 2
+	public static Event event199 = new WarpAtriaFloor2toExtraRoom(20,6,199);
+	public static Event event200 = new WarpExtraRoom2toAtriaFloor2(7,15,200);
 	public static Event event201 = new WarpBusRamptoAtriaFloor2(25,16,201);
 	public static Event event202 = new WarpBusRamptoCarlocsOffice(20,12,202);
 	public static Event event203 = new WarpBusRamptoBus(31,38,203);
 //Event 204: Bus Ramp to extra room? 
 //Event 205: Bus Ramp to West Offices
 
+	//206 employees begin here
 	
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);

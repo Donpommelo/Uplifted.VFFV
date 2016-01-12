@@ -9,13 +9,13 @@ import dev.zt.UpliftedVFFV.input.KeyManager;
 
 
 
-public class WarpStairsRoomtoCarlocsHall extends Event {
+public class WarpAtriaFloor2toExtraRoom extends Event {
 
 	public static BufferedImage img=Assets.ClearDoor1;
 	public static int frame;
 	public boolean open;
 	public static int stagenum = 1;
-	public WarpStairsRoomtoCarlocsHall(float x, float y, int idnum) {
+	public WarpAtriaFloor2toExtraRoom(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 		frame = 0;
 		open = false;
@@ -37,7 +37,7 @@ public class WarpStairsRoomtoCarlocsHall extends Event {
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
 			game.getAudiomanager().playMusic(2, true);
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt",5,12,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOffices2ExtraRoom.txt",7,15,"");
 			open = false;
 			break;
 		}

@@ -24,7 +24,7 @@ public class EventBackroomFridge extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A Fridge./You've already taken everything inside/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A Fridge./You've already taken everything inside./");
 			super.Dialog(d, 0, this.getId(), true);
 		}
 	}

@@ -853,7 +853,10 @@ public class MenuState extends State {
 					}
 					//Effects.
 					if(!curItem.getDescrShort().equals("meep")){
-						g.drawString(curItem.getDescrShort(), 420, 160);
+//						g.drawString(curItem.getDescrShort(), 420, 160);
+						int y = 140;
+						for (String line : curItem.getDescrShort().split("\n"))
+					        g.drawString(line, 420, y += g.getFontMetrics().getHeight());
 					}
 					
 					//Tags.
