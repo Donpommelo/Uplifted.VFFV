@@ -1,7 +1,9 @@
 package dev.zt.UpliftedVFFV.entities;
 
 import java.awt.Graphics;
+
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 public abstract class Entity {
 	
@@ -53,7 +55,7 @@ public abstract class Entity {
 		this.height = height;
 	}
 
-	public abstract void tick();
+	public abstract void tick(GameState gs);
 
 	public abstract void render(Graphics g);
 }

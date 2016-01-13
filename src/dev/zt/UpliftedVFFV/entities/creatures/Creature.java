@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.entities.Entity;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 public class Creature extends Entity {
 	
@@ -23,7 +23,6 @@ public class Creature extends Entity {
 	public int runlast=1;
 	public int Id;
 	public Game game;
-	
 	
 	public Creature(Game game, float x, float y, int width, int height, BufferedImage img, int eventId) {
 		super(game, x, y, width, height);
@@ -43,15 +42,15 @@ public class Creature extends Entity {
 			setY(getY() + yMove/32);
 	}
 	
-	public void tick() {
+	public void tick(GameState gs) {
 //		System.out.print(this+" "+this.getX()+" "+this.getY());
-		this.getInput();			
+		this.getInput(gs);			
 //		if(!WorldManager.getWorld().getTile((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()&&!EventManager.getEvent((int)((x+31/2+xMove/2+ 8*xMove)/32),(int)((y+31/2+yMove/2 + 8*yMove)/32)).isSolid()){
 			this.move();			
 //		}
 	}
 	
-	private void getInput(){
+	private void getInput(GameState gamestate){
 		this.xMove = 0;			//xMove and yMove dictate how much the player should move. they should are set at 0 so that no movement occurs
 		this.yMove = 0;			// with no input. This way, each input only registers a single movement
 		
@@ -59,9 +58,9 @@ public class Creature extends Entity {
 		if(step==16){
 			this.runup=false; this.runleft=false; this.runright=false; this.rundown=false;
 			this.step=0;
-			if(Event.getEvents()[this.Id].getstage()!=Event.getEvents()[this.Id].getfinalstage()){
-				Event.getEvents()[this.Id].setstage(Event.getEvents()[this.Id].getstage()+1);
-				Event.getEvents()[this.Id].run();
+			if(gamestate.getEvents()[this.Id].getstage()!=gamestate.getEvents()[this.Id].getfinalstage()){
+				gamestate.getEvents()[this.Id].setstage(gamestate.getEvents()[this.Id].getstage()+1);
+				gamestate.getEvents()[this.Id].run();
 			}
 //			System.out.print(this.x+" "+this.y);
 		}

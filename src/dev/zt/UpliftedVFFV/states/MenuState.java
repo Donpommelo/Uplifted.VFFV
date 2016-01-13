@@ -366,6 +366,7 @@ public class MenuState extends State {
 										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
 										refreshBackpack();
 										progFlag = true;
+										itemChosen = false;
 //									}
 //									else{
 //										audio.playSound("/Audio/option_toggle.wav", false);//meep merp sound
@@ -415,6 +416,7 @@ public class MenuState extends State {
 									tempItem.use(gamestate.partymanager.party.get(characterSelected));
 									if(tempItem.isConsummable()){
 										gamestate.inventorymanager.use(tempItem);
+										itemChosen = false;
 										refreshBackpack();
 									}
 									progFlag = true;
@@ -440,24 +442,26 @@ public class MenuState extends State {
 							//No item selected. Arrows to navigate menu, space to select item.
 							if(game.getKeyManager().space){
 								//Select item;
-								if(!gamestate.inventorymanager.backpack.isEmpty() && !bypassSelection){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									itemChosen=true;
-								} else if(!gamestate.inventorymanager.backpack.isEmpty() && bypassSelection){
-									if(tempBackpack.get(backpackTab).size() > 0){	
-										tempItem = tempBackpack.get(backpackTab).get(itemSelected);
-									}
-//									if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
-										audio.playSound("/Audio/option_toggle.wav", false);
-										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
-//									}
-//									else{
-//										audio.playSound("/Audio/option_toggle.wav", false); // lets get some meep merp in here
-//									}
-									refreshBackpack();
-									bypassSelection = false;
-									optionSelected = 0;
-									characterTab = 1;
+								if(tempItem != null){
+									if(!gamestate.inventorymanager.backpack.isEmpty() && !bypassSelection){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										itemChosen=true;
+									} else if(!gamestate.inventorymanager.backpack.isEmpty() && bypassSelection){
+										if(tempBackpack.get(backpackTab).size() > 0){	
+											tempItem = tempBackpack.get(backpackTab).get(itemSelected);
+										}
+//										if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
+											audio.playSound("/Audio/option_toggle.wav", false);
+											gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+//										}
+//										else{
+//											audio.playSound("/Audio/option_toggle.wav", false); // lets get some meep merp in here
+//										}
+										refreshBackpack();
+										bypassSelection = false;
+										optionSelected = 0;
+										characterTab = 1;
+									}	
 								}
 								game.getKeyManager().disable(delaySelection);
 							}
@@ -534,27 +538,29 @@ public class MenuState extends State {
 								}
 							}
 							if(game.getKeyManager().space){
-								if(itemOption == 0){
-									if(tempItem.isUsedfromMenu()){
-//										itemChosen = false;
-										if(tempItem.targeted){
+								if(tempItem != null){
+									if(itemOption == 0){
+										if(tempItem.isUsedfromMenu()){
+//											itemChosen = false;
+											if(tempItem.targeted){
+												audio.playSound("/Audio/paper_pickup_01.wav", false);
+												useitemChosen = true;
+											}
+											else{
+												audio.playSound("/Audio/option_toggle.wav", false);
+												tempItem.use();
+												refreshBackpack();
+											}
+											
+										}
+									} else if(itemOption == 1){
+										if(tempItem.getSlot() == 1){
 											audio.playSound("/Audio/paper_pickup_01.wav", false);
-											useitemChosen = true;
+//											itemChosen = false;
+											equipChosen = true;
 										}
-										else{
-											audio.playSound("/Audio/option_toggle.wav", false);
-											tempItem.use();
-											refreshBackpack();
-										}
-										
-									}
-								} else if(itemOption == 1){
-									if(tempItem.getSlot() == 1){
-										audio.playSound("/Audio/paper_pickup_01.wav", false);
-//										itemChosen = false;
-										equipChosen = true;
-									}
-								}					
+									}	
+								}
 								game.getKeyManager().disable(delaySelection);
 							}
 						}

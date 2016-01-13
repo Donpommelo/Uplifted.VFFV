@@ -4,7 +4,6 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.events.Event;
 
 //Cutscene. This plays a series of pictures
 public class CutsceneState extends State {
@@ -15,13 +14,14 @@ public class CutsceneState extends State {
 	public int image;
 	public int EventId;
 	public BufferedImage img;
-	
+	private GameState gs;
 	//KeyListener delay variables.
 	private int nextImageDelay = 100;
 	
 	//Dialogstates require an arraylist of BufferedImages
-	public CutsceneState(Game game, StateManager sm, BufferedImage[] slides,int eventId){
+	public CutsceneState(Game game, GameState gs, StateManager sm, BufferedImage[] slides,int eventId){
 		super(game,sm);
+		this.gs = gs;
 		setStateType("cutscene");
 		this.scenes = slides;
 		this.EventId=eventId;
@@ -38,9 +38,9 @@ public class CutsceneState extends State {
 					
 					//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 					//increment and the event will be rerrun with the new stage.
-					if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
-						Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
-						Event.getEvents()[this.EventId].run();
+					if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+						gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+						gs.getEvents()[this.EventId].run();
 					}
 					
 					}	

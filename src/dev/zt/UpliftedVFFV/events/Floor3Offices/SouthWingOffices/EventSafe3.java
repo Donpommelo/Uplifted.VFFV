@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 public class EventSafe3 extends Event {
 
@@ -25,12 +26,12 @@ public class EventSafe3 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some Caffeine Patches in the Safe./");
 			super.Dialog(d, 0, this.getId(), true);
 			super.scriptChange(15);
-			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
+			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}
 	
-	public void tick(){
+	public void tick(GameState gs){
 		if(!this.isSelfswitch1()){
 			frame++;
 			if(frame>=50){
@@ -44,6 +45,10 @@ public class EventSafe3 extends Event {
 					blinking = true;
 				}
 			}
+		}
+		else{
+			this.setTex(Assets.SafeOpened);
+
 		}
 	}
 	

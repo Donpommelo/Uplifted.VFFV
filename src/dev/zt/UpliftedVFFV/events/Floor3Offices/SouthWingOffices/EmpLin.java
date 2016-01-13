@@ -18,16 +18,16 @@ public class EmpLin extends Event {
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 		}
 		
 		switch(this.getstage()){
@@ -66,7 +66,7 @@ public class EmpLin extends Event {
 			}
 			break;
 		case 1:
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 			this.setstage(0);
 			break;
 			

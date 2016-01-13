@@ -2,7 +2,6 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Graphics;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
 //DialogState. This controls which dialog is displayed
@@ -10,6 +9,7 @@ public class DialogState extends State {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private GameState gs;
 	private int linenum, endline, dialognum, dialogamount;
 	private Dialog[] dialogs;
 	private Dialog current;
@@ -22,8 +22,9 @@ public class DialogState extends State {
 	private int delayScrolling = 120;
 	
 	//Dialogstates require 2 ints when called; the first and last lines of dialog needed
-	public DialogState(Game game, StateManager sm, int start, int end, int eventId){
+	public DialogState(Game game, GameState gs, StateManager sm, int start, int end, int eventId){
 		super(game,sm);
+		this.gs = gs;
 		setStateType("dialogue");
 		this.linenum=start;
 		this.endline=end;
@@ -37,8 +38,9 @@ public class DialogState extends State {
 		game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
 	}
 	
-	public DialogState(Game game, StateManager sm, Dialog[] d, int dialoglength, int eventId, boolean arrow){
+	public DialogState(Game game, GameState gs, StateManager sm, Dialog[] d, int dialoglength, int eventId, boolean arrow){
 		super(game,sm);
+		this.gs = gs;
 		this.dialogs = d;
 		this.dialognum = 0;
 		this.dialogamount = dialoglength;
@@ -68,9 +70,9 @@ public class DialogState extends State {
 						StateManager.getStates().pop();
 						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 						//increment and the event will be rerrun with the new stage.
-						if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
-							Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
-							Event.getEvents()[this.EventId].run();
+						if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+							gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+							gs.getEvents()[this.EventId].run();
 						}
 						
 					}						

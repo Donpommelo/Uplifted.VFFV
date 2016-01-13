@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -14,9 +13,11 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 	private static final long serialVersionUID = 1L;
 	
 	private BufferedImage window, panel, cursor;
+	private GameState gs;
 	
-	public ElevatorChoiceBranchState(Game game, StateManager sm, int eventId, String[] choices) {
-		super(game, sm, eventId, choices);
+	public ElevatorChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId, String[] choices) {
+		super(game,gs, sm, eventId, choices);
+		this.gs = gs;
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		panel = ImageLoader.loadImage("/ui/ElevatorPanelAlt.png");
 		cursor = ImageLoader.loadImage("/ui/ElevatorPanelCursor.png");
@@ -33,7 +34,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 		if(exit==true){
 			StateManager.getStates().pop();
 			StateManager.getStates().pop();
-			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
+			gs.getEvents()[this.EventId].ChoiceMade(currentchoice);
 			StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
 			exit=false;
 		}
@@ -42,7 +43,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 		if(selected==true){
 			StateManager.getStates().pop();
 			StateManager.getStates().pop();
-			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
+			gs.getEvents()[this.EventId].ChoiceMade(currentchoice);
 		}
 		else{
 			//Draw elevator panel.

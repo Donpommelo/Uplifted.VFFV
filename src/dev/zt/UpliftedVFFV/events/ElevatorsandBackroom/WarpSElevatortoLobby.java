@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 public class WarpSElevatortoLobby extends Event {
 
@@ -20,7 +21,7 @@ public class WarpSElevatortoLobby extends Event {
 	}
 	
 	public void run(){
-		if(Event.getEvents()[52].isSelfswitch1()){
+		if(super.getGamestate().getEvents()[52].isSelfswitch1()){
 			switch(this.getstage()){
 			case 0: 				
 				if(!open){
@@ -90,13 +91,13 @@ public class WarpSElevatortoLobby extends Event {
 	
 	}
 	
-	public void tick() {
+	public void tick(GameState gs) {
 		if(open){
 			if(frame<6){
 				frame++;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX() == 160){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 160){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -107,7 +108,7 @@ public class WarpSElevatortoLobby extends Event {
 				frame--;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX() == 160){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 160){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

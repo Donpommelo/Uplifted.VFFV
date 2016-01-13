@@ -34,7 +34,7 @@ public class EventManager {
 				if(x<events.length-1 && y<events[x].length-1){ 
 					//go fuck urself
 					if(events[x][y] != 0 && getEvent(x,y) != null){
-						getEvent(x, y).tick();
+						getEvent(x, y).tick(gs);
 					}
 				}	
 			}
@@ -74,8 +74,8 @@ public class EventManager {
 	}
 		
 	//Returns the event at a given x,y coordinate
-	public static Event getEvent(int x,int y){
-		Event e = Event.getEvents()[events[x][y]];
+	public Event getEvent(int x,int y){
+		Event e = gs.getEvents()[events[x][y]];
 		if(e == null)
 			return Event.event0;
 		return e;
@@ -95,12 +95,12 @@ public class EventManager {
 			}
 		}
 		for(int i=0;i<numevents;i++){
-			if(Event.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].drawn()){
+			if(gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].drawn()){
 				events[Utils.parseInt(tokens[(height*width)+9+3*i])][Utils.parseInt(tokens[(height*width)+10+3*i])]=Utils.parseInt(tokens[(height*width)+8+3*i]);
-				Event.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+9+3*i]),Utils.parseInt(tokens[(height*width)+10+3*i]));
-				if(Event.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest()!=null){
-					Event.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setX(Utils.parseInt(tokens[(height*width)+9+3*i]));
-					Event.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setY(Utils.parseInt(tokens[(height*width)+10+3*i]));
+				gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+9+3*i]),Utils.parseInt(tokens[(height*width)+10+3*i]));
+				if(gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest()!=null){
+					gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setX(Utils.parseInt(tokens[(height*width)+9+3*i]));
+					gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest().setY(Utils.parseInt(tokens[(height*width)+10+3*i]));
 				}
 			}
 		}

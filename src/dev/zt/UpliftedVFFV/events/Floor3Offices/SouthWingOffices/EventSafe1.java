@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 public class EventSafe1 extends Event {
 
@@ -26,12 +27,12 @@ public class EventSafe1 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You found some MedPaks inside the safe!/Always handy in case of Officeplace accidents!/");
 			super.Dialog(d, 0, this.getId(), true);
 			super.loot(new MedPak(), 3);
-			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
+			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}
 	
-	public void tick(){
+	public void tick(GameState gs){
 		if(!this.isSelfswitch1()){
 			frame++;
 			if(frame>=50){
@@ -45,6 +46,9 @@ public class EventSafe1 extends Event {
 					blinking = true;
 				}
 			}
+		}
+		else{
+			this.setTex(Assets.SafeOpened);
 		}
 	}
 	

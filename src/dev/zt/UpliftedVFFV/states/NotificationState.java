@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -16,13 +15,15 @@ public class NotificationState extends State{
 	private static final long serialVersionUID = 7963740710059253953L;
 	
 	private String myMessage;
+	private GameState gs;
 	private AudioManager audio;
 	private BufferedImage window;
 	private int width, height;
 	private int EventId;
 	
-	public NotificationState(Game game, StateManager sm, String message, int eventID){
+	public NotificationState(Game game, GameState gs, StateManager sm, String message, int eventID){
 		super(game, sm);
+		this.gs = gs;
 		myMessage = message;
 		audio = game.getAudiomanager();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
@@ -38,9 +39,9 @@ public class NotificationState extends State{
 				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 				StateManager.getStates().pop();
 				game.getKeyManager().disable(200);
-				if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
-					Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
-					Event.getEvents()[this.EventId].run();
+				if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+					gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+					gs.getEvents()[this.EventId].run();
 				}
 				
 			}

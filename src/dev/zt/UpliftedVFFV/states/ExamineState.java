@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
 
@@ -17,9 +16,11 @@ public class ExamineState extends State{
 	private int x,y;
 	private BufferedImage image;
 	private int EventId;
+	private GameState gs;
 	
-	public ExamineState(Game game, StateManager sm, BufferedImage i, int eventID){
+	public ExamineState(Game game, GameState gs, StateManager sm, BufferedImage i, int eventID){
 		super(game, sm);
+		this.gs = gs;
 		audio = game.getAudiomanager();
 		EventId = eventID;
 		this.image = i;
@@ -46,9 +47,9 @@ public class ExamineState extends State{
 				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 				StateManager.getStates().pop();
 				game.getKeyManager().disable(200);
-				if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
-					Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
-					Event.getEvents()[this.EventId].run();
+				if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+					gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+					gs.getEvents()[this.EventId].run();
 				}
 				
 			}

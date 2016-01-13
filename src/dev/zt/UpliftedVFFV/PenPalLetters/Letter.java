@@ -35,12 +35,12 @@ public class Letter {
 			if(l != null){
 				if(Arrays.asList(l.prompts).contains(prompt)){
 					if(!received.contains(l)){
-						StateManager.states.push(new NotificationState(g, sm, "The fabric of time changes in strange and unpredictable ways!", 0));
+						StateManager.states.push(new NotificationState(g, gs,sm, "The fabric of time changes in strange and unpredictable ways!", 0));
 						received.add(l);
 						gs.inventorymanager.use(new PostageStamp());
 					}
 					else{
-						StateManager.states.push(new NotificationState(g, sm, "A letter of this topic has already been received!", 0));
+						StateManager.states.push(new NotificationState(g, gs, sm, "A letter of this topic has already been received!", 0));
 					}
 					return l;
 				}

@@ -23,16 +23,16 @@ public class EventPenPal extends Event {
 		
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.PenPal));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.PenPal));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.PenPal));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.PenPal));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.PenPal));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.PenPal));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
 		}
 		if(this.isSelfswitch1()==false){
 			Dialog[] d = new Dialog[13];

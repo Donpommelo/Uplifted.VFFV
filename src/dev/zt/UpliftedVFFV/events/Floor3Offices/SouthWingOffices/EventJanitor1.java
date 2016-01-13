@@ -37,16 +37,16 @@ public class EventJanitor1 extends Event {
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.Wiper));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.Wiper));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.Wiper));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.Wiper));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.Wiper));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.Wiper));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.Wiper));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.Wiper));
 		}
 		switch(this.getstage()){
 		case 0: 

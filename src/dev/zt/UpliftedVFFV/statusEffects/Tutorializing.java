@@ -36,7 +36,7 @@ public class Tutorializing extends status{
 			d[9] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Bear in mind that Waiting will lose you some initiative./Wait too much and you may miss a golden opportunity!/");
 			d[10] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Finally, there is the 'Run' action. This allows you to attempt to flee from combat./No one will judge you for selecting this option./");
 			d[11] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"That just about does it! Now, lets finish this and continue our quest./");
-			DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,11,0,true);
+			DialogState firstfite = new DialogState(bs.getGame(),bs.gs,bs.gs.getStateManager(),d ,11,0,true);
 			StateManager.getStates().push(firstfite);
 		}
 		bs.bp.bt.addScene(" ");
@@ -56,7 +56,7 @@ public class Tutorializing extends status{
 		d[7] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Press enter when you've selected an action for all team members./");
 		d[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"You can keep track of the inevitable chaos in the battle text screen./That can be found right over . . ./Hmm. Where was it? I just saw it . . .");
 		d[9] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,". . ./ Ah, yes! Right over . . .");
-		DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,9,0,true);
+		DialogState firstfite = new DialogState(bs.getGame(),bs.gs,bs.gs.getStateManager(),d ,9,0,true);
 		StateManager.getStates().push(firstfite);
 		bs.bp.bt.addScene("Pen Pal: Here!");
 		bs.bp.bt.addScene("Pen Pal: Let us get right into it!");
@@ -70,7 +70,7 @@ public class Tutorializing extends status{
 		d[3] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Combat also provides to its participants valuable Work Experience./Gain enough Exp to level up and climb the corporate ladder./Become a more valuable company asset and gain more transferable job skills!/");
 		d[4] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Lastly, enemies will sometimes drop valuable loot!/These items can be examined closer in your inventory, viewable from the menu!/");
 
-		DialogState firstfite = new DialogState(bs.getGame(),bs.gs.getStateManager(),d ,4,0,true);
+		DialogState firstfite = new DialogState(bs.getGame(),bs.gs,bs.gs.getStateManager(),d ,4,0,true);
 		StateManager.getStates().push(firstfite);
 
 	}

@@ -19,7 +19,7 @@ public class WarpSouthHallLongtoMailroom extends Event {
 	}
 	
 	public boolean isSolid(){
-		return !Event.getEvents()[66].isSelfswitch1();
+		return !super.getGamestate().getEvents()[66].isSelfswitch1();
 	}
 	
 }

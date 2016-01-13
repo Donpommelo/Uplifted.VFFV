@@ -18,16 +18,16 @@ public class EmpLateNeet extends Event {
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
 		}
 		Dialog[] d = new Dialog[1];
 		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I regret taking for granted my long hours of unemployed freetime./");

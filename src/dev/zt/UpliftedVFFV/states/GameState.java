@@ -8,6 +8,7 @@ import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
+import dev.zt.UpliftedVFFV.events.EventSelfSwitchManager;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.party.PartyManager;
 import dev.zt.UpliftedVFFV.quest.QuestManager;
@@ -35,8 +36,8 @@ public class GameState extends State {
 	public SwitchManager switchmanager;
 	public VariableManager variablemanager;
 	public QuestManager questmanager;
+	public EventSelfSwitchManager eventselfswitchmanager;
 	public Event Events;
-//	public Event[] eventMasterList;
 	
 //	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
@@ -49,8 +50,15 @@ public class GameState extends State {
 		switchmanager = new SwitchManager(game);
 		variablemanager = new VariableManager(game);
 		questmanager = new QuestManager(game);
-
-		Events = new Event(game, sm,this);												//creates a new Event class that controls all events
+		eventselfswitchmanager = new EventSelfSwitchManager(game);
+		
+		Events = new Event(game, sm,this);											//creates a new Event class that controls all events
+		for(Event e : Events.getEvents()){
+			if(e != null){
+				eventselfswitchmanager.resetSelfSwitches(e);
+			}
+		}
+		
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
@@ -76,20 +84,25 @@ public class GameState extends State {
 		worldmanager = w;
 	}
 	
-	public static EventManager getEventmanager() {
+	public EventManager getEventmanager() {
 		return eventmanager;
 	}
 
 	public static void setEventmanager(EventManager e) {
 		eventmanager = e;
 	}
+
+	public Event[] getEvents() {
+		return Events.getEvents();
+	}
 	
-	public Event getEvents() {
-		return Events;
+	public EventSelfSwitchManager getEventselfswitchmanager() {
+		return eventselfswitchmanager;
 	}
 
-	public void setEvents(Event events) {
-		Events = events;
+	public void setEventselfswitchmanager(
+			EventSelfSwitchManager eventselfswitchmanager) {
+		this.eventselfswitchmanager = eventselfswitchmanager;
 	}
 
 	public static DecorManager getDecormanager() {
@@ -124,7 +137,7 @@ public class GameState extends State {
 
 		worldmanager.tick();
 		eventmanager.tick();
-		player.tick();
+		player.tick(this);
 		if(game.getKeyManager().z){												//opens up a menu.
 			StateManager.states.push(new MenuState(game,statemanager,this));
 		}
@@ -206,9 +219,17 @@ public class GameState extends State {
 		inventorymanager = (InventoryManager) stream.readObject();
 		
 		//Load world/event flags.
-		Events = (Event) stream.readObject();
+		eventselfswitchmanager.events = (int[]) stream.readObject();
 		switchmanager.switches = (boolean[]) stream.readObject();
 		variablemanager.variables = (int[]) stream.readObject();
+		questmanager.quests = (int[]) stream.readObject();
+		
+		for(Event e : Events.getEvents()){
+			if(e != null){
+				eventselfswitchmanager.setSelfSwitches(e);
+			}
+		}
+		
 	}
 	
 	public void writeObject(java.io.ObjectOutputStream stream) throws IOException{
@@ -229,8 +250,10 @@ public class GameState extends State {
 		stream.writeObject(inventorymanager);
 		
 		//Save world/event flags.
-		stream.writeObject(Events);
+		stream.writeObject(eventselfswitchmanager.events);
 		stream.writeObject(switchmanager.switches);
 		stream.writeObject(variablemanager.variables);
+		stream.writeObject(questmanager.quests);
+
 	}
 }

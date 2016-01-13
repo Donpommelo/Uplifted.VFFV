@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 
 
@@ -67,7 +68,7 @@ public class EventJorge extends Event {
 			}			
 	}
 	
-	public void tick(){
+	public void tick(GameState gs){
 		frame++;
 		if(frame>=150){
 			this.setTex(Assets.Jorge4);

@@ -21,16 +21,16 @@ public class EmpSleepy extends Event {
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 		}
 		
 		if(!this.isSelfswitch1()){
@@ -45,7 +45,7 @@ public class EmpSleepy extends Event {
 				super.loot(new SmellingSalt(), 1);
 				break;
 			case 1:
-				Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
+				this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 				this.setSelfswitch1(true);
 				this.setstage(0);
 				break;
@@ -56,7 +56,7 @@ public class EmpSleepy extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"You'll need those Smellingsalts to stay awake if you're here for the meeting./");
 			super.Dialog(d, 0, this.getId(), true);
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 			this.setstage(1);
 		}
 

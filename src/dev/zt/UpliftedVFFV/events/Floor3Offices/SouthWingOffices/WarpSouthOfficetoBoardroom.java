@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 
 
@@ -43,13 +44,13 @@ public class WarpSouthOfficetoBoardroom extends Event {
 		}
 	}
 
-	public void tick() {
+	public void tick(GameState gs) {
 		if(open){
 			if(frame<6){
 				frame++;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX()== 480){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()== 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -60,7 +61,7 @@ public class WarpSouthOfficetoBoardroom extends Event {
 				frame--;
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gamestate.getPlayer().getPlayerX()/32 == 480){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()/32 == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

@@ -39,12 +39,10 @@ public class Player extends Creature implements Serializable{
 		this.gamestate = gs;
 		this.playerx = x;
 		this.playery = y;
-//		this.playerx = 256;
-//		this.playery = 192;
 		wall = false;
 	} 
 
-	public void tick() {
+	public void tick(GameState gs) {
 				
 		//First, checks whether the player is standing on an event
 /*		Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
@@ -56,9 +54,9 @@ public class Player extends Creature implements Serializable{
 		else */{
 			
 			//if the player isn't on top of an event, the player checks for input and runs move()
-			getInput();	
+			getInput(gs);	
 			int [] tent = {(int)((playerx+31/2+xMove/2+ 8*xMove)/32),(int)((playery+31/2+yMove/2 + 8*yMove)/32)};
-			if(!gamestate.getWorld().getTile(tent[0],tent[1]).isSolid() && !EventManager.getEvent(tent[0],tent[1]).isSolid(runlast)){
+			if(!gamestate.getWorld().getTile(tent[0],tent[1]).isSolid() && !gamestate.getEventmanager().getEvent(tent[0],tent[1]).isSolid(runlast)){
 				this.move();
 			}
 			else{
@@ -120,7 +118,7 @@ public class Player extends Creature implements Serializable{
 	}
 	
 	//this is run every tick, provided the player is not running an event
-	private void getInput(){
+	private void getInput(GameState gs){
 		xMove = 0;			//xMove and yMove dictate how much the player should move. they should are set at 0 so that no movement occurs
 		yMove = 0;			// with no input. This way, each input only registers a single movement
 		
@@ -129,7 +127,7 @@ public class Player extends Creature implements Serializable{
 			runup=false; runleft=false; runright=false; rundown=false;
 			step=0;
 			
-			Event e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
+			Event e=gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery+16)/32)]];
 			if(e!=Event.event0 && e.runnable()){		//if the player is on top of a square containing an event, the event is run
 				e.run();
 			}
@@ -190,8 +188,8 @@ public class Player extends Creature implements Serializable{
 			runup = true;
 			rightleft++;
 			runlast=0;
-			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].isDoor()){
-				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].run();
+			if(gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].isDoor()){
+				gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]].run();
 				step = 16;
 			}
 		}
@@ -203,8 +201,8 @@ public class Player extends Creature implements Serializable{
 			rundown = true;
 			rightleft++;
 			runlast=1;
-			if(Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].isDoor()){
-				Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].run();
+			if(gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].isDoor()){
+				gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]].run();
 				step = 16;
 			}
 		}
@@ -212,8 +210,8 @@ public class Player extends Creature implements Serializable{
 			runleft = true;
 			rightleft++;
 			runlast=2;
-			if(Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].isDoor()){
-				Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].run();
+			if(gamestate.getEvents()[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].isDoor()){
+				gamestate.getEvents()[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]].run();
 				step = 16;
 			}
 		}
@@ -221,8 +219,8 @@ public class Player extends Creature implements Serializable{
 			runright = true;
 			rightleft++;
 			runlast=3;
-			if(Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].isDoor()){
-				Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].run();
+			if(gamestate.getEvents()[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].isDoor()){
+				gamestate.getEvents()[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]].run();
 				step = 16;
 			}
 		}
@@ -233,25 +231,25 @@ public class Player extends Creature implements Serializable{
 			Event e;
 			switch(runlast){
 			case 0: 
-				e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]];
+				e=gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery-16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 1:
-				e=Event.events[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]];
+				e=gamestate.getEvents()[EventManager.events[(int)((playerx+16)/32)][(int)((playery+48)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 2:
-				e=Event.events[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]];
+				e=gamestate.getEvents()[EventManager.events[(int)((playerx-16)/32)][(int)((playery+16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}
 				break;
 			case 3:
-				e=Event.events[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]];
+				e=gamestate.getEvents()[EventManager.events[(int)((playerx+48)/32)][(int)((playery+16)/32)]];
 				if(e!=Event.event0){
 					e.run();
 					step=16;}

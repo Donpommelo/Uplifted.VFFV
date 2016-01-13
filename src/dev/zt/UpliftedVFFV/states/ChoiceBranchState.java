@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -14,6 +13,7 @@ public class ChoiceBranchState extends State {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private GameState gs;
 	private BufferedImage window;
 	public int EventId;
 	public String[] num;
@@ -24,8 +24,9 @@ public class ChoiceBranchState extends State {
 	private int delayCursor = 120;
 	private int delaySelection = 200;
 		
-	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices){
+	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices){
 		super(game,sm);
+		this.gs = gs;
 		setStateType("choice");
 		this.EventId=eventId;
 		this.num=choices;
@@ -43,8 +44,9 @@ public class ChoiceBranchState extends State {
 			boxsize=num.length;
 		}
 	}
-	public ChoiceBranchState(Game game, StateManager sm, int eventId,String[] choices, int width){
+	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices, int width){
 		super(game,sm);
+		this.gs = gs;
 		setStateType("choice");
 		this.EventId=eventId;
 		this.num=choices;
@@ -137,7 +139,7 @@ public class ChoiceBranchState extends State {
 			if(StateManager.getStates().peek().getStateType() == "dialogue"){
 				StateManager.getStates().pop();
 			}
-			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
+			gs.getEvents()[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
 				Event.events[this.EventId].run();

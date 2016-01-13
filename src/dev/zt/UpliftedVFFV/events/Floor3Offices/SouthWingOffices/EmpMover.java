@@ -18,16 +18,16 @@ public class EmpMover extends Event {
 		
 	public void run(){
 		if (Player.runlast==0){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.Mover));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.Mover));
 		}
 		if (Player.runlast==1){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.Mover));
+			this.setTex(SpriteSorter.SpriteSort(10,Assets.Mover));
 		}
 		if (Player.runlast==2){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.Mover));
+			this.setTex(SpriteSorter.SpriteSort(7,Assets.Mover));
 		}
 		if (Player.runlast==3){
-			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.Mover));
+			this.setTex(SpriteSorter.SpriteSort(4,Assets.Mover));
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[7];

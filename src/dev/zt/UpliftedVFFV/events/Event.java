@@ -28,6 +28,8 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 //at once. 
 
 public class Event implements Serializable{
+	
+	private static final long serialVersionUID = 8L;
 
 	int id;
 	static WorldManager worldmanager;
@@ -316,10 +318,16 @@ public class Event implements Serializable{
 		gamestate=gs;
 	}
 	
+	
+	
+	public static GameState getGamestate() {
+		return gamestate;
+	}
+
 	//If the event is attached to a Creature object, tick the Creature and make it walk around.
-	public void tick() {
+	public void tick(GameState gs) {
 		if(test!=null){
-			test.tick();		
+			test.tick(gs);		
 		}
 		walkCycle();
 	}
@@ -418,7 +426,7 @@ public class Event implements Serializable{
 	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.
 	//consider adding multiple text files later that will need to be specified
 	public static void Dialog(int firstline, int lastline, int eventId){
-		StateManager.states.push(new DialogState(game, statemanager, firstline, lastline, eventId));
+		StateManager.states.push(new DialogState(game, gamestate, statemanager, firstline, lastline, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -427,7 +435,7 @@ public class Event implements Serializable{
 	}
 	
 	public static void Dialog(Dialog[] d, int dialoglength, int eventId, boolean arrow){
-		StateManager.states.push(new DialogState(game, statemanager, d, dialoglength, eventId, arrow));
+		StateManager.states.push(new DialogState(game, gamestate, statemanager, d, dialoglength, eventId, arrow));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -446,7 +454,7 @@ public class Event implements Serializable{
 	
 	//Pushes a examiniation window.
 	public static void Examine(BufferedImage i, int eventId){
-		StateManager.states.push(new ExamineState(game, statemanager, i, eventId));
+		StateManager.states.push(new ExamineState(game, gamestate, statemanager, i, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -456,7 +464,7 @@ public class Event implements Serializable{
 	
 	//Simple cutscene state that goes through multiple pictures.
 	public static void Cutscene(BufferedImage[] scenes,int eventId){
-		StateManager.states.push(new CutsceneState(game,statemanager,scenes,eventId));
+		StateManager.states.push(new CutsceneState(game, gamestate, statemanager,scenes,eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -471,7 +479,7 @@ public class Event implements Serializable{
 	
 	//opens up a choice branch state with the list of string choices.
 	public static void ChoiceBranch(int EventId,String[] choices){
-		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices));
+		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -481,7 +489,7 @@ public class Event implements Serializable{
 	
 	//Choicebranch state, lets player make decision between a list of choices.
 	public static void ChoiceBranch(int EventId, String[] choices, int width){
-		StateManager.states.push(new ChoiceBranchState(game,statemanager,EventId,choices,width));
+		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices,width));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -492,7 +500,7 @@ public class Event implements Serializable{
 	
 	//Special version of choicebranch state with special art.
 	public static void ElevatorChoiceBranch(int EventId,String[] choices, int width){
-		StateManager.states.push(new ElevatorChoiceBranchState(game,statemanager,EventId,choices));
+		StateManager.states.push(new ElevatorChoiceBranchState(game, gamestate,statemanager,EventId,choices));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -512,7 +520,7 @@ public class Event implements Serializable{
 	
 	//State that just exists for a certain time than stops.
 	public static void Timer(int EventId,int time){
-		StateManager.states.push(new TimerState(game,statemanager,EventId,time));
+		StateManager.states.push(new TimerState(game, gamestate, statemanager,EventId,time));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -684,7 +692,7 @@ public class Event implements Serializable{
 	//Then, it moves its event to the square designated and updates x-y coordinates.
 	//Finally, if a creature is attached to the event, update its walk cycle in the given direction.
 	public void moveUp(){
-		if(!gamestate.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !EventManager.getEvent((int)x,(int)(y-1)).isSolid(0)){
+		if(!gamestate.getWorld().getTile((int)x,(int)(y-1)).isSolid() && !gamestate.getEventmanager().getEvent((int)x,(int)(y-1)).isSolid(0)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y)*32 || gamestate.getPlayer().getPlayerY()<=(y-2)*32){				
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())-1]=this.getId();
@@ -697,7 +705,7 @@ public class Event implements Serializable{
 	}
 
 	public void moveDown(){
-		if(!gamestate.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !EventManager.getEvent((int)x,(int)(y+1)).isSolid(1)){
+		if(!gamestate.getWorld().getTile((int)x,(int)(y+1)).isSolid() && !gamestate.getEventmanager().getEvent((int)x,(int)(y+1)).isSolid(1)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-1)*32 || gamestate.getPlayer().getPlayerX()>=(x+1)*32 || gamestate.getPlayer().getPlayerY()>=(y+2)*32 || gamestate.getPlayer().getPlayerY()<=(y)*32){	
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY()+1)]=this.getId();
@@ -711,7 +719,7 @@ public class Event implements Serializable{
 	}
 
 	public void moveLeft(){
-		if(!gamestate.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x-1,(int)(y)).isSolid(2)){
+		if(!gamestate.getWorld().getTile((int)x-1,(int)(y)).isSolid()&&!gamestate.getEventmanager().getEvent((int)x-1,(int)(y)).isSolid(2)){
 			if(gamestate.getPlayer().getPlayerX()<=(x-2)*32 || gamestate.getPlayer().getPlayerX()>=(x)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()-1)][(int)(this.getY())]=this.getId();
@@ -723,7 +731,7 @@ public class Event implements Serializable{
 		}
 	}
 	public void moveRight(){
-		if(!gamestate.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!EventManager.getEvent((int)x+1,(int)(y)).isSolid(3)){
+		if(!gamestate.getWorld().getTile((int)x+1,(int)(y)).isSolid()&&!gamestate.getEventmanager().getEvent((int)x+1,(int)(y)).isSolid(3)){
 			if(gamestate.getPlayer().getPlayerX()<=(x)*32 || gamestate.getPlayer().getPlayerX()>=(x+2)*32 || gamestate.getPlayer().getPlayerY()>=(y+1)*32 || gamestate.getPlayer().getPlayerY()<=(y-1)*32){
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
 				EventManager.getEvents()[(int)(this.getX()+1)][(int)(this.getY())]=this.getId();
@@ -747,6 +755,16 @@ public class Event implements Serializable{
 	}
 
 	public void setSelfswitch1(boolean selfswitch1) {
+		if(selfswitch1){
+			if(!this.selfswitch1){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())+1);
+			}
+		}
+		else{
+			if(this.selfswitch1){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())-1);
+			}
+		}
 		this.selfswitch1 = selfswitch1;
 	}
 
@@ -755,6 +773,16 @@ public class Event implements Serializable{
 	}
 
 	public void setSelfswitch2(boolean selfswitch2) {
+		if(selfswitch2){
+			if(!this.selfswitch2){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())+2);
+			}
+		}
+		else{
+			if(this.selfswitch2){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())-2);
+			}
+		}
 		this.selfswitch2 = selfswitch2;
 	}
 
@@ -763,6 +791,16 @@ public class Event implements Serializable{
 	}
 
 	public void setSelfswitch3(boolean selfswitch3) {
+		if(selfswitch3){
+			if(!this.selfswitch3){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())+4);
+			}
+		}
+		else{
+			if(this.selfswitch3){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())-4);
+			}
+		}
 		this.selfswitch3 = selfswitch3;
 	}
 
@@ -771,16 +809,21 @@ public class Event implements Serializable{
 	}
 
 	public void setSelfswitch4(boolean selfswitch4) {
+		if(selfswitch4){
+			if(!this.selfswitch4){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())+8);
+			}
+		}
+		else{
+			if(this.selfswitch4){
+				gamestate.getEventselfswitchmanager().setVar(this.getId(), gamestate.getEventselfswitchmanager().getVar(this.getId())-8);
+			}
+		}
 		this.selfswitch4 = selfswitch4;
 	}
 
-	public static Event[] getEvents() {
+	public Event[] getEvents() {
 		return events;
-	}
-
-	public static void setEvents(Event[] events) {
-		Event.events = events;
-	}
-	
+	}	
 	
 }

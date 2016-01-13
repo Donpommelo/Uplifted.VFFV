@@ -10,7 +10,6 @@ import dev.zt.UpliftedVFFV.Battle.BattleMenu;
 import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.Battle.BattleSprites;
 import dev.zt.UpliftedVFFV.Battle.BattleUI;
-import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -144,14 +143,14 @@ public class BattleState extends State {
 		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 		//increment and the event will be rerrun with the new stage.
 		if(victory){
-			Event.getEvents()[this.EventId].setFightwon(true);
+			gs.getEvents()[this.EventId].setFightwon(true);
 		}
 		else if(bp.fightlost()){
 			StateManager.getStates().pop();
 		}
-		if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
-			Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
-			Event.getEvents()[this.EventId].run();
+		if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+			gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+			gs.getEvents()[this.EventId].run();
 		}
 	}
 
