@@ -18,7 +18,7 @@ public class CompoundVitreous extends Item{
 	static int slot = 1;
 	static int lvlReq = 61;
 	static String descr="Enough eyes to see everything you could/npossibly want to see, and then a little more.";
-	static String descrShort="+13% Crit Chance/Lose Resistances instead of missing.";
+	static String descrShort="+13% Crit Chance\nLose Resistances instead of missing.";
 	public status[] enchantment = new status[2];
 	public CompoundVitreous() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

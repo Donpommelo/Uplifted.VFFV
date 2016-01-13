@@ -137,7 +137,7 @@ public class ChoiceBranchState extends State {
 			if(StateManager.getStates().peek().getStateType() == "dialogue"){
 				StateManager.getStates().pop();
 			}
-			Event.events[this.EventId].ChoiceMade(currentchoice);
+			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
 /*			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
 				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
 				Event.events[this.EventId].run();

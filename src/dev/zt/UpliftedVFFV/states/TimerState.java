@@ -25,9 +25,9 @@ public class TimerState extends State {
 	public void tick() {
 		if(timer>=time){
 			StateManager.getStates().pop();
-			if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
-				Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
-				Event.events[this.EventId].run();
+			if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
+				Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
+				Event.getEvents()[this.EventId].run();
 			}
 		}
 		else{

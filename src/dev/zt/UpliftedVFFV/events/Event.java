@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.events;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -26,7 +27,7 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 //Events are anything that can be interacted with. Each event occupies one square in the map grid. Only one event can exist in a square
 //at once. 
 
-public class Event{
+public class Event implements Serializable{
 
 	int id;
 	static WorldManager worldmanager;
@@ -287,7 +288,7 @@ public class Event{
 		this.selfswitch2 = false;
 		this.selfswitch3 = false;
 		this.selfswitch4 = false;
-		events[id] = this;
+		getEvents()[id] = this;
 	}
 	
 	public Event(BufferedImage texture, int idnum, float x, float y, int stageNum) {
@@ -304,7 +305,7 @@ public class Event{
 		this.selfswitch2 = false;
 		this.selfswitch3 = false;
 		this.selfswitch4 = false;
-		events[id] = this;
+		getEvents()[id] = this;
 		this.stage = 0;
 		this.finalstage = stageNum;
 	}
@@ -436,7 +437,6 @@ public class Event{
 	
 	//Pushes a simple notification window.
 	public static void Notification(String message, int eventId){
-		StateManager.states.push(new NotificationState(game, statemanager, message, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -502,7 +502,7 @@ public class Event{
 	
 	//State for exchanging letters with your Pen Pal
 	public static void PenPalState(){
-		StateManager.states.push(new PenPalLetterState(game,statemanager));
+		StateManager.states.push(new PenPalLetterState(game,gamestate,statemanager));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -581,9 +581,17 @@ public class Event{
 	public void setSwitch(int i, boolean set){
 		gamestate.setSwitch(i, set);
 	}
-	
+		
 	public boolean getSwitch(int i){
 		return gamestate.getSwitch(i);
+	}
+	
+	public int getQuest(int i){
+		return gamestate.getQuest(i);
+	}
+	
+	public void setQuest(int i, int stage){
+		gamestate.setQuest(i, stage);
 	}
 	
 	//checks id of event.
@@ -764,6 +772,14 @@ public class Event{
 
 	public void setSelfswitch4(boolean selfswitch4) {
 		this.selfswitch4 = selfswitch4;
+	}
+
+	public static Event[] getEvents() {
+		return events;
+	}
+
+	public static void setEvents(Event[] events) {
+		Event.events = events;
 	}
 	
 	

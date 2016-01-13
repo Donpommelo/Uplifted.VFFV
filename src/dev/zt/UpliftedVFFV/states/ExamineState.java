@@ -46,9 +46,9 @@ public class ExamineState extends State{
 				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 				StateManager.getStates().pop();
 				game.getKeyManager().disable(200);
-				if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
-					Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
-					Event.events[this.EventId].run();
+				if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
+					Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
+					Event.getEvents()[this.EventId].run();
 				}
 				
 			}

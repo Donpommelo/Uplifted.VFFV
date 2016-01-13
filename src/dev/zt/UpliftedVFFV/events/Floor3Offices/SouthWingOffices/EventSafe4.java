@@ -28,7 +28,7 @@ public class EventSafe4 extends Event {
 			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Slacker Slacks./");
 			super.Dialog(d, 2, this.getId(), true);
 			super.loot(new SlackerSlacks(), 1);
-			Event.events[this.getId()].setTex(Assets.SafeOpened);
+			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}

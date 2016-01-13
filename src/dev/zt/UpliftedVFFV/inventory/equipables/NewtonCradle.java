@@ -16,7 +16,7 @@ public class NewtonCradle extends Item{
 	static int value = 450;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="An office decoration consisting of multiple swinging metal spheres.\nGreat for employees who can't handle pets.";
+	static String descr="An office decoration consisting of multiple swinging metal\nspheres. Great for employees who can't handle pets.";
 	static String descrShort="Skl+6";
 	public status[] enchantment = new status[1];
 	public NewtonCradle() {

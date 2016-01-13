@@ -16,7 +16,7 @@ public class EventJorgeInvisible extends Event {
 	}
 	
 	public void run(){
-		Event.events[100].run();
+		Event.getEvents()[100].run();
 	}
 	
 	public boolean isSolid(int i){

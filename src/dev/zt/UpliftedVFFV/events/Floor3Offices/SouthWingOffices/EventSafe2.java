@@ -26,7 +26,7 @@ public class EventSafe2 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a couple of Fire Extinguishers inside!/Surely that violates some sort of safety regulation. . ./");
 			super.Dialog(d, 0, this.getId(), true);
 			super.loot(new FireExtinguisher(), 2);
-			Event.events[this.getId()].setTex(Assets.SafeOpened);
+			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}

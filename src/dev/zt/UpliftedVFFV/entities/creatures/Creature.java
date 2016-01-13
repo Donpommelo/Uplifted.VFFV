@@ -59,9 +59,9 @@ public class Creature extends Entity {
 		if(step==16){
 			this.runup=false; this.runleft=false; this.runright=false; this.rundown=false;
 			this.step=0;
-			if(Event.events[this.Id].getstage()!=Event.events[this.Id].getfinalstage()){
-				Event.events[this.Id].setstage(Event.events[this.Id].getstage()+1);
-				Event.events[this.Id].run();
+			if(Event.getEvents()[this.Id].getstage()!=Event.getEvents()[this.Id].getfinalstage()){
+				Event.getEvents()[this.Id].setstage(Event.getEvents()[this.Id].getstage()+1);
+				Event.getEvents()[this.Id].run();
 			}
 //			System.out.print(this.x+" "+this.y);
 		}

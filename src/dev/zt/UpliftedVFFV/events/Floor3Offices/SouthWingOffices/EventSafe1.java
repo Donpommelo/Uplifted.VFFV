@@ -26,7 +26,7 @@ public class EventSafe1 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You found some MedPaks inside the safe!/Always handy in case of Officeplace accidents!/");
 			super.Dialog(d, 0, this.getId(), true);
 			super.loot(new MedPak(), 3);
-			Event.events[this.getId()].setTex(Assets.SafeOpened);
+			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}

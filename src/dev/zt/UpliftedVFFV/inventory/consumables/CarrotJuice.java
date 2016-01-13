@@ -16,7 +16,7 @@ public class CarrotJuice extends Item{
 	static int value = 20;
 	static int slot = 0;
 	static int lvlReq = 2;
-	static String descr="A can of fizzy, orange liquid. It can serve as a nutritious substitute to\nsoda, if you didn¡¦t really want to drink a soda to begin with.";
+	static String descr="A can of fizzy, orange liquid. It can serve as a nutritious\nsubstitute to soda, if you didn¡¦t really want to drink a soda to begin with.";
 	static String descrShort="Buff Acc and restore Mp.";
 	public CarrotJuice() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

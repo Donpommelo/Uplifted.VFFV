@@ -16,8 +16,8 @@ public class LemonyFresh extends Item{
 	static int value = 24;
 	static int slot = 0;
 	static int lvlReq = 2;
-	static String descr="A can of translucent liquid. It is either the tastiest detergent or the\nmost antiseptic energy drink on the market.";
-	static String descrShort="Restore Hp and Bp and\nshorten statuses.";
+	static String descr="A can of translucent liquid. It is either the tastiest detergent\nor the most antiseptic energy drink on the market.";
+	static String descrShort="Restore Hp and Bp and shorten duration of statuses.";
 	public LemonyFresh() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

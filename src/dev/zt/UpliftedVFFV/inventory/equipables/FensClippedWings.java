@@ -19,7 +19,7 @@ public class FensClippedWings extends Item{
 	static int slot = 1;
 	static int lvlReq = 58;
 	static String descr="A gift to Fen from those above.";
-	static String descrShort="+20% Eva +15% Init. Lets you shed your skin.";
+	static String descrShort="+20%\nEva\n+15% Init.\nLets you shed your skin.";
 	static Skills test = new ShedFlesh(0);
 	public status[] enchantment = new status[2];
 	public FensClippedWings() {

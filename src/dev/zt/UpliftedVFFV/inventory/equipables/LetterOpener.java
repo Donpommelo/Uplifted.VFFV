@@ -16,7 +16,7 @@ public class LetterOpener extends Item{
 	static int value = 40;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="An ornate knife almost threatening enough to be confiscated at an\nairport.";
+	static String descr="An ornate knife almost threatening enough to be confiscated\nat an airport.";
 	static String descrShort="Spd+3  Skl+3";
 	public status[] enchantment = new status[2];
 	public LetterOpener() {

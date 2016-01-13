@@ -23,7 +23,7 @@ public class EventEmployeeIntro extends Event {
 		super(img,idnum,x, y, stagenum);
 		xPos=x;
 		yPos=y;
-		Event.events[this.getId()].test.runlast = 3;
+		Event.getEvents()[this.getId()].test.runlast = 3;
 		scenes[0]=ImageLoader.loadImage("/Cutscenes/Intro3.png");
 		scenes[1]=ImageLoader.loadImage("/Cutscenes/Intro4.png");
 	}
@@ -31,22 +31,22 @@ public class EventEmployeeIntro extends Event {
 	public void run(){	
 		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		if (Player.runlast==0){
-			Event.events[this.getId()].test.runlast = 1;
+			Event.getEvents()[this.getId()].test.runlast = 1;
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].test.runlast = 0;
+			Event.getEvents()[this.getId()].test.runlast = 0;
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].test.runlast = 3;
+			Event.getEvents()[this.getId()].test.runlast = 3;
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].test.runlast = 2;
+			Event.getEvents()[this.getId()].test.runlast = 2;
 		}
 			
 		if(gamestate.getPlayer().getPlayerX()==192 && gamestate.getPlayer().getPlayerY()==224){
 			switch(this.getstage()){
 			case 0: 
-				Event.events[this.getId()].test.runlast = 3;
+				Event.getEvents()[this.getId()].test.runlast = 3;
 				Dialog[] d1 = new Dialog[2];
 				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Thank you./");
 				d1[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Have a nice day./");
@@ -60,7 +60,7 @@ public class EventEmployeeIntro extends Event {
 				super.moveUp();
 				break;
 			case 3:
-				Event.events[3].setOpen(true);
+				Event.getEvents()[3].setOpen(true);
 				super.moveUp();
 				break;
 			case 4:
@@ -68,16 +68,16 @@ public class EventEmployeeIntro extends Event {
 				drawn = false;
 				solid = false;
 				this.setSelfswitch1(true);
-				Event.events[3].setOpen(false);
+				Event.getEvents()[3].setOpen(false);
 				super.Timer(this.getId(), 60);
 				break;
 			case 5:
-				Event.events[3].setOpen(true);
+				Event.getEvents()[3].setOpen(true);
 				super.Timer(this.getId(), 30);
 				break;
 			case 6:		
-				Event.events[3].setOpen(false);
-				Event.events[52].setDrawn(true);
+				Event.getEvents()[3].setOpen(false);
+				Event.getEvents()[52].setDrawn(true);
 				super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 6, 7,"");
 				super.Timer(this.getId(), 75);
 				KeyManager.setCutsceneMode(false);

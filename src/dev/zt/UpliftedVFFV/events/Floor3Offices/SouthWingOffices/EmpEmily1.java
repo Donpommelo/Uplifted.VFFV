@@ -19,22 +19,22 @@ public class EmpEmily1 extends Event {
 		xPos=x;
 		yPos=y;
 		move = 0;
-		Event.events[this.getId()].test.runlast = 0;
+		Event.getEvents()[this.getId()].test.runlast = 0;
 	}
 	
 	public void run(){
 		test.setImgShown(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
 		if (Player.runlast==0){
-			Event.events[this.getId()].test.runlast = 1;
+			Event.getEvents()[this.getId()].test.runlast = 1;
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].test.runlast = 0;
+			Event.getEvents()[this.getId()].test.runlast = 0;
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].test.runlast = 3;
+			Event.getEvents()[this.getId()].test.runlast = 3;
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].test.runlast = 2;
+			Event.getEvents()[this.getId()].test.runlast = 2;
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];

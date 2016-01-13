@@ -17,7 +17,7 @@ public class MadnessMantra extends Item{
 	static int slot = 1;
 	static int lvlReq = 23;
 	static String descr="A dusty, arcane scroll. It seems to just have the same word\nwritten on it, repeated over and over.";
-	static String descrShort = "Successive uses of abilities boosts pow and Crit but increases mp cost.";
+	static String descrShort = "Successive uses of abilities boosts Pow and\nCrit but increases mp cost.";
 	public status[] enchantment = new status[1];
 	public MadnessMantra() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

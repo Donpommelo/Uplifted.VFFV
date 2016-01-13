@@ -25,7 +25,7 @@ public class EventSafe3 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some Caffeine Patches in the Safe./");
 			super.Dialog(d, 0, this.getId(), true);
 			super.scriptChange(15);
-			Event.events[this.getId()].setTex(Assets.SafeOpened);
+			Event.getEvents()[this.getId()].setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}
 	}

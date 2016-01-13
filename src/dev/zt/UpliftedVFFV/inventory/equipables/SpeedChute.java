@@ -17,7 +17,7 @@ public class SpeedChute extends Item{
 	static int value = 110;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="A parachute worn on the back to create drag and run slower./ Handy in agility training.";
+	static String descr="A parachute worn on the back to create drag and run slower.\nHandy in agility training.";
 	static String descrShort="Speed -50%. +15% Exp Gain";
 	public status[] enchantment = new status[2];
 	public SpeedChute() {

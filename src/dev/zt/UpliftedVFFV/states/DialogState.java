@@ -68,9 +68,9 @@ public class DialogState extends State {
 						StateManager.getStates().pop();
 						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
 						//increment and the event will be rerrun with the new stage.
-						if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
-							Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
-							Event.events[this.EventId].run();
+						if(Event.getEvents()[this.EventId].getstage()!=Event.getEvents()[this.EventId].getfinalstage()){
+							Event.getEvents()[this.EventId].setstage(Event.getEvents()[this.EventId].getstage()+1);
+							Event.getEvents()[this.EventId].run();
 						}
 						
 					}						

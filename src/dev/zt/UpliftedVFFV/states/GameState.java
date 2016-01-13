@@ -10,6 +10,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.party.PartyManager;
+import dev.zt.UpliftedVFFV.quest.QuestManager;
 import dev.zt.UpliftedVFFV.quest.SwitchManager;
 import dev.zt.UpliftedVFFV.quest.VariableManager;
 import dev.zt.UpliftedVFFV.world.EventManager;
@@ -33,7 +34,9 @@ public class GameState extends State {
 	public AudioManager audiomanager;
 	public SwitchManager switchmanager;
 	public VariableManager variablemanager;
-	Event ugh;
+	public QuestManager questmanager;
+	public Event Events;
+//	public Event[] eventMasterList;
 	
 //	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
@@ -45,11 +48,13 @@ public class GameState extends State {
 		super(game,sm);
 		switchmanager = new SwitchManager(game);
 		variablemanager = new VariableManager(game);
-		ugh = new Event(game, sm,this);												//creates a new Event class that controls all events
+		questmanager = new QuestManager(game);
+
+		Events = new Event(game, sm,this);												//creates a new Event class that controls all events
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(game);								//creates an inventorymanager that keeps track of inventory
 		
-//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/Lobby.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt";
 //		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeft1Room1.txt";
 		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
@@ -78,7 +83,15 @@ public class GameState extends State {
 	public static void setEventmanager(EventManager e) {
 		eventmanager = e;
 	}
-		
+	
+	public Event getEvents() {
+		return Events;
+	}
+
+	public void setEvents(Event events) {
+		Events = events;
+	}
+
 	public static DecorManager getDecormanager() {
 		return decormanager;
 	}
@@ -152,6 +165,14 @@ public class GameState extends State {
 		switchmanager.setSwitch(i, set);
 	}
 	
+	public int getQuest(int i){
+		return questmanager.getQuest(i);
+	}
+	
+	public void setQuest(int i, int set) {
+		questmanager.setQuest(i, set);
+	}
+	
 	public void scriptChange(int change){
 		Script+=change;
 		if(Script<0){
@@ -170,7 +191,8 @@ public class GameState extends State {
 		String name= (String) stream.readObject();
 		String path = (String) stream.readObject();
 		worldmanager = new WorldManager(game, path, name);
-		
+		eventmanager = new EventManager(game,this, path);
+		decormanager = new DecorManager(game, this, path);
 		//Load player location.
 		player.setPlayerX(stream.readFloat());
 		player.setPlayerY(stream.readFloat());
@@ -184,7 +206,7 @@ public class GameState extends State {
 		inventorymanager = (InventoryManager) stream.readObject();
 		
 		//Load world/event flags.
-//		eventmanager = (EventManager) stream.readObject();
+		Events = (Event) stream.readObject();
 		switchmanager.switches = (boolean[]) stream.readObject();
 		variablemanager.variables = (int[]) stream.readObject();
 	}
@@ -207,7 +229,7 @@ public class GameState extends State {
 		stream.writeObject(inventorymanager);
 		
 		//Save world/event flags.
-//		stream.writeObject(eventmanager);
+		stream.writeObject(Events);
 		stream.writeObject(switchmanager.switches);
 		stream.writeObject(variablemanager.variables);
 	}

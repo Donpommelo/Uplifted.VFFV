@@ -21,16 +21,16 @@ public class EmpDonutGuy extends Event {
 	
 	public void run(){
 		if (Player.runlast==0){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM2));
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
 		}
 		
 		if(!this.isSelfswitch1()){
@@ -43,7 +43,7 @@ public class EmpDonutGuy extends Event {
 				super.loot(new FennelDonut(),1);
 				break;
 			case 1:
-				Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
+				Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 				this.setSelfswitch1(true);
 				this.setstage(0);
 				break;
@@ -54,7 +54,7 @@ public class EmpDonutGuy extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Mick always had the worse taste in donuts./");
 			super.Dialog(d, 0, this.getId(), true);
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
 			this.setstage(1);
 		}
 

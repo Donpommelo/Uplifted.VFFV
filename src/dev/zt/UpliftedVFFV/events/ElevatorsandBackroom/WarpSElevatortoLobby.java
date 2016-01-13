@@ -20,7 +20,7 @@ public class WarpSElevatortoLobby extends Event {
 	}
 	
 	public void run(){
-		if(Event.events[52].isSelfswitch1()){
+		if(Event.getEvents()[52].isSelfswitch1()){
 			switch(this.getstage()){
 			case 0: 				
 				if(!open){
@@ -51,6 +51,7 @@ public class WarpSElevatortoLobby extends Event {
 							d[0] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ," Floor 3! This place certainly seems familiar!/We should ask around to see if anyone can help us find Suite 521./");
 							d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll look around for someone knowledgable./");
 							super.Dialog(d, 1, this.getId(), true);
+							super.setQuest(1, 1);
 						}
 					}
 					else{

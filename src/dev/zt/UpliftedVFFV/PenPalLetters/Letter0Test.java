@@ -2,12 +2,12 @@ package dev.zt.UpliftedVFFV.PenPalLetters;
 
 public class Letter0Test extends Letter{
 	
-	protected static String[] prompts = {"LACHIPLATRE"};
+	protected static String[] prompts = {"BODARDUSTHEBIGNIFICANTSBARGAINBAGELBODEGA"};
 	boolean found;
 	int id;
-	String text = "Letter Testing";
+	public static String text = "Letter Testing";
 	public Letter0Test(int id){
-		super(prompts,id);
+		super(prompts,id, text);
 	}
 	
 	public String getLetter(){

@@ -32,6 +32,7 @@ public class EventBackroomDesk extends Event {
 				Dialog[] d = new Dialog[1];
 				d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"An old Writing Desk./But you have nothing to write and no one to write to./");
 				super.Dialog(d, 0, this.getId(), true);
+//				super.ChoiceBranch(this.getId(), Choices);
 			}
 		
 	}
@@ -39,12 +40,7 @@ public class EventBackroomDesk extends Event {
 	public void ChoiceMade(int i){
 		switch(i){
 		case 0:
-			if(super.itemNumCheck(new PostageStamp()) > 0){
-				super.PenPalState();
-			}
-			else{
-				super.Notification("  You don't have the stamps!  ", this.getId());
-			}
+			super.PenPalState();
 			break;
 		case 1:
 			this.setstage(0);		

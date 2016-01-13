@@ -19,16 +19,16 @@ public class EmpWeAllKnowOne extends Event {
 		
 	public void run(){
 		if (Player.runlast==0){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM1));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM1));
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM1));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM1));
 		}
 		switch(this.getstage()){
 		case 0: 
@@ -50,7 +50,7 @@ public class EmpWeAllKnowOne extends Event {
 			
 			break;
 		case 1:
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
 			this.setstage(0);
 			break;
 			

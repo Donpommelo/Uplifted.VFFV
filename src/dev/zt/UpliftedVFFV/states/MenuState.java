@@ -536,7 +536,7 @@ public class MenuState extends State {
 							if(game.getKeyManager().space){
 								if(itemOption == 0){
 									if(tempItem.isUsedfromMenu()){
-										itemChosen = false;
+//										itemChosen = false;
 										if(tempItem.targeted){
 											audio.playSound("/Audio/paper_pickup_01.wav", false);
 											useitemChosen = true;
@@ -551,7 +551,7 @@ public class MenuState extends State {
 								} else if(itemOption == 1){
 									if(tempItem.getSlot() == 1){
 										audio.playSound("/Audio/paper_pickup_01.wav", false);
-										itemChosen = false;
+//										itemChosen = false;
 										equipChosen = true;
 									}
 								}					
@@ -566,7 +566,11 @@ public class MenuState extends State {
 						//TODO: Employee Directory/Worstiary. Should have own state perhaps.
 						break;
 					case 4:
-						//TODO: Employee planner (Questlog).
+						if(game.getKeyManager().space){
+							audio.playSound("/Audio/ui_upgrade_ability_01.wav", false);
+							exit=true;
+							game.getKeyManager().disable(delaySelection);
+						}
 						break;
 					case 5:
 						//Exit game.
@@ -617,7 +621,9 @@ public class MenuState extends State {
 			else if(characterChosen==true){
 				characterChosen=false;
 				if(bypassSelection){
-					optionChosen=false;
+//					optionChosen=false;
+					optionSelected = 0;
+					characterChosen = true;
 				}
 			}
 			else if(itemChosen==true){
@@ -634,11 +640,6 @@ public class MenuState extends State {
 			bypassSelection = false;
 			exit=false;
 		}
-			
-		//background consists of black with an image in front. Def change this later
-//		g.setColor(Color.BLACK);
-//		g.fillRect(0, 0, 640, 416);
-//		g.drawImage(testImage, 0, 0, null);
 		
 		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
 		Utils.drawMenu(g, window, options, Color.black, 25, optionSelected, 5, 5, 125, 380, !optionChosen);
@@ -709,7 +710,7 @@ public class MenuState extends State {
 						}
 						//Draw extra skill info.
 						if(toggleXtraInfo){
-							Utils.drawDialogueBox(g, window2, "Useful Info", 16, Color.black, 275, 225 + 36 * skillPointer, 96, 72, 16, true);
+							Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescrShort(), 16, Color.black, 275, 225 + 36 * skillPointer, 160, 72, 16, true);
 						}
 					} else if(characterTab == 1){
 						//Equipment tab.
@@ -880,14 +881,7 @@ public class MenuState extends State {
 				} else{
 					g.drawString("Lint", 350, 40);
 				}
-//				else if(temp.size() == 0){
-//					g.setColor(new Color(0, 0,0));
-//					g.setFont(new Font("Chewy", Font.PLAIN, 50));
-//					g.drawString("Your Inventory is Empty", 145, 115);
-//					g.setFont(new Font("Chewy", Font.PLAIN, 130));
-//					g.drawString("Get a Job", 150, 320);
-//				}
-				
+
 				if(backpackLocation > 0){
 					g.drawImage(Assets.Uparrow, 220 - Assets.Uparrow.getWidth() / 2, 38, null);
 				}
@@ -934,7 +928,7 @@ public class MenuState extends State {
 						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);
 						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black, 492, 240 + itemslot * 40, 120, 25, 16, true);
 					} else if(equipChosen && progFlag){
-							Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);						
+							Utils.drawDialogueBox(g, window3, "Item Equipped!", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);						
 					}
 					//Item usage.
 					if(useitemChosen && !progFlag){
@@ -942,7 +936,7 @@ public class MenuState extends State {
 						FontMetrics metrics = g.getFontMetrics();
 						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black,  150 + characterSelected * 100, 120, metrics.stringWidth(curItem.getName()) + 8, 25, 16, true);
 					} else if(useitemChosen && progFlag){
-						Utils.drawDialogueBox(g, window3, "Custom Message", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);
+						Utils.drawDialogueBox(g, window3, "Item Used!", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);
 					}
 				}
 				break;
@@ -952,9 +946,21 @@ public class MenuState extends State {
 			//TODO: Directory.
 			case 3:
 				break;
-			//TODO: Planner.
+			//To-do List
 			case 4:
-				Utils.drawDialogueBox(g, window4, "3 Eggs, toast, orange juice.", 18, Color.black, 140, 5, 400, 400, 48, optionChosen);
+				Utils.drawDialogueBox(g, window4, "", 18, Color.black, 140, 5, 400, 400, 48, optionChosen);
+				g.setColor(Color.black);
+				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.drawString("To - Do List", 300, 30);
+				g.drawString("1: Operate Elevators", 152, 50);
+				int numquests = 1;
+				for(int quest = 0; quest < gamestate.questmanager.quests.length; quest++){
+					if(gamestate.questmanager.quests[quest] != 0 && gamestate.questmanager.getObjective(quest, gamestate.questmanager.quests[quest]) != ""){
+						g.drawString(numquests+1+": " + gamestate.questmanager.getObjective(quest, gamestate.questmanager.quests[quest]), 152, 50+18*numquests);
+						numquests++;
+					}
+				}
+				g.drawString(numquests+1+": "+"? ? ?", 152, 68+18*(numquests-1));
 				break;
 			//Quit game.
 			case 5:

@@ -15,7 +15,7 @@ public class CaffeinePatch extends Item{
 	static int value = 11;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A small adhesive strip that administers your needed chemicals\ndirectly into the bloodstream.";
+	static String descr="A small adhesive strip that administers your needed\nchemicals directly into the bloodstream.";
 	static String descrShort="Restore Mp.";
 	public CaffeinePatch() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

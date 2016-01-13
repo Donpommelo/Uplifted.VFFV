@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.inventory.keyitems;
 
+import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class SummonLotus extends Item{
 
@@ -15,6 +17,11 @@ public class SummonLotus extends Item{
 	static int lvlReq = 1;
 	static String descr="An artifact used in communicating with spirits. It seems to only bloom\nwhen particularly close to the sun.";
 	static String descrShort = "Summon spirit allies.";
+	
+	public int xp;
+	public Skills[] permedSkills;
+	public Schmuck currentSummon;
+	
 	public SummonLotus() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

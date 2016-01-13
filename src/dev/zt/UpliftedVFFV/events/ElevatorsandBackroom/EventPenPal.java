@@ -23,16 +23,16 @@ public class EventPenPal extends Event {
 		
 	public void run(){
 		if (Player.runlast==0){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.PenPal));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(1,Assets.PenPal));
 		}
 		if (Player.runlast==1){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.PenPal));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(10,Assets.PenPal));
 		}
 		if (Player.runlast==2){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.PenPal));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(7,Assets.PenPal));
 		}
 		if (Player.runlast==3){
-			Event.events[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
+			Event.getEvents()[this.getId()].setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
 		}
 		if(this.isSelfswitch1()==false){
 			Dialog[] d = new Dialog[13];
@@ -51,6 +51,7 @@ public class EventPenPal extends Event {
 			d[12] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Drat! We must find the location of Suite 521. Take me to Floor 3./I use to work there, so its a good place to start looking./");
 			super.Dialog(d, 12, this.getId(), true);
 			super.setSwitch(1, true);
+			super.setQuest(0, 1);
 			this.setSelfswitch1(true);
 		}
 		else{

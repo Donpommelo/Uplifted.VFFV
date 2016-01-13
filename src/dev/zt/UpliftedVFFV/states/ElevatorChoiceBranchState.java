@@ -33,7 +33,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 		if(exit==true){
 			StateManager.getStates().pop();
 			StateManager.getStates().pop();
-			Event.events[this.EventId].ChoiceMade(currentchoice);
+			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
 			StateManager.getStates().pop();		//Choicebranch states must be called from dialog states or other, to exiting should pop both
 			exit=false;
 		}
@@ -42,7 +42,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 		if(selected==true){
 			StateManager.getStates().pop();
 			StateManager.getStates().pop();
-			Event.events[this.EventId].ChoiceMade(currentchoice);
+			Event.getEvents()[this.EventId].ChoiceMade(currentchoice);
 		}
 		else{
 			//Draw elevator panel.

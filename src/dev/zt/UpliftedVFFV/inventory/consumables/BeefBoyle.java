@@ -14,7 +14,7 @@ public class BeefBoyle extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static String descr="A thick, stew filled with beef as well as several ingredients that are \nless likely to be beef. ";
+	static String descr="A thick, stew filled with beef as well as several ingredients\nthat are less likely to be beef. ";
 	static String descrShort="Silence and buff Pow.";
 	static int value = 25;
 	static int slot = 0;

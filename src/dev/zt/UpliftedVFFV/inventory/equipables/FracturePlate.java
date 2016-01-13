@@ -18,7 +18,7 @@ public class FracturePlate extends Item{
 	static int slot = 1;
 	static int lvlReq = 45;
 	static String descr="A thick, bony plate, eternally mending its ever growing collection of cracks.";
-	static String descrShort="+55 Hp. Blocks the first instance of damage.";
+	static String descrShort="+55 Hp.\nBlocks the first instance of damage.";
 	public status[] enchantment = new status[3];
 	public FracturePlate() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

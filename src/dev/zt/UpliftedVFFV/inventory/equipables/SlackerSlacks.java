@@ -16,7 +16,7 @@ public class SlackerSlacks extends Item{
 	static int value = 16;
 	static int slot = 1;
 	static int lvlReq = 2;
-	static String descr="A comfortable pair of pants that accomodate all manner of dilly-dallying, dawdling and dicking-arounderery.";
+	static String descr="A comfortable pair of pants that accomodate all manner of\ndilly-dallying, dawdling and dicking-arounderery.";
 	static String descrShort="Regenerates Hp when Waiting.";
 	public status[] enchantment = new status[1];
 	public SlackerSlacks() {
