@@ -1,11 +1,9 @@
 package dev.zt.UpliftedVFFV.events.ElevatorsandBackroom;
 
-import java.io.IOException;
 
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class EventBackroomBed extends Event {
 
@@ -36,11 +34,8 @@ public class EventBackroomBed extends Event {
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:
-			try {
-				Utils.saveState(1, gamestate, this.getId());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			super.Save(this.getId());
+
 			this.setstage(0);
 			break;
 		case 2:		

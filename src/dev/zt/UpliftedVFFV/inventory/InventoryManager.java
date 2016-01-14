@@ -25,10 +25,10 @@ public class InventoryManager implements Serializable{
 			int temp = this.backpack.get(i);
 			this.backpack.remove(i);
 			this.backpack.put(i, temp-1);
-		}
-		if(this.backpack.get(i)==0){
-			this.backpack.remove(i);
-		}
+			if(this.backpack.get(i)==0){
+				this.backpack.remove(i);
+			}
+		}	
 	}
 	
 	public void loot(Item i,int num){									//ran when items are found. num=amount found

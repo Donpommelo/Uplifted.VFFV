@@ -445,6 +445,7 @@ public class Event implements Serializable{
 	
 	//Pushes a simple notification window.
 	public static void Notification(String message, int eventId){
+		StateManager.states.push(new NotificationState(game, gamestate, statemanager, message, eventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -538,6 +539,17 @@ public class Event implements Serializable{
 		}
 	}
 	
+	
+	//Pushes a save state window.
+	public static void Save(int eventId){
+		StateManager.states.push(new SaveFileState(game, gamestate, statemanager, eventId,1));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+		
 	//Moves schmucks to and from your party.
 	public void recruit(Schmuck recruit){
 		if(gamestate.partymanager.party.size()<5){

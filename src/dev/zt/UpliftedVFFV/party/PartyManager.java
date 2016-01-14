@@ -17,14 +17,14 @@ public class PartyManager implements Serializable{
 //		this.game=game;
 		Schmuck operator=new Operator(1);
 		party.add(operator);
-//		Schmuck penpal=new PenPal(1);
-//		party.add(penpal);
-//		Schmuck penpal1=new PenPal();
-//		party.add(penpal1);
-//		Schmuck penpal2=new PenPal();
-//		party.add(penpal2);
-//		Schmuck penpal3=new PenPal();
-//		party.add(penpal3);
+/*		Schmuck penpal=new PenPal(1);
+		party.add(penpal);
+		Schmuck penpal1=new PenPal(1);
+		party.add(penpal1);
+		Schmuck penpal2=new PenPal(1);
+		party.add(penpal2);
+		Schmuck penpal3=new PenPal(1);
+		party.add(penpal3);*/
 		
 		
 	}

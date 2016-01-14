@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.dialog.Dialog;
@@ -18,7 +17,6 @@ import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 import dev.zt.UpliftedVFFV.inventory.consumables.SmellingSalt;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
 import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
-import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 
@@ -87,11 +85,7 @@ public class EventJanitor1 extends Event {
 	public void ChoiceMade(int i){
 		switch(i){
 		case 0:
-			try {
-				Utils.saveState(1, gamestate, this.getId());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			super.Save(this.getId());
 			this.setstage(2);
 			break;
 		case 1:
