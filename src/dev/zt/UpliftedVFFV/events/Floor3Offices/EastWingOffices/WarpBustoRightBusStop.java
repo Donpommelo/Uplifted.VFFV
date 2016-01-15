@@ -1,4 +1,4 @@
-package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
+package dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices;
 
 
 import java.awt.Graphics;
@@ -11,11 +11,11 @@ import dev.zt.UpliftedVFFV.states.GameState;
 
 
 
-public class WarpSouthOfficestoJCloset extends Event {
+public class WarpBustoRightBusStop extends Event {
 	
 	public static BufferedImage img=Assets.PushDoor1;
 	public static int stagenum = 1;
-	public WarpSouthOfficestoJCloset(float x, float y, int idnum) {
+	public WarpBustoRightBusStop(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
 
@@ -38,7 +38,7 @@ public class WarpSouthOfficestoJCloset extends Event {
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);
 			}
-			super.transport("/Worlds/Floor3Offices/SouthWingOffices/JanitorClosetTutorial.txt", 5, 10,"Broom Closet");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2Room1.txt",7,15,"");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;
@@ -52,7 +52,7 @@ public class WarpSouthOfficestoJCloset extends Event {
 				this.setFrames(this.getFrames()+1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 448){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -63,7 +63,7 @@ public class WarpSouthOfficestoJCloset extends Event {
 				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 448){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

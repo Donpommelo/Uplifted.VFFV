@@ -13,11 +13,9 @@ public class EventJorge extends Event {
 
 	public boolean fightwon=false;
 	public static int stagenum = 4;
-	public int frame;
 	public static BufferedImage img = Assets.Jorge1;
 	public EventJorge(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		this.frame = 0;
 	}
 	
 	public void run(){
@@ -69,21 +67,21 @@ public class EventJorge extends Event {
 	}
 	
 	public void tick(GameState gs){
-		frame++;
-		if(frame>=150){
+		this.setFrames(this.getFrames()+1);
+		if(this.getFrames()>=150){
 			this.setTex(Assets.Jorge4);
 		}
-		else if(frame>=100){
+		else if(this.getFrames()>=100){
 			this.setTex(Assets.Jorge3);
 		}
-		else if(frame>=50){
+		else if(this.getFrames()>=50){
 			this.setTex(Assets.Jorge2);
 		}
 		else {
 			this.setTex(Assets.Jorge1);
 		}
-		if(frame >= 200){
-			frame = 0;
+		if(this.getFrames() >= 200){
+			this.setFrames(0);
 		}
 		
 	}

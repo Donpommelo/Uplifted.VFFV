@@ -14,23 +14,19 @@ import dev.zt.UpliftedVFFV.states.GameState;
 public class WarpBusRamptoBus extends Event {
 	
 	public static BufferedImage img=Assets.PushDoor1;
-	public static int frame;
-	public boolean open;
 	public static int stagenum = 1;
 	public WarpBusRamptoBus(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		frame = 0;
-		open = false;
 	}
 
 	public void run(){
 		switch(this.getstage()){
 		case 0: 				
-			if(!open){
-				open = true;
+			if(!this.isOpen()){
+				this.setOpen(true);
 			}
 			else{
-				open = false;
+				this.setOpen(false);
 			}
 			KeyManager.setCutsceneMode(true);
 			break;
@@ -38,17 +34,22 @@ public class WarpBusRamptoBus extends Event {
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
 			game.getAudiomanager().playMusic(2, true);
+			if(!this.isSelfswitch1()){
+				super.setVar(12, super.getVar(12)+1);
+				this.setSelfswitch1(true);
+			}
 			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt", 17, 10,"");
-			open = false;
+			this.setOpen(false);
+			this.setFrames(0);
 			break;
 		}
 		
 	}
 	
 	public void tick(GameState gs) {
-		if(open){
-			if(frame<6){
-				frame++;
+		if(this.isOpen()){
+			if(this.getFrames()<6){
+				this.setFrames(this.getFrames()+1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 992){
@@ -58,8 +59,8 @@ public class WarpBusRamptoBus extends Event {
 			}
 		}
 		else{
-			if(frame>0){
-				frame--;
+			if(this.getFrames()>0){
+				this.setFrames(this.getFrames()-1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 992){
@@ -71,7 +72,7 @@ public class WarpBusRamptoBus extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(frame){
+		switch(this.getFrames()){
 		case 0:
 			tex = Assets.PushDoor1;
 			break;

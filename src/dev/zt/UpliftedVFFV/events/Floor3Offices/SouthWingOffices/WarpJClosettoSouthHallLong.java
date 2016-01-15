@@ -14,6 +14,8 @@ public class WarpJClosettoSouthHallLong extends Event {
 	}
 	
 	public void run(){
+		super.getGamestate().getEvents()[34].setOpen(false);
+		super.getGamestate().getEvents()[34].setFrames(6);
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthOfficeHallway.txt", 26, 11,"South Offices");
 	}
 

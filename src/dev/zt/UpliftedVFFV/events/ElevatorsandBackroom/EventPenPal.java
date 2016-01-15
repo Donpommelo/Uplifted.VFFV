@@ -12,7 +12,6 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 
 public class EventPenPal extends Event {
 
-	public boolean solid;
 	public boolean drawn = false;
 	public static int stagenum = 0;
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.PenPal);

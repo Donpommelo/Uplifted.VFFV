@@ -13,6 +13,7 @@ public class WarpCentraltoBusLeft1 extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",11,6,"");
-		
+		super.getGamestate().getEvents()[148].setOpen(false);
+		super.getGamestate().getEvents()[148].setFrames(6);
 	}
 }

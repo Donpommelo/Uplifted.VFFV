@@ -13,6 +13,7 @@ public class WarpExtraRoom1toRightMain1 extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain1.txt",12,13,"");
-		
+		super.getGamestate().getEvents()[165].setOpen(false);
+		super.getGamestate().getEvents()[165].setFrames(6);
 	}
 }

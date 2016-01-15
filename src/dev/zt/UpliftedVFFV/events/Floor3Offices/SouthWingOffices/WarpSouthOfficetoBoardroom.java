@@ -13,24 +13,21 @@ import dev.zt.UpliftedVFFV.states.GameState;
 public class WarpSouthOfficetoBoardroom extends Event {
 
 	public static BufferedImage img=Assets.ClearDoor1;
-	public static int frame;
-	public boolean open;
+
 	public static int stagenum = 1;
 	public WarpSouthOfficetoBoardroom(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		frame = 0;
-		open = false;
 	}	
 
 	
 	public void run(){
 		switch(this.getstage()){
 		case 0: 				
-			if(!open){
-				open = true;
+			if(!this.isOpen()){
+				this.setOpen(true);
 			}
 			else{
-				open = false;
+				this.setOpen(false);
 			}
 			KeyManager.setCutsceneMode(true);
 			break;
@@ -39,15 +36,16 @@ public class WarpSouthOfficetoBoardroom extends Event {
 			this.setstage(0);
 			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,16,"");
-			open = false;
+			this.setOpen(false);
+			this.setFrames(0);
 			break;
 		}
 	}
 
 	public void tick(GameState gs) {
-		if(open){
-			if(frame<6){
-				frame++;
+		if(this.isOpen()){
+			if(this.getFrames()<6){
+				this.setFrames(this.getFrames()+1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()== 480){
@@ -57,11 +55,11 @@ public class WarpSouthOfficetoBoardroom extends Event {
 			}
 		}
 		else{
-			if(frame>0){
-				frame--;
+			if(this.getFrames()>0){
+				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()/32 == 480){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -70,7 +68,7 @@ public class WarpSouthOfficetoBoardroom extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(frame){
+		switch(this.getFrames()){
 		case 0:
 			tex = Assets.ClearDoor1;
 			break;

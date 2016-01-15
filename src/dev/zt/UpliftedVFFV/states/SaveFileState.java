@@ -30,7 +30,7 @@ public class SaveFileState extends State {
 	  */
 	 
 	public String[] num;
-	public GameState[] gamestates;
+	public PartyManager[] parties;
 	public int currentchoice, choicelocation,firstchoice, yesno;
 	public boolean selected,exit;
 	public boolean fileNotFound;
@@ -70,19 +70,21 @@ public class SaveFileState extends State {
 		
 		
 		num = new String[numFiles+1];
-		gamestates = new GameState[numFiles];
+		parties = new PartyManager[numFiles];
 		for(int i = 0; i < num.length-1; i++){
 			num[i] = "File: "+(i+1);
 			try {
 				FileInputStream fis = new FileInputStream("res/Saves/" + (i+1)+ ".save");
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				gamestates[i] = new GameState(game, sm);
-				gamestates[i].readObject(ois);
+				ois.readObject();
+				ois.readObject();
+				parties[i] = (PartyManager) ois.readObject();
+				ois.close();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
+			}catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -99,6 +101,7 @@ public class SaveFileState extends State {
 			break;
 		}
 		
+				
 
 	}
 
@@ -150,7 +153,7 @@ public class SaveFileState extends State {
 								SaveFileState newSFS = new SaveFileState(game,gs,statemanager, 0,1);
 								newSFS.setVariables(currentchoice, firstchoice, choicelocation);
 								StateManager.states.push(newSFS);
-								StateManager.states.push(new NotificationState(game,gs, statemanager, "Game Saved", 0));
+								StateManager.states.push(new NotificationState(game,gs, statemanager, "Game Saved", eventId));
 								selected = false;
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -234,7 +237,7 @@ public class SaveFileState extends State {
 				else{
 					g.setFont(new Font("Chewy", Font.PLAIN, 18));
 					g.drawString(num[i], 10, 134*boxNum+41);
-					PartyManager pm = gamestates[i].getPartymanager();
+					PartyManager pm = parties[i];
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
 					for(int j = 0; j < pm.getParty().size(); j++){
 						g.drawString(pm.getParty().get(j).getName(), 70 + 60 * j, 30+134*boxNum);

@@ -12,13 +12,9 @@ public class EventSafe4 extends Event {
 
 
 	static BufferedImage img = Assets.SafeClosed;
-	public static int frame;
-	public static boolean blinking;
 	public static int stagenum = 0;
 	public EventSafe4(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		frame = 0;
-		blinking = false;
 	}
 	
 	public void run(){
@@ -36,16 +32,16 @@ public class EventSafe4 extends Event {
 	
 	public void tick(GameState gs){
 		if(!this.isSelfswitch1()){
-			frame++;
-			if(frame>=50){
-				frame = 0;
-				if(blinking){
+			this.setFrames(this.getFrames()+1);
+			if(this.getFrames()>=50){
+				this.setFrames(0);
+				if(this.isOpen()){
 					this.setTex(Assets.SafeClosed);
-					blinking = false;
+					this.setOpen(false);
 				}
 				else{
 					this.setTex(Assets.SafeClosed2);
-					blinking = true;
+					this.setOpen(true);
 				}
 			}
 		}

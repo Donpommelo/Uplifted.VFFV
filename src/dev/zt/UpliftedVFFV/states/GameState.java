@@ -75,6 +75,17 @@ public class GameState extends State {
 		game.getAudiomanager().playMusic(1,true);
 		game.getGameCamera().centerOnEntity(player);
 	}
+	
+	//Dummy gamestate used to read and display save files
+	public GameState(Game game, StateManager sm, int meep){
+		super(game,sm);
+		switchmanager = new SwitchManager(game);
+		variablemanager = new VariableManager(game);
+		questmanager = new QuestManager(game);
+		eventselfswitchmanager = new EventSelfSwitchManager(game);
+		Events = new Event(game, sm,this);											//creates a new Event class that controls all events
+		player = new Player(game, 0, 0, this);										//creates player
+	}
 
 	public WorldManager getWorld() {
 		return worldmanager;
@@ -203,6 +214,10 @@ public class GameState extends State {
 		//Load world data and recreate world.
 		String name= (String) stream.readObject();
 		String path = (String) stream.readObject();
+		
+		//Load party data.
+		partymanager = (PartyManager) stream.readObject();
+				
 		worldmanager = new WorldManager(game, path, name);
 		eventmanager = new EventManager(game,this, path);
 		decormanager = new DecorManager(game, this, path);
@@ -212,8 +227,7 @@ public class GameState extends State {
 		
 		//TODO: Load music track.
 		
-		//Load party data.
-		partymanager = (PartyManager) stream.readObject();
+		
 		
 		//Load inventory data.
 		inventorymanager = (InventoryManager) stream.readObject();
@@ -237,15 +251,15 @@ public class GameState extends State {
 		stream.writeObject(worldmanager.getName());
 		stream.writeObject(worldmanager.getPath());
 		
+		//Save party data.		
+		stream.writeObject(partymanager);
+				
 		//Save Player location.
 		stream.writeFloat(player.getPlayerX());
 		stream.writeFloat(player.getPlayerY());
 		
 		//TODO: Save music track. Maybe tie music to world.
-		
-		//Save party data.
-		stream.writeObject(partymanager);
-		
+				
 		//Save inventory data.
 		stream.writeObject(inventorymanager);
 		

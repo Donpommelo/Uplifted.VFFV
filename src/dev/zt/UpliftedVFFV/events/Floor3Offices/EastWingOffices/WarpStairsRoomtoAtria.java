@@ -13,6 +13,7 @@ public class WarpStairsRoomtoAtria extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtria.txt",6,13,"");
-		
+		super.getGamestate().getEvents()[184].setOpen(false);
+		super.getGamestate().getEvents()[184].setFrames(6);
 	}
 }

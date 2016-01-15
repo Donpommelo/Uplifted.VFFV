@@ -17,6 +17,8 @@ public class WarpBoardroom1toSouthOffices extends Event {
 
 	
 	public void run(){
+		super.getGamestate().getEvents()[10].setOpen(false);
+		super.getGamestate().getEvents()[10].setFrames(6);
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt", 15, 7,"");
 	}
 

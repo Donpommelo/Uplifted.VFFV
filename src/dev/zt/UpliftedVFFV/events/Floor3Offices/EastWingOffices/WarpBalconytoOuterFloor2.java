@@ -13,6 +13,7 @@ public class WarpBalconytoOuterFloor2 extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftOuterFloor2.txt",20,23,"");
-		
+		super.getGamestate().getEvents()[192].setOpen(false);
+		super.getGamestate().getEvents()[192].setFrames(6);
 	}
 }

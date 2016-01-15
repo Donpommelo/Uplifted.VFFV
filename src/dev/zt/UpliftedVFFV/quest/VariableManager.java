@@ -22,7 +22,7 @@ public class VariableManager {
  11: Janitor Points
  12: Number of Janitor Closets found.
  13: Carloc's Quest: Number of loops done
- 14: Carloc's Quest: Bus stop number
+ 14: 
  15: 
  16: 
  17: 

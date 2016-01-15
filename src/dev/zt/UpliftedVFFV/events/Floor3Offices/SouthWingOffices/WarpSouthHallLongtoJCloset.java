@@ -14,23 +14,19 @@ import dev.zt.UpliftedVFFV.states.GameState;
 public class WarpSouthHallLongtoJCloset extends Event {
 	
 	public static BufferedImage img=Assets.PushDoor1;
-	public static int frame;
-	public boolean open;
 	public static int stagenum = 1;
 	public WarpSouthHallLongtoJCloset(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		frame = 0;
-		open = false;
 	}
 
 	public void run(){
 		switch(this.getstage()){
 		case 0: 				
-			if(!open){
-				open = true;
+			if(!this.isOpen()){
+				this.setOpen(true);
 			}
 			else{
-				open = false;
+				this.setOpen(false);;
 			}
 			KeyManager.setCutsceneMode(true);
 			break;
@@ -43,16 +39,17 @@ public class WarpSouthHallLongtoJCloset extends Event {
 				this.setSelfswitch1(true);
 			}
 			super.transport("/Worlds/Floor3Offices/SouthWingOffices/JanitorClosetSouth.txt", 5, 10,"Broom Closet");
-			open = false;
+			this.setOpen(false);
+			this.setFrames(0);
 			break;
 		}
 		
 	}
 	
 	public void tick(GameState gs) {
-		if(open){
-			if(frame<6){
-				frame++;
+		if(this.isOpen()){
+			if(this.getFrames()<6){
+				this.setFrames(this.getFrames()+1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode()){
@@ -62,8 +59,8 @@ public class WarpSouthHallLongtoJCloset extends Event {
 			}
 		}
 		else{
-			if(frame>0){
-				frame--;
+			if(this.getFrames()>0){
+				this.setFrames(this.getFrames()-1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode()){
@@ -75,7 +72,7 @@ public class WarpSouthHallLongtoJCloset extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(frame){
+		switch(this.getFrames()){
 		case 0:
 			tex = Assets.PushDoor1;
 			break;

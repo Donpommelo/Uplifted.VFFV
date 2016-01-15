@@ -12,7 +12,8 @@ public class WarpRightBusStoptoBus extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesMainHall.txt",14,6,"");
-		
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",14,6,"");
+		super.getGamestate().getEvents()[149].setOpen(false);
+		super.getGamestate().getEvents()[149].setFrames(6);
 	}
 }

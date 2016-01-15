@@ -13,6 +13,7 @@ public class WarpBustoRamp extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt", 31,39,"");
-		
+		super.getGamestate().getEvents()[203].setOpen(false);
+		super.getGamestate().getEvents()[203].setFrames(6);
 	}
 }

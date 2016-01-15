@@ -15,24 +15,20 @@ public class WarpBackroomtoElevator extends Event {
 
 	public BufferedImage[] scenes = new BufferedImage[2];
 	public static int stagenum = 2;
-	public static int frame;
-	public static boolean open;
 	public WarpBackroomtoElevator(float x, float y, int idnum) {
 		super(Assets.WoodDoor1,idnum,x, y, stagenum);
 		scenes[0]=ImageLoader.loadImage("/Cutscenes/Intro1.png");
 		scenes[1]=ImageLoader.loadImage("/Cutscenes/Intro2.png");
-		frame = 0;
-		open = false;
 	}
 	
 	public void run(){
 		switch(this.getstage()){
 		case 0:
-			if(!open){
-				open = true;
+			if(!this.isOpen()){
+				this.setOpen(true);
 			}
 			else{
-				open = false;
+				this.setOpen(false);
 			}
 			KeyManager.setCutsceneMode(true);
 			break;
@@ -44,7 +40,7 @@ public class WarpBackroomtoElevator extends Event {
 			}
 			else{
 				this.setstage(0);
-				open = false;
+				this.setOpen(false);
 			}
 			break;
 		case 2:
@@ -63,15 +59,15 @@ public class WarpBackroomtoElevator extends Event {
 				super.Dialog(d, 8, this.getId(), true);
 			}
 			this.setstage(0);
-			open = false;
+			this.setOpen(false);
 			break;
 		}
 	}
 	
 	public void tick(GameState gs) {
-		if(open){
-			if(frame<6){
-				frame++;
+		if(this.isOpen()){
+			if(this.getFrames()<6){
+				this.setFrames(this.getFrames()+1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 320){
@@ -81,8 +77,8 @@ public class WarpBackroomtoElevator extends Event {
 			}
 		}
 		else{
-			if(frame>0){
-				frame--;
+			if(this.getFrames()>0){
+				this.setFrames(this.getFrames()-1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 320){
@@ -94,7 +90,7 @@ public class WarpBackroomtoElevator extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(frame){
+		switch(this.getFrames()){
 		case 0:
 			tex = Assets.WoodDoor1;
 			break;

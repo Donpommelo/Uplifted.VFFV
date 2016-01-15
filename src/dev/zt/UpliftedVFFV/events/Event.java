@@ -203,7 +203,8 @@ public class Event implements Serializable{
 	public static Event event146 = new WarpBustoJCloset(5,5,146);
 	public static Event event147 = new WarpBustoCentralLeft(8,5,147);
 	public static Event event148 = new WarpBustoCentralRight(11,5,148);
-	//event 149-150 = bus to 2 remaining stops.
+	public static Event event149 = new WarpBustoRightBusStop(14,5,149);
+	//event 150 = bus to West.
 	public static Event event151 = new WarpBustoRamp(17,11,151);
 	public static Event event152 = new WarpJClosettoBus(5,11,152);
 	public static Event event153 = new WarpCentraltoBusLeft1(5,13,153);
@@ -214,8 +215,8 @@ public class Event implements Serializable{
 	public static Event event158 = new WarpCentraltoLeft1(9,21,158);
 	public static Event event159 = new WarpCentraltoLeft2(9,29,159);
 	public static Event event160 = new WarpCentraltoLeft3(9,37,160);
-	public static Event event161 = new WarpCentraltoBusLeft2(5,45,161);
-	public static Event event162 = new WarpCentraltoBusRight2(33,45,162);
+	public static Event event161 = new WarpCentraltoActualLeft2(5,45,161);
+	public static Event event162 = new WarpCentraltoActualRight2(33,45,162);
 	public static Event event163 = new WarpRightMain1toCentral1(3,8,163);
 	public static Event event164 = new WarpRightMain1toCentral2(3,27,164);
 	public static Event event165 = new WarpRightMain1toExtraRoom1(12,12,165);
@@ -269,12 +270,13 @@ public class Event implements Serializable{
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 64;
 	protected BufferedImage tex;
 	public Creature test;
-	boolean open;
 	boolean drawn;
 	boolean fightwon;
 	boolean selfswitch1,selfswitch2,selfswitch3,selfswitch4;
 	int stage;						
 	int finalstage;
+	int frames;		//for animated events
+	boolean open;	//for animated doors
 	
 	public Event(BufferedImage texture, int idnum, float x, float y) {
 		if(texture.getHeight() == 256 && texture.getWidth() == 96){ // maybe replace later with "moveable" boolean?
@@ -291,6 +293,8 @@ public class Event implements Serializable{
 		this.selfswitch3 = false;
 		this.selfswitch4 = false;
 		getEvents()[id] = this;
+		this.frames = 0;
+		this.open = false;
 	}
 	
 	public Event(BufferedImage texture, int idnum, float x, float y, int stageNum) {
@@ -310,6 +314,8 @@ public class Event implements Serializable{
 		getEvents()[id] = this;
 		this.stage = 0;
 		this.finalstage = stageNum;
+		this.frames = 0;
+		this.open = false;
 	}
 	
 	public Event(Game g, StateManager sm,GameState gs) {
@@ -357,7 +363,17 @@ public class Event implements Serializable{
 	public void setY(float y) {
 		this.y = y;
 	}
+		
+	public int getFrames() {
+		return frames;
+	}
+
+	public void setFrames(int frames) {
+		this.frames = frames;
+	}
 	
+	
+
 	//Tex is the image that the event is represented by.
 	public BufferedImage getTex() {
 		return tex;

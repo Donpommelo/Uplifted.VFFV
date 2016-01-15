@@ -14,6 +14,7 @@ public class WarpBustoWherever extends Event {
 	public void run(){
 		//Destination will depend on bus stop
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMain.txt",5,7,"");
-		
+		super.getGamestate().getEvents()[144].setOpen(false);
+		super.getGamestate().getEvents()[144].setFrames(6);		
 	}
 }

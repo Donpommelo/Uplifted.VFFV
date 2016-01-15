@@ -12,23 +12,20 @@ import dev.zt.UpliftedVFFV.states.GameState;
 public class WarpSElevatortoLobby extends Event {
 
 	public static BufferedImage img=Assets.ElevatorDoor1;
-	public static int frame = 0;
-	public boolean open = false;
 	public static int stagenum = 1;
 	public WarpSElevatortoLobby(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-		frame = 0;
 	}
 	
 	public void run(){
 		if(super.getGamestate().getEvents()[52].isSelfswitch1()){
 			switch(this.getstage()){
 			case 0: 				
-				if(!open){
-					open = true;
+				if(!this.isOpen()){
+					this.setOpen(true);
 				}
 				else{
-					open = false;
+					this.setOpen(false);
 				}
 				KeyManager.setCutsceneMode(true);
 				break;
@@ -83,7 +80,7 @@ public class WarpSElevatortoLobby extends Event {
 					break;
 					
 				}
-				open = false;
+				this.setOpen(false);
 				break;
 				
 			}
@@ -92,9 +89,9 @@ public class WarpSElevatortoLobby extends Event {
 	}
 	
 	public void tick(GameState gs) {
-		if(open){
-			if(frame<6){
-				frame++;
+		if(this.isOpen()){
+			if(this.getFrames()<6){
+				this.setFrames(this.getFrames()+1);;
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 160){
@@ -104,8 +101,8 @@ public class WarpSElevatortoLobby extends Event {
 			}
 		}
 		else{
-			if(frame>0){
-				frame--;
+			if(this.getFrames()>0){
+				this.setFrames(this.getFrames()-1);
 			}
 			else{
 				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 160){
@@ -117,7 +114,7 @@ public class WarpSElevatortoLobby extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(frame){
+		switch(this.getFrames()){
 		case 0:
 			tex = Assets.ElevatorDoor1;
 			break;
@@ -134,14 +131,6 @@ public class WarpSElevatortoLobby extends Event {
 		g.drawImage(tex,x-16, y-32, tex.getWidth(), tex.getHeight(), null);
 	}
 		
-	public boolean isOpen() {
-		return open;
-	}
-
-	public void setOpen(boolean open) {
-		this.open = open;
-	}
-
 	public boolean isSolid(int i){
 		return true;
 	}
