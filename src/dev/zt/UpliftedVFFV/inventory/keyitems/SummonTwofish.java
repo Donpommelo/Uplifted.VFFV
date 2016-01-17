@@ -1,8 +1,6 @@
 package dev.zt.UpliftedVFFV.inventory.keyitems;
 
-import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class SummonTwofish extends Item{
 
@@ -17,16 +15,18 @@ public class SummonTwofish extends Item{
 	static int lvlReq = 1;
 	static String descr="An artifact used in communicating with spirits. Hopefully the two fish\nare friends, because they're going to be enjoying each other's company\nfor a very long time.";
 	static String descrShort = "Summon spirit allies.";
-	
-	public int xp;
-	public Skills[] permedSkills;
-	public Schmuck currentSummon;
 
 	public SummonTwofish() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
 	
+	public boolean isSummonObject(){
+		return true;
+	}
 	
+	public boolean isSellable(){
+		return false;
+	}
 
 }

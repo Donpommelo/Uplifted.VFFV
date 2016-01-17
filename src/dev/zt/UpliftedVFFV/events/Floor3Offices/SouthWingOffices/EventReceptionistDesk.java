@@ -21,6 +21,7 @@ public class EventReceptionistDesk extends Event {
 			d[4] = new Dialog("Receptionist","/CharacterBusts/3rdSouthOffices-3.png",1,"No problem. You should go see George in the mailroom if you still remember your/question. I know I don't./");
 			super.Dialog(d, 4, this.getId(), true);
 			this.setSelfswitch1(true);
+			super.setQuest(1, 2);
 		}
 		else{
 			Dialog[] d = new Dialog[1];

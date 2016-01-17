@@ -112,7 +112,8 @@ public class Player extends Creature implements Serializable{
 			for(Schmuck s : gamestate.partymanager.party){
 				bonusML += s.getBonusML();
 			}
-			//Later, change last int for bonus ML
+			//Adding Mind Control Device Bonus.
+			bonusML += gamestate.variablemanager.getVar(13);
 			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,(int)bonusML));
 		}
 	}

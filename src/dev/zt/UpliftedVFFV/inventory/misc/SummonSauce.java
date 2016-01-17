@@ -19,4 +19,8 @@ public class SummonSauce extends Item{
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
+	
+	public boolean isSummonSauce(){
+		return true;
+	}
 }

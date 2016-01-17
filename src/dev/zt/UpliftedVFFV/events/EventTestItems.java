@@ -45,7 +45,8 @@ public class EventTestItems extends Event {
 		super.loot(new SmellingSalt(), 3);
 		super.loot(new Unbeef(), 3);
 		super.loot(new MetalRations(), 6);
-				
+		super.loot(new SummonSauce(), 6);
+
 		super.loot(new SummonConch(), 1);
 		super.loot(new SummonLotus(), 1);
 		super.loot(new SummonTwofish(), 1);
@@ -114,7 +115,7 @@ public class EventTestItems extends Event {
 		super.loot(new SlackerSlacks(), 1);
 		super.loot(new SpeedChute(), 2);
 		super.loot(new TouchofDeath(), 1);
-
+		super.Timer(this.getId(), 25);
 	}
 	
 	public boolean isSolid(int i){

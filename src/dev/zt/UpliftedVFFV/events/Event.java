@@ -204,7 +204,7 @@ public class Event implements Serializable{
 	public static Event event147 = new WarpBustoCentralLeft(8,5,147);
 	public static Event event148 = new WarpBustoCentralRight(11,5,148);
 	public static Event event149 = new WarpBustoRightBusStop(14,5,149);
-	//event 150 = bus to West.
+	public static Event event150 = new WarpBustoWestPreDungeon(17,5,150);
 	public static Event event151 = new WarpBustoRamp(17,11,151);
 	public static Event event152 = new WarpJClosettoBus(5,11,152);
 	public static Event event153 = new WarpCentraltoBusLeft1(5,13,153);
@@ -259,13 +259,18 @@ public class Event implements Serializable{
 	public static Event event202 = new WarpBusRamptoCarlocsOffice(20,12,202);
 	public static Event event203 = new WarpBusRamptoBus(31,38,203);
 //Event 204: Bus Ramp to extra room? 
-//Event 205: Bus Ramp to West Offices
+	public static Event event205 = new WarpBusRamptoWestOffices(3,15,205);
+//Event 206: Extra room to Bus Ramp?
+	
+	public static Event eventmcdevice = new EventMindControlDevice(7,10,206);
 
-	//206 employees begin here
+	
+	//220 employees begin here
 	
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
+	public static Event testSummon = new SummonSignIntern(0,0,1002);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 64;
 	protected BufferedImage tex;
@@ -555,6 +560,15 @@ public class Event implements Serializable{
 		}
 	}
 	
+	//Pushes a summon.
+	public static void Summon(Schmuck summon, int eventId){
+		StateManager.states.push(new SummoningState(game, gamestate, statemanager, summon));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//Pushes a save state window.
 	public static void Save(int eventId){

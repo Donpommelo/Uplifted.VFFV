@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
@@ -156,14 +157,14 @@ public class ChoiceBranchState extends State {
 //			for(int i=0;i<boxsize;i++){
 //				g.drawString(num[firstchoice+i], 5, 50+25*i);
 //			}
-			Utils.drawMenu(g, window, num, Color.black, 18, choicelocation, 5, 150, width, 32 * num.length, true);
+			Utils.drawMenu(g, window, num, Color.black, 18, choicelocation,5, 300-30*boxsize, width,5+30*(boxsize),1,boxsize,firstchoice,16,true);
 		}
-//		if(firstchoice != 0){
-//			g.drawImage(Assets.Uparrow, width/2, 25, null);
-//		}
-//		if(firstchoice != num.length - boxsize){
-//			g.drawImage(Assets.Downarrow, width/2, 20 + 25 * boxsize, null);
-//		}
+		if(firstchoice != 0){
+			g.drawImage(Assets.Uparrow, width/2, 145, null);
+		}
+		if(firstchoice != num.length - boxsize){
+			g.drawImage(Assets.Downarrow, width/2, 140 + 32 * boxsize, null);
+		}
 	
 	}
 

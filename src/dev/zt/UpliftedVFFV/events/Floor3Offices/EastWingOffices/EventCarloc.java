@@ -32,6 +32,7 @@ public class EventCarloc extends Event {
 				d[6] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Once you locate him, ask him for a Manila Folder and bring it back to me./There! That's simple enough, isn't it?/");
 				d[7] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"If you still care about . . . whatever it was you first asked me about, well/this quest will no doubt contribute greatly to your progress./I assure you./");
 				super.Dialog(d, 7, this.getId(), true);
+				super.setQuest(5, 1);
 				this.setSelfswitch1(true);
 			}
 			else{
@@ -53,6 +54,7 @@ public class EventCarloc extends Event {
 						d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",0,"Now, for the next part of your little quest. I need you to deliver this package to my coworker in the West Wing Offices./You can be certain that this quest will be well worth your time. Are we understood?/");
 						d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",0,"Run along now, but bear in mind that the West Wing is both tougher and more/productive than the other wings./");
 						super.Dialog(d, 3, this.getId(), true);
+						super.setQuest(5, 5);
 						super.loot(new ManilaFolder(), -1);
 						this.setSelfswitch2(true);
 					}

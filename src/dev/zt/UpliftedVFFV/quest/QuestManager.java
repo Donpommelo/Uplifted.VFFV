@@ -43,10 +43,45 @@ public class QuestManager {
 		case 0:
 			return "Find Suite 521.";
 		case 1:
-			return "Look for someone knowledgeable in the Offices.";
+			switch(stage){
+			case 1:
+				return "Look for someone knowledgeable in the Offices.";
+			case 2:
+				return "Look for Jorge, in the Mailroom.";
+			}
 		case 2:
 			return "Explore the building in search of clues.";
 		case 3:
+			switch(stage){
+			case 1:
+				return "Return to the Informant.";
+			case 2:
+				return "";
+			case 3:
+				return "Find the Old Greeter Machine in Lachiplatre Land.";
+			case 4:
+				return "Bring the Umbrella to the Informant.";
+			case 5:
+				return "";
+			}
+		case 4:
+			switch(stage){
+			case 1:
+				return "";
+			}
+		case 5:
+			switch(stage){
+			case 1:
+				return "Find the Informant in the East Offices";
+			case 2:
+				return "Find the Informant in the East Offices";
+			case 3:
+				return "Find the Informant in the East Offices";
+			case 4:
+				return "Return the Envelope to Carloc";
+			case 5:
+				return "Deliver the Envelope to Speros in the West Offices.";
+			}
 			
 		}
 		return "";

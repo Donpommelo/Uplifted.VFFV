@@ -19,7 +19,7 @@ public class SwitchManager {
  7: Quest Begin: Return envelope to Carloc (Informant Talked to)
  8: Quest Begin: Deliver envelope to Speros
  9: Carloc Quest Finished: B1 Company Town Unlocked
- 10: Carloc: Enveloped peeked at.
+ 10: Summoning Learned
  11: Floor 1 Visited
  12: Floor 2 Visited
  13: Floor 3 Visited

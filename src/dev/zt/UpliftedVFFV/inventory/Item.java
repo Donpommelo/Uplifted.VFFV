@@ -25,6 +25,10 @@ public class Item implements Comparable<Item>, Serializable{
 	public int slot;
 	public Boolean usedfromMenu, usefromBattle, consumable, targeted = true;
 	
+	//Only used for summoning objects
+	public int exp;
+	public Schmuck summon;
+	
 	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, String description,String descrShort,
 			int value, int slot, int lvlReq){
 		this.Id=id;
@@ -38,6 +42,9 @@ public class Item implements Comparable<Item>, Serializable{
 		this.value = value;
 		this.slot = slot;
 		this.lvlReq = lvlReq;
+		
+		this.exp = 0;
+		this.summon = null;
 	}	
 
 	//ran when an item is used. Every item will override this method with whatever effect it has,
@@ -165,6 +172,28 @@ public class Item implements Comparable<Item>, Serializable{
 	
 	public boolean isSellable(){
 		return true;
+	}
+	
+	//Gives Xp of summoning Objects.
+	public int getXp(){
+		return exp;
+	}
+	
+	//Gives Summon of summoning Objects.
+	public Schmuck getSummon(){
+		return summon;
+	}
+	
+	public boolean isSummonObject(){
+		return false;
+	}
+	
+	public boolean isSummonSauce(){
+		return false;
+	}
+	
+	public void summonBonus(Schmuck s){
+		
 	}
 	
 	public String getJanitorText(Item i){

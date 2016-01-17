@@ -21,9 +21,9 @@ public class VariableManager {
  10: Ennui Ceiling
  11: Janitor Points
  12: Number of Janitor Closets found.
- 13: Carloc's Quest: Number of loops done
- 14: 
- 15: 
+ 13: East Offices Mind Control Device Setting.
+ 14: Summoning Objects Found
+ 15: Spa Choice: None, Regen, +ML, -Combat Freq, +Stats - Drops
  16: 
  17: 
  18: 

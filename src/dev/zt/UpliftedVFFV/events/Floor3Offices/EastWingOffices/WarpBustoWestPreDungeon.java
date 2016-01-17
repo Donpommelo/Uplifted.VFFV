@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices;
 
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -9,15 +10,17 @@ import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 
-public class WarpEastBreakroomtoBus extends Event {
+
+public class WarpBustoWestPreDungeon extends Event {
 	
-	public static BufferedImage img=Assets.ClearDoor1;
+	public static BufferedImage img=Assets.PushDoor1;
 	public static int stagenum = 1;
-	public WarpEastBreakroomtoBus(float x, float y, int idnum) {
+	public WarpBustoWestPreDungeon(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
 
 	public void run(){
+		//later, make locked unless other door already used.
 		switch(this.getstage()){
 		case 0: 				
 			if(!this.isOpen()){
@@ -36,11 +39,9 @@ public class WarpEastBreakroomtoBus extends Event {
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);
 			}
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,10,"");
-			super.setVar(14, 0);
+			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestOfficePreDungeon.txt",14,18,"");
 			this.setOpen(false);
 			this.setFrames(0);
-			super.screenShake(50);
 			break;
 		}
 		
@@ -52,7 +53,7 @@ public class WarpEastBreakroomtoBus extends Event {
 				this.setFrames(this.getFrames()+1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 160){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 544){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -63,7 +64,7 @@ public class WarpEastBreakroomtoBus extends Event {
 				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 160){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 544){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -74,16 +75,16 @@ public class WarpEastBreakroomtoBus extends Event {
 	public void render(Graphics g, int x, int y) {
 		switch(this.getFrames()){
 		case 0:
-			tex = Assets.ClearDoor1;
+			tex = Assets.PushDoor1;
 			break;
 		case 2:
-			tex = Assets.ClearDoor2;
+			tex = Assets.PushDoor2;
 			break;
 		case 4:
-			tex = Assets.ClearDoor3;
+			tex = Assets.PushDoor3;
 			break;
 		case 6:
-			tex = Assets.ClearDoor4;
+			tex = Assets.PushDoor4;
 			break;
 		}
 		g.drawImage(tex,x, y-32, tex.getWidth(), tex.getHeight(), null);

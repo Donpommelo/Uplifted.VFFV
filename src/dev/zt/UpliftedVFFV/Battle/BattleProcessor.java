@@ -316,7 +316,7 @@ public class BattleProcessor {
 								bt.addScene(s.getName()+" learned "+ s.getLevelSkills().get(s.Lvl+1).getName()+"!");	
 							}
 						}
-						s.expGain(s.getStartStats(),s.getStatGrowths(),(int)(exp/allies.size()));
+						s.expGain((int)(exp/allies.size()));
 						s.calcBuffs(bs);
 					}
 					

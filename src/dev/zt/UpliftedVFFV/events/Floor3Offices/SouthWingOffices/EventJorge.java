@@ -53,6 +53,7 @@ public class EventJorge extends Event {
 				if(fightwon){
 					setSelfswitch1(true);
 					super.setSwitch(2,true);
+					super.setQuest(1, 3);
 					game.getAudiomanager().playMusic(2, true);
 				}
 				Dialog[] d2 = new Dialog[1];

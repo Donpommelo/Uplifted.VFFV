@@ -31,9 +31,9 @@ public class Schmuck implements Serializable{
 	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
 	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus
-	//cooldownBonus, critAvoid, channelingBonus
+	//cooldownBonus, critAvoid, channelingBonus, PassiveHpRegen?, PassiveMpRegen?, EquipmentStatusPriority?
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	public int[] elemPoints;
 	public int[] buffedElemPoints = {0,0,0,0,0,0};
@@ -138,7 +138,7 @@ public class Schmuck implements Serializable{
 		
 	}
 	
-	public void expGain(int[] start,double[] growth, int xp){
+	public void expGain(int xp){
 		exp+=xp;
 		while(exp>=Math.pow(Lvl,2)*10){
 //		if(exp>=Lvl*100){
@@ -1327,6 +1327,22 @@ public class Schmuck implements Serializable{
 	
 	public void setChannelBonus(double bonus){
 		bonusStats[33] = bonus;
+	}
+	
+	public double getBonusHpRegen(){
+		return bonusStats[34];
+	}
+	
+	public void setBonusHpRegen(double bonus){
+		bonusStats[34] = bonus;
+	}
+	
+	public double getBonusMpRegen(){
+		return bonusStats[35];
+	}
+	
+	public void setBonusMpRegen(double bonus){
+		bonusStats[35] = bonus;
 	}
 	
 	public int getRedPoints(){
