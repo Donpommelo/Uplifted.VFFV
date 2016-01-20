@@ -45,4 +45,8 @@ public class Runaway extends Skills {
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" Ran Away!";
+	}
 }

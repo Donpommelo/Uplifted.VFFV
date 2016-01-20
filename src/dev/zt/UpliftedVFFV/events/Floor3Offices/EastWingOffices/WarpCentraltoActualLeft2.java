@@ -37,6 +37,9 @@ public class WarpCentraltoActualLeft2 extends Event {
 				this.setSelfswitch1(true);
 			}
 			super.transport("/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt",8,20,"");
+			if(super.getQuest(5) == 2){
+				super.setQuest(5, 3);
+			}
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

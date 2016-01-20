@@ -24,7 +24,7 @@ public class EventJanitor1 extends Event {
 
 	public String[] Choices={"Save","Shop","Never Mind"};
 	public static int stagenum = 2;
-	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Janitor1small.png");
+	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Janitor2small.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.Wiper);
 	public EventJanitor1(float x, float y, int idnum) {

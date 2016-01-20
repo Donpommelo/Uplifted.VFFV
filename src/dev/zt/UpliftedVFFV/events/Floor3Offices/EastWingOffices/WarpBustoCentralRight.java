@@ -4,6 +4,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
@@ -20,30 +21,37 @@ public class WarpBustoCentralRight extends Event {
 	}
 
 	public void run(){
-		switch(this.getstage()){
-		case 0: 				
-			if(!this.isOpen()){
-				this.setOpen(true);
-			}
-			else{
-				this.setOpen(false);
-			}
-			KeyManager.setCutsceneMode(true);
-			break;
-		case 1:
-			KeyManager.setCutsceneMode(false);
-			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
-			if(!this.isSelfswitch1()){
-				super.setVar(12, super.getVar(12)+1);
-				this.setSelfswitch1(true);
-			}
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt",5,12,"");
-			this.setOpen(false);
-			this.setFrames(0);
-			break;
+		if(super.getQuest(5) == 0 || super.getQuest(5) == 1 || super.getQuest(5) == 3){
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"This door is locked./");
+			super.Dialog(d, 0, this.getId(), true);
+			this.setstage(1);
 		}
-		
+		else{
+			switch(this.getstage()){
+			case 0: 				
+				if(!this.isOpen()){
+					this.setOpen(true);
+				}
+				else{
+					this.setOpen(false);
+				}
+				KeyManager.setCutsceneMode(true);
+				break;
+			case 1:
+				KeyManager.setCutsceneMode(false);
+				this.setstage(0);
+				game.getAudiomanager().playMusic(2, true);
+				if(!this.isSelfswitch1()){
+					super.setVar(12, super.getVar(12)+1);
+					this.setSelfswitch1(true);
+				}
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt",5,12,"");
+				this.setOpen(false);
+				this.setFrames(0);
+				break;
+			}
+		}
 	}
 	
 	public void tick(GameState gs) {
@@ -72,19 +80,24 @@ public class WarpBustoCentralRight extends Event {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		switch(this.getFrames()){
-		case 0:
-			tex = Assets.PushDoor1;
-			break;
-		case 2:
-			tex = Assets.PushDoor2;
-			break;
-		case 4:
-			tex = Assets.PushDoor3;
-			break;
-		case 6:
+		if(super.getQuest(5) == 2){
 			tex = Assets.PushDoor4;
-			break;
+		}
+		else{
+			switch(this.getFrames()){
+			case 0:
+				tex = Assets.PushDoor1;
+				break;
+			case 2:
+				tex = Assets.PushDoor2;
+				break;
+			case 4:
+				tex = Assets.PushDoor3;
+				break;
+			case 6:
+				tex = Assets.PushDoor4;
+				break;
+			}
 		}
 		g.drawImage(tex,x, y-32, tex.getWidth(), tex.getHeight(), null);
 	}

@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -207,8 +208,17 @@ public class status implements Serializable{
 	public void doneChanneling(Schmuck s, BattleState bs){
 		
 	}
+	//At end of battle when gaining script
+	//Not too much stuff uses this.
+	public int onLootScript(Schmuck s, BattleState bs, int script){
+		return script;
+	}
 	
-
+	//At end of battle ran for each item gained.
+	public Item onLootItem(Schmuck s, BattleState bs, Item item, int number){
+		return item;
+	}
+	
 	//not currently used
 	public void run(Schmuck s){
 		

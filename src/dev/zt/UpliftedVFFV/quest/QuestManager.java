@@ -81,6 +81,8 @@ public class QuestManager {
 				return "Return the Envelope to Carloc";
 			case 5:
 				return "Deliver the Envelope to Speros in the West Offices.";
+			case 6:
+				return "Return to Carloc in the East Offices for your reward.";
 			}
 			
 		}

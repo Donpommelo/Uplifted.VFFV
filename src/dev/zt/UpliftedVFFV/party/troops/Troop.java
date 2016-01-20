@@ -41,6 +41,7 @@ public class Troop implements Comparable<Troop>{
  		troops[id] = this;
  	}
 	
+ 	//Generates troop. Each troop overrides this method.
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();

@@ -205,7 +205,7 @@ public class Event implements Serializable{
 	public static Event event148 = new WarpBustoCentralRight(11,5,148);
 	public static Event event149 = new WarpBustoRightBusStop(14,5,149);
 	public static Event event150 = new WarpBustoWestPreDungeon(17,5,150);
-	public static Event event151 = new WarpBustoRamp(17,11,151);
+	public static Event event151 = new WarpBustoRamp(17,10,151);
 	public static Event event152 = new WarpJClosettoBus(5,11,152);
 	public static Event event153 = new WarpCentraltoBusLeft1(5,13,153);
 	public static Event event154 = new WarpCentraltoBusRight1(33,13,154);
@@ -263,9 +263,38 @@ public class Event implements Serializable{
 //Event 206: Extra room to Bus Ramp?
 	
 	public static Event eventmcdevice = new EventMindControlDevice(7,10,206);
-
+	public static Event eventcarloclobby = new EventCarlocLobby(10,14,207);
+	public static Event eventcarloclobbyinvis = new EventCarlocLobbyInvisible(0,0,208);
+	public static Event eventcarlocoffice = new EventCarlocOffice(7,10,209);
+	public static Event eventcarlocofficeinvis = new EventCarlocOfficeInvisible(0,0,210);
+	public static Event eventinformantbus = new EventInformantOffices(15,6,211);
 	
+	public static Event eventinviswall1 = new EventInvis1Loop(0,0,212);
+	public static Event eventinviswall2 = new EventInvis2Loop(0,0,213);
+	public static Event eventinviswall1and2 = new EventInvis12Loop(0,0,214);
+
 	//220 employees begin here
+	public static Event empRubella = new EmpRubella(4,8,220);
+	public static Event empNeville = new EmpNeville(9,8,221);
+	public static Event empSnivelly = new EmpSnivelly(8,13,222);
+	public static Event empHabette = new EmpHabette(6,9,223);
+	
+	public static Event empAbernathy = new EmpAbernathy(34,21,224);
+	public static Event empBilloby = new EmpBilloby(34,21,225);
+	public static Event empCruikshank = new EmpCruikshank(34,21,226);
+	public static Event empDeborah = new EmpDeborah(34,21,227);
+	public static Event empFord = new EmpFord(34,21,228);
+	public static Event empHaversham= new EmpHaversham(34,21,229);
+	public static Event empIvy = new EmpIvy(34,21,230);
+	public static Event empLacera = new EmpLacera(34,21,231);
+	public static Event empLucky = new EmpLucky(34,21,232);
+	public static Event empMala = new EmpMala(34,21,233);
+	public static Event empNissa = new EmpNissa(34,21,234);
+	public static Event empPrimrose = new EmpPrimrose(34,21,235);
+	public static Event empSnyder = new EmpSnyder(34,21,236);
+	public static Event empToussant = new EmpToussant(34,21,237);
+	public static Event empDinesh = new EmpDinesh(34,21,238);
+
 	
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);
@@ -402,11 +431,16 @@ public class Event implements Serializable{
 		return false;
 	}
 	
-	//Returns whether the event is visible and existent.
+	//Returns whether the event is visible.
 	public boolean drawn(){
 		return true;
 	}
 	
+	//Returns whether the event is to be loaded upon entering a map.
+	public boolean loaded(){
+		return true;
+	}
+		
 	//Returns whether the event will be run when stepped on or not.
 	public boolean runnable(){
 		return true;
@@ -700,11 +734,6 @@ public class Event implements Serializable{
 	
 	public void setstage(int st) {
 		this.stage = st;
-	}
-
-	//drawn determines whether an event is drawn to the world map or not.
-	public boolean isDrawn() {
-		return drawn;
 	}
 
 	public void setDrawn(boolean drawn) {

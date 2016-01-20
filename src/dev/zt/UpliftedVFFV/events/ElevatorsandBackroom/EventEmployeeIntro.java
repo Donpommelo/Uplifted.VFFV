@@ -110,4 +110,8 @@ public class EventEmployeeIntro extends Event {
 	public boolean drawn(){
 		return drawn;
 	}
+	
+	public boolean loaded(){
+		return drawn;
+	}
 }

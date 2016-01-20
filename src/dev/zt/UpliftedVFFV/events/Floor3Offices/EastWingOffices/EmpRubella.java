@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EmpRubella extends Event {
 
 	public static int stagenum = 1;
-	public static BufferedImage img=SpriteSorter.SpriteSort(7,Assets.EmployeeF);
+	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeF);
 	public EmpRubella(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
@@ -35,11 +35,12 @@ public class EmpRubella extends Event {
 			if(!this.isSelfswitch1()){
 				Dialog[] d = new Dialog[5];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Heh, you looking for something?/");
-				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"I was supposed to be looking for Suite 521./Do you know where that is?/");
+				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I was supposed to be looking for Suite 521./Do you know where that is?/");
 				d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Let me look around to see if it's in East Offices./");
 				d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . ./");
 				d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Nope./It ain't here./Sorry pal./");
 				super.Dialog(d, 4, this.getId(), true);
+				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
@@ -50,7 +51,7 @@ public class EmpRubella extends Event {
 			
 			break;
 		case 1:
-			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 			this.setstage(0);
 			break;
 			

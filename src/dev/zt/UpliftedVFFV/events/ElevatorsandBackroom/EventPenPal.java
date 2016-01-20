@@ -69,8 +69,12 @@ public class EventPenPal extends Event {
 		return drawn;
 	}
 	
-	public void setDrawn(boolean drawn) {
+	public void setDrawn(boolean drawn){
 		this.drawn = drawn;
+	}
+	
+	public boolean loaded(){
+		return drawn;
 	}
 	
 }

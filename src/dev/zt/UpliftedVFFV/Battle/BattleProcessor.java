@@ -321,6 +321,9 @@ public class BattleProcessor {
 					}
 					
 					//Gain Script
+					for(Schmuck s : allies){
+						script = s.onLootScript(bs, (int)script);
+					}
 					bt.addScene((int)script+" Company Script looted!");
 					gs.scriptChange((int)script);
 					
@@ -330,7 +333,11 @@ public class BattleProcessor {
 					Set<Item> temp = drops.keySet();
 					Item[] itemDisplay = temp.toArray(new Item[999]);
 					
-					for(int i=0; i<drops.size();i++){		
+					for(int i=0; i<drops.size();i++){
+						Item tempItem = itemDisplay[i];
+						for(Schmuck s : allies){
+							tempItem = s.onLootItem(bs, tempItem, drops.get(itemDisplay[i]));
+						}
 						if(drops.get(itemDisplay[i]) == 1){		
 							bt.addScene("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}

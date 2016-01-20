@@ -95,7 +95,7 @@ public class EventManager {
 			}
 		}
 		for(int i=0;i<numevents;i++){
-			if(gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].drawn()){
+			if(gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].loaded()){
 				events[Utils.parseInt(tokens[(height*width)+9+3*i])][Utils.parseInt(tokens[(height*width)+10+3*i])]=Utils.parseInt(tokens[(height*width)+8+3*i]);
 				gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].moveTo(Utils.parseInt(tokens[(height*width)+9+3*i]),Utils.parseInt(tokens[(height*width)+10+3*i]));
 				if(gs.getEvents()[Utils.parseInt(tokens[(height*width)+8+3*i])].getTest()!=null){

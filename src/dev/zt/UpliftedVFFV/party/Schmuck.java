@@ -31,7 +31,7 @@ public class Schmuck implements Serializable{
 	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
 	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus
-	//cooldownBonus, critAvoid, channelingBonus, PassiveHpRegen?, PassiveMpRegen?, EquipmentStatusPriority?
+	//cooldownBonus, critAvoid, channelingBonus, PassiveHpRegen?, PassiveMpRegen?
 
 	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -651,6 +651,50 @@ public class Schmuck implements Serializable{
 			this.statuses.add(s);
 		}
 		calcBuffs(bs);
+	}
+	
+	public int onLootScript(BattleState bs, int script){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		int finalscript = script;
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finalscript = tempStatus.onLootScript(this, bs, script);
+				}
+			}
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finalscript;
+	}
+	
+	public Item onLootItem(BattleState bs,Item item, int number){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		Item finalitem = item;
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					finalitem = tempStatus.onLootItem(this, bs, item, number);
+				}
+			}
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+		return finalitem;
 	}
 	
 	public Schmuck getItemDummy(){
