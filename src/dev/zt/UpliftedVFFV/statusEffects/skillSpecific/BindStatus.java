@@ -19,7 +19,6 @@ public class BindStatus extends status{
 	public BindStatus(int i, Schmuck perp, Schmuck target, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.victim = target;
-		this.perp = perp;
 	}
 	
 	public BindStatus(int pr){
@@ -29,11 +28,14 @@ public class BindStatus extends status{
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 			if(bs.bp.TurnOrderQueue.get(i) != null){
-				if(bs.bp.TurnOrderQueue.get(i).getUser().equals(perp)){
-					bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,perp.getName()+" is holding "+victim.getName()+" in place!"),bs));
+				System.out.println(bs.bp.TurnOrderQueue.get(i).getUser().getName());
+				if(bs.bp.TurnOrderQueue.get(i).getUser().equals(s)){
+					System.out.print("meep");
+					bs.bp.TurnOrderQueue.set(i, new Action(s,s,new FlavorNothing(0,s.getName()+" is Binding "+victim.getName()+" in place!"),bs));
 				}
-				if(bs.bp.TurnOrderQueue.get(i).getUser().equals(victim)){
-					bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,victim.getName()+" is being Binded by "+perp.getName()+"!"),bs));
+				else if(bs.bp.TurnOrderQueue.get(i).getUser().equals(victim)){
+					System.out.print("mierp");
+					bs.bp.TurnOrderQueue.set(i, new Action(victim,victim,new FlavorNothing(0,victim.getName()+" is being Binded by "+s.getName()+"!"),bs));
 				}
 			}
 		}

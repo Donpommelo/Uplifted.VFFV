@@ -15,7 +15,7 @@ public class Lunk extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=17,startBp=25,startPow=15, startDef=9, startSpd=20, startSkl=8, startLuk=7, startInt=6;
+	public final static int startHp=17,startBp=43,startPow=15, startDef=9, startSpd=20, startSkl=8, startLuk=7, startInt=6;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=1.2, bpGrowth=.7, powGrowth=5.7, defGrowth=1.3, spdGrowth=2.9, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
@@ -48,7 +48,7 @@ public class Lunk extends Schmuck{
 	}
 	
 	public Action getAction(BattleState bs){
-		int random = (int)(Math.random()*3);
+		int random = (int)(Math.random()*1);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
 		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);

@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.BindStatus;
@@ -20,10 +21,24 @@ public class Bind extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new BindStatus(3, perp,vic, 50));
+		bs.bp.stm.addStatus(perp, new BindStatus(3, perp,vic, 50));
+		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
+			if(bs.bp.TurnOrderQueue.get(i) != null){
+				if(bs.bp.TurnOrderQueue.get(i).getUser().equals(vic)){
+					bs.bp.TurnOrderQueue.set(0, new Action(vic,vic,new FlavorNothing(0,vic.getName()+" is being Binded by "+perp.getName()+"!"),bs));
+				}
+			}
+		}
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BindStatus((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp,vic, 50));	
+		bs.bp.stm.addStatus(perp, new BindStatus((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp,vic, 50));	
+		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
+			if(bs.bp.TurnOrderQueue.get(i) != null){
+				if(bs.bp.TurnOrderQueue.get(i).getUser().equals(vic)){
+					bs.bp.TurnOrderQueue.set(0, new Action(vic,vic,new FlavorNothing(0,vic.getName()+" is being Binded by "+perp.getName()+"!"),bs));
+				}
+			}
+		}
 	}
 }
