@@ -138,7 +138,6 @@ public class BattleState extends State {
 	}
 	
 	public void end(boolean victory){
-		System.out.println(StateManager.getStates());
 		StateManager.getStates().pop();
 		game.getAudiomanager().playMusic(2, true);
 		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
