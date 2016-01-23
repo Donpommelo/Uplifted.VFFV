@@ -29,6 +29,8 @@ public Item thing;
 		return 	perp.getName()+" does absolutely nothing.";
 	}
 	
-	
+	public boolean silenceBlocked(){
+		return false;
+	}
 	
 }

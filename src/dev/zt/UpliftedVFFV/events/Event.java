@@ -236,7 +236,7 @@ public class Event implements Serializable{
 	public static Event event179 = new WarpCarlocsHalltoStairsRoom(5,13,179);
 	public static Event event180 = new WarpCarlocsOfficetoBusRamp(17,16,180);
 	public static Event event181 = new WarpCarlocsOfficetoCentral(24,17,181);
-//Event 182: Carloc's office to East Elevator
+	public static Event event182 = new WarpCarlocsOfficetoEElevator(21,20,182);
 	public static Event event183 = new WarpAtriatoCentral(30,17,183);
 	public static Event event184 = new WarpAtriatoStairsRoom(6,12,184);
 	public static Event event185 = new WarpAtriatoOuterFloor2(25,8,185);
@@ -258,20 +258,20 @@ public class Event implements Serializable{
 	public static Event event201 = new WarpBusRamptoAtriaFloor2(25,16,201);
 	public static Event event202 = new WarpBusRamptoCarlocsOffice(20,12,202);
 	public static Event event203 = new WarpBusRamptoBus(31,38,203);
-//Event 204: Bus Ramp to extra room? 
 	public static Event event205 = new WarpBusRamptoWestOffices(3,15,205);
-//Event 206: Extra room to Bus Ramp?
-	
+
 	public static Event eventmcdevice = new EventMindControlDevice(7,10,206);
 	public static Event eventcarloclobby = new EventCarlocLobby(10,14,207);
 	public static Event eventcarloclobbyinvis = new EventCarlocLobbyInvisible(0,0,208);
 	public static Event eventcarlocoffice = new EventCarlocOffice(7,10,209);
 	public static Event eventcarlocofficeinvis = new EventCarlocOfficeInvisible(0,0,210);
 	public static Event eventinformantbus = new EventInformantOffices(15,6,211);
-	
 	public static Event eventinviswall1 = new EventInvis1Loop(0,0,212);
 	public static Event eventinviswall2 = new EventInvis2Loop(0,0,213);
 	public static Event eventinviswall1and2 = new EventInvis12Loop(0,0,214);
+
+	public static Event event215 = new WarpEElevatortoLobby(3,15,215);
+	public static Event event216 = new WarpEElevatortoBackroom(3,15,216);
 
 	//220 employees begin here
 	public static Event empRubella = new EmpRubella(4,8,220);

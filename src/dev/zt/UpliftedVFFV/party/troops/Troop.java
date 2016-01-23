@@ -26,6 +26,7 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop14 = new Troop14WanderingMind(14);
 	public static Troop Troop15 = new Troop15BossJorge(15);
 	
+	public static Troop Troop20 = new Troop20CopyCat(20);
 
 	
 	protected final int id;

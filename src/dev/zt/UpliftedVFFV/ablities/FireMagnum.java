@@ -46,4 +46,8 @@ public class FireMagnum extends Skills {
 		return bs.bp.em.damageSimulation(damage, perp, vic, 6,90);
 	}
 
+	public boolean silenceBlocked(){
+		return false;
+	}
+	
 }

@@ -6,6 +6,7 @@ import dev.zt.UpliftedVFFV.Battle.Animations.StandardAttackAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class StandardAttack extends Skills {
 
@@ -25,19 +26,90 @@ public class StandardAttack extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		int statAttack = (int)(perp.getDamageStat()+2);
-		if((int)perp.getElemAlignment() == 0 ){
-			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,6);
+		int damage = -(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3];
+		//Elementally Aligned units gain special standard attacks
+		switch((int)(perp.getElemAlignment())){
+		//physical is boring
+		case 0:
+			bs.bp.em.hpChange(damage, perp, vic,6);
+			break;
+		//Red Aligned have increased Critical Multiplier	
+		case 1:
+			bs.bp.em.hpChange(damage, perp, vic,0);
+			break;
+		//Blue Aligned reduce the Spd of targets
+		case 2:
+			bs.bp.em.hpChange(damage, perp, vic,1);
+			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,50));
+			break;
+		//Green Aligned gain Life-Steal
+		case 3:
+			bs.bp.em.hpChange(damage, perp, vic,2);
+			bs.bp.em.hpChange((int)(-damage*(.5+perp.getHealPower())), perp, perp,2);
+			break;
+		//Yellow Aligned take Initiative
+		case 4:
+			bs.bp.em.hpChange(damage, perp, vic,3);
+			break;
+		//Purple Aligned deal splash damage to other targets
+		case 5:
+			bs.bp.em.hpChange(damage, perp, vic,4);
+			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+				if(!s.equals(vic)){
+					bs.bp.em.hpChange((int)(damage * .5), perp, s,4);
+				}
 			}
-		else{
-			bs.bp.em.hpChange(-(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], perp, vic,(int)(perp.getElemAlignment()-1));				
+			break;
+		//Void Aligned do pure damage
+		case 6:
+			vic.hpChange((int)(damage *(1-vic.getVoidRes())));
+			break;
 		}
-		perp.onStandardAttackEffects(vic, -(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3], bs);
+		perp.onStandardAttackEffects(vic, damage, bs);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int statAttack = (int)(perp.getDamageStat()+2);
-		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
-		perp.onStandardAttackEffects(vic, -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())), bs);
+		int damage = -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		//Elementally Aligned units gain special standard attacks
+		switch((int)(perp.getElemAlignment())){
+		//Physical is boring
+		case 0:
+			bs.bp.em.hpChange(damage, perp, vic,6);
+			break;
+		//Red Aligned have increased Critical Multiplier	
+		case 1:
+			bs.bp.em.hpChange((int)(damage*1.5), perp, vic,0);
+			break;
+		//Blue Aligned reduce the Sod of targets
+		case 2:
+			bs.bp.em.hpChange(damage, perp, vic,1);
+			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,50));
+			break;
+		//Green Aligned gain Life-Steal
+		case 3:
+			bs.bp.em.hpChange(damage, perp, vic,2);
+			bs.bp.em.hpChange((int)(-damage*(.5+perp.getHealPower())), perp, perp,2);
+			break;
+		//Yellow Aligned take Initiative
+		case 4:
+			bs.bp.em.hpChange(damage, perp, vic,3);
+			break;
+		//Purple Aligned deal splash damage to other targets
+		case 5:
+			bs.bp.em.hpChange(damage, perp, vic,4);
+			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+				if(!s.equals(vic)){
+					bs.bp.em.hpChange((int)(damage * .5), perp, s,4);
+				}
+			}
+			break;
+		//Void Aligned do pure damage
+		case 6:
+			vic.hpChange((int)(damage *(1-vic.getVoidRes())));
+			break;
+		}
+		perp.onStandardAttackEffects(vic, damage, bs);
 
 	}
 	
@@ -48,14 +120,27 @@ public class StandardAttack extends Skills {
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
-		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(50))){
+		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(50)) || a.getUser().getElemAlignment() == 4){
 			bs.bp.TurnOrderQueue.remove(a);
 			bs.bp.TurnOrderQueue.add(0, a);
 		}
 	}
 		
+	public int getElement(Schmuck s){
+		if((int)s.getElemAlignment() == 0 ){
+			return 6;
+		}
+		else{
+			return (int)(s.getElemAlignment()-1);
+		}
+	}
+	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		return 	perp.getName()+" attacks "+vic.getName()+"!";
+	}
+	
+	public boolean silenceBlocked(){
+		return false;
 	}
 		
 }

@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class Swarm extends Skills {
 
@@ -20,13 +20,13 @@ public class Swarm extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new TestStatBuff(2, 4, 1.25, perp, 50));
+			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.25, perp, 50));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new TestStatBuff(2, 4, 1.75, perp, 50));
+			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.75, perp, 50));
 		}	
 	}
 }

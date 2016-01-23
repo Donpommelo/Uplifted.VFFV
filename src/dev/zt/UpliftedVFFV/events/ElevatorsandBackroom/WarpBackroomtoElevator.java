@@ -34,7 +34,18 @@ public class WarpBackroomtoElevator extends Event {
 			break;
 		case 1:
 			KeyManager.setCutsceneMode(false);
-			super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 5, 9,"South Elevator");
+			switch(super.getVar(2)){
+			case 0:
+				super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 5, 9,"South Elevator");
+				break;
+			case 1:
+				super.transport("/Worlds/ElevatorsandBackroom/EastElevator.txt", 5, 9,"East Elevator");
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			}
 			if(!this.isSelfswitch1()){
 				super.Cutscene(scenes, this.getId());
 			}

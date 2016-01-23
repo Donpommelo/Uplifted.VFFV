@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Bind;
+import dev.zt.UpliftedVFFV.ablities.BlightBite;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -46,11 +48,24 @@ public class Lunk extends Schmuck{
 	}
 	
 	public Action getAction(BattleState bs){
-		if(!bs.bs.alliesTargets.isEmpty()){
-			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
-		}
-		else{
+		int random = (int)(Math.random()*3);
+		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
+		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);
 		}
+		else{
+			switch (random){
+			case 0:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Bind(0),bs);
+				break;
+			case 1:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+				break;
+			case 2:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new BlightBite(0),bs);
+				break;
+			}
+		}	
+		return act;
 	}
 }

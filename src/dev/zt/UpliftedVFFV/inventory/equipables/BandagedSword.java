@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class BandagedSword extends Item{
 
@@ -27,7 +27,7 @@ public class BandagedSword extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BandagedSwordStatus(50);
-		enchantment[1] = new AddStatBuff(3,(int)(7*(1+s.getEquipPow())), 20);
+		enchantment[1] = new StatBuffAdd(3,(int)(7*(1+s.getEquipPow())), 20);
 		return enchantment;
 	}
 	

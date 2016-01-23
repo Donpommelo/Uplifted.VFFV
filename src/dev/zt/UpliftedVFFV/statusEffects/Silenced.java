@@ -21,8 +21,7 @@ public class Silenced extends status{
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
-		if(!a.skill.getName().equals("Attack") && !a.skill.getName().equals("Item") && !a.skill.getName().equals("Dilly Dally") && !a.skill.getName().equals("Run Away")
-				&& !a.skill.getName().equals("Pass Turn") && !a.skill.getName().equals("Fire Magnum")){
+		if(a.skill.silenceBlocked()){
 			if(a.skill.getName().equals("")){
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use an ability but was Silenced."),bs));
 

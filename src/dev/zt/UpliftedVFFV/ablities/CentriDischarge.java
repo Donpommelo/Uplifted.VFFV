@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class CentriDischarge extends Skills {
 
@@ -20,12 +20,12 @@ public class CentriDischarge extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic,3);
-		bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,1.5, perp,75));
+		bs.bp.stm.addStatus(perp, new StatBuffMult(3,4,1.5, perp,75));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,3);
-		bs.bp.stm.addStatus(perp, new TestStatBuff(3,4,2, perp,25));	
+		bs.bp.stm.addStatus(perp, new StatBuffMult(3,4,2, perp,25));	
 	}
 	
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){

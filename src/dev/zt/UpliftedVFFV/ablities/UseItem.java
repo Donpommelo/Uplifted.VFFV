@@ -29,10 +29,12 @@ public UseItem(int index, Item i, GameState gs) {
 			if(gs.inventorymanager.backpack.containsKey(thing)){
 				if(gs.inventorymanager.backpack.get(thing)!=0){
 					thing.use(perp,vic, bs);
-					int temp = gs.inventorymanager.backpack.get(thing);
-					gs.inventorymanager.backpack.put(thing, temp-1);
-					if(gs.inventorymanager.backpack.get(thing)==0){
-						gs.inventorymanager.backpack.remove(thing);
+					if(thing.isConsummable()){
+						int temp = gs.inventorymanager.backpack.get(thing);
+						gs.inventorymanager.backpack.put(thing, temp-1);
+						if(gs.inventorymanager.backpack.get(thing)==0){
+							gs.inventorymanager.backpack.remove(thing);
+						}
 					}
 				}
 				else{
@@ -76,5 +78,8 @@ public UseItem(int index, Item i, GameState gs) {
 		return 	perp.getName()+" used "+thing.getName()+"!";
 	}
 	
+	public boolean silenceBlocked(){
+		return false;
+	}
 	
 }

@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class MotorGrinder extends Skills {
 
@@ -19,12 +19,12 @@ public class MotorGrinder extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,.8, perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8, perp,60));
 		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*1.5)), perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new TestStatBuff(2,3,.8*(1+perp.getCritMulti()-vic.getCritRes()), perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8*(1+perp.getCritMulti()-vic.getCritRes()), perp,60));
 		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
 	}
 	

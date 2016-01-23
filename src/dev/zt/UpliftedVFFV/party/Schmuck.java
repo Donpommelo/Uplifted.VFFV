@@ -1445,6 +1445,10 @@ public class Schmuck implements Serializable{
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	public boolean defaultLocation() {
+		return true;
+	}
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;

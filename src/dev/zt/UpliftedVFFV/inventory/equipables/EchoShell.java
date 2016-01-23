@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EchoShellStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class EchoShell extends Item{
 
@@ -27,7 +27,7 @@ public class EchoShell extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new EchoShellStatus(40);
-		enchantment[1] = new AddStatBuff(3,(int)(11*(1+s.getEquipPow())), 40);
+		enchantment[1] = new StatBuffAdd(3,(int)(11*(1+s.getEquipPow())), 40);
 		return enchantment;
 	}
 	

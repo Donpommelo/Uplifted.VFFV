@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.MaskofFestusStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class FestusMask extends Item{
 
@@ -27,8 +27,8 @@ public class FestusMask extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new Silenced(0);
-		enchantment[1] = new AddStatBuff(5,(int)(11*(1+s.getEquipPow())),15);
-		enchantment[2] = new AddStatBuff(4,(int)(11*(1+s.getEquipPow())),15);
+		enchantment[1] = new StatBuffAdd(5,(int)(11*(1+s.getEquipPow())),15);
+		enchantment[2] = new StatBuffAdd(4,(int)(11*(1+s.getEquipPow())),15);
 		enchantment[3] = new MaskofFestusStatus(0);
 		return enchantment;
 	}

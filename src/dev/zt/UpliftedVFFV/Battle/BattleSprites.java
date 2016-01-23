@@ -29,32 +29,11 @@ public class BattleSprites {
 		this.allies = party;
 		this.enemy=enemy;
 		this.bs=bs;
-		int sumSize1 = -20;
+		
 		
 		// Load UI elements.
 		
-		//Place allies.
-		for(int i=0;i<allies.size();i++){
-			if(allies.get(i).getX()==0){
-				sumSize1 += (allies.get(i).getBattleSprite().getWidth() - 28);
-				allies.get(i).setX(sumSize1-80);
-			}
-			if(allies.get(i).getY()==0){
-				allies.get(i).setY(250 + ((25 - allies.size() * 2) * i) - allies.size() * 12);
-			}
-		}
-		//Place enemies.
-		int sumSize2 = 0;
-		for(int i=0;i<enemy.size();i++){
-			if(enemy.get(i).getX()==0){
-				sumSize2 += (enemy.get(i).getBattleSprite().getWidth()-40);
-				enemy.get(i).setX(610-sumSize2);
-			}
-			if(enemy.get(i).getY()==0){
-				enemy.get(i).setY(10-15*i+enemy.size()*15);
-			}
-		}
-		
+		locationUpdate();
 		//Update valid selectable/targetable allies + enemies.
 		targetUpdate();
 	}
@@ -107,7 +86,6 @@ public class BattleSprites {
 				}				
 			}
 		}
-		
 		enemyTargets.clear();
 		enemySelectable.clear();
 		for(Schmuck s : enemy){
@@ -119,6 +97,28 @@ public class BattleSprites {
 			}
 		}
 		bs.bp.currentlySelected = 0;
+	}
+	
+	public void locationUpdate(){
+		int sumSize1 = -20;
+		//Place allies.
+		for(int i=0;i<allies.size();i++){
+			if(allies.get(i).defaultLocation()){
+				sumSize1 += (allies.get(i).getBattleSprite().getWidth() - 28);
+				allies.get(i).setX(sumSize1-80);
+				allies.get(i).setY(250 + ((25 - allies.size() * 2) * i) - allies.size() * 12);
+			}
+			
+		}
+		//Place enemies.
+		int sumSize2 = 0;
+		for(int i=0;i<enemy.size();i++){
+			if(enemy.get(i).defaultLocation()){
+				sumSize2 += (enemy.get(i).getBattleSprite().getWidth()-40);
+				enemy.get(i).setX(610-sumSize2);			
+				enemy.get(i).setY(10-15*i+enemy.size()*15);
+			}
+		}
 	}
 	
 	//Blinks battle sprite. Used when Schmuck is taking damage.

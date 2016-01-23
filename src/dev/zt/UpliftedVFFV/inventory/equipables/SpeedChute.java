@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class SpeedChute extends Item{
 
@@ -26,7 +26,7 @@ public class SpeedChute extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TestStatBuff(4,.5, 10);
+		enchantment[0] = new StatBuffMult(4,.5, 10);
 		enchantment[1] = new BonusStatBuff(3,0.15*(1+s.getEquipPow()), 80);
 		return enchantment;
 	}

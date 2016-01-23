@@ -43,5 +43,9 @@ public class DillyDally extends Skills {
 		}
 
 	}
+	
+	public boolean silenceBlocked(){
+		return false;
+	}
 
 }

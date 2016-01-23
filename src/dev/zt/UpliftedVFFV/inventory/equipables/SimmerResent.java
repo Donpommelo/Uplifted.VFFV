@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.HealBlock;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class SimmerResent extends Item{
 
@@ -25,8 +25,8 @@ public class SimmerResent extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TestStatBuff(2,(int)(1.2*(1+s.getEquipPow())), 25);
-		enchantment[1] = new TestStatBuff(4,(int)(1.2*(1+s.getEquipPow())), 25);
+		enchantment[0] = new StatBuffMult(2,(int)(1.2*(1+s.getEquipPow())), 25);
+		enchantment[1] = new StatBuffMult(4,(int)(1.2*(1+s.getEquipPow())), 25);
 		enchantment[2] = new HealBlock(25);
 		return enchantment;
 	}

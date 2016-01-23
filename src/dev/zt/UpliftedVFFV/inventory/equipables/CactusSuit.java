@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.DamageReflect;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class CactusSuit extends Item{
@@ -28,7 +28,7 @@ public class CactusSuit extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new DamageReflect(.25*(1+s.getEquipPow()), 75);
-		enchantment[1] = new AddStatBuff(0,(int)(15*(1+s.getEquipPow())), 20);
+		enchantment[1] = new StatBuffAdd(0,(int)(15*(1+s.getEquipPow())), 20);
 		enchantment[2] = new ElemPointsBuff(2,(int)(5*(1+s.getEquipPow())),65);
 		return enchantment;
 	}

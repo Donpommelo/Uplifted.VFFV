@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Deafen;
+import dev.zt.UpliftedVFFV.ablities.DrownOut;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -13,11 +15,11 @@ public class Screamer extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=17,startBp=25,startPow=15, startDef=9, startSpd=20, startSkl=8, startLuk=7, startInt=6;
+	public final static int startHp=26,startBp=30,startPow=15, startDef=15, startSpd=15, startSkl=16, startLuk=18, startInt=16;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=1.2, bpGrowth=.7, powGrowth=5.7, defGrowth=1.3, spdGrowth=2.9, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
+	public final static double hpGrowth=2.3, bpGrowth=3.7, powGrowth=2.7, defGrowth=2.3, spdGrowth=2.3, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
-	public final static int expDrop=19;
+	public final static int expDrop=6;
 	public final static int scrDrop=1;
 	
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 10, baseVoid = 0;
@@ -46,11 +48,21 @@ public class Screamer extends Schmuck{
 	}	
 	
 	public Action getAction(BattleState bs){
-		if(!bs.bs.alliesTargets.isEmpty()){
-			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
-		}
-		else{
+		int random = (int)(Math.random()*2);
+		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
+		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);
 		}
+		else{
+			switch (random){
+			case 0:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Deafen(0),bs);
+				break;
+			case 1:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new DrownOut(0),bs);
+				break;
+			}
+		}	
+		return act;
 	}
 }

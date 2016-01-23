@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.Masochist;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class CursedCilice extends Item{
 
@@ -26,7 +26,7 @@ public class CursedCilice extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new Masochist(.40*(1+s.getEquipPow()), 25);
-		enchantment[1] = new AddStatBuff(1,(int)(15*(1+s.getEquipPow())), 20);
+		enchantment[1] = new StatBuffAdd(1,(int)(15*(1+s.getEquipPow())), 20);
 		return enchantment;
 	}
 }

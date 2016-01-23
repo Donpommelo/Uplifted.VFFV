@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EternalIceStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class EternalIce extends Item{
 
@@ -27,7 +27,7 @@ public class EternalIce extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new EternalIceStatus(60);
-		enchantment[1] = new AddStatBuff(0,(int)(17*(1+s.getEquipPow())), 10);
+		enchantment[1] = new StatBuffAdd(0,(int)(17*(1+s.getEquipPow())), 10);
 		return enchantment;
 	}
 	

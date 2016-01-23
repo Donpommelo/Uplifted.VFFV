@@ -154,7 +154,7 @@ public class Assets {
 		skillIcons[5] = ActionIcons.crop(160,0,32,32);			//5 - Run.
 		
 		//Battle Sprites.
-		int numSprites = 16;
+		int numSprites = 19;
 		battleSprites = new BufferedImage[numSprites];
 		battleSprites[0] = ImageLoader.loadImage("/BattleSprites/Operator.png");			//0 - Operator.
 		battleSprites[1] = ImageLoader.loadImage("/BattleSprites/PenPal.png");				//1 - Pen Pal.
@@ -172,7 +172,10 @@ public class Assets {
 		battleSprites[13] = ImageLoader.loadImage("/BattleSprites/Shirley.png");			//13 - Shirley.
 		battleSprites[14] = ImageLoader.loadImage("/BattleSprites/WanderingMind.png");		//14 - Wandering Mind.
 		battleSprites[15] = ImageLoader.loadImage("/BattleSprites/Lunk.png");				//15 - Lunk.
-		
+//		battleSprites[16] = ImageLoader.loadImage("/BattleSprites/Auger.png");				//16 - Auger.
+		battleSprites[17] = ImageLoader.loadImage("/BattleSprites/Chameleon.png");			//17 - Chameleon.
+		battleSprites[18] = ImageLoader.loadImage("/BattleSprites/Copy Cat.png");			//18 - Copy Cat.
+
 		//UI elements and other icons.
 		Uparrow = arrowup.crop(0, 0 ,32, 32);
 		Downarrow = arrowdown.crop(0, 0 ,32, 32);

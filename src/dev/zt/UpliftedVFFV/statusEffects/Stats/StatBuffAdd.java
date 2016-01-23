@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.statusEffects.Stats;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
-public class AddStatBuff extends status{
+public class StatBuffAdd extends status{
 	
 	public static String name = "Stats Changed";
 	public static Boolean perm = false;
@@ -12,13 +12,13 @@ public class AddStatBuff extends status{
 	public static Boolean decay = true;
 	public int statChanged;
 	public double statIncrement;
-	public AddStatBuff(int i, int stat, double amount, Schmuck perp, int pr){
+	public StatBuffAdd(int i, int stat, double amount, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}
 	
-	public AddStatBuff(int stat, int amount, int pr){
+	public StatBuffAdd(int stat, int amount, int pr){
 		super(name, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;

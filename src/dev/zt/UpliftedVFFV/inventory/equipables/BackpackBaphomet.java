@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuffMult;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class BackpackBaphomet extends Item{
 
@@ -28,7 +28,7 @@ public class BackpackBaphomet extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BonusStatBuff(10,-.75, 50);
-		enchantment[1] = new TestStatBuff(2,1.25, 35);
+		enchantment[1] = new StatBuffMult(2,1.25, 35);
 		enchantment[2] = new ElemPointsBuffMult(0,1.25, 35);
 		
 		return enchantment;

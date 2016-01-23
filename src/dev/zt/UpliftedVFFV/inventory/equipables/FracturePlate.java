@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.FracturePlateStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class FracturePlate extends Item{
 
@@ -26,8 +26,8 @@ public class FracturePlate extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new FracturePlateStatus(75);
-		enchantment[1] = new AddStatBuff(3, (int)(11*(1+s.getEquipPow())), 50);
-		enchantment[2] = new AddStatBuff(0, (int)(55*(1+s.getEquipPow())), 50);
+		enchantment[1] = new StatBuffAdd(3, (int)(11*(1+s.getEquipPow())), 50);
+		enchantment[2] = new StatBuffAdd(0, (int)(55*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 	

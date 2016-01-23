@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class Paperweight extends Item{
 
@@ -24,7 +24,7 @@ public class Paperweight extends Item{
 	}
 		
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new AddStatBuff(3,(int)(5*(1+s.getEquipPow())), 50);
+		enchantment[0] =  new StatBuffAdd(3,(int)(5*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 }

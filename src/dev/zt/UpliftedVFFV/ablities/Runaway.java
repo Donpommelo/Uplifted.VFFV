@@ -49,4 +49,8 @@ public class Runaway extends Skills {
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		return 	perp.getName()+" Ran Away!";
 	}
+	
+	public boolean silenceBlocked(){
+		return false;
+	}
 }

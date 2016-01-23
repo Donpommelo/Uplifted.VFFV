@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.TestStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class Haunt extends Skills {
 
@@ -22,7 +22,7 @@ public class Haunt extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2]*2)/(s.buffedStats[3]*10), perp, s,6);
-			bs.bp.stm.addStatus(s, new TestStatBuff(5,3,.9,perp,80));
+			bs.bp.stm.addStatus(s, new StatBuffMult(5,3,.9,perp,80));
 		}
 	}
 		

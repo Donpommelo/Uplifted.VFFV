@@ -129,6 +129,10 @@ public class Skills implements Serializable{
 		return canCrit;
 	}
 	
+	public boolean silenceBlocked(){
+		return true;
+	}
+	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		return "";
 	}
@@ -137,7 +141,7 @@ public class Skills implements Serializable{
 		return targetType;
 	}
 	
-	public int getElement(){
+	public int getElement(Schmuck s){
 		return element;
 	}
 	

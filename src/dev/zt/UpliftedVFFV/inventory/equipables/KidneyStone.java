@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.KidneyStoneStatus;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.AddStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class KidneyStone extends Item{
 
@@ -27,7 +27,7 @@ public class KidneyStone extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new KidneyStoneStatus(5);
-		enchantment[1] = new AddStatBuff(0,(int)(18*(1+s.getEquipPow())), 50);
+		enchantment[1] = new StatBuffAdd(0,(int)(18*(1+s.getEquipPow())), 50);
 		enchantment[2] = new Regendegen(true, (int)(5*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
