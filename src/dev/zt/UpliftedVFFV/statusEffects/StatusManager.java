@@ -139,6 +139,9 @@ public class StatusManager {
 		for(int i=0; i<s.statuses.size(); i++){
 			if(s.statuses.get(i).getName()!=null){
 				if(s.statuses.get(i).getName().equals(stat.getName())){
+					if(!s.statuses.get(i).cureText(s).equals("")){
+						bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
+					}
 					s.statuses.remove(i);
 					i--;	
 				}

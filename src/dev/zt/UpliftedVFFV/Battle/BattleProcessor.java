@@ -220,12 +220,12 @@ public class BattleProcessor {
 				//Otherwise, perform the next action on the TOQ. (if it exists)
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
-						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
 						Schmuck tempPerp = TurnOrderQueue.get(0).user;		//Schmuck that performs the above action
 						
 						//Before action happens, tempPerp's status restrictions activate.
-						tempPerp.restrictEffects(tempAction, bs);
-						
+						tempPerp.restrictEffects(TurnOrderQueue.get(0), bs);
+						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
+
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
 							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){

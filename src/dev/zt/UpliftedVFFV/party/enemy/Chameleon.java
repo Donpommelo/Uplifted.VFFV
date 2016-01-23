@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.party.enemy;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.ColorDrain;
-import dev.zt.UpliftedVFFV.ablities.Fade;
+import dev.zt.UpliftedVFFV.ablities.FadingStrike;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -57,7 +57,7 @@ public class Chameleon extends Schmuck{
 		else{
 			switch (random){
 			case 0:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Fade(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new FadingStrike(0),bs);
 				break;
 			case 1:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new ColorDrain(0),bs);

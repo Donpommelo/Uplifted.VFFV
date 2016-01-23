@@ -12,31 +12,32 @@ public class Channeling extends status{
 	public status Status;
 	public boolean activateonBreak;
 	public boolean endofround;
-	public Schmuck Channeler;
+	public Schmuck statusHaver, Channeler;
 	public static String name = "Channeling";
 	public static Boolean perm = true;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
-	public Channeling(int dt, int du, status st, boolean aob, boolean eor,Schmuck perp, Schmuck channeler, int pr){
+	public Channeling(int dt, int du, status st, boolean aob, boolean eor,Schmuck perp, Schmuck target, int pr){
 		super(1, name, perm, visible, removedEnd, decay, perp, pr);
 		this.damageThreshold = dt;
 		this.duration = du;
 		this.Status = st;
 		this.activateonBreak = aob;
 		this.endofround = eor;
-		this.Channeler = channeler;
+		this.Channeler = perp;
+		this.statusHaver = target;
 	}
 	
 	public void restrict(Schmuck s, Action a, BattleState bs){
-		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is too busy Channeling to perfor other actions!"),bs));
+		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is too busy Channeling to perform other actions!"),bs));
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(endofround){
 			Status.doneChanneling(s, bs);
 			bs.bp.stm.hardRemoveStatus(s, this);
-			bs.bp.stm.hardRemoveStatus(s, Status);
+			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 		}
 	}
 
@@ -45,9 +46,9 @@ public class Channeling extends status{
 		if(damageThreshold <=0){
 			bs.bp.bt.addScene(vic.getName()+"'s Channeling was interrupted!");
 			bs.bp.stm.hardRemoveStatus(vic, this);
-			bs.bp.stm.hardRemoveStatus(vic, Status);
+			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 			if(activateonBreak){
-				vic.onChannelComplete(bs);
+				statusHaver.onChannelComplete(bs);
 			}
 		}
 		return damage;
@@ -57,15 +58,15 @@ public class Channeling extends status{
 		duration--;
 		if(duration <= 0){
 			bs.bp.bt.addScene(Channeler.getName()+" completes "+s.getPronoun(1)+" Channeling!");
-			s.onChannelComplete(bs);
+			statusHaver.onChannelComplete(bs);
 			bs.bp.stm.hardRemoveStatus(Channeler, this);
-			bs.bp.stm.hardRemoveStatus(Channeler, Status);
+			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 		}
 	}
 
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" is Channeling something!";
+		return s.getName()+" is Channeling!";
 	}
 
 	public String cureText(Schmuck s){

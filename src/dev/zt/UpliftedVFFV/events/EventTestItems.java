@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.inventory.consumables.*;
 import dev.zt.UpliftedVFFV.inventory.equipables.*;
 import dev.zt.UpliftedVFFV.inventory.keyitems.*;
 import dev.zt.UpliftedVFFV.inventory.misc.*;
+import dev.zt.UpliftedVFFV.party.PenPal;
 
 
 
@@ -23,7 +24,8 @@ public class EventTestItems extends Event {
 
 	
 	public void run(){
-				
+		super.recruit(new PenPal(1));
+		
 		super.loot(new AngryBeef(), 2);
 		super.loot(new BeefBoyle(), 3);
 		super.loot(new CaffeinePatch(), 5);
