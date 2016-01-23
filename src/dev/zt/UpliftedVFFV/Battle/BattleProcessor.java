@@ -284,6 +284,7 @@ public class BattleProcessor {
 				if(fightlost()){
 					bt.addScene("The fight was lost.");
 					bt.addScene("Everything goes black.");
+					
 				}
 				
 				//If all enemies are defeated, get loot and stuff.

@@ -41,6 +41,9 @@ public class BattleText {
 	
 	public void tick() {
 		if(!scenes.isEmpty()){
+			if(scenes.get(0).getText().contains("Everything goes black.")){
+				bs.end(false);
+			}
 			if(scenes.get(0).isAuto() && !scrolling && actionRun){
 				if(this.autoWait<=80){
 					this.autoWait++;
@@ -62,7 +65,7 @@ public class BattleText {
 			if(!scenes.isEmpty()){
 				
 				//Indicates that battle is lost.
-				if(scenes.get(0).getText().contains("You and everyone you care about are dead.")){
+				if(scenes.get(0).getText().contains("Everything goes black.")){
 					bs.end(false);
 				}
 				else{

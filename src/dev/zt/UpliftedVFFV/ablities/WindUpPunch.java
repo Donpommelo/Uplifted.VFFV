@@ -2,6 +2,8 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Channeling;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.WindUpPunchEffect;
 
 public class WindUpPunch extends Skills {
@@ -18,8 +20,10 @@ public class WindUpPunch extends Skills {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
-	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(perp, new WindUpPunchEffect(0,perp,vic, 50));
+	public void run(Schmuck perp, Schmuck vic, BattleState bs){
+		status st = new WindUpPunchEffect(0,perp,vic, 50);
+		bs.bp.stm.addStatus(perp, st);
+		bs.bp.stm.addStatus(perp, new Channeling(1,10,st,false,true,perp,perp,50));
 	}
 
 }
