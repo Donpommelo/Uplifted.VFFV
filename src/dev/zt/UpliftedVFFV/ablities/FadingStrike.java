@@ -26,7 +26,7 @@ public class FadingStrike extends Skills {
 		status st = new FadingStrikeEffect(0,perp,vic, 50);
 		bs.bp.stm.addStatus(perp, st);
 		bs.bp.stm.addStatus(perp, new Untouchable(1,perp,50));
-		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/10,8,st,false,false,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/10,8,st,false,false,true,perp,perp,50));
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

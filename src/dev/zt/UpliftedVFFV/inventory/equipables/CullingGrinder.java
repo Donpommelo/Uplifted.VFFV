@@ -16,8 +16,8 @@ public class CullingGrinder extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 60;
-	static String descr="";
-	static String descrShort="";
+	static String descr="A grinder previously used to convert Lachiplatre into the paste that forms the\nfoundation of nearly every food purchasable in the 6th Floor Servery.";
+	static String descrShort="Damage low-leveled foes at\nstart of fights";
 	
 	public status[] enchantment = new status[1];
 	public CullingGrinder() {

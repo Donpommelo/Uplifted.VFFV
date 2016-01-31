@@ -16,7 +16,7 @@ public class AbyssalInsignia extends Item{
 	static int value = 666;
 	static int slot = 1;
 	static int lvlReq = 33;
-	static String descr="Designates its bearer as one of 'them', whomever they are.";
+	static String descr="Designates its bearer as one of 'them', whomever 'they' are.";
 	static String descrShort = "Grants owner Void Alignment.";
 	public status[] enchantment = new status[1];
 	public AbyssalInsignia() {

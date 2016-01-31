@@ -23,14 +23,14 @@ public class Bind extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		status st = new Stunned(50);
+		status st = new Stunned(5,perp,50);
 		bs.bp.stm.addStatus(vic, st);
-		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/4,15,st,false,false,perp,vic,50));
+		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/4,15,st,false,false,true,perp,vic,50));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		status st = new Stunned((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())));
+		status st = new Stunned(5,perp,50);
 		bs.bp.stm.addStatus(vic, st);
-		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/4,15,st,false,false,perp,vic,50));
+		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/4,15,st,false,false,true,perp,vic,50));
 	}
 }

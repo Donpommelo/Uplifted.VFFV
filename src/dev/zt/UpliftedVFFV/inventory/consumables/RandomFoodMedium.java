@@ -451,15 +451,18 @@ public class RandomFoodMedium extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" eats the "+this.getName()+"!");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the "+this.getName()+"!");
-		}
 		bs.bp.em.hpChange((int)(120*(1+perp.getItemPow())),perp,vic,6);
 		bs.bp.em.bpChange((int)(80*(1+perp.getItemPow())),vic);
 
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" eats the "+this.getName()+"!";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" the "+this.getName()+"!";
+		}
 	}
 	
 	public void use(Schmuck s){

@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class HealBlock extends status{
 	
@@ -15,6 +16,11 @@ public class HealBlock extends status{
 	
 	public HealBlock(int pr){
 		super(name, pr);
+	}
+	
+	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		bs.bp.bt.addScene(vic.getName()+" was prevented from healing!");
+		return 0;
 	}
 
 	public String inflictText(Schmuck s){

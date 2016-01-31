@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.inventory.consumables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Regendegen;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class MidgeBlood extends Item{
 
@@ -24,14 +24,16 @@ public class MidgeBlood extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(3,34,(int)(8*(1+perp.getItemPow())), perp, 40));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" drinks the Midge Blood.");
+			return vic.getName()+" drinks the Midge Blood.";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Midge Blood.");
+			return perp.getName()+" gives "+vic.getName()+" the Midge Blood.";
 		}
-		bs.bp.stm.addStatus(vic, new Regendegen(3,true,(int)(8*(1+perp.getItemPow())), perp, 40));
-
 	}
 	
 	public void use(Schmuck s){

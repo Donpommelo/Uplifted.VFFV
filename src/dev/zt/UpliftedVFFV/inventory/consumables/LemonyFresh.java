@@ -24,18 +24,21 @@ public class LemonyFresh extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" drinks the bottle of Lemony Fresh.");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Lemony Fresh.");
-		}
 		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())), perp, vic,6);
 		bs.bp.em.bpChange((int)(15*(1+perp.getItemPow())),vic);
 		for(status s: vic.statuses){
 			if(!s.perm){
 				s.setDuration(s.getDuration()/2);
 			}
+		}
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" drinks the bottle of Lemony Fresh.";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" the Lemony Fresh.";
 		}
 	}
 	

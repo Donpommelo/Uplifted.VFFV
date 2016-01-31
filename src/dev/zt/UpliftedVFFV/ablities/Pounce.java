@@ -19,11 +19,13 @@ public class Pounce extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.6);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);	
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.6);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
@@ -31,9 +33,4 @@ public class Pounce extends Skills {
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
 	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2]*.6)/(int)(vic.buffedStats[3]);
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
-	}
-
 }

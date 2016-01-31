@@ -20,24 +20,22 @@ public class DamnedDescent extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.5), perp, vic,0);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.9);
+		bs.bp.em.hpChange(damage, perp, vic,0);
 		if(vic.tempStats[0]==0){
 			bs.bp.bt.addScene(perp.getName()+" claims "+vic.getName()+"'s soul!");
-			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]), perp, vic,0);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.9);
+		bs.bp.em.hpChange(damage, perp, vic,0);
 		if(vic.tempStats[0]==0){
-			bs.bp.bt.addScene(perp.getName()+" claims "+vic.getName()+"'s soul!");
-			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
-			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
+			bs.bp.bt.addScene(perp.getName()+" collects "+vic.getName()+"'s soul!");
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
 		}	
 	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*1.5));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 0,80);
-	}
+
 }

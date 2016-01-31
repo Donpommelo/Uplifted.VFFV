@@ -21,22 +21,30 @@ public class ArcherRoulette extends Skills {
 		Schmuck target;
 		if(Math.random()>.5){
 			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
-			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,vic,6);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*1.25);
+			bs.bp.em.hpChange(damage,perp,vic,6);
 		}
 		else{
 			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
 			bs.bp.bt.addScene(perp.getName()+"'s aim was was off target!");
-			bs.bp.em.hpChange(-(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5)),perp,target,6);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, target)*1.25);
+			bs.bp.em.hpChange(damage,perp,target,6);
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange((int)(damageCalc(perp,vic,bs)*(1.5+perp.getCritMulti()-vic.getCritRes())),perp,vic,6);
-	}
-	
-
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.5));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,1000);
-	}	
+		Schmuck target;
+		if(Math.random()>.5){
+			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes())*1.25);
+			bs.bp.em.hpChange(damage,perp,vic,6);
+		}
+		else{
+			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
+			bs.bp.bt.addScene(perp.getName()+"'s aim was was off target!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, target)*(1.5+perp.getCritMulti()-target.getCritRes())*1.25);
+			bs.bp.em.hpChange(damage,perp,target,6);
+			}
+		}
+		
 }

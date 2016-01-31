@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Ablaze;
+import dev.zt.UpliftedVFFV.statusEffects.Combustibility;
 
 
 public class Scald extends Skills {
@@ -21,18 +21,14 @@ public class Scald extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.2), perp,vic,0);
-		bs.bp.stm.addStatus(vic, new Ablaze(3, perp, 70));	
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
+		bs.bp.em.hpChange(damage, perp, vic,0);
+		bs.bp.stm.addStatus(vic, new Combustibility(3, perp, 70));	
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3])), perp,vic,0);
-		bs.bp.stm.addStatus(vic, new Ablaze((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 70));
-	}
-	
-
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.2);
-		return bs.bp.em.damageSimulation(damage, perp, vic, 0,100);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,0);
+		bs.bp.stm.addStatus(vic, new Combustibility((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 70));
 	}
 }

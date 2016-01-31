@@ -60,7 +60,7 @@ public class Assets {
 	//New Stuff
 	
 	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls, LobbyCeiling, LobbyWalls;
-		
+	public static BufferedImage BlackWall, BlackCeiling, AquariumWall, AquariumCeiling, GreyWall, GreyCeiling;	
 	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter;
 	
 	public static BufferedImage southMonolith;
@@ -279,6 +279,12 @@ public class Assets {
 		
 		OfficeCeiling = ThirdFloorWalls.crop(0, 0, 2*width, 3*height);
 		OfficeWalls = ThirdFloorWalls.crop(0, 3*height, 2*width, 2*height);
+		BlackCeiling = ThirdFloorWalls.crop(2*width, 0, 2*width, 3*height);
+		BlackWall = ThirdFloorWalls.crop(2*width, 3*height, 2*width, 2*height);
+		AquariumCeiling = ThirdFloorWalls.crop(4*width, 0, 2*width, 3*height);
+		AquariumWall = ThirdFloorWalls.crop(4*width, 3*height, 2*width, 2*height);
+		GreyCeiling = ThirdFloorWalls.crop(6*width, 0, 2*width, 3*height);
+		GreyWall = ThirdFloorWalls.crop(6*width, 3*height, 2*width, 2*height);
 		
 		//Furniture
 		

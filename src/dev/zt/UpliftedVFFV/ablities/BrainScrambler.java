@@ -19,18 +19,15 @@ public class BrainScrambler extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,2);
 		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,-12,4, perp,50));
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]), perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,2);
 		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,-24,4, perp,50));
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*2);
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,80);
 	}
 
 }

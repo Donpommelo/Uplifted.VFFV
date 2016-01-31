@@ -24,7 +24,7 @@ public class Terraform extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("All battlers look discombobulated.");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s,6);
+			bs.bp.em.hpChange(-25, perp, s,6);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);
@@ -58,13 +58,4 @@ public class Terraform extends Skills {
 		}
 		bs.bp.TurnOrderQueue.add(0, new Action(perp, vic, new Terraform(0), bs));	
 	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = 0;
-		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]),perp,s,6,1000);
-		}
-		return damage;
-	}
-
 }

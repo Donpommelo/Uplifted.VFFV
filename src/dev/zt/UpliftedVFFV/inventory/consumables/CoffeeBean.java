@@ -24,16 +24,19 @@ public class CoffeeBean extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" pops the Coffee bean into his/her mouth.");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Coffee Bean.");
-		}
-		bs.bp.bt.addScene("The Coffee Bean scalds "+vic.getName()+"'s tongue.");
+		bs.bp.bt.addScene("The Coffee Bean scalds "+vic.getName()+"'s tongue!");
 		bs.bp.em.hpChange((int)(-10*(1+perp.getItemPow())),perp,vic,6);
 		bs.bp.em.bpChange((int)(30*(1+perp.getItemPow())),vic);
 
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" pops the Coffee bean into "+vic.getPronoun(3)+" mouth.";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" the Coffee Bean.";
+		}
 	}
 	
 	public void use(Schmuck s){

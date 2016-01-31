@@ -29,7 +29,7 @@ public class WarpSElevatortoBackroom extends Event {
 			d[4] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"If you ever want to ask me a question, just go to your Writing Desk and type/the word or phrase you'd like to know more about./");
 			d[5] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"But what is the purpose of that if we can just talk to each other like this?/");
 			d[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,". . ./");
-			d[7] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I don¡¦t mean to be intrusive, but what exactly are you?/");
+			d[7] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I don't mean to be intrusive, but what exactly are you?/");
 			d[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"I'm your Pen Pal. Didn't I already explain that?/");
 			d[9] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Are you also a tree?/");
 			d[10] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Is that what this is? In any case, no./Although I have been adrift on one since my plane was shot down./");

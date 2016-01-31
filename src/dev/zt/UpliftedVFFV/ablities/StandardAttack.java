@@ -25,8 +25,7 @@ public class StandardAttack extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		int statAttack = (int)(perp.getDamageStat()+2);
-		int damage = -(perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3];
+		int damage = bs.bp.em.logScaleDamage(perp, vic);
 		//Elementally Aligned units gain special standard attacks
 		switch((int)(perp.getElemAlignment())){
 		//physical is boring
@@ -69,8 +68,7 @@ public class StandardAttack extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		int statAttack = (int)(perp.getDamageStat()+2);
-		int damage = -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/vic.buffedStats[3]*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		//Elementally Aligned units gain special standard attacks
 		switch((int)(perp.getElemAlignment())){
 		//Physical is boring
@@ -112,13 +110,7 @@ public class StandardAttack extends Skills {
 		perp.onStandardAttackEffects(vic, damage, bs);
 
 	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int statAttack = (int)(perp.getDamageStat()+2);
-		int damage = -(int)((perp.buffedStats[statAttack]*perp.buffedStats[statAttack])/(vic.buffedStats[3]));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
-	}
-	
+		
 	public void TOQChange(Action a, BattleState bs){
 		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(50)) || a.getUser().getElemAlignment() == 4){
 			bs.bp.TurnOrderQueue.remove(a);

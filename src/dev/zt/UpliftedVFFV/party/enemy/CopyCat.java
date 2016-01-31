@@ -18,7 +18,7 @@ public class CopyCat extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=60,startBp=40,startPow=18, startDef=25, startSpd=16, startSkl=20, startLuk=20, startInt=27;
+	public final static int startHp=60,startBp=40,startPow=16, startDef=25, startSpd=16, startSkl=20, startLuk=20, startInt=27;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=4.3, bpGrowth=1.7, powGrowth=3.7, defGrowth=3.9, spdGrowth=1.4, sklGrowth=1.5, intGrowth=1.1, lukGrowth=2.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
@@ -54,7 +54,7 @@ public class CopyCat extends Schmuck{
 	
 	
 	public Action getAction(BattleState bs){
-		int random = (int)(Math.random()*4);
+		int random = (int)(Math.random()*5);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
 		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);
@@ -71,6 +71,9 @@ public class CopyCat extends Schmuck{
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CreateCopy(0),bs);
 				break;
 			case 3:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CreateCopy(0),bs);
+				break;
+			case 4:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CreateCopy(0),bs);
 				break;
 			}

@@ -21,7 +21,7 @@ public class DayattheFair extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("The round was ended prematurely");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s,6);
+			bs.bp.em.hpChange(-15, perp, s,6);
 		}
 		bs.bp.TurnOrderQueue.clear();
 	}
@@ -29,18 +29,9 @@ public class DayattheFair extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.addScene("The round was ended prematurely");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-s.getCritRes())), perp, s,6);
+			bs.bp.em.hpChange(-(int)(15*(1+perp.getCritMulti()-s.getCritRes())), perp, s,6);
 		}
 		bs.bp.TurnOrderQueue.clear();
 
 	}
-		
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = 0;
-		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2),perp,s,6,1000);
-		}
-		return damage;
-	}
-	
 }

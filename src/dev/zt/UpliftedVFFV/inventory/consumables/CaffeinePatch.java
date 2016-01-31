@@ -23,15 +23,17 @@ public class CaffeinePatch extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" uses a Caffeine Patch");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" uses a Caffeine Patch on "+vic.getName());
-		}
 		bs.bp.bt.addScene(vic.getName()+" looks 20 points more motivated.");
 		bs.bp.em.bpChange(20,vic);
-
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" applies a Caffeine Patch to "+vic.getPronoun(3)+"self!";
+		}
+		else{
+			return perp.getName()+" applies a Caffeine Patch to "+vic.getName()+"!";
+		}
 	}
 	
 	public void use(Schmuck s){

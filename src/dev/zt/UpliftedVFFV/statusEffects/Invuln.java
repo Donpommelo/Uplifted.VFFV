@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invuln extends status{
 	
@@ -12,6 +13,11 @@ public class Invuln extends status{
 	public Invuln(int i, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
+	
+	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		bs.bp.bt.addScene(vic.getName()+"'s Invulnerability prevented damage!");
+		return 0;
+	}	
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" was made invulnerable!";

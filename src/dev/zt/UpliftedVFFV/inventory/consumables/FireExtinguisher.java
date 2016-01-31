@@ -3,7 +3,7 @@ package dev.zt.UpliftedVFFV.inventory.consumables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Ablaze;
+import dev.zt.UpliftedVFFV.statusEffects.Combustibility;
 
 public class FireExtinguisher extends Item{
 
@@ -24,7 +24,15 @@ public class FireExtinguisher extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene(perp.getName()+" sprays the Fire Extinguisher at "+vic.getName());
-		bs.bp.stm.removeStatus(vic, new Ablaze(1, perp, 50) );
+		bs.bp.stm.removeStatus(vic, new Combustibility(1, perp, 50) );
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" sprays "+vic.getPronoun(3)+"self with a Fire Extinguisher!";
+		}
+		else{
+			return perp.getName()+" sprays "+vic.getName()+" with a Fire Extinguisher!";
+		}
 	}
 }

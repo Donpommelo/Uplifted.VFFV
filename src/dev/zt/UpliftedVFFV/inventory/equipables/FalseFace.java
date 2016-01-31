@@ -17,7 +17,7 @@ public class FalseFace extends Item{
 	static int value = 500;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="";
+	static String descr="Lets you wear the face of someone who knew what he was doing.";
 	static String descrShort="Reduces Level Requirements by 60%";
 	public status[] enchantment = new status[1];
 	public FalseFace() {

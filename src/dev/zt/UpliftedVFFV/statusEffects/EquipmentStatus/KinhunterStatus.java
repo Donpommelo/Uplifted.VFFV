@@ -12,7 +12,7 @@ public class KinhunterStatus extends status{
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(perp.getElemAlignment() != 0 && perp.getElemAlignment() == vic.getElemAlignment()){
-			damage *= 1.3*(1+perp.getEquipPow());
+			damage *= 1.5*(1+perp.getEquipPow());
 		}
 		return damage;
 	}	

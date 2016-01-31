@@ -27,6 +27,7 @@ public class CleansingSpray extends Skills {
 				bs.bp.stm.removeStatus(vic, st);
 			}
 		}
-		bs.bp.em.hpChange(-(perp.getBuffedPow()*perp.getBuffedPow()*statusesRemoved/vic.getBuffedDef()*5), perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * statusesRemoved / 5);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 	}
 }

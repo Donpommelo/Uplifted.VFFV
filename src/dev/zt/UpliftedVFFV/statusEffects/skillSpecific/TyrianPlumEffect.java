@@ -17,14 +17,12 @@ public class TyrianPlumEffect extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public void onAction(BattleState bs, Action a){
-		int amount = a.skill.getCost();
-		if(amount!=0){
-			if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
-				bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
-				bs.bp.em.hpChange((int)(amount*1.5*(1+perp.getHealPower())), perp, perp,2);
-			}
+	public int spendMeterEffect(Schmuck s, BattleState bs, int mp){
+		if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
+			bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
+			bs.bp.em.hpChange((int)(mp*1.5*(1+perp.getHealPower())), perp, perp,2);
 		}
+		return mp;
 	}
 	
 	public String inflictText(Schmuck s){

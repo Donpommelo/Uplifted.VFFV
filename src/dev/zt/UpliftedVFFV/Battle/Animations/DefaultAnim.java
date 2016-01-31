@@ -15,7 +15,7 @@ public class DefaultAnim extends BattleAnimation{
 		super(frames);
 	}
 	
-	public void animate(int frame, Action a, Graphics g){
+	public void animateAction(int frame, Action a, Graphics g){
 		g.setColor(new Color(255, 0, 0));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 		int startx = a.getUser().getX() + Assets.battleSprites[a.getUser().battleSprite].getWidth()/2;

@@ -19,7 +19,7 @@ public class CactusSuit extends Item{
 	static int slot = 1;
 	static int lvlReq = 14;
 	static String descr="A prickly and unfriendly suit";
-	static String descrShort="Reflects damage against foes.";
+	static String descrShort="+5 Green Alignment Points\n+15 Hp\nReflects damage.";
 	public status[] enchantment = new status[3];
 	public CactusSuit() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

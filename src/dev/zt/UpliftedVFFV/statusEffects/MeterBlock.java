@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class MeterBlock extends status{
 	
@@ -15,6 +16,12 @@ public class MeterBlock extends status{
 	
 	public MeterBlock(int pr){
 		super(name, pr);
+	}
+	
+	
+	public int gainMeterEffect(Schmuck s, BattleState bs, int mp){
+		bs.bp.bt.addScene(s.getName()+" was prevented from regenerating Mp!");
+		return 0;
 	}
 	
 	public String inflictText(Schmuck s){

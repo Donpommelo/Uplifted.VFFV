@@ -23,13 +23,16 @@ public class MeltedIcecream extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())),perp,vic,6);
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" drinks the Melted Icecream.");
+			return vic.getName()+" drinks/eats the Melted Icecream.";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Melted Icecream.");
+			return perp.getName()+" gives "+vic.getName()+" the Melted Icecream.";
 		}
-		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())),perp,vic,6);
 	}
 	
 	public void use(Schmuck s){

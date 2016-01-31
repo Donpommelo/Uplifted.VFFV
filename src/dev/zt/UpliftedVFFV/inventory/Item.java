@@ -113,6 +113,10 @@ public class Item implements Comparable<Item>, Serializable{
 		return descrShort;
 	}
 	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" used "+getName()+"!";
+	}
+	
 	//0: All targets
 	//1: No target: automatically performs action
 	//2: All targetable allies (used in reviving)

@@ -28,7 +28,7 @@ public class CreateCopy extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		Schmuck summon = new Midge(1);
-		switch((int)(Math.random()*7)){
+		switch((int)(Math.random()*6)){
 		case 0:		
 			summon = new Midge(1);
 			break;

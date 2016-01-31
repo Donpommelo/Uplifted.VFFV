@@ -24,13 +24,16 @@ public class Unbeef extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" eats the Unbeef, and looks suitable unbeefy!");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Unbeef.");
-		}
 		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp, 30) );
 	}
 
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" eats the Unbeef, and looks suitable unbeefy!";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" the Unbeef.";
+		}
+	}
+	
 }

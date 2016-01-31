@@ -101,12 +101,12 @@ public class EventElevatorPanel extends Event {
 					d3[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Alright, Here's your floor!/");
 					d3[1] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Wait! How are these letters responding to everything I say?/Can you hear me?/");
 					d3[2] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Now Operator, We mustn't squander time. Every second wasted on silly/questions is one less for preventing the unspeakable calamity that would occur/if we fail in this endeavor./");
-					d3[3] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well, I don¡¦t think I can follow you. I¡¦m supposed to stay here and do my job./");
+					d3[3] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well, I don't think I can follow you. I'm supposed to stay here and do my job./");
 					d3[4] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Your job is to help people get to where they need, No?/Well, I need to get to Suite 521, so its your job to get me there./");
 					d3[5] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well I suppose. . ./");
 					d3[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"And besides, as you may have noticed, I have no legs./");
 					d3[7] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, ". . ./");
-					d3[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Don¡¦t worry. I trust that this whole affair will be either very short or very fulfilling!/");
+					d3[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Don't worry. I trust that this whole affair will be either very short or very fulfilling!/");
 					d3[9] =  new Dialog("meep","/CharacterBusts/Arturo.png",1, "Your Pen Pal joined your party!/");
 					super.Dialog(d3, 9, this.getId(), true);
 					super.recruit(new PenPal(1));

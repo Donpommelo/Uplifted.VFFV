@@ -27,11 +27,11 @@ public class Isolated extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Disarmed.";
+		return s.getName()+" was Isolated!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s arms grew back.";
+		return s.getName()+" rejoined society!";
 	}
 	
 	public Boolean isBad(){

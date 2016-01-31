@@ -17,8 +17,8 @@ public class PainGate extends Item{
 	static int value = 175;
 	static int slot = 1;
 	static int lvlReq = 16;
-	static String descr="";
-	static String descrShort="";
+	static String descr="TEMP";
+	static String descrShort="+25 Max Hp\nRounds damage taken to nearest 20.";
 	public status[] enchantment = new status[2];
 	public PainGate() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

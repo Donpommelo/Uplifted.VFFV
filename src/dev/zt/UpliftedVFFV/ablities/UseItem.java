@@ -75,7 +75,7 @@ public UseItem(int index, Item i, GameState gs) {
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
-		return 	perp.getName()+" used "+thing.getName()+"!";
+		return thing.useName(perp, vic, bs);
 	}
 	
 	public boolean silenceBlocked(){

@@ -17,7 +17,7 @@ public class CatchersGlove extends Item{
 	static int slot = 1;
 	static int lvlReq = 1;
 	static String descr="A broad glove for catching all sorts of different things.";
-	static String descrShort="+11% Item Drop Rate.";
+	static String descrShort="+11% Item Drop.";
 	public status[] enchantment = new status[1];
 	public CatchersGlove() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

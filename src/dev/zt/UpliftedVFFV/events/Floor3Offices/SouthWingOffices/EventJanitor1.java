@@ -50,25 +50,25 @@ public class EventJanitor1 extends Event {
 		case 0: 
 			if(!this.isSelfswitch1()){
 				Dialog[] d = new Dialog[7];
-				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Hmm? I don't believe we've met before./");
+				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Hmm? I don't believe we've met before./");
 				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Hello. I am the Operator. I was looking for Suite 521./");
-				d[2] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Oh. Sadly I've never heard of the place before./But maybe I can provide you some other services. . ./");
+				d[2] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Oh. Sadly I've never heard of the place before./But maybe I can provide you some other services. . ./");
 				d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What sort of . . .services?/");
-				d[4] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"I am the humble janitor of this facility, but I also do all manner of odd jobs too./");
-				d[5] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Well, mostly I run my own little business. Y'know, just to make a bit of money on the side./Feel free to purchase anything that interests you./Just don't mention anything to Management./");
-				d[6] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Oh, and if you ever need your game saved, come to me and I can help./Free of charge!/");
+				d[4] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"I am the humble janitor of this facility, but I also do all manner of odd jobs too./");
+				d[5] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Well, mostly I run my own little business. Y'know, just to make a bit of money on the side./Feel free to purchase anything that interests you./Just don't mention anything to Management./");
+				d[6] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Oh, and if you ever need your game saved, come to me and I can help./Free of charge!/");
 				super.Dialog(d, 6, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"Well, if it isn't my favorite customer./");
+				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Well, if it isn't my favorite customer./");
 				super.Dialog(d, 0, this.getId(), true);
 				}
 			break;
 		case 1:
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"So, what'll it be?/");
+			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"So, what'll it be?/");
 			super.Dialog(d, 0, this.getId(), true);
 			super.ChoiceBranch(this.getId(), Choices);
 			break;
@@ -95,7 +95,7 @@ public class EventJanitor1 extends Event {
 			break;
 		case 2:
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor1small.png",1,"See you again soon./");
+			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"See you again soon./");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setstage(2);
 			break;

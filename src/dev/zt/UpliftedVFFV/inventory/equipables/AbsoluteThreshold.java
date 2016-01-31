@@ -16,8 +16,8 @@ public class AbsoluteThreshold extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="";
-	static String descrShort="";
+	static String descr="The ability to ignore the little things in life.";
+	static String descrShort="Ignores small instances\nof damage.";
 	public status[] enchantment = new status[1];
 	public AbsoluteThreshold() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -73,4 +73,12 @@ public class StatBuffMult extends status{
 	public int stackingEffect(){
 		return 2;
 	}
+	public Boolean isBad(){
+		if(statIncrement >= 1){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 }

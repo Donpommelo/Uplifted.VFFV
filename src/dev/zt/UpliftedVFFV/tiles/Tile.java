@@ -119,6 +119,33 @@ public class Tile {
 		case 29:
 			t = new DarkSandTile();
 			break;
+		case 30:
+			t = new BlackCeiling();
+			break;
+		case 31:
+			t = new BlackWalls();
+			break;
+		case 32:
+			t = new AquariumCeiling();
+			break;
+		case 33:
+			t = new AquariumWalls();
+			break;
+		case 34:
+			t = new GreyCeiling();
+			break;
+		case 35:
+			t = new GreyWalls();
+			break;
+		case 36:
+			t = new SandGroundTile();
+			break;
+		case 37:
+			t = new DarkSandGroundTile();
+			break;
+		case 38:
+			t = new BlueSquareSolidCarpet();
+			break;
 			
 		}
 		return t;

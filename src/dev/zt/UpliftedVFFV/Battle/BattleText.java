@@ -111,7 +111,7 @@ public class BattleText {
 		if(scenes.get(0).getA() != null){
 			if(!actionRun){
 				if(frame < scenes.get(0).getA().skill.ba.frames){
-					scenes.get(0).getA().skill.ba.animate(frame, scenes.get(0).getA(), g);
+					scenes.get(0).getA().skill.ba.animateAction(frame, scenes.get(0).getA(), g);
 					frame++;
 				}
 				else{
@@ -121,14 +121,35 @@ public class BattleText {
 				}
 			}
 		}
+		
+		if(scenes.get(0).getBa() != null){
+//			if(!actionRun){
+				if(frame < scenes.get(0).getBa().frames){
+					scenes.get(0).getBa().animateEffect(frame, g);
+					frame++;
+				}
+				else{
+					frame = 0;
+					actionRun = true;
+				}
+//			}
+		}
+		
 	}
 	
+	//Animate Actions
 	public void addScene(String text, Action a, Boolean auto){
-		this.scenes.add(new BattleScene(text,a, true));//later change to auto
+		this.scenes.add(new BattleScene(text,a, true));
 	}
 	
+	//Animate non-action effects
+	public void addScene(String text, BattleAnimation ba, Boolean auto){
+		this.scenes.add(new BattleScene(text,ba, true));
+	}
+	
+	//Text without animations
 	public void addScene(String text){
-		this.scenes.add(new BattleScene(text,null, true));
+		this.scenes.add(new BattleScene(text, true));
 	}
 
 }

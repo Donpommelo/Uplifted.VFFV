@@ -31,9 +31,9 @@ public class Schmuck implements Serializable{
 	//bonusAcc, bonusEva, bonusScrip, bonusExp, bonusItem, fortune,elemAlignment,damAmp,damRes,itemPow,equipPow,
 	//bonusML, combatFreq,mpCost,bonusInit,damageVariance, critChance, critMulti, healPower,RedRes,BlueRes,GreenRes,YellRes;
 	//PurpRes,VoidRes, RunawayBonus, DiscountBonus!, SummonPower!, DamageStat,  lvlreqMod!, critRes, regenBonus, chargeBonus
-	//cooldownBonus, critAvoid, channelingBonus, PassiveHpRegen?, PassiveMpRegen?
+	//cooldownBonus, critAvoid, channelingBonus, PassiveHpRegen?, PassiveMpRegen, DefenseStat, AttackDamage, DamageReduction
 
-	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	public double[] bonusStats = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 	public int[] elemPoints;
 	public int[] buffedElemPoints = {0,0,0,0,0,0};
@@ -47,7 +47,7 @@ public class Schmuck implements Serializable{
 	
 	public boolean targetable;
 	public boolean visible = true;
-	public int flashDuration;
+	public int flashDuration, damageTaken, colorDamage;
 	public int x = 0;
 	public int y = 0;
 	
@@ -208,7 +208,6 @@ public class Schmuck implements Serializable{
 					}
 					
 				}
-				
 				calcBuffs(null);
 			}
 		}		
@@ -303,13 +302,13 @@ public class Schmuck implements Serializable{
 		calcBuffs(bs);
 	}
 	
-	public void onCritEffects(Schmuck vic, BattleState bs){
+	public void onCritEffects(Schmuck vic, Action a, BattleState bs){
 		ArrayList<status> tempStatuses = new ArrayList<status>();
 		while(!this.statuses.isEmpty()){
 			status tempStatus = this.statuses.get(0);
 			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
 				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
-					tempStatus.onCrit(this, vic, bs);
+					tempStatus.onCrit(this, vic,a, bs);
 				}
 			}
 			if(this.statuses.contains(tempStatus)){
@@ -323,13 +322,13 @@ public class Schmuck implements Serializable{
 		calcBuffs(bs);
 	}
 	
-	public void onMissEffects(Action a, BattleState bs){
+	public void onMissEffects(Action a, Schmuck s, BattleState bs){
 		ArrayList<status> tempStatuses = new ArrayList<status>();
 		while(!this.statuses.isEmpty()){
 			status tempStatus = this.statuses.get(0);
 			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
 				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
-					tempStatus.onMiss(a, bs);
+					tempStatus.onMiss(s, a, bs);
 				}
 			}
 			if(this.statuses.contains(tempStatus)){
@@ -337,8 +336,8 @@ public class Schmuck implements Serializable{
 				tempStatuses.add(tempStatus);
 			}
 		}
-		for(status s : tempStatuses){
-			this.statuses.add(s);
+		for(status st : tempStatuses){
+			this.statuses.add(st);
 		}
 		calcBuffs(bs);
 	}
@@ -1389,6 +1388,30 @@ public class Schmuck implements Serializable{
 		bonusStats[35] = bonus;
 	}
 	
+	public double getDefenseStat(){
+		return bonusStats[36];
+	}
+	
+	public void setDefenseStat(double bonus){
+		bonusStats[36] = bonus;
+	}
+	
+	public double getAttackDamage(){
+		return bonusStats[37];
+	}
+	
+	public void setAttackDamage(double bonus){
+		bonusStats[37] = bonus;
+	}
+	
+	public double getDamageReduction(){
+		return bonusStats[38];
+	}
+	
+	public void setDamageReduction(double bonus){
+		bonusStats[38] = bonus;
+	}
+	
 	public int getRedPoints(){
 		return buffedElemPoints[0];
 	}
@@ -1461,9 +1484,22 @@ public class Schmuck implements Serializable{
 	public void setFlashDuration(int flashDuration) {
 		this.flashDuration = flashDuration;
 	}
-	
-	
+
+	public int getDamageTaken() {
+		return damageTaken;
+	}
+
+	public void setDamageTaken(int damageTaken) {
+		this.damageTaken = damageTaken;
+	}
+
+	public int getColorDamage() {
+		return colorDamage;
+	}
+
+	public void setColorDamage(int colorDamage) {
+		this.colorDamage = colorDamage;
+	}
 		
-	
 	
 }

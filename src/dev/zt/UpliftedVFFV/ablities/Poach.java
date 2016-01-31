@@ -10,7 +10,7 @@ public class Poach extends Skills {
 	public static String descr = "User poaches target,\ndamaging and preventing item use.";
 	public static String descrShort = "Deals damage and prevents item usage.";
 	public static int cost = 1;
-	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 0;	//Physical
 	public static int targetType = 0;	//No Target
@@ -19,7 +19,8 @@ public class Poach extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.5))/vic.buffedStats[3], perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 			if(bs.bp.TurnOrderQueue.get(i)!=null){
 				if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && bs.bp.TurnOrderQueue.get(i).getSkill().getName().equals("Use Item")){
@@ -32,7 +33,8 @@ public class Poach extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);	
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 			if(bs.bp.TurnOrderQueue.get(i)!=null){
 				if(bs.bp.TurnOrderQueue.get(i).user.equals(vic) && bs.bp.TurnOrderQueue.get(i).getSkill().getName().equals("Use Item")){
@@ -47,11 +49,6 @@ public class Poach extends Skills {
 	public void TOQChange(Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2]*.5)/(int)(vic.buffedStats[3]);
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
 	}
 
 }

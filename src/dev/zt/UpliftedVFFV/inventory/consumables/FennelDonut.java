@@ -23,13 +23,16 @@ public class FennelDonut extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.em.hpChange((int)(45*(1+perp.getItemPow())),perp,vic,6);
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" eats the nasty, nasty donut.");
+			return vic.getName()+" eats the nasty, nasty donut.";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the nasty, nasty donut.");
+			return perp.getName()+" gives "+vic.getName()+" the nasty, nasty donut.";
 		}
-		bs.bp.em.hpChange((int)(45*(1+perp.getItemPow())),perp,vic,6);
 	}
 	
 	public void use(Schmuck s){

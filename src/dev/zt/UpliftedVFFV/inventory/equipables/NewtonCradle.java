@@ -3,7 +3,8 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.NewtonsCradleStatus;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class NewtonCradle extends Item{
 
@@ -17,15 +18,16 @@ public class NewtonCradle extends Item{
 	static int slot = 1;
 	static int lvlReq = 5;
 	static String descr="An office decoration consisting of multiple swinging metal\nspheres. Great for employees who can't handle pets.";
-	static String descrShort="Skl+6";
-	public status[] enchantment = new status[1];
+	static String descrShort="+15% Combat Initiative\nTansfers Momentum";
+	public status[] enchantment = new status[2];
 	public NewtonCradle() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 		
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffAdd(5,(int)(6*(1+s.getEquipPow())), 80);
+		enchantment[0] = new NewtonsCradleStatus(50);
+		enchantment[1] = new BonusStatBuff(14,.15,50);
 		return enchantment;
 	}
 }

@@ -18,7 +18,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Shirley extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
-	public final static int startHp=15,startBp=45,startPow=8, startDef=11, startSpd=16, startSkl=19, startLuk=20, startInt=26;
+	public final static int startHp=15,startBp=45,startPow=15, startDef=11, startSpd=16, startSkl=19, startLuk=20, startInt=26;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=1.4, bpGrowth=4.7, powGrowth= 1.7, defGrowth= 1.8, spdGrowth=1.9, sklGrowth=1.8, intGrowth=2.7, lukGrowth=1.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

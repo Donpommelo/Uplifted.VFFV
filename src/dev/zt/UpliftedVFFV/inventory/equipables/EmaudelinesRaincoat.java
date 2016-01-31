@@ -16,8 +16,8 @@ public class EmaudelinesRaincoat extends Item{
 	static int value = 4400;
 	static int slot = 1;
 	static int lvlReq = 57;
-	static String descr="";
-	static String descrShort="";
+	static String descr="A sturdy coat for keeping out the rain. It’s still a little warm.";
+	static String descrShort="User cannot take more than\n200 Blue damage in one\ninstance of damage.";
 	public status[] enchantment = new status[1];
 	public EmaudelinesRaincoat() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

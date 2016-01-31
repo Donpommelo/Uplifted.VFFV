@@ -27,7 +27,7 @@ public class Silenced extends status{
 
 			}
 			else{
-				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use "+a.skill.getName()+" but was Silenced."),bs));
+				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use "+a.skill.getName()+" but was Silenced!"),bs));
 			}
 		}
 	}

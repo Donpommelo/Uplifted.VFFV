@@ -11,7 +11,7 @@ public class BloodSealStatus extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(bs.bp.roundNum == 9){
+		if(bs.bp.roundNum == (int)(9*(1+s.getEquipPow()))){
 			bs.bp.bt.addScene(s.getName()+"'s Blood Seal glows with a sinister energy!");
 			for(status meep : s.statuses){
 				if(!meep.perm && !meep.getName().equals("incapacitated")) {

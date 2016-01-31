@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.BeefedUp;
+import dev.zt.UpliftedVFFV.statusEffects.Berzerk;
 
 public class AngryBeef extends Item{
 
@@ -24,12 +25,16 @@ public class AngryBeef extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
+		bs.bp.stm.addStatus(vic, new Berzerk(5, perp, 30));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" angrily chews on the Angry Beef!");
+			return vic.getName()+" angrily chews on the Angry Beef!";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Angry Beef.");
+			return perp.getName()+" gives "+vic.getName()+" the Angry Beef.";
 		}
-		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
 	}
 }

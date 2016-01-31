@@ -12,19 +12,21 @@ public class Channeling extends status{
 	public status Status;
 	public boolean activateonBreak;
 	public boolean endofround;
+	public Boolean disableRemove;
 	public Schmuck statusHaver, Channeler;
 	public static String name = "Channeling";
 	public static Boolean perm = true;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
-	public Channeling(int dt, int du, status st, boolean aob, boolean eor,Schmuck perp, Schmuck target, int pr){
+	public Channeling(int dt, int du, status st, boolean aob, boolean eor, boolean disr,Schmuck perp, Schmuck target, int pr){
 		super(1, name, perm, visible, removedEnd, decay, perp, pr);
 		this.damageThreshold = dt;
 		this.duration = du;
 		this.Status = st;
 		this.activateonBreak = aob;
 		this.endofround = eor;
+		this.disableRemove = disr;
 		this.Channeler = perp;
 		this.statusHaver = target;
 	}
@@ -38,6 +40,16 @@ public class Channeling extends status{
 			Status.doneChanneling(s, bs);
 			bs.bp.stm.hardRemoveStatus(s, this);
 			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
+		}
+	}
+	
+	public void onStatusInflict(Schmuck s, status st, BattleState bs){
+		if(disableRemove && st.isDisable()){
+			bs.bp.stm.hardRemoveStatus(s, this);
+			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
+			if(activateonBreak){
+				statusHaver.onChannelComplete(bs);
+			}
 		}
 	}
 

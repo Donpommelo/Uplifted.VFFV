@@ -15,7 +15,7 @@ public class StandardAttackAnim extends BattleAnimation{
 		super(frames);
 	}
 	
-	public void animate(int frame, Action a, Graphics g){
+	public void animateAction(int frame, Action a, Graphics g){
 		if(frame<25){
 			if(a.bs.bp.allies.contains(a.user)){
 				a.user.setX(a.user.getX()-2);

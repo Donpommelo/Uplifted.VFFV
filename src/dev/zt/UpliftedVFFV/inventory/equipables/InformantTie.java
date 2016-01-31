@@ -16,8 +16,8 @@ public class InformantTie extends Item{
 	static int value = 3950;
 	static int slot = 1;
 	static int lvlReq = 46;
-	static String descr="";
-	static String descrShort="";
+	static String descr="An enchanted tie of an indescribable color.";
+	static String descrShort="Adds 8 damage to every\ninstance of damage dealt.";
 	public status[] enchantment = new status[1];
 	public InformantTie() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

@@ -17,8 +17,8 @@ public class BoxofFun extends Item{
 	static int value = 750;
 	static int slot = 1;
 	static int lvlReq = 20;
-	static String descr="";
-	static String descrShort="";
+	static String descr="You've never met this 'Skipper' fellow before\nbut you certainly don't like his idea of 'fun'.";
+	static String descrShort="+10 Red Alignment Points\nCount as an enemy for AOE\ncalculations.";
 	public status[] enchantment = new status[2];
 	public BoxofFun() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

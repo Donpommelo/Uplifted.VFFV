@@ -22,7 +22,7 @@ public class WarpMailroomtoSouthHallLong extends Event {
 			Dialog[] d = new Dialog[4];
 			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Well that was minimally helpful./");
 			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"So, where should I take you now?/");
-			d[2] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"I don¡¦t have any leads, really. We must comb the remainder of the building for/Suite 521. We have no alternative./");
+			d[2] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"I don't have any leads, really. We must comb the remainder of the building for/Suite 521. We have no alternative./");
 			d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Oh, and seeing as this won't be as easy as I had hoped,why don't we head back/to your room? I have some interesting things to show you./");
 			super.Dialog(d, 3, this.getId(), true);
 		}

@@ -17,7 +17,7 @@ public class DreamEater extends Item{
 	static int value = 550;
 	static int slot = 1;
 	static int lvlReq = 19;
-	static String descr="";
+	static String descr="TEMP";
 	static String descrShort="+14 Int.\nWielder's damage will not remove Sleep.";
 	public status[] enchantment = new status[2];
 	public DreamEater() {

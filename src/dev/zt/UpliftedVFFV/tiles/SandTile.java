@@ -12,4 +12,8 @@ public class SandTile extends Tile{
 	public SandTile() {
 		super(texture, id);
 	}
+	
+	public boolean isSolid(){
+		return true;
+	}
 }

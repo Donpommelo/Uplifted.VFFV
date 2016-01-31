@@ -14,7 +14,7 @@ public class AbyssalInsigniaStatus extends status{
 	
 	public void statchanges(Schmuck s){
 		if(s.getPrismaticPoints() < 0){
-			s.buffedElemPoints[5] -= s.getPrismaticPoints();
+			s.buffedElemPoints[5] -= s.getPrismaticPoints()*(1+s.getEquipPow());
 		}
 	}
 }

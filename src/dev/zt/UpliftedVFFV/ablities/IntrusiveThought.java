@@ -20,17 +20,8 @@ public class IntrusiveThought extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(3), perp, vic,6);
-		if(bs.bp.stm.checkStatus(vic, new IntrusiveThoughtEffect(perp, 50))){
-			bs.bp.stm.findStatus(vic, new IntrusiveThoughtEffect(perp, 50)).stack++;
-			bs.bp.bt.addScene(vic.getName()+"'s Intrusive Thoughts grow.");
-		}
-		else{
-			bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(perp, 50));
-		}		
+		bs.bp.em.hpChange(-(3), perp, vic,4);
+		bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(perp, 50));	
 	}
 	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		return 3;
-	}
 }

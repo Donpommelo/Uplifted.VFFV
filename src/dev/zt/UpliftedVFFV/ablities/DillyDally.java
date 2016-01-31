@@ -24,15 +24,7 @@ public class DillyDally extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 	
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return "DillyDally";
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return "";
-	}
-	
+		
 	public void TOQChange(Action a, BattleState bs){
 //		bs.bp.TurnOrderQueue.remove(a);
 //		bs.bp.TurnOrderQueue.add(a);

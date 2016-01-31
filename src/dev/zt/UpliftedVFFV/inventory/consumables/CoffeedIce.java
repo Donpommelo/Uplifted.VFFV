@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.inventory.consumables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Asleep;
 
 
 public class CoffeedIce extends Item{
@@ -17,22 +18,25 @@ public class CoffeedIce extends Item{
 	static int slot = 0;
 	static int lvlReq = 2;
 	static String descr="A thermos of shaved ice with some faint coffee flavoring.";
-	static String descrShort="Restore Hp and Mp.";
+	static String descrShort="Restore Hp and Mp.\nCures Sleep";
 	public CoffeedIce() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" drinks the Coffee'd Ice.");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.");
-		}
-//		bs.bp.stm.removeStatus(vic, );
+		bs.bp.stm.removeStatus(vic, new Asleep(50));
 		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())),perp, vic,6);
 		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" imbibes the Coffee'd Ice.";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.";
+		}
 	}
 	
 	public void use(Schmuck s){

@@ -23,7 +23,8 @@ public class FiremansSwitch extends Skills {
 	
 		for(Schmuck s : bs.bp.getSelectableAllies(vic)){
 			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(s.buffedStats[3]*.8)), perp,s,0);
+				int damage = (int)(bs.bp.em.logScaleDamage(perp, s) * 0.8);
+				bs.bp.em.hpChange(damage, perp, s,0);
 			}		
 		}
 	}
@@ -31,19 +32,9 @@ public class FiremansSwitch extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck s : bs.bp.getSelectableAllies(vic)){
 			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*.8)*(1.5+perp.getCritMulti()-s.getCritRes())), perp, s,0);
+				int damage = (int)(bs.bp.em.logScaleDamage(perp, s)*(1.5+perp.getCritMulti()-s.getCritRes()) * 0.8);
+				bs.bp.em.hpChange(damage, perp, s,0);
 			}		
 		}
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = 0;
-		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			if(!s.equals(vic)){
-				damage += bs.bp.em.damageSimulation((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.8)/(s.buffedStats[3])),perp,s,0,1000);
-			}	
-		}
-		return damage;
-	}
-	
+	}	
 }

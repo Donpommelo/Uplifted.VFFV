@@ -23,4 +23,8 @@ public class IntrusiveThoughtEffect extends status{
 	public String cureText(Schmuck s){
 		return s.getName()+"'s Intrusive Thoughts fade.";
 	}
+	
+	public int stackingEffect(){
+		return 5;
+	}
 }

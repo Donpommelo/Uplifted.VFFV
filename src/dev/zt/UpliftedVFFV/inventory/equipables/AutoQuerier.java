@@ -16,7 +16,7 @@ public class AutoQuerier extends Item{
 	static int value = 66;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="An automatic scanning device hooked up to a\nfuturistic database.";
+	static String descr="An automatic scanning device connected to a\nfuturistic database.";
 	static String descrShort = "Scans foes at the start of combat.";
 	public status[] enchantment = new status[1];
 	public AutoQuerier() {

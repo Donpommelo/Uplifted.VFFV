@@ -24,10 +24,13 @@ public class SmellingSalt extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene(perp.getName()+" administers the Smellingsalt to "+vic.getName());
 		bs.bp.stm.removeStatus(vic, new incapacitate(vic) );
 		bs.bs.targetUpdate();
 		bs.bp.em.hpChange(5, perp, vic,6);
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return perp.getName()+" administers the Smellingsalt to "+vic.getName();
 	}
 	
 	public void use(Schmuck s){

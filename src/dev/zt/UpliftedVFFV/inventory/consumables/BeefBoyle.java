@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.BeefedUp;
+import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 
 public class BeefBoyle extends Item{
 	
@@ -25,12 +26,17 @@ public class BeefBoyle extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
+		bs.bp.stm.addStatus(vic, new Silenced(5, perp, 30));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" chokes down the Bef Boyleston!");
+			return vic.getName()+" chokes down the Beef Boyleston!";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Beef Boyleston.");
+			return perp.getName()+" gives "+vic.getName()+" the Beef Boyleston.";
 		}
-		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
 	}
+	
 }

@@ -131,6 +131,24 @@ public class BonusStatBuffMult extends status{
 		case 32:
 			stat = "Crit Avoidance";
 			break;
+		case 33:
+			stat = "Channeling Bonus";
+			break;
+		case 34:
+			stat = "Hp Regeneration";
+			break;
+		case 35:
+			stat = "Mp Regeneration";
+			break;
+		case 36:
+			stat = "Primary Defense Stat";
+			break;
+		case 37:
+			stat = "Attack Damage";
+			break;
+		case 38:
+			stat = "Damage Reduction";
+			break;
 		}
 		if(statIncrement>1){
 			plusminus = "raised";
@@ -147,5 +165,19 @@ public class BonusStatBuffMult extends status{
 	
 	public int stackingEffect(){
 		return 2;
+	}
+	
+	public Boolean isBad(){
+		if(this.statChanged == 6 || this.statChanged == 26 || this.statChanged == 36){
+			return false;
+		}
+		else{
+			if(statIncrement >= 1){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
 	}
 }

@@ -74,9 +74,12 @@ public class EventTestItems extends Event {
 		super.loot(new CatchersGlove(), 1);
 		super.loot(new CatchersMask(), 1);
 		super.loot(new CensuredResonance(), 1);
-		super.loot(new CompoundVitreous(), 1);
+		super.loot(new ClockwiseCage(), 1);
+		super.loot(new CullingGrinder(), 1);
+		super.loot(new CursedCilice(),2);
 		super.loot(new CursedCilice(),2);
 		super.loot(new DeadMansHand(), 3);
+		super.loot(new DeathCap(), 3);
 		super.loot(new DeploreApp(), 1);
 		super.loot(new DreamEater(), 2);
 		super.loot(new EchoShell(), 2);
@@ -84,6 +87,11 @@ public class EventTestItems extends Event {
 		super.loot(new EmaudelinesPrism(), 1);
 		super.loot(new EmaudelinesRaincoat(), 1);
 		super.loot(new EmpathyLink(),1);
+		super.loot(new EnergySourceExhaust(),1);
+		super.loot(new EnergySourceObsolete(),1);
+		super.loot(new EnergySourceOvercharge(),1);
+		super.loot(new EnergySourceUnethical(),1);
+		super.loot(new EnergySourceVolatile(),1);
 		super.loot(new EnvenomEarth(), 1);
 		super.loot(new EternalIce(), 2);
 		super.loot(new FadedSash(), 1);
@@ -96,8 +104,11 @@ public class EventTestItems extends Event {
 		super.loot(new FracturePlate(), 3);
 		super.loot(new GGG(), 2);
 		super.loot(new GloveoftheMaker(), 1);
+		super.loot(new GomezAmygdala(), 1);
 		super.loot(new HandofGlory(), 2);
+		super.loot(new HiredHand(), 2);
 		super.loot(new HnHFake(), 1);
+		super.loot(new HumanityModule(), 1);
 		super.loot(new InformantTie(), 2);
 		super.loot(new KidneyStone(), 2);
 		super.loot(new Kinhunter(), 1);
@@ -107,9 +118,11 @@ public class EventTestItems extends Event {
 		super.loot(new Magnum(), 1);
 		super.loot(new MidgeProboscis(), 1);
 		super.loot(new NewtonCradle(), 1);
+		super.loot(new OverloadSpark(), 1);
 		super.loot(new PainGate(), 3);
 		super.loot(new Paperweight(), 3);
 		super.loot(new PrehistoricSynapse(), 1);
+		super.loot(new RatTail(),2);
 		super.loot(new RecyclerBolus(),2);
 		super.loot(new RingofGyges(), 2);
 		super.loot(new SimmerResent(), 1);
@@ -117,6 +130,7 @@ public class EventTestItems extends Event {
 		super.loot(new SlackerSlacks(), 1);
 		super.loot(new SpeedChute(), 2);
 		super.loot(new TouchofDeath(), 1);
+		super.loot(new ZenBand(), 1);
 		super.Timer(this.getId(), 25);
 	}
 	

@@ -20,7 +20,8 @@ public class WindUpPunchEffect extends status{
 	public void doneChanneling(Schmuck s, BattleState bs){
 		if(bs.bp.getSelectableEnemies(s).contains(Target)){
 			bs.bp.bt.addScene(s.getName()+" unleashed "+s.getPronoun(1)+" Wind-Up Punch!");
-			bs.bp.em.hpChange(-(perp.getBuffedPow()*perp.getBuffedPow()*2/Target.getBuffedDef()), s, Target, 6);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, Target) * 1.5);
+			bs.bp.em.hpChange(damage, perp, Target,6);
 		}
 		bs.bp.stm.removeStatus(s, this);
 	}

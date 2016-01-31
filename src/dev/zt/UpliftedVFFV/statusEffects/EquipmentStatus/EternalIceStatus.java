@@ -14,7 +14,7 @@ public class EternalIceStatus extends status{
 	public void statchanges(Schmuck s){
 		int conversion = s.buffedElemPoints[1]/2;
 		s.buffedElemPoints[1] -= conversion;
-		s.buffedStats[3] +=conversion/2;
+		s.buffedStats[3] += conversion/(2 * (1 - s.getEquipPow()));
 	}
 	
 }

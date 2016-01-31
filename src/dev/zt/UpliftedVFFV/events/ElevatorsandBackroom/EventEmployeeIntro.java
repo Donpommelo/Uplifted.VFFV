@@ -91,7 +91,7 @@ public class EventEmployeeIntro extends Event {
 			switch(this.getstage()){
 			case 0: 
 				Dialog[] d2 = new Dialog[1];
-				d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Take me to floor Six, please. I need to get to work, and you¡¦re the only one who knows/how to use this Elevator thing./");
+				d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Take me to floor Six, please. I need to get to work, and you're the only one who knows/how to use this Elevator thing./");
 				super.Dialog(d2, 0, this.getId(), true);
 				break;
 			case 1:

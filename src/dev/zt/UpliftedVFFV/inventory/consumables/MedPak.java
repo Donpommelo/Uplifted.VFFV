@@ -24,12 +24,6 @@ public class MedPak extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" uses the Med-Pak.");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" uses the Med-Pak on "+vic.getName());
-		}
 		bs.bp.em.hpChange((int)(20*(1+perp.getItemPow())),perp, vic,6);
 	}
 	

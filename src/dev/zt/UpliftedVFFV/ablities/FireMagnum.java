@@ -41,11 +41,6 @@ public class FireMagnum extends Skills {
 		}	
 	}	
 	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = (int)(-45*(1+perp.getEquipPow()));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,90);
-	}
-
 	public boolean silenceBlocked(){
 		return false;
 	}

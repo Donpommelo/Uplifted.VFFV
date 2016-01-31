@@ -23,7 +23,7 @@ public class WindUpPunch extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		status st = new WindUpPunchEffect(0,perp,vic, 50);
 		bs.bp.stm.addStatus(perp, st);
-		bs.bp.stm.addStatus(perp, new Channeling(1,10,st,false,true,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new Channeling(1,10,st,false,true,true,perp,perp,50));
 	}
 
 }

@@ -86,7 +86,7 @@ public class BattleMenu{
 		audio = game.getAudiomanager();
 		
 		//If the Schmuck chose to Wait in the Planning phase, all onDillyDally statuses activate.
-		if(bs.bp.pauseTOQ){
+		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally"){
 			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
 			currentSchmuck.onDillyDallyEffects(bs);
 		}
@@ -165,19 +165,18 @@ public class BattleMenu{
 							currentSkill = new SkillNothing(1);
 						}
 						else{
-							//Message for not having Mp while not having the Catalog of Want
+							//Sets currentSkill to skill selected.
+							currentSkill = currentSchmuck.skills.get(itemSelected);
+							
+							//This decides whether the targeting cursor starts off on an ally or enemy
+							teamTargeted =  currentSkill.startTarget();
+							
 							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
 									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(100))){
-								bs.bp.bt.addScene(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
+								bs.bp.bt.addScene("Warning: "+currentSchmuck.getName()+" might not have the Mp to do that!");
 							}
-							else{					
-								//Sets currentSkill to skill selected.
-								currentSkill = currentSchmuck.skills.get(itemSelected);
-								
-								//This decides whether the targeting cursor starts off on an ally or enemy
-								teamTargeted =  currentSkill.startTarget();
-								phase++;
-							}
+							
+							phase++;	
 						}
 						game.getKeyManager().disable(delaySelection);
 					}

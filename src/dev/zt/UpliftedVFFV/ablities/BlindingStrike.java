@@ -12,7 +12,7 @@ public class BlindingStrike extends Skills {
 	public static int cost = 5;
 	public static int baseAcc = 90; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
-	public static int element = 6;	//Physical
+	public static int element = 2;	//Green
 	public static int targetType = 0;	//Any Single Target
 	public BlindingStrike(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
@@ -20,17 +20,14 @@ public class BlindingStrike extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3],perp,vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.stm.addStatus(vic, new Blind(3, perp, 40));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.stm.addStatus(vic, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,90);
 	}
 }

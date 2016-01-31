@@ -18,7 +18,7 @@ public class SimmerResent extends Item{
 	static int slot = 1;
 	static int lvlReq = 17;
 	static String descr="Resentment is like swallowing poison and hoping your enemy\nwill suffer; it demonstrates commitment.";
-	static String descrShort = "Helps you hold a grudge";
+	static String descrShort = "Helps you hold a grudge.";
 	public status[] enchantment = new status[3];
 	public SimmerResent() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
@@ -27,7 +27,7 @@ public class SimmerResent extends Item{
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new StatBuffMult(2,(int)(1.2*(1+s.getEquipPow())), 25);
 		enchantment[1] = new StatBuffMult(4,(int)(1.2*(1+s.getEquipPow())), 25);
-		enchantment[2] = new HealBlock(25);
+		enchantment[2] = new HealBlock(0);
 		return enchantment;
 	}
 }

@@ -42,10 +42,10 @@ public class ElemBlock extends status{
 			elem = "Green";
 			break;
 		case 3:
-			elem = "Red";
+			elem = "Yellow";
 			break;
 		case 4:
-			elem = "Red";
+			elem = "Purple";
 			break;
 		case 5:
 			elem = "Void";

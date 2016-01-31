@@ -20,7 +20,8 @@ public class CrushingSlam extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.8)), perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.8);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		if(Math.random()*perp.getBuffedLuk()/vic.getBuffedLuk() >= .25){
 			bs.bp.bt.addScene(vic.getName()+" was dazed by the blow!");
 			for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
@@ -35,12 +36,8 @@ public class CrushingSlam extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,6);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.8);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.stm.addStatus(vic, new Stunned(2,perp, 80));
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)((perp.buffedStats[2]*perp.buffedStats[2])/(vic.buffedStats[3]*.8));
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,80);
 	}
 }

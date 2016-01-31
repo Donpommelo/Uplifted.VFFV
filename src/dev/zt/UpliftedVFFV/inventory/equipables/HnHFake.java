@@ -16,8 +16,8 @@ public class HnHFake extends Item{
 	static int value = 3700;
 	static int slot = 1;
 	static int lvlReq = 42;
-	static String descr="";
-	static String descrShort="";
+	static String descr="Whatever this is trying to be, it isn’t doing a very good job.";
+	static String descrShort="-25% Max Hp\nReplicates item in Slot 1.";
 	public status[] enchantment = new status[1];
 	public HnHFake() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

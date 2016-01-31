@@ -16,8 +16,8 @@ public class Kinhunter extends Item{
 	static int value = 875;
 	static int slot = 1;
 	static int lvlReq = 29;
-	static String descr="";
-	static String descrShort="";
+	static String descr="In no company is this sort of thing encouraged.";
+	static String descrShort="+30% damage dealt to targetsnof the same elemental alignment.";
 	public status[] enchantment = new status[1];
 	public Kinhunter() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

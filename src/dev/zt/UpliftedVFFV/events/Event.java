@@ -249,8 +249,8 @@ public class Event implements Serializable{
 	public static Event event192 = new WarpOuterFloor2toBalcony(20,22,192);
 	public static Event event193 = new WarpBalconytoOuterFloor2(18,28,193);
 	public static Event event194 = new WarpBalconytoStairsRoom(3,15,194);
-//Event 195: Balcony to warehouse
-//Event 196: Warehouse to Balcony
+	public static Event event195 = new WarpBalconytoWarehouse(23,19,195);
+	public static Event event196 = new WarpWarehousetoBalcony(6,19,196);
 	public static Event event197 = new WarpAtriaFloor2toAtriaFloor1(28,10,197);
 	public static Event event198 = new WarpAtriaFloor2toBusRamp(6,20,198);
 	public static Event event199 = new WarpAtriaFloor2toExtraRoom(20,6,199);

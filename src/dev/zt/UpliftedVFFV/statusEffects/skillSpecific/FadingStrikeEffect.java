@@ -20,7 +20,8 @@ public class FadingStrikeEffect extends status{
 	public void doneChanneling(Schmuck s, BattleState bs){
 		if(bs.bp.getSelectableEnemies(s).contains(Target)){
 			bs.bp.bt.addScene(s.getName()+" Strikes from the Shadows!");
-			bs.bp.em.hpChange(-(perp.getBuffedPow()*perp.getBuffedPow()*3/Target.getBuffedDef()), s, Target, 6);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, Target)* 2.0);
+			bs.bp.em.hpChange(damage, perp, Target,6);
 		}
 		bs.bp.stm.removeStatus(s, this);
 	}

@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 
 import dev.zt.UpliftedVFFV.ablities.FireMagnum;
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -30,7 +31,7 @@ public class Magnum extends Item{
 		return enchantment;
 	}
 	
-	public void unEnchantment(Schmuck s) {
+	public void unEnchantment(Schmuck s, InventoryManager meep) {
 		s.forgetSkill(test);		
 	}
 	

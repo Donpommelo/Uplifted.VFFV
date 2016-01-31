@@ -508,15 +508,18 @@ public class RandomFoodLarge extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" eats the "+this.getName()+"!");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the "+this.getName()+"!");
-		}
 		bs.bp.em.hpChange((int)(300*(1+perp.getItemPow())),perp,vic,6);
 		bs.bp.em.bpChange((int)(200*(1+perp.getItemPow())),vic);
 
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" eats the "+this.getName()+"!";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" the "+this.getName()+"!";
+		}
 	}
 	
 	public void use(Schmuck s){

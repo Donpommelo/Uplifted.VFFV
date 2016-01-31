@@ -24,12 +24,6 @@ public class SeeingEye extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" swallows the Seeing Eye!");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" gives "+vic.getName()+" the Seeing Eye.");
-		}
 		bs.bp.stm.addStatus(vic, new TrueSight(3, perp, 70));
 	}
 

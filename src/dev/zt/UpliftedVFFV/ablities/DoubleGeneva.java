@@ -25,8 +25,11 @@ public class DoubleGeneva extends Skills {
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		
-		bs.bp.em.hpChange(-(perp.buffedStats[6]*perp.buffedStats[6])/((int)(target1.buffedStats[3]*1.75)), perp, target1,6);
-		bs.bp.em.hpChange(-(perp.buffedStats[6]*perp.buffedStats[6])/((int)(target2.buffedStats[3]*1.75)), perp, target2,6);
+		int damage1 = (int)(bs.bp.em.logScaleDamage(perp, target1) * 0.75);
+		bs.bp.em.hpChange(damage1, perp, target1,6);
+		
+		int damage2 = (int)(bs.bp.em.logScaleDamage(perp, target2) * 0.75);
+		bs.bp.em.hpChange(damage2, perp, target2,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
@@ -35,16 +38,11 @@ public class DoubleGeneva extends Skills {
 		target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
 		
-		bs.bp.em.hpChange(-(perp.buffedStats[6]*perp.buffedStats[6])/((int)(target1.buffedStats[3]*.75)), perp, target1,6);
-		bs.bp.em.hpChange(-(perp.buffedStats[6]*perp.buffedStats[6])/((int)(target2.buffedStats[3]*.75)), perp, target2,6);
+		int damage1 = (int)(bs.bp.em.logScaleDamage(perp, target1)*(1.5+perp.getCritMulti()-target1.getCritRes()) * 0.75);
+		bs.bp.em.hpChange(damage1, perp, target1,6);
+		
+		int damage2 = (int)(bs.bp.em.logScaleDamage(perp, target2)*(1.5+perp.getCritMulti()-target2.getCritRes()) * 0.75);
+		bs.bp.em.hpChange(damage2, perp, target2,6);
 	}
 	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = 0;
-		Schmuck target1 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
-		Schmuck target2 = bs.bp.getSelectableEnemies(perp).get((int)(Math.random()*bs.bp.getSelectableEnemies(perp).size()));
-		damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp, target1, 6, 1000);
-		damage += bs.bp.em.damageSimulation(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target1.buffedStats[3]*2)), perp, target2, 6, 1000);
-		return damage;
-	}
 }

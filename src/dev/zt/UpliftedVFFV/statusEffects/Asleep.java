@@ -11,10 +11,14 @@ public class Asleep extends status{
 	public static String name = "Asleep";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
-	public static Boolean removedEnd = true;
+	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
+	public Schmuck inflicter;
+	int wakeThreshold;
 	public Asleep(int i, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+		this.inflicter = perp;
+		this.wakeThreshold = 0;
 	}
 	
 	public Asleep(int pr){
@@ -27,8 +31,11 @@ public class Asleep extends status{
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(0))){
-			bs.bp.stm.removeStatus(vic, new Asleep(0));
-			bs.bp.bt.addScene(vic.getName()+" was startled awake!");
+			wakeThreshold -= damage;
+			if(wakeThreshold >= vic.getMaxHp()/10+inflicter.getPurplePoints()){
+				bs.bp.stm.removeStatus(vic, new Asleep(0));
+				bs.bp.bt.addScene(vic.getName()+" was startled awake!");
+			}
 		}
 		else{
 			bs.bp.bt.addScene(vic.getName()+" tosses and turns in "+vic.getPronoun(1)+" sleep, but cannot wake.");
@@ -45,6 +52,10 @@ public class Asleep extends status{
 	}
 	
 	public Boolean isBad(){
+		return true;
+	}
+	
+	public Boolean isDisable(){
 		return true;
 	}
 }

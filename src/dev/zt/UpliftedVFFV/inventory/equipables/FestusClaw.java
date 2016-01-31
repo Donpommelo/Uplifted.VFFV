@@ -17,8 +17,8 @@ public class FestusClaw extends Item{
 	static int value = 1100;
 	static int slot = 1;
 	static int lvlReq = 37;
-	static String descr="";
-	static String descrShort="";
+	static String descr="A pair of flexible claw-like wires. Built for the quiet rending of\nexposed skin or the strangling of noisy coworkers.";
+	static String descrShort="+35% Crit Chance\n+35% Crit Multiplier\nNullifies your non-crit actions.";
 	public status[] enchantment = new status[3];
 	public FestusClaw() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		
@@ -27,7 +27,7 @@ public class FestusClaw extends Item{
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new FestusClawStatus(0);
 		enchantment[1] = new BonusStatBuff(16,.35*(1+s.getEquipPow()), 25);
-		enchantment[2] = new BonusStatBuff(17,.25*(1+s.getEquipPow()), 25);
+		enchantment[2] = new BonusStatBuff(17,.55*(1+s.getEquipPow()), 25);
 		return enchantment;
 	}
 	

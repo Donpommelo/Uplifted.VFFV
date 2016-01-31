@@ -10,10 +10,12 @@ public class Frozen extends status{
 	public static String name = "Frozen";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
-	public static Boolean removedEnd = true;
+	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
+	public Schmuck inflicter;
 	public Frozen(int i, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+		this.inflicter = perp;
 	}
 	
 	public Frozen(int pr){
@@ -25,7 +27,15 @@ public class Frozen extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		return 1;
+		int finaldamage = damage;
+		double resist = .5+inflicter.getBluePoints()/200;
+		finaldamage *= (1-resist);
+		if(finaldamage < 0){
+			return finaldamage;
+		}
+		else{
+			return -1;
+		}
 	}	
 
 	public String inflictText(Schmuck s){
@@ -33,10 +43,14 @@ public class Frozen extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" unfroze!";
+		return s.getName()+" thawed out!";
 	}
 	
 	public Boolean isBad(){
+		return true;
+	}
+	
+	public Boolean isDisable(){
 		return true;
 	}
 	

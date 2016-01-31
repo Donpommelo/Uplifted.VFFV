@@ -18,19 +18,14 @@ public class LifeDrain extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		int damage = -(4*perp.buffedStats[2]*perp.buffedStats[2]/5)/vic.buffedStats[3];
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.8);
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2*perp.getCritMulti()-vic.getCritRes()));
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.8);
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,6);
-	}
-	
-	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
-		int damage = -(int)(perp.buffedStats[2]*perp.buffedStats[2]*4)/(int)(vic.buffedStats[3]*5);
-		return bs.bp.em.damageSimulation(damage, perp, vic, 6,100);
 	}
 }

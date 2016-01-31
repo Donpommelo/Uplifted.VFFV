@@ -105,7 +105,7 @@ public class BattleProcessor {
 				
 				currentlySelected=0;		//Index of ally selected to make an action. Starts at 0.
 				//Starts out with menu selected for selected ally if there are still enemies left.
-				bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(currentlySelected),gs);
+				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(currentlySelected),gs);
 				if(!enemyded()){					
 					selected=true;					
 				}
@@ -227,7 +227,7 @@ public class BattleProcessor {
 						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
 
 						//If action is neither "Wait" nor null, run action
-						if(!tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
+						if(!tempAction.skill.getName().equals("Extra Turn") && !tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
 							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
 								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
 							}
@@ -271,7 +271,8 @@ public class BattleProcessor {
 				else{					
 					stm.endofRound(bs);
 					for(Schmuck s : battlers){
-						s.bpChange(s.getBuffedInt()/10); //mp regen gain. Tweak numbers later
+						s.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())));
+						s.bpChange((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus()))); 
 					}
 					phase++;
 				}
@@ -422,14 +423,14 @@ public class BattleProcessor {
 				tempSkill.runCrit(tempPerp,tempVic,bs);
 				
 				//If a critical hit occurred, run the perp's on-crit status effects.
-				tempPerp.onCritEffects(tempVic, bs);
+				tempPerp.onCritEffects(tempVic, tempAction, bs);
 			}
 			else {
 				if(!calcHit(tempAction)){
 					bt.addScene(tempPerp.getName() + " missed!");
 					
 					//If the ability missed, activate perp's on-miss effects
-					tempPerp.onMissEffects(tempAction, bs);
+					tempPerp.onMissEffects(tempAction, tempPerp, bs);
 					
 				}
 				else{

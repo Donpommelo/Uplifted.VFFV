@@ -15,7 +15,7 @@ public class Lunk extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=27,startBp=43,startPow=15, startDef=9, startSpd=20, startSkl=8, startLuk=7, startInt=6;
+	public final static int startHp=27,startBp=43,startPow=15, startDef=13, startSpd=20, startSkl=8, startLuk=7, startInt=6;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=1.2, bpGrowth=.7, powGrowth=5.7, defGrowth=1.3, spdGrowth=2.9, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

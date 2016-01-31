@@ -16,8 +16,8 @@ public class EmaudelinesPrism extends Item{
 	static int value = 4000;
 	static int slot = 1;
 	static int lvlReq = 55;
-	static String descr="";
-	static String descrShort="";
+	static String descr="A transparent prism refocusing all light and color that shines through it.";
+	static String descrShort="Sets Elemental Resistances\nto your highest resistance.";
 	public status[] enchantment = new status[1];
 	public EmaudelinesPrism() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

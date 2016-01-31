@@ -160,13 +160,13 @@ public class status implements Serializable{
 	}
 	//Upon any action critting
 	//Implemented in Phase 2 of Battle Processor
-	public void onCrit(Schmuck perp,Schmuck vic, BattleState bs){
+	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){
 		
 	}
 	
 	//Upon any action missing
 	//Implemented in Phase 2 of Battle Processor
-	public void onMiss(Action a, BattleState bs){
+	public void onMiss(Schmuck s, Action a, BattleState bs){
 		
 	}
 	
@@ -242,6 +242,7 @@ public class status implements Serializable{
 	//2: You gain a new instance of the status. (Stat changes, Limited Use, Status Immunity, etc)
 	//3: The new status replaces the old one. (Statuses with some numeric modifier like Vampirism or Damage Reflect)
 	//4: Both statuses are removed. (Misaligned)
+	//5: The status' stack variable increases by 1 (Intrusive Thought)
 	public int stackingEffect(){
 		return 0;
 	}
@@ -251,16 +252,11 @@ public class status implements Serializable{
 		return false;
 	}
 	
-	//Stuff that gives random beneficial effects might give these if this returns true.
-	public Boolean grabBagPlus(){
+	//This might stop channeling and do other stuff i dunno.
+	public Boolean isDisable(){
 		return false;
 	}
-	
-	//Stuff that gives random unbeneficial effects might give these if this returns true.
-	public Boolean grabBagMinus(){
-		return false;
-	}
-	
+			
 	//Does this status run if its owner is incapacitated?
 	public Boolean runWhenDead(){
 		return false;

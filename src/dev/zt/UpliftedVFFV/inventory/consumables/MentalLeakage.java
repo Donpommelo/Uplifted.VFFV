@@ -23,12 +23,6 @@ public class MentalLeakage extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(vic.getName()+" consumes the Mental Leakage.");
-		}
-		else{
-			bs.bp.bt.addScene(perp.getName()+" uses the Mental Leakage on "+vic.getName());
-		}
 		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
 		if(Math.random()<.1){
 			//get some terrible side effect.

@@ -11,7 +11,7 @@ public class Coalesce extends Skills {
 	public static String descrShort = "Buffs two random stats./";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
-	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static boolean canMiss = false; public static boolean canCrit = true;
 	public static int element = 6;	//Physical
 	public static int targetType = 0;	//Any Single Target
 	public Coalesce(int index) {

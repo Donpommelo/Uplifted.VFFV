@@ -24,6 +24,6 @@ public class Entropy extends Skills {
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new HealBlock((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 50));	
+		bs.bp.stm.addStatus(vic, new HealBlock((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 0));	
 	}
 }

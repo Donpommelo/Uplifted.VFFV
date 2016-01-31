@@ -17,8 +17,8 @@ public class BandagedSword extends Item{
 	static int value = 1300;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="";
-	static String descrShort="";
+	static String descr="A blade covered by enough bandages that you aren’t really sure if it's even a blade anymore.\nFor all you know, there might just be more bandages underneath.";
+	static String descrShort="Your Standard Attacks gain initiative.";
 	
 	public status[] enchantment = new status[2];
 	public BandagedSword() {

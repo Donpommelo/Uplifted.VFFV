@@ -73,4 +73,13 @@ public class StatBuffAdd extends status{
 	public int stackingEffect(){
 		return 2;
 	}
+	
+	public Boolean isBad(){
+		if(statIncrement > 0){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 }
