@@ -2,7 +2,8 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PennyBlueStatus;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
+import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 public class PennyBlue extends Skills {
 
 	public static String name = "Penny Blue";
@@ -19,12 +20,14 @@ public class PennyBlue extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.em.hpChange((int)(perp.getBuffedInt()*(1+perp.getHealPower())), perp, vic, 1);
-		bs.bp.stm.addStatus(vic, new PennyBlueStatus(3, perp, 35));
+		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,1,20,perp,50));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 35, vic.getMaxBp()/10, perp, 50));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.em.hpChange((int)(1.5*perp.getBuffedInt()*(1+perp.getHealPower())), perp, vic, 1);
-		bs.bp.stm.addStatus(vic, new PennyBlueStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 60));	
+		bs.bp.stm.addStatus(vic, new ElemPointsBuff(3,1,(int)(10 * (1.5+perp.getCritMulti())),perp,50));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 35,(int)(vic.getMaxBp()/10*(1.5+perp.getCritMulti())), perp, 50));
 	}
 	
 	public boolean startTarget(){

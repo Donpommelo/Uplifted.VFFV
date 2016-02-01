@@ -17,14 +17,15 @@ public class TyrianPlumEffect extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public int spendMeterEffect(Schmuck s, BattleState bs, int mp){
+	public void onAction(BattleState bs, Action a){
 		if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
 			bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
-			bs.bp.em.hpChange((int)(mp*1.5*(1+perp.getHealPower())), perp, perp,2);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, a.getUser())* 0.2);
+			bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,2);
+			bs.bp.em.hpChange(damage, a.getUser(), perp,2);
 		}
-		return mp;
 	}
-	
+		
 	public String inflictText(Schmuck s){
 		return s.getName()+" has seeds growing inside.";
 	}

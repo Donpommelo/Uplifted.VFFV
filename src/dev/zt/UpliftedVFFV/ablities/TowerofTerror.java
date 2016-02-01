@@ -2,33 +2,34 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Fear;
 import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 
-public class BlightBite extends Skills {
+public class TowerofTerror extends Skills {
 
-	public static String name = "Blight Bite";
-	public static String descr = "User refrains from brushing\nhis/her teeth and bites an\nenemy.";
-	public static String descrShort = "Damages and poisons target.";
-	public static int cost = 5;
-	public static int baseAcc = 90; public static int baseCrit = 0;
+	public static String name = "Tower of Terror";
+	public static String descr = "TEMP";
+	public static String descrShort = "Damages and inflicts Fear.";
+	public static int cost = 25;
+	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
-	public static int element = 6;	//Physical
+	public static int element = 0;	//Red
 	public static int targetType = 0;	//Any Single Target
-	public BlightBite(int index) {
+	public TowerofTerror(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
-		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Poisoned(3, perp, 40));
+		bs.bp.em.hpChange(damage, perp, vic,0);
+		bs.bp.stm.addStatus(vic, new Fear(3, perp,perp, 50));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
-		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+		bs.bp.em.hpChange(damage, perp, vic,0);
+		bs.bp.stm.addStatus(vic, new Fear((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, perp, 50));	
 	}
 
 }

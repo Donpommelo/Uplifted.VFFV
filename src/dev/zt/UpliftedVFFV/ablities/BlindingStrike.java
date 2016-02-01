@@ -22,12 +22,16 @@ public class BlindingStrike extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Blind(3, perp, 40));
+		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
+			bs.bp.stm.addStatus(vic, new Blind(3, perp, 50));
+		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
+			bs.bp.stm.addStatus(vic, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+		}
 	}
 }

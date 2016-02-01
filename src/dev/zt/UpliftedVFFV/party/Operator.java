@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.ablities.CentriDischarge;
+import dev.zt.UpliftedVFFV.ablities.CrushCables;
 import dev.zt.UpliftedVFFV.ablities.DamnedDescent;
 import dev.zt.UpliftedVFFV.ablities.DayattheFair;
 import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
@@ -26,7 +27,7 @@ public class Operator extends Schmuck{
 	public final static int expDrop = 2000;
 	public final static int scrDrop = 0;
 	
-	public final static int baseRed = 20, baseBlue = 10, baseGreen = 10, baseYellow = 20, basePurple = 10, baseVoid = 0;
+	public final static int baseRed = 25, baseBlue = 5, baseGreen = 5, baseYellow = 25, basePurple = 10, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
 	
 	public final static String name = "Operator";
@@ -36,10 +37,10 @@ public class Operator extends Schmuck{
 	public final static int sprite = 0;
 	public final static int menusprite = 1;
 	
-	public final static Skills[] levelSkills = {new DoorsofClosure(0), new MotorGrinder(0), new SafeRoom(0), new FiremansSwitch(0),
-		new CentriDischarge(0), new VariableVoltage(0), new DamnedDescent(0), new Terraform(0), new DayattheFair(0)};
-	public final static int[] levelReqs = {0,0,2,3,5,10,15,18,21};
-//	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0};
+	public final static Skills[] levelSkills = {new DoorsofClosure(0), new MotorGrinder(0), new CrushCables(0), new CentriDischarge(0), new SafeRoom(0), new FiremansSwitch(0),
+		 new VariableVoltage(0), new DamnedDescent(0), new Terraform(0), new DayattheFair(0)};
+	public final static int[] levelReqs = {0,0,2,3,5,7,12,15,18,21};
+//	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
 	
 	public final static Item[] itemDrops = {};
 	public final static double[] dropRates = {};

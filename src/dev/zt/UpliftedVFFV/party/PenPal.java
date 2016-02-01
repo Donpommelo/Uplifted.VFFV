@@ -25,7 +25,7 @@ public class PenPal extends Schmuck{
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop = 2000;
 	public final static int scrDrop = 0;
-	public final static int baseRed = 10, baseBlue = 20, baseGreen = 20, baseYellow = 10, basePurple = 10, baseVoid = 0;
+	public final static int baseRed = 5, baseBlue = 25, baseGreen = 25, baseYellow = 5, basePurple = 10, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
 
 	public static String name = "Pen Pal";
@@ -35,8 +35,8 @@ public class PenPal extends Schmuck{
 	public static int sprite = 1;
 	public static int menusprite = 2;
 	
-	public static Skills[] levelSkills = {new BoxCutter(0), new Query(0), new PennyBlue(0), new TreskillingYellow(0),
-		new HeresHow(0), new TyrianPlum(0), new ArcherRoulette(0), new InvertedSwan(0), new DoubleGeneva(0), new PennyBlack(0)};
+	public static Skills[] levelSkills = {new BoxCutter(0), new Query(0), new PennyBlue(0),	new HeresHow(0),
+			new TreskillingYellow(0),new TyrianPlum(0), new ArcherRoulette(0), new InvertedSwan(0), new DoubleGeneva(0), new PennyBlack(0)};
 	public static int[] levelReqs = {0,0,1,3,9,15,19,23,29,32};
 //	public static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
 

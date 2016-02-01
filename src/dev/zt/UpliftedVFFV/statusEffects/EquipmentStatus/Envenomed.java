@@ -8,21 +8,20 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Envenomed extends status{
 	
-	public double percent;
 	public EnvenomEarth e;
 	public Envenomed(double percent, EnvenomEarth e, int pr){
 		super("Envenomed", pr);
-		this.percent = percent;
 		this.e = e;
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+" was poisoned by Envenomed Earth!");
-		bs.bp.stm.addStatus(s, new Poisoned(4, s.itemDummy, 50));
+		bs.bp.stm.addStatus(s, new Poisoned(4, s, 50));
 	}
 	
 	public void endoffightEffect(Schmuck s, BattleState bs){
 		if(e.getPoints() <201){
+			bs.bp.bt.addScene(s.getName()+"'s Envenomed Earth makes "+s.getPronoun(1)+" feel a little tougher!");
 			e.setPoints(e.getPoints()+1);
 			s.calcBuffs(bs);
 		}

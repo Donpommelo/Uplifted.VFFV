@@ -287,16 +287,21 @@ public class Event implements Serializable{
 	public static Event empHaversham= new EmpHaversham(34,21,229);
 	public static Event empIvy = new EmpIvy(34,21,230);
 	public static Event empLacera = new EmpLacera(34,21,231);
-	public static Event empLucky = new EmpLucky(34,21,232);
-	public static Event empMala = new EmpMala(34,21,233);
+	public static Event empMala = new EmpMala(34,21,232);
+	public static Event empLucky = new EmpLucky(34,21,233);
 	public static Event empNissa = new EmpNissa(34,21,234);
 	public static Event empPrimrose = new EmpPrimrose(34,21,235);
 	public static Event empSnyder = new EmpSnyder(34,21,236);
 	public static Event empToussant = new EmpToussant(34,21,237);
 	public static Event empDinesh = new EmpDinesh(34,21,238);
+	public static Event empNewt = new EmpNewt(34,21,239);
+	public static Event empBob = new EmpBob(34,21,240);
+	public static Event empPudding = new EmpPudding(9,46,241);
+	public static Event empParanoia = new EmpParanoia(8,12,242);
+
+	public static Event empShoebanfoo = new EmpShoebanfoo(9,46,243);
 
 	
-
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
 	public static Event testSummon = new SummonSignIntern(0,0,1002);
@@ -629,13 +634,14 @@ public class Event implements Serializable{
 	
 	//Adds num items i to your inventory
 	public void loot(Item i,int num){
-		if(gamestate.inventorymanager.backpack.containsKey(i)){
+/*		if(gamestate.inventorymanager.backpack.containsKey(i)){
 			int temp = gamestate.inventorymanager.backpack.get(i);
 			gamestate.inventorymanager.backpack.put(i, temp += num);
 		}
 		else{
 			gamestate.inventorymanager.backpack.put(i, num);
-		}
+		}*/
+		gamestate.inventorymanager.loot(i, num);
 	}
 	
 	//Return how much of a given item you have.

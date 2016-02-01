@@ -39,6 +39,9 @@ public class InventoryManager implements Serializable{
 		else{
 			this.backpack.put(i, num);
 		}
+		if(this.backpack.get(i) <= 0){
+			this.backpack.remove(i);
+		}
 	}
 	
 	public TreeMap<Item, Integer> battleItem(){
