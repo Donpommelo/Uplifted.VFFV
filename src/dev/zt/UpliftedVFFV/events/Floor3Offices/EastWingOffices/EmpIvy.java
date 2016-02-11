@@ -32,9 +32,10 @@ public class EmpIvy extends Event {
 		
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Oh yeah, they're definitely laughing at you./No doubt about it./");
-			super.Dialog(d, 0, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Oh yeah, we're definitely laughing at you./No doubt about it./");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Did you suspect otherwise?/You give yourself too much credit./");
+			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));

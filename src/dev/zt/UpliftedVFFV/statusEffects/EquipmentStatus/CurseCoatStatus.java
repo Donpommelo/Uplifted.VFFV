@@ -18,7 +18,7 @@ public class CurseCoatStatus extends status{
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		if(st.isBad() && !st.perm && rolled == false){
+		if(st.isBad() && !st.perm && rolled == false && bs.bp.stm.checkStatus(s, st)){
 			rolled = true;
 			bs.bp.bt.addScene(s.getName()+"'s Curse Coat replaces the debuff with a different one!");
 			bs.bp.stm.removeStatus(s, st);

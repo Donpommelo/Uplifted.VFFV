@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Hypochondriac extends status{
 	
-	public static String name = "Hypochondriac";
+	public static String name = "Hypochondria";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = false;
@@ -26,7 +26,7 @@ public class Hypochondriac extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" became a Hypochondriac!";
+		return s.getName()+" became a Hypochondriac and is more susceptible to debuffs!";
 	}
 
 	public String cureText(Schmuck s){

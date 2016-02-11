@@ -16,7 +16,7 @@ public class MedPak extends Item{
 	static int value = 10;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A container of useful medicines. The Infirmary distributes\nthese toother floors to avoid having to actually see any of\nyour faces.";
+	static String descr="A container of useful medicines. The Infirmary distributes\nthese to other floors to avoid having to actually see any of\nyour faces.";
 	static String descrShort="Restore Hp.";
 	public MedPak() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -34,7 +34,8 @@ public class Assets {
 	
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, ActuallyWhite, Black, Void,RedCarpet,WoodBoard, BlueCarpet, StoneFloor, AquaTile,WhiteTile
-	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile;
+	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile
+	,GreySquareCarpet,DarkRowCarpet, GreyGroutTile;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper, Emaudeline, Informant;
@@ -246,6 +247,7 @@ public class Assets {
 		RedCarpet = TilesetBackroom.crop(4*width, 0, 2*width, 3*height);
 		BlueCarpet = TilesetBackroom.crop(6*width, 0, 2*width, 3*height);
 		AquaTile = TilesetBackroom.crop(8*width, 0, 2*width, 3*height);
+		GreyGroutTile = TilesetBackroom.crop(10*width, 0, 2*width, 3*height);
 		StoneFloor = TilesetBackroom.crop(6*width, 3*height, 2*width, 3*height);
 		GlassTile = ThirdFloorTiles.crop(12*width,0,2*width,3*height);
 
@@ -258,15 +260,17 @@ public class Assets {
 		CircleCarpet = ThirdFloorTiles.crop(2*width, 3*height, 2*width, 3*height);
 		SandTile = ThirdFloorTiles.crop(4*width, 3*height, 2*width, 3*height);
 		DarkSandTile = ThirdFloorTiles.crop(6*width, 3*height, 2*width, 3*height);
+		GreySquareCarpet = ThirdFloorTiles.crop(12*width, 3*height, 2*width, 3*height);
+		DarkRowCarpet = ThirdFloorTiles.crop(14*width, 3*height, 2*width, 3*height);
 
-		StairsRight0 = ThirdFloorTiles.crop(9*width,0,width,height);
-		StairsRight1 = ThirdFloorTiles.crop(9*width,height,width,height);
-		StairsRight2 = ThirdFloorTiles.crop(9*width,2*height,width,height);
-		StairsRight3 = ThirdFloorTiles.crop(9*width,3*height,width,height);
-		StairsLeft0 = ThirdFloorTiles.crop(10*width,0,width,height);
-		StairsLeft1 = ThirdFloorTiles.crop(10*width,height,width,height);
-		StairsLeft2 = ThirdFloorTiles.crop(10*width,2*height,width,height);
-		StairsLeft3 = ThirdFloorTiles.crop(10*width,3*height,width,height);
+		StairsRight0 = ThirdFloorTiles.crop((int) (8.5*width),(int)(0.5*width),width,height);
+		StairsRight1 = ThirdFloorTiles.crop((int) (8.5*width),(int)(1.5*width),width,height);
+		StairsRight2 = ThirdFloorTiles.crop((int) (8.5*width),(int)(2.5*width),width,height);
+		StairsRight3 = ThirdFloorTiles.crop((int) (8.5*width),(int)(3.5*width),width,height);
+		StairsLeft0 = ThirdFloorTiles.crop((int) (10.5*width),(int)(0.5*width),width,height);
+		StairsLeft1 = ThirdFloorTiles.crop((int) (10.5*width),(int)(1.5*width),width,height);
+		StairsLeft2 = ThirdFloorTiles.crop((int) (10.5*width),(int)(2.5*width),width,height);
+		StairsLeft3 = ThirdFloorTiles.crop((int) (10.5*width),(int)(3.5*width),width,height);
 		
 		Ceiling1 = TilesetBackroomWalls.crop(0, 0, 2*width, 3*height);
 		Wall1 = TilesetBackroomWalls.crop(0, 3*height, 2*width, 2*height);

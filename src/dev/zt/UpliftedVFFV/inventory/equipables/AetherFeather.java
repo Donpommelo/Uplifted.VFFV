@@ -17,7 +17,7 @@ public class AetherFeather extends Item{
 	static int value = 16;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A light and airy feather that catches the wind.\nYou would need a lot more of these if you wanted to\nfly far, far away.";
 	static String descrShort="+15% Accuracy\n+5 Yellow Alignment Points";
 	public status[] enchantment = new status[2];
 	public AetherFeather() {
@@ -26,7 +26,7 @@ public class AetherFeather extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BonusStatBuff(0, .15 * (1 + s.getEquipPow()), 50);
-		enchantment[1] = new ElemPointsBuff(3,5,30);
+		enchantment[1] = new ElemPointsBuff(3,(int)(5* (1 + s.getEquipPow())),30);
 		return enchantment;
 	}
 }

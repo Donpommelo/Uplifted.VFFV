@@ -13,7 +13,6 @@ public class SuckerPunchStatus extends status{
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.addScene(s.getName()+"'s Culling Grinder culls the weak!");
 		for(Schmuck e : bs.bp.getSelectableEnemies(s)){
 			bs.bp.stm.addStatus(e, new Suckered(100,s));
 		}

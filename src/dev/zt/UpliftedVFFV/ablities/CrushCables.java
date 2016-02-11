@@ -9,7 +9,7 @@ public class CrushCables extends Skills {
 
 	public static String name = "Crush Cable";
 	public static String descr = "User summons strangulating cables\nto bind foes.";
-	public static String descrShort = "Damages and paralyzes target.";
+	public static String descrShort = "Damages and paralyzes\ntarget.";
 	public static int cost = 15;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

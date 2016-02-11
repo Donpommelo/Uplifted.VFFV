@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Unresistant extends status{
 	
-	public static String name = "Unresistant";
+	public static String name = "Unresistance";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

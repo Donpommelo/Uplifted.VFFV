@@ -16,7 +16,7 @@ public class CatoWantStatus extends status{
 		super("Wanting", pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		int overkill = s.getCurrentBp() - (int)(a.skill.getCost()*(1-a.user.getMpCost()));
 		if(overkill <= 0){
 			if(s.getCurrentHp() >= -(overkill*2+5)){

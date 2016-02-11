@@ -17,7 +17,7 @@ public class CoffeeBean extends Item{
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A fragrant, roasted coffee bean.";
-	static String descrShort="Caution: Hot!";
+	static String descrShort="Restore Mp.\nCaution: Hot!";
 	public CoffeeBean() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

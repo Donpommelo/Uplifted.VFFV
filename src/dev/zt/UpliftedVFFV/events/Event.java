@@ -11,6 +11,7 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
+import dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices.*;
 import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.*;
 import dev.zt.UpliftedVFFV.events.EventsCommon.*;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -189,7 +190,6 @@ public class Event implements Serializable{
 	public static Event sign1 = new EventSign1(7,10,134);
 	public static Event sign2 = new EventSign2(29,32,135);
 	
-	
 	public static Event event136 = new WarpLobbytoSouthOfficeHallway(3,8,136);
 	public static Event event137 = new WarpLobbytoFacade(8,6,137);
 	public static Event event138 = new WarpLobbytoActualEast(17,7,138);
@@ -236,7 +236,7 @@ public class Event implements Serializable{
 	public static Event event179 = new WarpCarlocsHalltoStairsRoom(5,13,179);
 	public static Event event180 = new WarpCarlocsOfficetoBusRamp(17,16,180);
 	public static Event event181 = new WarpCarlocsOfficetoCentral(24,17,181);
-	public static Event event182 = new WarpCarlocsOfficetoEElevator(21,20,182);
+	public static Event event182 = new WarpCarlocsOfficetoEElevator(21,29,182);
 	public static Event event183 = new WarpAtriatoCentral(30,17,183);
 	public static Event event184 = new WarpAtriatoStairsRoom(6,12,184);
 	public static Event event185 = new WarpAtriatoOuterFloor2(25,8,185);
@@ -265,22 +265,22 @@ public class Event implements Serializable{
 	public static Event eventcarloclobbyinvis = new EventCarlocLobbyInvisible(0,0,208);
 	public static Event eventcarlocoffice = new EventCarlocOffice(7,10,209);
 	public static Event eventcarlocofficeinvis = new EventCarlocOfficeInvisible(0,0,210);
-	public static Event eventinformantbus = new EventInformantOffices(15,6,211);
+	public static Event eventinformantbus = new EventInformantOffices(18,9,211);
 	public static Event eventinviswall1 = new EventInvis1Loop(0,0,212);
 	public static Event eventinviswall2 = new EventInvis2Loop(0,0,213);
 	public static Event eventinviswall1and2 = new EventInvis12Loop(0,0,214);
 
 	public static Event event215 = new WarpEElevatortoLobby(3,15,215);
 	public static Event event216 = new WarpEElevatortoBackroom(3,15,216);
+	public static Event event217 = new WarpWarehousetoGiftshop(12,3,217);
 
 	//220 employees begin here
 	public static Event empRubella = new EmpRubella(4,8,220);
 	public static Event empNeville = new EmpNeville(9,8,221);
 	public static Event empSnivelly = new EmpSnivelly(8,13,222);
 	public static Event empHabette = new EmpHabette(6,9,223);
-	
+	public static Event empNewt = new EmpNewt(34,21,225);
 	public static Event empAbernathy = new EmpAbernathy(34,21,224);
-	public static Event empBilloby = new EmpBilloby(34,21,225);
 	public static Event empCruikshank = new EmpCruikshank(34,21,226);
 	public static Event empDeborah = new EmpDeborah(34,21,227);
 	public static Event empFord = new EmpFord(34,21,228);
@@ -294,14 +294,64 @@ public class Event implements Serializable{
 	public static Event empSnyder = new EmpSnyder(34,21,236);
 	public static Event empToussant = new EmpToussant(34,21,237);
 	public static Event empDinesh = new EmpDinesh(34,21,238);
-	public static Event empNewt = new EmpNewt(34,21,239);
+	public static Event empBilloby = new EmpBilloby(34,21,239);
 	public static Event empBob = new EmpBob(34,21,240);
-	public static Event empPudding = new EmpPudding(9,46,241);
+	public static Event empNestle = new EmpNestle(12,33,241);
 	public static Event empParanoia = new EmpParanoia(8,12,242);
+	public static Event empFlo = new EmpFlo(23,17,243);
+	public static Event empUnderminer = new EmpUnderminer(7,10,244);
+	public static Event empRory = new EmpRory(15,7,245);
+	public static Event empDora = new EmpDora(8,14,246);
+	public static Event empNonconformist = new EmpNonconformist(4,8,247);
+	public static Event empOkey = new EmpOkey(14,9,248);
+	public static Event empLil = new EmpLil(17,9,249);
+	public static Event empShoebanfoo = new EmpShoebanfoo(18,27,250);
+	public static Event empPillock = new EmpPillock(17,13,251);
+	public static Event empBernard = new EmpBernard(18,7,252);
+	public static Event empPudding = new EmpPudding(9,46,253);
+	public static Event empBusdon = new EmpBusdon(33,39,254);
+	public static Event empRevenge = new EmpRevenge(19,8,255);
+	public static Event safe5 = new EventSafe5(6,7,256);
+	public static Event safe6 = new EventSafe6(8,7,257);
+	public static Event safe7 = new EventSafe7(12,40,258);
+	public static Event safe8 = new EventSafe8(20,9,259);
 
-	public static Event empShoebanfoo = new EmpShoebanfoo(9,46,243);
-
+	public static Event eventEmaudeline = new EventEmaudelineOffices(6,11,261);
 	
+	public static Event event270 = new WarpWestOfficestoBusramp(27,7,270);
+	public static Event event271 = new WarpWestTransitiontoWestOfficesIntro(7,9,271);
+	public static Event event272 = new WarpWestOfficesIntrotoWestTransition(35,36,272);
+	public static Event event273 = new WarpWestOfficesIntrotoPredungeon(2,10,273);
+	public static Event event274 = new WarpWestCubicleFinaltoBus(13,51,274);
+	public static Event event275 = new WarpWestPredungeontoIntroOffices(19,13,275);
+	public static Event event276 = new WarpWestPredungeontoTrashChute(3,13,276);
+	public static Event event277 = new WarpWestPredungeontoCubicleDungeon(10,6,277);
+	public static Event event278 = new WarpLobbytoWestCubicleFinal(3,8,278);
+	public static Event event279 = new WarpWestTrashChutetoWestPredungeon(12,7,279);
+	public static Event event280 = new WarpCubicleDungeonSouth(13,29,280);
+	public static Event event281 = new WarpCubicleDungeonEast(23,16,281);
+	public static Event event282 = new WarpCubicleDungeonNorth(13,6,282);
+	public static Event event283 = new WarpCubicleDungeonWest(3,16,283);
+	public static Event event284 = new WarpCubicleDungeontoTrashChute(13,21,284);
+	public static Event event285 = new WarpCubicleFinaltoDungeon(13,6,285);
+	public static Event event286 = new WarpCubicleFinaltoSperosOffice(9,47,286);
+	public static Event event287 = new WarpCubicleFinaltoSouthOffices(21,48,287);
+	public static Event event288 = new WarpSperosOfficetoWestCubicleFinal(14,11,288);
+	public static Event event289 = new WarpWestPredungeontoJCloset(8,38,289);
+	public static Event event290 = new WarpJClosettoWestPredungeon(5,11,290);
+	public static Event event291 = new WarpBonus1toCubicleDungeon(6,13,291);
+	public static Event event292 = new WarpBonus2toCubicleDungeon(10,9,292);
+	public static Event event293 = new WarpCubicleDungeonSouthEx(13,29,293);
+	public static Event event294 = new WarpCubicleDungeonEastEx(23,16,294);
+	public static Event event295 = new WarpCubicleDungeonNorthEx(13,6,295);
+	public static Event event296 = new WarpCubicleDungeonWestEx(3,16,296);
+	public static Event event297 = new WarpCubicleFinaltoDungeonEx(23,16,297);
+	public static Event event298 = new WarpCubicleFinalFinaltoLobby(13,21,298);
+	public static Event event299 = new WarpCubicleFinalFinaltoNowhere(13,6,299);
+	public static Event EventSperos = new EventSperos(6,9,300);
+	public static Event EventSperosInvis = new EventSperosInvisible(6,9,301);
+	
+
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
 	public static Event testSummon = new SummonSignIntern(0,0,1002);

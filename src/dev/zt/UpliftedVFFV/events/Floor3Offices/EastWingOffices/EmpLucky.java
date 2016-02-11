@@ -32,9 +32,10 @@ public class EmpLucky extends Event {
 		
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Wow, you must feel so lucky to always have good excuses available no/matter what terrible thing happens to you./");
-			super.Dialog(d, 0, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Wow, for someone like you to end up working at such a prestigious company . . ./Your Luck stat must be incredible./");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You must not get hit by very many Critical Hits.//Or at least not enough./");
+			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));

@@ -221,11 +221,15 @@ public class BattleProcessor {
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						Schmuck tempPerp = TurnOrderQueue.get(0).user;		//Schmuck that performs the above action
-						
+						Schmuck tempVic = TurnOrderQueue.get(0).target;
 						//Before action happens, tempPerp's status restrictions activate.
-						tempPerp.restrictEffects(TurnOrderQueue.get(0), bs);
+						tempPerp.preActionUseEffects(TurnOrderQueue.get(0), bs);
+						if(TurnOrderQueue.get(0).getSkill().getTargetType() == 0){
+							tempVic.preActionTargetEffects(TurnOrderQueue.get(0), bs);
+						}
 						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
-
+						
+						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Extra Turn") && !tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
 							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
@@ -271,8 +275,12 @@ public class BattleProcessor {
 				else{					
 					stm.endofRound(bs);
 					for(Schmuck s : battlers){
-						s.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())));
-						s.bpChange((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus()))); 
+						if((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())) != 0){
+							bs.bp.em.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())), s, s, 6);
+						}
+						if((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus())) != 0){
+							bs.bp.em.bpChange((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus())), s);
+						}
 					}
 					phase++;
 				}

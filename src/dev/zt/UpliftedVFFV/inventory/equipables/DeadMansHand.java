@@ -19,7 +19,7 @@ public class DeadMansHand extends Item{
 	static int slot = 1;
 	static int lvlReq = 28;
 	static String descr="The hand of a dead man.";
-	static String descrShort = "Haunts enemies when user is dead.";
+	static String descrShort = "+10 Purple Alignment Points\nHaunts enemies when user is dead.";
 	public status[] enchantment = new status[3];
 	public DeadMansHand() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

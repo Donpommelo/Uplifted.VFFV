@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Insolvent extends status{
 	
-	public static String name = "Insolvent";
+	public static String name = "Insolvency";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -20,14 +20,14 @@ public class Insolvent extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Use Item")){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use an Item but couldn't!"),bs));
 		}
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" became Insolvent!";
+		return s.getName()+" became Insolvent and can no longer use Items!";
 	}
 
 	public String cureText(Schmuck s){

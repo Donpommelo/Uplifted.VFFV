@@ -16,7 +16,7 @@ public class CatchersGlove extends Item{
 	static int value = 18;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A broad glove for catching all sorts of different things.";
+	static String descr="A broad glove for catching all sorts of interesting things.";
 	static String descrShort="+11% Item Drop.";
 	public status[] enchantment = new status[1];
 	public CatchersGlove() {
@@ -24,7 +24,7 @@ public class CatchersGlove extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(4, .11, 50);
+		enchantment[0] = new BonusStatBuff(4, .11 *(1+s.getEquipPow()), 50);
 		return enchantment;
 	}
 }

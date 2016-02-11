@@ -35,7 +35,8 @@ public class SwitchManager {
  23: Floor 13 Visited
  24: Floor B1 Visited
  25: Floor B2 Visited
- 26: 
+ 26: West Cubicle Dungeon Complete
+ 27: West Cubicle Dungeon Extended Complete
  
  */
 	

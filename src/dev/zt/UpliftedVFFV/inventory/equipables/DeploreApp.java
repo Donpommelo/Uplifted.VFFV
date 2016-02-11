@@ -17,7 +17,7 @@ public class DeploreApp extends Item{
 	static int slot = 1;
 	static int lvlReq = 35;
 	static String descr="A sinister looking contraption that grants its owner\nlongevity on the condition that he/she doesn't want it.";
-	static String descrShort="Lowers Max Hp, gives Hp regen";
+	static String descrShort="Lowers Max Hp\nMassive Hp regen";
 	public status[] enchantment = new status[1];
 	public DeploreApp() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

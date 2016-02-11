@@ -20,7 +20,7 @@ public class MaskofFestusStatus extends status{
 		}
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.silenceBlocked()){
 			bs.bp.bt.addScene(s.getName()+" tried to use . . . something . . .");
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,". . ."),bs));

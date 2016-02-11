@@ -17,7 +17,7 @@ public class PrehistoricSynapse extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 32;
-	static String descr="A fossilized Neuron from some long extinct sea creature.";
+	static String descr="A fossilized neural fiber from some long extinct sea creature.\nYou don't imagine they had particularly quick reflexes.";
 	static String descrShort = "+11% Eva\n+11%Crit\nDelays damage taken until end of round.";
 	public status[] enchantment = new status[3];
 	public PrehistoricSynapse() {

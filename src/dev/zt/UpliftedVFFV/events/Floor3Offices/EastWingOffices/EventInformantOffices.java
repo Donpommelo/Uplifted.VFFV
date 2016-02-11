@@ -17,7 +17,7 @@ public class EventInformantOffices extends Event {
 
 	public boolean fightwon=false;
 	public static int stagenum = 0;
-	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.Informant);
+	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.Informant);
 	public EventInformantOffices(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}
@@ -49,7 +49,7 @@ public class EventInformantOffices extends Event {
 				d[6] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"That’s just cruel. It really is. I expected better of her./");
 				d[7] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . ./");
 				d[8] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"Here are the papers she is requesting. Complete whatever it is she demands./Just be quick about it. And try and find me afterwards so we can talk./There are some things you deserve to have explained to you./");
-				d[9] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"Let me open this up for you./Oh, and tell Carloc not to send me any more./");
+				d[9] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"Let me open this door next to me for you./Oh, and tell Carloc not to send me any more./");
 				d[10] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained a Manila Folder!/Bring it back to Carloc in her office./");
 				super.Dialog(d, 10, this.getId(), true);
 				super.loot(new ManilaFolder(), 1);

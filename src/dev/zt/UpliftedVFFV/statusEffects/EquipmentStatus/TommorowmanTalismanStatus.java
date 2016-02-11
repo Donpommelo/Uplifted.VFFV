@@ -14,17 +14,21 @@ public class TommorowmanTalismanStatus extends status{
 		this.delayed = new ArrayList<status>();
 	}
 	
-	public void endofturnEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.addScene(s.getName()+" receives delayed statuses!");
-		for(status st : delayed){
-			bs.bp.stm.addStatus(s, st);
+	public void preBattlePhase(Schmuck s, BattleState bs){
+		if(!delayed.isEmpty()){
+			bs.bp.bt.addScene(s.getName()+" receives delayed statuses!");
+			for(status st : delayed){
+				bs.bp.stm.addStatus(s, st);
+			}
+			delayed.clear();
 		}
-
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		bs.bp.bt.addScene(s.getName()+"'s Tommorowman Talisman decides that the status can wait!");
-		delayed.add(st);
-		bs.bp.stm.removeStatus(s, st);
+		if(!st.perm && st.visible && bs.bp.stm.checkStatus(s, st) && !delayed.contains(st)){
+			bs.bp.bt.addScene(s.getName()+"'s Tommorowman Talisman decides that the status can wait!");
+			delayed.add(st);
+			s.statuses.remove(st);
+		}
 	}
 }

@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class MeterBlock extends status{
 	
-	public static String name = "Meter Blocked";
+	public static String name = "Meter Block";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;

@@ -24,9 +24,11 @@ public class VariableManager {
  13: East Offices Mind Control Device Setting.
  14: Summoning Objects Found
  15: Spa Choice: None, Regen, +ML, -Combat Freq, +Stats - Drops
- 16: 
- 17: 
- 18: 
+ 16: Rooms Passed: West Cubicle Dungeon 
+ 17: Last Correct Direction (0: South, 1: East, 2: West, 3: North)
+ 18: Semiphore Sign: West Dungeon Extended (0: S, 1: E, 2: W, 3: N, 4:F, 5:B, 6:L, 7: R)
+ 19: Floor Manager Favor
+ 
  */
 	
 	public VariableManager(Game g){

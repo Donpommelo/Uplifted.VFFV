@@ -19,14 +19,25 @@ public class EventCarlocOffice extends Event {
 	
 	public void run(){
 			if(this.isSelfswitch1()){
-//					if(Speros talked to yet){
-				
-//					}
-//					else{
+					if(super.getQuest(5) == 6){
+						super.setQuest(5, 7);
+						Dialog[] d = new Dialog[4];
+						d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You’ve finished already! What a challenging yet satisfying quest!/You should feel very accomplished!/");
+						d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,". . . Is something wrong?/You seem on edge./");
+						d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Anyways, now for your final reward!/I present you with the Basement Key!/With this card, you can access the Company Town on floor B1!/");
+						d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Let me unlock the elevator in my room so you can head down there immediately./Why don’t you go shop and socialize with your coworkers like a well-adjusted/employee?/");
+						super.Dialog(d, 3, this.getId(), true);
+					}
+					else if(super.getQuest(5) == 7){
+						Dialog[] d = new Dialog[1];
+						d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"It’s good to see that you aren’t getting into any trouble!/");
+						super.Dialog(d, 0, this.getId(), true);
+					}
+					else{
 					Dialog[] d = new Dialog[1];
 					d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Remember, you are to deliver the Manila Folder to room 136 in the West Wing./Make sure you are prepared for the level of enemy and workload intensity./");
 					super.Dialog(d, 0, this.getId(), true);
-//					}
+					}
 			}
 			else{
 				if(super.itemNumCheck(new ManilaFolder()) > 0 ){
@@ -38,7 +49,6 @@ public class EventCarlocOffice extends Event {
 					super.Dialog(d, 3, this.getId(), true);
 					super.setQuest(5, 5);
 					super.setQuest(3, 1);
-					super.loot(new ManilaFolder(), -1);
 					this.setSelfswitch1(true);
 				}
 				else{

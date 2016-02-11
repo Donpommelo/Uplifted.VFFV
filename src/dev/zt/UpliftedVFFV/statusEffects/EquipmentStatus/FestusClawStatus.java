@@ -12,7 +12,7 @@ public class FestusClawStatus extends status{
 	public FestusClawStatus(int pr){
 		super("Claws of Festus Status", pr);
 	}
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(!a.skill.getName().equals("Item") && !a.skill.getName().equals("Dilly Dally") && !a.skill.getName().equals("Run Away")&& !a.skill.getName().equals("Pass Turn")){
 			if(bs.bp.calcCrit(a)){
 				bs.bp.stm.addStatus(s, new BonusStatBuff(0,16,10,s,100));

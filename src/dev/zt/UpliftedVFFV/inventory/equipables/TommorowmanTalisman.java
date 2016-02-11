@@ -18,7 +18,7 @@ public class TommorowmanTalisman extends Item{
 	static int value = 555;
 	static int slot = 1;
 	static int lvlReq = 36;
-	static String descr="TEMP";
+	static String descr="An artifact for the future-minded. Believed by the Tommorowmen\nto be redeemable for salvation on the eve of Apocalypse.";
 	static String descrShort = "+11 Int regen\n+15% Combat Initiative\nDelays new statuses until next turn.";
 	public status[] enchantment = new status[3];
 	public TommorowmanTalisman() {

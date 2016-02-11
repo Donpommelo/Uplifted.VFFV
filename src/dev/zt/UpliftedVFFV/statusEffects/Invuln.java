@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invuln extends status{
 	
-	public static String name = "Invulnerable";
+	public static String name = "Invulnerability";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -20,7 +20,7 @@ public class Invuln extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" was made invulnerable!";
+		return s.getName()+" was made Invulnerable!";
 	}
 
 	public String cureText(Schmuck s){

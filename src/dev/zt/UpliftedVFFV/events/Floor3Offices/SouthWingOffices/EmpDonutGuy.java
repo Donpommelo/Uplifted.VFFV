@@ -54,7 +54,7 @@ public class EmpDonutGuy extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Mick always had the worse taste in donuts./");
 			super.Dialog(d, 0, this.getId(), true);
-			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM2));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 			this.setstage(1);
 		}
 

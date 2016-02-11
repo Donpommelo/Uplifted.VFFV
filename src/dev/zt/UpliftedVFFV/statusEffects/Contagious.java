@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Contagious extends status{
 	
-	public static String name = "Contagious";
+	public static String name = "Contagion";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

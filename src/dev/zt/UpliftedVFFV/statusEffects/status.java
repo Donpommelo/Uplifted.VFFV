@@ -78,9 +78,13 @@ public class status implements Serializable{
 		this.priority = priority;
 	}
 	
-	//Activates upon selecting a move. Prolly should rename. Atm used for restricting; if certain moves are selected, they are replaced
+	//Activates upon selecting a move. Atm used for restricting; if certain moves are selected, they are replaced
 	//Implemented in Phase 2 of Battle Processor
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
+
+	}
+	
+	public void preActionTarget(Schmuck s, Action a, BattleState bs){
 
 	}
 	
@@ -153,11 +157,12 @@ public class status implements Serializable{
 		
 	}
 	
-	//Upon standard attack is used
+	//Upon standard attack is used 
 	//Implemented in run and runCrit methods of StandardAttack
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		
 	}
+	
 	//Upon any action critting
 	//Implemented in Phase 2 of Battle Processor
 	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){

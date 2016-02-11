@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 
 
 public class DustShroud extends Skills {
@@ -26,7 +26,7 @@ public class DustShroud extends Skills {
 		bs.bp.bt.addScene("All allies became Untargetable!");
 			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-				bs.bp.stm.addStatus(s, new Untouchable(2, perp, 50));
+				bs.bp.stm.addStatus(s, new Invisible(2, perp, 50));
 			}
 	}
 	

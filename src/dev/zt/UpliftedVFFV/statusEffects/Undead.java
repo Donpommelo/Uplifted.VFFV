@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Undead extends status{
 	
-	public static String name = "Undead";
+	public static String name = "Undeath";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

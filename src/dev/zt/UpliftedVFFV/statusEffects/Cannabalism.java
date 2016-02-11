@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Cannabalism extends status{
 	
-	public static String name = "Cannabalistic";
+	public static String name = "Cannabalism";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

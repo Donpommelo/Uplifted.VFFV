@@ -16,7 +16,7 @@ public class RatTail extends Item{
 	static int value = 13;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="The twisted, wormy tail of an officeplace pest. ";
+	static String descr="The twisted, wormy tail of an officeplace pest.";
 	static String descrShort="+15% Combat Initiative.";
 	public status[] enchantment = new status[1];
 	public RatTail() {

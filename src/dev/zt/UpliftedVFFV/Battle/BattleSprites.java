@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class BattleSprites {
@@ -85,7 +85,7 @@ public class BattleSprites {
 		for(Schmuck s : allies){
 			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
 				alliesSelectable.add(s);
-				if(!bs.bp.stm.checkStatus(s, new Untouchable(1,s,50))){
+				if(!bs.bp.stm.checkStatus(s, new Invisible(1,s,50))){
 					alliesTargets.add(s);
 				}				
 			}
@@ -95,7 +95,7 @@ public class BattleSprites {
 		for(Schmuck s : enemy){
 			if(!bs.bp.stm.checkStatus(s, new incapacitate(s))){
 				enemySelectable.add(s);
-				if(!bs.bp.stm.checkStatus(s, new Untouchable(1, s, 50))){
+				if(!bs.bp.stm.checkStatus(s, new Invisible(1, s, 50))){
 					enemyTargets.add(s);
 				}
 			}

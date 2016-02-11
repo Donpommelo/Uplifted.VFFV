@@ -17,7 +17,7 @@ public class MidgeProboscis extends Item{
 	static int slot = 1;
 	static int lvlReq = 2;
 	static String descr="An insect drinking straw for bodily fluids";
-	static String descrShort="Lifesteal on attacks.";
+	static String descrShort="Standard Attacks restore Hp.";
 	public status[] enchantment = new status[1];
 	public MidgeProboscis() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

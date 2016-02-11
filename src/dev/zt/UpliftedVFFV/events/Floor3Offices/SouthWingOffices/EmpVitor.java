@@ -34,7 +34,7 @@ public class EmpVitor extends Event {
 			d[0] = new Dialog("Employee","/CharacterBusts/Vitor1small.png",1,"Oh. It is Operator. Hello Operator./");
 			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning! What floor for you?/");
 			d[2] = new Dialog("Employee","/CharacterBusts/Vitor1small.png",1,". . ./");
-			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . .Oh, Sorry! I just. . .got so used to. . . /");
+			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Oh, Sorry! I just . . . got so used to . . . /");
 			d[4] = new Dialog("Employee","/CharacterBusts/Vitor1small.png",1,"Operator, I think, stay in elevator all day, not so good for you. Ya?/");
 			d[5] = new Dialog("Employee","/CharacterBusts/Vitor1small.png",1,"Is good to see you getting fresh air. There is more to life than Elevators. Ya?/Like, there's also Offices and stuff./And I think we got nice Aquarium on one these floors too./");
 			d[6] = new Dialog("Employee","/CharacterBusts/Vitor1small.png",1,"Anyways, was nice speaking to you again./If you ever need life advice or something, you can come to me, ok?/");

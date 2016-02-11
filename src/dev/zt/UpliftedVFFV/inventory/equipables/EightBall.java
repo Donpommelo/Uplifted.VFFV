@@ -17,7 +17,7 @@ public class EightBall extends Item{
 	static int slot = 1;
 	static int lvlReq = 22;
 	static String descr = "A black cue ball that some jerk threw at you.";
-	static String descrShort="10% ??? Alignment.";
+	static String descrShort="+10 ??? Alignment.";
 	public status[] enchantment = new status[1];
 	public EightBall() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

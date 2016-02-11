@@ -29,7 +29,4 @@ public class CullingGrinder extends Item{
 		return enchantment;
 	}
 	
-	public boolean isLegendary(){
-		return true;
-	}
 }

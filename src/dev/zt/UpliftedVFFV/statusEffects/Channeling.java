@@ -14,7 +14,7 @@ public class Channeling extends status{
 	public boolean endofround;
 	public Boolean disableRemove;
 	public Schmuck statusHaver, Channeler;
-	public static String name = "Channeling";
+	public static String name = "Channel";
 	public static Boolean perm = true;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
@@ -31,7 +31,7 @@ public class Channeling extends status{
 		this.statusHaver = target;
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is too busy Channeling to perform other actions!"),bs));
 	}
 	

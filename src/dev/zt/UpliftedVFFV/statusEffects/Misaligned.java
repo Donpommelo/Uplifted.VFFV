@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 public class Misaligned extends status{
 	
 	
-	public static String name = "Misaligned";
+	public static String name = "Misalignment";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -19,7 +19,7 @@ public class Misaligned extends status{
 	}	
 		
 	public String inflictText(Schmuck s){
-		return s.getName()+" was misaligned.";
+		return s.getName()+" was Misaligned!";
 	}
 
 	public String cureText(Schmuck s){

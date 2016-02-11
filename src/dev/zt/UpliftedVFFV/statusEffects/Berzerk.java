@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Berzerk extends status{
 	
-	public static String name = "Berzerk";
+	public static String name = "Berserk";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -19,12 +19,12 @@ public class Berzerk extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(Math.random() < .75 && a.getSkill().getTargetType() ==0){
 			Schmuck newTarget = bs.bp.battlers.get((int)(Math.random()*bs.bp.battlers.size()));
 			if(bs.bp.stm.checkStatus(newTarget, new incapacitate(newTarget))){
 				a.target = newTarget;
-				bs.bp.bt.addScene(s.getName()+" is going Berzerk!");
+				bs.bp.bt.addScene(s.getName()+" is going Berserk!");
 				bs.bp.bt.addScene(s.getName()+" targeted a random character!");
 			}
 		}
@@ -32,11 +32,11 @@ public class Berzerk extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" went Berzerk.";
+		return s.getName()+" went Berserk and might target the wrong character!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" calmed down.";
+		return s.getName()+" calmed down and is no longer Berserk!";
 	}
 	
 	public Boolean isBad(){

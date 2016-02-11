@@ -45,7 +45,7 @@ public class StatusManager {
 		
 		//Case 0: New stat is not applied.
 		if(stat.stackingEffect() == 0 && checkStatus(s,stat)){
-			bs.bp.bt.addScene(s.getName()+" is already "+stat.getName()+"!");
+			bs.bp.bt.addScene(s.getName()+" is already under the effects of "+stat.getName()+"!");
 		}
 		else{
 			switch(stat.stackingEffect()){
@@ -259,16 +259,16 @@ public class StatusManager {
 			status = new Frozen(duration,s,50);
 			break;
 		case 9:
-			status = new HealBlock(duration,s,50);
+			status = new HealBlock(duration,s,100);
 			break;
 		case 10:
 			status = new Hypochondriac(duration,s,50);
 			break;
 		case 11:
-			status = new Impatient(duration,0.25,s,50);
+			status = new Impatient(duration,s,50);
 			break;
 		case 12:
-			status = new Impotent(duration,s,50);
+			status = new Impotent(duration,s,100);
 			break;
 		case 13:
 			status = new Insolvent(duration,s,50);
@@ -280,7 +280,7 @@ public class StatusManager {
 			status = new Isolated(duration,s,50);
 			break;
 		case 16:
-			status = new MeterBlock(duration,s,50);
+			status = new MeterBlock(duration,s,100);
 			break;
 		case 17:
 			status = new Negative(duration,s,50);

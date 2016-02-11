@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Channeling;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.FadingStrikeEffect;
 
@@ -25,7 +25,7 @@ public class FadingStrike extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		status st = new FadingStrikeEffect(0,perp,vic, 50);
 		bs.bp.stm.addStatus(perp, st);
-		bs.bp.stm.addStatus(perp, new Untouchable(1,perp,50));
+		bs.bp.stm.addStatus(perp, new Invisible(1,perp,50));
 		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/10,8,st,false,false,true,perp,perp,50));
 	}
 	

@@ -22,7 +22,7 @@ public class Paralysis extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		double stunchance = 0;
 		if(inflicter.getYellowPoints() > 100){
 			stunchance = 1;	
@@ -46,7 +46,7 @@ public class Paralysis extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Paralyzed!.";
+		return s.getName()+" was Paralyzed and may be unable to move!.";
 	}
 
 	public String cureText(Schmuck s){

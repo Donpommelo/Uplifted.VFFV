@@ -14,7 +14,7 @@ public class HumanityModuleStatus extends status{
 		super("Humane", pr);
 	}
 	
-	public void endoffightEffect(Schmuck s, BattleState bs){
+	public void endofturnEffect(Schmuck s, BattleState bs){
 		if(s.getCurrentBp() >= (int)(s.getMaxBp()*.1)){
 			bs.bp.em.bpChange(-(int)(s.getMaxBp()*.1), s);
 			bs.bp.bt.addScene(s.getName()+"'s Humanity Module activates!");

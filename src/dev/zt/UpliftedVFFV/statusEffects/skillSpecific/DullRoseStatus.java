@@ -23,7 +23,7 @@ public class DullRoseStatus extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(!perp.equals(vic) && !perp.getName().equals("Item Dummy") && !bs.bp.stm.checkStatus(perp, this)){
 			bs.bp.bt.addScene(vic.getName()+"'s Dull Rose scratches up "+perp.getName()+"!");
-			bs.bp.em.hpChange((int)(damage * .15), vic, perp, 2);
+			perp.hpChange((int)(damage * .15));
 			damage *= 0.85;
 		}
 		bs.bs.targetUpdate();
@@ -31,11 +31,11 @@ public class DullRoseStatus extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" is reflecting damage!";
+		return s.getName()+" is covered with thorns!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" is not longer reflecting damage.";
+		return s.getName()+"'s thorny shield faded!";
 	}
 	
 	public int stackingEffect(){

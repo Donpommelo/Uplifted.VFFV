@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AdaptiveArmorStatus;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CurseCoatStatus;
 
 public class CurseCoat extends Item{
@@ -17,7 +16,7 @@ public class CurseCoat extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="TEMP";
+	static String descr="A ragged coat dripping with the residue of\n millions of long-forgotten curses.";
 	static String descrShort="Rerolls debuffs.";
 	public status[] enchantment = new status[1];
 	public CurseCoat() {

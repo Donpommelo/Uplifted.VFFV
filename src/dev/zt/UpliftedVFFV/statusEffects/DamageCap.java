@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageCap extends status{
 	
-	public static String name = "Damage Capped";
+	public static String name = "Damage Cap";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

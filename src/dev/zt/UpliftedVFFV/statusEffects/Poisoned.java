@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Poisoned extends status{
 	
-	public static String name = "Poisoned";
+	public static String name = "Poison";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;

@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Masochist extends status{
 	
 	public double percent;
-	public static String name = "Masochistic";
+	public static String name = "Masochism";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
@@ -30,7 +30,7 @@ public class Masochist extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" became masochistic!";
+		return s.getName()+" became Masochistic and will regain Mp when hit!";
 	}
 
 	public String cureText(Schmuck s){

@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class HealBlock extends status{
 	
-	public static String name = "Heal Blocked";
+	public static String name = "Heal Block";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;

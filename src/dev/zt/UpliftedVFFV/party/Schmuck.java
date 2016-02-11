@@ -282,13 +282,33 @@ public class Schmuck implements Serializable{
 		calcBuffs(bs);
 	}
 	
-	public void restrictEffects(Action a, BattleState bs){
+	public void preActionUseEffects(Action a, BattleState bs){
 		ArrayList<status> tempStatuses = new ArrayList<status>();
 		while(!this.statuses.isEmpty()){
 			status tempStatus = this.statuses.get(0);
 			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
 				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
-					tempStatus.restrict(this,a, bs);
+					tempStatus.preActionUser(this,a, bs);
+				}
+			}
+			if(this.statuses.contains(tempStatus)){
+				this.statuses.remove(tempStatus);
+				tempStatuses.add(tempStatus);
+			}
+		}
+		for(status s : tempStatuses){
+			this.statuses.add(s);
+		}
+		calcBuffs(bs);
+	}
+	
+	public void preActionTargetEffects(Action a, BattleState bs){
+		ArrayList<status> tempStatuses = new ArrayList<status>();
+		while(!this.statuses.isEmpty()){
+			status tempStatus = this.statuses.get(0);
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+					tempStatus.preActionTarget(this,a, bs);
 				}
 			}
 			if(this.statuses.contains(tempStatus)){

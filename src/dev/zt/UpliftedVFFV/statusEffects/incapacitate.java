@@ -14,7 +14,7 @@ public class incapacitate extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" was incapacitated.";
+		return s.getName()+" was Incapacitated!";
 	}
 
 	public String cureText(Schmuck s){

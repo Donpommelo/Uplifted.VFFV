@@ -19,7 +19,7 @@ public class BladeoftheFallen extends Item{
 	static int slot = 1;
 	static int lvlReq = 5;
 	static String descr="A blade so heavy that its previous owner kept falling down.";
-	static String descrShort="+12 Pow\n-50% Combat Initiative\n-25% Acc\nYour standard attacks cleave";
+	static String descrShort="+12 Pow\n-50% Combat Initiative\n-25% Acc\nYour standard attacks damage all foes.";
 	public status[] enchantment = new status[4];
 	public BladeoftheFallen() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

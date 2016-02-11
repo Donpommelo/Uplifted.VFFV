@@ -40,7 +40,7 @@ public class EmpPaprika extends Event {
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh no. My paperwork is trapped underneath an insurmountably heavy boulder./");
 				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Surely it would be unreasonable to expect me to work given the circumstances./");
 				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Paperweight!/Equipment can be used from the menu!/");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey!  I . . .uh. . .thanks. . ./");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey!  I . . . uh . . . thanks . . ./");
 				super.Dialog(d, 3, this.getId(), true);	
 				super.loot(new Paperweight(), 1);
 				break;

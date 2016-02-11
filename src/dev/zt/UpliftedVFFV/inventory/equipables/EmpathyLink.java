@@ -16,7 +16,7 @@ public class EmpathyLink extends Item{
 	static int value = 1000;
 	static int slot = 1;
 	static int lvlReq = 40;
-	static String descr="This is a link between the emotions of very close friends.";
+	static String descr="A link between the sentiments of very, very close friends.";
 	static String descrShort = "Equalizes the Hp of living allies after\nevery round.";
 	public status[] enchantment = new status[1];
 	public EmpathyLink() {

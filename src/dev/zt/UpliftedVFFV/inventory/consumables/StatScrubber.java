@@ -16,7 +16,7 @@ public class StatScrubber extends Item{
 	static int value = 25;
 	static int slot = 0;
 	static int lvlReq = 12;
-	static String descr="TEMP";
+	static String descr="Basalt exfoliating device for removing\ndead skin and stat debuffs.";
 	static String descrShort="Temporarily set primary stats\nto base values.";
 	public StatScrubber() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
@@ -24,6 +24,6 @@ public class StatScrubber extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BaselineStats(3, perp, 100));
+		bs.bp.stm.addStatus(vic, new BaselineStats(3, perp, 0));
 	}
 }

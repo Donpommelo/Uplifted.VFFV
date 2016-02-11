@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Impotent extends status{
 	
-	public static String name = "Impotent";
+	public static String name = "Impotence";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -20,7 +20,7 @@ public class Impotent extends status{
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" was made Impotent!";
+		return s.getName()+" was made Impotent and cannot inflict damage!";
 	}
 
 	public String cureText(Schmuck s){

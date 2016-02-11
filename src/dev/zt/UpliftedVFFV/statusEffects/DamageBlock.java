@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageBlock extends status{
 	
-	public static String name = "Damage Blocking";
+	public static String name = "Damage Block";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

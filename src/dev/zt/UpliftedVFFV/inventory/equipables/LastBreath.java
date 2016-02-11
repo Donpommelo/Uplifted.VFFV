@@ -16,7 +16,7 @@ public class LastBreath extends Item{
 	static int value = 1500;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="TEMP";
+	static String descr="A dying breath made audible by relative silence.";
 	static String descrShort="+10% Pow for every Silenced character.";
 	public status[] enchantment = new status[1];
 	public LastBreath() {

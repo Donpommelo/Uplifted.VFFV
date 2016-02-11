@@ -4,10 +4,13 @@ package dev.zt.UpliftedVFFV.party;
 import dev.zt.UpliftedVFFV.ablities.ArcherRoulette;
 import dev.zt.UpliftedVFFV.ablities.BoxCutter;
 import dev.zt.UpliftedVFFV.ablities.DoubleGeneva;
+import dev.zt.UpliftedVFFV.ablities.DullRose;
+import dev.zt.UpliftedVFFV.ablities.FerrerBlock;
 import dev.zt.UpliftedVFFV.ablities.HeresHow;
 import dev.zt.UpliftedVFFV.ablities.InvertedSwan;
 import dev.zt.UpliftedVFFV.ablities.PennyBlack;
 import dev.zt.UpliftedVFFV.ablities.Query;
+import dev.zt.UpliftedVFFV.ablities.SindhDak;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.TreskillingYellow;
 import dev.zt.UpliftedVFFV.ablities.TyrianPlum;
@@ -36,8 +39,9 @@ public class PenPal extends Schmuck{
 	public static int menusprite = 2;
 	
 	public static Skills[] levelSkills = {new BoxCutter(0), new Query(0), new PennyBlue(0),	new HeresHow(0),
-			new TreskillingYellow(0),new TyrianPlum(0), new ArcherRoulette(0), new InvertedSwan(0), new DoubleGeneva(0), new PennyBlack(0)};
-	public static int[] levelReqs = {0,0,1,3,9,15,19,23,29,32};
+			new TreskillingYellow(0),new TyrianPlum(0), new FerrerBlock(0), new ArcherRoulette(0), new InvertedSwan(0),
+			new DullRose(0), new DoubleGeneva(0), new SindhDak(0),new PennyBlack(0)};
+	public static int[] levelReqs = {0,0,1,3,9,15,19,23,29,32,36,40,45};
 //	public static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
 
 	public final static Item[] itemDrops = {};

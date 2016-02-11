@@ -1,10 +1,13 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Blind extends status{
 
-	public static String name = "Blinded";
+	public static String name = "Blind";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -17,9 +20,11 @@ public class Blind extends status{
 		super(name, pr);
 	}	
 	
-	public void statchanges(Schmuck s){
-		s.bonusStats[0] -= .5;
-
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+		if(a.getSkill().canMiss()){
+			
+			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName() + "'s Blind caused "+s.getPronoun(3)+" to miss!"),bs));
+		}
 	}
 	
 	public String inflictText(Schmuck s){

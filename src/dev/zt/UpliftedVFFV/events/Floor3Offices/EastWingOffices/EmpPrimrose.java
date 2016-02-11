@@ -32,9 +32,8 @@ public class EmpPrimrose extends Event {
 		
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Why are you even talking to me?/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Did either of us actually want to hear anything the other had to say?/");
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You seem like the kind of person who uses the 'Wait' command while already Waiting/and accidently passes his turn instead./");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

@@ -19,7 +19,7 @@ public class SportsmanshipAward extends Item{
 	static int slot = 1;
 	static int lvlReq = 20;
 	static String descr="TEMP";
-	static String descrShort="+10% Exp gain\n+8 Mp regen\nSportsmanship!";
+	static String descrShort="+10% Exp gain\n+8 Mp regen\nDemonstrates sportsmanship!";
 	public status[] enchantment = new status[3];
 	public SportsmanshipAward() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -18,6 +18,8 @@ public class CutsceneState extends State {
 	//KeyListener delay variables.
 	private int nextImageDelay = 100;
 	
+	private int frameTime;
+	
 	//Dialogstates require an arraylist of BufferedImages
 	public CutsceneState(Game game, GameState gs, StateManager sm, BufferedImage[] slides,int eventId){
 		super(game,sm);
@@ -26,6 +28,7 @@ public class CutsceneState extends State {
 		this.scenes = slides;
 		this.EventId=eventId;
 		this.image = 0;
+		this.frameTime = 0;
 	}
 
 	public void tick() {
@@ -44,11 +47,36 @@ public class CutsceneState extends State {
 					}
 					
 					}	
+			else{					
+				image++;
+			}
+			game.getKeyManager().disable(nextImageDelay);
+		}
+		//Temp Cutscene auto-scroll. Later, make each frame have its own unique time needed to scroll.
+		else{
+			if(this.frameTime<=200){
+				this.frameTime++;
+			}
+			else{
+				frameTime = 0;
+				game.getAudiomanager().playSound("/Audio/item_recipe_pickup_shop.wav", false);	
+				if(image>=scenes.length-1){
+						StateManager.getStates().pop();
+						
+						//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
+						//increment and the event will be rerrun with the new stage.
+						if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+							gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+							gs.getEvents()[this.EventId].run();
+						}
+						
+						}	
 				else{					
 					image++;
 				}
 				game.getKeyManager().disable(nextImageDelay);
-		}	
+			}
+		}
 			
 	}
 			

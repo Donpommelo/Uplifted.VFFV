@@ -25,7 +25,7 @@ public class EventElevatorPanel extends Event {
 		else{
 			switch(this.getstage()){										//if Pen Pal had been recruited, panel cannot be used until
 			case 0: 														//tutorial is over + Jorge beaten
-				if(this.isSelfswitch2()){
+				if(this.isSelfswitch2() && !super.getSwitch(3)){
 					if(super.getSwitch(2)){
 						Dialog[] d = new Dialog[1];
 						d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Before we explore the rest of the building, there is something I/want to show you first. Can we go to your room?/");
@@ -46,7 +46,7 @@ public class EventElevatorPanel extends Event {
 				}
 				break;
 			case 1:
-				if(this.isSelfswitch2()){										//if Pen Pal has been recruited, its event is erased
+				if(this.isSelfswitch2() && !super.getSwitch(3)){										//if Pen Pal has been recruited, its event is erased
 					super.getGamestate().getEvents()[52].setDrawn(false);
 					super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 6, 7,"");
 				}
@@ -103,11 +103,11 @@ public class EventElevatorPanel extends Event {
 					d3[2] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Now Operator, We mustn't squander time. Every second wasted on silly/questions is one less for preventing the unspeakable calamity that would occur/if we fail in this endeavor./");
 					d3[3] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well, I don't think I can follow you. I'm supposed to stay here and do my job./");
 					d3[4] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Your job is to help people get to where they need, No?/Well, I need to get to Suite 521, so its your job to get me there./");
-					d3[5] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well I suppose. . ./");
+					d3[5] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, "Well I suppose . . ./");
 					d3[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"And besides, as you may have noticed, I have no legs./");
 					d3[7] =  new Dialog("Operator","/CharacterBusts/Player-1.png",0, ". . ./");
 					d3[8] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Don't worry. I trust that this whole affair will be either very short or very fulfilling!/");
-					d3[9] =  new Dialog("meep","/CharacterBusts/Arturo.png",1, "Your Pen Pal joined your party!/");
+					d3[9] =  new Dialog("meep","/CharacterBusts/Arturo.png",1, "Your Pen Pal joined your party!/Your party can be checked from the menu by pressing 'z'!");
 					super.Dialog(d3, 9, this.getId(), true);
 					super.recruit(new PenPal(1));
 					this.setSelfswitch2(true);

@@ -12,7 +12,7 @@ public class WarpInnerRightoRightBasement extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2.txt",23,17,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2.txt",23,20,"");
 		
 	}
 }

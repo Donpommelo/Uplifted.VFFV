@@ -41,7 +41,7 @@ public class WarpEElevatortoLobby extends Event {
 					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 10, 21,"Bathhouse");
 					break;
 				case 2:
-					super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt", 21, 19,"East Offices");
+					super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt", 21, 28,"East Offices");
 					break;
 				case 3:
 					break;

@@ -19,7 +19,7 @@ public class HolyWaterSprinkler extends Item{
 	static int value = 150;
 	static int slot = 1;
 	static int lvlReq = 34;
-	static String descr="TEMP";
+	static String descr="A flail used by ancient holy warriors to maintain\nperesonal hygeine admist the field of war.";
 	static String descrShort="+11% Crit Chance\n+5 Blue Points\nRestore Mp on Crits.";
 	public status[] enchantment = new status[3];
 	public HolyWaterSprinkler() {

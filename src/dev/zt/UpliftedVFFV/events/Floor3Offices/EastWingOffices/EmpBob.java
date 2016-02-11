@@ -33,7 +33,15 @@ public class EmpBob extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Uh boy. I hate running errands in the East Offices./");
+			if(super.getQuest(5) == 0 || super.getQuest(5) == 1){
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Uh boy. I hate running errands in the East Offices./");
+			}
+			else if(super.getQuest(5) == 2){
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"They told me they'd help me if I moved some furniture for them./");
+			}
+			else{
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Uh boy. I miss the South Offices already./");
+			}
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

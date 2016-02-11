@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DespawnonDeath extends status{
 	
-	public static String name = "Despawning";
+	public static String name = "Despawn";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = false;
@@ -27,14 +27,6 @@ public class DespawnonDeath extends status{
 		}
 		bs.bs.locationUpdate();
 		bs.bs.targetUpdate();
-	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
 	}
 	
 }

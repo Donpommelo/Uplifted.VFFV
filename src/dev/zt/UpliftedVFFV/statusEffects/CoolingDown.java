@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class CoolingDown extends status{
 	
 	public int turnsLeft;
-	public static String name = "Cooling Down";
+	public static String name = "Cooldown";
 	public static Boolean perm = true;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
@@ -17,7 +17,7 @@ public class CoolingDown extends status{
 		this.turnsLeft = cd;
 	}
 
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(turnsLeft <= (int)(0+s.getCooldownBonus())){
 			bs.bp.bt.addScene(s.getName()+" is done cooling down!");
 			bs.bp.stm.hardRemoveStatus(s, this);

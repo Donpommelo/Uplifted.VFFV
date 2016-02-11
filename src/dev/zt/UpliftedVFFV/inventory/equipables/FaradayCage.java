@@ -16,8 +16,8 @@ public class FaradayCage extends Item{
 	static int value = 840;
 	static int slot = 1;
 	static int lvlReq = 33;
-	static String descr="A conductive mesh that absorbs incoming damage.";
-	static String descrShort="Uses meter to reduce damage.";
+	static String descr="A conductive mesh that absorbs and dissipates incoming damage.";
+	static String descrShort="Uses Mp to reduce damage.";
 	public status[] enchantment = new status[1];
 	public FaradayCage() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

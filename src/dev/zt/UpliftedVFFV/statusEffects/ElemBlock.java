@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ElemBlock extends status{
 	
-	public static String name = "Elementally Blocked";
+	public static String name = "Elemental Block";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -23,7 +23,7 @@ public class ElemBlock extends status{
 		this.blocked = block;
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getElement(s) == blocked){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use attack, but was Elementally Blocked!"),bs));
 		}
@@ -58,7 +58,7 @@ public class ElemBlock extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s arms grew back.";
+		return s.getName()+" is no longer Elementally Blocked!";
 	}
 	
 	public Boolean isBad(){

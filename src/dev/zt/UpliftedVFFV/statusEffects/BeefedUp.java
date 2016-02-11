@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class BeefedUp extends status{
 
-	public static String name = "Beefed Up";
+	public static String name = "Beefy";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -23,7 +23,7 @@ public class BeefedUp extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" looks beefed up!";
+		return s.getName()+" looks Beefed Up!";
 	}
 
 	public String cureText(Schmuck s){

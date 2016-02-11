@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Channeling;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.MeditateEffect;
 

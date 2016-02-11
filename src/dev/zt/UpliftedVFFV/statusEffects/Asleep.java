@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DreamEaterStatus;
 
 public class Asleep extends status{
 	
-	public static String name = "Asleep";
+	public static String name = "Sleep";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -25,7 +25,7 @@ public class Asleep extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is still Asleep!"),bs));
 	}
 	

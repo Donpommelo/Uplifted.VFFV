@@ -17,7 +17,7 @@ public class FireExtinguisher extends Item{
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A tank of flame-retardant chemicals.";
-	static String descrShort="Cures Ablaze.";
+	static String descrShort="Cures Combustability.";
 	public FireExtinguisher() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

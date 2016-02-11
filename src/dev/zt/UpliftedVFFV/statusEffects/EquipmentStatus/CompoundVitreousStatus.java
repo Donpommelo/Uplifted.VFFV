@@ -13,7 +13,7 @@ public class CompoundVitreousStatus extends status{
 		super("Compound Vitreous", pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(!bs.bp.em.getAcc(a.user, a.target,a.skill.getBaseAcc()) && a.skill.canMiss() && !bs.bp.stm.checkStatus(a.user, new TrueSight(50))){
 			bs.bp.bt.addScene(s.getName()+"'s Compound Vitreous focuses!");
 			bs.bp.stm.addStatus(s, new TrueSight(0,s.itemDummy, 50));

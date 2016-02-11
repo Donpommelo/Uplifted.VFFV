@@ -32,9 +32,10 @@ public class EmpCruikshank extends Event {
 		}
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Well that's a new face./And I mean that in more ways than one./");
-			super.Dialog(d, 0, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Sometimes I get the feeling that Carloc is reading my mind or something./");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"That must be where she gets all her good ideas from./");
+			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));

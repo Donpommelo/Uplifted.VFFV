@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Taunted extends status{
 	
-	public static String name = "Taunted";
+	public static String name = "Taunt";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -21,7 +21,7 @@ public class Taunted extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.getTarget() != Taunter && a.getSkill().getTargetType() ==0){
 			bs.bp.bt.addScene(s.getName()+" is being Taunted by "+Taunter.getName()+"!");
 			a.setTarget(Taunter);
@@ -29,11 +29,11 @@ public class Taunted extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return "";
+		return s.getName()+" was Taunted by "+Taunter.getName()+"!";
 	}
 
 	public String cureText(Schmuck s){
-		return "";
+		return s.getName()+" is no longer Taunted!";
 	}
 	
 	public Boolean isBad(){

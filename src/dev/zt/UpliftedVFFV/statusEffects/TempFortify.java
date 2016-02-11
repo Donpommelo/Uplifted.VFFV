@@ -15,7 +15,7 @@ public class TempFortify extends status{
   	7: All
   */
 	public int elem;
-	public static String name = "Fortified";
+	public static String name = "Fortification";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

@@ -12,7 +12,7 @@ public class WarpBusRamptoWestOffices extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestToEastTransition.txt",26,8,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestToEastTransition.txt",26,7,"");
 		
 	}
 }

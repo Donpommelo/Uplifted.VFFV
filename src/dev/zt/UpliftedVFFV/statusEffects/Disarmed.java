@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Disarmed extends status{
 	
-	public static String name = "Disarmed";
+	public static String name = "Disarm";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -20,14 +20,14 @@ public class Disarmed extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Attack")){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use attack, but was Disarmed."),bs));
 		}
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Disarmed.";
+		return s.getName()+" was Disarmed and can not attack!";
 	}
 
 	public String cureText(Schmuck s){

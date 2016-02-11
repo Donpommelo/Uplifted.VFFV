@@ -36,9 +36,9 @@ public class EmpWeAllKnowOne extends Event {
 				Dialog[] d = new Dialog[5];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I always feel exhausted, yet I never feel like I've actually done anything./");
 				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I feel like my life is devoid of options, yet I'm filled with uncertainty about the future./");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I wish I had people in my life that cared about me, yet I'm terrified of having more/friends to dissapoint and expectations to fall short of./");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I just feel like. . ./");
-				d[4] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,". . .uh. . .sorry, I'll stop./");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I wish I had people in my life that cared about me, yet I'm terrified of having/people to dissapoint and expectations to fall short of./");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I just feel like . . ./");
+				d[4] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,". . . uh . . . sorry, I'll stop./");
 				super.Dialog(d, 4, this.getId(), true);
 				this.setSelfswitch1(true);
 			}

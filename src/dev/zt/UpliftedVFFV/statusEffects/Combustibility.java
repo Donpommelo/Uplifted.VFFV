@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DreamEaterStatus;
 
 public class Combustibility extends status{
 	
-	public static String name = "Combustible";
+	public static String name = "Combustibility";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ElemPersuasion extends status{
 	
-	public static String name = "Elementally Persuasion";
+	public static String name = "Elemental Persuasion";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

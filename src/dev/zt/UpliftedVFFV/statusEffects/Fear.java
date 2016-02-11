@@ -22,7 +22,7 @@ public class Fear extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.getTarget() == Frighter && a.getSkill().getTargetType() ==0){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" too Fearful to target "+Frighter.getName()+"!"),bs));
 		}

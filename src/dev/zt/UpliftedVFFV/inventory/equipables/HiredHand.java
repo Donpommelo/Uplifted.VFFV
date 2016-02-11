@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.HiredHandStatus;
 public class HiredHand extends Item{
 
 	static int id = 2;
-	static String name = "HiredHand";
+	static String name = "Hired Hand";
 	static boolean menu = false;
 	static boolean battle = false;
 	static boolean consume = false;
@@ -16,7 +16,7 @@ public class HiredHand extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="TEMP";
+	static String descr="Greedy familiar that fights on behalf of the\nhighest living bidder.";
 	static String descrShort="Attacks enemies\nTakes a cut of the winnings.";
 	
 	public status[] enchantment = new status[1];

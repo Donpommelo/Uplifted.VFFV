@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DamageReflect extends status{
 	
-	public static String name = "Reflecting";
+	public static String name = "Reflect";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

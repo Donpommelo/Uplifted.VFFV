@@ -16,15 +16,15 @@ public class Conduit extends Item{
 	static int value = 235;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="";
-	static String descrShort="-2% Mp Costs";
+	static String descr="An enchanted trinket that bolsters its\nwielder's ability to focus.";
+	static String descrShort="-30% Mp Costs";
 	public status[] enchantment = new status[1];
 	public Conduit() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(13,(int)(.2*(1+s.getEquipPow())), 35);
+		enchantment[0] = new BonusStatBuff(13,.3*(1+s.getEquipPow()), 35);
 		return enchantment;
 	}
 }

@@ -1,33 +1,34 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
+import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Impatient extends status{
 	
 	public double percent;
-	public static String name = "Impatient";
+	public static String name = "Impatience";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Impatient(int i, double percent, Schmuck perp, int pr){
+	public Impatient(int i, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
-		this.percent = percent;
 	}
 	
-	public Impatient(double percent, int pr){
+	public Impatient(int pr){
 		super(name, pr);
-		this.percent = percent;
 	}
 	
-	public void onDillyDally(Schmuck s, BattleState bs){
-		bs.bp.bt.addScene(s.getName()+" is filled with burning impatience from waiting!");
-		bs.bp.em.hpChange((int)(-s.getMaxHp()*percent), s, s, 0);
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+		if(a.skill.getName().equals("Dilly Dally")){
+			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Impatience prevents "+s.getPronoun(3)+" from Waiting!"),bs));
+		}
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" became Impatient!";
+		return s.getName()+" became Impatient and can no longer Wait!";
 	}
 
 	public String cureText(Schmuck s){

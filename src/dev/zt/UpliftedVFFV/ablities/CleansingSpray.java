@@ -1,5 +1,7 @@
 package dev.zt.UpliftedVFFV.ablities;
 
+import java.util.ArrayList;
+
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -21,11 +23,15 @@ public class CleansingSpray extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		int statusesRemoved = 0;
+		ArrayList<status> removed = new ArrayList<status>();
 		for(status st : vic.statuses){
 			if(!st.perm){
-				statusesRemoved++;
-				bs.bp.stm.removeStatus(vic, st);
+				removed.add(st);
 			}
+		}
+		for(status st : removed){
+			bs.bp.stm.removeStatus(vic, st);
+			statusesRemoved++;
 		}
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * statusesRemoved / 5);
 		bs.bp.em.hpChange(damage, perp, vic,6);

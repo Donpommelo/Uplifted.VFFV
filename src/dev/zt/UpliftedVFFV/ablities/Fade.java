@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 
 public class Fade extends Skills {
 
@@ -19,7 +19,7 @@ public class Fade extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(perp, new Untouchable(2, perp, 50));
+		bs.bp.stm.addStatus(perp, new Invisible(2, perp, 50));
 
 	}
 		

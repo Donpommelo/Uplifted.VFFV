@@ -18,7 +18,7 @@ public class Magnum extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="It doesn't kill people, but you can.";
+	static String descr="It doesn't kill people, but now you can.";
 	static String descrShort="Shoots people.";
 	static Skills test = new FireMagnum(0);
 	public status[] enchantment = new status[0];

@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Intimidated extends status{
 	
 	public double percent;
-	public static String name = "Intimidated";
+	public static String name = "Intimidation";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

@@ -18,7 +18,7 @@ public class SuckerPunch extends Item{
 	static int value = 550;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="TEMP";
+	static String descr="A wriggling spectral tentacle, primed to strike at the most\nopportune moment.";
 	static String descrShort="Punches foes when they miss.";
 	public status[] enchantment = new status[2];
 	public SuckerPunch() {

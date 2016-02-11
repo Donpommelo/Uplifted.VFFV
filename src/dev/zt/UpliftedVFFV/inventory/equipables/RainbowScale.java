@@ -16,7 +16,7 @@ public class RainbowScale extends Item{
 	static int value = 16;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A prismatic scale that shines with different color depending\non the angle upon which it is observed.";
 	static String descrShort="+4 Prismatic Alignment Points";
 	public status[] enchantment = new status[5];
 	public RainbowScale() {

@@ -18,8 +18,8 @@ public class UsurpersChemSet extends Item{
 	static int value = 260;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="TEMP";
-	static String descrShort="Chance to Poison on attack.";
+	static String descr="A tool for change that no one wants to see used twice.";
+	static String descrShort="+8 Skl\nChance to Poison on attack.";
 	public status[] enchantment = new status[2];
 	public UsurpersChemSet() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
@@ -27,7 +27,7 @@ public class UsurpersChemSet extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new StatusonHit(50, .5, new Poisoned(3,s,50));
-		enchantment[1] = new StatBuffAdd(5, 8, 50);
+		enchantment[1] = new StatBuffAdd(5, (int)(8*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 }

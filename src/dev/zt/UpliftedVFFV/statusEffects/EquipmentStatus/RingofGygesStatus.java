@@ -4,7 +4,7 @@ package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Untouchable;
+import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class RingofGygesStatus extends status{
@@ -22,7 +22,7 @@ public class RingofGygesStatus extends status{
 		if(uses > 0 ){
 			if(vic.getCurrentHp() + damage <= .1*vic.getMaxHp()){
 				bs.bp.bt.addScene(vic.getName()+"'s Ring of Gyges grants Invisibility!");
-				bs.bp.stm.addStatus(vic, new Untouchable(2, vic.getItemDummy(), 50));
+				bs.bp.stm.addStatus(vic, new Invisible(2, vic.getItemDummy(), 50));
 				uses--;
 			}
 		}		

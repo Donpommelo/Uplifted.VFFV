@@ -16,7 +16,7 @@ public class MidgeBlood extends Item{
 	static int value = 3;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="Blood from a midge could really be anybody¡¦s.";
+	static String descr="Blood from a midge could really be anybody's.";
 	static String descrShort="Regenerate Hp over time.";
 	public MidgeBlood() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

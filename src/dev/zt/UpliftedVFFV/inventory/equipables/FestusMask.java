@@ -18,7 +18,7 @@ public class FestusMask extends Item{
 	static int slot = 1;
 	static int lvlReq = 37;
 	static String descr="Let your coworkers know your intentions to mourn on their behalf.";
-	static String descrShort="+11 Skl and Spd\nYour Standard Attacks sometimes Silence\nUser is Silenced.";
+	static String descrShort="+11 Skl and Spd\nStandard Attacks sometimes inflict Silence\nUser is Silenced.";
 	public status[] enchantment = new status[3];
 	public FestusMask() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

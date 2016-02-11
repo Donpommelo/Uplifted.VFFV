@@ -17,7 +17,7 @@ public class BadShell extends Item{
 	static int slot = 1;
 	static int lvlReq = 1;
 	static String descr="Even a bad shell affords its contents some protection.";
-	static String descrShort="Occasionally blocks some physical damage..";
+	static String descrShort="Occasionally blocks some physical damage.";
 	public status[] enchantment = new status[1];
 	public BadShell() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

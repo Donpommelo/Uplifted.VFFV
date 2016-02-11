@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Isolated extends status{
 	
-	public static String name = "Disarmed";
+	public static String name = "Isolation";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -20,14 +20,14 @@ public class Isolated extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(bs.bp.getSelectableAllies(s).contains(a.target)){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Isolation prevents "+s.getPronoun(3)+" from targeting an ally!"),bs));
 		}
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Isolated!";
+		return s.getName()+" was Isolated and can no longer target allies!";
 	}
 
 	public String cureText(Schmuck s){

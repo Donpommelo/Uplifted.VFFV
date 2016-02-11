@@ -34,7 +34,7 @@ public class EmpHaversham extends Event {
 		case 0: 
 			Dialog[] d = new Dialog[2];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Don't worry about your coworkers judging you./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Instead, focus on worrying about the many character flaws they/are rightfully judging you for./");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I mean, unless they're right of course.//A chilling thought indeed./");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

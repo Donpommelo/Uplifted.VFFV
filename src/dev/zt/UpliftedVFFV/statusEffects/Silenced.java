@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Silenced extends status{
 	
-	public static String name = "Silenced";
+	public static String name = "Silence";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
@@ -20,7 +20,7 @@ public class Silenced extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.silenceBlocked()){
 			if(a.skill.getName().equals("")){
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use an ability but was Silenced."),bs));
@@ -33,7 +33,7 @@ public class Silenced extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Silenced.";
+		return s.getName()+" was Silenced and cannot perform Special Skill!";
 	}
 
 	public String cureText(Schmuck s){

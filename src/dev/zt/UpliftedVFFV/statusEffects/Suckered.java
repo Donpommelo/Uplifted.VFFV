@@ -21,13 +21,5 @@ public class Suckered extends status{
 		bs.bp.bt.addScene(puncher.getName()+" sucker punches "+s.getName()+" when he misses!");
 		bs.bp.em.hpChange(-(puncher.getBuffedPow()*puncher.getBuffedPow())/s.getBuffedDef(), puncher, s, 6);
 	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
+		
 }

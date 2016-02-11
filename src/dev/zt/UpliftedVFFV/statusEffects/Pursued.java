@@ -20,14 +20,14 @@ public class Pursued extends status{
 		super(name, pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Run Away")){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to run but was Pursued!"),bs));
 		}
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Pursued.";
+		return s.getName()+" was Pursued and cannot run away!";
 	}
 
 	public String cureText(Schmuck s){

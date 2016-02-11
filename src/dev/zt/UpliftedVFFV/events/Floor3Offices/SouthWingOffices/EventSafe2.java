@@ -5,12 +5,12 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.consumables.FireExtinguisher;
+import dev.zt.UpliftedVFFV.inventory.misc.LaserPointer;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class EventSafe2 extends Event {
 
-
+	public String[] Choices={"Yes","No"};			//list of choices used in the choicebranch
 	static BufferedImage img = Assets.SafeClosed;
 	public static int stagenum = 0;
 	public EventSafe2(float x, float y, int idnum) {
@@ -20,9 +20,9 @@ public class EventSafe2 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a couple of Fire Extinguishers inside!/Surely that violates some sort of safety regulation. . ./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe is filled with confiscated distraction./");
 			super.Dialog(d, 0, this.getId(), true);
-			super.loot(new FireExtinguisher(), 2);
+			super.loot(new LaserPointer(), 2);
 			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}

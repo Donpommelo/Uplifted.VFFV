@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Momentum extends status{
 	
-	public static String name = "Momentous";
+	public static String name = "Momentum";
 	public static Boolean perm = true;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
@@ -24,4 +24,10 @@ public class Momentum extends status{
 		bs.bp.stm.hardRemoveStatus(perp, this);
 		return (int)(damage * 1.5);
 	}	
+	
+	public void onDeath(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.bt.addScene("Momentum was returned to "+perp.getName()+"!");
+		bs.bp.stm.addStatus(perp, this);
+	}
+
 }

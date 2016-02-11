@@ -146,6 +146,15 @@ public class Tile {
 		case 38:
 			t = new BlueSquareSolidCarpet();
 			break;
+		case 39:
+			t = new GreyGroutTile();
+			break;
+		case 40:
+			t = new GreySquareCarpet();
+			break;
+		case 41:
+			t = new DarkRowCarpet();
+			break;
 			
 		}
 		return t;

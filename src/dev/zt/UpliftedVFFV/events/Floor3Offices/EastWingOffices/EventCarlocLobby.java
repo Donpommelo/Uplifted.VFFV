@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.keyitems.ManilaFolder;
 
 
 
@@ -22,7 +21,7 @@ public class EventCarlocLobby extends Event {
 			Dialog[] d = new Dialog[8];
 			d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Hmm? Are you lost? Are you looking for someone?/");
 			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0," Mam, could you tell us where we can find Suite 521?/");
-			d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Suite . . . 5. . .2. . ./");
+			d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Suite . . . 5 . . . 2 . . . ?/");
 			d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,". . ./");
 			d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Y'know what? I think I have a . . . better plan./You're on a quest, right? Yes, yes you seem like the questing type to me./Why don't you do a little favor for me. A sidequest, if you will./");
 			d[5] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"I'd like you to run along that hallway to the North and find The Informant./He looks exactly like yourself except with a different uniform./");

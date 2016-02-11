@@ -5,7 +5,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BaselineStats extends status{
 	
-	public static String name = "Baseline Stats";
+	public static String name = "Broken";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;

@@ -14,13 +14,14 @@ public class QuestManager {
  3: Informant's Quest
  4: Emaudeline's Quest
  5: Carloc's Quest
- 6: Floor Manager's Quest
- 7: Aquarium Tank Quest
- 8: Central Elevator Quest
- 9: Pen Pal's Food reQuest
- 10: Lachiplatreland Quest
- 11: Foreman's Quest
- 12: 
+ 6: <>
+ 7: Floor Manager's Quest
+ 8: Aquarium Tank Quest
+ 9: Central Elevator Quest
+ 10: Pen Pal's Food reQuest
+ 11: Lachiplatreland Quest
+ 12: Foreman's Quest
+ 13: 
  */
 	
 	public QuestManager(Game g){
@@ -84,7 +85,13 @@ public class QuestManager {
 			case 6:
 				return "Return to Carloc in the East Offices for your reward.";
 			}
-			
+		case 7:
+			switch(stage){
+			case 1:
+				return "Fetch Floor manager his Coffee";
+			case 2:
+				return "Bring the 'Coffee' back to Floor Manager.";
+			}
 		}
 		return "";
 	}

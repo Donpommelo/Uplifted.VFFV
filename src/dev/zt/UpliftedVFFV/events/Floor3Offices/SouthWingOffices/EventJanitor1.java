@@ -52,8 +52,8 @@ public class EventJanitor1 extends Event {
 				Dialog[] d = new Dialog[7];
 				d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Hmm? I don't believe we've met before./");
 				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Hello. I am the Operator. I was looking for Suite 521./");
-				d[2] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Oh. Sadly I've never heard of the place before./But maybe I can provide you some other services. . ./");
-				d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What sort of . . .services?/");
+				d[2] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Oh. Sadly I've never heard of the place before./But maybe I can provide you some other services . . ./");
+				d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What sort of . . . services?/");
 				d[4] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"I am the humble janitor of this facility, but I also do all manner of odd jobs too./");
 				d[5] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Well, mostly I run my own little business. Y'know, just to make a bit of money on the side./Feel free to purchase anything that interests you./Just don't mention anything to Management./");
 				d[6] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"Oh, and if you ever need your game saved, come to me and I can help./Free of charge!/");

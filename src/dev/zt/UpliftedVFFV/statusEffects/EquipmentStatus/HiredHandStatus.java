@@ -15,7 +15,7 @@ public class HiredHandStatus extends status{
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+"'s Hired Hand attacks!");
 		Schmuck target = bs.bp.getSelectableEnemies(s).get((int)(Math.random()*bs.bp.getSelectableEnemies(s).size()));
-		bs.bp.em.hpChange(-s.getLvl()*2-8, target, s, 6);
+		bs.bp.em.hpChange(-s.getLvl()*2-8, s, target, 6);
 	}
 
 	public int onLootScript(Schmuck s, BattleState bs, int script){

@@ -19,7 +19,7 @@ public class KidneyStone extends Item{
 	static int slot = 1;
 	static int lvlReq = 26;
 	static String descr="A smooth, kidney shaped stone.";
-	static String descrShort = "Cures user of negative status.\nRequires Cooldown.";
+	static String descrShort = "+18 Hp\n+5 Hp Regeneration\nCures user of negative status.\nRequires Cooldown.";
 	public status[] enchantment = new status[3];
 	public KidneyStone() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class LimitedUse extends status{
 	
-	public static String name = "Move Limited";
+	public static String name = "Move Limitation";
 	public static Boolean perm = true;
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
@@ -21,7 +21,7 @@ public class LimitedUse extends status{
 		this.usesLeft = (int)(uses + perp.getChargeBonus());
 	}
 		
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void PreActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals(move.getName())){
 			if(usesLeft>0){
 				usesLeft--;

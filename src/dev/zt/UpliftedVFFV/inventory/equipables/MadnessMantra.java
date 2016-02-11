@@ -28,7 +28,4 @@ public class MadnessMantra extends Item{
 		return enchantment;
 	}
 	
-	public boolean isLegendary(){
-		return true;
-	}
 }
