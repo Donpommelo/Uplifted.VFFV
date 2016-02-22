@@ -29,10 +29,10 @@ public class ColdMedicine extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" consumes the Cold Medicine!";
+			return vic.getName()+" consumes Cold Medicine!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Cold Medicine!";
+			return perp.getName()+" gives "+vic.getName()+" Cold Medicine!";
 		}
 	}
 }

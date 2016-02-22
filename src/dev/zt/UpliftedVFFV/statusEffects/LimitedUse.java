@@ -48,7 +48,7 @@ public class LimitedUse extends status{
 		}
 	}
 	
-	public void endoffightEffect(Schmuck s, BattleState bs){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
 		move.descrShort = move.descrShort.replace("Charges : "+(usesLeft+1), "Charges : "+origUses);
 	}
 	

@@ -23,10 +23,16 @@ public class FishWater extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(perp.getName()+" throws the Fishwater at "+vic.getName());
-		}
 		bs.bp.em.hpChange(-22,perp,vic,6);
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return perp.getName()+" drinks some Fish Water. Yuck.";
+		}
+		else{
+			return perp.getName()+" splashes "+vic.getName()+" with Fish Water!";
+		}
 	}
 	
 	public boolean startTeamTarget(){

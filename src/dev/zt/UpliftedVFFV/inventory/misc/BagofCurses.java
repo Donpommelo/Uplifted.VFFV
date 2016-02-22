@@ -25,16 +25,18 @@ public class BagofCurses extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(perp.getName()+" throws the Bag of Assorted Curses at "+perp.getPronoun(3)+"self!");
+			return perp.getName()+" throws a Bag of Assorted Curses at "+perp.getPronoun(3)+"self!";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" throws the Bag of Assorted Curses at "+vic.getName());
+			return perp.getName()+" throws a Bag of Assorted Curses at "+vic.getName();
 		}
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
-
 	}
 	
 	public boolean startTeamTarget(){

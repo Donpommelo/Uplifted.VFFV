@@ -29,10 +29,10 @@ public class Stimulant extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" consumes the Stimulant!";
+			return vic.getName()+" consumes a Stimulant!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Stimulant!";
+			return perp.getName()+" gives "+vic.getName()+" a Stimulant!";
 		}
 	}
 }

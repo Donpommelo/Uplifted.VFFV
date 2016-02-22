@@ -20,7 +20,7 @@ public class Pursued extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Run Away")){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to run but was Pursued!"),bs));
 		}

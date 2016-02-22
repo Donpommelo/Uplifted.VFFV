@@ -25,7 +25,7 @@ public class Asleep extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is still Asleep!"),bs));
 	}
 	

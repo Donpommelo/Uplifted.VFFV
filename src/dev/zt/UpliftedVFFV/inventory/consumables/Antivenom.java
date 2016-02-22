@@ -29,10 +29,10 @@ public class Antivenom extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" consumes the Antivenom!";
+			return vic.getName()+" consumes an Antivenom!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Antivenom!";
+			return perp.getName()+" gives "+vic.getName()+" an Antivenom!";
 		}
 	}
 }

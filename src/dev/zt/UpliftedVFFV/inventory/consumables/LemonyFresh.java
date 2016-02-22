@@ -39,10 +39,10 @@ public class LemonyFresh extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" drinks the bottle of Lemony Fresh.";
+			return vic.getName()+" drinks a bottle of Lemony Fresh.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Lemony Fresh.";
+			return perp.getName()+" gives "+vic.getName()+" a bottle of Lemony Fresh.";
 		}
 	}
 	

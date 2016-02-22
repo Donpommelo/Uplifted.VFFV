@@ -31,10 +31,10 @@ public class ThoughtFluid extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" considers the Thought Fluid!";
+			return vic.getName()+" considers a Thought Fluid!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Thought Fluid!";
+			return perp.getName()+" gives "+vic.getName()+" a Thought Fluid!";
 		}
 	}
 }

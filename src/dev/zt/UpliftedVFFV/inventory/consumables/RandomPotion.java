@@ -866,7 +866,7 @@ public class RandomPotion extends Item{
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
-		return perp.getName()+" uses the mysterious potion!";
+		return perp.getName()+" uses a mysterious potion!";
 	}
 	
 }

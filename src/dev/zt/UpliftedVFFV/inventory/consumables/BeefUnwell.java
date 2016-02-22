@@ -32,10 +32,10 @@ public class BeefUnwell extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" reluctantly eats the Beef Unwellington.";
+			return vic.getName()+" reluctantly eats a Beef Unwellington.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Beef Unwellington.";
+			return perp.getName()+" gives "+vic.getName()+" a Beef Unwellington.";
 		}
 	}
 }

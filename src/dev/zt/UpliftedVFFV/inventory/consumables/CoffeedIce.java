@@ -36,10 +36,10 @@ public class CoffeedIce extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" imbibes the Coffee'd Ice.";
+			return vic.getName()+" imbibes a Coffee'd Ice.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" Coffee'd Ice.";
+			return perp.getName()+" gives "+vic.getName()+" a Coffee'd Ice.";
 		}
 	}
 		

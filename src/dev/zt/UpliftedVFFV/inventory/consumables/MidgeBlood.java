@@ -33,10 +33,10 @@ public class MidgeBlood extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" drinks the Midge Blood.";
+			return vic.getName()+" drinks some Midge Blood!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Midge Blood.";
+			return perp.getName()+" gives "+vic.getName()+" some Midge Blood!";
 		}
 	}
 	

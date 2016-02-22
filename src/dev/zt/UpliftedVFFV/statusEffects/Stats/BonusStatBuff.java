@@ -77,7 +77,7 @@ public class BonusStatBuff extends status{
 			stat = "Combat Frequency";
 			break;
 		case 13:
-			stat = "Motivation Cost Reduction";
+			stat = "Mp Cost Discount";
 			break;
 		case 14:
 			stat = "Combat Initiative";
@@ -137,7 +137,7 @@ public class BonusStatBuff extends status{
 			stat = "Critical Avoidance";
 			break;
 		case 33:
-			stat = "Channeling Bonus";
+			stat = "Channeling Ability";
 			break;
 		case 34:
 			stat = "Hp Regeneration";

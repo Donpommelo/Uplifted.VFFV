@@ -280,11 +280,14 @@ public class BattleProcessor {
 					stm.endofRound(bs);
 					for(Schmuck s : battlers){
 						if((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())) != 0){
-							bs.bp.em.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())), s, s, 6);
+							bs.bp.em.hpChange((int)(s.getBonusMpRegen()*(1+s.getRegenBonus())), s, s, 6);
 						}
 						if((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus())) != 0){
 							bs.bp.em.bpChange((int)(s.getBonusMpRegen()*(1+s.getRegenBonus())), s);
 						}
+					}
+					for(Schmuck s : enemy){
+						bs.bp.em.bpChange((int)(s.getMaxBp()/2), s);
 					}
 					phase++;
 				}

@@ -4,7 +4,6 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class Disease extends Item{
 	
@@ -25,13 +24,16 @@ public class Disease extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
+		bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1+perp.getItemPow())), perp, 40));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			bs.bp.bt.addScene(perp.getName()+" eats the Disease. Why?");
+			return perp.getName()+" eats a Disease. For some reason.";
 		}
 		else{
-			bs.bp.bt.addScene(perp.getName()+" throws the Disease at "+vic.getName());
+			return perp.getName()+" transmits a Disease to "+vic.getName();
 		}
-		bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1+perp.getItemPow())), perp, 40));
 	}
 	
 	public boolean startTeamTarget(){

@@ -17,7 +17,7 @@ public class CoolingDown extends status{
 		this.turnsLeft = cd;
 	}
 
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(turnsLeft <= (int)(0+s.getCooldownBonus())){
 			bs.bp.bt.addScene(s.getName()+" is done cooling down!");
 			bs.bp.stm.hardRemoveStatus(s, this);

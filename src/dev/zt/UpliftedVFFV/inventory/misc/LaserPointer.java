@@ -24,10 +24,8 @@ public class LaserPointer extends Item{
 	}
 
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene(perp.getName()+" shines a Laser Pointer at "+ vic.getName()+"'s eyes!");
 		if(bs.bp.TurnOrderQueue.size() !=0 && bs.bp.TurnOrderQueue.get(1) != null){
 			if(bs.bp.TurnOrderQueue.get(1).getUser() == vic && bs.bp.TurnOrderQueue.get(1).skill.getTargetType() == 1){
-				bs.bp.bt.addScene(vic.getName()+" angrily turns towards "+perp.getName()+"!");
 				bs.bp.stm.addStatus(vic, new Blind(0,perp,50));
 				}
 			else{
@@ -36,6 +34,15 @@ public class LaserPointer extends Item{
 		}
 		else{
 			bs.bp.bt.addScene(vic.getName()+" was annoyed, but not harmed!");
+		}
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return perp.getName()+" shines a Laser Pointer into "+perp.getPronoun(1)+" own eyes!";
+		}
+		else{
+			return perp.getName()+" shines a Laser Pointer at "+ vic.getName()+"'s eyes!";
 		}
 	}
 	

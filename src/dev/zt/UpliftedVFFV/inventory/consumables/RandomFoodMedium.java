@@ -462,10 +462,10 @@ public class RandomFoodMedium extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" eats the "+this.getName()+"!";
+			return vic.getName()+" eats a "+this.getName()+"!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the "+this.getName()+"!";
+			return perp.getName()+" gives "+vic.getName()+" a "+this.getName()+"!";
 		}
 	}
 	

@@ -25,8 +25,10 @@ public class ElemPersuasion extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		this.elemBoost = elem;
-		bs.bp.bt.addScene(vic.getName()+"'s Elemental Persuasion shifts!");
+		if(elem != 6){
+			this.elemBoost = elem;
+			bs.bp.bt.addScene(vic.getName()+"'s Elemental Persuasion shifts!");
+		}
 		return damage;
 	}	
 	

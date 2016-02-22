@@ -22,7 +22,7 @@ public class NineLivesStatus extends status{
 		return -1;
 	}
 	
-	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return 0;
 	}
 }

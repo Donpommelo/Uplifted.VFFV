@@ -28,8 +28,18 @@ public class MentalLeakage extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
+		bs.bp.bt.addScene("Some of the the thoughts restor Mp!");
 		if(Math.random()<.1){
 			//get some terrible side effect.
+		}
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" considers the Mental Leakage!";
+		}
+		else{
+			return perp.getName()+" gives "+vic.getName()+" a Mental Leakage!";
 		}
 	}
 	

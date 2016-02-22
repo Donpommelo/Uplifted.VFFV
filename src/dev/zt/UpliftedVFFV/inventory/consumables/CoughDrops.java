@@ -29,10 +29,10 @@ public class CoughDrops extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" swallows the Cough Drop!";
+			return vic.getName()+" swallows a Cough Drop!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Cough Drop!";
+			return perp.getName()+" gives "+vic.getName()+" a Cough Drop!";
 		}
 	}
 }

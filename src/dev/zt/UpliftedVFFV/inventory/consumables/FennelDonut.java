@@ -32,10 +32,10 @@ public class FennelDonut extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" eats the nasty, nasty donut.";
+			return vic.getName()+" eats a nasty, nasty donut.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the nasty, nasty donut.";
+			return perp.getName()+" gives "+vic.getName()+" a nasty, nasty donut.";
 		}
 	}
 		

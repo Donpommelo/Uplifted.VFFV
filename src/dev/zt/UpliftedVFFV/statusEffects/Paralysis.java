@@ -22,7 +22,7 @@ public class Paralysis extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		double stunchance = 0;
 		if(inflicter.getYellowPoints() > 100){
 			stunchance = 1;	

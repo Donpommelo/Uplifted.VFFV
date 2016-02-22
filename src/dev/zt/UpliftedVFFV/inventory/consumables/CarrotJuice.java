@@ -25,16 +25,15 @@ public class CarrotJuice extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.em.bpChange((int)(15*(1+perp.getItemPow())),vic);
-		bs.bp.bt.addScene(vic.getName()+"'s vision improved.");
 		bs.bp.stm.addStatus(vic, new BonusStatBuff(5,0,.25, perp,75));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" drinks the Carbonated Carrot Juice.";
+			return vic.getName()+" drinks a Carbonated Carrot Juice.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Carbonated Carrot Juice.";
+			return perp.getName()+" gives "+vic.getName()+" a Carbonated Carrot Juice.";
 		}
 	}
 	

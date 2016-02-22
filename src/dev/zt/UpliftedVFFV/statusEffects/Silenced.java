@@ -20,8 +20,8 @@ public class Silenced extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
-		if(a.skill.silenceBlocked()){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
+		if(a.getSkill().silenceBlocked()){
 			if(a.skill.getName().equals("")){
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use an ability but was Silenced."),bs));
 
@@ -33,7 +33,7 @@ public class Silenced extends status{
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Silenced and cannot perform Special Skill!";
+		return s.getName()+" was Silenced and cannot perform Special Skills!";
 	}
 
 	public String cureText(Schmuck s){

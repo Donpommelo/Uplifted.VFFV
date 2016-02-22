@@ -29,10 +29,10 @@ public class PrinterTonerYellow extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" uses the Yellow Printer Toner on "+perp.getPronoun(3)+"self!";
+			return vic.getName()+" uses a Yellow Printer Toner on "+perp.getPronoun(3)+"self!";
 		}
 		else{
-			return perp.getName()+" uses the Yellow Printer Toner on "+vic.getName()+"!";
+			return perp.getName()+" uses a Yellow Printer Toner on "+vic.getName()+"!";
 		}
 	}
 }

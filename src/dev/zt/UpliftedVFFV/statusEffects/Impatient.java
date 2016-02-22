@@ -21,7 +21,7 @@ public class Impatient extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Dilly Dally")){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Impatience prevents "+s.getPronoun(3)+" from Waiting!"),bs));
 		}

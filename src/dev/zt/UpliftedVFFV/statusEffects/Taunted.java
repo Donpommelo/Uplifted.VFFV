@@ -21,7 +21,7 @@ public class Taunted extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.getTarget() != Taunter && a.getSkill().getTargetType() ==0){
 			bs.bp.bt.addScene(s.getName()+" is being Taunted by "+Taunter.getName()+"!");
 			a.setTarget(Taunter);

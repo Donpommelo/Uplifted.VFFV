@@ -29,10 +29,10 @@ public class Antiinflammatory extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" consumes the Anti-Inflammatory!";
+			return vic.getName()+" consumes an Anti-Inflammatory!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Anti-Inflammatory!";
+			return perp.getName()+" gives "+vic.getName()+" an Anti-Inflammatory!";
 		}
 	}
 }

@@ -241,7 +241,7 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 			ArrayList<status> removed = new ArrayList<status>();
 			for(status st : s.statuses){
-				if(!st.removedEnd){
+				if(st.removedEnd){
 					removed.add(st);
 				}
 			}

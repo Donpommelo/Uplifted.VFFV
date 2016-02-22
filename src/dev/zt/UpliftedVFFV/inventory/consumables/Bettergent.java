@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Combustibility;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Bettergent extends Item{
@@ -35,6 +34,15 @@ public class Bettergent extends Item{
 		}
 		for(status st : removed){
 			bs.bp.stm.removeStatus(vic, st);
+		}
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return perp.getName()+" sprays "+perp.getPronoun(3)+"self with Bettergent!";
+		}
+		else{
+			return perp.getName()+" sprays "+vic.getName()+" with Bettergent!";
 		}
 	}
 }

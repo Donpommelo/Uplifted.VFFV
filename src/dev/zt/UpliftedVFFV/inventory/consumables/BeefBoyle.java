@@ -32,10 +32,10 @@ public class BeefBoyle extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" chokes down the Beef Boyleston!";
+			return vic.getName()+" chokes downa Beef Boyleston!";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Beef Boyleston.";
+			return perp.getName()+" gives "+vic.getName()+" a Beef Boyleston.";
 		}
 	}
 	

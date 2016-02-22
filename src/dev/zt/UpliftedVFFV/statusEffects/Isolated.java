@@ -20,7 +20,7 @@ public class Isolated extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(bs.bp.getSelectableAllies(s).contains(a.target)){
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Isolation prevents "+s.getPronoun(3)+" from targeting an ally!"),bs));
 		}

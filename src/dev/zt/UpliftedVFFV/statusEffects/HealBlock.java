@@ -18,7 +18,7 @@ public class HealBlock extends status{
 		super(name, pr);
 	}
 	
-	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		bs.bp.bt.addScene(vic.getName()+" was prevented from healing!");
 		return 0;
 	}

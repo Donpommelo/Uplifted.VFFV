@@ -31,7 +31,7 @@ public class Channeling extends status{
 		this.statusHaver = target;
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" is too busy Channeling to perform other actions!"),bs));
 	}
 	

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class StatRingFirefly extends Item{
 
 	static int id = 2;
-	static String name = "Cockroach Ring";
+	static String name = "Firefly ing";
 	static boolean menu = false;
 	static boolean battle = false;
 	static boolean consume = false;
@@ -25,7 +25,7 @@ public class StatRingFirefly extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffMult(6, .15 * (1 + s.getEquipPow()), 50);
+		enchantment[0] = new StatBuffMult(6, 1.15 * (1 + s.getEquipPow()), 50);
 		return enchantment;
 	}
 }

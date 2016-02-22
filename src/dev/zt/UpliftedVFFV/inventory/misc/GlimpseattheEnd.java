@@ -9,7 +9,6 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Asleep;
 import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 import dev.zt.UpliftedVFFV.statusEffects.Isolated;
-import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 

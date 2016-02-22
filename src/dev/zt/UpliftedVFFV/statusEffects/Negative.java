@@ -23,7 +23,7 @@ public class Negative extends status{
 		return 0;
 	}
 	
-	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		vic.hpChange(-damage);
 		return 0;
 	}

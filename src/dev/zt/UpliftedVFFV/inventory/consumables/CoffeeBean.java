@@ -36,10 +36,10 @@ public class CoffeeBean extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" pops the Coffee bean into "+vic.getPronoun(3)+" mouth.";
+			return vic.getName()+" pops a Coffee bean into "+vic.getPronoun(3)+" mouth.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Coffee Bean.";
+			return perp.getName()+" gives "+vic.getName()+" a Coffee Bean.";
 		}
 	}
 		

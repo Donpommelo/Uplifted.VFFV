@@ -27,10 +27,13 @@ public class JanitorDonationForm extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene(perp.getName()+" fills out the form.");
 		bs.bp.bt.addScene("The Janitor's opinion of you improves!");
 		bs.gs.setVar(12, bs.gs.getVar(12)+1);
 
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return perp.getName()+" fills out a Janitor Donation form.";
 	}
 	
 	public void use(Game game, StateManager sm,GameState gs){

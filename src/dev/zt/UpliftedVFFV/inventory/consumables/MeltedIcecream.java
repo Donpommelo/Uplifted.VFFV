@@ -32,10 +32,10 @@ public class MeltedIcecream extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" drinks/eats the Melted Icecream.";
+			return vic.getName()+" drinks/eats a Melted Icecream.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Melted Icecream.";
+			return perp.getName()+" gives "+vic.getName()+" a Melted Icecream.";
 		}
 	}
 	

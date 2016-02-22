@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invisible extends status{
 	

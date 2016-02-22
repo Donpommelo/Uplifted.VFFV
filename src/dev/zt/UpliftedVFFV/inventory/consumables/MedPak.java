@@ -33,7 +33,16 @@ public class MedPak extends Item{
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange((int)(30*(1+s.getItemPow())));
-		StateManager.states.push(new NotificationState(game, gs, sm, "The Medpak is administered to "+s.getName()+"!", 0));
+		StateManager.states.push(new NotificationState(game, gs, sm, "A Medpak is administered to "+s.getName()+"!", 0));
+	}
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		if(perp.getName().equals(vic.getName())){
+			return vic.getName()+" uses a Medpak on "+vic.getPronoun(3)+"self!";
+		}
+		else{
+			return perp.getName()+" uses a Medpak on "+vic.getName()+"!";
+		}
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

@@ -33,10 +33,10 @@ public class Lachiplatre extends Item{
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" eats the Lachiplatre.";
+			return vic.getName()+" eats a Lachiplatre.";
 		}
 		else{
-			return perp.getName()+" gives "+vic.getName()+" the Lachiplatre.";
+			return perp.getName()+" gives "+vic.getName()+" a Lachiplatre.";
 		}
 	}
 	
