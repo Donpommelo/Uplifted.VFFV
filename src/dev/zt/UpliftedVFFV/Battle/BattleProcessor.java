@@ -99,7 +99,8 @@ public class BattleProcessor {
 						s.calcBuffs(bs);
 					}
 					for(Schmuck s : battlers){
-						s.startofFightEffects(bs);
+						//Activate Start-of-Fight Effects
+						s.statusProcTime(0, bs, null, null, 0, 0, true, null);
 					}
 				}
 				
@@ -171,9 +172,9 @@ public class BattleProcessor {
 								}
 							}
 							
-							//After decisions are made, pre-battle statuses activate.
 							for(Schmuck s : battlers){
-								s.preBattlePhaseEffects(bs);
+								//Activate Pre-Battle Phase Effects
+								s.statusProcTime(2, bs, null, null, 0, 0, true, null);
 							}
 							
 							//TOQ sorted
@@ -221,12 +222,15 @@ public class BattleProcessor {
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
 						Schmuck tempPerp = TurnOrderQueue.get(0).user;		//Schmuck that performs the above action
-						Schmuck tempVic = TurnOrderQueue.get(0).target;
-						//Before action happens, tempPerp's status restrictions activate.
-						tempPerp.preActionUseEffects(TurnOrderQueue.get(0), bs);
+						
+						//Activate User's Pre-Action Effects
+						tempPerp.statusProcTime(3, bs, TurnOrderQueue.get(0), null, 0, 0, true, null);
+						
+						//Activate Target's Pre-Action Effects
 						if(TurnOrderQueue.get(0).getSkill().getTargetType() == 0){
-							tempVic.preActionTargetEffects(TurnOrderQueue.get(0), bs);
+							tempPerp.statusProcTime(4, bs, TurnOrderQueue.get(0), null, 0, 0, true, null);
 						}
+						
 						Action tempAction = TurnOrderQueue.get(0);			//Current Action being processed.
 						
 						
@@ -279,7 +283,7 @@ public class BattleProcessor {
 							bs.bp.em.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())), s, s, 6);
 						}
 						if((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus())) != 0){
-							bs.bp.em.bpChange((int)(s.getBuffedInt()/10+s.getBonusMpRegen()*(1+s.getRegenBonus())), s);
+							bs.bp.em.bpChange((int)(s.getBonusMpRegen()*(1+s.getRegenBonus())), s);
 						}
 					}
 					phase++;
@@ -332,7 +336,7 @@ public class BattleProcessor {
 					
 					//Gain Script
 					for(Schmuck s : allies){
-						script = s.onLootScript(bs, (int)script);
+						script = s.statusProcTime(23, bs, null, null, (int)(script), 0, true, null);
 					}
 					bt.addScene((int)script+" Company Script looted!");
 					gs.scriptChange((int)script);
@@ -344,10 +348,7 @@ public class BattleProcessor {
 					Item[] itemDisplay = temp.toArray(new Item[999]);
 					
 					for(int i=0; i<drops.size();i++){
-						Item tempItem = itemDisplay[i];
-						for(Schmuck s : allies){
-							tempItem = s.onLootItem(bs, tempItem, drops.get(itemDisplay[i]));
-						}
+
 						if(drops.get(itemDisplay[i]) == 1){		
 							bt.addScene("Looted a(n) "+itemDisplay[i].getName()+"!");
 						}
@@ -358,8 +359,7 @@ public class BattleProcessor {
 					}
 					
 					//Do endoffite processing
-					stm.endofFite();
-					
+					stm.endofFite(true);					
 				}
 				
 				//If fight is not yet over, increase round number and go back to phase 0.
@@ -430,34 +430,36 @@ public class BattleProcessor {
 				bt.addScene("A Critical hit!");
 				tempSkill.runCrit(tempPerp,tempVic,bs);
 				
-				//If a critical hit occurred, run the perp's on-crit status effects.
-				tempPerp.onCritEffects(tempVic, tempAction, bs);
+				//Activate On Crit Effects
+				tempPerp.statusProcTime(8, bs, tempAction, tempVic, 0, 0, true, null);
 			}
 			else {
 				if(!calcHit(tempAction)){
 					bt.addScene(tempPerp.getName() + " missed!");
 					
-					//If the ability missed, activate perp's on-miss effects
-					tempPerp.onMissEffects(tempAction, tempPerp, bs);
+					//Activate User's Post-Action Effects
+					tempPerp.statusProcTime(9, bs, tempAction, null, 0, 0, true, null);
 					
 				}
 				else{
 					tempSkill.run(tempPerp,tempVic,bs);
 				}
 			}
-			//Extra check of TOQ emptiness in case it becomes empty as a result of skill being run.
-			if(!TurnOrderQueue.isEmpty()){		
-				if(tempAction != null){
-					
-					//After action, run all of the perp's on-action effects.
-					tempPerp.onActionEffects(tempAction, bs);
-					
-					//Also, run everyone's on-any-action effects
-					for(Schmuck s : battlers){
-						s.afterEveryActionEffects(s, tempAction, bs); 
-					}
+
+			if(tempAction != null){
+				
+				//Activate User's Post-Action Effects
+				tempPerp.statusProcTime(5, bs, tempAction, null, 0, 0, true, null);
+				
+				//Activate Target's Post-Action Effects
+				tempPerp.statusProcTime(6, bs, tempAction, null, 0, 0, true, null);
+				
+				//Also, run everyone's on-any-action effects
+				for(Schmuck s : battlers){
+					s.statusProcTime(7, bs, tempAction, s, 0, 0, true, null);
 				}
 			}
+			
 			
 			//Update targets for good measure.
 			bs.bs.targetUpdate();

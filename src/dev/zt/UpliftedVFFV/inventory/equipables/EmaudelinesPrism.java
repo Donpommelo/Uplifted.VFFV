@@ -24,7 +24,7 @@ public class EmaudelinesPrism extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new PrismShield(0);
+		enchantment[0] = new PrismShield(100);
 		return enchantment;
 	}
 	

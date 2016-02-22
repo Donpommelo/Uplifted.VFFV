@@ -64,7 +64,9 @@ public class StandardAttack extends Skills {
 			vic.hpChange((int)(damage *(1-vic.getVoidRes())));
 			break;
 		}
-		perp.onStandardAttackEffects(vic, damage, bs);
+		
+		//Activate User's Post-Action Effects
+		perp.statusProcTime(11, bs, null, vic, damage, 0, true, null);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
@@ -107,7 +109,9 @@ public class StandardAttack extends Skills {
 			vic.hpChange((int)(damage *(1-vic.getVoidRes())));
 			break;
 		}
-		perp.onStandardAttackEffects(vic, damage, bs);
+		
+		//Activate User's Post-Action Effects
+		perp.statusProcTime(11, bs, null, vic, damage, 0, true, null);
 
 	}
 		

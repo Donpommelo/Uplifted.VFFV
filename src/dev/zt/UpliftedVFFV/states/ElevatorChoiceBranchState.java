@@ -16,7 +16,7 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 	private GameState gs;
 	
 	public ElevatorChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId, String[] choices) {
-		super(game,gs, sm, eventId, choices);
+		super(game,gs, sm, eventId, choices, 100);
 		this.gs = gs;
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		panel = ImageLoader.loadImage("/ui/ElevatorPanelAlt.png");

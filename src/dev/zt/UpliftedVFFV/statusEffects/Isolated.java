@@ -25,6 +25,12 @@ public class Isolated extends status{
 			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Isolation prevents "+s.getPronoun(3)+" from targeting an ally!"),bs));
 		}
 	}
+	
+	public void preActionTarget(Schmuck s, Action a, BattleState bs){
+		if(bs.bp.getSelectableAllies(s).contains(a.user)){
+			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,a.target.getName()+" is Isolated and can not be targeted by "+ s.getName()+"!"),bs));
+		}
+	}
 
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Isolated and can no longer target allies!";

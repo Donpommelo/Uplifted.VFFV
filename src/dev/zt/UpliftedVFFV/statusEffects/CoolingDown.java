@@ -38,4 +38,5 @@ public class CoolingDown extends status{
 	public int stackingEffect(){
 		return 1;
 	}
+	
 }

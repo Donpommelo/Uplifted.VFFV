@@ -37,7 +37,7 @@ public class WarpCubicleDungeonNorthEx extends Event {
 				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinalFinal.txt",13,28,"");
 			}
 			else{
-				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",13,28,"");
+				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",15,32,"");
 				if(super.getVar(18) == 3 || (super.getVar(18) == 4 && super.getVar(17) == 3) ||
 						(super.getVar(18) == 5 && super.getVar(17) == 0) || (super.getVar(18) == 6 && super.getVar(17) == 1)
 						|| (super.getVar(18) == 7 && super.getVar(17) == 2)){
@@ -52,7 +52,6 @@ public class WarpCubicleDungeonNorthEx extends Event {
 			this.setOpen(false);
 			this.setFrames(0);
 			break;
-			
 		}
 		
 	}
@@ -63,7 +62,7 @@ public class WarpCubicleDungeonNorthEx extends Event {
 				this.setFrames(this.getFrames()+1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -74,7 +73,7 @@ public class WarpCubicleDungeonNorthEx extends Event {
 				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

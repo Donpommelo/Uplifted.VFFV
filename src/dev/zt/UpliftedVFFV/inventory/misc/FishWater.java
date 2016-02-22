@@ -21,15 +21,7 @@ public class FishWater extends Item{
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
-	
-	public String useText(Schmuck perp, Schmuck vic){
-		return perp.getName()+" throws the Fishwater at "+vic.getName();
-	}
-	
-	public String resultText(Schmuck perp, Schmuck vic){
-		return vic.getName()+" looks grossed out.";
-	}
-	
+		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(perp.getName().equals(vic.getName())){
 			bs.bp.bt.addScene(perp.getName()+" throws the Fishwater at "+vic.getName());
@@ -38,10 +30,6 @@ public class FishWater extends Item{
 	}
 	
 	public boolean startTeamTarget(){
-		return false;
-	}
-	
-	public boolean isLegendary(){
 		return false;
 	}
 

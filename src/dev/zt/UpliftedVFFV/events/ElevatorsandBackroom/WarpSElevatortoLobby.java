@@ -38,7 +38,7 @@ public class WarpSElevatortoLobby extends Event {
 					super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 18, 53,"Reception");
 					break;
 				case 1:
-					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 10, 21,"Bathhouse");
+					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 9, 21,"Bathhouse");
 					break;
 				case 2:
 					if(!super.getSwitch(2)){
@@ -57,8 +57,13 @@ public class WarpSElevatortoLobby extends Event {
 					}
 					break;
 				case 3:
+					
+					break;
+				case 4:
+					
 					break;
 				case 5:
+					
 					break;
 				case 6:
 					break;

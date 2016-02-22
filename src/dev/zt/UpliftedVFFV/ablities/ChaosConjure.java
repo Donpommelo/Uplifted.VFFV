@@ -12,7 +12,7 @@ public class ChaosConjure extends Skills {
 
 	public static String name = "Chaos Conjure";
 	public static String descr = "User summons a chaotic storm\n scrambling and damaging foes\nLimit : Three uses per fight.";
-	public static String descrShort = "Damages all foes and\nScrambles order\n1 use per fight.";
+	public static String descrShort = "Damages all foes and\nScrambles order\nCharges : 1";
 	public static int cost = 5;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

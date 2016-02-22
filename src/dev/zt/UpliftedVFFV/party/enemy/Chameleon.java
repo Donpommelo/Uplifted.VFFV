@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.equipables.RainbowScale;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.ElemPersuasion;
@@ -23,7 +24,7 @@ public class Chameleon extends Schmuck{
 	public final static int expDrop=7;
 	public final static int scrDrop=1;
 	
-	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 10, baseVoid = 0;
+	public final static int baseRed = 10, baseBlue = 10, baseGreen = 20, baseYellow = 10, basePurple = 10, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
 
 	public static String name = "Chameleon";
@@ -36,8 +37,8 @@ public class Chameleon extends Schmuck{
 	public static Skills[] levelSkills = {};
 	public static int[] levelReqs = {};
 	
-	public final static Item[] itemDrops = {};
-	public final static double[] dropRates = {};
+	public final static Item[] itemDrops = {new RainbowScale()};
+	public final static double[] dropRates = {0.5};
 	public final static status[] intrinsicStatuses = {new ElemPersuasion(4,20,50)};
 	
 	public final static String bioShort = "TEMP";

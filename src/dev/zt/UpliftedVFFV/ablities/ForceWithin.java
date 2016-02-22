@@ -10,7 +10,7 @@ public class ForceWithin extends Skills {
 
 	public static String name = "Force Within";
 	public static String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
-	public static String descrShort = "Dazes all foes\n1 use per fight.";
+	public static String descrShort = "Dazes all foes\nCharges : 1";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

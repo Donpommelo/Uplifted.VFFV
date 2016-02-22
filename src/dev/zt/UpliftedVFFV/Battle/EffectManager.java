@@ -80,7 +80,10 @@ public class EffectManager {
 		//Extra check to ensure that the target is not incapacitated.
 		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
 			if(finalDamage > 0){
-				finalDamage = vic.onHealEffects(bs, perp, finalDamage, elem);
+				
+				//perp's heal-give effects and target's heal-receive effects activate.
+				finalDamage = perp.statusProcTime(15, bs, null, vic, finalDamage, elem, true, null);
+				finalDamage = vic.statusProcTime(16, bs, null, perp, finalDamage, elem, true, null);
 				
 				//Final healing amount is finally modified by the target's regen bonus.
 				finalDamage *= (1+vic.getRegenBonus());
@@ -91,10 +94,9 @@ public class EffectManager {
 			else{
 				
 				//perp's damage-dealt effects and target's on-damage effects activate.
-				finalDamage = perp.dealDamageEffects(bs, vic, finalDamage, elem);
-				
-				finalDamage = vic.takeDamageEffects(bs, perp, finalDamage, elem);
-				
+				finalDamage = perp.statusProcTime(13, bs, null, vic, finalDamage, elem, true, null);
+				finalDamage = vic.statusProcTime(14, bs, null, perp, finalDamage, elem, true, null);
+
 				//Display text and do damage.
 //				bs.bp.bt.addScene(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 				vic.tempStats[0]+=finalDamage;
@@ -108,9 +110,8 @@ public class EffectManager {
 				//If so, set Hp to 0 and apply perp's on-kill effects and vic's on-death effects.
 				vic.tempStats[0]=0;
 				
-				perp.onKillEffects(vic, bs);
-				
-				vic.onDeathEffects(perp, bs);
+				perp.statusProcTime(19, bs, null, vic, 0, 0, true, null);
+				vic.statusProcTime(20, bs, null, perp, 0, 0, true, null);
 				
 				//Add incapacitate status and remove all of the target's actions from the TOQ
 				bs.bp.stm.addStatus(vic, new incapacitate(perp));
@@ -139,10 +140,10 @@ public class EffectManager {
 		int meterChange = bp;
 		//Activate all on-gain-meter or on-spend-meter effects accordingly.
 		if(meterChange < 0){
-			meterChange = s.onMeterLossEffects(meterChange, bs);
+			meterChange = s.statusProcTime(17, bs, null, null, meterChange, 0, true, null);
 		}
 		else{
-			meterChange = s.onMeterGainEffects(meterChange, bs);
+			meterChange = s.statusProcTime(18, bs, null, null, meterChange, 0, true, null);
 			meterChange *= (1 + s.getRegenBonus());
 		}
 		

@@ -17,8 +17,8 @@ public class PantherPoiseEffect extends status{
 		this.perp = perp;
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
-		if(a.skill.getName().equals("Item")){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
+		if(a.skill.getName().contains("Item")){
 			if(!perp.equals(bs.bp.TurnOrderQueue.get(0).user)){
 				bs.bp.bt.addScene(perp.getName()+" snatched the item. And ate it.");
 			}

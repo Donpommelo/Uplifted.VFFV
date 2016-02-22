@@ -33,7 +33,7 @@ public class Runaway extends Skills {
 		enemyLevel /= bs.bs.enemySelectable.size();
 		double chance = (partyLevel/enemyLevel)*(1+bonus);
 		if(bs.runnable && Math.random() <= chance){
-			bs.bp.stm.endofFite();
+			bs.bp.stm.endofFite(false);
 			bs.end(false);
 		}
 		else{

@@ -17,7 +17,7 @@ public class HiredHand extends Item{
 	static int slot = 1;
 	static int lvlReq = 30;
 	static String descr="Greedy familiar that fights on behalf of the\nhighest living bidder.";
-	static String descrShort="Attacks enemies\nTakes a cut of the winnings.";
+	static String descrShort="Ands some punch\nto your moves.\nTakes a cut of the winnings.";
 	
 	public status[] enchantment = new status[1];
 	public HiredHand() {

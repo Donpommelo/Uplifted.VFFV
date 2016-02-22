@@ -3,7 +3,6 @@ package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Queried;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
@@ -15,8 +14,8 @@ public class HumanityModuleStatus extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(s.getCurrentBp() >= (int)(s.getMaxBp()*.1)){
-			bs.bp.em.bpChange(-(int)(s.getMaxBp()*.1), s);
+		if(s.getCurrentBp() >= (int)(s.getMaxBp()*.15)){
+			bs.bp.em.bpChange(-(int)(s.getMaxBp()*.15), s);
 			bs.bp.bt.addScene(s.getName()+"'s Humanity Module activates!");
 			for(int i = 0; i < 3; i++){
 				int rand = (int)(Math.random()*34);

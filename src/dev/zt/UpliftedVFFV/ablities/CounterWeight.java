@@ -22,9 +22,8 @@ public class CounterWeight extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene(perp.getName()+" looks ready to Counter!");
-		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.stm.addStatus(s, new Countered(1,perp, perp, 90));
-		}
+		bs.bp.stm.addStatus(perp, new Countered(1,perp, perp, 90));
+		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

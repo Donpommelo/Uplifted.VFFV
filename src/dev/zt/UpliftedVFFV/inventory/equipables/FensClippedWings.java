@@ -1,7 +1,9 @@
 package dev.zt.UpliftedVFFV.inventory.equipables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.ablities.ShedFlesh;
 import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -34,7 +36,7 @@ public class FensClippedWings extends Item{
 		return enchantment;
 	}
 	
-	public void unEnchantment(Schmuck s) {
+	public void unEnchantment(Schmuck s, int slot, InventoryManager meep, Game game) {
 		s.forgetSkill(test);		
 	}
 	

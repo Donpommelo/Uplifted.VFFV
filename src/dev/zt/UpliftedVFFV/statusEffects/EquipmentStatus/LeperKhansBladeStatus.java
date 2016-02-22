@@ -19,6 +19,14 @@ public class LeperKhansBladeStatus extends status{
 				}
 			}
 		}
+		for(status st : perp.statusesChecked){
+			if(st.isBad() && !st.perm){
+				bs.bp.bt.addScene("Leper Khan's Blade infects "+vic.getName()+" with "+st.getName()+"!");
+				if(Math.random() < .3 * (1+perp.getEquipPow())*(float)(perp.getBuffedLuk()/vic.getBuffedLuk())){
+					bs.bp.stm.addStatus(vic, st);
+				}
+			}
+		}
 
 	}
 

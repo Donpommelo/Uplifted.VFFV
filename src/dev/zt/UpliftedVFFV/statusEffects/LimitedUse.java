@@ -14,23 +14,50 @@ public class LimitedUse extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
 	public int usesLeft;
+	public int origUses;
 	public Skills move;
 	public LimitedUse(Skills m, int uses, Schmuck perp, int pr){
 		super(1, name, perm, visible, removedEnd, decay, perp, pr);
 		this.move = m;
+		this.origUses = uses+1;
 		this.usesLeft = (int)(uses + perp.getChargeBonus());
 	}
 		
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals(move.getName())){
-			if(usesLeft>0){
-				usesLeft--;
-				bs.bp.bt.addScene(s.getName()+"'s  "+move.getName()+" has "+usesLeft+" uses left.");
-			}
-			else{
-				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s "+move.getName()+" has no more uses left!"),bs));				
+			if(usesLeft <= 0 ){
+				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s "+move.getName()+" has no more Charges left!"),bs));				
 			}
 		}
+	}
+	
+	public void onActionUser(BattleState bs, Action a){
+		if(a.skill.getName().equals(move.getName())){
+			if(usesLeft >= 0){
+				bs.bp.bt.addScene(a.getUser().getName()+"'s "+move.getName()+" has "+usesLeft+" Charges(s) left.");
+				move.descrShort = move.descrShort.replace("Charges : "+(usesLeft+1), "Charges : "+usesLeft);
+				usesLeft--;
+			}
+		}
+	}
+	
+	public void onStatusInflict(Schmuck s, status st, BattleState bs){
+		if(st.getName() == "Move Limitation" && st.getMove() == move && st != this){
+			s.statuses.remove(st);
+			s.statusesChecked.remove(st);
+		}
+	}
+	
+	public void endoffightEffect(Schmuck s, BattleState bs){
+		move.descrShort = move.descrShort.replace("Charges : "+(usesLeft+1), "Charges : "+origUses);
+	}
+	
+	public Skills getMove(){
+		return move;
+	}
+	
+	public Boolean runWhenDead(){
+		return true;
 	}
 	
 	public int stackingEffect(){

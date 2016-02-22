@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 
 public class CoffeeBean extends Item{
@@ -38,9 +42,12 @@ public class CoffeeBean extends Item{
 			return perp.getName()+" gives "+vic.getName()+" the Coffee Bean.";
 		}
 	}
-	
-	public void use(Schmuck s){
+		
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange((int)(-10*(1+s.getItemPow())));
 		s.bpChange((int)(30*(1+s.getItemPow())));
+		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" consumes the coffeee bean. Refreshing, but hot!", 0));
 	}
+	
+	
 }

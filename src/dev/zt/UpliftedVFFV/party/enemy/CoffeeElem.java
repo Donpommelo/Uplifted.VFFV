@@ -42,7 +42,7 @@ public class CoffeeElem extends Schmuck{
 	public static int[] levelReqs = {0,0};
 	
 	public final static Item[] itemDrops = {new CoffeeBean(), new BossMug()};
-	public final static double[] dropRates = {1.0, .1};
+	public final static double[] dropRates = {1.0, .5};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "A  dangerously hot elemental. Maintains and enforces orderly conduct in the Offices.";

@@ -18,4 +18,5 @@ public class DeadMansHandStatus extends status{
 			bs.bp.TurnOrderQueue.add(new Action(s, s, new Haunt(0), bs));
 		}
 	}
+
 }

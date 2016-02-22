@@ -3,6 +3,8 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Skills;
+import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -25,6 +27,10 @@ public class status implements Serializable{
 		status be visible in the BattleUI and also count when calculating number of statuses? (visible)
  11: Can multiple instances of your status be stacked? Or will reapplying it just increase the duration?
  12: What is your status' priority? Remember that higher priorities will be processed first.
+ 13: Does your status proc right before an action? (PreActionUser or Target)? If so, DO NOT MAKE IT REMOVE THE
+ 		ACTION FROM THE TOQ. Replace it instead.
+ 14: Does your status proc onDamageTaken, onDamageDealt, onHeal, onStatus, onMpGain/lose? Remember that these proc
+ 		at any time. Make sure they do not proc each other potentially infinitely. That would be bad.
   */
 	
 	
@@ -35,7 +41,7 @@ public class status implements Serializable{
 	public Boolean visible = true;		//Whether the status is visible in the UI
 	public Boolean removedEnd = true;	//Whether the status is removed at the end of combat.
 	public Boolean decay = true;		//Whether the status's duration decreases at the end of each round.
-	public int stack;					//For stackable statuses
+	public int extraVar1;					//For stackable statuses
 	public int priority;				//Status priority. Higher priority statuses have their effects applied first.
 	public Schmuck perp;				//Schmuck who inflicted this status
 		
@@ -48,6 +54,7 @@ public class status implements Serializable{
 		this.decay = dec;
 		this.perp = p;
 		this.priority = pr;
+		this.extraVar1 = 1;
 	}
 	
 	//For creating Equipment Statuses
@@ -59,6 +66,7 @@ public class status implements Serializable{
 		this.visible = false;
 		this.removedEnd = false;
 		this.decay = false;
+		this.extraVar1 = 1;
 		this.perp = new Schmuck();
 	}
 	
@@ -80,6 +88,8 @@ public class status implements Serializable{
 	
 	//Activates upon selecting a move. Atm used for restricting; if certain moves are selected, they are replaced
 	//Implemented in Phase 2 of Battle Processor
+	//GOOD: REPLACING/ADDING ACTIONS, CHANGING TARGETS.
+	//BAD: DOING DAMAGE. DO NOT DO ANYTHING THAT WOULD REMOVE ACTION a FROM THE TOQ
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
 
 	}
@@ -108,7 +118,7 @@ public class status implements Serializable{
 	
 	//Executed at the end of fights before item + script calculations
 	//Implements in endOfFight function in Status Manager.
-	public void endoffightEffect(Schmuck s, BattleState bs){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
 		
 	}
 	
@@ -126,16 +136,25 @@ public class status implements Serializable{
 		return damage;
 	}	
 	
-	//upon being healed by any Schmuck. 
+	//upon healing/being healed by any Schmuck. 
 	//Elements: 0:Red 1:Blue 2:Green 3:Yellow 4:Purple 5:Void 6:Nonaligned
 	//Implemented in hpChange function in EffectManager
-	public int onHealEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	
+	public int onHealUserEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		return damage;
+	}
+	
+	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		return damage;
 	}
 	
 	//Upon a move is used. Contrast with "restrict" which is activated before move is used.
 	//Implemented in Phase 2 of Battle Processor
-	public void onAction(BattleState bs, Action a){
+	public void onActionUser(BattleState bs, Action a){
+		
+	}
+	
+	public void onActionTarget(BattleState bs, Action a){
 		
 	}
 	
@@ -218,12 +237,7 @@ public class status implements Serializable{
 	public int onLootScript(Schmuck s, BattleState bs, int script){
 		return script;
 	}
-	
-	//At end of battle ran for each item gained.
-	public Item onLootItem(Schmuck s, BattleState bs, Item item, int number){
-		return item;
-	}
-	
+		
 	//not currently used
 	public void run(Schmuck s){
 		
@@ -244,7 +258,7 @@ public class status implements Serializable{
 	//What will happen if you gain this status while already having a status with the same name?
 	//0: Nothing happens. (Most statuses)
 	//1: The duration of the status is increased. (Poison)
-	//2: You gain a new instance of the status. (Stat changes, Limited Use, Status Immunity, etc)
+	//2: You gain a new instance of the status. (Stat changes, Status Immunity, etc)
 	//3: The new status replaces the old one. (Statuses with some numeric modifier like Vampirism or Damage Reflect)
 	//4: Both statuses are removed. (Misaligned)
 	//5: The status' stack variable increases by 1 (Intrusive Thought)
@@ -266,5 +280,18 @@ public class status implements Serializable{
 	public Boolean runWhenDead(){
 		return false;
 	}
+	
+	//For use with Limited Use stuff
+	public Skills getMove(){
+		return new StandardAttack(0);
+	}
 
+	public int getExtraVar1() {
+		return this.extraVar1;
+	}
+
+	public void setExtraVar1(int extraVar1) {
+		this.extraVar1 = extraVar1;
+	}
+	
 }

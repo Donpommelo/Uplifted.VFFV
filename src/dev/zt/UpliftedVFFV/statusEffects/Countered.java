@@ -10,23 +10,21 @@ public class Countered extends status{
 	public static String name = "Counter";
 	public static Boolean perm = false;
 	public static Boolean visible = false;
-	public static Boolean removedEnd = false;
+	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public Schmuck Counterer;
 	public Countered(int i, Schmuck perp, Schmuck counterer, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
-		this.Counterer = counterer;
 	}
 	
 	public Countered(int pr){
 		super(name, pr);
 	}
-		
-	public void onAction(BattleState bs, Action a){
-		if(a.getTarget() == Counterer && a.getSkill().getTargetType() == 0 && !bs.bp.getSelectableAllies(a.getUser()).contains(Counterer)){
-			bs.bp.bt.addScene(Counterer.getName()+" Counters!");
-			int damage = (int)(bs.bp.em.logScaleDamage(Counterer, a.getUser()) * 0.5);
-			bs.bp.em.hpChange(damage, Counterer, a.getUser(),6);
+	
+	public void onActionTarget(BattleState bs, Action a){
+		if(a.getSkill().getTargetType() == 0 && !bs.bp.getSelectableAllies(a.getTarget()).contains(a.getUser())){
+			bs.bp.bt.addScene(a.getTarget().getName()+" Counters the attack!");
+			int damage = (int)(bs.bp.em.logScaleDamage(a.getTarget(), a.getUser()) * 0.5);
+			bs.bp.em.hpChange(damage, a.getTarget(), a.getUser(),6);
 		}
 	}
 }

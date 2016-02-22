@@ -138,6 +138,20 @@ public class BattleState extends State {
 	}
 	
 	public void end(boolean victory){
+		
+		//Extra check to remove all statuses that should be removed a the end of battle
+		for(Schmuck s : bp.allies){
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){					
+					if(s.statuses.get(i).removedEnd){
+						bp.stm.hardRemoveStatus(s,s.statuses.get(i));
+						s.calcBuffs(this);
+						i--;
+					}
+				}
+			}
+		}
+		
 		StateManager.getStates().pop();
 		game.getAudiomanager().playMusic(2, true);
 		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will

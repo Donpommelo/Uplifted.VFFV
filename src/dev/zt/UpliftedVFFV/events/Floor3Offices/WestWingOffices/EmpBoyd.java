@@ -33,7 +33,7 @@ public class EmpBoyd extends Event {
 		
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[0];
+			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"We should be honored to have these work opportunities that our parents/could only dream of./");
 			super.Dialog(d, 0, this.getId(), true);
 			break;

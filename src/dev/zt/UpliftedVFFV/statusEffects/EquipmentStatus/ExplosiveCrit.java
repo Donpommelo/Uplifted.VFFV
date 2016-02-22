@@ -14,6 +14,7 @@ public class ExplosiveCrit extends status{
 	}
 	
 	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){
+		bs.bp.bt.addScene(perp.getName()+"'s Atomic-Punch Thrusters Crit explosively!");
 		for(Schmuck s : bs.bs.enemySelectable){
 			bs.bp.em.hpChange(-(int)(damage * (1 + perp.getEquipPow())), perp, s,0);
 		}

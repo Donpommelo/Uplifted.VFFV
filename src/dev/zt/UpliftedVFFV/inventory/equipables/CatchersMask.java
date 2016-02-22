@@ -25,7 +25,7 @@ public class CatchersMask extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusImmunity(new Blind(0), 50);
+		enchantment[0] = new StatusImmunity(new Blind(0), 5);
 		return enchantment;
 	}
 }

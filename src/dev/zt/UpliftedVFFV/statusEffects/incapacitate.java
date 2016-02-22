@@ -18,7 +18,7 @@ public class incapacitate extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" looks ok again.";
+		return s.getName()+" was Revived!";
 	}
 	
 	public Boolean isDisable(){

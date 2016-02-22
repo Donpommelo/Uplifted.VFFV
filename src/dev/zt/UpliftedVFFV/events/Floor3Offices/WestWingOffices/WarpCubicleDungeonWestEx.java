@@ -17,7 +17,7 @@ public class WarpCubicleDungeonWestEx extends Event {
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinalFinal.txt",22,16,"");
 		}
 		else{
-			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",22,16,"");
+			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",26,18,"");
 			if(super.getVar(18) == 2 || (super.getVar(18) == 4 && super.getVar(17) == 2) ||
 					(super.getVar(18) == 5 && super.getVar(17) == 1) || (super.getVar(18) == 6 && super.getVar(17) == 3)
 					|| (super.getVar(18) == 7 && super.getVar(17) == 0)){

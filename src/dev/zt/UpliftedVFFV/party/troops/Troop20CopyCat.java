@@ -13,7 +13,9 @@ public class Troop20CopyCat extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new CopyCat(2+ML));
+		troop.add(new CopyCat(1+ML));
+		troop.add(new CopyCat(1+ML));
+//		troop.add(new CopyCat(1+ML));
 		this.troop = troop;
 		return troop;
 	}

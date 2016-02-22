@@ -48,7 +48,7 @@ public class EmpCooley extends Event {
 				Dialog[] d2 = new Dialog[1];
 				d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Say, wanna learn something cool?/");
 				super.Dialog(d2, 0, this.getId(), true);
-				super.ChoiceBranch(this.getId(), Choices);
+				super.ChoiceBranch(this.getId(), Choices, 100);
 				break;
 			case 2:
 				

@@ -12,6 +12,6 @@ public class WarpCubicleFinaltoDungeon extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",22,16,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",26,18,"");
 	}
 }

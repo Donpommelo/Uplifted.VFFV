@@ -17,7 +17,7 @@ public class TyrianPlumEffect extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
 	}
 	
-	public void onAction(BattleState bs, Action a){
+	public void onActionUser(BattleState bs, Action a){
 		if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
 			bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
 			int damage = (int)(bs.bp.em.logScaleDamage(perp, a.getUser())* 0.2);

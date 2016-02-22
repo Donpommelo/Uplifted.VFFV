@@ -42,8 +42,8 @@ public class Operator extends Schmuck{
 	public final static Skills[] levelSkills = {new DoorsofClosure(0), new MotorGrinder(0), new CrushCables(0),
 			new CentriDischarge(0), new SafeRoom(0), new FiremansSwitch(0), new VariableVoltage(0),
 			new CounterWeight(0), new DamnedDescent(0), new TowerofTerror(0), new Terraform(0),new DayattheFair(0)};
-	public final static int[] levelReqs = {0,0,2,3,5,7,12,15,18,21,25,30};
-//	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0};
+//	public final static int[] levelReqs = {0,0,2,3,5,7,12,15,18,21,25,30};
+	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0,0,0};
 	
 	public final static Item[] itemDrops = {};
 	public final static double[] dropRates = {};

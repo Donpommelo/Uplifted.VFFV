@@ -25,13 +25,5 @@ public class WindUpPunchEffect extends status{
 		}
 		bs.bp.stm.removeStatus(s, this);
 	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
+		
 }

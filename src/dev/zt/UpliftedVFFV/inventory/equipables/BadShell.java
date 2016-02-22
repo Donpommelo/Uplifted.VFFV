@@ -24,7 +24,7 @@ public class BadShell extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DamageBlock(.50 ,5 ,6 ,50);
+		enchantment[0] = new DamageBlock(.50*(1+ s.getEquipPow()) ,(int)(5*(1+s.getEquipPow())) ,6 ,50);
 		return enchantment;
 	}
 }

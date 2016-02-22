@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class LemonyFresh extends Item{
@@ -42,8 +46,9 @@ public class LemonyFresh extends Item{
 		}
 	}
 	
-	public void use(Schmuck s){
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange((int)(25*(1+s.getItemPow())));
 		s.bpChange((int)(15*(1+s.getItemPow())));
+		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" drinks the refreshing beverage!", 0));
 	}
 }

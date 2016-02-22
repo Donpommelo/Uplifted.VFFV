@@ -1,8 +1,13 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class CaffeinePatch extends Item{
 
@@ -36,7 +41,13 @@ public class CaffeinePatch extends Item{
 		}
 	}
 	
-	public void use(Schmuck s){
-		s.bpChange(20);
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
+		s.bpChange((int)(20*(1+s.getItemPow())));
+		StateManager.states.push(new NotificationState(game, gs, sm, "The Caffeine Patch is applied to "+s.getName()+"!", 0));
+	}
+	
+	public void TOQChange(Action a, BattleState bs){
+		bs.bp.TurnOrderQueue.remove(a);
+		bs.bp.TurnOrderQueue.add(0, a);
 	}
 }

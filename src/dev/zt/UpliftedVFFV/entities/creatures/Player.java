@@ -28,7 +28,7 @@ public class Player extends Creature implements Serializable{
 	protected int step=0;
 	public static int enemyCalc=0;
 	public static int runlast=1;
-	public static int enemyChance=0;
+	public static double enemyChance = 0.0;
 	public static double bonusML;
 	public static double combatFreq;
 	public GameState gamestate;
@@ -139,13 +139,13 @@ public class Player extends Creature implements Serializable{
 			for(Schmuck s : gamestate.partymanager.party){
 				combatFreq += s.getCombatFreq();
 			}
-			if(temp<enemyChance*(1+combatFreq)){			//enemy stuff				
-				enemyChance = 0;
+			if(temp < enemyChance*(1+combatFreq)){			//enemy stuff				
+				enemyChance = 0.0;
 				encounter();
 			}
 			else{
-				if(enemyChance<(double)(gamestate.getWorld().enemyrate)){
-					enemyChance++;
+				if(enemyChance < gamestate.getWorld().getEnemyrate()){
+					enemyChance += 0.1;
 				}
 			}
 		}

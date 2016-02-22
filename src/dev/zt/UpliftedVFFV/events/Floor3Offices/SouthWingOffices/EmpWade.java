@@ -50,7 +50,7 @@ public class EmpWade extends Event {
 				Dialog[] d = new Dialog[1];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I got it as a souvenir from the Aquarium. Want some?/");
 				super.Dialog(d, 0, this.getId(), true);
-				super.ChoiceBranch(this.getId(), Choices);
+				super.ChoiceBranch(this.getId(), Choices, 100);
 				break;
 			case 2:
 				this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));

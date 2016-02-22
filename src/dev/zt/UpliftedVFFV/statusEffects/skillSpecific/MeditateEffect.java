@@ -20,13 +20,5 @@ public class MeditateEffect extends status{
 		bs.bp.em.hpChange(s.getBaseHp(), s, s, 6);
 		bs.bp.stm.removeStatus(s, this);
 	}
-	
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-	
+		
 }

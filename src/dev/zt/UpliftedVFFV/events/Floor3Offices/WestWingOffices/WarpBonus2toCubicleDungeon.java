@@ -13,6 +13,6 @@ public class WarpBonus2toCubicleDungeon extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,16,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,18,"");
 	}
 }

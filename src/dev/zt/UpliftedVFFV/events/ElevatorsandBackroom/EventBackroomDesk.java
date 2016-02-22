@@ -25,7 +25,7 @@ public class EventBackroomDesk extends Event {
 					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png", 0, "Write to your Pen Pal?/" +
 					"Stamps Remaining: " + super.itemNumCheck(new PostageStamp()) + "/");
 					super.Dialog(d, 0, this.getId(), true);
-					super.ChoiceBranch(this.getId(), Choices);
+					super.ChoiceBranch(this.getId(), Choices, 100);
 				}	
 			}
 			else{

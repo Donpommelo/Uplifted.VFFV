@@ -7,9 +7,11 @@ import dev.zt.UpliftedVFFV.ablities.IntrusiveThought;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.misc.GlimpseattheEnd;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
+import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.IntrusiveThoughtEffect;
 
 public class Augur extends Schmuck{
 
@@ -34,8 +36,8 @@ public class Augur extends Schmuck{
 	public static Skills[] levelSkills = {new IntrusiveThought(0), new ForeseeIll(0)};
 	public static int[] levelReqs = {0,0};
 	
-	public final static Item[] itemDrops = {};
-	public final static double[] dropRates = {};
+	public final static Item[] itemDrops = {new GlimpseattheEnd(), new GlimpseattheEnd()};
+	public final static double[] dropRates = {1, .5};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "Spectral bringer of bad news. Infects foes with insidious negativity.";
@@ -47,7 +49,6 @@ public class Augur extends Schmuck{
 	}
 	
 	public Action getAction(BattleState bs){
-//		return new Action(this,bs.bp.allies.get((int)(Math.random()*bs.bp.allies.size())),new StandardAttack(0),bs);
 		Schmuck target = null;
 		if(!bs.bs.alliesTargets.isEmpty()){
 			target = bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size()));
@@ -57,30 +58,16 @@ public class Augur extends Schmuck{
 		}
 		int mostStacks = 0;
 		for(Schmuck s : bs.bp.allies){
-			for(status st : s.statuses){
-				if(st.getName().equals("Intrusive Thoughts")){
-					if(st.stack>mostStacks){
-						target = s;
-					}
-				}					
+			if(bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,0)).getExtraVar1() > mostStacks){
+				target = s;
+				mostStacks = bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,0)).getExtraVar1();
 			}
 		}
-		int stacked = -1;
-		for(status s : target.statuses){
-			if(s.getName().equals("Intrusive Thoughts")){
-				stacked = target.statuses.indexOf(s);
-			}					
-		}
-		if(stacked != -1){
-			if(target.statuses.get(stacked).stack*15>=Math.random()*100){
-				return new Action(this,target,new ForeseeIll(0),bs);
-			}
-			else{
-				return new Action(this,target,new IntrusiveThought(0),bs);
-			}
+
+		if(mostStacks*10>=Math.random()*100){
+			return new Action(this,target,new ForeseeIll(0),bs);
 		}
 		else{
-			
 			return new Action(this,target,new IntrusiveThought(0),bs);
 		}
 

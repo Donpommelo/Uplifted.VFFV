@@ -38,7 +38,7 @@ public class IllRat extends Schmuck{
 	public static int[] levelReqs = {0,0};
 	
 	public final static Item[] itemDrops = {new Disease(), new RatTail()};
-	public final static double[] dropRates = {.6, .25};
+	public final static double[] dropRates = {.8, .4};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "Filthy bringer of plague. Thrive due to lack of natural predators.";

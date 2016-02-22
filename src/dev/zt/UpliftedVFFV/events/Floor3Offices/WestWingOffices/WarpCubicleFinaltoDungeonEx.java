@@ -16,7 +16,7 @@ public class WarpCubicleFinaltoDungeonEx extends Event {
 			super.setVar(16, 1);
 			super.setVar(17, 1);
 			super.setVar(18, (int)(Math.random()*8));
-			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",22,16,"");
+			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleExtended.txt",4,18,"");
 		}
 		else{
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/Lobby.txt",4,8,"");

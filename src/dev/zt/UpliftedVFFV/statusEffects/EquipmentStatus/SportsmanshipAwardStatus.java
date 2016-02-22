@@ -21,9 +21,9 @@ public class SportsmanshipAwardStatus extends status{
 		super(name, pr);
 	}
 	
-	public void PreActionUser(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(bs.bp.getSelectableEnemies(s).contains(a.getTarget()) && a.getSkill().targetType == 0){
-			for(status st : s.statuses){
+			for(status st : a.getTarget().statuses){
 				if(st.isDisable()){
 					bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Sportsmanship Award prevents "+s.getPronoun(1)+" from targeting an enemy that is affected by "+st.getName()+"!"),bs));
 					break;

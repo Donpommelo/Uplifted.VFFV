@@ -12,12 +12,16 @@ public class SindhDakStatus extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
+	
+	public boolean turnused;
+	
 	public SindhDakStatus(int i, Schmuck perp, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+		turnused = true;
 	}
 
-	public void onAction(BattleState bs, Action a){
-		if(a.getSkill().getTargetType() == 0){
+	public void onActionUser(BattleState bs, Action a){
+		if(a.getSkill().getTargetType() == 0 && !(a.getSkill().getName() == "Sindh Dak" && turnused)){
 			bs.bp.bt.addScene(a.getUser().getName()+"'s Sindh Dak buff spreads the message!");
 			for(Schmuck s : bs.bp.getSelectableAllies(a.getTarget())){
 				if(s != a.getTarget()){
@@ -26,5 +30,7 @@ public class SindhDakStatus extends status{
 			}
 			bs.bp.stm.hardRemoveStatus(a.getUser(), this);
 		}
-	}	
+		turnused = false;
+	}
+	
 }

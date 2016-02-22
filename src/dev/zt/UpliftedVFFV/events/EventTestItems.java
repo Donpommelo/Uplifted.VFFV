@@ -25,13 +25,19 @@ public class EventTestItems extends Event {
 	
 	public void run(){
 		super.recruit(new PenPal(1));
+		super.scriptChange(1000);
 		
 		super.loot(new AngryBeef(), 2);
+		super.loot(new Antiinflammatory(), 6);
+		super.loot(new Antivenom(), 6);
 		super.loot(new BeefBoyle(), 3);
+		super.loot(new Bettergent(), 6);
 		super.loot(new CaffeinePatch(), 5);
 		super.loot(new CarrotJuice(), 3);
 		super.loot(new CoffeeBean(), 2);
 		super.loot(new CoffeedIce(), 1);
+		super.loot(new ColdMedicine(), 6);
+		super.loot(new CoughDrops(), 6);
 		super.loot(new Disease(),4);
 		super.loot(new FennelDonut(), 1);
 		super.loot(new FishWater(), 1);
@@ -41,14 +47,36 @@ public class EventTestItems extends Event {
 		super.loot(new MeltedIcecream(), 3);
 		super.loot(new MentalLeakage(), 5);
 		super.loot(new MidgeBlood(), 4);
+		super.loot(new MuscleRelaxant(), 6);
 		super.loot(new PostageStamp(),4);
 		super.loot(new SeeingEye(), 1);
 		super.loot(new SleepingPills(), 6);
 		super.loot(new SmellingSalt(), 3);
+		super.loot(new StatScrubber(), 3);
 		super.loot(new Unbeef(), 3);
+		super.loot(new BadYolk(), 6);
+		super.loot(new BagofCurses(), 6);
+		super.loot(new Disease(), 6);
+		super.loot(new GlimpseattheEnd(), 600);
+		super.loot(new JanitorDonationForm(), 6);
 		super.loot(new MetalRations(), 6);
 		super.loot(new SummonSauce(), 6);
+		
+		super.loot(new RandomFoodSmall(), 1);
+		super.loot(new RandomFoodMedium(), 1);
+		super.loot(new RandomFoodLarge(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
+		super.loot(new RandomPotion(), 1);
 
+
+		
 		super.loot(new SummonConch(), 1);
 		super.loot(new SummonLotus(), 1);
 		super.loot(new SummonTwofish(), 1);
@@ -59,6 +87,7 @@ public class EventTestItems extends Event {
 		super.loot(new AbyssalInsignia(), 2);
 		super.loot(new AdaptiveArmor(), 2);
 		super.loot(new AetherFeather(), 2);
+		super.loot(new AnchorTalisman(), 2);
 		super.loot(new AtomicPunchThrusters(), 2);
 		super.loot(new AutoQuerier(), 1);
 		super.loot(new BackpackBaphomet(),2);
@@ -72,14 +101,21 @@ public class EventTestItems extends Event {
 		super.loot(new BoxofFun(), 1);
 		super.loot(new BucketBattery(), 1);
 		super.loot(new CactusSuit(), 2);
+		super.loot(new CannonCr4p(), 1);
+		super.loot(new CannonElectrostatic(), 1);
+		super.loot(new CannonHand(), 1);
+		super.loot(new CannonSuperSoaker(), 1);
+		super.loot(new CannonVenom(), 1);
 		super.loot(new CatalogueofWant(), 1);
 		super.loot(new CatalogueofNeed(), 1);
 		super.loot(new CatchersGlove(), 1);
 		super.loot(new CatchersMask(), 1);
+		super.loot(new CelestialAnnointment(), 1);
 		super.loot(new CensuredResonance(), 1);
 		super.loot(new ClockwiseCage(), 1);
 		super.loot(new CompoundVitreous(), 2);
 		super.loot(new Conduit(), 2);
+		super.loot(new CrawlingFortess(), 1);
 		super.loot(new CullingGrinder(), 1);
 		super.loot(new CurseCoat(),2);
 		super.loot(new CursedCilice(),2);
@@ -88,6 +124,7 @@ public class EventTestItems extends Event {
 		super.loot(new DeathCap(), 3);
 		super.loot(new DeploreApp(), 1);
 		super.loot(new DreamEater(), 2);
+		super.loot(new DrippingFang(), 2);
 		super.loot(new EchoShell(), 2);
 		super.loot(new EightBall(), 1);
 		super.loot(new EmaudelinesPrism(), 1);
@@ -115,6 +152,7 @@ public class EventTestItems extends Event {
 		super.loot(new HandofGlory(), 2);
 		super.loot(new HiredHand(), 2);
 		super.loot(new HirtzCompass(), 2);
+		super.loot(new HiveRhythm(), 1);
 		super.loot(new HnHFake(), 1);
 		super.loot(new HolyWaterSprinkler(), 2);
 		super.loot(new HumanityModule(), 1);
@@ -125,6 +163,7 @@ public class EventTestItems extends Event {
 		super.loot(new LastBreath(), 1);
 		super.loot(new LeperKhansBlade(), 3);
 		super.loot(new LetterOpener(), 3);
+		super.loot(new LoamSkinTalisman(), 1);
 		super.loot(new MadnessMantra(), 1);
 		super.loot(new Magnum(), 1);
 		super.loot(new MidgeProboscis(), 1);
@@ -143,8 +182,17 @@ public class EventTestItems extends Event {
 		super.loot(new SimmerResent(), 1);
 		super.loot(new SimpleMind(), 1);
 		super.loot(new SlackerSlacks(), 1);
+		super.loot(new SleepytimeSurprise(),2);
 		super.loot(new SpeedChute(), 2);
 		super.loot(new SportsmanshipAward(),2);
+		super.loot(new StatRingAnt(), 3);
+		super.loot(new StatRingBeetle(), 3);
+		super.loot(new StatRingCricket(), 3);
+		super.loot(new StatRingFirefly(), 3);
+		super.loot(new StatRingMoth(), 3);
+		super.loot(new StatRingRoach(), 3);
+		super.loot(new StatRingSpider(), 3);
+		super.loot(new StatRingWasp(), 3);
 		super.loot(new SuckerPunch(),2);
 		super.loot(new TommorowmanTalisman(),2);
 		super.loot(new TomeofEcdysis(), 1);
@@ -152,6 +200,7 @@ public class EventTestItems extends Event {
 		super.loot(new TomeoftheEnd(), 1);
 		super.loot(new TomeoftheUnknowable(), 1);
 		super.loot(new UsurpersChemSet(),2);
+		super.loot(new VoodooPin(), 1);
 		super.loot(new ZenBand(), 1);
 		super.Timer(this.getId(), 25);
 	}

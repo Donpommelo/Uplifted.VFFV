@@ -14,14 +14,18 @@ public class WarpCubicleDungeonEast extends Event {
 		
 	public void run(){
 		if(!super.getSwitch(26)){
-			if(super.getVar(16) == 5){
+			if(super.getVar(16) == 1){
+				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,18,"");
+				super.setVar(16, 2);
+			}
+			else if(super.getVar(16) == 5){
 				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt",4,16,"");
 				super.setVar(16, 0);
 				super.setSwitch(26, true);
 			}
 			else{
-				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,16,"");
-				super.setVar(16, 2);
+				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,18,"");
+				super.setVar(16, 1);
 			}
 		}
 		else{

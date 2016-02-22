@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class RandomFoodSmall extends Item{
 
@@ -366,9 +370,9 @@ public class RandomFoodSmall extends Item{
 	}
 	
 	
-	public void use(Schmuck s){
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange((int)(60*(1+s.getItemPow())));
 		s.bpChange((int)(40*(1+s.getItemPow())));
-
+		StateManager.states.push(new NotificationState(game, gs, sm, "The meal restores "+s.getName()+"'s Hp and Mp!", 0));
 	}
 }

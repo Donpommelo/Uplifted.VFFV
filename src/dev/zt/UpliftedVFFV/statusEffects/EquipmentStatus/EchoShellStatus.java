@@ -12,10 +12,24 @@ public class EchoShellStatus extends status{
 		
 	public void endofturnEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+"'s Echo Shell echoes effects!");
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i)!=null && s.statuses.get(i).getName() != "Echoing"){
-				s.statuses.get(i).endofturnEffect(s, bs);	
+		
+		for(status st : s.statusesChecked){
+			s.statuses.add(st);
+		}
+		s.statusesChecked.clear();
+		
+		while(!s.statuses.isEmpty()){
+			status tempStatus = s.statuses.get(0);
+			
+			if(tempStatus!=null && tempStatus.getName() != "Echoing"){
+				tempStatus.endofturnEffect(s, bs);	
+			}
+			
+			if(s.statuses.contains(tempStatus)){
+				s.statuses.remove(tempStatus);
+				s.statusesChecked.add(tempStatus);
 			}
 		}
+		s.calcBuffs(bs);
 	}
 }

@@ -86,9 +86,11 @@ public class BattleMenu{
 		audio = game.getAudiomanager();
 		
 		//If the Schmuck chose to Wait in the Planning phase, all onDillyDally statuses activate.
-		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally"){
+		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally" && bs.bp.phase == 2){
 			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
-			currentSchmuck.onDillyDallyEffects(bs);
+
+			//Activate User's On-Wait Effects
+			currentSchmuck.statusProcTime(10, bs, null, null, 0, 0, true, null);
 		}
 		pointed = chosen;
 	}

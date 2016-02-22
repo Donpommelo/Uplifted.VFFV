@@ -22,7 +22,7 @@ public class BattleText {
 	
 	public int charIndex;
 	public boolean scrolling, actionRun;
-
+	public int autoscroll = 120;
 	
 	public int frame, autoWait;
 	
@@ -45,7 +45,7 @@ public class BattleText {
 				bs.end(false);
 			}
 			if(scenes.get(0).isAuto() && !scrolling && actionRun){
-				if(this.autoWait<=80){
+				if(this.autoWait <= autoscroll){
 					this.autoWait++;
 				}
 				else{

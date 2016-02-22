@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Lachiplatre extends Item{
 
@@ -36,8 +40,9 @@ public class Lachiplatre extends Item{
 		}
 	}
 	
-	public void use(Schmuck s){
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange(2);
 		s.bpChange(2);
+		StateManager.states.push(new NotificationState(game, gs, sm, "The Lachiplatre tastes like nothing . . . yet tastes familiar . . .", 0));
 	}
 }

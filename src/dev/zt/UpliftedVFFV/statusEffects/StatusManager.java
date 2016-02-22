@@ -42,74 +42,81 @@ public class StatusManager {
 		}
 		
 		//What happens if you gain a status you already had?
+		boolean added = false;
 		
+		switch(stat.stackingEffect()){
 		//Case 0: New stat is not applied.
-		if(stat.stackingEffect() == 0 && checkStatus(s,stat)){
-			bs.bp.bt.addScene(s.getName()+" is already under the effects of "+stat.getName()+"!");
-		}
-		else{
-			switch(stat.stackingEffect()){
-			
-			case 0:
-				s.statuses.add(stat);
-				break;
-			//Case 1: Old stat's duration is increased
-			case 1:
-				if(checkStatus(s,stat)){
-					if(!findStatus(s,stat).perm){
-						findStatus(s,stat).setDuration(findStatus(s,stat).getDuration()+stat.duration);
-					}
-				}
-				else{
-					s.statuses.add(stat);
-				}
-				break;
-			
-			//Case 2: Both stats are added.
-			case 2:
-				s.statuses.add(stat);
-				break;
-			
-			//Case 3: The New stat replaces the old one.	
-			case 3:
-				if(checkStatus(s,stat)){
-					if(!findStatus(s,stat).perm){
-						s.statuses.remove(findStatus(s,stat));
-					}
-				}
-				s.statuses.add(stat);	
-				break;
-				
-			//Case 4: Both stats are removed.
-			case 4:
-				if(checkStatus(s,stat)){
-					if(!findStatus(s,stat).perm){
-						s.statuses.remove(findStatus(s,stat));
-					}
-				}
-				else{
-					s.statuses.add(stat);
-				}
-				break;
-			//Case 5: Stack ++
-			case 5:
-				if(checkStatus(s,stat)){
-					findStatus(s,stat).stack++;
-				}
-				else{
-					s.statuses.add(stat);
-				}
-				break;	
+		case 0:
+			if(checkStatus(s,stat)){
+				bs.bp.bt.addScene(s.getName()+" is already under the effects of "+stat.getName()+"!");
 			}
+			else{
+				s.statuses.add(stat);
+				added = true;
+			}
+			break;
+		//Case 1: Old stat's duration is increased
+		case 1:
+			if(checkStatus(s,stat)){
+				if(!findStatus(s,stat).perm){
+					findStatus(s,stat).setDuration(findStatus(s,stat).getDuration()+stat.duration);
+				}
+			}
+			else{
+				s.statuses.add(stat);
+				added = true;
+			}
+			break;
+		
+		//Case 2: Both stats are added.
+		case 2:
+			s.statuses.add(stat);
+			added = true;
+			break;
+		
+		//Case 3: The New stat replaces the old one.	
+		case 3:
+			if(checkStatus(s,stat)){
+				if(!findStatus(s,stat).perm){
+					s.statuses.remove(findStatus(s,stat));
+				}
+			}
+			s.statuses.add(stat);
+			added = true;
+			break;
 			
+		//Case 4: Both stats are removed.
+		case 4:
+			if(checkStatus(s,stat)){
+				if(!findStatus(s,stat).perm){
+					s.statuses.remove(findStatus(s,stat));
+				}
+			}
+			else{
+				s.statuses.add(stat);
+				added = true;
+			}
+			break;
+		//Case 5: Stack ++
+		case 5:
+			if(checkStatus(s,stat)){
+				findStatus(s,stat).setExtraVar1(findStatus(s,stat).getExtraVar1()+1);
+			}
+			else{
+				s.statuses.add(stat);
+				added = true;
+			}
+			break;
+		}
 			
+		if(added){
 			if(!stat.inflictText(s).equals("")){
 				bs.bp.bt.addScene(stat.inflictText(s));
 			}
 			
 			//Activate all of the target's on-status effects.
-			s.onNewStatus(stat, bs);
-		}		
+			s.statusProcTime(21, bs, null, null, 0, 0, true, stat);
+		}
 		
 		int j;
 		boolean flag = true;
@@ -131,63 +138,79 @@ public class StatusManager {
 	
 	//Removes a nonpermanent status.
 	public void removeStatus(Schmuck s, status stat){
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i).getName()!=null){
-				if(s.statuses.get(i).getName().equals(stat.getName())){
-					if(s.statuses.get(i).perm){
-						bs.bp.bt.addScene(stat.getName()+" could not be removed!");
-					}
-					else{
-						if(!s.statuses.get(i).cureText(s).equals("")){
-							bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
-						}
-						s.statuses.remove(i);
-						i--;
-					}
-				}
+		ArrayList<status> removed = new ArrayList<status>();
+		for(status st : s.statuses){
+			if(!st.perm && st.getName().equals(stat.getName())){
+				removed.add(st);
 			}
+		}
+		for(status st : s.statusesChecked){
+			if(!st.perm && st.getName().equals(stat.getName())){
+				removed.add(st);
+			}
+		}
+		for(status st : removed){
+			if(!st.cureText(s).equals("")){
+				bs.bp.bt.addScene(st.cureText(s));
+			}
+			s.statuses.remove(st);
+			s.statusesChecked.remove(st);
 		}
 	}
 	
 	//Removes permanent stuff too
 	public void hardRemoveStatus(Schmuck s, status stat){
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i).getName()!=null){
-				if(s.statuses.get(i).getName().equals(stat.getName())){
-					s.statuses.remove(i);
-					i--;	
-				}
+		ArrayList<status> removed = new ArrayList<status>();
+		for(status st : s.statuses){
+			if(st.getName().equals(stat.getName())){
+				removed.add(st);
 			}
+		}
+		for(status st : s.statusesChecked){
+			if(st.getName().equals(stat.getName())){
+				removed.add(st);
+			}
+		}
+		for(status st : removed){
+			s.statuses.remove(st);
+			s.statusesChecked.remove(st);
 		}
 	}
 	
 	public Boolean checkStatus(Schmuck s, status stat){
 		Boolean aff = false;
-		for(status st :s.statuses){
-			if(st.getName()!=null){			
-				if(st.getName().equals(stat.getName())){					
-					aff = true;
-				}
+		for(status st : s.statuses){
+			if(st.getName().equals(stat.getName())){					
+				aff = true;
+			}
+		}
+		for(status st : s.statusesChecked){
+			if(st.getName().equals(stat.getName())){					
+				aff = true;
 			}
 		}
 		return aff;
 	}
 	
 	public status findStatus(Schmuck s, status stat){
-		int index = 0;
-		for(int i=0; i<s.statuses.size(); i++){
-			if(s.statuses.get(i).getName()!=null){
-				if(s.statuses.get(i).getName().equals(stat.getName())){
-					index = i;
-				}
+		for(status st : s.statuses){
+			if(st.getName().equals(stat.getName())){					
+				return st;
 			}
 		}
-		return s.statuses.get(index);
+		for(status st : s.statusesChecked){
+			if(st.getName().equals(stat.getName())){					
+				return st;
+			}
+		}
+		return new Purified(50);	//This is really dumb. You are going to regret this later	
 	}
 	
 	public void endofRound(BattleState bs){
 		for(Schmuck s : battlers){
-			s.endofRoundEffects(bs);
+
+			//Activate End-of-Round Effects
+			s.statusProcTime(12, bs, null, null, 0, 0, true, null);
 		}
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
@@ -210,20 +233,22 @@ public class StatusManager {
 		
 	}
 	
-	public void endofFite(){
+	public void endofFite(Boolean won){
 		for(Schmuck s : battlers){
-			s.endofFightEffects(bs);
+			//Activate End-of-Fight Effects
+			s.statusProcTime(1, bs, null, null, 0, 0, won, null);
 		}
 		for(Schmuck s : battlers){
-			for(int i=0; i<s.statuses.size(); i++){
-				if(s.statuses.get(i)!=null){					
-					if(s.statuses.get(i).removedEnd){
-						hardRemoveStatus(s,s.statuses.get(i));
-						s.calcBuffs(bs);
-						i--;
-					}
+			ArrayList<status> removed = new ArrayList<status>();
+			for(status st : s.statuses){
+				if(!st.removedEnd){
+					removed.add(st);
 				}
 			}
+			for(status st : removed){
+				bs.bp.stm.hardRemoveStatus(s, st);
+			}
+			s.calcBuffs(bs);
 		}
 	}
 	

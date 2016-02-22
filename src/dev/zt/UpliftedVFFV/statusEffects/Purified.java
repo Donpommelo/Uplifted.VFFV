@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class Purified extends status{
 	
-	public static String name = "Purifification";
+	public static String name = "Purification";
 	public static Boolean perm = false;
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;

@@ -9,7 +9,6 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EventMindControlDevice extends Event {
 
 	public String[] Choices={"Never Mind","0","1","2","3","4","5","6","7","8"};			//list of choices used in the choicebranch
-
 	public static int stagenum = 1;
 	//Change texture later
 	public static BufferedImage img=Assets.Monolith;
@@ -20,7 +19,7 @@ public class EventMindControlDevice extends Event {
 	public void run(){	
 		switch(this.getstage()){
 		case 0: 
-			if(this.isSelfswitch1()){
+			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d1 = new Dialog[5];
 				d1[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What is this thing?/");
@@ -41,7 +40,7 @@ public class EventMindControlDevice extends Event {
 			Dialog[] d1 = new Dialog[1];
 			d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Set Dial? Current Level: "+dial+".");
 			super.Dialog(d1, 0, this.getId(), true);
-			super.ChoiceBranch(this.getId(), Choices);
+			super.ChoiceBranch(this.getId(), Choices, 100);
 			break;
 		}
 	}

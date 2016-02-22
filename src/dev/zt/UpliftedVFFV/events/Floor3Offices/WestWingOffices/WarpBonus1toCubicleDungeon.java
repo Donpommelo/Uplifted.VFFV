@@ -13,7 +13,7 @@ public class WarpBonus1toCubicleDungeon extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",13,7,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,7,"");
 		super.getGamestate().getEvents()[282].setOpen(false);
 		super.getGamestate().getEvents()[282].setFrames(6);
 	}

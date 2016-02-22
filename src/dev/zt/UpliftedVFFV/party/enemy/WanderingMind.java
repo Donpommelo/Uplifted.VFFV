@@ -7,6 +7,8 @@ import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.consumables.MentalLeakage;
+import dev.zt.UpliftedVFFV.inventory.consumables.ThoughtFluid;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -34,8 +36,8 @@ public class WanderingMind extends Schmuck{
 	public static Skills[] levelSkills = {};
 	public static int[] levelReqs = {};
 	
-	public final static Item[] itemDrops = {};
-	public final static double[] dropRates = {};
+	public final static Item[] itemDrops = {new MentalLeakage(), new ThoughtFluid()};
+	public final static double[] dropRates = {.75, .50};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "TEMP";

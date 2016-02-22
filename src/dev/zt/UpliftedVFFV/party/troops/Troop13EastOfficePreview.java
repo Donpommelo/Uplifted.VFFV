@@ -21,7 +21,6 @@ public class Troop13EastOfficePreview extends Troop{
 		troop.add(new Midgeon(ML));
 		troop.add(new Screamer(ML));
 		troop.add(new Shirley(ML));
-//		troop.add(new Lunk(ML));
 		this.troop = troop;
 		return troop;
 	}

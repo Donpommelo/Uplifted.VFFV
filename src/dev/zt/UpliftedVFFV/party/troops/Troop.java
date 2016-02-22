@@ -17,7 +17,7 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop5 = new Troop5SmallSchmucks(5);
 	public static Troop Troop6 = new Troop6Trio(6);
 	public static Troop Troop7 = new Troop7Augurs(7);
-	public static Troop Troop8 = new Troop8OfficeDiversity(8);
+	public static Troop Troop8 = new Troop8OfficeDiversitySouth(8);
 	public static Troop Troop9 = new Troop9BadEggGang(9);
 	public static Troop Troop10 = new Troop10LeaderandCo(10);
 	public static Troop Troop11 = new Troop11CoffeeElemental(11);
@@ -25,8 +25,14 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop13 = new Troop13EastOfficePreview(13);
 	public static Troop Troop14 = new Troop14WanderingMind(14);
 	public static Troop Troop15 = new Troop15BossJorge(15);
-	
+	public static Troop Troop16 = new Troop16MidgeonSwarm(16);
+	public static Troop Troop17 = new Troop17ChameleonandCo(17);
+	public static Troop Troop18 = new Troop18ChameleonDuo(18);
+	public static Troop Troop19 = new Troop19SymphonyofScreamers(19);
 	public static Troop Troop20 = new Troop20CopyCat(20);
+	public static Troop Troop21 = new Troop21OfficeDiversityEast(21);
+	public static Troop Troop22 = new Troop22PortentGang(22);
+	public static Troop Troop23 = new Troop23LeaderandCo2(23);
 
 	
 	protected final int id;

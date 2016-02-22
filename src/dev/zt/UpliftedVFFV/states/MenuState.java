@@ -311,7 +311,7 @@ public class MenuState extends State {
 												break;
 											case 1:
 												//Unequip item.
-												gamestate.partymanager.party.get(characterSelected).unEquip(equipSelected, gamestate.inventorymanager);
+												gamestate.partymanager.party.get(characterSelected).unEquip(equipSelected, gamestate.inventorymanager, game);
 												refreshBackpack();
 												toggleXtraInfo = false;
 												break;
@@ -363,7 +363,7 @@ public class MenuState extends State {
 								} else{
 //									if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
 										audio.playSound("/Audio/option_toggle.wav", false);
-										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+										gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager, game);
 										refreshBackpack();
 										progFlag = true;
 										itemChosen = false;
@@ -391,17 +391,21 @@ public class MenuState extends State {
 								}
 							}
 							if(game.getKeyManager().up){
-								if(itemslot>0){
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									itemslot--;
-									game.getKeyManager().disable(delayCursor);
+								if(!progFlag){
+									if(itemslot>0){
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										itemslot--;
+										game.getKeyManager().disable(delayCursor);
+									}
 								}
 							}
 							if(game.getKeyManager().down){
-								if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
-									audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
-									itemslot++;
-									game.getKeyManager().disable(delayCursor);
+								if(!progFlag){
+									if(itemslot<gamestate.partymanager.party.get(characterSelected).getItemSlots()-1){			
+										audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+										itemslot++;
+										game.getKeyManager().disable(delayCursor);
+									}
 								}
 							}
 						}
@@ -413,7 +417,7 @@ public class MenuState extends State {
 									exit = true;
 								} else{
 									audio.playSound("/Audio/option_toggle.wav", false);
-									tempItem.use(gamestate.partymanager.party.get(characterSelected));
+									tempItem.use(gamestate.partymanager.party.get(characterSelected),game, statemanager, gamestate);
 									if(tempItem.isConsummable()){
 										gamestate.inventorymanager.use(tempItem);
 										itemChosen = false;
@@ -452,7 +456,7 @@ public class MenuState extends State {
 										}
 //										if(gamestate.partymanager.party.get(characterSelected).getLvl() >= tempItem.getLvlReq()*(1-gamestate.partymanager.party.get(characterSelected).getLvlReqMod())){
 											audio.playSound("/Audio/option_toggle.wav", false);
-											gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager);
+											gamestate.partymanager.party.get(characterSelected).equip(tempItem, itemslot, gamestate.inventorymanager, game);
 //										}
 //										else{
 //											audio.playSound("/Audio/option_toggle.wav", false); // lets get some meep merp in here
@@ -548,9 +552,12 @@ public class MenuState extends State {
 											}
 											else{
 												audio.playSound("/Audio/option_toggle.wav", false);
-												tempItem.use();
-												refreshBackpack();
-											}
+												tempItem.use(game, statemanager, gamestate);
+												if(tempItem.isConsummable()){
+													gamestate.inventorymanager.use(tempItem);
+													itemChosen = false;
+													refreshBackpack();
+												}											}
 											
 										}
 									} else if(itemOption == 1){
@@ -791,29 +798,29 @@ public class MenuState extends State {
 						g.drawRect(324, 166, 17, 17);
 					}
 					
-					int remaining = (tempSchmuck.getPrismaticPoints() - tempSchmuck.getElemPoints()[4] 
-							- tempSchmuck.getElemPoints()[3] - tempSchmuck.getElemPoints()[2] - tempSchmuck.getElemPoints()[1]
-							- tempSchmuck.getElemPoints()[0]);
+					int remaining = (tempSchmuck.getPrismaticPoints() - tempSchmuck.getBuffedElemPoints()[4] 
+							- tempSchmuck.getBuffedElemPoints()[3] - tempSchmuck.getBuffedElemPoints()[2] - tempSchmuck.getBuffedElemPoints()[1]
+							- tempSchmuck.getBuffedElemPoints()[0]);
 					g.setColor(Color.red);				
 					g.fillRect(326, 43, 14, 14);
-					g.fillRect(345, 44, tempSchmuck.getElemPoints()[0] * 3, 12);
-					g.drawString(tempSchmuck.getElemPoints()[0] + "", 575, 57);
+					g.fillRect(345, 44, tempSchmuck.getBuffedElemPoints()[0] * 3, 12);
+					g.drawString(tempSchmuck.getBuffedElemPoints()[0] + "", 575, 57);
 					g.setColor(Color.blue);
 					g.fillRect(326, 68, 14, 14);
-					g.fillRect(345, 69, tempSchmuck.getElemPoints()[1] * 3, 12);
-					g.drawString(tempSchmuck.getElemPoints()[1] + "", 575, 82);
+					g.fillRect(345, 69, tempSchmuck.getBuffedElemPoints()[1] * 3, 12);
+					g.drawString(tempSchmuck.getBuffedElemPoints()[1] + "", 575, 82);
 					g.setColor(Color.green);
 					g.fillRect(326, 93, 14, 14);
-					g.fillRect(345, 94, tempSchmuck.getElemPoints()[2] * 3, 12);
-					g.drawString(tempSchmuck.getElemPoints()[2] + "", 575, 107);
+					g.fillRect(345, 94, tempSchmuck.getBuffedElemPoints()[2] * 3, 12);
+					g.drawString(tempSchmuck.getBuffedElemPoints()[2] + "", 575, 107);
 					g.setColor(Color.yellow);
 					g.fillRect(326, 118, 14, 14);
-					g.fillRect(345, 119, tempSchmuck.getElemPoints()[3] * 3, 12);
-					g.drawString(tempSchmuck.getElemPoints()[3] + "", 575, 132);
+					g.fillRect(345, 119, tempSchmuck.getBuffedElemPoints()[3] * 3, 12);
+					g.drawString(tempSchmuck.getBuffedElemPoints()[3] + "", 575, 132);
 					g.setColor(new Color(128, 0, 128));
 					g.fillRect(326, 143, 14, 14);
-					g.fillRect(345, 144, tempSchmuck.getElemPoints()[4] * 3, 12);
-					g.drawString(tempSchmuck.getElemPoints()[4] + "", 575, 157);
+					g.fillRect(345, 144, tempSchmuck.getBuffedElemPoints()[4] * 3, 12);
+					g.drawString(tempSchmuck.getBuffedElemPoints()[4] + "", 575, 157);
 					g.setColor(Color.white);
 					g.fillRect(326, 168, 14, 14);
 					g.fillRect(345, 169,  remaining * 3 , 12);
@@ -934,7 +941,7 @@ public class MenuState extends State {
 						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);
 						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black, 492, 240 + itemslot * 40, 120, 25, 16, true);
 					} else if(equipChosen && progFlag){
-							Utils.drawDialogueBox(g, window3, "Item Equipped!", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);						
+//							Utils.drawDialogueBox(g, window3, "Item Equipped!", 16, Color.white,  320 - 50, 208 - 100, 200, 32, 16, true);						
 					}
 					//Item usage.
 					if(useitemChosen && !progFlag){
@@ -942,7 +949,7 @@ public class MenuState extends State {
 						FontMetrics metrics = g.getFontMetrics();
 						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black,  150 + characterSelected * 100, 120, metrics.stringWidth(curItem.getName()) + 8, 25, 16, true);
 					} else if(useitemChosen && progFlag){
-						Utils.drawDialogueBox(g, window3, "Item Used!", 16, Color.white,  320 - 50, 208 - 75, 200, 32, 16, true);
+//						Utils.drawDialogueBox(g, window3, "Item Used!", 16, Color.white,  320 - 50, 208 - 100, 200, 32, 16, true);
 					}
 				}
 				break;

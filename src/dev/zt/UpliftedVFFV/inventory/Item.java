@@ -3,10 +3,14 @@ package dev.zt.UpliftedVFFV.inventory;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 //items class.
@@ -50,7 +54,7 @@ public class Item implements Comparable<Item>, Serializable{
 	//ran when an item is used. Every item will override this method with whatever effect it has,
 	
 	//Nontargeted item used from menu
-	public void use(){
+	public void use(Game game, StateManager sm,GameState gs){
 
 	}
 	
@@ -61,7 +65,7 @@ public class Item implements Comparable<Item>, Serializable{
 	}
 	
 	//targeted item used from menu
-	public void use(Schmuck s){
+	public void use(Schmuck s, Game game, StateManager sm,GameState gs){
 
 	}
 	
@@ -113,6 +117,11 @@ public class Item implements Comparable<Item>, Serializable{
 		return descrShort;
 	}
 	
+	public void setDescrShort(String descr) {
+		this.descrShort = descr;
+	}
+
+	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		return 	perp.getName()+" used "+getName()+"!";
 	}
@@ -150,7 +159,11 @@ public class Item implements Comparable<Item>, Serializable{
 		return null;
 	}
 	
-	public void unEnchantment(Schmuck s, InventoryManager meep) {
+	public void unEnchantment(Schmuck s, int slot, InventoryManager meep, Game game) {
+		
+	}
+		
+	public void onEquip(Schmuck s, int slot, InventoryManager meep, Game game) {
 		
 	}
 

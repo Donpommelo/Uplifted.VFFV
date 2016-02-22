@@ -53,6 +53,11 @@ public class Assets {
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
 		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
 		RailLeft, RailMiddle, RailRight, BlackDoor;
+	
+	public static BufferedImage WestClocksDigital330,WestClocksDigital315,WestClocksDigital900,WestClocksDigital600,
+	WestClocksDigital645, WestClocksAnalogE,WestClocksAnalogW,WestClocksAnalogN,WestClocksAnalogS,WestClocksAnalogR,
+	WestClocksAnalogL,WestClocksAnalogF,WestClocksAnalogB;
+	
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened,SafeClosed2,
 	WaterCooler,Clock, VendingMachine;
 	public static BufferedImage Table0,Table1,Table2,Table3,Table4,Table5,Table6,Table7, Table8, Table9;
@@ -95,7 +100,7 @@ public class Assets {
 		SpriteSheet ThirdFloorWalls = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorWalls.png"));
 		SpriteSheet ThirdFloorMisc = new SpriteSheet(ImageLoader.loadImage("/textures/3rdFloorMisc.png"));
 		SpriteSheet Doors = new SpriteSheet(ImageLoader.loadImage("/textures/Doors1.png"));
-
+		SpriteSheet WestClocks = new SpriteSheet(ImageLoader.loadImage("/textures/WestClocks.png"));
 		southMonolith = ImageLoader.loadImage("/textures/SouthMonolith.png");
 
 		//Load system resources, reused resources and stuff.
@@ -377,7 +382,20 @@ public class Assets {
 		MaleSign = Furniture3rdFloor.crop(3*width, 5*height, width, height);
 		FemaleSign = Furniture3rdFloor.crop(4*width, 5*height, width, height);
 		SinkMirror = Furniture3rdFloor.crop(5*width, 5*height, width, height*2);
-			
+		
+		WestClocksDigital330 = WestClocks.crop(0, 0, 3*width, 3*height);
+		WestClocksDigital315 = WestClocks.crop(3*width, 0, 3*width, 3*height);
+		WestClocksDigital900 = WestClocks.crop(0, 3*height, 3*width, 3*height);
+		WestClocksDigital600 = WestClocks.crop(0, 6*height, 3*width, 3*height);
+		WestClocksDigital645 = WestClocks.crop(0, 9*height, 3*width, 3*height);
+		WestClocksAnalogE = WestClocks.crop(6*width, 0, 3*width, 3*height);
+		WestClocksAnalogW = WestClocks.crop(6*width, 3*height, 3*width, 3*height);
+		WestClocksAnalogN = WestClocks.crop(6*width, 6*height, 3*width, 3*height);
+		WestClocksAnalogS = WestClocks.crop(6*width, 9*height, 3*width, 3*height);
+		WestClocksAnalogR = WestClocks.crop(9*width, 0, 3*width, 3*height);
+		WestClocksAnalogL = WestClocks.crop(9*width, 3*height, 3*width, 3*height);
+		WestClocksAnalogF = WestClocks.crop(9*width, 6*height, 3*width, 3*height);
+		WestClocksAnalogB = WestClocks.crop(9*width, 9*height, 3*width, 3*height);
 		UnderwaterFilter = ImageLoader.loadImage("/textures/UnderwaterFilter.png");
 		DarkFilter = ImageLoader.loadImage("/textures/DarkFilter.png");
 		FogFilter = ImageLoader.loadImage("/textures/FogFilter.png");

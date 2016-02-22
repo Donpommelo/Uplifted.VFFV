@@ -37,7 +37,7 @@ public class BadEgg extends Schmuck{
 	public static int[] levelReqs = {0,0};
 	
 	public final static Item[] itemDrops = {new BadYolk(), new BadShell()};
-	public final static double[] dropRates = {.6, .2};
+	public final static double[] dropRates = {.75, .25};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "The uncouth spirit of an unborn chicken.";

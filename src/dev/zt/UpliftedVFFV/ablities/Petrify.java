@@ -11,7 +11,7 @@ public class Petrify extends Skills {
 
 	public static String name = "Petrify";
 	public static String descr = "User petrifies a target, disabling\nthem for a long duration\nLimit : One use per fight.";
-	public static String descrShort = "Stuns target\n1 use per fight.";
+	public static String descrShort = "Stuns target\nCharges : 1";
 	public static int cost = 10;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss =  false; public static boolean canCrit = false;

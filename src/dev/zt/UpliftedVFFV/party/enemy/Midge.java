@@ -42,7 +42,7 @@ public class Midge extends Schmuck{
 	public static int[] levelReqs = {0,0};
 	
 	public final static Item[] itemDrops = {new MidgeBlood(), new MidgeProboscis()};
-	public final static double[] dropRates = {.3, .1};
+	public final static double[] dropRates = {.5, .2};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "A small bloodsucking insect. The swelling caused by their bites are actually egg sacs.";

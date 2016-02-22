@@ -34,7 +34,7 @@ public class WarpCubicleDungeonNorth extends Event {
 			this.setstage(0);
 			game.getAudiomanager().playMusic(2, true);
 			if(!super.getSwitch(26)){
-				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",13,28,"");
+				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,32,"");
 				if(super.getVar(16) == 2){
 					super.setVar(16, 3);
 				}
@@ -42,7 +42,7 @@ public class WarpCubicleDungeonNorth extends Event {
 					super.setVar(16, 4);
 				}
 				else{
-					super.setVar(16, 2);
+					super.setVar(16, 1);
 				}
 			}
 			else{
@@ -62,7 +62,7 @@ public class WarpCubicleDungeonNorth extends Event {
 				this.setFrames(this.getFrames()+1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -73,7 +73,7 @@ public class WarpCubicleDungeonNorth extends Event {
 				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 416){
+				if(KeyManager.isCutsceneMode() && (int)(gs.getPlayer().getPlayerX()) == 480){
 					this.setstage(this.getstage()+1);
 					run();
 				}	

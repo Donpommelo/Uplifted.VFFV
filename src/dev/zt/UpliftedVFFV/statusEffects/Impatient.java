@@ -28,11 +28,11 @@ public class Impatient extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" became Impatient and can no longer Wait!";
+		return s.getName()+" became Impatient and can Wait no longer!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" is not longer Impatient.";
+		return s.getName()+" is not longer Impatient!";
 	}
 	
 	public Boolean isBad(){

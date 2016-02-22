@@ -29,7 +29,7 @@ public class LastBreathStatus extends status{
 		}
 	}
 	
-	public void onAction(BattleState bs, Action a){
+	public void onActionUser(BattleState bs, Action a){
 		numSilenced = 0;
 		for(Schmuck guy : bs.bs.alliesSelectable){
 			if(bs.bp.stm.checkStatus(guy, new Silenced(0)));
@@ -45,7 +45,7 @@ public class LastBreathStatus extends status{
 		s.buffedStats[2] *= 1+(.1*numSilenced)*(1+s.getEquipPow());
 	}
 	
-	public void endoffightEffect(Schmuck s, BattleState bs){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
 		numSilenced = 0;
 	}
 }

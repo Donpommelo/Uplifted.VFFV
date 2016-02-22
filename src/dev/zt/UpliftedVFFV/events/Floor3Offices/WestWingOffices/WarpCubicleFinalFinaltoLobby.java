@@ -15,7 +15,7 @@ public class WarpCubicleFinalFinaltoLobby extends Event {
 	public void run(){
 		switch(this.getstage()){
 		case 0:
-			super.transport("/Worlds/Floor3Offices/WestWingOffices/Lobby.txt",9,11,"");
+			super.transport("/Worlds/Floor3Offices/WestWingOffices/Lobby.txt",9,11,"West Lobby");
 			super.setVar(16, 0);
 			super.setSwitch(27, true);
 			super.Timer(this.getId(), 10);

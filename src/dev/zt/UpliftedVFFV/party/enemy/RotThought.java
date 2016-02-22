@@ -40,7 +40,7 @@ public class RotThought extends Schmuck{
 	public static int[] levelReqs = {0,3};
 	
 	public final static Item[] itemDrops = {new MentalLeakage()};
-	public final static double[] dropRates = {.7};
+	public final static double[] dropRates = {.75};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "A weakly malicious intention. Floats feebly through the cubicles where it was born.";

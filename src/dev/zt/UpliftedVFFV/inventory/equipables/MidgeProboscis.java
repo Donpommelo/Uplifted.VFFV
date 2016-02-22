@@ -24,7 +24,7 @@ public class MidgeProboscis extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Vampirism(.1*(1+s.getEquipPow()), 75);
+		enchantment[0] = new Vampirism(.2*(1+s.getEquipPow()), 75);
 		return enchantment;
 	}
 }

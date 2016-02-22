@@ -2,15 +2,15 @@ package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.enemy.Augur;
-import dev.zt.UpliftedVFFV.party.enemy.BadEgg;
-import dev.zt.UpliftedVFFV.party.enemy.IllRat;
-import dev.zt.UpliftedVFFV.party.enemy.Midge;
-import dev.zt.UpliftedVFFV.party.enemy.RotThought;
+import dev.zt.UpliftedVFFV.party.enemy.Lunk;
+import dev.zt.UpliftedVFFV.party.enemy.Midgeon;
+import dev.zt.UpliftedVFFV.party.enemy.Portent;
+import dev.zt.UpliftedVFFV.party.enemy.Screamer;
+import dev.zt.UpliftedVFFV.party.enemy.Shirley;
 
-public class Troop8OfficeDiversity extends Troop{
+public class Troop21OfficeDiversityEast extends Troop{
 
-	public Troop8OfficeDiversity(int id) {
+	public Troop21OfficeDiversityEast(int id) {
 		super(id);
 	}
 	
@@ -18,7 +18,7 @@ public class Troop8OfficeDiversity extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop = new ArrayList<Schmuck>();
 		ArrayList<Schmuck> tempList = new ArrayList<Schmuck>();
-		tempList.add(new Midge(3+ML));tempList.add(new RotThought(3+ML));tempList.add(new Augur(3+ML));tempList.add(new BadEgg(3+ML));tempList.add(new IllRat(3+ML));
+		tempList.add(new Midgeon(3+ML));tempList.add(new Shirley(3+ML));tempList.add(new Screamer(3+ML));tempList.add(new Lunk(3+ML));tempList.add(new Portent(3+ML));
 		for(int i = 0; i <5; i++){
 			int tempIndex = (int)(Math.random()*tempList.size());
 			Schmuck temp = tempList.get(tempIndex);

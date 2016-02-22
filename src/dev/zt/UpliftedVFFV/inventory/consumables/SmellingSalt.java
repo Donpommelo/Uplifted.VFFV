@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class SmellingSalt extends Item{
@@ -33,7 +37,7 @@ public class SmellingSalt extends Item{
 		return perp.getName()+" administers the Smellingsalt to "+vic.getName();
 	}
 	
-	public void use(Schmuck s){
+	public void use(Schmuck s, Game game, StateManager sm,GameState gs){
 		s.hpChange(5);
 		for(int i=0; i<s.statuses.size(); i++){
 			if(s.statuses.get(i).getName()!=null){
@@ -43,7 +47,7 @@ public class SmellingSalt extends Item{
 				}
 			}
 		}
-		
+		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" looks refreshed!", 0));
 	}
 	
 	public int getTargetType(){

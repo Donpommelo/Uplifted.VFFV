@@ -134,7 +134,7 @@ public class BonusStatBuff extends status{
 			stat = "Cooldown Bonus";
 			break;
 		case 32:
-			stat = "Crit Avoidance";
+			stat = "Critical Avoidance";
 			break;
 		case 33:
 			stat = "Channeling Bonus";
@@ -153,6 +153,9 @@ public class BonusStatBuff extends status{
 			break;
 		case 38:
 			stat = "Damage Reduction";
+			break;
+		case 39:
+			stat = "Haggling Ability";
 			break;
 		}
 		if(statIncrement>0){

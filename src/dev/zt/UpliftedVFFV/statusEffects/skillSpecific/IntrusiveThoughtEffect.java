@@ -10,18 +10,8 @@ public class IntrusiveThoughtEffect extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
-	public int stack;
 	public IntrusiveThoughtEffect(Schmuck perp, int pr){
 		super(1, name, perm, visible, removedEnd, decay, perp, pr);
-		stack = 0;
-	}
-
-	public String inflictText(Schmuck s){
-		return s.getName()+" just had an unpleasant thought.";
-	}
-
-	public String cureText(Schmuck s){
-		return s.getName()+"'s Intrusive Thoughts fade.";
 	}
 	
 	public int stackingEffect(){

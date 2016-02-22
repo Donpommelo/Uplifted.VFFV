@@ -20,7 +20,7 @@ public class Troop14WanderingMind extends Troop{
 	}
 	
 	public String encounterText(){
-		return "You are beset by an assortment of foe!";		
+		return "A Wandering Mind is minding your business!";		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

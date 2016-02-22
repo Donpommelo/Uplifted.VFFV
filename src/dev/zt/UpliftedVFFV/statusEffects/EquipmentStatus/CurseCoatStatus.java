@@ -13,7 +13,7 @@ public class CurseCoatStatus extends status{
 		this.rolled = false;
 	}
 	
-	public void onAction(BattleState bs, Action a){
+	public void onActionUser(BattleState bs, Action a){
 		rolled = false;
 	}
 	

@@ -18,6 +18,7 @@ public class ChoiceBranchState extends State {
 	private BufferedImage window;
 	public int EventId;
 	public String[] num;
+	public String[] descriptions;
 	public int currentchoice, choicelocation,firstchoice, boxsize, width;
 	public boolean selected,exit;
 	
@@ -25,7 +26,7 @@ public class ChoiceBranchState extends State {
 	private int delayCursor = 120;
 	private int delaySelection = 200;
 		
-	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices){
+	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices, int width){
 		super(game,sm);
 		this.gs = gs;
 		setStateType("choice");
@@ -35,9 +36,9 @@ public class ChoiceBranchState extends State {
 		currentchoice=0;				//which item is selected
 		choicelocation=0;				//where does the item show up on the menu
 		firstchoice=0;					//where out of all the options is the list currently looking at
-		selected=false;			
-		this.width = 100;
+		selected=false;					
 		exit=false;						//pressed when exiting. back button
+		this.width = width;
 		if(num.length>5){				//list is 5 items long. Any longer and the list will scroll
 			boxsize=5;
 		}
@@ -45,12 +46,14 @@ public class ChoiceBranchState extends State {
 			boxsize=num.length;
 		}
 	}
-	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices, int width){
+	
+	public ChoiceBranchState(Game game, GameState gs, StateManager sm, int eventId,String[] choices, String[] descr, int width){
 		super(game,sm);
 		this.gs = gs;
 		setStateType("choice");
 		this.EventId=eventId;
 		this.num=choices;
+		this.descriptions = descr;
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue.png");
 		currentchoice=0;				//which item is selected
 		choicelocation=0;				//where does the item show up on the menu
@@ -164,6 +167,12 @@ public class ChoiceBranchState extends State {
 		}
 		if(firstchoice != num.length - boxsize){
 			g.drawImage(Assets.Downarrow, width/2, 140 + 32 * boxsize, null);
+		}
+		
+		if(descriptions != null){
+			if(descriptions[currentchoice] != ""){
+				Utils.drawDialogueBox(g, window, descriptions[currentchoice], 18, Color.black, 15+width, 300-30*boxsize, width * 2, 5+30*(boxsize), 16, true);
+			}
 		}
 	
 	}

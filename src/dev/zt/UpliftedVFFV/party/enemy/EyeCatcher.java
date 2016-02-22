@@ -43,7 +43,7 @@ public class EyeCatcher extends Schmuck{
 	public static int[] levelReqs = {0};
 	
 	public final static Item[] itemDrops = {new SeeingEye(), new CatchersGlove(), new CatchersMask()};
-	public final static double[] dropRates = {1.0, .15, .1};
+	public final static double[] dropRates = {1.0, .5, .3};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "Dangerous monster that steals the eyes from its victims. Probably has a collection or something.";

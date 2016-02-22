@@ -1,8 +1,12 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.NotificationState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class FennelDonut extends Item{
 
@@ -34,8 +38,9 @@ public class FennelDonut extends Item{
 			return perp.getName()+" gives "+vic.getName()+" the nasty, nasty donut.";
 		}
 	}
-	
-	public void use(Schmuck s){
+		
+	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
 		s.hpChange((int)(45*(1+s.getItemPow())));
+		StateManager.states.push(new NotificationState(game, gs, sm, "Its one nasty donut, but it restores Hp nonetheless.", 0));
 	}
 }

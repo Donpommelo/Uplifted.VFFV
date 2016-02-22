@@ -18,7 +18,7 @@ public class TomeofPermanence extends Item{
 	static int slot = 1;
 	static int lvlReq = 45;
 	static String descr="An eternal tome rumored to have no end. Those who have neared\nits conclusion claim that the book added a few more pages just for them.";
-	static String descrShort="+15 Hp\nStandard Attacks sometimes extend duration debuffs.";
+	static String descrShort="+15 Hp\nStandard Attacks sometimes extend duration\nof debuffs.";
 	public status[] enchantment = new status[2];
 	public TomeofPermanence() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

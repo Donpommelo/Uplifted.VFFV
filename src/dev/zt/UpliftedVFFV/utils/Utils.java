@@ -44,6 +44,15 @@ public class Utils {
 		}
 	}
 	
+	public static double parseDouble(String number){
+		try{
+			return Double.parseDouble(number);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0.0;
+		}
+	}
+	
 /*****UTILS FOR MENU DRAWING (NOT PROCESSING)*****/	
 
 	//Size of cuts, make smaller for more precision. Values <16 or >64 will probably break things.

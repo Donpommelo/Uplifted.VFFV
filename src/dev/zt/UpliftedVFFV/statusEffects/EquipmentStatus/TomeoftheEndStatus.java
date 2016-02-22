@@ -12,7 +12,7 @@ public class TomeoftheEndStatus extends status{
 		super("Ending", pr);
 	}
 	
-	public void onHit(Schmuck perp,Schmuck vic, BattleState bs){
+	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		if(Math.random()<.01*(1+perp.getEquipPow())){
 			bs.bp.bt.addScene(perp.getName()+"'s Tome of the End inflicts Death");
 			bs.bp.em.hpChange(-9999, perp, vic, 1);

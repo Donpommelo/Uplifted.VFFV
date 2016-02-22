@@ -48,7 +48,7 @@ public class Channeling extends status{
 			bs.bp.stm.hardRemoveStatus(s, this);
 			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 			if(activateonBreak){
-				statusHaver.onChannelComplete(bs);
+				statusHaver.statusProcTime(22, bs, null, null, 0, 0, true, null);
 			}
 		}
 	}
@@ -60,7 +60,7 @@ public class Channeling extends status{
 			bs.bp.stm.hardRemoveStatus(vic, this);
 			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 			if(activateonBreak){
-				statusHaver.onChannelComplete(bs);
+				statusHaver.statusProcTime(22, bs, null, null, 0, 0, true, null);
 			}
 		}
 		return damage;
@@ -70,7 +70,8 @@ public class Channeling extends status{
 		duration--;
 		if(duration <= 0){
 			bs.bp.bt.addScene(Channeler.getName()+" completes "+s.getPronoun(1)+" Channeling!");
-			statusHaver.onChannelComplete(bs);
+			statusHaver.statusProcTime(22, bs, null, null, 0, 0, true, null);
+
 			bs.bp.stm.hardRemoveStatus(Channeler, this);
 			bs.bp.stm.hardRemoveStatus(statusHaver, Status);
 		}

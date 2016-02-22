@@ -8,7 +8,7 @@ public class SindhDak extends Skills {
 
 	public static String name = "Sindh Dak";
 	public static String descr = "User grants a target a\nbuff that causes\ntheir next targeted ability\nto affect whole team.";
-	public static String descrShort = "Target's next ability splashes.";
+	public static String descrShort = "Target's next ability\nsplashes.";
 	public static int cost = 38;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
@@ -20,10 +20,12 @@ public class SindhDak extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.stm.addStatus(vic, new SindhDakStatus(3, perp, 10));
+		bs.bp.bt.addScene(vic.getName()+" is ready to spread the message!");
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.stm.addStatus(vic, new SindhDakStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 20));	
+		bs.bp.bt.addScene(vic.getName()+" is ready to spread the message!");
 	}
 	
 	public boolean startTarget(){

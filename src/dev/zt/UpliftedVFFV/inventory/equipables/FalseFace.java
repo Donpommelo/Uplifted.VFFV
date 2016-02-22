@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.inventory.equipables;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -29,11 +30,11 @@ public class FalseFace extends Item{
 		return enchantment;
 	}
 	
-	public void unEnchantment(Schmuck s, InventoryManager meep) {
+	public void unEnchantment(Schmuck s, int slot, InventoryManager meep, Game game) {
 		for(int i = 0; i< s.items.length; i++){
 			if(s.items[i] != null){
 				if(s.items[i].getLvlReq() > s.getLvl()){
-					s.items[i].unEnchantment(s, meep);
+					s.items[i].unEnchantment(s, i,meep, game);
 					meep.loot(s.items[i],1);
 					s.items[i] = null;
 					for(int j=0; j < s.statuses.size(); j++){

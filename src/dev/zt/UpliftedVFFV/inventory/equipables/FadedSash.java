@@ -17,7 +17,7 @@ public class FadedSash extends Item{
 	static int slot = 1;
 	static int lvlReq = 13;
 	static String descr="A colorless ribbon that makes you feel less . . . everything.";
-	static String descrShort="Take and receive 25% less damage.";
+	static String descrShort="Deal and receive 25% less damage.";
 	public status[] enchantment = new status[2];
 	public FadedSash() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

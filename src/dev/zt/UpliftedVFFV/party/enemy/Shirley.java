@@ -11,6 +11,9 @@ import dev.zt.UpliftedVFFV.ablities.Plague;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.equipables.CurseCoat;
+import dev.zt.UpliftedVFFV.inventory.equipables.VoodooPin;
+import dev.zt.UpliftedVFFV.inventory.misc.BagofCurses;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -38,8 +41,8 @@ public class Shirley extends Schmuck{
 	public static Skills[] levelSkills = {};
 	public static int[] levelReqs = {};
 	
-	public final static Item[] itemDrops = {};
-	public final static double[] dropRates = {};
+	public final static Item[] itemDrops = {new BagofCurses(), new CurseCoat(), new VoodooPin()};
+	public final static double[] dropRates = {.5, .15 , .05};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "TEMP";

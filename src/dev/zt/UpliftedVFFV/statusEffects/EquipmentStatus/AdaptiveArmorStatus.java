@@ -23,6 +23,10 @@ public class AdaptiveArmorStatus extends status{
 		powdef = true;
 	}
 	
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){//
+		powdef = true;
+	}
+	
 	public void onDillyDally(Schmuck s, BattleState bs){
 		if(powdef){
 			bs.bp.bt.addScene(s.getName()+"'s Adaptive Armor shifts into Attack mode!");

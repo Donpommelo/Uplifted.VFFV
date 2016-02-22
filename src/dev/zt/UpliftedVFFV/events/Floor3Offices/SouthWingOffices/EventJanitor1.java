@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.dialog.Dialog;
@@ -17,6 +18,7 @@ import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 import dev.zt.UpliftedVFFV.inventory.consumables.SmellingSalt;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
 import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 
 
 
@@ -26,10 +28,10 @@ public class EventJanitor1 extends Event {
 	public static int stagenum = 2;
 	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Janitor2small.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
+	public ArrayList<Item> stuff = new ArrayList<Item>();
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.Wiper);
 	public EventJanitor1(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
-
 					
 	}
 	
@@ -70,7 +72,7 @@ public class EventJanitor1 extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"So, what'll it be?/");
 			super.Dialog(d, 0, this.getId(), true);
-			super.ChoiceBranch(this.getId(), Choices);
+			super.ChoiceBranch(this.getId(), Choices, 100);
 			break;
 		case 2:
 			this.setstage(0);
@@ -103,15 +105,22 @@ public class EventJanitor1 extends Event {
 	}
 	
 	public void getGoods(){
+		double discount = 0;
+		for(Schmuck s : gamestate.partymanager.party){
+			discount += s.getDiscountBonus();
+		}
 		if(super.getVar(12) >= 1){
-			selection.put(new MedPak(), 1);
-			selection.put(new CaffeinePatch(),2);
-			selection.put(new SmellingSalt(), 5);
+			stuff.add(new MedPak());
+			stuff.add(new CaffeinePatch());
+			stuff.add(new SmellingSalt());
 			
 		}
 		if(super.getVar(12) >= 3){
-			selection.put(new SummonSauce(), 5);
-			selection.put(new SleepingPills(), 6);
+			stuff.add(new SummonSauce());
+			stuff.add(new SleepingPills());
+		}
+		for(Item i : stuff){
+			selection.put(i, (int)(i.value * (1 - discount)));
 		}
 	}
 }

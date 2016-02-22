@@ -11,7 +11,6 @@ public class HoGStatus extends status{
 	public HoGStatus(int pr){
 		super("Glorious", pr);
 	}
-
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){
 		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50))){

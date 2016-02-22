@@ -18,7 +18,7 @@ public class CopyItem extends status{
 	
 		public void startoffightEffect(Schmuck s, BattleState bs){//
 			if(s.items[0] != null){
-				bs.bp.bt.addScene(s.getName()+"'s Blatant Fake copies "+s.getPronoun(1) +" "+ s.items[0].getName()+".");
+				bs.bp.bt.addScene(s.getName()+"'s Blatant Fake copies "+s.getPronoun(1) +" "+ s.items[0].getName()+"!");
 				for(status st : s.items[0].getEnchantment(s)){
 					if(st.getName() != "Imitation Item" && st != null)
 					{
@@ -30,12 +30,11 @@ public class CopyItem extends status{
 			}
 		}
 		
-		public void endoffightEffect(Schmuck s, BattleState bs){
+		public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
 			bs.bp.bt.addScene(s.getName()+"'s Blatant Fake reverts back to its original form.");
 			for(status st : copiedStatuses){
-				if(s.statuses.contains(st)){
-					s.statuses.remove(st);
-				}
+				s.statuses.remove(st);
+				s.statusesChecked.remove(st);
 			}
 			copiedStatuses.clear();			
 		}

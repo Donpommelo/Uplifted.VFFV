@@ -149,6 +149,9 @@ public class BonusStatBuffMult extends status{
 		case 38:
 			stat = "Damage Reduction";
 			break;
+		case 39:
+			stat = "Haggling Ability";
+			break;
 		}
 		if(statIncrement>1){
 			plusminus = "raised";

@@ -25,7 +25,7 @@ public class DeploreApp extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Deplorable(5);
+		enchantment[0] = new Deplorable(90);
 		return enchantment;
 	}
 	

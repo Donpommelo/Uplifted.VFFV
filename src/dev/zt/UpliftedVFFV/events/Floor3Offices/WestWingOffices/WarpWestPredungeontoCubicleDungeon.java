@@ -33,10 +33,9 @@ public class WarpWestPredungeontoCubicleDungeon extends Event {
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
 			game.getAudiomanager().playMusic(2, true);
-			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",13,28,"");
+			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,32,"");
 			this.setOpen(false);
 			this.setFrames(0);
-			//later, make puzzle not happen if Carloc's quest finished.
 			if(!super.getSwitch(26)){
 				super.setVar(16, 1);
 			}

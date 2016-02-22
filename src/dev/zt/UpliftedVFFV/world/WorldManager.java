@@ -24,7 +24,9 @@ public class WorldManager implements Serializable{
 	public Tile[][] actualTiles;				//matrix of tiles.
 	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
-	public int enemyrate, enemynum;
+	double enemyrate;
+
+	public int enemynum;
 	public static TreeMap<Integer, Integer> enemy;
 	private BufferedImage window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 	public WorldManager(Game game, String path, String name){
@@ -97,7 +99,7 @@ public class WorldManager implements Serializable{
 		spawnY = Utils.parseInt(tokens[3]);
 		numEvents = Utils.parseInt(tokens[4]);
 		numDecor = Utils.parseInt(tokens[5]);
-		enemyrate = Utils.parseInt(tokens[6]);
+		enemyrate = Utils.parseDouble(tokens[6]);
 		enemynum = Utils.parseInt(tokens[7]);
 		actualTiles = new Tile[width][height];
 		for(int y = 0;y<height;y++){
@@ -143,4 +145,13 @@ public class WorldManager implements Serializable{
 	public int getSpawnY() {
 		return spawnY;
 	}
+
+	public double getEnemyrate() {
+		return enemyrate;
+	}
+
+	public void setEnemyrate(double enemyrate) {
+		this.enemyrate = enemyrate;
+	}
+	
 }

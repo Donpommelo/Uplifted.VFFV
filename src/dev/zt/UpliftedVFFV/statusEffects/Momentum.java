@@ -19,7 +19,7 @@ public class Momentum extends status{
 	}	
 		
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.bt.addScene(vic.getName()+"'s Momentum transfered to "+vic.getName()+"!");
+		bs.bp.bt.addScene(perp.getName()+"'s Momentum transfered to "+vic.getName()+"!");
 		bs.bp.stm.addStatus(vic, this);
 		bs.bp.stm.hardRemoveStatus(perp, this);
 		return (int)(damage * 1.5);

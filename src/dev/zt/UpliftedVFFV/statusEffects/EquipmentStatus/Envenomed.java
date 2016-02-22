@@ -15,12 +15,12 @@ public class Envenomed extends status{
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
-		bs.bp.bt.addScene(s.getName()+" was poisoned by Envenomed Earth!");
+		bs.bp.bt.addScene(s.getName()+"'s Envenomed Earth makes "+s.getPronoun(3)+" feel sick!");
 		bs.bp.stm.addStatus(s, new Poisoned(4, s, 50));
 	}
 	
-	public void endoffightEffect(Schmuck s, BattleState bs){
-		if(e.getPoints() <201){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
+		if(e.getPoints() <201 && won){
 			bs.bp.bt.addScene(s.getName()+"'s Envenomed Earth makes "+s.getPronoun(1)+" feel a little tougher!");
 			e.setPoints(e.getPoints()+1);
 			s.calcBuffs(bs);

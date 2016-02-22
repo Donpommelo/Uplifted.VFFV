@@ -18,7 +18,11 @@ public class MadnessMantraStatus extends status{
 		stack = 0;
 	}
 	
-	public void onAction(BattleState bs, Action a){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
+		stack = 0;
+	}
+	
+	public void onActionUser(BattleState bs, Action a){
 		if(lastUsed != null){
 			if(a.skill.getName().equals(lastUsed.getName())){
 				if(stack < 5){

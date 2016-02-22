@@ -9,6 +9,8 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Decorations.DecorManager;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.entities.creatures.Creature;
+import dev.zt.UpliftedVFFV.events.Floor1Reception.*;
+import dev.zt.UpliftedVFFV.events.Floor2Bathhouse.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices.*;
@@ -328,11 +330,11 @@ public class Event implements Serializable{
 	public static Event event277 = new WarpWestPredungeontoCubicleDungeon(10,6,277);
 	public static Event event278 = new WarpLobbytoWestCubicleFinal(3,8,278);
 	public static Event event279 = new WarpWestTrashChutetoWestPredungeon(12,7,279);
-	public static Event event280 = new WarpCubicleDungeonSouth(13,29,280);
-	public static Event event281 = new WarpCubicleDungeonEast(23,16,281);
-	public static Event event282 = new WarpCubicleDungeonNorth(13,6,282);
-	public static Event event283 = new WarpCubicleDungeonWest(3,16,283);
-	public static Event event284 = new WarpCubicleDungeontoTrashChute(13,21,284);
+	public static Event event280 = new WarpCubicleDungeonSouth(15,33,280);
+	public static Event event281 = new WarpCubicleDungeonEast(27,18,281);
+	public static Event event282 = new WarpCubicleDungeonNorth(15,6,282);
+	public static Event event283 = new WarpCubicleDungeonWest(3,18,283);
+	public static Event event284 = new WarpCubicleDungeontoTrashChute(15,23,284);
 	public static Event event285 = new WarpCubicleFinaltoDungeon(13,6,285);
 	public static Event event286 = new WarpCubicleFinaltoSperosOffice(9,47,286);
 	public static Event event287 = new WarpCubicleFinaltoSouthOffices(21,48,287);
@@ -341,15 +343,62 @@ public class Event implements Serializable{
 	public static Event event290 = new WarpJClosettoWestPredungeon(5,11,290);
 	public static Event event291 = new WarpBonus1toCubicleDungeon(6,13,291);
 	public static Event event292 = new WarpBonus2toCubicleDungeon(10,9,292);
-	public static Event event293 = new WarpCubicleDungeonSouthEx(13,29,293);
-	public static Event event294 = new WarpCubicleDungeonEastEx(23,16,294);
-	public static Event event295 = new WarpCubicleDungeonNorthEx(13,6,295);
-	public static Event event296 = new WarpCubicleDungeonWestEx(3,16,296);
+	public static Event event293 = new WarpCubicleDungeonSouthEx(15,33,293);
+	public static Event event294 = new WarpCubicleDungeonEastEx(27,18,294);
+	public static Event event295 = new WarpCubicleDungeonNorthEx(15,6,295);
+	public static Event event296 = new WarpCubicleDungeonWestEx(3,18,296);
 	public static Event event297 = new WarpCubicleFinaltoDungeonEx(23,16,297);
 	public static Event event298 = new WarpCubicleFinalFinaltoLobby(13,21,298);
 	public static Event event299 = new WarpCubicleFinalFinaltoNowhere(13,6,299);
 	public static Event EventSperos = new EventSperos(6,9,300);
 	public static Event EventSperosInvis = new EventSperosInvisible(6,9,301);
+	public static Event EventClockDigital = new EventClockDigital(14,17,302);
+	public static Event EventClockAnalog = new EventClockAnalog(14,17,303);
+	public static Event event304 = new WarpLobbytoWestElevator(9,15,304);
+	public static Event event305 = new WarpWElevatortoLobby(5,6,305);
+	public static Event event306 = new WarpSouthMaintoSElevator(17,54,306);
+	public static Event event307 = new WarpSouthMaintoRoom1(5,16,307);
+	public static Event event308 = new WarpSouthMaintoExitHall(17,6,308);
+	public static Event event309 = new WarpSouthRoom1toSouthMain(8,17,309);
+	public static Event event310 = new WarpExitHalltoSouthMain(8,13,310);
+	public static Event event311 = new WarpSouthMaintoNElevator(17,16,311);
+	public static Event event312 = new WarpWElevatortoBackroom(5,10,312);
+	public static Event event313 = new WarpNElevatortoBackroom(5,10,313);
+	public static Event event314 = new WarpNElevatortoLobby(5,6,314);
+	public static Event event315 = new WarpSouthBathhousetoElevator(9,22,315);
+	public static Event event316 = new WarpEastBathhousetoElevator(11,21,316);
+	public static Event event317 = new WarpWestBathhousetoElevator(5,21,317);
+
+	public static Event empPorter = new EmpPorter(12,8,322);
+	public static Event empLiang = new EmpLiang(19,16,323);
+	public static Event empBoyd = new EmpBoyd(14,25,324);
+	public static Event empDamon = new EmpDamon(19,25,325);
+	public static Event empValuableCompanyAsset = new EmpJack(24,25,326);
+	public static Event empMoloch = new EmpMoloch(13,22,327);
+	public static Event empScott = new EmpScott(13,19,328);
+	public static Event empLuay = new EmpLuay(13,16,329);
+	public static Event empSomeone = new EmpSomeone(23,17,330);
+	public static Event empLorena = new EmpLorena(23,14,331);
+	public static Event empSpradley = new EmpSpradley(23,11,332);
+	public static Event empLite = new EmpLite(22,8,333);
+	public static Event empAshli = new EmpAshli(17,8,334);
+	public static Event empGarcia = new EmpGarcia(12,8,335);
+	public static Event empPality= new EmpPality(9,8,336);
+	public static Event EventAmdahlOffices = new EventAmdahlOffices(5,15,337);
+	public static Event EventTriviaGuyOffices = new EventTriviaGuyOffices(6,7,338);
+	public static Event empCubicleDroneM = new EmpCubicleDroneM(0,0,339);
+	public static Event empCubicleDroneF = new EmpCubicleDroneF(0,0,340);
+	public static Event empArmstrong = new EmpArmstrong(6,36,341);
+	public static Event empSanchez = new EmpSanchez(9,8,342);
+	public static Event empGoodman = new EmpGoodman(7,9,343);
+	public static Event empMccoun = new EmpMccoun(7,13,344);
+	public static Event empMathis = new EmpMathis(7,19,345);
+	public static Event empSteger = new EmpSteger(7,23,346);
+	public static Event empWeeks = new EmpWeeks(18,9,347);
+	public static Event empFurlow = new EmpFurlow(18,13,348);
+	public static Event empTurner = new EmpTurner(18,19,349);
+	public static Event empHoward = new EmpHoward(18,23,350);
+
 	
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);
@@ -587,20 +636,21 @@ public class Event implements Serializable{
 	public void screenShake(int shake){
 		game.getGameCamera().screenShake(shake);
 	}
-	
-	//opens up a choice branch state with the list of string choices.
-	public static void ChoiceBranch(int EventId,String[] choices){
-		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices));
+		
+	//Choicebranch state, lets player make decision between a list of choices.
+	public static void ChoiceBranch(int EventId, String[] choices, int width){
+		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices,width));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();			
 		}
+
 	}
 	
 	//Choicebranch state, lets player make decision between a list of choices.
-	public static void ChoiceBranch(int EventId, String[] choices, int width){
-		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices,width));
+	public static void ChoiceBranch(int EventId, String[] choices, String[] descr, int width){
+		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices,descr,width));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {

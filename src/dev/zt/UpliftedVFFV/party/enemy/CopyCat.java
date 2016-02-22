@@ -10,6 +10,11 @@ import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.consumables.PrinterTonerBlack;
+import dev.zt.UpliftedVFFV.inventory.consumables.PrinterTonerCyan;
+import dev.zt.UpliftedVFFV.inventory.consumables.PrinterTonerMagenta;
+import dev.zt.UpliftedVFFV.inventory.consumables.PrinterTonerYellow;
+import dev.zt.UpliftedVFFV.inventory.equipables.CannonElectrostatic;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
@@ -40,8 +45,9 @@ public class CopyCat extends Schmuck{
 	public static Skills[] levelSkills = {};
 	public static int[] levelReqs = {};
 	
-	public final static Item[] itemDrops = {};
-	public final static double[] dropRates = {};
+	public final static Item[] itemDrops = {new PrinterTonerCyan(), new PrinterTonerMagenta(),new PrinterTonerYellow(),
+			new PrinterTonerBlack(), new CannonElectrostatic()};
+	public final static double[] dropRates = {.6, .6, .6, .1, .1};
 	public final static status[] intrinsicStatuses = {};
 	
 	public final static String bioShort = "TEMP";
