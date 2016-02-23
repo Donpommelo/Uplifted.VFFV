@@ -17,7 +17,7 @@ public class BossMug extends Item{
 	static int slot = 1;
 	static int lvlReq = 5;
 	static String descr="A coffee mug belonging to the number one boss. You certainly\ndon't know anyone in this office who fits that description, so\ndon't bother looking for its rightful owner.";
-	static String descrShort="Restore Mp at end of Round.";
+	static String descrShort="+5 Mp Regen";
 	public status[] enchantment = new status[1];
 	public BossMug() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

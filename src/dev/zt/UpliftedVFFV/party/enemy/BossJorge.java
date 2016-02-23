@@ -21,9 +21,9 @@ public class BossJorge extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=110,startBp=100,startPow=15, startDef=20, startSpd=16, startSkl=16, startLuk=10, startInt=5;
+	public final static int startHp=300,startBp=160,startPow=49, startDef=59, startSpd=29, startSkl=53, startLuk=20, startInt=37;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.2, defGrowth=1.3, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
+	public final static double hpGrowth=70, bpGrowth=22.7, powGrowth=3.2, defGrowth=6.3, spdGrowth=7.7, sklGrowth=12.5, intGrowth=3.9, lukGrowth=5.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=50;
 	public final static int scrDrop=25;

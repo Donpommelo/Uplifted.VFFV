@@ -30,8 +30,5 @@ public class PainGate extends Item{
 		enchantment[1] = new StatBuffAdd(0,(int)(25*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
-	
-	public boolean isLegendary(){
-		return true;
-	}
+
 }

@@ -30,8 +30,8 @@ public class CoffeedIce extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.stm.removeStatus(vic, new Asleep(50));
-		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())),perp, vic,6);
-		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
+		bs.bp.em.hpChange((int)(45*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp, vic,6);
+		bs.bp.em.bpChange((int)(55*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
@@ -44,8 +44,8 @@ public class CoffeedIce extends Item{
 	}
 		
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(25*(1+s.getItemPow())));
-		s.bpChange((int)(35*(1+s.getItemPow())));
+		s.hpChange((int)(45*(1+s.getItemPow())*(1+s.getRegenBonus())));
+		s.bpChange((int)(55*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "The coffee Motivates "+s.getName()+" and the ice heals wounds!", 0));
 	}
 

@@ -15,7 +15,7 @@ public class Impotent extends status{
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		bs.bp.bt.addScene(vic.getName()+"'s Impotency prevents damage from being done!!");
+		bs.bp.bt.addScene(perp.getName()+"'s Impotency prevents damage from being done!!");
 		return 0;
 	}	
 	

@@ -25,7 +25,7 @@ public class SportsmanshipAwardStatus extends status{
 		if(bs.bp.getSelectableEnemies(s).contains(a.getTarget()) && a.getSkill().targetType == 0){
 			for(status st : a.getTarget().statuses){
 				if(st.isDisable()){
-					bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Sportsmanship Award prevents "+s.getPronoun(1)+" from targeting an enemy that is affected by "+st.getName()+"!"),bs));
+					bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+"'s Sportsmanship Award prevented "+s.getPronoun(1)+" from targeting an enemy that is affected by "+st.getName()+"!"),bs));
 					break;
 				}
 			}

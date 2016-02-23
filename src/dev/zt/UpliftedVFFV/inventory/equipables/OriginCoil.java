@@ -27,8 +27,8 @@ public class OriginCoil extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new OriginCoilStatus(50);
-		enchantment[1] = new BonusStatBuff(34,5*s.getEquipPow(),50);
-		enchantment[2] = new BonusStatBuff(35,5*s.getEquipPow(),50);
+		enchantment[1] = new BonusStatBuff(34,5*(1+s.getEquipPow()),50);
+		enchantment[2] = new BonusStatBuff(35,5*(1+s.getEquipPow()),50);
 		return enchantment;
 	}
 

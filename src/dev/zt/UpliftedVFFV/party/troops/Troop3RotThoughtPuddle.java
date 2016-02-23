@@ -13,7 +13,7 @@ public class Troop3RotThoughtPuddle extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		int num = (int)(Math.random()*3+1);
+		int num = (int)(Math.random()*2+2);
 		for(int i=0; i<num; i++){
 			troop.add(new RotThought(1+ML));
 		}

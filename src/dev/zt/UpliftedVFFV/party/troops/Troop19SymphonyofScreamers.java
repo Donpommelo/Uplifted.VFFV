@@ -38,7 +38,7 @@ public class Troop19SymphonyofScreamers extends Troop{
 	}
 	
 	public String encounterText(){
-		return "You are attacked by a Copy-Cat!";
+		return "You are attacked by Screamers!";
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

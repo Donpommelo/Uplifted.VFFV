@@ -29,11 +29,11 @@ public class Negative extends status{
 	}
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" gained became Negative!";
+		return s.getName()+" became Negative!";
 	}
 
 	public String cureText(Schmuck s){
-		return "'s Negativity wore off!";
+		return s.getName()+"'s Negativity wore off!";
 	}
 	
 }

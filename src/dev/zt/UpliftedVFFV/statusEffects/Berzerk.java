@@ -20,7 +20,7 @@ public class Berzerk extends status{
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
-		if(Math.random() < .75 && a.getSkill().getTargetType() ==0){
+		if(Math.random() < .75 && a.getSkill().getTargetType() == 0){
 			Schmuck newTarget = bs.bp.battlers.get((int)(Math.random()*bs.bp.battlers.size()));
 			if(bs.bp.stm.checkStatus(newTarget, new incapacitate(newTarget))){
 				a.target = newTarget;

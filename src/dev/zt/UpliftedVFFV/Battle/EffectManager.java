@@ -160,7 +160,10 @@ public class EffectManager {
 	public int logScaleDamage(Schmuck perp, Schmuck vic){
 		double Attack = perp.buffedStats[(int)(perp.getDamageStat()+2)];
 		double Defense = vic.buffedStats[(int)(vic.getDefenseStat()+3)];
-		int damage = (int)(Attack * Math.log10(Attack) * Math.log(1+Math.pow(Attack/Defense, 2))/Math.log(2));
+		if(Defense == 0){
+			Defense = 1;
+		}
+		int damage = (int)(Attack * Math.log10(Attack) * Math.log10(1+Math.pow(Attack/Defense, 2))/Math.log(2));
 		
 		damage += perp.getAttackDamage();
 		damage -= vic.getDamageReduction();

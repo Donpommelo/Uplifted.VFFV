@@ -19,7 +19,7 @@ public class Hypochondriac extends status{
 	}
 
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		if(st.isBad() && st.getName() != "Hypochondriac"){
+		if(st.isBad() && st.getName() != "Hypochondria"){
 			bs.bp.bt.addScene(s.getName()+"'s Hypochondria was triggered!");
 			st.setDuration((int)(st.getDuration()*1.5));
 		}

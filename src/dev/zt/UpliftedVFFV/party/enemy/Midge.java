@@ -19,9 +19,9 @@ public class Midge extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=12,startBp=22,startPow=10, startDef=14, startSpd=22, startSkl=11, startLuk=13, startInt=4;
+	public final static int startHp=25,startBp=30,startPow=30, startDef=34, startSpd=50, startSkl=31, startLuk=23, startInt=14;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.7, defGrowth=.6, spdGrowth=3.1, sklGrowth=1.4, intGrowth=1, lukGrowth=.9;
+	public final static double hpGrowth=21, bpGrowth=12.7, powGrowth=3.7, defGrowth=1.6, spdGrowth=5.1, sklGrowth=4.4, intGrowth=2.1, lukGrowth=2.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=1;
 	public final static int scrDrop=1;

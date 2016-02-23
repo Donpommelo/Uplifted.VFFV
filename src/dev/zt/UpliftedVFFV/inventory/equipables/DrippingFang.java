@@ -27,7 +27,7 @@ public class DrippingFang extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50, 1, new Delicious(2,.2,s,50));
+		enchantment[0] = new StatusonHit(50, 1, new Delicious(2,.2*(s.getEquipPow()),s,50));
 		return enchantment;
 	}
 }

@@ -25,7 +25,7 @@ public class EnvenomEarth extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Envenomed(.15, this, 1);
+		enchantment[0] = new Envenomed(this, 1);
 		return enchantment;
 	}
 

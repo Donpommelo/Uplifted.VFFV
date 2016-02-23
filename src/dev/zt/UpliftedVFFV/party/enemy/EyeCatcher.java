@@ -20,9 +20,9 @@ public class EyeCatcher extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=60,startBp=50,startPow=17, startDef=18, startSpd=28, startSkl=29, startLuk=3, startInt=11;
+	public final static int startHp=121,startBp=50,startPow=47, startDef=58, startSpd=64, startSkl=50, startLuk=33, startInt=15;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=2.3, bpGrowth=1.7, powGrowth=2.7, defGrowth=.9, spdGrowth=3.7, sklGrowth=1.9, intGrowth=.1, lukGrowth=.9;
+	public final static double hpGrowth=32.3, bpGrowth=21.7, powGrowth=2.7, defGrowth=2.9, spdGrowth=3.7, sklGrowth=1.9, intGrowth=4.1, lukGrowth=.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=10;
 	public final static int scrDrop=15;

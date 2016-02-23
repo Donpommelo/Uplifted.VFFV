@@ -18,9 +18,9 @@ public class Screamer extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=26,startBp=30,startPow=15, startDef=15, startSpd=15, startSkl=16, startLuk=18, startInt=16;
+	public final static int startHp=78,startBp=50,startPow=35, startDef=80, startSpd=65, startSkl=56, startLuk=8, startInt=16;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=2.3, bpGrowth=3.7, powGrowth=2.7, defGrowth=2.3, spdGrowth=2.3, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
+	public final static double hpGrowth=35.3, bpGrowth=33.7, powGrowth=2.7, defGrowth=4.3, spdGrowth=2.3, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=6;
 	public final static int scrDrop=1;

@@ -18,7 +18,7 @@ public class BucketBattery extends Item{
 	static int slot = 1;
 	static int lvlReq = 20;
 	static String descr="A bucket filled with old, bulging batteries floating in some\nsort of acidic solution.";
-	static String descrShort="May explode when hit.";
+	static String descrShort="+10% Yellow Points\nMay explode when hit.";
 	public status[] enchantment = new status[2];
 	public BucketBattery() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

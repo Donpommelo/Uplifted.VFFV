@@ -21,7 +21,7 @@ public class Troop18ChameleonDuo extends Troop{
 	}
 	
 	public String encounterText(){
-		return "You are attacked by a Copy-Cat!";
+		return "You are attacked by a pair of Chameleons!";
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

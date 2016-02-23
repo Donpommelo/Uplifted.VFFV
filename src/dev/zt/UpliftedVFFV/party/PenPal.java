@@ -22,9 +22,9 @@ public class PenPal extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=53,startBp=28,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
+	public final static int startHp=96,startBp=70,startPow=46, startDef=56, startSpd=42, startSkl=63, startLuk=32, startInt=67;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=2.5, bpGrowth=2.9, powGrowth=1.4, defGrowth=1.3, spdGrowth=2, sklGrowth=2.1, intGrowth=2.6, lukGrowth=1.3;
+	public final static double hpGrowth=23.5, bpGrowth=32.9, powGrowth=3.4, defGrowth=3.3, spdGrowth=3.2, sklGrowth=3.1, intGrowth=4.6, lukGrowth=2.3;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop = 2000;
 	public final static int scrDrop = 0;

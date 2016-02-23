@@ -29,8 +29,8 @@ public class CoffeeBean extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.addScene("The Coffee Bean scalds "+vic.getName()+"'s tongue!");
-		bs.bp.em.hpChange((int)(-10*(1+perp.getItemPow())),perp,vic,6);
-		bs.bp.em.bpChange((int)(30*(1+perp.getItemPow())),vic);
+		bs.bp.em.hpChange(-30,perp,vic,0);
+		bs.bp.em.bpChange((int)(80*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
 
 	}
 	
@@ -44,9 +44,9 @@ public class CoffeeBean extends Item{
 	}
 		
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(-10*(1+s.getItemPow())));
-		s.bpChange((int)(30*(1+s.getItemPow())));
-		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" consumes the coffeee bean. Refreshing, but hot!", 0));
+		s.hpChange(-30);
+		s.bpChange((int)(80*(1+s.getItemPow())*(1+s.getRegenBonus())));
+		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" consumes the coffee bean. Refreshing, but hot!", 0));
 	}
 	
 	

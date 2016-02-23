@@ -17,6 +17,6 @@ public class EnergyVolatile extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.bonusStats[35] += (.30 * s.getMaxBp() * (1 + s.getEquipPow()));
+		s.bonusStats[35] += (.30 * s.getMaxBp() * (1 + s.getEquipPow())*(1+s.getRegenBonus()));
 	}
 }

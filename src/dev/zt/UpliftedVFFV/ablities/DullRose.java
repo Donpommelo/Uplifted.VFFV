@@ -13,7 +13,7 @@ public class DullRose extends Skills {
 	public static int cost = 38;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
-	public static int element = 2;	//Physical
+	public static int element = 2;	//Green
 	public static int targetType = 0;	//Any Single Target
 	public DullRose(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
@@ -24,7 +24,7 @@ public class DullRose extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new DullRoseStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 20));	
+		bs.bp.stm.addStatus(vic, new DullRoseStatus((int)(3*(1+perp.getCritMulti())), perp, 20));	
 	}
 	
 	public boolean startTarget(){

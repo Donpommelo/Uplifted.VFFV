@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
-import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.inventory.consumables.Antiinflammatory;
 import dev.zt.UpliftedVFFV.inventory.consumables.Antivenom;
 import dev.zt.UpliftedVFFV.inventory.consumables.ColdMedicine;

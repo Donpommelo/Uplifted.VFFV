@@ -13,7 +13,7 @@ public class BloodSealStatus extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(bs.bp.roundNum == (int)(9*(1+s.getEquipPow()))){
+		if(bs.bp.roundNum == 9){
 			bs.bp.bt.addScene(s.getName()+"'s Blood Seal glows with a sinister energy!");
 			ArrayList<status> removed = new ArrayList<status>();
 			for(status st : s.statuses){

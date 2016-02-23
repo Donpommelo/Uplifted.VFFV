@@ -24,7 +24,7 @@ public class HiveRhythmItemDStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm A-D chord echoes Urgently!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new BonusStatBuff(1, 14, 0.5, a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new BonusStatBuff(1, 14, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
 				}
 			}
 			break;
@@ -53,7 +53,7 @@ public class HiveRhythmItemDStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm C-D chord echoes Rapidly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 4, 1.1, a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 4, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), 50));
 				}
 			}
 			break;

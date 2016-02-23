@@ -28,8 +28,8 @@ public class CaffeinePatch extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene(vic.getName()+" looks 20 points more motivated.");
-		bs.bp.em.bpChange(20,vic);
+		bs.bp.bt.addScene(vic.getName()+" looks more motivated.");
+		bs.bp.em.bpChange((int)(30*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
@@ -42,7 +42,7 @@ public class CaffeinePatch extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.bpChange((int)(20*(1+s.getItemPow())));
+		s.bpChange((int)(30*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "The Caffeine Patch is applied to "+s.getName()+"!", 0));
 	}
 	

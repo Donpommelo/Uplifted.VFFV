@@ -27,7 +27,7 @@ public class MeltedIcecream extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())),perp,vic,6);
+		bs.bp.em.hpChange((int)(.5*(vic.getMaxHp()-vic.getCurrentHp())*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp,vic,6);
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
@@ -40,7 +40,7 @@ public class MeltedIcecream extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(.5*(s.getMaxHp()-s.getCurrentHp())));
+		s.hpChange((int)(.5*(s.getMaxHp()-s.getCurrentHp())*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "The frozen slush restores health to "+s.getName()+"!", 0));
 	}
 }

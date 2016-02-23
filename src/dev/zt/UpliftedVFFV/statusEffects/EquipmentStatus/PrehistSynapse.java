@@ -4,6 +4,7 @@ package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PrehistSynapse extends status{
@@ -23,5 +24,8 @@ public class PrehistSynapse extends status{
 		bs.bp.bt.addScene(s.getName()+"'s Prehistoric Synapse inflicted delayed damage!");
 		s.hpChange(damage);
 		damage = 0;
+		if(s.getCurrentHp() == 0){
+			bs.bp.stm.addStatus(s, new incapacitate(s));
+		}
 	}
 }

@@ -21,9 +21,9 @@ public class Operator extends Schmuck{
 	
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=56,startBp=23,startPow=17, startDef=18, startSpd=17, startSkl=16, startInt=18, startLuk=12;
+	public final static int startHp=129,startBp=33,startPow=55, startDef=58, startSpd=45, startSkl=45, startInt=38, startLuk=35;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=3.0, bpGrowth=1.7, powGrowth=1.8, defGrowth=1.7, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
+	public final static double hpGrowth=33.5, bpGrowth=11.7, powGrowth=4.8, defGrowth=3.7, spdGrowth=3.7, sklGrowth=3.8, intGrowth=2.9, lukGrowth=1.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	
 	public final static int expDrop = 2000;

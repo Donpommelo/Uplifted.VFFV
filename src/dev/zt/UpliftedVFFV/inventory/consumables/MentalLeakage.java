@@ -27,8 +27,8 @@ public class MentalLeakage extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())),vic);
-		bs.bp.bt.addScene("Some of the the thoughts restor Mp!");
+		bs.bp.em.bpChange((int)(45*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
+		bs.bp.bt.addScene("Some of the the thoughts restore Mp!");
 		if(Math.random()<.1){
 			//get some terrible side effect.
 		}
@@ -44,7 +44,7 @@ public class MentalLeakage extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.bpChange((int)(30*(1+s.getItemPow())));
+		s.bpChange((int)(45*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "Some of the stray thoughts restore "+s.getName()+"'s Motivation!", 0));
 	}
 }

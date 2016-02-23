@@ -26,7 +26,7 @@ public class UsurpersChemSet extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50, .5, new Poisoned(3,s,50));
+		enchantment[0] = new StatusonHit(50, .5 *(1 + s.getEquipPow()), new Poisoned(3,s,50));
 		enchantment[1] = new StatBuffAdd(5, (int)(8*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}

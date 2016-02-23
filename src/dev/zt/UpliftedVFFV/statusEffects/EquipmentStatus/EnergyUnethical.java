@@ -19,6 +19,6 @@ public class EnergyUnethical extends status{
 				bs.bp.em.bpChange(-(int)(.1 * ally.getMaxBp()), ally);
 			}
 		}
-		bs.bp.em.bpChange((int)(mp * 1.5 * (1 + s.getEquipPow())), s);
+		bs.bp.em.bpChange((int)(mp * 1.5 * (1 + s.getEquipPow())*(1+s.getRegenBonus())), s);
 	}
 }

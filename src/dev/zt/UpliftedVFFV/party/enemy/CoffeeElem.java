@@ -20,9 +20,9 @@ public class CoffeeElem extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=50,startPow=15, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {70,29,15,21,24,12,8,6};
-	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
+	public final static int startHp=100,startBp=60,startPow=49, startDef=48, startSpd=63, startSkl=38, startLuk=20, startInt=35;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=40.0, bpGrowth=40.0, powGrowth =5.0, defGrowth=5.0, spdGrowth=5.0, sklGrowth=5.0, intGrowth=5.0, lukGrowth=5.0;
 	public final static double[] statGrowths = {2 , 2.7 , 2.2 , 2.3 , 1.7 , 1.5 , .8 , .9};
 	public final static int expDrop=10;
 	public final static int scrDrop=9;

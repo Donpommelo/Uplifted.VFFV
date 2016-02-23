@@ -9,14 +9,14 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Envenomed extends status{
 	
 	public EnvenomEarth e;
-	public Envenomed(double percent, EnvenomEarth e, int pr){
+	public Envenomed(EnvenomEarth e, int pr){
 		super("Envenomed", pr);
 		this.e = e;
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+"'s Envenomed Earth makes "+s.getPronoun(3)+" feel sick!");
-		bs.bp.stm.addStatus(s, new Poisoned(4, s, 50));
+		bs.bp.stm.addStatus(s, new Poisoned(5, s, 50));
 	}
 	
 	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){

@@ -12,7 +12,7 @@ public class TomeoftheUnknowableStatus extends status{
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		bs.bp.bt.addScene(perp.getName()+"'s Tome of the Unknowable produces inexplicable results!");
-		status st = bs.bp.stm.randomBad(3, perp);
+		status st = bs.bp.stm.randomBad((int)(3*(1+perp.getEquipPow())), perp);
 		bs.bp.stm.addStatus(vic, st);
 	}
 

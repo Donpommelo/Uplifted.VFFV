@@ -11,6 +11,6 @@ public class OrangeInfusion extends status{
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){		
-		return damage - (int)(5*(1+perp.getEquipPow()));
+		return damage - (int)(7*(1+perp.getEquipPow()));
 	}	
 }

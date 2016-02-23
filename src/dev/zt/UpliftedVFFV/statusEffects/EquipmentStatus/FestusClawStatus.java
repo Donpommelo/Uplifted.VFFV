@@ -13,12 +13,12 @@ public class FestusClawStatus extends status{
 		super("Claws of Festus Status", pr);
 	}
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
-		if(!a.skill.getName().equals("Item") && !a.skill.getName().equals("Dilly Dally") && !a.skill.getName().equals("Run Away")&& !a.skill.getName().equals("Pass Turn")){
+		if(a.skill.silenceBlocked()){
 			if(bs.bp.calcCrit(a)){
 				bs.bp.stm.addStatus(s, new BonusStatBuff(0,16,10,s,100));
 			}
 			else{
-				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to do something, but no one was listening."),bs));
+				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to do something, but no one heard . . ."),bs));
 			}
 		}
 	}	

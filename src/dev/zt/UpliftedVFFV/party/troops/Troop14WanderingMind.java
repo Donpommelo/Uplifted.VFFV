@@ -14,7 +14,7 @@ public class Troop14WanderingMind extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new WanderingMind(ML));
+		troop.add(new WanderingMind(1+ML));
 		this.troop = troop;
 		return troop;
 	}

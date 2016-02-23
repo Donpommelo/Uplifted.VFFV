@@ -24,8 +24,8 @@ public class BadYolk extends Item{
 	}
 
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,28,-.3,perp,50));
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,32,-.3,perp,50));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,28,-.3 *(1+perp.getItemPow()),perp,50));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,32,-.3 *(1+perp.getItemPow()),perp,50));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

@@ -18,7 +18,7 @@ public class BandagedSword extends Item{
 	static int slot = 1;
 	static int lvlReq = 30;
 	static String descr="A blade covered by enough bandages that you aren’t really sure if it's even a blade anymore.\nFor all you know, there might just be more bandages underneath.";
-	static String descrShort="Your Standard Attacks gain initiative.";
+	static String descrShort="+7 Skl\nYour Standard Attacks gain initiative.";
 	
 	public status[] enchantment = new status[2];
 	public BandagedSword() {
@@ -27,7 +27,7 @@ public class BandagedSword extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BandagedSwordStatus(50);
-		enchantment[1] = new StatBuffAdd(3,(int)(7*(1+s.getEquipPow())), 20);
+		enchantment[1] = new StatBuffAdd(5,(int)(7*(1+s.getEquipPow())), 20);
 		return enchantment;
 	}
 	

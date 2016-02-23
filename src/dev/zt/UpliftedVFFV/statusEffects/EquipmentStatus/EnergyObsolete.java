@@ -16,6 +16,6 @@ public class EnergyObsolete extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.bonusStats[35] = (.15 * s.getMaxBp() * (1 + s.getEquipPow()));
+		s.bonusStats[35] = (.15 * s.getMaxBp() * (1 + s.getEquipPow())*(1+s.getRegenBonus()));
 	}
 }

@@ -30,7 +30,7 @@ public class SmellingSalt extends Item{
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.stm.removeStatus(vic, new incapacitate(vic) );
 		bs.bs.targetUpdate();
-		bs.bp.em.hpChange(5, perp, vic,6);
+		bs.bp.em.hpChange((int)(5*(1+perp.getItemPow())*(1+vic.getRegenBonus())), perp, vic,6);
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

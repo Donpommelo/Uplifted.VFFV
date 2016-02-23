@@ -19,9 +19,9 @@ public class Runaway extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		int partyLevel = 0;
+		int partyLevel = 1;
 		double bonus = 0;
-		int enemyLevel = 0;
+		int enemyLevel = 1;
 		for(Schmuck s : bs.bs.alliesSelectable){
 			partyLevel += s.getLvl();
 			bonus += s.getRunawayBonus();

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class StatRingFirefly extends Item{
 
 	static int id = 2;
-	static String name = "Firefly ing";
+	static String name = "Firefly Ring";
 	static boolean menu = false;
 	static boolean battle = false;
 	static boolean consume = false;

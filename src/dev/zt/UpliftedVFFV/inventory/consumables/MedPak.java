@@ -28,11 +28,11 @@ public class MedPak extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(20*(1+perp.getItemPow())),perp, vic,6);
+		bs.bp.em.hpChange((int)(50*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp, vic,6);
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(30*(1+s.getItemPow())));
+		s.hpChange((int)(50*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "A Medpak is administered to "+s.getName()+"!", 0));
 	}
 	

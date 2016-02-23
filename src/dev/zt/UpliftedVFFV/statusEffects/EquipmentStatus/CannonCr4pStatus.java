@@ -23,7 +23,7 @@ public class CannonCr4pStatus extends status{
 		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50)) || bs.bp.stm.checkStatus(s, new CrawlingFortressStatus(50))){
 			bs.bp.bt.addScene(s.getName()+" fires "+s.getPronoun(1)+" CR4P Cannon!");
 			for(Schmuck foe : bs.bp.getSelectableEnemies(s)){
-				int damage = (int)(bs.bp.em.logScaleDamage(s, foe) / bs.bp.getSelectableEnemies(s).size());
+				int damage = (int)(bs.bp.em.logScaleDamage(s, foe) / bs.bp.getSelectableEnemies(s).size() * (1 + s.getEquipPow()));
 				damage += (int)((damage)*(Math.random() * 2 * (s.getDamageVariance()+.5)-(s.getDamageVariance()+.5)));
 				bs.bp.em.hpChange(damage, s, foe,6);
 			}

@@ -512,8 +512,8 @@ public class RandomFoodLarge extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(300*(1+perp.getItemPow())),perp,vic,6);
-		bs.bp.em.bpChange((int)(200*(1+perp.getItemPow())),vic);
+		bs.bp.em.hpChange((int)(300*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp,vic,6);
+		bs.bp.em.bpChange((int)(200*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
 
 	}
 	
@@ -527,8 +527,8 @@ public class RandomFoodLarge extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(300*(1+s.getItemPow())));
-		s.bpChange((int)(200*(1+s.getItemPow())));
+		s.hpChange((int)(300*(1+s.getItemPow())*(1+s.getRegenBonus())));
+		s.bpChange((int)(200*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "The meal restores "+s.getName()+"'s Hp and Mp!", 0));
 	}
 }

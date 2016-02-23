@@ -27,7 +27,7 @@ public class FennelDonut extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(45*(1+perp.getItemPow())),perp,vic,6);
+		bs.bp.em.hpChange((int)(60*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp,vic,6);
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
@@ -40,7 +40,7 @@ public class FennelDonut extends Item{
 	}
 		
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(45*(1+s.getItemPow())));
+		s.hpChange((int)(60*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, "Its one nasty donut, but it restores Hp nonetheless.", 0));
 	}
 }

@@ -21,10 +21,10 @@ public class Deafen extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		for(Schmuck s : bs.bp.battlers){
-			if(!bs.bp.stm.checkStatus(s, new incapacitate(perp))){
-				bs.bp.stm.addStatus(s, new Silenced(3, perp, 50));
-			}
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, s) * 0.5);
+			bs.bp.em.hpChange(damage, perp, s,3);
+			bs.bp.stm.addStatus(s, new Silenced(0, perp, 50));
 		}
 	}
 

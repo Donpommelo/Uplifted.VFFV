@@ -19,7 +19,7 @@ public class SuckerPunch extends Item{
 	static int slot = 1;
 	static int lvlReq = 24;
 	static String descr="A wriggling spectral tentacle, primed to strike at the most\nopportune moment.";
-	static String descrShort="Punches foes when they miss.";
+	static String descrShort="+12 Skl\nPunches foes when they miss.";
 	public status[] enchantment = new status[2];
 	public SuckerPunch() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
@@ -27,7 +27,7 @@ public class SuckerPunch extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new SuckerPunchStatus(50);
-		enchantment[1] = new StatBuffAdd(5,12,50);
+		enchantment[1] = new StatBuffAdd(5,(int)(12 * (1+s.getEquipPow())),50);
 		return enchantment;
 	}
 }

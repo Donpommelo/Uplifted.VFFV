@@ -28,8 +28,8 @@ public class LemonyFresh extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange((int)(15*(1+perp.getItemPow())), perp, vic,6);
-		bs.bp.em.bpChange((int)(15*(1+perp.getItemPow())),vic);
+		bs.bp.em.hpChange((int)(40*(1+perp.getItemPow())*(1+vic.getRegenBonus())), perp, vic,6);
+		bs.bp.em.bpChange((int)(40*(1+perp.getItemPow()*(1+vic.getRegenBonus()))),vic);
 		for(status s: vic.statuses){
 			if(!s.perm){
 				s.setDuration(s.getDuration()/2);
@@ -47,8 +47,8 @@ public class LemonyFresh extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange((int)(25*(1+s.getItemPow())));
-		s.bpChange((int)(15*(1+s.getItemPow())));
+		s.hpChange((int)(40*(1+s.getItemPow())*(1+s.getRegenBonus())));
+		s.bpChange((int)(40*(1+s.getItemPow())*(1+s.getRegenBonus())));
 		StateManager.states.push(new NotificationState(game, gs, sm, s.getName()+" drinks the refreshing beverage!", 0));
 	}
 }

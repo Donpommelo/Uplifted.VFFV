@@ -30,7 +30,7 @@ public class HiveRhythmD extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemPointsBuff(3, 10, 50);
+		enchantment[0] = new ElemPointsBuff(3,(int)(10*(1+s.getEquipPow())), 50);
 		enchantment[1] = new HiveRhythmBuffStatus(50);
 		enchantment[2] = new HiveRhythmItemDStatus(50, enchantment[1]);
 		return enchantment;

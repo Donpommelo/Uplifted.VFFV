@@ -23,9 +23,9 @@ public class CopyCat extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=60,startBp=40,startPow=16, startDef=25, startSpd=16, startSkl=20, startLuk=20, startInt=27;
+	public final static int startHp=60,startBp=40,startPow=50, startDef=47, startSpd=29, startSkl=34, startLuk=70, startInt=53;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=4.3, bpGrowth=1.7, powGrowth=3.7, defGrowth=3.9, spdGrowth=1.4, sklGrowth=1.5, intGrowth=1.1, lukGrowth=2.9;
+	public final static double hpGrowth=40.3, bpGrowth=21.7, powGrowth=3.7, defGrowth=3.9, spdGrowth=3.4, sklGrowth=2.5, intGrowth=3.1, lukGrowth=8.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=15;
 	public final static int scrDrop=25;

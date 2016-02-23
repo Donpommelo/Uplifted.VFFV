@@ -13,7 +13,7 @@ public class Troop7Augurs extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		int num = (int)(Math.random()*2+2);
+		int num = 3;
 		for(int i=0; i<num; i++){
 			troop.add(new Augur(1+ML));
 		}

@@ -17,9 +17,9 @@ public class Chameleon extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=26,startBp=30,startPow=13, startDef=12, startSpd=21, startSkl=23, startLuk=18, startInt=26;
+	public final static int startHp=46,startBp=60,startPow=57, startDef=29, startSpd=73, startSkl=67, startLuk=39, startInt=65;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=2.3, bpGrowth=3.7, powGrowth=1.7, defGrowth=1.6, spdGrowth=2.9, sklGrowth=2.6, intGrowth=2.2, lukGrowth=.5;
+	public final static double hpGrowth=27.3, bpGrowth=33.1, powGrowth=4.7, defGrowth=2.6, spdGrowth=9.9, sklGrowth=9.6, intGrowth=9.2, lukGrowth=5.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=7;
 	public final static int scrDrop=1;

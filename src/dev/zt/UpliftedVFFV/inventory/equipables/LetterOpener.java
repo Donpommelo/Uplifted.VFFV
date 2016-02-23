@@ -17,14 +17,14 @@ public class LetterOpener extends Item{
 	static int slot = 1;
 	static int lvlReq = 3;
 	static String descr="An ornate knife almost threatening enough to be confiscated\nat an airport.";
-	static String descrShort="+4 Attack Damage";
+	static String descrShort="+7 Attack Damage";
 	public status[] enchantment = new status[1];
 	public LetterOpener() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(37,(int)(3*(1+s.getEquipPow())), 50);
+		enchantment[0] = new BonusStatBuff(37,(int)(7*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
 }

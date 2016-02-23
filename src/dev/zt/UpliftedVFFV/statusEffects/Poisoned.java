@@ -20,28 +20,9 @@ public class Poisoned extends status{
 	public Poisoned(int pr){
 		super(name, pr);
 	}
-	
-	public void endofturnEffect(Schmuck s, BattleState bs){
-		if(inflicter.getGreenPoints() > 120){
-			bs.bp.bt.addScene(s.getName()+" takes massive damage from Poison!");
-			bs.bp.em.hpChange(-s.getMaxHp()/3,inflicter,s,2);	
-		}
-		else if(inflicter.getGreenPoints() > 90){
-			bs.bp.bt.addScene(s.getName()+" takes heavy damage from Poison!");
-			bs.bp.em.hpChange(-s.getMaxHp()/5,inflicter,s,2);	
-		}
-		else if(inflicter.getGreenPoints() > 50){
-			bs.bp.bt.addScene(s.getName()+" takes moderate damage from Poison!");
-			bs.bp.em.hpChange(-s.getMaxHp()/8,inflicter,s,2);	
-		}
-		else if(inflicter.getGreenPoints() > 0){
-			bs.bp.bt.addScene(s.getName()+" takes light damage from Poison!");
-			bs.bp.em.hpChange(-s.getMaxHp()/10,inflicter,s,2);	
-		}
-		else{
-			bs.bp.bt.addScene(s.getName()+" draws vitality from Poison!");
-			bs.bp.em.hpChange(-inflicter.getGreenPoints(),inflicter,s,2);	
-		}
+		
+	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
+		bs.bp.em.hpChange(-(s.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,s,2);
 	}
 
 	public String inflictText(Schmuck s){
