@@ -20,13 +20,13 @@ public class Troop5SmallSchmucks extends Troop{
 			int num = (int)(Math.random()*3);
 			switch(num){
 			case 0:
-				troop.add(new RotThought(1+ML));
+				troop.add(new RotThought(ML));
 				break;
 			case 1:
-				troop.add(new Midge(1+ML));
+				troop.add(new Midge(ML));
 				break;
 			case 2:
-				troop.add(new IllRat(1+ML));
+				troop.add(new IllRat(ML));
 				break;
 			}
 		}

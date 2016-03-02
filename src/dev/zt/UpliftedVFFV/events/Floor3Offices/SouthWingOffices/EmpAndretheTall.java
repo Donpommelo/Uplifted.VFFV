@@ -37,17 +37,17 @@ public class EmpAndretheTall extends Event {
 			this.test.runlast = 2;
 		}
 		if(!this.isSelfswitch1()){
-			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Excuse me sir, do you know where Suite 521 is?/");
-			d[1] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"What was that?/Sorry, you're going to have to speak up./");
-			d[2] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"If you're looking for something, you should see Jorge in the Mailroom.//Actually, maybe you shouldn't . . ./");
-			super.Dialog(d, 2, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Ugh. An Ill Rat bit me and now I feel a little queasy./");
+			d[1] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"I better drop by the 7th Floot Infirmary for medicines./");
+			super.Dialog(d, 1, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Whatever you're looking for, it isn't up here./");
-			super.Dialog(d,0, this.getId(), true);		}
+			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Whatever you're looking for, I can't see it from up here./");
+			super.Dialog(d,0, this.getId(), true);
+		}
 	}
 	
 	public void walkCycle(){

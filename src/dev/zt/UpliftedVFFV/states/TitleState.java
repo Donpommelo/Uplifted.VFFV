@@ -63,7 +63,9 @@ public class TitleState extends State {
 				else{
 					switch(optionChosen){
 						case 0:
-							StateManager.states.push(new GameState(game,statemanager));				
+							GameState gs = new GameState(game, statemanager);
+							StateManager.states.push(new GameState(game,statemanager));
+							gs.getEvents()[129].run();
 							break;
 						//Load game.
 						case 1:

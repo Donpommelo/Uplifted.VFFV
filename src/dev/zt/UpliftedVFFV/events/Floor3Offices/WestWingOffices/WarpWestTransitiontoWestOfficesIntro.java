@@ -13,6 +13,5 @@ public class WarpWestTransitiontoWestOfficesIntro extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestIntroOffices.txt",(int)(gamestate.getPlayer().getPlayerX()/32)+28,36,"");
-		
 	}
 }

@@ -15,7 +15,7 @@ public class RotThoughtTutorial extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=50,startPow=42, startDef=51, startSpd=35, startSkl=29, startLuk=47, startInt=51;
+	public final static int startHp=100,startBp=50,startPow=40, startDef=51, startSpd=35, startSkl=29, startLuk=47, startInt=51;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=33.6, bpGrowth=24.7, powGrowth=3.7, defGrowth=4.7, spdGrowth=1.8, sklGrowth=2.9, intGrowth=3.1, lukGrowth=1.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

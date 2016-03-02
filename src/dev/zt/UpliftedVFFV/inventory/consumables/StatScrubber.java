@@ -24,6 +24,10 @@ public class StatScrubber extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BaselineStats(3, perp, 0));
+		bs.bp.stm.addStatus(perp, new BaselineStats(3, perp, 0));
+	}
+	
+	public int getTargetType(){
+		return 1;
 	}
 }

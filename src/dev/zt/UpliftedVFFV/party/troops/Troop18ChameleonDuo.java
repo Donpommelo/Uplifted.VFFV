@@ -13,8 +13,8 @@ public class Troop18ChameleonDuo extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new Chameleon(1+ML));
-		troop.add(new Chameleon(1+ML));
+		troop.add(new Chameleon(ML));
+		troop.add(new Chameleon(ML));
 
 		this.troop = troop;
 		return troop;

@@ -5,9 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.equipables.Magnum;
 import dev.zt.UpliftedVFFV.inventory.equipables.SimmerResent;
-import dev.zt.UpliftedVFFV.inventory.misc.MetalRations;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class EventSafe8 extends Event {

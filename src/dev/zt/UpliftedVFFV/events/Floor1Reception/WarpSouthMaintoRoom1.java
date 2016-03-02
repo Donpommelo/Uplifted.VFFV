@@ -32,7 +32,6 @@ public class WarpSouthMaintoRoom1 extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor1Reception/SouthLobbyRoom1.txt",8,16,"");
 			this.setOpen(false);
 			this.setFrames(0);

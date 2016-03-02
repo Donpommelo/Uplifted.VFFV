@@ -57,15 +57,16 @@ public class WarpSElevatortoLobby extends Event {
 					}
 					break;
 				case 3:
-					
+					super.transport("/Worlds/Floor4Aquarium/AquariumBuilding/SouthLobby.txt", 25, 26,"Aquarium Building");
 					break;
 				case 4:
 					
 					break;
 				case 5:
-					
+					super.transport("/Worlds/Floor6FoodServery/FoodCourt/SouthLobby.txt", 22, 25,"Food Servery");
 					break;
 				case 6:
+					super.transport("/Worlds/Floor7Infirmary/WaitingRoom.txt", 16, 32,"Waiting Room");
 					break;
 				case 7:
 					break;

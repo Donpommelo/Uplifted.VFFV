@@ -22,7 +22,7 @@ public class HiveRhythmA extends Item{
 	static int value = 666;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="An enthusiastic and inflaming note, echoing endlessly in\nthe head if its wielder.";
 	static String descrShort = "+10 Red Points\nMakes you one with the Hive";
 	public status[] enchantment = new status[3];
 	public HiveRhythmA() {

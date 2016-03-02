@@ -26,6 +26,7 @@ public class EventAvery extends Event {
 				Dialog[] d1 = new Dialog[1];
 				d1[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"<Text>/");
 				super.Dialog(d1, 0, this.getId(), true);
+				
 				super.getGamestate().getPartymanager().getParty().get(0).statuses.add(new BathHouseIntrinsic(50));
 			}
 			else{

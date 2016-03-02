@@ -17,7 +17,7 @@ public class StatRingBeetle extends Item{
 	static int value = 13;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A ring adjorned by a metal beetle.\nBeetles of all kinds belong to the order Coleoptera, named after the Greek word for 'sheath',\ndescribing their protective front wings and aversion to violence.";
 	static String descrShort="+15% Def";
 	public status[] enchantment = new status[1];
 	public StatRingBeetle() {

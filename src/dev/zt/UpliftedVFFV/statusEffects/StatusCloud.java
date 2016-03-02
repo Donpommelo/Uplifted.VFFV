@@ -27,7 +27,7 @@ public class StatusCloud extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(-damage > vic.getMaxHp() * perc){
 			if(Math.random() < .6*vic.getBuffedLuk()/perp.getBuffedLuk()){
-				bs.bp.stm.addStatus(perp, new Combustibility((int)(3*(1+vic.getEquipPow())), vic, 50));
+				bs.bp.stm.addStatus(perp,st);
 			}
 		}
 		return damage;

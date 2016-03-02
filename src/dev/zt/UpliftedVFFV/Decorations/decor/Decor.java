@@ -107,7 +107,10 @@ public class Decor {
 	public static Decor railcenter = new DecorRailCenter(84);
 	public static Decor railright = new DecorRailRight(85);
 	public static Decor blackdoor = new DecorBlackDoor(86);
-
+	public static Decor aquatunnelarchhorz1below = new DecorAquaTunnelArchHorz1Below(87);
+	public static Decor aquatunnelarchhorz2below = new DecorAquaTunnelArchHorz2Below(88);
+	public static Decor aquatunnelarchhorz3below = new DecorAquaTunnelArchHorz3Below(89);
+	public static Decor aquatunnelarchcornerbelow = new DecorAquaTunnelArchCornerBelow(90);
 
 	public Decor(Game g, GameState gs){
 		game=g;

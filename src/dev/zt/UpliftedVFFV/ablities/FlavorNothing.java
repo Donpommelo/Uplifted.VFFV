@@ -5,6 +5,10 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FlavorNothing extends Skills {
 	
+	//For when character's actions are nullified for whatever reason.
+	//For example; attacking when Disarmed, casting when Silenced etc.
+	//A string is displayed to the Battle Text manager instead.
+	
 	String flavorText = "";
 	public static String name = "";
 	public static String descr = ".";
@@ -18,11 +22,7 @@ public class FlavorNothing extends Skills {
 		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 		flavorText = text;
 	}
-	
-	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		
-	}
-	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
 		return 	flavorText;
 	}

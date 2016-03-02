@@ -16,7 +16,7 @@ public class CensuredResonance extends Item{
 	static int value = 550;
 	static int slot = 1;
 	static int lvlReq = 19;
-	static String descr="What appears to be some sort of enchanted tuning fork.\nUseful in establishing unspoken connections with coworkers.";
+	static String descr="What appears to be some sort of enchanted tuning fork.\nUseful in establishing unspoken connections with quiet coworkers.";
 	static String descrShort="Wielder spreads stat buffs to allies.";
 	public status[] enchantment = new status[1];
 	public CensuredResonance() {

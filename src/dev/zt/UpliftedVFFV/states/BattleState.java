@@ -49,15 +49,29 @@ public class BattleState extends State {
 	public int bonusML;
 	public BattleState(Game game, StateManager sm, ArrayList<Schmuck>party,int troopId, int eventId,boolean runnable, boolean music,GameState gs, int ML){
 		super(game,sm);
-//		game.getAudiomanager().playMusic(3);
+//		game.getAudiomanager().playMusic(3);;
 		this.gs=gs;
 		this.EventId = eventId;
 		this.runnable = runnable;
 		this.musicReplace = music;
 		tm= new TroopManager(game);
-//		bm = new BattleMenu(game,sm,party,tm.Troop(troopId),this);
 		this.allies = party;
 		this.bonusML = ML;
+		
+		//Adding Bonus ML from statuses
+		for(Schmuck s : gs.partymanager.party){
+			bonusML += s.getBonusML();
+		}
+		
+		//Adding Mind Control Device Bonus.
+		bonusML += gs.variablemanager.getVar(13);
+		
+		//Adding World Base Level
+		bonusML += gs.getWorld().getEnemylvl();
+		
+		//Adding Global Level Modifier
+		bonusML += gs.variablemanager.getVar(21);
+		
 		t = Troop.troops[troopId];
 		this.enemy = tm.Troop(troopId,bonusML);
 		bp = new BattleProcessor(game,sm,party,enemy,t,gs,this);
@@ -69,9 +83,6 @@ public class BattleState extends State {
 		introX = 0;
 		introY = 0;
 		frame = 0;
-//		currentlySelected=0;
-//		actionSelected=0;
-
 	}
 
 	public void tick() {
@@ -82,8 +93,6 @@ public class BattleState extends State {
 			bs.tick();
 			bp.tick();	
 		}
-//		bm.tick();
-
 	}
 			
 
@@ -101,9 +110,7 @@ public class BattleState extends State {
 				
 				g.drawImage(elevatorDoors,0,0,null);
 			}
-			else if(frame<=154){
-//				g.drawImage(floor, 0, 0,null);
-//				g.drawImage(wall, 0, -32, null);					
+			else if(frame<=154){					
 				bb.render(g);
 				bs.render(g);
 				bp.render(g);
@@ -124,14 +131,11 @@ public class BattleState extends State {
 			}
 			
 		}
-		else{
-//			g.drawImage(floor, 0, 0,null);
-//			g.drawImage(wall, 0, -32, null);	
+		else{	
 			bb.render(g);
 			bs.render(g);
 			bp.render(g);
 			bui.render(g);
-//			bm.render(g);
 		}
 
 		
@@ -152,10 +156,14 @@ public class BattleState extends State {
 			}
 		}
 		
+		//End Battle State
 		StateManager.getStates().pop();
+		
+		//Resume playing pre-battle music
 		game.getAudiomanager().playMusic(2, true);
-		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
-		//increment and the event will be rerrun with the new stage.
+		
+		//This is used for multistage event processing. If there are multiple stages in the event being run,
+		//the stage will increment and the event will be rerrun with the new stage.
 		if(victory){
 			gs.getEvents()[this.EventId].setFightwon(true);
 		}

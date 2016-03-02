@@ -16,7 +16,7 @@ public class DailyDose extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="Automated, self-medicating device for the forgetful!";
+	static String descr="Automated, self-medicating device for the forgetful.";
 	static String descrShort="Automatically uses status-curing\nitems without spending a turn.";
 	public status[] enchantment = new status[1];
 	public DailyDose() {

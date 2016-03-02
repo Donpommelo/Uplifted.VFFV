@@ -19,13 +19,13 @@ public class Troop12Thoughts extends Troop{
 			int num = (int)(Math.random()*3);
 			switch(num){
 			case 0:
-				troop.add(new RotThought(2+ML));
+				troop.add(new RotThought(ML));
 				break;
 			case 1:
-				troop.add(new Augur(2+ML));
+				troop.add(new Augur(ML));
 				break;
 			case 2:
-				troop.add(new Augur(2+ML));
+				troop.add(new Augur(ML));
 				break;
 			}
 		}

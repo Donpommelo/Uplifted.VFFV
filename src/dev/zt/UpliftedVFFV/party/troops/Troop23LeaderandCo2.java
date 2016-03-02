@@ -24,33 +24,33 @@ public class Troop23LeaderandCo2 extends Troop{
 		num2 = (int)(Math.random()*3);
 		switch (num1){
 		case 0:
-			troop.add(new Midgeon(1+ML));
-			troop.add(new Midgeon(1+ML));
+			troop.add(new Midgeon(ML));
+			troop.add(new Midgeon(ML));
 			break;
 		case 1:
-			troop.add(new RotThought(1+ML));
-			troop.add(new RotThought(1+ML));
+			troop.add(new RotThought(ML));
+			troop.add(new RotThought(ML));
 			break;
 		}
 		switch (num2){
 		case 0:
-			troop.add(new Shirley(2+ML));
+			troop.add(new Shirley(1+ML));
 			break;
 		case 1:
-			troop.add(new Lunk(2+ML));
+			troop.add(new Lunk(1+ML));
 			break;
 		case 2:
-			troop.add(new Portent(2+ML));
+			troop.add(new Portent(1+ML));
 			break;
 		}
 		switch (num1){
 		case 0:
-			troop.add(new Midgeon(1+ML));
-			troop.add(new Midgeon(1+ML));
+			troop.add(new Midgeon(ML));
+			troop.add(new Midgeon(ML));
 			break;
 		case 1:
-			troop.add(new Screamer(1+ML));
-			troop.add(new Screamer(1+ML));
+			troop.add(new Screamer(ML));
+			troop.add(new Screamer(ML));
 			break;
 		}
 		

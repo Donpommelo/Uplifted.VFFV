@@ -19,7 +19,7 @@ public class HumanityModule extends Item{
 	static int slot = 1;
 	static int lvlReq = 20;
 	static String descr="Becoming more human has never been easier.";
-	static String descrShort="+10 Yellow Alignment Points\nConsumes Mp to buff random stats.";
+	static String descrShort="+10 Yellow Points\nConsumes Mp to buff random stats.";
 	public status[] enchantment = new status[2];
 	public HumanityModule() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

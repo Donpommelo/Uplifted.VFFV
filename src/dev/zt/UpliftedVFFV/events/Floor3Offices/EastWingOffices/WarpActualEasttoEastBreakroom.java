@@ -13,6 +13,5 @@ public class WarpActualEasttoEastBreakroom extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMain.txt",5,19,"");
-		
 	}
 }

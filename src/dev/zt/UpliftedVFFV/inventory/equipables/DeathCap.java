@@ -16,7 +16,7 @@ public class DeathCap extends Item{
 	static int value = 630;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr = "A mushroom cap brimming with dangerous-smelling\nspores.";
+	static String descr = "A mushroom cap brimming with a rainbow of dangerous-smelling\nspores.";
 	static String descrShort="Elementally Reactive Spores";
 	public status[] enchantment = new status[1];
 	public DeathCap() {

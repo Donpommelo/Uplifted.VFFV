@@ -14,6 +14,14 @@ import dev.zt.UpliftedVFFV.events.Floor2Bathhouse.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices.*;
+import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Building.*;
+import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Tunnel.*;
+import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Tank.*;
+import dev.zt.UpliftedVFFV.events.Floor6FoodServery.FoodCourt.*;
+import dev.zt.UpliftedVFFV.events.Floor6FoodServery.LachiplatreLand.*;
+import dev.zt.UpliftedVFFV.events.Floor7Infirmary.Main.*;
+import dev.zt.UpliftedVFFV.events.Floor7Infirmary.Triage.*;
+import dev.zt.UpliftedVFFV.events.Floor7Infirmary.ResearchFacility.*;
 import dev.zt.UpliftedVFFV.events.ElevatorsandBackroom.*;
 import dev.zt.UpliftedVFFV.events.EventsCommon.*;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -43,7 +51,7 @@ public class Event implements Serializable{
 	protected static GameState gamestate;
 	protected float x;
 	protected float y;
-	public static Event[] events = new Event[1200];
+	public static Event[] events = new Event[2000];
 	public static Event event0 = new Event0(0,0,0);
 	public static Event event1 = new WarpBackroomtoElevator(10,5,1);
 	public static Event event2 = new WarpSElevatortoBackroom(5,10,2);
@@ -151,18 +159,15 @@ public class Event implements Serializable{
 	public static Event eventemployeeJorge = new EventJorge(8,8,100);
 	public static Event eventInvisWall = new EventInvisWall(0,0,101);
 	public static Event empJanitor1 = new EventJanitor1(5,8,102);
-
 	public static Event empGuilliot = new EmpGuilliot(6,10,103);
 	public static Event empHobbes = new EmpHobbes(7,12,104);
 	public static Event empLateNeet = new EmpLateNeet(12,14,105);
 	public static Event empSalty = new EmpSalty(8,10,106);
 	public static Event empWalker = new EmpWalker(5,10,107);
 	public static Event empZ = new EmpZ(7,10,108);
-
 	public static Event empVitor = new EmpVitor(11,16,109);
 	public static Event empFlammable = new EmpFlammable(21,7,110);
 	public static Event empGymnist = new EmpGymnist(17,28,111);
-	
 	public static Event empDowner = new EmpDowner(34,30,112);
 	public static Event empFearful = new EmpFearful(34,27,113);
 	public static Event empHavingaBadDay = new EmpHavinaBadDay(34,24,114);
@@ -206,7 +211,7 @@ public class Event implements Serializable{
 	public static Event event147 = new WarpBustoCentralLeft(8,5,147);
 	public static Event event148 = new WarpBustoCentralRight(11,5,148);
 	public static Event event149 = new WarpBustoRightBusStop(14,5,149);
-	public static Event event150 = new WarpBustoWestPreDungeon(17,5,150);
+	public static Event event150 = new WarpBustoWestPostDungeon(17,5,150);
 	public static Event event151 = new WarpBustoRamp(17,10,151);
 	public static Event event152 = new WarpJClosettoBus(5,11,152);
 	public static Event event153 = new WarpCentraltoBusLeft1(5,13,153);
@@ -324,7 +329,7 @@ public class Event implements Serializable{
 	public static Event event271 = new WarpWestTransitiontoWestOfficesIntro(7,9,271);
 	public static Event event272 = new WarpWestOfficesIntrotoWestTransition(35,36,272);
 	public static Event event273 = new WarpWestOfficesIntrotoPredungeon(2,10,273);
-	public static Event event274 = new WarpWestCubicleFinaltoBus(13,51,274);
+	public static Event event274 = new WarpWestCubicleFinaltoBus(7,29,274);
 	public static Event event275 = new WarpWestPredungeontoIntroOffices(19,13,275);
 	public static Event event276 = new WarpWestPredungeontoTrashChute(3,13,276);
 	public static Event event277 = new WarpWestPredungeontoCubicleDungeon(10,6,277);
@@ -398,6 +403,153 @@ public class Event implements Serializable{
 	public static Event empFurlow = new EmpFurlow(18,13,348);
 	public static Event empTurner = new EmpTurner(18,19,349);
 	public static Event empHoward = new EmpHoward(18,23,350);
+
+	public static Event safe9 = new EventSafe9(4,9,351);
+	public static Event safe10 = new EventSafe10(6,8,352);
+	public static Event safe11 = new EventSafe11(6,26,353);
+	public static Event safe12 = new EventSafe12(20,8,354);
+	public static Event safe13 = new EventSafe13(20,26,355);
+
+	
+	public static Event EventHalfnHalfSouth = new FloorManagerSouth(16,7,360);
+	public static Event EventBathhouseManager = new EventBathhouseManager(9,13,361);
+	public static Event EventAda = new EventAda(5,15,362);
+	public static Event EventAvery = new EventAvery(6,24,363);
+	//364 - 370 : reserved for rest of spa/reception events
+	
+	public static Event event371 = new WarpSouthLobbytoSElevator(25,37,371);
+	public static Event event372 = new WarpSouthLobbytoRightExhibitHall(26,11,372);
+	public static Event event373 = new WarpSouthLobbytoAquaTunnel(19,6,373);
+	public static Event event374 = new WarpSouthLobbytoLeftExhibitHall(7,20,374);
+	public static Event event375 = new WarpLeftExhibitHalltoLobby(21,32,375);
+	public static Event event376 = new WarpLeftExhibitHalltoPettingZoo(7,20,376);
+	public static Event event377 = new WarpPettingZootoLeftExhibitHall(19,25,377);
+	public static Event event378 = new WarpPettingZootoUnderseaIntermediate(27,12,378);
+	public static Event event379 = new WarpUnderseaIntermediatetoPettingZoo(3,30,379);
+	public static Event event380 = new WarpUnderseaIntermediatetoJCloset(6,6,380);
+	public static Event event381 = new WarpUnderseaIntermediatetoDeepSeaDungeon1(12,6,381);
+	public static Event event382 = new WarpUnderseaIntermediatetoDeepSeaDungeon2(18,6,382);
+	public static Event event383 = new WarpUnderseaIntermediatetoShowStadium1(21,15,383);
+	public static Event event384 = new WarpUnderseaIntermediatetoShowStadium2(23,4,384);
+	public static Event event385 = new WarpJClosettoUnderseaIntermediate(5,11,385);
+	public static Event event386 = new WarpDeepSeaDungeontoUnderseaIntermediate1(13,29,386);
+	public static Event event387 = new WarpDeepSeaDungeontoUnderseaIntermediate2(25,29,387);
+	public static Event event388 = new WarpDeepSeaDungeontoDeeper1(3,20,388);
+	public static Event event389 = new WarpDeepSeaDungeontoDeeper2(22,6,389);
+	public static Event event390 = new WarpDeeperSeaDungeontoDeep1(12,38,390);
+	public static Event event391 = new WarpDeeperSeaDungeontoDeep2(28,33,391);
+	public static Event event392 = new WarpDeeperSeaDungeontoDeepest(17,6,392);
+	public static Event event393 = new WarpDeepestSeaDungeontoDeeper(5,43,393);
+	public static Event event394 = new WarpShowStadium1toUnderseaIntermediate(3,16,394);
+	public static Event event395= new WarpShowStadium1toGiftShop(8,14,395);
+	public static Event event396= new WarpShowStadium2toUnderseaIntermediate(17,13,396);
+	public static Event event397= new WarpShowStadium2toDisplayRoom(26,54,397);
+	public static Event event398= new WarpDisplayRoomtoShowStadium2(13,6,398);
+	public static Event event399= new WarpDisplayRoomtoRightExhibitHall(12,31,399);
+	public static Event event400 = new WarpRightExhibitHalltoDisplayRoom(13,3,400);
+	public static Event event401 = new WarpRightExhibitHalltoSouthLobby(16,35,401);
+	public static Event event402 = new WarpGiftShoptoShowStadium1(9,22,402);
+	public static Event event403 = new WarpGiftShop1to2(16,3,403);
+	public static Event event404 = new WarpGiftShop2to1(16,31,404);
+	public static Event event405 = new WarpGiftShop2toTunnel(7,5,405);
+	public static Event event406 = new WarpGiftShop2toOfficeWarehouse(20,18,406);
+	public static Event event407 = new WarpTunneltoSouthLobby(31,60,407);
+	public static Event event408 = new WarpWestTunneltoCentralLobby(44,23,408);
+	public static Event event409 = new WarpCentralLobbytoTunnelWest(13,27,409);
+	public static Event event410 = new WarpCentralLobbytoTunnelEast(31,19,410);
+	public static Event event411 = new WarpCentralLobbytoJCloset(18,13,411);
+	public static Event event412 = new WarpJClosettoCentralLobby(5,11,412);
+	public static Event event413 = new WarpEastTunneltoCentralLobby(13,16,413);
+	public static Event event414 = new WarpEastTunneltoGiftShop(31,19,414);
+	public static Event event415 = new WarpEastTunneltoLobby(31,13,415);
+	public static Event event416 = new WarpEastLobbytoEastTunnel(5,17,416);
+	public static Event event417 = new WarpEastLobbytoEElevator(11,17,417);
+	public static Event event418 = new WarpTanktoWElevator(24,24,418);
+	public static Event event419 = new WarpTank1toTank2(66,16,419);
+	public static Event event420 = new WarpTank2toTank1(81,25,420);
+	//421-440 reserved for aquarium dungeon warps
+	public static Event event441 = new WarpFoodCourtLobbytoSElevator(22,25,441);
+	public static Event event442 = new WarpFoodCourtLobbytoEatery(22,6,442);
+	public static Event event443 = new WarpFoodCourtLobbytoSeatery(26,9,443);
+	public static Event event444 = new WarpSeaterytoFoodCourtLobby(3,25,444);
+	public static Event event445 = new WarpSeaterytoEatery(7,8,445);
+	public static Event event446 = new WarpEaterytoFoodCourtLobby(33,66,446);
+	public static Event event447 = new WarpEaterytoSeatery(42,15,447);
+	public static Event event448 = new WarpEaterytoLLand(34,3,448);
+	//449: Eatery to Processing
+	public static Event event450 = new WarpLLandtoEatery(6,33,450);
+	public static Event event451 = new WarpLLandtoLLLobby(48,29,451);
+	public static Event event452 = new WarpLLandtoBallpitYellow(20,8,452);
+	public static Event event453 = new WarpLLandtoBallpitBlue(41,8,453);
+	public static Event event454 = new WarpLLandtoInner(41,8,454);
+	public static Event event455 = new WarpLLandtoFloor2(22,12,455);
+	//LLand to extra room?
+	public static Event event457 = new WarpLLLobbytoLLand(3,13,457);
+	public static Event event458 = new WarpLLLobbytoEElevator(9,17,458);
+	public static Event event459 = new WarpLLLobbytoLLandFloor2(9,6,459);
+	public static Event event460 = new WarpBallpitYellowtoLLand(19,27,460);
+	public static Event event461 = new WarpBallpitYellowtoLLandInner(12,20,461);
+	public static Event event462 = new WarpBallpitBluetoLLand(5,27,462);
+	public static Event event463 = new WarpBallpitBluetoLLandInner(12,20,463);
+	public static Event event464 = new WarpLLandInnertoOuter(9,40,464);
+	public static Event event465 = new WarpLLandInnertoBallpitYellow(5,31,465);
+	public static Event event466 = new WarpLLandInnertoBallpitBlue(24,31,466);
+	public static Event event467 = new WarpLLandInnertoLLandFloor2(13,6,467);
+	public static Event event468 = new WarpLLandFloor2toFloor1(12,23,468);
+	public static Event event469 = new WarpLLandFloor2toLLLobby(42,23,469);
+	public static Event event470 = new WarpLLandFloor2toInner(40,7,470);
+
+	//-549: remainder of warps for Servery
+	
+	public static Event event550 = new WarpWaitingRoomtoSElevator(16,33,550);
+	public static Event event551 = new WarpWaitingRoomtoCircleBalcony(16,6,551);
+	//552: Waiting Room to Sterile Labyrinth.
+	public static Event event553 = new WarpCircleBalconytoWaitingRoom(17,36,553);
+	public static Event event554 = new WarpCircleBalconytoTriage(37,12,554);
+	public static Event event555 = new WarpCircleBalconytoResearchFacility(3,19,555);
+	public static Event event556 = new WarpTriageEntrancetoCircleBalcony(3,8,556);
+	public static Event event557 = new WarpTriageEntrancetoFastTrack(14,3,557);
+	public static Event event558 = new WarpTriageEntrancetoCentralChamber(21,14,558);
+	public static Event event559 = new WarpFastTracktoTriageEntrance(5,14,559);
+	public static Event event560 = new WarpFastTracktoEElevator(12,13,560);
+	public static Event event561 = new WarpFastTracktoDiagnostics(16,6,561);
+	public static Event event562 = new WarpCentralChambertoTriageEntrance(2,19,562);
+	public static Event event563 = new WarpCentralChambertoBurnWard(6,23,563);
+	public static Event event564 = new WarpCentralChambertoFeverShed(16,23,564);
+	public static Event event565 = new WarpCentralChambertoTraumaCenter(20,19,565);
+	public static Event event566 = new WarpCentralChambertoPulmonaryDept(20,9,566);
+	public static Event event567 = new WarpCentralChambertoPsycheAsylum(6,6,567);
+	public static Event event568 = new WarpCentralChambertoHospice(11,6,568);
+	public static Event event569 = new WarpCentralChambertoDiagnostics(11,16,569);
+	public static Event event570 = new WarpBurnWardtoCentralChamber(6,5,570);
+	public static Event event571 = new WarpBurnWardtoFeverShed(17,25,571);
+	public static Event event572 = new WarpFeverShedtoCentralChamber(6,6,572);
+	public static Event event573 = new WarpFeverShedtoBurnWard(2,23,573);
+	public static Event event574 = new WarpFeverShedtoTraumaCenter(21,6,574);
+	public static Event event575 = new WarpTraumaCentertoCentralChamber(3,11,575);
+	public static Event event576 = new WarpTraumaCentertoPulmonaryDept(22,6,576);
+	public static Event event577 = new WarpTraumaCentertoFeverShed(22,17,577);
+	public static Event event578 = new WarpPulmonaryDepttoCentralChamber(3,16,578);
+	public static Event event579 = new WarpPulmonaryDepttoTraumaCenter(28,20,579);
+	public static Event event580 = new WarpPsycheAsylumtoCentralChamber(12,35,580);
+	public static Event event581 = new WarpDiagnosticstoCentralChamber(6,13,581);
+	public static Event event582 = new WarpDiagnosticstoFastTrack(1,8,582);
+	public static Event event583 = new WarpHospicetoCentralChamber(8,14,583);
+	public static Event event584 = new WarpAntechambertoCircleBalcony(11,13,584);
+	public static Event event585 = new WarpAntechambertoFacilityFloor1(3,10,585);
+	public static Event event586 = new WarpFacilityFloor1toAntechamber(21,15,586);
+	public static Event event587 = new WarpFacilityFloor1toJCloset(11,14,587);
+	public static Event event588 = new WarpFacilityFloor1toCentrifuge(8,14,588);
+	public static Event event589 = new WarpFacilityFloor1toExtractionator(5,14,589);
+	public static Event event590 = new WarpFacilityFloor1toImpalefier(11,23,590);
+	public static Event event591 = new WarpFacilityFloor1toIncubator(5,23,591);
+	//592+593: Research facility to floor 2/ bonus room
+	public static Event event594 = new WarpJClosettoFacilityFloor1(5,11,594);
+	public static Event event595 = new WarpCentrifugetoFacilityFloor1(6,13,595);
+	public static Event event596 = new WarpExtractionatortoFacilityFloor1(6,13,596);
+	public static Event event597 = new WarpImpalefiertoFacilityFloor1(6,6,597);
+	public static Event event598 = new WarpIncubatortoFacilityFloor1(6,6,598);
+	public static Event event599 = new WarpIncubatortoWElevator(6,13,599);
 
 	
 
@@ -582,16 +734,8 @@ public class Event implements Serializable{
 		StateManager.states.push(new BattleState(game,statemanager,gamestate.partymanager.party,enemyId,eventId,runnable, music,gamestate,bonusML));
 	}
 	
-	//when ran, opens a DialogState that goes through firstline-lastline in the dialog text file.
+	//when ran, opens a DialogState that goes through a list of text.
 	//consider adding multiple text files later that will need to be specified
-	public static void Dialog(int firstline, int lastline, int eventId){
-		StateManager.states.push(new DialogState(game, gamestate, statemanager, firstline, lastline, eventId));
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public static void Dialog(Dialog[] d, int dialoglength, int eventId, boolean arrow){
 		StateManager.states.push(new DialogState(game, gamestate, statemanager, d, dialoglength, eventId, arrow));

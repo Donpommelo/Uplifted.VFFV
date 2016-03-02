@@ -15,6 +15,8 @@ public class WarpEastBathhousetoElevator extends Event {
 
 	public void run(){
 		game.getAudiomanager().playMusic(1, true);
+		super.getGamestate().getEvents()[215].setOpen(false);
+		super.getGamestate().getEvents()[215].setFrames(6);
 		super.transport("/Worlds/ElevatorsandBackroom/EastElevator.txt", 5, 7,"East Elevator");
 	}
 }

@@ -12,6 +12,9 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class EffectManager {
 	
+	//Effect Manager manages effects of battle. Sorta a helper to Battle Processor
+	//Calculates default damage, changinh Hp/Mp, calculating Misses/Crits
+	
 	public ArrayList<Schmuck> team;
 	public ArrayList<Schmuck> enemy;
 	public GameState gs;
@@ -98,7 +101,6 @@ public class EffectManager {
 				finalDamage = vic.statusProcTime(14, bs, null, perp, finalDamage, elem, true, null);
 
 				//Display text and do damage.
-//				bs.bp.bt.addScene(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
 				vic.tempStats[0]+=finalDamage;
 				bs.bs.flash(vic, 120, -finalDamage, elem);
 
@@ -138,6 +140,7 @@ public class EffectManager {
 	//For changes in Mp.
 	public void bpChange(int bp, Schmuck s){
 		int meterChange = bp;
+		
 		//Activate all on-gain-meter or on-spend-meter effects accordingly.
 		if(meterChange < 0){
 			meterChange = s.statusProcTime(17, bs, null, null, meterChange, 0, true, null);
@@ -157,6 +160,7 @@ public class EffectManager {
 		}
 	}
 	
+	//Calculate damage formla for most typical attacks
 	public int logScaleDamage(Schmuck perp, Schmuck vic){
 		double Attack = perp.buffedStats[(int)(perp.getDamageStat()+2)];
 		double Defense = vic.buffedStats[(int)(vic.getDefenseStat()+3)];

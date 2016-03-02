@@ -12,16 +12,28 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class BattleText {
 	
-	public StateManager sm;
-	public Game game;
+	//Manages Battle Scenes: text and animations in barlre
+	
+
+	
+	//All allies/enemies
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
+	
+	//Arraylist of scenes that are yet to be processed.
 	public ArrayList<BattleScene> scenes=new ArrayList<BattleScene>();
 
 	public BattleState bs;
+	public StateManager sm;
+	public Game game;
 	
+	//For scrolling text.
 	public int charIndex;
+	
+	//
 	public boolean scrolling, actionRun;
+	
+	//Duration before scene automatically moves to next
 	public int autoscroll = 120;
 	
 	public int frame, autoWait;
@@ -40,10 +52,17 @@ public class BattleText {
 	}
 	
 	public void tick() {
+		
+		//If there are unplayed scenes queued up, play the next one.
 		if(!scenes.isEmpty()){
+			
+			//If player is ded, they die.
 			if(scenes.get(0).getText().contains("Everything goes black.")){
 				bs.end(false);
 			}
+			
+			//If the current scene is done playing, remove it and start the next.
+			//Otherwise increment its frames
 			if(scenes.get(0).isAuto() && !scrolling && actionRun){
 				if(this.autoWait <= autoscroll){
 					this.autoWait++;
@@ -56,11 +75,15 @@ public class BattleText {
 				}
 			}
 		}
+		
+		//If a null action is queued up, mark it as already done.
 		if(!scenes.isEmpty()){
 			if(scenes.get(0).getA() == null){
 				actionRun = true;
 			}	
 		}
+		
+		//Space also increments text if you're impatient.
 		if(game.getKeyManager().space){
 			if(!scenes.isEmpty()){
 				
@@ -69,6 +92,8 @@ public class BattleText {
 					bs.end(false);
 				}
 				else{
+					
+					//Scenes finished in this way also are removed from the Scene queue 
 					if(!scrolling && actionRun){
 						charIndex = 0;
 						scenes.remove(0);
@@ -90,6 +115,8 @@ public class BattleText {
 		if(charIndex > scenes.get(0).getText().length()){				//controls how much of the dialog is rendered. 
 			charIndex = scenes.get(0).getText().length();				//charIndex increases as time passes, causing text to scroll
 		}	
+		
+		//Draws text box where scene text is displayed
 		g.setColor(new Color(160, 160, 160, 200));
 		g.setFont(new Font("Chewy", Font.PLAIN, 18));
 		g.fillRect(0, 0, 640, 28);
@@ -108,6 +135,8 @@ public class BattleText {
 			scrolling=false;					//if the text is done scrolling, charIndex stops increasing
 		}
 		
+		//If there is an action queued up, animate it.
+		//When it is done animating, run its effects in the Battle Processor.
 		if(scenes.get(0).getA() != null){
 			if(!actionRun){
 				if(frame < scenes.get(0).getA().skill.ba.frames){
@@ -122,6 +151,7 @@ public class BattleText {
 			}
 		}
 		
+		//Do the same thing for scenes that are not attached to actions.
 		if(scenes.get(0).getBa() != null){
 //			if(!actionRun){
 				if(frame < scenes.get(0).getBa().frames){

@@ -13,6 +13,5 @@ public class WarpCarlocsOfficetoCentral extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt",10,29,"");
-		
 	}
 }

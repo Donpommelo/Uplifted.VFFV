@@ -33,7 +33,6 @@ public class WarpSouthHallLongtoJCloset extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			if(!this.isSelfswitch1()){
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);

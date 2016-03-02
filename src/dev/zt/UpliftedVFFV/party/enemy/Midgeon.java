@@ -19,7 +19,7 @@ public class Midgeon extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=25,startBp=30,startPow=25, startDef=27, startSpd=40, startSkl=31, startLuk=33, startInt=4;
+	public final static int startHp=25,startBp=30,startPow=35, startDef=29, startSpd=40, startSkl=31, startLuk=33, startInt=4;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=41, bpGrowth=22.7, powGrowth=5.7, defGrowth=3.6, spdGrowth=6.1, sklGrowth=5.4, intGrowth=3.1, lukGrowth=3.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

@@ -7,6 +7,7 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.equipables.TheTentativelyNamedFiles;
 
 
 public class EmpAshli extends Event {
@@ -36,15 +37,16 @@ public class EmpAshli extends Event {
 			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d = new Dialog[4];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"When your work gets hard, remember that your coworkers are here to lend support./Have faith in Management who have never let us employees astray./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"On behalf of the Company, always persevere in times of hardship./Like the sturdy . . . er . . . what was it again . . ./");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Anyways, you should take this./We will all need constitution to weather the coming storms./");
-				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Loamskin Talisman!/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Files . . ./");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Deliver . . ./");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . . take . . ./");
+				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained The <> Files!/");
 				super.Dialog(d, 3, this.getId(), true);
+				super.loot(new TheTentativelyNamedFiles(), 1);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The resiliency to withstand the toils of daily routine . . ./What else could an employee possibly need?/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . ./");
 				super.Dialog(d, 0, this.getId(), true);
 			}
 			

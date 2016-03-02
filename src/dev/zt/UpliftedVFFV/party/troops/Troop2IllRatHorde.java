@@ -15,7 +15,7 @@ public class Troop2IllRatHorde extends Troop{
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = (int)(Math.random()*2+2);
 		for(int i=0; i<num; i++){
-			troop.add(new IllRat(1+ML));
+			troop.add(new IllRat(ML));
 		}
 		this.troop = troop;
 		return troop;

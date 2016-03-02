@@ -13,6 +13,5 @@ public class WarpAtriatoRightFloor2 extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtriaFloor2.txt",27,9,"");
-		
 	}
 }

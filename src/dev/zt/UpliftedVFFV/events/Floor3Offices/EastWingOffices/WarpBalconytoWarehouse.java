@@ -32,7 +32,6 @@ public class WarpBalconytoWarehouse extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWarehouse.txt",6,18,"");
 			this.setOpen(false);
 			this.setFrames(0);

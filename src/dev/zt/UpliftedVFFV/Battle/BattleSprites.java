@@ -14,16 +14,23 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class BattleSprites {
 	
-	public StateManager sm;
-	public Game game;
+	//Battle Sprites manages the various sprites of player and enemy Schmucks
+
+	//All allies/enemies
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
-	public ArrayList<Schmuck> alliesTargets=new ArrayList<Schmuck>();
-	public ArrayList<Schmuck> alliesSelectable=new ArrayList<Schmuck>();
-	public ArrayList<Schmuck> enemyTargets=new ArrayList<Schmuck>();
-	public ArrayList<Schmuck> enemySelectable=new ArrayList<Schmuck>();
-	public BattleState bs;
 	
+	//All allies/enemies that are not Invisible
+	public ArrayList<Schmuck> alliesTargets=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> enemyTargets=new ArrayList<Schmuck>();
+
+	//All allies/enemies that are not Incapacitated
+	public ArrayList<Schmuck> alliesSelectable=new ArrayList<Schmuck>();
+	public ArrayList<Schmuck> enemySelectable=new ArrayList<Schmuck>();
+	
+	public BattleState bs;
+	public StateManager sm;
+	public Game game;
 	
 	public BattleSprites(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy,BattleState bs){
 		this.game=game;
@@ -35,7 +42,9 @@ public class BattleSprites {
 		
 		// Load UI elements.
 		
+		//place allies/enemies in their positions
 		locationUpdate();
+		
 		//Update valid selectable/targetable allies + enemies.
 		targetUpdate();
 	}
@@ -103,6 +112,7 @@ public class BattleSprites {
 		bs.bp.currentlySelected = 0;
 	}
 	
+	//Sets Schmucks' locations  
 	public void locationUpdate(){
 		int sumSize1 = -20;
 		//Place allies.
@@ -125,7 +135,8 @@ public class BattleSprites {
 		}
 	}
 	
-	//Blinks battle sprite. Used when Schmuck is taking damage.
+	//Initiates blinking battle sprite. Used when Schmuck is taking damage.
+	//Also causes number to appear.
 	public void flash(Schmuck s, int duration, int damage, int element){
 		s.setFlashDuration(duration-1);
 		s.setDamageTaken(damage);
@@ -133,6 +144,7 @@ public class BattleSprites {
 	}
 	
 	//Blinks battle sprite. Used when Schmuck is taking damage.
+	//Also makes animated damage thing appear.
 	public void flashContinue(Schmuck s, int duration, Graphics g){
 		s.setFlashDuration(duration-1);
 		if(s.getDamageTaken() > 0){

@@ -4,10 +4,10 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ArcherRoulette extends Skills {
-
+	
 	public static String name = "Archer Roulette";
 	public static String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
-	public static String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
+	public static String descrShort = "Powerful attack with a\ncahnce to hit wrong enemy.";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;

@@ -13,7 +13,7 @@ public class Antivenom extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 4;
+	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A bottle of medicine designed to flush your body\nof poison.";

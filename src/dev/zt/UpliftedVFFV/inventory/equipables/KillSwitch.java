@@ -20,7 +20,7 @@ public class KillSwitch extends Item{
 	static int value = 960;
 	static int slot = 1;
 	static int lvlReq = 58;
-	static String descr="A gift to Fen from those above.\nAnd just as much a gift from her to you.";
+	static String descr="I think Dr. Bloodwood might be trying to tell you something.";
 	static String descrShort="+10% Crit Chance\n+12 Attack Damage.\nLets you kill yourself.";
 	static Skills test = new KillSelf(0);
 	public status[] enchantment = new status[2];

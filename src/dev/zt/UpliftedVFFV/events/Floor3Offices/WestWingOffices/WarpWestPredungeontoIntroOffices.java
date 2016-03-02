@@ -13,6 +13,5 @@ public class WarpWestPredungeontoIntroOffices extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestIntroOffices.txt",4,10,"");
-		
 	}
 }

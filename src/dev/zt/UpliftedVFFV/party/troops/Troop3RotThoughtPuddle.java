@@ -15,7 +15,7 @@ public class Troop3RotThoughtPuddle extends Troop{
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = (int)(Math.random()*2+2);
 		for(int i=0; i<num; i++){
-			troop.add(new RotThought(1+ML));
+			troop.add(new RotThought(ML));
 		}
 		this.troop = troop;
 		return troop;

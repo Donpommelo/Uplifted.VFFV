@@ -17,8 +17,8 @@ public class LoamSkinTalisman extends Item{
 	static int value = 150;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
-	static String descrShort="Boosts Hp Regen\nafter taking damage";
+	static String descr="Wholesome talisman of the ever-regenerating earth.";
+	static String descrShort="Boosts Hp Regen after taking damage";
 	public status[] enchantment = new status[1];
 	public LoamSkinTalisman() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

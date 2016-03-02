@@ -17,7 +17,7 @@ public class Troop19SymphonyofScreamers extends Troop{
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num1 = (int)(Math.random()*3);
 
-		troop.add(new Screamer(1+ML));
+		troop.add(new Screamer(ML));
 		
 		switch(num1){
 		case 0:
@@ -30,7 +30,7 @@ public class Troop19SymphonyofScreamers extends Troop{
 			troop.add(new Screamer(1+ML));
 			break;
 		}
-		troop.add(new Screamer(1+ML));
+		troop.add(new Screamer(ML));
 
 		
 		this.troop = troop;

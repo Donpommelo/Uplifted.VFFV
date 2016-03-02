@@ -15,9 +15,9 @@ public class Troop16MidgeonSwarm extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = (int)(Math.random()*3+4);
-		troop.add(new Midgeon(1+ML));
+		troop.add(new Midgeon(ML));
 		for(int i=0; i<num; i++){
-			troop.add(new Midge(1+ML));
+			troop.add(new Midge(ML));
 		}
 		this.troop = troop;
 		return troop;

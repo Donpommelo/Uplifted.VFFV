@@ -18,7 +18,7 @@ public class IllRat extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=61,startBp=21,startPow=43, startDef=45, startSpd=75, startSkl=50, startLuk=21, startInt=28;
+	public final static int startHp=61,startBp=21,startPow=40, startDef=45, startSpd=75, startSkl=50, startLuk=21, startInt=28;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=38, bpGrowth=22.7, powGrowth=3.2, defGrowth=2.3, spdGrowth=4.7, sklGrowth=2.5, intGrowth=2.9, lukGrowth=1.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

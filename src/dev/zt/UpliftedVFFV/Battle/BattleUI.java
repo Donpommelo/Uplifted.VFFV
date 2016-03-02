@@ -16,6 +16,9 @@ import dev.zt.UpliftedVFFV.statusEffects.Queried;
 
 public class BattleUI {
 	
+	//Battle UI manages the interface of battles.
+	//This includes Hp bars, selection pointers and eventually visible statuses and other stuff.
+	
 	private BufferedImage uihealth, enemyhealth, crosshair;
 	public StateManager sm;
 	public Game game;
@@ -40,6 +43,8 @@ public class BattleUI {
 	}
 	
 	public void render(Graphics g){
+		
+		//Draws all player hp bars.
 		for(int i = 0; i < allies.size(); i++){
 			drawPlayerBar(g, allies.get(i), i);
 		}
@@ -66,6 +71,7 @@ public class BattleUI {
 		}
 		
 		//Draw enemy gauge if foe has been queried.
+		//Eventually, make some bosses immune to this.
 		for(int i = 0; i < bs.bs.enemySelectable.size(); i++){
 			Schmuck temp = bs.bs.enemySelectable.get(i);				
 			if(bs.bp.stm.checkStatus(temp, new Queried(temp, 50))){
@@ -87,12 +93,7 @@ public class BattleUI {
 			//Draw target name.
 			g.setColor(new Color(0, 0, 0, 150));
 			FontMetrics metric = g.getFontMetrics(new Font("Chewy", Font.PLAIN, 16));
-			
-//			if(bs.bs.alliesTargets.contains(bs.bp.bm.pointed)){
-//				yoffset = 2;			
-//			} else if(bs.bs.enemyTargets.contains(bs.bp.bm.pointed)){
-//				yoffset = 2;
-//			}
+	
 			g.fillRect(bs.bp.bm.pointed.getX() + (bs.bp.bm.pointed.getBattleSprite().getWidth() - metric.stringWidth(bs.bp.bm.pointed.getName()) - 8) / 2 , 
 					bs.bp.bm.pointed.getY() + bs.bp.bm.pointed.getBattleSprite().getHeight() / yoffset + 50, metric.stringWidth(bs.bp.bm.pointed.getName()) + 8, 25);
 			g.setFont(new Font("Chewy", Font.PLAIN, 16));

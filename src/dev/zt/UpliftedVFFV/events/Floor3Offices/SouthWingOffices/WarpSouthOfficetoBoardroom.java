@@ -34,7 +34,6 @@ public class WarpSouthOfficetoBoardroom extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,16,"");
 			this.setOpen(false);
 			this.setFrames(0);

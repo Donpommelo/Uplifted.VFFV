@@ -23,29 +23,29 @@ public class Troop10LeaderandCo extends Troop{
 		num2 = (int)(Math.random()*3);
 		switch (num1){
 		case 0:
-			troop.add(new Midge(1+ML));
-			troop.add(new Midge(1+ML));
+			troop.add(new Midge(ML));
+			troop.add(new Midge(ML));
 			break;
 		case 1:
-			troop.add(new RotThought(1+ML));
-			troop.add(new RotThought(1+ML));
+			troop.add(new RotThought(ML));
+			troop.add(new RotThought(ML));
 			break;
 		}
 		switch (num2){
 		case 0:
-			troop.add(new BadEgg(2+ML));
+			troop.add(new BadEgg(1+ML));
 			break;
 		case 1:
-			troop.add(new Augur(2+ML));
+			troop.add(new Augur(1+ML));
 			break;
 		case 2:
-			troop.add(new IllRat(2+ML));
+			troop.add(new IllRat(1+ML));
 			break;
 		}
 		switch (num1){
 		case 0:
-			troop.add(new Midge(1+ML));
-			troop.add(new Midge(1+ML));
+			troop.add(new Midge(ML));
+			troop.add(new Midge(ML));
 			break;
 		case 1:
 			troop.add(new RotThought(1+ML));

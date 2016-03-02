@@ -16,8 +16,8 @@ public class PrinterTonerMagenta extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="TEMP";
-	static String descrShort="Boosts Red Points";
+	static String descr="A cartridge of magenta powder used by laser printers.\nMagenta being a subelement combination of Red and Purple, like the dizzying blaze of human ambition.";
+	static String descrShort="Boosts Red and Purple Points";
 	public PrinterTonerMagenta() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
@@ -25,6 +25,8 @@ public class PrinterTonerMagenta extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 0, (int)(20 * (1 + perp.getItemPow())), perp,5));
+		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 4, (int)(20 * (1 + perp.getItemPow())), perp,5));
+
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

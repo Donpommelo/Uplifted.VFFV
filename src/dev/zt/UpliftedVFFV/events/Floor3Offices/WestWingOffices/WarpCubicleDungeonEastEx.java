@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices;
 
-import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 

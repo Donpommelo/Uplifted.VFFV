@@ -15,8 +15,8 @@ public class BeefBoyle extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static String descr="A thick, stew filled with beef as well as several ingredients\nthat are less likely to be beef. ";
-	static String descrShort="Silence and buff Pow.";
+	static String descr="A thick, stew filled with beef as well as several ingredients\nthat are less likely to be beef.";
+	static String descrShort="Inflict Silence on user.\nBuffs user's Pow.";
 	static int value = 25;
 	static int slot = 0;
 	static int lvlReq = 12;
@@ -26,17 +26,17 @@ public class BeefBoyle extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BeefedUp(5, perp, 30));
-		bs.bp.stm.addStatus(vic, new Silenced(5, perp, 30));
+		bs.bp.stm.addStatus(perp, new BeefedUp(5, perp, 30));
+		bs.bp.stm.addStatus(perp, new Silenced(5, perp, 30));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
-		if(perp.getName().equals(vic.getName())){
-			return vic.getName()+" chokes downa Beef Boyleston!";
-		}
-		else{
-			return perp.getName()+" gives "+vic.getName()+" a Beef Boyleston.";
-		}
+			return perp.getName()+" chokes down a Beef Boyleston!";
+
+	}
+	
+	public int getTargetType(){
+		return 1;
 	}
 	
 }

@@ -51,7 +51,7 @@ public class FloorManagerSouth extends Event {
 				else{
 					Dialog[] d = new Dialog[3];
 					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thank you for the coffee, Operator./");
-					d[1] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh . . . This must be what it feels like to give orders.//Anyways, you should have this. As a token of thanks./");
+					d[1] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh . . . This must be what it feels like to give orders./I could get used to this./Anyways, you should have this. As a token of thanks./");
 					d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the False Face!/");
 					super.Dialog(d, 2, this.getId(), true);
 

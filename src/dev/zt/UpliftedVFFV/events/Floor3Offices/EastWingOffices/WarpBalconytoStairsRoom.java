@@ -13,6 +13,5 @@ public class WarpBalconytoStairsRoom extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeft1Room1.txt",16,6,"");
-		
 	}
 }

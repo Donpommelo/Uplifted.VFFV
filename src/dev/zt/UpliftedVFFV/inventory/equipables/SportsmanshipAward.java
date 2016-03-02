@@ -18,7 +18,7 @@ public class SportsmanshipAward extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 20;
-	static String descr="TEMP";
+	static String descr="A brass trophy awarded to a long-forgotten employee\nfor honorable demonstration of being a real sucker.";
 	static String descrShort="+10% Exp gain\n+8 Mp regen\nDemonstrates sportsmanship!";
 	public status[] enchantment = new status[3];
 	public SportsmanshipAward() {

@@ -17,14 +17,18 @@ public class SeeingEye extends Item{
 	static int slot = 0;
 	static int lvlReq = 4;
 	static String descr="Disembodied eyes have a way of always seeming terrified.";
-	static String descrShort="Buffs Acc.";
+	static String descrShort="Buffs User's Acc.";
 	public SeeingEye() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new TrueSight(3, perp, 70));
+		bs.bp.stm.addStatus(perp, new TrueSight(3, perp, 70));
+	}
+	
+	public int getTargetType(){
+		return 1;
 	}
 
 }

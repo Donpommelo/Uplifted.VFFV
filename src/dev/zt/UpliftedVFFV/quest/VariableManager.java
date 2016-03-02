@@ -29,7 +29,7 @@ public class VariableManager {
  18: Semiphore Sign: West Dungeon Extended (0: S, 1: E, 2: W, 3: N, 4:F, 5:B, 6:L, 7: R)
  19: Floor Manager Favor
  20: Glimpses of the End used
- 21: 
+ 21: Global Level Modifier
  22: 
  
  */

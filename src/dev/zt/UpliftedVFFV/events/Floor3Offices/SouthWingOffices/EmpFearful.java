@@ -33,7 +33,7 @@ public class EmpFearful extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I use to fear failure. Now I fear succeeding but still feeling just as empty/as I did before./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Whenever life leaves me feeling beaten up, I stop by the 2nd Floor./A hot bath at the Bathhouse always restores my vitality and motivation./");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -19,7 +19,7 @@ public class RandomFoodLarge extends Item{
 	static int value = 1;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A large amount of some bizarre leftovers.";
+	static String descr="A large amount of some bizarre and randomly generated foodstuffs.";
 	static String descrShort="Restores a lot of Hp.";
 	public RandomFoodLarge() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

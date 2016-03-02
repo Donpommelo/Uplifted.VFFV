@@ -13,6 +13,5 @@ public class WarpBasementTransitiontoBasement extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2.txt",4,16,"");
-		
 	}
 }

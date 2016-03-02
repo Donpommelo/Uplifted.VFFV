@@ -16,7 +16,7 @@ public class Unbeef extends Item{
 	static int value = 30;
 	static int slot = 0;
 	static int lvlReq = 12;
-	static String descr="You aren't sure what this is exactly, but you¡¦re confident it\nisn't beef.";
+	static String descr="You aren't sure what this is exactly, but you're confident it\nisn't beef.";
 	static String descrShort="Removes beef-related afflictions.";
 	public Unbeef() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

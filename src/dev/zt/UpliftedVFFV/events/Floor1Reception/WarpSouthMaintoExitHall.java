@@ -32,7 +32,6 @@ public class WarpSouthMaintoExitHall extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor1Reception/SouthLobbyExitHall.txt",8,12,"");
 			this.setOpen(false);
 			this.setFrames(0);

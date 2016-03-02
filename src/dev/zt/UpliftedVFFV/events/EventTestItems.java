@@ -85,7 +85,7 @@ public class EventTestItems extends Event {
 
 		super.loot(new AbsoluteThreshold(), 2);
 		super.loot(new AbyssalInsignia(), 2);
-		super.loot(new AdaptiveArmor(), 2);
+		super.loot(new SpringHeeledJumpers(), 2);
 		super.loot(new AetherFeather(), 2);
 		super.loot(new AnchorTalisman(), 2);
 		super.loot(new AtomicPunchThrusters(), 2);

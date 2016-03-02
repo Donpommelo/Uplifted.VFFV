@@ -14,7 +14,6 @@ public class WarpJClosettoSouthOffices extends Event {
 	}
 
 	public void run(){
-		game.getAudiomanager().playMusic(1, true);
 		super.getGamestate().getEvents()[11].setOpen(false);
 		super.getGamestate().getEvents()[11].setFrames(6);
 		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt", 13, 16,"South Offices");

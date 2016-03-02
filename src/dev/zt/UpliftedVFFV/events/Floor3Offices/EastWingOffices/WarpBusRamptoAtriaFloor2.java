@@ -33,11 +33,6 @@ public class WarpBusRamptoAtriaFloor2 extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
-			if(!this.isSelfswitch1()){
-				super.setVar(12, super.getVar(12)+1);
-				this.setSelfswitch1(true);
-			}
 			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtriaFloor2.txt", 6, 19,"");
 			this.setOpen(false);
 			this.setFrames(0);

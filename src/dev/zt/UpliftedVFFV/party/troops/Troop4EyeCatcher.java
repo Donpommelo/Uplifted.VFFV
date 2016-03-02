@@ -13,7 +13,7 @@ public class Troop4EyeCatcher extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new EyeCatcher(1+ML));
+		troop.add(new EyeCatcher(ML));
 		this.troop = troop;
 		return troop;
 	}

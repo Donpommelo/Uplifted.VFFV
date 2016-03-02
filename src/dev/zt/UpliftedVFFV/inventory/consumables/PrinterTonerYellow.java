@@ -16,7 +16,7 @@ public class PrinterTonerYellow extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A cartridge of yello powder used by laser printers.\nYellow, apparently being the only element good enough to be a primary color by itself.";
 	static String descrShort="Boosts Yellow Points";
 	public PrinterTonerYellow() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

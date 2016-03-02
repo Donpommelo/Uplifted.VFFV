@@ -31,11 +31,6 @@ public class WarpCentraltoActualRight2 extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
-			if(!this.isSelfswitch1()){
-				super.setVar(12, super.getVar(12)+1);
-				this.setSelfswitch1(true);
-			}
 			super.transport("/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt",6,20,"");
 			if(super.getQuest(5) == 1){
 				super.setQuest(5, 2);

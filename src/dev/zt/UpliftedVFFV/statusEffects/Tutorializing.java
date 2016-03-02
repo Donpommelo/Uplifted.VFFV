@@ -62,7 +62,7 @@ public class Tutorializing extends status{
 		bs.bp.bt.addScene("Pen Pal: Let us get right into it!");
 	}
 	
-	public void endoffightEffect(Schmuck s, BattleState bs){
+	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){
 		Dialog[] d = new Dialog[5];
 		d[0] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Well, that wasn't so bad./Hopefully that doesn't happen too often around here./");
 		d[1] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"And now to enjoy the spoils of victory!/Combat is an easy way to acquire Company Script./");

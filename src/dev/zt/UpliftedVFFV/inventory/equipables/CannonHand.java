@@ -16,7 +16,7 @@ public class CannonHand extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="TEMP";
+	static String descr="A hand-held cannon. Rewards the patient with a loaded weapon aimed down an unfortunate foe.";
 	static String descrShort="Fires on Wait.\nDamage foes.";
 	public status[] enchantment = new status[1];
 	public CannonHand() {

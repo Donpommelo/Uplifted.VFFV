@@ -32,7 +32,6 @@ public class WarpWestPredungeontoCubicleDungeon extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,32,"");
 			this.setOpen(false);
 			this.setFrames(0);

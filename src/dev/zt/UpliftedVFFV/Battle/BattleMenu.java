@@ -41,9 +41,13 @@ public class BattleMenu{
 	public int backpackLocation;		//Index of item or SKILL that occupies the uppermost space in the menu display
 	public int itemnum;					//Used to draw inventory contents
 	public int skillnum;				//used to draw skill list
-	public int phase;
-	public StateManager sm;
-	public Game game;
+	public int phase;					//The phase of action-creation.
+										//1: selecting options
+										//2: selecting skill or item (if chosen in phase 1)
+										//3: selecting target
+										//4: finalizing action and executing
+	
+	
 	
 	//KeyListener delay variables.
 	private int delayCursor = 120;
@@ -55,7 +59,8 @@ public class BattleMenu{
 	//Whether targeting allies. Turned on/off by pressing up/down in targeting phase.
 	public Boolean teamTargeted = false;
 	
-	//Arraylist of all allies and enemies, targetable or untargetable. (Actual targets: bs.bs.alliesTargets and bs.bs.enemyTargets)
+	//Arraylist of all allies and enemies, targetable or untargetable.
+	//Actual targets: bs.bs.alliesTargets and bs.bs.enemyTargets
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	
@@ -71,6 +76,10 @@ public class BattleMenu{
 	
 	public BattleState bs;
 	public GameState gs;
+	public StateManager sm;
+	public Game game;
+	
+	//Battle Menu created when a Schmuck is selected.
 	public BattleMenu(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy, BattleState bs,Schmuck chosen,GameState gs){
 		this.game=game;
 		this.sm=sm;
@@ -85,17 +94,20 @@ public class BattleMenu{
 		phase = 1;
 		audio = game.getAudiomanager();
 		
-		//If the Schmuck chose to Wait in the Planning phase, all onDillyDally statuses activate.
+		//If the Schmuck chose to Wait in the Planning phase of Battle Processor.
 		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally" && bs.bp.phase == 2){
 			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
 
 			//Activate User's On-Wait Effects
 			currentSchmuck.statusProcTime(10, bs, null, null, 0, 0, true, null);
 		}
+		
 		pointed = chosen;
 	}
 
 	public void tick() {
+		
+		//Pressing 'x' moves one screen back, as usual.
 		if(game.getKeyManager().isActive()){
 			if(game.getKeyManager().x){
 				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
@@ -107,6 +119,8 @@ public class BattleMenu{
 			
 			//Phase 1: Selecting options: Attack, skill, item, wait or run.
 			case 1:
+				
+				//Up/Down select option out of 5 available
 				if(game.getKeyManager().down){
 					if(actionSelected<4){
 						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
@@ -173,8 +187,9 @@ public class BattleMenu{
 							//This decides whether the targeting cursor starts off on an ally or enemy
 							teamTargeted =  currentSkill.startTarget();
 							
-							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
-									&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(100))){
+							//If the player does not have Mp to use a skill, a warning is given.
+							//You can go ahead and try to use it anyways, if you want.
+							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]){
 								bs.bp.bt.addScene("Warning: "+currentSchmuck.getName()+" might not have the Mp to do that!");
 							}
 							
@@ -351,7 +366,7 @@ public class BattleMenu{
 					}
 			 		phase++;
 		 			break;
-		 		//Case 2: Rare. Can only target allies, even incapacitated ones. (Used in revives)
+		 		//Case 2: Rare. Can only target allies, even incapacitated ones. (Used for revives)
 		 		case 2:
 		 			//Right and Left cycle through all allies in party, regardless of targetability.
 		 			if(game.getKeyManager().right){
@@ -389,6 +404,7 @@ public class BattleMenu{
 						bs.bp.TurnOrderQueue.set(0,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
 					}
 				}
+				
 				//otherwise, if in planning stage, move will be added to the TOQ.
 				else{
 					for(Action a:bs.bp.TurnOrderQueue){
@@ -419,13 +435,15 @@ public class BattleMenu{
 					if(a!=null){
 						if(temp.contains(a.user)){
 							temp.remove(a.user);
-							}
 						}
 					}
+				}
+				
 				//If allies have not moved yet, automatically pull up the menu for the next ally.
 				if(!temp.isEmpty() && bs.bs.alliesSelectable.contains(allies.get(bs.bp.currentlySelected))){
 					bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
 				}
+				
 				//If all allies have moved, no menu is pulled up. Player can press enter to begin battle phase.
 				else{
 					bs.bp.selected = false;	
@@ -492,14 +510,11 @@ public class BattleMenu{
 			g.setColor(Color.white);
 			
 			g.drawString(currentSchmuck.getName(), menux, menuy - 50);
-//			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, 525, 232, 110, 32, true);
 			g.drawString("Attack", menux + 55, menuy - 20);
 			g.drawString("Skills", menux + 55, menuy + 12);
 			g.drawString("Item", menux + 55, menuy + 44);
 			g.drawString("Wait", menux + 55, menuy + 76);
 			g.drawString("Run", menux + 55, menuy + 108);
-//			String[] options = {"Attack", "Skills", "Item", "Wait", "Run"};
-//			Utils.drawMenu(g, window, options, Color.black, 18, actionSelected, 540, 256, 100, 160, true, true);
 			
 			//Displays mini-icons for actions
 			switch(actionSelected){
@@ -526,6 +541,7 @@ public class BattleMenu{
 			}
 			
 		}
+		
 		//If selecting skill/item or targeting skill/item, skill or item menu is visible.
 		if(phase == 2 || phase == 3){
 			switch(actionSelected){
@@ -536,7 +552,6 @@ public class BattleMenu{
 			case 1:
 				//if Skill is chosen, a list of skills covers up the actions menu.
 				g.setColor(new Color(0, 128, 255, 200));
-				//g.setColor(new Color(0, 0, 0, 200));
 				g.fillRect(menux, menuy - 40, 120, 160);
 				ArrayList<Skills> skills = currentSchmuck.skills;
 				g.setColor(new Color(255, 255, 51, 225));

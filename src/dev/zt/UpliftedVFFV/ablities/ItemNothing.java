@@ -6,6 +6,9 @@ import dev.zt.UpliftedVFFV.states.GameState;
 
 public class ItemNothing extends Skills {
 	
+	//Used if selecting use item with an empty inventory.
+	//Differs from "Flavor Nothing" in that it is target.
+	
 	public GameState gs;
 	public static String name = "Nothing";
 	public static String descr = "User throw nothing at a target.";
@@ -22,7 +25,7 @@ public class ItemNothing extends Skills {
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
-		return 	perp.getName()+" throws nothing at "+vic.getName()+".";
+		return 	perp.getName()+" throws nothing at "+vic.getName()+"!";
 	}
 		
 	

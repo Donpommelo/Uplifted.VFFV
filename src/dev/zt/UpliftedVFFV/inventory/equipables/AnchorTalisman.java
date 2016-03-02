@@ -2,8 +2,6 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.DamageBlock;
-import dev.zt.UpliftedVFFV.statusEffects.StoneSkin;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AnchorTalismanStatus;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
@@ -19,7 +17,7 @@ public class AnchorTalisman extends Item{
 	static int value = 150;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A sturdy miniature anchor to be worn around one's neck.\nLets its wearer always know where he or she is despite any storm or uncertainty.";
 	static String descrShort="+10% Def\nImmune to one-hit-kills";
 	public status[] enchantment = new status[2];
 	public AnchorTalisman() {

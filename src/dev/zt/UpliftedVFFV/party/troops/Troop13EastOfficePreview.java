@@ -17,10 +17,10 @@ public class Troop13EastOfficePreview extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new Lunk(1+ML));
-		troop.add(new Midgeon(1+ML));
-		troop.add(new Screamer(1+ML));
-		troop.add(new Shirley(1+ML));
+		troop.add(new Lunk(ML));
+		troop.add(new Midgeon(ML));
+		troop.add(new Screamer(ML));
+		troop.add(new Shirley(ML));
 		this.troop = troop;
 		return troop;
 	}

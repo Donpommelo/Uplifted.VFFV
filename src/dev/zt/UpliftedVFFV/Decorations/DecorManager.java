@@ -8,6 +8,9 @@ import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class DecorManager {
+	
+	//Decor are sticker-like decorations that can be placed between squares and do not interact with the player.
+	
 	private int numdecor;
 	
 	//width,height and enemy info only useful for parsing the text file.
@@ -31,6 +34,9 @@ public class DecorManager {
 		
 	}
 	
+	//Renders all decor that shows up underneath the player.
+	//This includes decor specifically designated to always render low.
+	//This also includes standard decor that is higher up than the player.
 	public void renderBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
@@ -44,6 +50,9 @@ public class DecorManager {
 		}
 	}
 	
+	//Renders all decor that shows up underneath the player.
+	//This includes decor specifically designated to always render high.
+	//This also includes standard decor that is lower down than the player.
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){

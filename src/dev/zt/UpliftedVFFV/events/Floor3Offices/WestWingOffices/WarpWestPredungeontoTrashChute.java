@@ -13,6 +13,5 @@ public class WarpWestPredungeontoTrashChute extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/WestWingOffices/DumpChute.txt",11,7,"");
-		
 	}
 }

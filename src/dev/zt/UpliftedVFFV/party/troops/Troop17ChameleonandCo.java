@@ -20,33 +20,33 @@ public class Troop17ChameleonandCo extends Troop{
 		int num1 = (int)(Math.random()*4);
 		switch(num1){
 		case 0:
-			troop.add(new Lunk(1+ML));
+			troop.add(new Lunk(ML));
 			break;
 		case 1:
-			troop.add(new Shirley(1+ML));
+			troop.add(new Shirley(ML));
 			break;
 		case 2:
-			troop.add(new Screamer(1+ML));
+			troop.add(new Screamer(ML));
 			break;
 		case 3:
-			troop.add(new Midgeon(1+ML));
+			troop.add(new Midgeon(ML));
 			break;
 		}
 
-		troop.add(new Chameleon(1+ML));
+		troop.add(new Chameleon(ML));
 		
 		switch(num1){
 		case 0:
-			troop.add(new Lunk(1+ML));
+			troop.add(new Lunk(ML));
 			break;
 		case 1:
-			troop.add(new Shirley(1+ML));
+			troop.add(new Shirley(ML));
 			break;
 		case 2:
-			troop.add(new Screamer(1+ML));
+			troop.add(new Screamer(ML));
 			break;
 		case 3:
-			troop.add(new Midgeon(1+ML));
+			troop.add(new Midgeon(ML));
 			break;
 		}
 		this.troop = troop;

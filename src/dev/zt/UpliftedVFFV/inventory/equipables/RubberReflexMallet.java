@@ -17,7 +17,7 @@ public class RubberReflexMallet extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 45;
-	static String descr="TEMP";
+	static String descr="A rubber medical device used in testing neural abnormalities.";
 	static String descrShort="Standard Attacks buff target's Crit%";
 	public status[] enchantment = new status[1];
 	public RubberReflexMallet() {

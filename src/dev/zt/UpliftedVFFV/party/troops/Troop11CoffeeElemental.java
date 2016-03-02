@@ -13,7 +13,7 @@ public class Troop11CoffeeElemental extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new CoffeeElem(1+ML));
+		troop.add(new CoffeeElem(ML));
 		this.troop = troop;
 		return troop;
 	}

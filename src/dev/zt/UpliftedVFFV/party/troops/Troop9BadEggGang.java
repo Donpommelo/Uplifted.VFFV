@@ -14,7 +14,7 @@ public class Troop9BadEggGang extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		for(int i=0; i<3; i++){
-			troop.add(new BadEgg(1+ML));
+			troop.add(new BadEgg(ML));
 		}
 		this.troop = troop;
 		return troop;

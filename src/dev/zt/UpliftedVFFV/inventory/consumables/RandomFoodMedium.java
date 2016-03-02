@@ -19,7 +19,7 @@ public class RandomFoodMedium extends Item{
 	static int value = 1;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A medium amount of some bizarre leftovers.";
+	static String descr="A medium amount of some bizarre and randomly generated foodstuffs.";
 	static String descrShort="Restores a lot of Hp.";
 	public RandomFoodMedium() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

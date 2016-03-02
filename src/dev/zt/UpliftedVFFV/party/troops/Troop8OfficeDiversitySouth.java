@@ -18,7 +18,7 @@ public class Troop8OfficeDiversitySouth extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop = new ArrayList<Schmuck>();
 		ArrayList<Schmuck> tempList = new ArrayList<Schmuck>();
-		tempList.add(new Midge(1+ML));tempList.add(new RotThought(1+ML));tempList.add(new Augur(1+ML));tempList.add(new BadEgg(1+ML));tempList.add(new IllRat(1+ML));
+		tempList.add(new Midge(ML));tempList.add(new RotThought(ML));tempList.add(new Augur(ML));tempList.add(new BadEgg(ML));tempList.add(new IllRat(ML));
 		for(int i = 0; i <5; i++){
 			int tempIndex = (int)(Math.random()*tempList.size());
 			Schmuck temp = tempList.get(tempIndex);

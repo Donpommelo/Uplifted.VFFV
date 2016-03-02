@@ -13,6 +13,5 @@ public class WarpWestOfficestoBusramp extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt",4,15,"Bus Ramp");
-		
 	}
 }

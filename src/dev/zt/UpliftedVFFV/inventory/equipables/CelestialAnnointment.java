@@ -21,7 +21,7 @@ public class CelestialAnnointment extends Item{
 	static int value = 500;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="TEMP";
+	static String descr="No shower is going to wash this stuff off your skin.";
 	static String descrShort="+25% Int\n+50 Yellow Points\nCannot be unequipped";
 	public status[] enchantment = new status[2];
 	public CelestialAnnointment() {

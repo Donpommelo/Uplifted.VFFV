@@ -15,7 +15,7 @@ public class Troop7Augurs extends Troop{
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = 3;
 		for(int i=0; i<num; i++){
-			troop.add(new Augur(1+ML));
+			troop.add(new Augur(ML));
 		}
 		this.troop = troop;
 		return troop;

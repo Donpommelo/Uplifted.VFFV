@@ -18,7 +18,7 @@ public class Troop15BossJorge extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		troop.add(new BossJorge(1+ML));
+		troop.add(new BossJorge(ML));
 //		troop.add(new BossJorge(1+ML));
 //		troop.add(new BossJorge(1+ML));
 

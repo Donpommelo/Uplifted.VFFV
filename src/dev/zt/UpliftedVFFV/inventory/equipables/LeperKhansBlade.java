@@ -17,7 +17,7 @@ public class LeperKhansBlade extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 45;
-	static String descr="TEMP";
+	static String descr="A disease-ridden sword previously owned by the formidible Leper Khan.\nWhat do you call a gathering of lepers?\nA Leper-Con.";
 	static String descrShort="+15 Attack Damage\nStandard Attacks spread debuffs.";
 	public status[] enchantment = new status[2];
 	public LeperKhansBlade() {

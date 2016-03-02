@@ -15,6 +15,8 @@ public class WarpWestBathhousetoElevator extends Event {
 
 	public void run(){
 		game.getAudiomanager().playMusic(1, true);
+		super.getGamestate().getEvents()[304].setOpen(false);
+		super.getGamestate().getEvents()[304].setFrames(6);
 		super.transport("/Worlds/ElevatorsandBackroom/WestElevator.txt", 5, 7,"West Elevator");
 	}
 }

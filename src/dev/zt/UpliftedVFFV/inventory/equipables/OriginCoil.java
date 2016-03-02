@@ -17,7 +17,7 @@ public class OriginCoil extends Item{
 	static int value = 630;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr = "TEMP";
+	static String descr = "A complex apparatus simulating the conditions of life's first inception.";
 	static String descrShort="+5Hp and Mp regen.\nOn Wait; Heal allies.\nRequires cooldown.";
 	public status[] enchantment = new status[3];
 	public OriginCoil() {

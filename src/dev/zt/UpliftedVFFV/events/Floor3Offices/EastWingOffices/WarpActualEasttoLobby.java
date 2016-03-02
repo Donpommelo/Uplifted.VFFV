@@ -13,6 +13,5 @@ public class WarpActualEasttoLobby extends Event {
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingLobby.txt",16,7,"");
-		
 	}
 }

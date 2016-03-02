@@ -17,9 +17,9 @@ public class Troop22PortentGang extends Troop{
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = (int)(Math.random()*3+1);
-		troop.add(new Portent(1+ML));
+		troop.add(new Portent(ML));
 		for(int i=0; i<num; i++){
-			troop.add(new Augur(1+ML));
+			troop.add(new Augur(ML));
 		}
 		this.troop = troop;
 		return troop;

@@ -15,6 +15,8 @@ public class WarpLobbytoSElevator extends Event {
 
 	public void run(){
 		game.getAudiomanager().playMusic(1, true);
+		super.getGamestate().getEvents()[3].setOpen(false);
+		super.getGamestate().getEvents()[3].setFrames(6);
 		super.transport("/Worlds/ElevatorsandBackroom/SouthElevator.txt", 5, 7,"South Elevator");
 	}
 }

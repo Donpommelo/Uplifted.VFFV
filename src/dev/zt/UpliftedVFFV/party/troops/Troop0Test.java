@@ -14,7 +14,7 @@ public class Troop0Test extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		Schmuck tutorial = new RotThoughtTutorial(1+ML);
+		Schmuck tutorial = new RotThoughtTutorial(ML);
 		troop.add(tutorial);
 		this.troop = troop;
 		return troop;

@@ -76,6 +76,7 @@ public class Player extends Creature implements Serializable{
 		}			
 	}
 	
+	//For random encounters
 	private void encounter(){
 		try {
 			Thread.sleep(300);
@@ -108,13 +109,8 @@ public class Player extends Creature implements Serializable{
 		if(randomIndex>=0){
 			troop = troops[randomIndex];
 			game.getAudiomanager().playSound("/Audio/Elevator Sound Effect.wav", false);
-			bonusML = 0;
-			for(Schmuck s : gamestate.partymanager.party){
-				bonusML += s.getBonusML();
-			}
-			//Adding Mind Control Device Bonus.
-			bonusML += gamestate.variablemanager.getVar(13);
-			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,(int)bonusML));
+						
+			StateManager.states.push(new BattleState(game,game.getStatemanager(),gamestate.partymanager.party,troop,0,true, true,gamestate,0));
 		}
 	}
 	

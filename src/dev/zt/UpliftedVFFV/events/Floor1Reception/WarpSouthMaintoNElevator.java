@@ -4,8 +4,6 @@ package dev.zt.UpliftedVFFV.events.Floor1Reception;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
-
-
 public class WarpSouthMaintoNElevator extends Event {
 	
 	public static int stagenum = 0;

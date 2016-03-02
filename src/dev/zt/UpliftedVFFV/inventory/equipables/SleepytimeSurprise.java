@@ -17,7 +17,7 @@ public class SleepytimeSurprise extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="TEMP";
+	static String descr="Hovering, personal drone. Disincentivizes sleeping with\npainful electric shocks.";
 	static String descrShort="At the end of rounds\npunish sleeping characters.";
 	public status[] enchantment = new status[1];
 	public SleepytimeSurprise() {

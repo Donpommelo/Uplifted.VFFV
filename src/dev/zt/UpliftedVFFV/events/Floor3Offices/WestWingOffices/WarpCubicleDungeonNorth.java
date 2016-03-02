@@ -32,7 +32,6 @@ public class WarpCubicleDungeonNorth extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			game.getAudiomanager().playMusic(2, true);
 			if(!super.getSwitch(26)){
 				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,32,"");
 				if(super.getVar(16) == 2){

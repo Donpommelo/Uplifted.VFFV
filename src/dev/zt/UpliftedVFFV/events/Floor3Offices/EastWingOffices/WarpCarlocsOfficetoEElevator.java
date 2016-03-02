@@ -15,6 +15,8 @@ public class WarpCarlocsOfficetoEElevator extends Event {
 	public void run(){
 		if(super.getQuest(5) > 6){
 			game.getAudiomanager().playMusic(1, true);
+			super.getGamestate().getEvents()[215].setOpen(false);
+			super.getGamestate().getEvents()[215].setFrames(6);
 			super.transport("/Worlds/ElevatorsandBackroom/EastElevator.txt", 5, 7,"East Elevator");
 		}
 		else{

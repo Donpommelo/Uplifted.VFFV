@@ -23,18 +23,41 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 public class BattleProcessor {
+	
+	//allies, enemy, battlers: ArrayList of all allies, enemies, both.
 	public ArrayList<Schmuck>allies = new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy = new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> battlers = new ArrayList<Schmuck>();
+	
+	//t: the troop being encountered
 	public Troop t;
-	public int troop;
+	
+	/*phase of battle:
+	 * 0: Pre-Selection Processing.
+	 * 1: Planning Phase
+	 * 2: Action Phase
+	 * 3: Post-action phase
+	*/
 	public int phase;
+	
+	//The Schmuck currently being selected.
 	public int currentlySelected;
+	
+	//The number of rounds. Increment at the end of phase 3.
 	public int roundNum;
+	
+	//Whether a Schmuck is selected or not. Determines whether to display a Battle Menu for planning.
 	public boolean selected = true;
-	public boolean ranAway = false;
+	
+	//Whether a player Schmuck is currently making an action after Waiting. This makes a Battle Menu displayed.
 	public boolean pauseTOQ;
-	public boolean allReady = false;;
+	
+	//Whether player has actions queued up for all available Schmucks.
+	public boolean allReady = false;
+	
+	//Arraylist of Actions to be carried out in Phase 2.
+	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
+
 	public Game game;
 	public BattleMenu bm;
 	public StateManager sm;
@@ -43,7 +66,6 @@ public class BattleProcessor {
 	public BattleText bt;
 	public GameState gs;
 	public EffectManager em;
-	public ArrayList<Action> TurnOrderQueue = new ArrayList<Action>();
 	private BufferedImage window;
 	
 	//KeyListener delay variables.
@@ -69,7 +91,9 @@ public class BattleProcessor {
 		TurnOrderQueue = new ArrayList<Action>();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 
+		//Displays custom text for mob encounter.
 		bt.addScene(t.encounterText());
+		
 		for(Schmuck s : allies){
 			battlers.add(s);
 		}
@@ -105,6 +129,7 @@ public class BattleProcessor {
 				}
 				
 				currentlySelected=0;		//Index of ally selected to make an action. Starts at 0.
+				
 				//Starts out with menu selected for selected ally if there are still enemies left.
 				bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(currentlySelected),gs);
 				if(!enemyded()){					
@@ -160,7 +185,7 @@ public class BattleProcessor {
 								bs.end(!fightlost());
 							}
 							
-							//Enemy actions are decided. All selectable (not incapacitated) enemies mae actions
+							//Enemy actions are decided. All selectable (not incapacitated) enemies make actions
 							for(int i=0 ; i<bs.bs.enemySelectable.size();i++){
 								
 								//Enemy actions found using getAction function under Schmuck if enemy is not incapacitated and player team is not empty.
@@ -221,7 +246,9 @@ public class BattleProcessor {
 				//Otherwise, perform the next action on the TOQ. (if it exists)
 				else if(!TurnOrderQueue.isEmpty()){
 					if(TurnOrderQueue.get(0) != null && pauseTOQ == false){
-						Schmuck tempPerp = TurnOrderQueue.get(0).user;		//Schmuck that performs the above action
+						
+						//Schmuck that performs the above action
+						Schmuck tempPerp = TurnOrderQueue.get(0).user;		
 						
 						//Activate User's Pre-Action Effects
 						tempPerp.statusProcTime(3, bs, TurnOrderQueue.get(0), null, 0, 0, true, null);
@@ -236,14 +263,18 @@ public class BattleProcessor {
 						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Extra Turn") && !tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
+							
+							//Display text for using skill.
 							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
 								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
 							}
-							else{//later add custom text
+							else{
 								bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
 							}
+							
+							//If targeting incapacitated unit, display text
 							if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target)) && tempAction.getSkill().getTargetType()==0){
-								bt.addScene("But the target was already incapacitated!");
+								bt.addScene("But the target was incapacitated!");
 							}
 						}
 						
@@ -259,10 +290,16 @@ public class BattleProcessor {
 							//Because actions are processed instantly, do the crit/miss calculations here.
 							else{
 								tempAction = tempPerp.getAction(bs);
-								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction,false);
+								if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
+									bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
+								}
+								else{
+									bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
+								}
 							}
 						}
 					}
+					
 					//After the action is done processing, remove it, recalculate buffs
 					if(pauseTOQ == false){
 						if(!TurnOrderQueue.isEmpty()){
@@ -282,6 +319,8 @@ public class BattleProcessor {
 						s.hpChange((int)(s.getBonusHpRegen()*(1+s.getRegenBonus())));
 						s.bpChange((int)(s.getBonusMpRegen()*(1+s.getRegenBonus())));
 					}
+					
+					//enemies regen lots of Mp to stop stupid, degenerate mp-burning builds.
 					for(Schmuck s : enemy){
 						s.bpChange((int)(s.getMaxBp()/2));
 					}
@@ -296,7 +335,6 @@ public class BattleProcessor {
 				if(fightlost()){
 					bt.addScene("The fight was lost.");
 					bt.addScene("Everything goes black.");
-					
 				}
 				
 				//If all enemies are defeated, get loot and stuff.
@@ -371,7 +409,11 @@ public class BattleProcessor {
 
 	//Render method. 
 	public void render(Graphics g) {
+		
+		//Indicate round number
 		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 75, 28, 16, true);
+		
+		//If any text needs to be rendered, do that.
 		if(!bt.scenes.isEmpty()){
 			bt.render(g);
 		}
@@ -399,6 +441,8 @@ public class BattleProcessor {
 					allReady = true;
 					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 65, 120, 40, 16, true);
 				}
+				
+				//Render Battle Menu if a Schmuck is selected
 				if(selected==true){
 					if(bm != null){
 						bm.render(g);
@@ -407,6 +451,8 @@ public class BattleProcessor {
 				break;
 				
 			case 2:
+				
+				//Render Battle Menu for Schmucks making actions after Waiting.
 				if(pauseTOQ == true){
 					bm.render(g);
 				}	
@@ -418,13 +464,22 @@ public class BattleProcessor {
 		}
 	}
 	
+	//Used every time an action is run.
 	public void runAction(Action tempAction){
 		
+		//The skill, user and target of the action being processed.
 		Skills tempSkill = tempAction.skill;		
 		Schmuck tempPerp = tempAction.user;		
 		Schmuck tempVic = tempAction.target;
+		
+		//First, check if the user has the Mp to use the ability
+		//Don't forget to account for mp cost reduction modifiers.
 		if((int)(tempSkill.getCost()*(1-tempPerp.getMpCost())) <= tempPerp.getCurrentBp()){
+			
+			//Spend Mp
 			em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
+			
+			//Check for Crits.
 			if(calcCrit(tempAction)){
 				bt.addScene("A Critical hit!");
 				tempSkill.runCrit(tempPerp,tempVic,bs);
@@ -433,6 +488,8 @@ public class BattleProcessor {
 				tempPerp.statusProcTime(8, bs, tempAction, tempVic, 0, 0, true, null);
 			}
 			else {
+				
+				//Check for misses
 				if(!calcHit(tempAction)){
 					bt.addScene(tempPerp.getName() + " missed!");
 					
@@ -441,10 +498,11 @@ public class BattleProcessor {
 					
 				}
 				else{
+					//Run action normally
 					tempSkill.run(tempPerp,tempVic,bs);
 				}
 			}
-
+			
 			if(tempAction != null){
 				
 				//Activate User's Post-Action Effects
@@ -492,7 +550,7 @@ public class BattleProcessor {
 	
 	//getSelectableEmenies/Allies is used in untargetable AOE of buffs that target a user's allies or enemies.
 	//Given an input Schmuck, they return an arraylist of that Schmuck's enemies or allies.
-	//Unaligned status causes Schmucks to count as the opposite team.
+	//Misaligned status causes Schmucks to count as the opposite team.
 	public ArrayList<Schmuck> getSelectableEnemies(Schmuck s){
 		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){

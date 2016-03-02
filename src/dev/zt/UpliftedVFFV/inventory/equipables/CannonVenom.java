@@ -16,7 +16,7 @@ public class CannonVenom extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="TEMP";
+	static String descr="A poison-spraying cannon used in dousing crop fields with pesticides.";
 	static String descrShort="Fires on Wait.\nDamage and poisons foes.";
 	public status[] enchantment = new status[1];
 	public CannonVenom() {

@@ -5,9 +5,13 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class SkillNothing extends Skills {
 	
+	//Used if selecting a skill for a Schmuck that has no skill.
+	//Really more of a debug thing. The above scenario should never really happen.
+	//Differs from "Flavor Nothing" in that it is target.
+	
 	String flavorText = "";
 	public static String name = "";
-	public static String descr = ".";
+	public static String descr = "";
 	public static String descrShort = "";
 	public static int cost = 0;
 	public static int baseAcc = 100; public static int baseCrit = 0;

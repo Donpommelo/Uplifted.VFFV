@@ -15,7 +15,7 @@ public class Troop1MidgeSwarm extends Troop{
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
 		int num = (int)(Math.random()*3+4);
 		for(int i=0; i<num; i++){
-			troop.add(new Midge(1+ML));
+			troop.add(new Midge(ML));
 		}
 		this.troop = troop;
 		return troop;
