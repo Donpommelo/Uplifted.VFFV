@@ -154,8 +154,7 @@ public class Tile {
 			break;
 		case 41:
 			t = new DarkRowCarpet();
-			break;
-			
+			break;			
 		}
 		return t;
 	}

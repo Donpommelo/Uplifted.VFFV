@@ -13,7 +13,7 @@ public class WarpWestCubicleFinaltoBus extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",17,6,"East Office");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",17,6,"East Shuttle");
 		super.getGamestate().getEvents()[150].setOpen(false);
 		super.getGamestate().getEvents()[150].setFrames(6);
 		if(!this.isSelfswitch1()){

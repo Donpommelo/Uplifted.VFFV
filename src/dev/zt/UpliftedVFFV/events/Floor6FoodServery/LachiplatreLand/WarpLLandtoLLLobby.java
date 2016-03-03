@@ -12,7 +12,7 @@ public class WarpLLandtoLLLobby extends Event {
 	}
 
 	public void run(){
-		if(!Event.events[457].isSelfswitch1()){
+		if(!Event.events[469].isSelfswitch1()){
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"This door is locked./");
 			super.Dialog(d, 0, this.getId(), true);

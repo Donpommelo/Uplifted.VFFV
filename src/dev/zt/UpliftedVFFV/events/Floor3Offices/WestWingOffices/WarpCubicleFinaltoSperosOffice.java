@@ -13,6 +13,6 @@ public class WarpCubicleFinaltoSperosOffice extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/SperosOffice.txt",13,11,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/SperosOffice.txt",13,11,"Speros' Office");
 	}
 }

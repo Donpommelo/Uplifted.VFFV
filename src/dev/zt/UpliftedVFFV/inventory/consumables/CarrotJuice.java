@@ -13,7 +13,7 @@ public class CarrotJuice extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 20;
+	static int value = 7;
 	static int slot = 0;
 	static int lvlReq = 2;
 	static String descr="A can of fizzy, orange liquid. It can serve as a nutritious\nsubstitute to soda, if you didn't really want to drink a soda to begin with.";

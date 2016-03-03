@@ -18,7 +18,7 @@ public class CoffeedIce extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 22;
+	static int value = 6;
 	static int slot = 0;
 	static int lvlReq = 2;
 	static String descr="A thermos of shaved ice with some faint coffee flavoring.";

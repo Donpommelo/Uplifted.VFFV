@@ -41,7 +41,7 @@ public class WarpBustoRightBusStop extends Event {
 			case 1:
 				KeyManager.setCutsceneMode(false);
 				this.setstage(0);
-				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2Room1.txt",7,15,"");
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2Room1.txt",7,15,"East Bus Stop");
 				this.setOpen(false);
 				this.setFrames(0);
 				break;

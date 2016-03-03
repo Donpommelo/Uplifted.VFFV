@@ -19,7 +19,7 @@ public class WarpBustoRamp extends Event {
 			super.Dialog(d, 0, this.getId(), true);
 		}
 		else{
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt", 31,39,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt", 31,39,"Bus Ramp");
 			super.getGamestate().getEvents()[203].setOpen(false);
 			super.getGamestate().getEvents()[203].setFrames(6);
 		}

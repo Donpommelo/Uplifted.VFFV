@@ -33,7 +33,7 @@ public class WarpBusRamptoAtriaFloor2 extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtriaFloor2.txt", 6, 19,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftAtriaFloor2.txt", 6, 19,"East Offices");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

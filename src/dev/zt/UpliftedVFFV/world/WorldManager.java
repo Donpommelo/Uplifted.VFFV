@@ -48,8 +48,8 @@ public class WorldManager implements Serializable{
 	public void render(Graphics g){
 		
 		//Sets background to black. Change later perhaps to allow for special background/parallax scrolling
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, game.getWidth(), game.getHeight());
+//		g.setColor(Color.BLACK);
+//		g.fillRect(0, 0, game.getWidth(), game.getHeight());
 		
 		//renders every tile in the matrix if the map is larger than the screen (For optimality).
 		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y < (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){

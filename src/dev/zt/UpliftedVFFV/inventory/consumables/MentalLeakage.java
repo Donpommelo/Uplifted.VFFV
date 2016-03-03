@@ -16,7 +16,7 @@ public class MentalLeakage extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 4;
+	static int value = 3;
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A handful of loose thoughts. You doubt it contains anything\nuseful.";

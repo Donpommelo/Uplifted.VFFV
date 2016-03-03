@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.keyitems.BasementKeyCard;
 import dev.zt.UpliftedVFFV.inventory.keyitems.ManilaFolder;
 
 
@@ -26,6 +27,7 @@ public class EventCarlocOffice extends Event {
 						d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,". . . Is something wrong?/You seem on edge./");
 						d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Anyways, now for your final reward!/I present you with the Basement Key!/With this card, you can access the Company Town on floor B1!/");
 						d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Let me unlock the elevator in my room so you can head down there immediately./Why don’t you go shop and socialize with your coworkers like a well-adjusted/employee?/");
+						super.loot(new BasementKeyCard(), 1);
 						super.Dialog(d, 3, this.getId(), true);
 					}
 					else if(super.getQuest(5) == 7){

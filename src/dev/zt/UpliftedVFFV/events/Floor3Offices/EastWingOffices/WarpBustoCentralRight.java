@@ -41,7 +41,7 @@ public class WarpBustoCentralRight extends Event {
 			case 1:
 				KeyManager.setCutsceneMode(false);
 				this.setstage(0);
-				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt",5,12,"");
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCenter.txt",5,12,"East Cubicle");
 				this.setOpen(false);
 				this.setFrames(0);
 				break;

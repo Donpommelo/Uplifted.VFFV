@@ -17,7 +17,7 @@ public class BadEgg extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=30,startBp=30,startPow=52, startDef=26, startSpd=44, startSkl=39, startLuk=23, startInt=16;
+	public final static int startHp=30,startBp=30,startPow=45, startDef=26, startSpd=40, startSkl=39, startLuk=23, startInt=16;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=25.2, bpGrowth=24.7, powGrowth=10.2, defGrowth=3.3, spdGrowth=6.9, sklGrowth=7.6, intGrowth=5.2, lukGrowth=3.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

@@ -12,7 +12,7 @@ public class WarpAtriaFloor2toBusRamp extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt", 25, 17,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt", 25, 17,"Bus Ramp");
 		super.getGamestate().getEvents()[201].setOpen(false);
 		super.getGamestate().getEvents()[201].setFrames(6);
 	}

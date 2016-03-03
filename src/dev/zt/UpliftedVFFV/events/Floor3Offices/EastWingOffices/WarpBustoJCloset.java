@@ -37,7 +37,7 @@ public class WarpBustoJCloset extends Event {
 				super.setVar(12, super.getVar(12)+1);
 				this.setSelfswitch1(true);
 			}
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/JanitorClosetEast.txt",5,10,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/JanitorClosetEast.txt",5,10,"Broom Closet");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

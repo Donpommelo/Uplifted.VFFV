@@ -34,18 +34,23 @@ public class DecorManager {
 		
 	}
 	
+	//Renders all decor that shows up underneath everything including tiles.
+	//will be eventually used for parallax stuff
+	public void renderBelowBelow(Graphics g){
+		for(int i = 0; i<Decorations.length; i++){
+			if(Decorations[i].renderBelow() == -2){
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
+			}
+		}
+	}
+	
 	//Renders all decor that shows up underneath the player.
 	//This includes decor specifically designated to always render low.
 	//This also includes standard decor that is higher up than the player.
 	public void renderBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
-				if(!Decorations[i].followCamera()){
-					Decorations[i].render(g, (int)(DecorCoords[0][i] - game.getGameCamera().getxOffset()), (int)(DecorCoords[1][i] - game.getGameCamera().getyOffset()));
-				}
-				else{
-					Decorations[i].render(g, (int)(DecorCoords[0][i]), (int)(DecorCoords[1][i]));
-				}
+			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
 			}
 		}
 	}
@@ -55,13 +60,8 @@ public class DecorManager {
 	//This also includes standard decor that is lower down than the player.
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){
-				if(!Decorations[i].followCamera()){
-					Decorations[i].render(g, (int)(DecorCoords[0][i] - game.getGameCamera().getxOffset()), (int)(DecorCoords[1][i] - game.getGameCamera().getyOffset()));
-				}
-				else{
-					Decorations[i].render(g, (int)(DecorCoords[0][i]), (int)(DecorCoords[1][i]));
-				}
+			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
 			}
 		}
 	}

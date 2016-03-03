@@ -22,7 +22,22 @@ public class EventClockDigital extends Event {
 		
 		switch(super.getVar(16)){
 		case 1:
-			img = Assets.WestClocksDigital330;
+			switch(super.getVar(17)){
+			case 0:
+				//3:00
+				img = Assets.WestClocksDigital330;
+				break;
+			case 1:
+				//9:15
+				img = Assets.WestClocksDigital330;
+				break;
+			case 2:
+				img = Assets.WestClocksDigital315;
+				break;
+			case 3:
+				img = Assets.WestClocksDigital330;
+				break;
+			}
 			break;
 		case 2:
 			img = Assets.WestClocksDigital900;

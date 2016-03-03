@@ -63,8 +63,6 @@ public class Player extends Creature implements Serializable{
 				wall = true;
 			}
 		}
-		
-
 		game.getGameCamera().centerOnEntity(this);			//centers the gameCamera object so that the player is constantly in the center of the screen
 	
 	}
@@ -263,7 +261,7 @@ public class Player extends Creature implements Serializable{
 	//if the player is not currently walking, a sprite is chosen based on the which direction the player is facing
 	public void render(Graphics g) {
 //		super.render(g);
-				if(runup==false && rundown==false && runleft==false && runright==false){
+			if(runup==false && rundown==false && runleft==false && runright==false){
 			if(runlast==0){
 				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -352,6 +350,24 @@ public class Player extends Creature implements Serializable{
 	
 	public String toString(){
 		return "player";
+	}
+	
+	//For automatic player movement in cutscenes and stuff
+	public void movePlayer(int dir){
+		switch(dir){
+		case 0:
+			runup = true;
+			break;
+		case 1:
+			rundown = true;
+			break;
+		case 2:
+			runleft = true;
+			break;
+		case 3:
+			runright = true;
+			break;
+		}
 	}
 	
 

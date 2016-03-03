@@ -12,7 +12,7 @@ public class WarpJClosettoBus extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,6,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,6,"East Offices");
 		super.getGamestate().getEvents()[146].setOpen(false);
 		super.getGamestate().getEvents()[146].setFrames(6);
 	}

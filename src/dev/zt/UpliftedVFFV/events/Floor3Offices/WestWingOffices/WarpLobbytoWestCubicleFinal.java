@@ -13,7 +13,7 @@ public class WarpLobbytoWestCubicleFinal extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt",22,16,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt",22,16,"West Offices");
 		if(!this.isSelfswitch1()){
 			this.setSelfswitch1(true);
 			Dialog[] d = new Dialog[1];

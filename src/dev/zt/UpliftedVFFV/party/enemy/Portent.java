@@ -18,7 +18,7 @@ public class Portent extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=90,startBp=100,startPow=35, startDef=45, startSpd=32, startSkl=49, startLuk=28, startInt=78;
+	public final static int startHp=80,startBp=100,startPow=35, startDef=45, startSpd=32, startSkl=49, startLuk=28, startInt=78;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=38.2, bpGrowth=34.7, powGrowth=4.3, defGrowth=3.4, spdGrowth=8.6, sklGrowth=4.5, intGrowth=10.9, lukGrowth=6.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

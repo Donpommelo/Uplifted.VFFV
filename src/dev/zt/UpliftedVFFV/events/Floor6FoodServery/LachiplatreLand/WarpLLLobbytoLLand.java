@@ -12,12 +12,13 @@ public class WarpLLLobbytoLLand extends Event {
 	}
 
 	public void run(){
-		super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt",47,29,"");
-		if(!this.isSelfswitch1()){
-			this.setSelfswitch1(true);
+		if(!Event.events[469].isSelfswitch1()){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You unlock the door when you pass through it./");
-			super.Dialog(d,0, this.getId(), true);
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"This door is locked./");
+			super.Dialog(d, 0, this.getId(), true);
+		}
+		else{
+			super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt",47,29,"");
 		}
 	}
 }

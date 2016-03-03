@@ -14,6 +14,6 @@ public class WarpSouthHallLongtoBathroomMens extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/RestroomMens.txt", 13, 9,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/RestroomMens.txt", 13, 9,"Men's Room");
 	}
 }

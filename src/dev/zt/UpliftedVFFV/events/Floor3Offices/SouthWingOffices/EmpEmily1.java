@@ -46,7 +46,7 @@ public class EmpEmily1 extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"Good to see you. You ought to get out of your elevator more often.//");
+			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"You ought to spend more time in the Building with the rest of us./Being cooped up all day in an elevator can't be good for you./");
 			super.Dialog(d, 0, this.getId(), true);
 
 		}
@@ -54,7 +54,7 @@ public class EmpEmily1 extends Event {
 	
 	public void walkCycle(){
 		move++;
-		if(move >= 300){
+		if(move >= 250){
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:

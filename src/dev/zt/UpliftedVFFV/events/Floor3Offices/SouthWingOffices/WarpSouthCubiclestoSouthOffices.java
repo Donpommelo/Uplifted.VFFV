@@ -18,6 +18,6 @@ public class WarpSouthCubiclestoSouthOffices extends Event {
 
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt", 4, 27,"South Wing Offices");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/SouthWingSection1.txt", 4, 27,"");
 	}
 }

@@ -12,7 +12,7 @@ public class WarpStairsRoomStairsUp extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftBalcony.txt",4,14,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftBalcony.txt",4,14,"East Balcony");
 		
 	}
 }

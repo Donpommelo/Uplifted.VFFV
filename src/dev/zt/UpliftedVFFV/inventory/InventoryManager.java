@@ -3,8 +3,6 @@ package dev.zt.UpliftedVFFV.inventory;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 //This manages the player inventory
@@ -12,7 +10,8 @@ public class InventoryManager implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-		private GameState gs;
+	//transient fixes bug with saving.
+	private transient GameState gs;
 	public TreeMap<Item, Integer> backpack = new TreeMap<>();			//treemap corresponding to each item and the amount owned
 	
 	

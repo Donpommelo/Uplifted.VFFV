@@ -16,7 +16,7 @@ public class MeltedIcecream extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 18;
+	static int value = 7;
 	static int slot = 0;
 	static int lvlReq = 2;
 	static String descr="A bottle of lukewarm cream soda.";

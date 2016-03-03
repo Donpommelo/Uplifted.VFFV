@@ -34,7 +34,7 @@ public class WarpSouthOfficetoBoardroom extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,16,"");
+			super.transport("/Worlds/Floor3Offices/SouthWingOffices/BoardRoom1.txt",5,16,"Meeting Room");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

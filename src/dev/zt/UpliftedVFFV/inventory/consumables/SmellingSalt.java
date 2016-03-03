@@ -17,7 +17,7 @@ public class SmellingSalt extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 35;
+	static int value = 12;
 	static int slot = 0;
 	static int lvlReq = 5;
 	static String descr="A package of chemicals used in reviving overworked or\ndead coworkers.";

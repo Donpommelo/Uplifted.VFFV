@@ -30,7 +30,7 @@ public class VariableManager {
  19: Floor Manager Favor
  20: Glimpses of the End used
  21: Global Level Modifier
- 22: 
+ 22: Levels Drained in Wetworks Dungeon
  
  */
 	

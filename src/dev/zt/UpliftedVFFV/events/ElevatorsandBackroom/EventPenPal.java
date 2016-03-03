@@ -39,7 +39,7 @@ public class EventPenPal extends Event {
 			d[1] = new Dialog("Operator", "/CharacterBusts/Player-1.png",0,"What floor for you?/");
 			d[2] = new Dialog("???","/CharacterBusts/Player-5.png",1,". . ./");
 			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Are those . . . envelopes?/");
-			d[4] = new Dialog("???","/CharacterBusts/Player-5.png",1,"Dear Coworker!/I write to you in times of dire need!/");
+			d[4] = new Dialog("???","/CharacterBusts/Player-5.png",1,"Dear Coworker,/I write to you in times of dire need!/");
 			d[5] = new Dialog("???","/CharacterBusts/Player-5.png",1,"It is imperative that this plant be delivered to Suite 521!/Immediately!/");
 			d[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Sincerely, Your Pen Pal <3/");
 			d[7] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I . . . I have a Pen Pal?/");
@@ -47,7 +47,7 @@ public class EventPenPal extends Event {
 			d[9] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Er . . . I'm afraid I don't know where Suite 521 is . . ./");
 			d[10] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"What? But . . . but you work here!/");
 			d[11] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Well, I guess I don't leave the Elevator often . . ./");
-			d[12] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Drat! We must find the location of Suite 521. Take me to Floor 3./I use to work there, so its a good place to start looking./");
+			d[12] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Drat! We must find the location of Suite 521! Take me to Floor 3!/The Offices seem like the kind of place where Management would put important things./");
 			super.Dialog(d, 12, this.getId(), true);
 			super.setSwitch(1, true);
 			super.setQuest(0, 1);

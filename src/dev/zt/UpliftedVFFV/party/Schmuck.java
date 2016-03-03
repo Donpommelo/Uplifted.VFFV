@@ -1102,7 +1102,6 @@ public class Schmuck implements Serializable{
 	}
 	
 	public double getDiscountBonus(){
-		System.out.println(bonusStats.length);
 		return bonusStats[39];
 	}
 	

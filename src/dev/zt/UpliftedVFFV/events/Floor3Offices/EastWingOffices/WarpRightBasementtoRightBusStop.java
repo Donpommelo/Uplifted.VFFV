@@ -12,7 +12,7 @@ public class WarpRightBasementtoRightBusStop extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2Room1.txt",11,12,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesRightMain2Room1.txt",11,12,"East Bus Stop");
 		
 	}
 }

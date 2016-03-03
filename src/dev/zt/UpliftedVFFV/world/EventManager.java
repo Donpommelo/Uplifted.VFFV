@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.tiles.Tile;
 import dev.zt.UpliftedVFFV.utils.Utils;
 
 
@@ -32,7 +33,6 @@ public class EventManager {
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
 				if(x<events.length-1 && y<events[x].length-1){ 
-					//go fuck urself
 					if(events[x][y] != 0 && getEvent(x,y) != null){
 						getEvent(x, y).tick(gs);
 					}
@@ -42,32 +42,53 @@ public class EventManager {
 	}
 		
 	public void renderBelow(Graphics g){
-		for(int y = 0;y<(int)(gs.getPlayer().getPlayerY()/32);y++){
-			for(int x = 0;x < width;x++){
-				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
-					if(getEvent(x,y).getTest()!=null){
-						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y<(int)(gs.getPlayer().getPlayerY()/32);y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+				if(x>-1 && x<width && y>-1 && y < height){
+					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() != 1){
+						if(getEvent(x,y).getTest()!=null){
+							getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+						}
+						else{
+							getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
+						}
 					}
-					else{
+				}
+			}
+		}
+		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+				if(x>-1 && x<width && y>-1 && y < height){
+					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() == -1){
 						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
 					}
-					
 				}
 			}
 		}
 	}
 	
 	public void renderAbove(Graphics g){
-		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y<height;y++){
-			for(int x = 0;x < width;x++){
-				if(events[x][y] != 0 && getEvent(x,y) != null && getEvent(x,y).drawn()){
-					if(getEvent(x,y).getTest()!=null){
-						getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+				if(x>-1 && x<width && y>-1 && y < height){
+					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() != -1){
+						if(getEvent(x,y).getTest()!=null){
+							getEvent(x, y).render(g, (int)(getEvent(x, y).getTest().getX() * 32 - game.getGameCamera().getxOffset()), (int)(getEvent(x, y).getTest().getY() * 32 - game.getGameCamera().getyOffset()));
+						}
+						else{
+							getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
+						}
+						
 					}
-					else{
+				}
+			}
+		}
+		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y<(int)(gs.getPlayer().getPlayerY()/32);y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+				if(x>-1 && x<width && y>-1 && y < height){
+					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() == 1){
 						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
 					}
-					
 				}
 			}
 		}

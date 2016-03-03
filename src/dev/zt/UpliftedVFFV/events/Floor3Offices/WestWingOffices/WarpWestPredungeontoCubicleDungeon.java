@@ -36,6 +36,7 @@ public class WarpWestPredungeontoCubicleDungeon extends Event {
 			this.setOpen(false);
 			this.setFrames(0);
 			if(!super.getSwitch(26)){
+				super.setVar(17, 3);
 				super.setVar(16, 1);
 			}
 			break;

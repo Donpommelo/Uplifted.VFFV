@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.states;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 
@@ -64,12 +65,13 @@ public class GameState extends State {
 		
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
 //		String StartingFloor = "/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt";
-//		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumTank/TankCentral.txt";
-		String StartingFloor = "/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLobby.txt";
+//		String StartingFloor = "/Worlds/Floor4Aquarium/WetworksDungeon/RaisedPathRoomFullyCleared.txt";
+//		String StartingFloor = "/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt";
 //		String StartingFloor = "/Worlds/Floor7Infirmary/CircleBalcony.txt";
-//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
-		
+//		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
+
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
 		eventmanager = new EventManager(game,this,StartingFloor);
 		decormanager = new DecorManager(game, this, StartingFloor);
@@ -158,6 +160,9 @@ public class GameState extends State {
 	}
 	
 	public void render(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, game.getWidth(), game.getHeight());
+		decormanager.renderBelowBelow(g);
 		worldmanager.render(g);
 		decormanager.renderBelow(g);
 		eventmanager.renderBelow(g);
@@ -249,6 +254,7 @@ public class GameState extends State {
 		
 	}
 	
+	//For some reason cannot serialize stuff with a gamestate field unless made transient . . . 
 	public void writeObject(java.io.ObjectOutputStream stream) throws IOException{
 		//Save world data.
 		stream.writeObject(worldmanager.getName());

@@ -26,6 +26,7 @@ public class WarpCubicleDungeonEast extends Event {
 				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",4,18,"");
 				super.setVar(16, 1);
 			}
+			super.setVar(17, 1);
 		}
 		else{
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt",4,16,"");

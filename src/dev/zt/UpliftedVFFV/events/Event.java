@@ -498,6 +498,8 @@ public class Event implements Serializable{
 	public static Event event468 = new WarpLLandFloor2toFloor1(12,23,468);
 	public static Event event469 = new WarpLLandFloor2toLLLobby(42,23,469);
 	public static Event event470 = new WarpLLandFloor2toInner(40,7,470);
+	public static Event event471 = new WarpLLandFloor2toJCloset(26,12,471);
+	public static Event event472 = new WarpJClosettoLLandFloor2(5,11,472);
 
 	//-549: remainder of warps for Servery
 	
@@ -556,6 +558,8 @@ public class Event implements Serializable{
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
 	public static Event testSummon = new SummonSignIntern(0,0,1002);
+	public static Event testPushBlock = new EventPushBlock(0,0,1003);
+	public static Event testIceFloor = new EventSlipFloor(0,0,1004);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 64;
 	protected BufferedImage tex;
@@ -662,7 +666,13 @@ public class Event implements Serializable{
 		this.frames = frames;
 	}
 	
-	
+	//Returns where a event is rendered compared to the player. 
+	//-1: Always under player
+	//0: Depends on y-location of event compared to player.
+	//1: Always above player
+	public int renderBelow(){
+		return 0;
+	}
 
 	//Tex is the image that the event is represented by.
 	public BufferedImage getTex() {

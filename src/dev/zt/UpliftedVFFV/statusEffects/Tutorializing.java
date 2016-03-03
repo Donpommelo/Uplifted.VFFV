@@ -68,7 +68,7 @@ public class Tutorializing extends status{
 		d[1] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"And now to enjoy the spoils of victory!/Combat is an easy way to acquire Company Script./");
 		d[2] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Hopefully we can find somewhere to spend it./");
 		d[3] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Combat also provides to its participants valuable Work Experience./Gain enough Exp to level up and climb the corporate ladder./Become a more valuable company asset and gain more transferable job skills!/");
-		d[4] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Lastly, enemies will sometimes drop valuable loot!/These items can be examined closer in your inventory, viewable from the menu!/");
+		d[4] = new Dialog("Pen Pal", "/CharacterBusts/Player-5.png",0,"Lastly, enemies will sometimes drop valuable loot!/These items can be examined closely in your inventory, viewable from the menu! ('Z')/");
 
 		DialogState firstfite = new DialogState(bs.getGame(),bs.gs,bs.gs.getStateManager(),d ,4,0,true);
 		StateManager.getStates().push(firstfite);

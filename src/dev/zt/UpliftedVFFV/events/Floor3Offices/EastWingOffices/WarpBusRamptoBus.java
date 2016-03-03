@@ -33,7 +33,7 @@ public class WarpBusRamptoBus extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt", 17, 10,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt", 17, 10,"East Shuttle");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

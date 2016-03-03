@@ -31,7 +31,12 @@ public class WarpEastBreakroomtoBus extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,10,"");
+			if(super.getQuest(3) < 2){
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,10,"East Hallway");
+			}
+			else{
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",5,10,"East Shuttle");
+			}
 			super.setVar(14, 0);
 			this.setOpen(false);
 			this.setFrames(0);

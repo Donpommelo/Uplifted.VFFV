@@ -17,7 +17,8 @@ public class WarpCubicleDungeonSouth extends Event {
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestCubicle.txt",15,7,"");
 			super.getGamestate().getEvents()[282].setOpen(false);
 			super.getGamestate().getEvents()[282].setFrames(6);
-			super.setVar(16, 1);		
+			super.setVar(16, 1);
+			super.setVar(17, 0);
 		}
 		else{
 			super.transport("/Worlds/Floor3Offices/WestWingOffices/WestOfficePreDungeon.txt",10,8,"");

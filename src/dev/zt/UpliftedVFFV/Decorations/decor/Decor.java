@@ -19,7 +19,7 @@ public class Decor {
 	protected static GameState gamestate;
 	protected BufferedImage tex;
 
-	public static Decor[] decors = new Decor[256];
+	public static Decor[] decors = new Decor[2000];
 	public static Decor decorclock = new DecorClock(0);
 	public static Decor decorbed = new DecorBed(1);
 	public static Decor decorwritingdesk = new DecorWritingDesk(2);
@@ -112,6 +112,9 @@ public class Decor {
 	public static Decor aquatunnelarchhorz3below = new DecorAquaTunnelArchHorz3Below(89);
 	public static Decor aquatunnelarchcornerbelow = new DecorAquaTunnelArchCornerBelow(90);
 
+	public static Decor parallaxtest = new DecorParallaxTest(1000);
+
+	
 	public Decor(Game g, GameState gs){
 		game=g;
 		gamestate=gs;
@@ -128,8 +131,13 @@ public class Decor {
 		
 	}
 	
-	public void render(Graphics g, int x, int y) {
-		g.drawImage(tex,x, y, tex.getWidth(), tex.getHeight(), null);
+	public void render(Graphics g, Game game, int x, int y, boolean follow) {
+		if(follow){
+			g.drawImage(tex, x,y, tex.getWidth(), tex.getHeight(), null);
+		}
+		else{
+			g.drawImage(tex,(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()),(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()), tex.getWidth(), tex.getHeight(), null);
+		}
 	}
 
 	//Tex is the image that the Decoration is represented by.
@@ -142,11 +150,20 @@ public class Decor {
 	}
 	
 	//Returns where a decoration is rendered compared to the player. 
+	//-2: Underneath Tiles as well. For parallax stuff
 	//-1: Always under player and events
 	//0: Depends on y-location of decor compared to event.
 	//1: Always above player and events
 	public int renderBelow(){
 		return 0;
+	}
+	
+	public double parallaxMultX(){
+		return 1;
+	}
+	
+	public double parallaxMultY(){
+		return 1;
 	}
 	
 	//Returns whether decoration moves when the player moves or not. Default is yes.

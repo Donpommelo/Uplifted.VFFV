@@ -17,7 +17,7 @@ public class Creature extends Entity {
 	public BufferedImage imgShown;
 	protected boolean runup,runleft,runright,rundown=false;
 	protected float speed;
-	protected float xMove, yMove;
+	float xMove, yMove;
 	protected int rightleft;
 	protected int step=0;
 	public int runlast=1;

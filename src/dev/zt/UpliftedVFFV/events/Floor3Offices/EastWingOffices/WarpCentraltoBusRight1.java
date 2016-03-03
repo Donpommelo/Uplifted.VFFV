@@ -12,7 +12,12 @@ public class WarpCentraltoBusRight1 extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",8,6,"");
+		if(super.getQuest(3) < 2){
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",8,6,"East Hallway");
+		}
+		else{
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingMainHall.txt",8,6,"East Shuttle");
+		}
 		super.getGamestate().getEvents()[147].setOpen(false);
 		super.getGamestate().getEvents()[147].setFrames(6);
 	}

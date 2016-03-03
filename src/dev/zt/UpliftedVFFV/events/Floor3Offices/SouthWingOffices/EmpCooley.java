@@ -66,7 +66,7 @@ public class EmpCooley extends Event {
 	public void ChoiceMade(int i){
 		switch(i){
 		case 0:
-			Dialog[] d = new Dialog[10];
+			Dialog[] d = new Dialog[11];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Many abilities and creatures are aligned to one of several elements./These elements are color-coded for your convenience./");
 			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do you see the Blue tab on this water cooler?/When pressed, a stream of cold water comes out./");
 			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"This is because coldness and water are commonly associated with the Blue element . . ./");
@@ -75,9 +75,10 @@ public class EmpCooley extends Event {
 			d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"That's why, when pressed, it releases a destructive gout of fire./");
 			d[6] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"There are several other elements, each with their own unique/abilities, strengths and weaknesses./");
 			d[7] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"A character's affinity for an element can be measured by his/Color Points. Your Color Points can be examined from the menu under 'Party'./");
-			d[8] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Each Color Point improves the effectiveness of skills of that/color, as well as affecting you Elemental Resistances./Boost any one Color enough and become Elementally Aligned!/");
-			d[9] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Elementally aligned units receive a boost when using abilities of the same color, as well as/gaining special, elementally infused standard attacks!/");
-			super.Dialog(d, 9, this.getId(), true);
+			d[8] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Each Color Point improves the effectiveness of skills of that/color, as well as affecting your Elemental Resistances./Boost any one Color enough and become Elementally Aligned!/");
+			d[9] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Elementally Aligned units receive a boost when using abilities of the same color, as well as/gaining special, elementally infused standard attacks!/");
+			d[10] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Well . . . that's all I got. Time to go back to counting wrinkles on the carpet./");
+			super.Dialog(d, 10, this.getId(), true);
 			this.setSelfswitch1(true);
 			break;
 		case 1:

@@ -19,9 +19,10 @@ public class EventSafe1 extends Event {
 	
 	public void run(){
 		if(!this.isSelfswitch1()){
-			Dialog[] d = new Dialog[1];
+			Dialog[] d = new Dialog[2];
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You found some MedPaks inside the safe!/Always handy in case of Officeplace accidents!/");
-			super.Dialog(d, 0, this.getId(), true);
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Medpaks can be used from the menu ('Z') under the Consumable tab of your Inventory!/They can also be used in combat under 'Items'!");
+			super.Dialog(d, 1, this.getId(), true);
 			super.loot(new MedPak(), 3);
 			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);

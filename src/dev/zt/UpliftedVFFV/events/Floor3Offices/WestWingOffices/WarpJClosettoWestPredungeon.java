@@ -13,7 +13,7 @@ public class WarpJClosettoWestPredungeon extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestOfficePreDungeon.txt",15,8,"");
+		super.transport("/Worlds/Floor3Offices/WestWingOffices/WestOfficePreDungeon.txt",15,8,"West Offices");
 		super.getGamestate().getEvents()[289].setOpen(false);
 		super.getGamestate().getEvents()[289].setFrames(6);
 	}

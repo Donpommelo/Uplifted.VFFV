@@ -32,7 +32,7 @@ public class WarpBalconytoWarehouse extends Event {
 		case 1:
 			KeyManager.setCutsceneMode(false);
 			this.setstage(0);
-			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWarehouse.txt",6,18,"");
+			super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWarehouse.txt",6,18,"East Warehouse");
 			this.setOpen(false);
 			this.setFrames(0);
 			break;

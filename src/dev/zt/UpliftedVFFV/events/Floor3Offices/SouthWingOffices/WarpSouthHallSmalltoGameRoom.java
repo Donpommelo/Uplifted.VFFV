@@ -14,6 +14,6 @@ public class WarpSouthHallSmalltoGameRoom extends Event {
 	}
 	
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/SouthWingOffices/GameRoom.txt", 4, 14,"");
+		super.transport("/Worlds/Floor3Offices/SouthWingOffices/GameRoom.txt", 4, 14,"Break Room");
 	}
 }

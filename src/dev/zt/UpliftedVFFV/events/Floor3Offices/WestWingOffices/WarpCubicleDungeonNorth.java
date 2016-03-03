@@ -43,6 +43,7 @@ public class WarpCubicleDungeonNorth extends Event {
 				else{
 					super.setVar(16, 1);
 				}
+				super.setVar(17, 3);
 			}
 			else{
 				super.transport("/Worlds/Floor3Offices/WestWingOffices/WestBonusRoom1.txt",6,12,"");

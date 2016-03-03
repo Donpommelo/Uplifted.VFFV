@@ -17,7 +17,7 @@ public class MedPak extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = true;
-	static int value = 10;
+	static int value = 5;
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A container of useful medicines. The Infirmary distributes\nthese to other floors to avoid having to actually see any of\nyour faces.";

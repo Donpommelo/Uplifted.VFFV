@@ -17,7 +17,7 @@ public class Augur extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=120,startPow=35, startDef=50, startSpd=42, startSkl=59, startLuk=38, startInt=98;
+	public final static int startHp=90,startBp=120,startPow=35, startDef=50, startSpd=42, startSkl=59, startLuk=38, startInt=98;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=30.2, bpGrowth=29.7, powGrowth=3.3, defGrowth=3.4, spdGrowth=6.6, sklGrowth=3.5, intGrowth=8.9, lukGrowth=4.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};

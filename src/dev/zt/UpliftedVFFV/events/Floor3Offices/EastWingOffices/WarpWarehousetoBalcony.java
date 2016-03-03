@@ -12,7 +12,7 @@ public class WarpWarehousetoBalcony extends Event {
 	}
 		
 	public void run(){
-		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftBalcony.txt",23,20,"");
+		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesLeftBalcony.txt",23,20,"East Balcony");
 		super.getGamestate().getEvents()[195].setOpen(false);
 		super.getGamestate().getEvents()[195].setFrames(6);
 	}
