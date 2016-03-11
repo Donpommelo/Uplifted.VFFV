@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.dialog.Dialog;
 
 public class EventElevatorPanel extends Event {
 
-	public String[] Choices={"1: Reception","2: Bathhouse","3: Offices","4: Aquarium","5: Management","6: Food Services","7: Infirmary","8: Orchestral Cathedral","9: Little America","11: Justice Park","12: Gallery of Lights"};
+	public String[] Choices={"1: Reception","2: Bathhouse","3: Offices","4: Aquarium","5: Management","6: Food Services","7: Infirmary","8: Orchestral Cathedral","9: Little America","11: Justice Park","12: Gallery of Lights","B1: Company Town","B2: Boiler Room"};
 	public static int stagenum=1;
 	public EventElevatorPanel(float x, float y, int idnum) {
 		super(Assets.ElevatorPanel,idnum,x, y, stagenum);
@@ -57,9 +57,13 @@ public class EventElevatorPanel extends Event {
 	}
 	
 	public void ChoiceMade(int i){
-		if(super.getSwitch(3)){										
-			if(super.getVar(1)!= i)
-			{
+		if(!super.getSwitch(3)){
+			if((i == 11 || i == 12) && super.getQuest(5) <= 6){
+				Dialog[] d = new Dialog[1];
+				d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I'm not authorized to go the Basement yet./");
+				super.Dialog(d, 0, this.getId(), true);
+			}
+			else if(super.getVar(1)!= i){
 				super.setVar(1,i);
 				super.screenShake(50);
 			}
@@ -153,9 +157,15 @@ public class EventElevatorPanel extends Event {
 					super.Dialog(d12, 0, this.getId(), true);
 					break;
 				case 11:
-					
+					Dialog[] d13 = new Dialog[1];
+					d13[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"The Basement? I think we would need a Basement Access Key for that./");
+					super.Dialog(d13, 0, this.getId(), true);
 					break;
-
+				case 12:
+					Dialog[] d14 = new Dialog[1];
+					d14[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"The Basement? I think we would need a Basement Access Key for that./");
+					super.Dialog(d14, 0, this.getId(), true);
+					break;
 				}
 			}
 			
@@ -180,9 +190,9 @@ public class EventElevatorPanel extends Event {
 		Choices[8] = "9: Little America";
 		Choices[9] = "11: Justice Park";
 		Choices[10] = "12: Gallery of Lights";
-		if(super.getQuest(5) > 6){
+//		if(super.getQuest(5) > 6){
 			Choices[11] = "B1: Company Town";
 			Choices[12] = "B2: Boiler Room";
-		}
+//		}
 	}
 }

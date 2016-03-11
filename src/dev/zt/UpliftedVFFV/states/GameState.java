@@ -63,12 +63,13 @@ public class GameState extends State {
 		partymanager = new PartyManager(game);										//creates a new partymanager that keeps track of your party
 		inventorymanager = new InventoryManager(this);								//creates an inventorymanager that keeps track of inventory
 		
+//		String StartingFloor = "/Worlds/Floor1Reception/SouthLobbyMain.txt";
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
 //		String StartingFloor = "/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt";
-//		String StartingFloor = "/Worlds/Floor4Aquarium/WetworksDungeon/RaisedPathRoomFullyCleared.txt";
-//		String StartingFloor = "/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt";
-//		String StartingFloor = "/Worlds/Floor7Infirmary/CircleBalcony.txt";
-		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+//		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumBuilding/SouthLobby.txt";
+//		String StartingFloor = "/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLandBallPit1.txt";
+		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Construction1.txt";
+//		String StartingFloor = "/Worlds/ElevatorsandBackroom/SouthElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
 

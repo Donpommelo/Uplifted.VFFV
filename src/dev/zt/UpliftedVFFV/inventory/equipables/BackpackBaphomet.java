@@ -18,7 +18,7 @@ public class BackpackBaphomet extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 32;
-	static String descr="Powerful friend, but desecrates your other\nbelongings.";
+	static String descr="Powerful friend, but desecrates your other belongings.";
 	static String descrShort="+25%Pow\n+25% Red Points\n-75% Equipment Power";
 	public status[] enchantment = new status[3];
 	public BackpackBaphomet() {

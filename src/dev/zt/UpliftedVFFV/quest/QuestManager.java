@@ -92,7 +92,14 @@ public class QuestManager {
 			case 2:
 				return "Bring the 'Coffee' back to Floor Manager.";
 			}
+		case 8:
+			switch(stage){
+			case 1:
+				
+			}
+			
 		}
+		
 		return "";
 	}
 	

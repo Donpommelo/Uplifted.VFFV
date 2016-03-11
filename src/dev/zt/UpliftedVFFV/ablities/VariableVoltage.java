@@ -6,9 +6,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class VariableVoltage extends Skills {
 
 	public static String name = "Variable Voltage";
-	public static String descr = "User strikes the enemy team\nwith random bursts of\nelectricity.";
-	public static String descrShort = "Deals random Yellow\ndamage to enemies.";
-	public static int cost = 15;
+	public static String descr = "User strikes the enemy team with random bursts of electricity.";
+	public static String descrShort = "Deals random Yellow damage to enemies.";
+	public static int cost = 22;
 	public static int baseAcc = 100; public static int baseCrit = 10;
 	public static boolean canMiss = false; public static boolean canCrit = true;
 	public static int element = 3;	//Yellow

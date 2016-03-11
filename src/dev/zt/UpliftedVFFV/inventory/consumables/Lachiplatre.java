@@ -19,7 +19,7 @@ public class Lachiplatre extends Item{
 	static int value = 0;
 	static int slot = 0;
 	static int lvlReq = -1;
-	static String descr="A stale, bun-like object stuffed with dry paste. You assume\nit is edible.";
+	static String descr="A stale, bun-like object stuffed with dry paste. You assume it is edible.";
 	static String descrShort="Eat it. I guess.";
 	public Lachiplatre() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

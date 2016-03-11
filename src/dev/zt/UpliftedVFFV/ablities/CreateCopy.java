@@ -15,7 +15,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 public class CreateCopy extends Skills {
 
 	public static String name = "Create Copy";
-	public static String descr = "User summons a weak ally\nto aid in battle.";
+	public static String descr = "User summons a temporary ally to aid in battle.";
 	public static String descrShort = "Summons something.";
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;

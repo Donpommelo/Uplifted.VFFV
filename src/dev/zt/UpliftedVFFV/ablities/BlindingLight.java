@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Blind;
 public class BlindingLight extends Skills {
 
 	public static String name = "Blinding Light";
-	public static String descr = "User creates a flash of light\nthat blinds enemies.";
-	public static String descrShort = "Chance to Blind all\nenemies.";
+	public static String descr = "User creates a bright flash of luminosity, blinding and dazzling all enemies that dare look.";
+	public static String descrShort = "Chance to Blind all enemies.";
 	public static int cost = 18;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;

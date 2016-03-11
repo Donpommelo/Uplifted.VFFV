@@ -16,7 +16,7 @@ public class Paperweight extends Item{
 	static int value = 30;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="This is a solid metal paperweight. It weighs down stacks of\npaperwork that, consequently, weigh down your hopes\nand dreams.";
+	static String descr="This is a solid metal paperweight. It weighs down stacks of paperwork that, consequently, weigh down your hopes and dreams.";
 	static String descrShort="+5 Def";
 	public status[] enchantment = new status[1];
 	public Paperweight() {

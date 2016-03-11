@@ -252,8 +252,21 @@ public class Utils {
 //		g2d.drawString(text, x + 12, y + 25);
 		//Wrapping text
 		int yLine = y;
-		for (String line : text.split("\n"))
-	        g2d.drawString(line, x+12, yLine += g.getFontMetrics().getHeight());
+		int xLoc = 0;
+		for (String line : text.split("\n")){
+	        yLine += g.getFontMetrics().getHeight();
+	        xLoc = 0;
+			for(String word : line.split(" ")){
+				if(xLoc + g.getFontMetrics().stringWidth(word) < width-10){
+					 g2d.drawString(word, x+12+xLoc, yLine);
+				}
+				else{
+					xLoc = 0;
+					g2d.drawString(word, x+12, yLine += g.getFontMetrics().getHeight());
+				}
+				xLoc += g.getFontMetrics().stringWidth(word+" ");
+			}
+		}
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 		

@@ -17,7 +17,7 @@ public class HandofGlory extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 25;
-	static String descr="The hand of a murderer preserved in pickle juice and\nformaldehyde.";
+	static String descr="The hand of a murderer preserved in pickle juice and formaldehyde.";
 	static String descrShort = "+12% Acc\nStuns random enemies.\nRequires Cooldown.";
 	public status[] enchantment = new status[2];
 	public HandofGlory() {

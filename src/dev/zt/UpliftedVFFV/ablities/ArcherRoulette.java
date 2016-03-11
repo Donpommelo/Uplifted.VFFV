@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class ArcherRoulette extends Skills {
 	
 	public static String name = "Archer Roulette";
-	public static String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
-	public static String descrShort = "Powerful attack with a\ncahnce to hit wrong enemy.";
+	public static String descr = "User produces a powerful projectile and prays to lucky stars. While the user attempts to direct this attack, it has a high chance of misfiring and striking a different enemy than the one intended.";
+	public static String descrShort = "Powerful attack with a chance to hit wrong enemy.";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;
@@ -21,7 +21,7 @@ public class ArcherRoulette extends Skills {
 		Schmuck target;
 		if(Math.random()>.5){
 			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
-			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*1.25);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*1.5);
 			bs.bp.em.hpChange(damage,perp,vic,6);
 		}
 		else{

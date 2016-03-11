@@ -16,7 +16,7 @@ public class EnergySourceVolatile extends Item{
 	static int value = 500;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="An immensely powerful energy source whose tendency to explode\nviolently prevents it from being available to consumers.";
+	static String descr="An immensely powerful energy source whose tendency to explode violently prevents it from being available to consumers.";
 	static String descrShort="Painful Mp Regen.";
 	public status[] enchantment = new status[1];
 	public EnergySourceVolatile() {

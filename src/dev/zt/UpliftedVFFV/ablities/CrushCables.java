@@ -8,9 +8,9 @@ import dev.zt.UpliftedVFFV.statusEffects.Paralysis;
 public class CrushCables extends Skills {
 
 	public static String name = "Crush Cable";
-	public static String descr = "User summons strangulating cables\nto bind foes.";
-	public static String descrShort = "Damages and paralyzes\ntarget.";
-	public static int cost = 15;
+	public static String descr = "User summons thick cables to attack victims. Results range from flagellation to strangulation.";
+	public static String descrShort = "Damages and paralyzes target.";
+	public static int cost = 25;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 6;	//Green

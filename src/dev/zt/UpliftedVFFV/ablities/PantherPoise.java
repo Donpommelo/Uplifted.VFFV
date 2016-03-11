@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PantherPoiseEffect;
 public class PantherPoise extends Skills {
 
 	public static String name = "Panther Poise";
-	public static String descr = "User gains the poise of a\npanther and gets ready to do\npanther things.";
+	public static String descr = "User gains the poise of a panther and gets ready to do panther things.";
 	public static String descrShort = "Redirects items to self.";
 	public static int cost = 8;
 	public static int baseAcc = 100; public static int baseCrit = 0;

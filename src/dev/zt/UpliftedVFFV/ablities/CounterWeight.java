@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.PantherPoiseEffect;
 public class CounterWeight extends Skills {
 
 	public static String name = "Counterweight";
-	public static String descr = "User shifts weight, preparing\nto counter oncoming attacks.";
+	public static String descr = "User shifts weight, preparing to retaliate to oncoming attacks with physical force.";
 	public static String descrShort = "Counter enemy actions.";
 	public static int cost = 14;
 	public static int baseAcc = 100; public static int baseCrit = 0;

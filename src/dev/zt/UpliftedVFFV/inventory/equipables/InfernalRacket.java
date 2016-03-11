@@ -17,7 +17,7 @@ public class InfernalRacket extends Item{
 	static int value = 35;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="A tennis racket that produces really annoying noises\nwhenever swung.";
+	static String descr="A tennis racket that produces really annoying noises whenever swung.";
 	static String descrShort="+11 Red Points\n+1 Monster Level";
 	public status[] enchantment = new status[2];
 	public InfernalRacket() {

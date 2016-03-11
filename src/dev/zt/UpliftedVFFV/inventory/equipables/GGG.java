@@ -18,8 +18,8 @@ public class GGG extends Item{
 	static int value = 650;
 	static int slot = 1;
 	static int lvlReq = 31;
-	static String descr="A glove that developed an appetite for flesh without need for\nits nutrition.";
-	static String descrShort="+11 Skl\nHeal and take statuses\nwhen incapacitating enemies.";
+	static String descr="A glove that developed an appetite for flesh without need for its nutrition.";
+	static String descrShort="+11 Skl\nHeal and take statuses when incapacitating enemies.";
 	public status[] enchantment = new status[3];
 	public GGG() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

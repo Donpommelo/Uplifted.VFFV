@@ -17,8 +17,8 @@ public class OverloadSpark extends Item{
 	static int value = 540;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr = "A volatile spark of excitability. It makes your\nhair stand on edge.";
-	static String descrShort="+8 Yellow Points\n+1 use for Limited Use\nitems and skills";
+	static String descr = "A volatile spark of excitability. It makes your hair stand on edge.";
+	static String descrShort="+8 Yellow Points\n+1 use for Limited Use items and skills";
 	public status[] enchantment = new status[2];
 	public OverloadSpark() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

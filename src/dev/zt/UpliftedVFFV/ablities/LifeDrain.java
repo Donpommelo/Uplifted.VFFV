@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class LifeDrain extends Skills {
 
 	public static String name = "Life Drain";
-	public static String descr = "User sucks the lifeforce from a\ntargeted foe, dealing damage\n and restoring health.";
-	public static String descrShort = "Damages target and heals\nself.";
+	public static String descr = "User sucks the vitality from a targeted foe, dealing damage and restoring a comparative amount of health.";
+	public static String descrShort = "Damages target and heals self.";
 	public static int cost = 7;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

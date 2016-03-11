@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 public class FerrerBlock extends Skills {
 
 	public static String name = "Ferrer Block";
-	public static String descr = "User encases target in a healing block\nof ice, disabling and regenerating Hp.";
-	public static String descrShort = "Freeze target and boost\nHp regen.";
+	public static String descr = "User encases target in a block of healing ice that soothes wounds but prevents activity.";
+	public static String descrShort = "Freeze target and boost Hp regen.";
 	public static int cost = 32;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

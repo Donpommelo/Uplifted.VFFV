@@ -22,7 +22,7 @@ public class HiveRhythmD extends Item{
 	static int value = 666;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A rhythmic and lively note, echoing endlessly in\nthe head if its wielder.";
+	static String descr="A rhythmic and lively note, echoing endlessly in the head if its wielder.";
 	static String descrShort = "+10 Yellow Points\nMakes you one with the Hive";
 	public status[] enchantment = new status[3];
 	public HiveRhythmD() {
@@ -45,10 +45,11 @@ public class HiveRhythmD extends Item{
 				}
 			}
 		}
-		if(aff > 1){
+		if(aff > 0){
 			StateManager.states.push(new NotificationState(game, meep.getGs(), meep.getGs().getStateManager(), "You cannot focus on two Hive Rhythms at once.", 0));
-			s.unEquip(slot, meep, game);
 		}
-		
+		else{
+			super.onEquip(s, slot, meep, game);
+		}
 	}
 }

@@ -715,12 +715,12 @@ public class MenuState extends State {
 						}
 						
 						//Draw info box.
-						Utils.drawDialogueBox(g, window2, "", 18, Color.black, 396, 240, 235, 150, 16, characterChosen);
-						if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
-							int y = 245;
-							for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
-						        g.drawString(line, 410, y += g.getFontMetrics().getHeight());
-						}
+						Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescr(), 18, Color.black, 396, 240, 235, 150, 16, characterChosen);
+	//					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
+	//						int y = 245;
+	//						for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
+	//					        g.drawString(line, 410, y += g.getFontMetrics().getHeight());
+	//					}
 						//Draw extra skill info.
 						if(toggleXtraInfo){
 							Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescrShort(), 16, Color.black, 275, 225 + 36 * skillPointer, 160, 72, 16, true);
@@ -838,7 +838,7 @@ public class MenuState extends State {
 				
 				Utils.drawMenu(g, window, printThis, Color.black, 15, itemPointer, 130, 48, 180, 365, 1, backpackDisplaySize, 
 						backpackLocation, 16, optionChosen && !(useitemChosen || equipChosen));
-				Utils.drawDialogueBox(g, window, "", 16, Color.black, 320, 5, 316, 225, 16, optionChosen && !(useitemChosen || equipChosen));
+				Utils.drawDialogueBox(g, window, "", 16, Color.black, 320, 5, 316, 250, 16, optionChosen && !(useitemChosen || equipChosen));
 				
 				//Draw backpack tabs.
 				String[] packTabs = {"Cons", "Equip", "Misc", "Key"};
@@ -858,21 +858,13 @@ public class MenuState extends State {
 					g.setColor(Color.black);
 					g.drawString(curItem.getName(), 350, 40);
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					//Flavor.
-					if(curItem.getDescr()!=null){
-
-						int y = 50;
-						for (String line : curItem.getDescr().split("\n"))
-					        g.drawString(line, 340, y += g.getFontMetrics().getHeight());
-					}
-					//Effects.
-					if(!curItem.getDescrShort().equals("meep")){
-//						g.drawString(curItem.getDescrShort(), 420, 160);
-						int y = 140;
-						for (String line : curItem.getDescrShort().split("\n"))
-					        g.drawString(line, 420, y += g.getFontMetrics().getHeight());
-					}
 					
+					//Flavor.
+					Utils.drawDialogueBox(g, window2, curItem.getDescr(), 12, Color.black, 340, 50, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
+					
+					//Effects.
+					Utils.drawDialogueBox(g, window2, curItem.getDescrShort(), 12, Color.black, 440, 140, 160, 80, 16, optionChosen && !(useitemChosen || equipChosen));
+
 					//Tags.
 					String tag = "Tags:  ";
 					if(curItem.isConsummable()){
@@ -890,7 +882,7 @@ public class MenuState extends State {
 					if(curItem.isLegendary()){
 						tag = tag + "*LEGENDARY* ";
 					}
-					g.drawString(tag, 340, 220);
+					g.drawString(tag, 340, 250);
 				} else{
 					g.drawString("Lint", 350, 40);
 				}

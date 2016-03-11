@@ -187,66 +187,18 @@ public class Schmuck implements Serializable{
 			StateManager.states.push(new NotificationState(game, meep.getGs(), meep.getGs().getStateManager(), "Your level is too low to use this!", 0));
 		}
 		else{
-			Item replaced = null;
 			if(meep.backpack.containsKey(i)){
 				if(slot < itemSlots){
-					if(items[slot] != null){
-						meep.loot(items[slot],1);
-						replaced = items[slot];
-					}
-					meep.use(i);
-					items[slot] = i;
-					for(int j=0; j<this.statuses.size(); j++){
-						if(statuses.get(j) != null){
-							if(statuses.get(j).perp.name.equals("Item Dummy")){
-								statuses.remove(j);
-								j--;
-							}
-						}					
-					}
-					for(Item it : items){
-						if(it != null){
-							for(status s : it.getEnchantment(this)){
-								this.statuses.add(s);
-							}
-						}
-						
-					}
-					calcBuffs(null);
+					i.onEquip(this, slot, meep, game);
 				}
 			}
-			if(replaced != null){
-				replaced.unEnchantment(this, slot, meep, game);
-			}
-			i.onEquip(this, slot, meep, game);
 		}
 	}
 	
 	public void unEquip(int slot, InventoryManager meep, Game game){
 		if(items[slot] != null){
 			if(slot < itemSlots){
-				if(items[slot] != null){
-					meep.loot(items[slot],1);
-					items[slot].unEnchantment(this, slot, meep, game);
-				}
-				items[slot] = null;
-				for(int j=0; j<this.statuses.size(); j++){
-					if(statuses.get(j) != null){
-						if(statuses.get(j).perp.name.equals("Item Dummy")){
-							statuses.remove(j);
-							j--;
-						}
-					}					
-				}
-				for(Item it : items){
-					if(it != null){
-						for(status s : it.getEnchantment(this)){
-							this.statuses.add(s);
-						}
-					}
-					
-				}
-				calcBuffs(null);
+				items[slot].onUnEquip(this, slot, meep, game);
 			}
 		}
 	}

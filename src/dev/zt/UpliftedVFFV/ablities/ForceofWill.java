@@ -6,17 +6,17 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 
 
-public class ForceWithin extends Skills {
+public class ForceofWill extends Skills {
 
-	public static String name = "Force Within";
-	public static String descr = "User channels a powerful force at\nfoes, dazing all enemies\nLimit : One use per fight.";
+	public static String name = "Force of Will";
+	public static String descr = "User channels a powerful force at foes, overwhelming all enemies\nLimit : One use per fight.";
 	public static String descrShort = "Dazes all foes\nCharges : 1";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 6;	//Physical
 	public static int targetType = 1;	//No Target
-	public ForceWithin(int index) {
+	public ForceofWill(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	

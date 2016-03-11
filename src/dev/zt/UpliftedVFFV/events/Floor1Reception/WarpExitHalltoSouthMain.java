@@ -16,6 +16,6 @@ public class WarpExitHalltoSouthMain extends Event {
 	public void run(){
 		super.getGamestate().getEvents()[308].setOpen(false);
 		super.getGamestate().getEvents()[308].setFrames(6);
-		super.transport("/Worlds/ElevatorsandBackroom/SouthLobbyMain.txt", 17, 7,"Reception");
+		super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 17, 7,"Reception");
 	}
 }

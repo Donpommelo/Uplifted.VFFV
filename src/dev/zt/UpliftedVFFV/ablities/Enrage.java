@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Berzerk;
 public class Enrage extends Skills {
 
 	public static String name = "Enrage";
-	public static String descr = "User enrages target, giving\n them a chance to mistarget.";
+	public static String descr = "User taps into a victim's inner frustration and anger, sending them into a fit of animalistic rage.";
 	public static String descrShort = "Inflicts Berserk on target.";
 	public static int cost = 16;
 	public static int baseAcc = 100; public static int baseCrit = 0;

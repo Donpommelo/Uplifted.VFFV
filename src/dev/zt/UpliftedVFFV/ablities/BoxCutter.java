@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class BoxCutter extends Skills {
 
 	public static String name = "Box Cutter";
-	public static String descr = "A quick and reliable stab with a\nbox-opening blade. This attack\nwill deal consistent damage\nscaling to its user's Level.";
-	public static String descrShort = "Weak single target attack\nthat never misses.";
+	public static String descr = "A quick and reliable stab with a retractable blade. This attack will deal consistent damage scaling to its user's Level.";
+	public static String descrShort = "Weak single target attack that never misses.";
 	public static int cost = 5;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

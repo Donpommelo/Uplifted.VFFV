@@ -10,8 +10,8 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 public class GodsBreath extends Skills {
 
 	public static String name = "Gods Breath";
-	public static String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
-	public static String descrShort = "Protects all allies\nCharges : 1";
+	public static String descr = "User infuses allies with divine aether, rendering them temporarily protected from immediate harm.\nLimit : One use per fight.";
+	public static String descrShort = "Protects all allies Charges : 1";
 	public static int cost = 15;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

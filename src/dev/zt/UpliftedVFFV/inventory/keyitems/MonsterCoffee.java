@@ -14,7 +14,7 @@ public class MonsterCoffee extends Item{
 	static int slot = 3;
 	static int lvlReq = 1;
 	static String descr="";
-	static String descrShort = "A thermos half-filled with coffee and half-filled with\nevil-smelling, black sludge.";
+	static String descrShort = "A thermos half-filled with coffee and half-filled with evil-smelling, black sludge.";
 	public MonsterCoffee() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 	}

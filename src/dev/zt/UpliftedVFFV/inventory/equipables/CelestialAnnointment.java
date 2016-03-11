@@ -33,10 +33,9 @@ public class CelestialAnnointment extends Item{
 		enchantment[1] = new ElemPointsBuff(3, (int)(50*(1+s.getEquipPow())), 50);
 		return enchantment;
 	}
-		
-	public void unEnchantment(Schmuck s, int slot, InventoryManager meep, Game game) {
+	
+	public void onUnEquip(Schmuck s, int slot, InventoryManager meep, Game game) {
 		StateManager.states.push(new NotificationState(game, meep.getGs(), meep.getGs().getStateManager(), "The Celestial Annointment is never washing off.", 0));
-		s.equip(this, slot, meep, game);
 	}
 	
 	public boolean isLegendary(){

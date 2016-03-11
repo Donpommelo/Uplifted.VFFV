@@ -17,7 +17,7 @@ public class RingofGyges extends Item{
 	static int value = 1150;
 	static int slot = 1;
 	static int lvlReq = 38;
-	static String descr="A humble piece of jewelry that prevents visibility from\nbeing a deterrent to acts of treachery.";
+	static String descr="A humble piece of jewelry that prevents visibility from being a deterrent to acts of treachery.";
 	static String descrShort = "Grants Invisibility at low Health\n+12% Evasion Chance";
 	public status[] enchantment = new status[2];
 	public RingofGyges() {

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stunned;
 public class CrushingSlam extends Skills {
 
 	public static String name = "Crushing Slam";
-	public static String descr = "User slams a target with a\nheavy body,dealing damage and\ndazing.";
+	public static String descr = "User slams a target with a heavy body, potentially knocking victims off-balance.";
 	public static String descrShort = "Damages and Dazes.";
 	public static int cost = 8;
 	public static int baseAcc = 80; public static int baseCrit = 0;

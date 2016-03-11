@@ -39,7 +39,7 @@ public class DecorManager {
 	public void renderBelowBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(Decorations[i].renderBelow() == -2){
-				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}
 	}
@@ -50,7 +50,7 @@ public class DecorManager {
 	public void renderBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
-				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}
 	}
@@ -61,7 +61,7 @@ public class DecorManager {
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
 			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){
-				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i],Decorations[i].followCamera());
+				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}
 	}

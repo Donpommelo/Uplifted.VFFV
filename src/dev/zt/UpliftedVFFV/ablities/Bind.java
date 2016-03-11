@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Bind extends Skills {
 
 	public static String name = "Bind";
-	public static String descr = "User holds a foe in place,\nstunning them but\npreoccuping oneself.";
+	public static String descr = "User expends great effort to hold a victim in place. Unless focus is broken, both victim and perpetrator are condemned to extended immobility.";
 	public static String descrShort = "Binds target for several turns.";
 	public static int cost = 15;
 	public static int baseAcc = 100; public static int baseCrit = 0;

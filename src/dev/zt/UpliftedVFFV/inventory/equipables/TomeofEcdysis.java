@@ -17,7 +17,7 @@ public class TomeofEcdysis extends Item{
 	static int value = 600;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="An instructional manual for young insects on the finer points\non shedding one's exoskeleton.";
+	static String descr="An instructional manual for young insects on the finer points on shedding one's exoskeleton.";
 	static String descrShort="Standard Attacks lower Def.";
 	public status[] enchantment = new status[1];
 	public TomeofEcdysis() {

@@ -17,7 +17,7 @@ public class TomeoftheUnknowable extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 45;
-	static String descr="A mysterious book that always seems to be written in a language the reader\nis illiterate in.";
+	static String descr="A mysterious book that always seems to be written in every language the reader is illiterate in.";
 	static String descrShort="+8 Int\nStandard Attacks inflict random debuffs.";
 	public status[] enchantment = new status[2];
 	public TomeoftheUnknowable() {

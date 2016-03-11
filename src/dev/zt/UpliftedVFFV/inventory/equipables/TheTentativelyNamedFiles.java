@@ -19,7 +19,7 @@ public class TheTentativelyNamedFiles extends Item{
 	static int slot = 1;
 	static int lvlReq = 3;
 	static String descr="TEMP.";
-	static String descrShort="+5 Int\nSometimes inflicts Sleep on\nattacking foes.";
+	static String descrShort="+5 Int\nSometimes inflicts Sleep on attacking foes.";
 	public status[] enchantment = new status[2];
 	public TheTentativelyNamedFiles() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -17,7 +17,7 @@ public class BloodwoodsOvercoat extends Item{
 	static int value = 555;
 	static int slot = 1;
 	static int lvlReq = 36;
-	static String descr="Dr. Bloodwood tolerated no stain or blemish on this white\nand sterile coat.";
+	static String descr="Dr. Bloodwood tolerated no stain or blemish on this white and sterile coat.";
 	static String descrShort = "+13 Skl and Int.\nPainfully cures negative statuses.";
 	public status[] enchantment = new status[3];
 	public BloodwoodsOvercoat() {

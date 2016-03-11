@@ -17,7 +17,7 @@ public class BeefUnwell extends Item{
 	static int value = 35;
 	static int slot = 0;
 	static int lvlReq = 12;
-	static String descr="A meaty, beef sandwich. There aren't any obvious defects with\nit, but it makes you feel nauseated nonetheless.";
+	static String descr="A meaty, beef sandwich. There aren't any obvious defects with it, but it makes you feel nauseated nonetheless.";
 	static String descrShort="Inflict Poison on user.\nBuffs user's Pow.";
 	public BeefUnwell() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

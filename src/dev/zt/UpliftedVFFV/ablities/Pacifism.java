@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Disarmed;
 public class Pacifism extends Skills {
 
 	public static String name = "Pacifism";
-	public static String descr = "User disarms a target,\npreventingthem from using standard attacks.";
+	public static String descr = "User instills pacifism in a target, making them lay down their standard attacks.";
 	public static String descrShort = "Inflicts Disarm on target.";
 	public static int cost = 16;
 	public static int baseAcc = 100; public static int baseCrit = 0;

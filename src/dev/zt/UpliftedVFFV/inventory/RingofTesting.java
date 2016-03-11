@@ -16,7 +16,7 @@ public class RingofTesting extends Item{
 	static int value = 322;
 	static int slot = 1;
 	static int lvlReq = -1;
-	static String descr="A ring that grants it bearer the ability to help me test this\ngoddamn game.";
+	static String descr="A ring that grants it bearer the ability to help me test this goddamn game.";
 	static String descrShort="Anything, really.";
 	public status[] enchantment = new status[4];
 	public RingofTesting() {

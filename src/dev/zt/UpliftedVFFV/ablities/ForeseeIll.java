@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.IntrusiveThoughtEffect;
 public class ForeseeIll extends Skills {
 
 	public static String name = "Foresee Ill";
-	public static String descr = "User brings bad tidings to a\ntargeted foe, dealing heavy\ndamage that scales with target's\nIntrusive Thoughts.";
-	public static String descrShort = "Release built up Intrusive\nThoughts.";
+	public static String descr = "User brings bad tidings to a targeted foe, dealing heavy damage that scales with the target's Intrusive Thoughts.";
+	public static String descrShort = "Release built up Intrusive Thoughts.";
 	public static int cost = 4;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

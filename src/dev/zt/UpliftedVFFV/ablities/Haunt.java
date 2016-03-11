@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class Haunt extends Skills {
 
 	public static String name = "Haunt";
-	public static String descr = "User returns from the grave\nto damage and unnerve foes.";
+	public static String descr = "User returns in spirit to spook enemies.";
 	public static String descrShort = "Damages and debuffs all enemies.";
 	public static int cost = 0;
 	public static int baseAcc = 100; public static int baseCrit = 0;

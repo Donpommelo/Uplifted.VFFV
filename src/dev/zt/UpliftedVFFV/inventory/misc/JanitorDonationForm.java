@@ -20,7 +20,7 @@ public class JanitorDonationForm extends Item{
 	static int slot = 2;
 	static int lvlReq = 1;
 	static String descr="TEMP";
-	static String descrShort="Donate 20 Script\nto the Janitor";
+	static String descrShort="Donate 20 Script to the Janitor";
 	public JanitorDonationForm() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

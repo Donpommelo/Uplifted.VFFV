@@ -17,7 +17,7 @@ public class CatchersMask extends Item{
 	static int value = 20;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="Meshed faceguard for protecting the vulnerabilities of the\nowner's face.";
+	static String descr="Meshed faceguard for protecting the vulnerabilities of the owner's face.";
 	static String descrShort="Immunity to Blind";
 	public status[] enchantment = new status[1];
 	public CatchersMask() {

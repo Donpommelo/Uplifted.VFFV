@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Hypochondriac;
 public class Hypochondria extends Skills {
 
 	public static String name = "Hypochondria";
-	public static String descr = "User instills paranoia in the\nmind of foes to make\nillnesses seem worse.";
-	public static String descrShort = "Inflicts Hypochondria.\nNegative statuses applied on target\nincrease in duration.";
+	public static String descr = "User instills paranoia in the mind of foes to make illnesses seem worse.";
+	public static String descrShort = "Inflicts Hypochondria.\nNegative statuses applied on target increase in duration.";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

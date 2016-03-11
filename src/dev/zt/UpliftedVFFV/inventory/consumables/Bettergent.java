@@ -19,7 +19,7 @@ public class Bettergent extends Item{
 	static int slot = 0;
 	static int lvlReq = 1;
 	static String descr="A bottle of better-than-average detergent.";
-	static String descrShort="Cures most negative\nstatuses";
+	static String descrShort="Cures most negative statuses";
 	public Bettergent() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 	}

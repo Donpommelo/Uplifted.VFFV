@@ -17,7 +17,7 @@ public class TomeoftheEnd extends Item{
 	static int value = 980;
 	static int slot = 1;
 	static int lvlReq = 35;
-	static String descr="An evil-looking tome describing the ends of the world and everything\nin between.";
+	static String descr="An evil-looking tome describing the ends of the world and everything in between.";
 	static String descrShort="Standard Attacks sometimes instantly kill.";
 	public status[] enchantment = new status[1];
 	public TomeoftheEnd() {

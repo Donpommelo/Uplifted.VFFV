@@ -17,7 +17,7 @@ public class AetherFeather extends Item{
 	static int value = 16;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A light and airy feather that catches the wind.\nYou would need a lot more of these if you wanted to\nfly far, far away.";
+	static String descr="A light and airy feather that catches the wind. You would need a lot more of these if you wanted to fly far, far away.";
 	static String descrShort="+15% Accuracy\n+5 Yellow Points";
 	public status[] enchantment = new status[2];
 	public AetherFeather() {

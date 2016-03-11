@@ -42,8 +42,8 @@ public class EventManager {
 	}
 		
 	public void renderBelow(Graphics g){
-		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y<(int)(gs.getPlayer().getPlayerY()/32);y++){
-			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)-1;y<(int)(gs.getPlayer().getPlayerY()/32);y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)-1;x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+22;x++){
 				if(x>-1 && x<width && y>-1 && y < height){
 					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() != 1){
 						if(getEvent(x,y).getTest()!=null){
@@ -56,8 +56,8 @@ public class EventManager {
 				}
 			}
 		}
-		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){
-			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+15;y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)-1;x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+22;x++){
 				if(x>-1 && x<width && y>-1 && y < height){
 					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() == -1){
 						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));
@@ -68,8 +68,8 @@ public class EventManager {
 	}
 	
 	public void renderAbove(Graphics g){
-		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+14;y++){
-			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+		for(int y = (int)(gs.getPlayer().getPlayerY()/32);y <(int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)+15;y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)-1;x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+22;x++){
 				if(x>-1 && x<width && y>-1 && y < height){
 					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() != -1){
 						if(getEvent(x,y).getTest()!=null){
@@ -83,8 +83,8 @@ public class EventManager {
 				}
 			}
 		}
-		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH);y<(int)(gs.getPlayer().getPlayerY()/32);y++){
-			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH);x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+21;x++){
+		for(int y = (int)(game.getGameCamera().getyOffset()/Tile.TILEWIDTH)-1;y<(int)(gs.getPlayer().getPlayerY()/32);y++){
+			for(int x = (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)-1;x < (int)(game.getGameCamera().getxOffset()/Tile.TILEWIDTH)+22;x++){
 				if(x>-1 && x<width && y>-1 && y < height){
 					if(events[x][y] != 0 && getEvent(x,y).drawn() && getEvent(x, y).renderBelow() == 1){
 						getEvent(x, y).render(g, (int)(x*32 - game.getGameCamera().getxOffset()),(int)(y*32 - game.getGameCamera().getyOffset()));

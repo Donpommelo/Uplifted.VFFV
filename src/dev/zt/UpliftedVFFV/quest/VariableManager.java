@@ -31,7 +31,9 @@ public class VariableManager {
  20: Glimpses of the End used
  21: Global Level Modifier
  22: Levels Drained in Wetworks Dungeon
- 
+ 23: Aquarium Quest Variable: Location of Strikebreaker
+ 24: 
+ 25: 
  */
 	
 	public VariableManager(Game g){

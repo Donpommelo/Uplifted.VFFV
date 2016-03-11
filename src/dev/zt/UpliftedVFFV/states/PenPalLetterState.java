@@ -33,6 +33,8 @@ public class PenPalLetterState extends State {
 	//Pointer for menu that pops up when letter is ready to send.
 	private int sendPointer, letterSelected,pointerLocation;
 	private int maxLetters = 14;
+	private int maxHeight = 800;
+	int y;
 	//Variable for displaying flashing cursor.
 	private int flashCounter;
 	private boolean flash;
@@ -56,6 +58,7 @@ public class PenPalLetterState extends State {
 		pointerLocation = 0;
 		flashCounter = 0;
 		flash = false;
+		y = 0;
 	}
 
 	public void tick() {
@@ -153,6 +156,7 @@ public class PenPalLetterState extends State {
 					if(!Letter.received.isEmpty()){
 						reply = Letter.received.get(sendPointer).getLetter();
 						mode = 3;
+						y = 0;
 					}
 					else{
 						game.getKeyManager().setTypeMode(true);
@@ -193,6 +197,16 @@ public class PenPalLetterState extends State {
 					mode = 0;
 					game.getKeyManager().disable(delayNext);
 				}
+				if(game.getKeyManager().down){
+					if(y+maxHeight>416){
+						y-=3;
+					}
+				}
+				if(game.getKeyManager().up){
+					if(y<0){
+						y+=3;
+					}
+				}
 				break;
 			}
 		}
@@ -230,7 +244,7 @@ public class PenPalLetterState extends State {
 			}
 			break;
 		case 3:
-			Utils.drawDialogueBox(g, window, reply, 18, Color.black, 125, 5, 400, 400, 32, true);
+			Utils.drawDialogueBox(g, window, reply, 18, Color.black, 125, 5+y, 400, 1000, 32, true);
 			break;
 		}
 	}

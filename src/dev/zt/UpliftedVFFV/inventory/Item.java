@@ -33,6 +33,9 @@ public class Item implements Comparable<Item>, Serializable{
 	public int exp;
 	public Schmuck summon;
 	
+	//
+	public int charges;
+	
 	public Item(int id,String name,Boolean menu, Boolean battle, Boolean consume, Boolean target, String description,String descrShort,
 			int value, int slot, int lvlReq){
 		this.Id=id;
@@ -49,6 +52,7 @@ public class Item implements Comparable<Item>, Serializable{
 		
 		this.exp = 0;
 		this.summon = null;
+		this.charges = 0;
 	}	
 
 	//ran when an item is used. Every item will override this method with whatever effect it has,
@@ -83,10 +87,6 @@ public class Item implements Comparable<Item>, Serializable{
 
 	public void setValue(int value) {
 		this.value = value;
-	}
-
-	public void setJanitorText(String janitorText) {
-		this.janitorText = janitorText;
 	}
 
 	public void setUsedfromMenu(Boolean usedfromMenu) {
@@ -164,7 +164,58 @@ public class Item implements Comparable<Item>, Serializable{
 	}
 		
 	public void onEquip(Schmuck s, int slot, InventoryManager meep, Game game) {
+		Item replaced = null;
+		if(s.items[slot] != null){
+			meep.loot(s.items[slot],1);
+			replaced = s.items[slot];
+		}
+		if(replaced != null){
+			replaced.onUnEquip(s, slot, meep, game);
+		}
+		meep.use(this);
+		s.items[slot] = this;
+		for(int j=0; j < s.statuses.size(); j++){
+			if(s.statuses.get(j) != null){
+				if(s.statuses.get(j).perp.name.equals("Item Dummy")){
+					s.statuses.remove(j);
+					j--;
+				}
+			}					
+		}
+		for(Item it : s.items){
+			if(it != null){
+				for(status st : it.getEnchantment(s)){
+					s.statuses.add(st);
+				}
+			}
+			
+		}
 		
+		s.calcBuffs(null);
+	}
+	
+	public void onUnEquip(Schmuck s, int slot, InventoryManager meep, Game game) {
+		Item i = s.items[slot];
+		meep.loot(i,1);
+		s.items[slot] = null;
+		i.unEnchantment(s, slot, meep, game);
+		for(int j=0; j < s.statuses.size(); j++){
+			if(s.statuses.get(j) != null){
+				if(s.statuses.get(j).perp.name.equals("Item Dummy")){
+					s.statuses.remove(j);
+					j--;
+				}
+			}					
+		}
+		for(Item it : s.items){
+			if(it != null){
+				for(status st : it.getEnchantment(s)){
+					s.statuses.add(st);
+				}
+			}
+			
+		}
+		s.calcBuffs(null);
 	}
 
 	public void TOQChange(Action a, BattleState bs){
@@ -213,6 +264,15 @@ public class Item implements Comparable<Item>, Serializable{
 		
 	}
 	
+	//Used by items with charges like bottle.
+	public int getCharges() {
+		return charges;
+	}
+
+	public void setCharges(int charges) {
+		this.charges = charges;
+	}
+
 	public String getJanitorText(Item i){
 		int rand = (int)(Math.random()*7);
 		String text = "";

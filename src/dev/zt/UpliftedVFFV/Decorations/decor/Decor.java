@@ -131,13 +131,8 @@ public class Decor {
 		
 	}
 	
-	public void render(Graphics g, Game game, int x, int y, boolean follow) {
-		if(follow){
-			g.drawImage(tex, x,y, tex.getWidth(), tex.getHeight(), null);
-		}
-		else{
-			g.drawImage(tex,(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()),(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()), tex.getWidth(), tex.getHeight(), null);
-		}
+	public void render(Graphics g, Game game, int x, int y) {
+		g.drawImage(tex,(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()),(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()), tex.getWidth(), tex.getHeight(), null);
 	}
 
 	//Tex is the image that the Decoration is represented by.
@@ -165,9 +160,5 @@ public class Decor {
 	public double parallaxMultY(){
 		return 1;
 	}
-	
-	//Returns whether decoration moves when the player moves or not. Default is yes.
-	public boolean followCamera(){
-		return false;
-	}
+
 }

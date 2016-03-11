@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.statusEffects.Invuln;
 public class SafeRoom extends Skills {
 
 	public static String name = "Safe Room";
-	public static String descr = "User banishes a target into an\n impervious box that both\nprotects and subdues the target.";
+	public static String descr = "User banishes a target into an impervious box that both protects and subdues the target.";
 	public static String descrShort = "Banish and protect target.";
-	public static int cost = 5;
+	public static int cost = 11;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 6;	//Physical

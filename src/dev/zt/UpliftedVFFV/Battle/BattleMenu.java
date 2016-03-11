@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.UseItem;
 import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 //import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -27,12 +29,13 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CatoWantStatus;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class BattleMenu{
 	
 	private AudioManager audio;
-	
+	private BufferedImage window;
 	public int currentlyTargeted;		//Schmuck being targeted for attack, skill use or item use
 	public int actionSelected;			//Action chosen 0:Attack | 1: Skill | 2: Item | 3: Wait | 4: Run
 		
@@ -93,7 +96,7 @@ public class BattleMenu{
 		actionSelected=0;
 		phase = 1;
 		audio = game.getAudiomanager();
-		
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 		//If the Schmuck chose to Wait in the Planning phase of Battle Processor.
 		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally" && bs.bp.phase == 2){
 			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
@@ -575,18 +578,7 @@ public class BattleMenu{
 					}
 					
 					//Short descriptions are also visible to the side.
-					g.setColor(Color.white);
-					g.fillRect(menux + 120, menuy - 35, 125, 75);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(Color.black);
-					Stroke oldStroke = ((Graphics2D) g).getStroke();
-					((Graphics2D) g).setStroke(new BasicStroke(3));
-					g.drawRect(menux + 120, menuy - 35, 125, 75);
-					((Graphics2D) g).setStroke(oldStroke);
-					int y = menuy - 25;
-					for (String line : skills.get(itemSelected).getDescrShort().split("\n")){
-						 g.drawString(line, menux + 125, y += g.getFontMetrics().getHeight());
-					}			       
+					Utils.drawDialogueBox(g,window, skills.get(itemSelected).getDescrShort(), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
 				}
 				if(backpackLocation!=0){
 					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);
@@ -621,14 +613,9 @@ public class BattleMenu{
 						g.drawString(itemDisplay[i].getName() + "  x" + gs.inventorymanager.backpack.get(itemDisplay[i]), menux + 3, menuy - 10 + 25 * (itemnum));
 						itemnum++;
 					}	
-					g.setColor(Color.white);
-					g.fillRect(menux + 120, menuy - 35, 125, 75);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(Color.black);;
-					int y = menuy - 25;
-					for (String line : itemDisplay[itemSelected].getDescrShort().split("\n")){
-						 g.drawString(line, menux + 125, y += g.getFontMetrics().getHeight());
-					}
+					
+					Utils.drawDialogueBox(g,window, itemDisplay[itemSelected].getDescrShort(), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
+
 				}
 				if(backpackLocation!=0){
 					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);

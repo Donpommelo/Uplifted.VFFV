@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class FireMagnum extends Skills {
 
 	public static String name = "Fire Magnum";
-	public static String descr = "Remember that gun you had?\nWell, you can shoot someone with it.\nC'mon, go ahead! Try it!\nYou'll need bullets though.";
-	public static String descrShort = "Shoot someone\nUses up Metal Rations.";
+	public static String descr = "Remember that gun you had?\nWell, you can shoot someone with it.\nC'mon, go ahead! Try it! It's fun!.";
+	public static String descrShort = "Shoot someone.\nUses up Metal Rations.";
 	public static int cost = 0;
 	public static int baseAcc = 100; public static int baseCrit = 10;
 	public static boolean canMiss = true; public static boolean canCrit = true;

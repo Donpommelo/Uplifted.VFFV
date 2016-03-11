@@ -18,7 +18,7 @@ public class ZenBand extends Item{
 	static int slot = 1;
 	static int lvlReq = 30;
 	static String descr = "A hairband for zen practitioners that still have hair.";
-	static String descrShort="+5 Hp Regen\n+5 Def\nYour channeling requires 30%\nmore damage to break.";
+	static String descrShort="+5 Hp Regen\n+5 Def\nYour channeling requires 30% more damage to break.";
 	public status[] enchantment = new status[3];
 	public ZenBand() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

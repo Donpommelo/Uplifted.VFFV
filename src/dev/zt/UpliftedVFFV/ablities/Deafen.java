@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 public class Deafen extends Skills {
 
 	public static String name = "Deafen";
-	public static String descr = "User emits loud noise\nsilencing all characters.";
-	public static String descrShort = "Silences all characters.";
+	public static String descr = "User emits loud noise, overloading the auditory abilities of enemies.";
+	public static String descrShort = "Damage all enemies.\nSilence for rest of round.";
 	public static int cost = 25;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = false;

@@ -17,7 +17,7 @@ public class StatRingAnt extends Item{
 	static int value = 13;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A ring adjorned by a metal ant.\nAnts are reknown for their strength and are capable of lifting 100 times their body weight.\nExperts agree that number would be even more if you rounded first.";
+	static String descr="A ring adjorned by a metal ant. Ants are reknown for their strength and are capable of lifting 100 times their body weight. Experts agree that number would be even more if they had rounded first.";
 	static String descrShort="+15% Pow";
 	public status[] enchantment = new status[1];
 	public StatRingAnt() {

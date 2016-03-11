@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class TreskillingYellow extends Skills {
 
 	public static String name = "Treskilling Yellow";
-	public static String descr = "User strikes foe with a bolt.\nof aether that tends to gain\ninitiative.";
-	public static String descrShort = "Deals Yellow damage and\nhits first.";
-	public static int cost = 5;
+	public static String descr = "User strikes foe with a bolt of aether that tends to gain initiative.";
+	public static String descrShort = "Deals Yellow damage and hits first.";
+	public static int cost = 15;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 3;	//Yellow

@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Purified;
 public class ShedFlesh extends Skills {
 
 	public static String name = "Shed Flesh";
-	public static String descr = "User sheds all earthly bounds and\n becomes unaffected by all status.";
+	public static String descr = "User sheds all earthly bounds and becomes unaffected by all status.";
 	public static String descrShort = "Purifies user.\nCharges : 3";
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;

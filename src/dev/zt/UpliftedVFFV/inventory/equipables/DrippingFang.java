@@ -19,8 +19,8 @@ public class DrippingFang extends Item{
 	static int value = 70;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="white, serrated tooth, dripping with\ninfectious hunger.";
-	static String descrShort="Inflict Delicious on attack.\nRegain Hp from damaging Delicious\nfoes";
+	static String descr="white, serrated tooth, dripping with infectious hunger.";
+	static String descrShort="Inflict Delicious on attack.\nRegain Hp from damaging Delicious foes";
 	public status[] enchantment = new status[1];
 	public DrippingFang() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.WindUpPunchEffect;
 public class WindUpPunch extends Skills {
 
 	public static String name = "Wind-Up Punch";
-	public static String descr = "Winds up and unleashes a powerful blow\nat the end of the round./Interrupted by damage./";
-	public static String descrShort = "Powerful, interruptable\nattack at end of round.";
+	public static String descr = "Winds up and unleashes a powerful blow at the end of the round.\nInterrupted by damage.";
+	public static String descrShort = "Powerful, interruptable attack at end of round.";
 	public static int cost = 11;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

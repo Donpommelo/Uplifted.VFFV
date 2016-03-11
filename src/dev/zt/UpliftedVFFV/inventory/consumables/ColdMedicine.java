@@ -16,7 +16,7 @@ public class ColdMedicine extends Item{
 	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A bottle of medicine for the purpose of curing\nthe common cold.";
+	static String descr="A bottle of medicine for the purpose of curing the common cold.";
 	static String descrShort="Cures Freeze.";
 	public ColdMedicine() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

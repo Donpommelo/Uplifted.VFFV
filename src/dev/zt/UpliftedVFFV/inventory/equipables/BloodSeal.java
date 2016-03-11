@@ -18,7 +18,7 @@ public class BloodSeal extends Item{
 	static int value = 3;		//Intentionally low for muh lore.
 	static int slot = 1;
 	static int lvlReq = 48;
-	static String descr="This isn't the most sinister contract you've signed before in\nyour employment,but it's definitely up there.";
+	static String descr="This isn't the most sinister contract you've signed before in your employment,but it's definitely up there.";
 	static String descrShort = "+15% Pow, Def and Spd\n+8 Hp and Mp Regen.\nKills wielder on 9th round of combat.";
 	public status[] enchantment = new status[6];
 	public BloodSeal() {

@@ -17,7 +17,7 @@ public class SimpleMind extends Item{
 	static int slot = 1;
 	static int lvlReq = 1;
 	static String descr="Thinking. Bad.";
-	static String descrShort="User can only have 1 non-permanent\nstatus at once.";
+	static String descrShort="User can only have 1 non-permanent status at once.";
 	public status[] enchantment = new status[1];
 	public SimpleMind() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);		

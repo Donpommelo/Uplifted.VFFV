@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.FadingStrikeEffect;
 public class FadingStrike extends Skills {
 
 	public static String name = "Fading Strike";
-	public static String descr = "Fade into the shadows\nto strike at a later time.";
+	public static String descr = "User fades into the shadows with the promise of later violence.";
 	public static String descrShort = "Powerful, interruptable attack.\nUser becomes briefly Untargetable.";
 	public static int cost = 18;
 	public static int baseAcc = 100; public static int baseCrit = 0;

@@ -49,7 +49,12 @@ public class ElevatorChoiceBranchState extends ChoiceBranchState{
 			//Draw elevator panel.
 			g.drawImage(panel, 440, 16, 200, 400, null);
 			//Draw Cursor.
-			g.drawImage(cursor, 502, 42 + 32 * (firstchoice + choicelocation), 25, 25, null);
+			if(firstchoice + choicelocation < 11){
+				g.drawImage(cursor, 502, 42 + 32 * (firstchoice + choicelocation), 25, 25, null);
+			}
+			else{
+				g.drawImage(cursor, 590, 42 + 32 * (firstchoice + choicelocation - 3), 25, 25, null);
+			}
 			//Draw Text.
 			Utils.drawDialogueBox(g, window, num[firstchoice + choicelocation], 15, Color.white, 440, 0, 200, 16, 16, true);
 		}

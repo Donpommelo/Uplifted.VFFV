@@ -15,7 +15,8 @@ public class WarpSElevatortoBackroom extends Event {
 	}
 	
 	public void run(){
-		
+		super.getGamestate().getEvents()[1].setOpen(false);
+		super.getGamestate().getEvents()[1].setFrames(6);
 		if(!this.isSelfswitch1() && super.getSwitch(2)){
 			super.transport("/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt", 10, 6,"Home Sweet Home");
 			super.setVar(2, 0);

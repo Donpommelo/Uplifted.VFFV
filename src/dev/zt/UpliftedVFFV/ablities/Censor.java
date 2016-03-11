@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 public class Censor extends Skills {
 
 	public static String name = "Censor";
-	public static String descr = "User harshly Censors a foe, causing\nthem to be unable to cast\nspecial abilities.";
+	public static String descr = "User harshly suppresses a victim, disallowing all personalized expressions of self.";
 	public static String descrShort = "Silences target.";
 	public static int cost = 10;
 	public static int baseAcc = 100; public static int baseCrit = 0;

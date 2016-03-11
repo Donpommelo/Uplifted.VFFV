@@ -16,7 +16,7 @@ public class SimmerResent extends Item{
 	static int value = 400;
 	static int slot = 1;
 	static int lvlReq = 17;
-	static String descr="Resentment is like swallowing poison and hoping your enemy\nwill suffer; it demonstrates commitment.";
+	static String descr="Resentment is like swallowing poison and hoping your enemy will suffer; it demonstrates commitment.";
 	static String descrShort = "Helps you hold a grudge.";
 	public status[] enchantment = new status[1];
 	public SimmerResent() {

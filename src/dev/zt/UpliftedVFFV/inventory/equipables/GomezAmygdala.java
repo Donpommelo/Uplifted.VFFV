@@ -17,7 +17,7 @@ public class GomezAmygdala extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="A pulsing organ that once belonged to Gomez who asked you to bring him all\nthe parts of his brain, only to insist that you keep this one.";
+	static String descr="A pulsing organ that once belonged to Gomez who asked you to bring him all the parts of his brain, only to insist that you keep this one.";
 	static String descrShort="+11 Int\nStandard Atack scales to Int";
 	public status[] enchantment = new status[2];
 	public GomezAmygdala() {

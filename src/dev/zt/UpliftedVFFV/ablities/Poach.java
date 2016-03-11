@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Poach extends Skills {
 
 	public static String name = "Poach";
-	public static String descr = "User poaches target,\ndamaging and preventing item use.";
+	public static String descr = "User makes a target more likely to be a member of an endangdered species. User also poaches any attempted item-use while he or she is at it.";
 	public static String descrShort = "Deals damage and prevents item usage.";
 	public static int cost = 1;
 	public static int baseAcc = 80; public static int baseCrit = 0;

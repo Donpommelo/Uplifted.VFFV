@@ -8,9 +8,9 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.SindhDakStatus;
 public class DullRose extends Skills {
 
 	public static String name = "Dull Rose";
-	public static String descr = "User grants a target a\nthorny shield that reduces\ndamage while hurting\noffending enemies.";
+	public static String descr = "User grants a target a living shield that disincentivize attack with rows of painful thorns.";
 	public static String descrShort = "Gives damage reduction and reflection.";
-	public static int cost = 38;
+	public static int cost = 31;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 2;	//Green

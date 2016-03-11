@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 public class Fade extends Skills {
 
 	public static String name = "Fade";
-	public static String descr = "User fades from existance\n becomming untargetable.";
+	public static String descr = "User fades from existance becomming untargetable.";
 	public static String descrShort = "User becomes untargetable.";
 	public static int cost = 8;
 	public static int baseAcc = 100; public static int baseCrit = 0;

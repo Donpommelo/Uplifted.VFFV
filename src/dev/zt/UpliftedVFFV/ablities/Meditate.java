@@ -11,8 +11,8 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.MeditateEffect;
 public class Meditate extends Skills {
 
 	public static String name = "Meditate";
-	public static String descr = "User focuses chi\n and regains Hp if uninterrupted.";
-	public static String descrShort = "Delayed, interruptable\nself-healing.";
+	public static String descr = "User focuses chi contemplates the universe. If left unchecked, this ability will regenerate large amounts of health.";
+	public static String descrShort = "Delayed, interruptable self-healing.";
 	public static int cost = 11;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

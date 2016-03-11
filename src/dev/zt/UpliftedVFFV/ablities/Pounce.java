@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Pounce extends Skills {
 
 	public static String name = "Pounce";
-	public static String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
+	public static String descr = "User takes initiave and pounces on targets before they can react.";
 	public static String descrShort = "Deals damage and hits first.";
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;

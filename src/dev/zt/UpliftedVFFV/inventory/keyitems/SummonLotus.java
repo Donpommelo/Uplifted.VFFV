@@ -13,7 +13,7 @@ public class SummonLotus extends Item{
 	static int value = 999;
 	static int slot = 3;
 	static int lvlReq = 1;
-	static String descr="An artifact used in communicating with spirits. It seems to only bloom\nwhen particularly close to the sun.";
+	static String descr="An artifact used in communicating with spirits. It seems to only bloom when particularly close to the sun.";
 	static String descrShort = "Summon spirit allies.";
 		
 	public SummonLotus() {

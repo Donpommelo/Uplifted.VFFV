@@ -17,7 +17,7 @@ public class CrawlingFortess extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="A hulking metal suit complete with several fixtures where cannons can be mounted.\nMore closely resembles a fort for the dimunitive than a suit.";
+	static String descr="A hulking metal suit complete with several fixtures where cannons can be mounted. More closely resembles a fort for the dimunitive than a suit.";
 	static String descrShort="User is Silenced\nUser is Disarmed\n-50% Pow\nYour 'Cannons' do not Cooldown.";
 	public status[] enchantment = new status[2];
 	public CrawlingFortess() {

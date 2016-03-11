@@ -16,7 +16,7 @@ public class CatalogueofWant extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="A colorful, attention-grabbing magazine filled with reasonably\npriced offerings you never knew you wanted.";
+	static String descr="A colorful, attention-grabbing magazine filled with reasonably priced offerings you never knew you wanted.";
 	static String descrShort = "Cast spells with Hp when low on meter.";
 	public status[] enchantment = new status[1];
 	public CatalogueofWant() {

@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Intimidated;
 public class ScaryFace extends Skills {
 
 	public static String name = "Scary Face";
-	public static String descr = "User flashes an intimidating face,\n making them likely to flinch.";
+	public static String descr = "User flashes an fearsome face, making victims more likely to flinch at pain.";
 	public static String descrShort = "Intimidates target.";
 	public static int cost = 7;
 	public static int baseAcc = 100; public static int baseCrit = 0;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Stall extends Skills {
 
 	public static String name = "Stall";
-	public static String descr = "User stalls, doing nothing\nbut wasting time.";
+	public static String descr = "User stalls, doing nothing but wasting time.";
 	public static String descrShort = "Add 3 null actions to Action Queue.";
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;

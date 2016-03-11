@@ -17,7 +17,7 @@ public class HirtzCompass extends Item{
 	static int value = 350;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="An outdated piece of medical equipment.\nHelps you find out where it Hirtz.";
+	static String descr="An outdated piece of medical equipment. Helps you find out where it Hirtz.";
 	static String descrShort="+15% Crit Chance\nOn Crit: Lower enemy Crit Resistance.";
 	public status[] enchantment = new status[2];
 	public HirtzCompass() {

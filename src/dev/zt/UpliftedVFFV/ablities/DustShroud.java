@@ -10,8 +10,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Invisible;
 public class DustShroud extends Skills {
 
 	public static String name = "Dust Shroud";
-	public static String descr = "User summons a blinding cloud that renders\nall teamates untargetable.";
-	public static String descrShort = "Makes allies untargetable\nCharges : 1";
+	public static String descr = "User summons a blinding cloud of sediment that obscures allies.";
+	public static String descrShort = "Makes allies untargetable.\nCharges : 1";
 	public static int cost = 10;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

@@ -17,7 +17,7 @@ public class StatRingFirefly extends Item{
 	static int value = 13;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A ring adjorned by a metal firefly.\nFireflies are ";
+	static String descr="A ring adjorned by a metal firefly. Fireflies are ";
 	static String descrShort="+15% Int";
 	public status[] enchantment = new status[1];
 	public StatRingFirefly() {

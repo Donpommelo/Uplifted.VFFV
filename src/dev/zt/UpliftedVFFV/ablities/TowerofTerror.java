@@ -10,7 +10,7 @@ public class TowerofTerror extends Skills {
 	public static String name = "Tower of Terror";
 	public static String descr = "TEMP";
 	public static String descrShort = "Damages and inflicts Fear.";
-	public static int cost = 25;
+	public static int cost = 35;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 0;	//Red

@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 public class PennyBlue extends Skills {
 
 	public static String name = "Penny Blue";
-	public static String descr = "User grants a target a\nBlue-aligned shield that\nregenerates health and\nbolsters Red resistance.";
+	public static String descr = "User grants a target a watery aura that heals upon appearence and gradually restores Motivation.";
 	public static String descrShort = "Heals and boosts Mp regeneration.";
-	public static int cost = 15;
+	public static int cost = 19;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;
 	public static int element = 1;	//Blue

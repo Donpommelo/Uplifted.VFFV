@@ -16,7 +16,7 @@ public class Conduit extends Item{
 	static int value = 235;
 	static int slot = 1;
 	static int lvlReq = 5;
-	static String descr="An enchanted trinket that bolsters its\nwielder's ability to focus.";
+	static String descr="An enchanted trinket that bolsters its wielder's ability to focus.";
 	static String descrShort="-30% Mp Costs";
 	public status[] enchantment = new status[1];
 	public Conduit() {

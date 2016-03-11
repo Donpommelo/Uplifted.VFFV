@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class Coalesce extends Skills {
 
 	public static String name = "Coalesce";
-	public static String descr = "User focuses own being/buffing random stats./";
-	public static String descrShort = "Buffs two random stats./";
+	public static String descr = "User meditates and focuses on oneself, finding unexpected benefits in the corner of their mind.";
+	public static String descrShort = "Buffs two random stats.";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;

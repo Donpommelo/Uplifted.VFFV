@@ -10,8 +10,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class CleansingSpray extends Skills {
 
 	public static String name = "Cleansing Spray";
-	public static String descr = "User douses a target in/caustic detergent./";
-	public static String descrShort = "Silences target.";
+	public static String descr = "User douses a victim in caustic detergent, cleaning the target of impurities and the ground of the target.";
+	public static String descrShort = "Damages target and removes statuses.";
 	public static int cost = 28;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = false;

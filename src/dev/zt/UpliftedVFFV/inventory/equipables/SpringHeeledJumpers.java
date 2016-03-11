@@ -16,8 +16,8 @@ public class SpringHeeledJumpers extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="A pair of fashionable boots with spring-loaded heels.\nHandy for getting the jump.";
-	static String descrShort="On Wait: Temporarily shift Def\nto Pow.";
+	static String descr="A pair of fashionable boots with spring-loaded heels. Handy for getting the jump.";
+	static String descrShort="On Wait: Temporarily shift Def to Pow.";
 	public status[] enchantment = new status[1];
 	public SpringHeeledJumpers() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

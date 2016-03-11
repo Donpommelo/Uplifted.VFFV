@@ -16,7 +16,7 @@ public class GloveoftheMaker extends Item{
 	static int value = 555;
 	static int slot = 1;
 	static int lvlReq = 36;
-	static String descr="Dr. Bloodwood didn't just hate getting his hands dirty.\nHe hated getting his gloves dirty too.";
+	static String descr="Dr. Bloodwood didn't just hate getting his hands dirty. He hated getting his gloves dirty too.";
 	static String descrShort = "+30% Effectiveness with Combat Items.\n+10% Equipment Power.";
 	public status[] enchantment = new status[2];
 	public GloveoftheMaker() {

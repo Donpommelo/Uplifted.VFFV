@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 public class BrainScrambler extends Skills {
 
 	public static String name = "Brain Scrambler";
-	public static String descr = "User batters a foe's skull/making them a little less intellectually/inclined./";
+	public static String descr = "User batters a victim's skull, lowering their chances of bringing great innovations into the world.";
 	public static String descrShort = "Damage and lower Purple Alignment.";
 	public static int cost = 14;
 	public static int baseAcc = 100; public static int baseCrit = 0;

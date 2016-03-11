@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.KillSwitchStatus;
 public class KillSelf extends Skills {
 
 	public static String name = "Kill Self";
-	public static String descr = "User incapacitates self\nbut will be revived 3 turns later.";
+	public static String descr = "User retires.";
 	public static String descrShort = "Kills user.\nRevives 3 turns later.";
 	public static int cost = 1;
 	public static int baseAcc = 100; public static int baseCrit = 0;

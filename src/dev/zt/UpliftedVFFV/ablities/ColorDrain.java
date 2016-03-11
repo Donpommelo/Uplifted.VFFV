@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuffMult;
 public class ColorDrain extends Skills {
 
 	public static String name = "Color Drain";
-	public static String descr = "User sucks the elemental alignments\nfrom a targeted foe, dealing damage\n and restoring health.";
-	public static String descrShort = "Lowers elemental alignment and\ndrains Hp if targeting an enemy.";
+	public static String descr = "User sucks the color from a target. Color Draining is an excruciating process, although this pain can be assuaged through relaxation and the proper mindset.";
+	public static String descrShort = "Lowers elemental alignment and damages if targeting an enemy.";
 	public static int cost = 30;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = false;

@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class FlexileStrike extends Skills {
 
 	public static String name = "Flexile Strike";
-	public static String descr = "User attacks multiple enemy\nwith a flexible appendage.";
-	public static String descrShort = "Damages two random\nenemies.";
+	public static String descr = "User utilizes a flexible appendage to strike foes multiple times.";
+	public static String descrShort = "Damages two random enemies.";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;

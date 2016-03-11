@@ -12,8 +12,12 @@ public class FilterUnderwater extends Decor{
 		return 1;
 	}
 	
-	public boolean followCamera(){
-		return true;
+	public double parallaxMultX(){
+		return 0;
+	}
+	
+	public double parallaxMultY(){
+		return 0;
 	}
 
 }

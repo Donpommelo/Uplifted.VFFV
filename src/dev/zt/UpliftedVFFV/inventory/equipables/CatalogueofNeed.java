@@ -16,7 +16,7 @@ public class CatalogueofNeed extends Item{
 	static int value = 700;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="A rather dry piece of reading detailing the biological\nneeds of various beings to maintain stable internal\nconditions.";
+	static String descr="A rather dry piece of reading detailing the biological needs of various beings to maintain stable internal conditions.";
 	static String descrShort = "Uses meter to prevent lethal damage.";
 	public status[] enchantment = new status[1];
 	public CatalogueofNeed() {

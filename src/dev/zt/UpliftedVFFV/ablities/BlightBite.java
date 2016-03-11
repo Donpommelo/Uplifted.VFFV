@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 public class BlightBite extends Skills {
 
 	public static String name = "Blight Bite";
-	public static String descr = "User refrains from brushing\nhis/her teeth and bites an\nenemy.";
+	public static String descr = "User attacks victim with filthy and sharp teeth. Those who practice poor personal hygiene may be trying to give their Blight Bite a higher chance of inflicting Poison.";
 	public static String descrShort = "Damages and poisons target.";
 	public static int cost = 5;
 	public static int baseAcc = 90; public static int baseCrit = 0;

@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.SindhDakStatus;
 public class SindhDak extends Skills {
 
 	public static String name = "Sindh Dak";
-	public static String descr = "User grants a target a\nbuff that causes\ntheir next targeted ability\nto affect whole team.";
-	public static String descrShort = "Target's next ability\nsplashes.";
+	public static String descr = "User grants a target a buff that causes their next targeted ability to affect whole team.";
+	public static String descrShort = "Target's next ability splashes.";
 	public static int cost = 38;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;

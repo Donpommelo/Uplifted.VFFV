@@ -16,8 +16,8 @@ public class StatScrubber extends Item{
 	static int value = 25;
 	static int slot = 0;
 	static int lvlReq = 12;
-	static String descr="Basalt exfoliating device for removing\ndead skin and stat debuffs.";
-	static String descrShort="Temporarily set primary stats\nto base values.";
+	static String descr="Basalt exfoliating device for removing dead skin and stat debuffs.";
+	static String descrShort="Temporarily set primary stats to base values.";
 	public StatScrubber() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

@@ -17,7 +17,7 @@ public class EternalIce extends Item{
 	static int value = 550;
 	static int slot = 1;
 	static int lvlReq = 19;
-	static String descr="A chunk of ice, frozen at the beginning of time and showing\nno signs of thawing since.";
+	static String descr="A chunk of ice, frozen at the beginning of time and showing no signs of thawing since.";
 	static String descrShort="+17 Hp.\nConverts Blue Alignment to Def";
 	public status[] enchantment = new status[2];
 	public EternalIce() {

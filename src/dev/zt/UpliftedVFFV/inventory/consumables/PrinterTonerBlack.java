@@ -16,7 +16,7 @@ public class PrinterTonerBlack extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A cartridge of black powder used by laser printers.\nCan make any surface remarkably absorbent of light.";
+	static String descr="A cartridge of black powder used by laser printers. Can make any surface remarkably absorbent of light.";
 	static String descrShort="Boosts ??? Points.";
 	public PrinterTonerBlack() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

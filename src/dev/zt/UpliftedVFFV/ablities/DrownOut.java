@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DrownOut extends Skills {
 
 	public static String name = "Drown Out";
-	public static String descr = "User floods a foe with terrible\nnoise.";
+	public static String descr = "User floods a foe's senses with terrible noise. This attack deals Blue damage and is too cacophonous to be Silenced.";
 	public static String descrShort = "Deals Blue damage.\nCan be used when Silenced";
 	public static int cost = 5;
 	public static int baseAcc = 100; public static int baseCrit = 0;

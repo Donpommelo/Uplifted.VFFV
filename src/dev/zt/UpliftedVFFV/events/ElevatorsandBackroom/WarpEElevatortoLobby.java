@@ -18,64 +18,64 @@ public class WarpEElevatortoLobby extends Event {
 	}
 	
 	public void run(){
-		if(super.getGamestate().getEvents()[52].isSelfswitch1()){
-			switch(this.getstage()){
-			case 0: 				
-				if(!this.isOpen()){
-					this.setOpen(true);
-				}
-				else{
-					this.setOpen(false);
-				}
-				KeyManager.setCutsceneMode(true);
+		switch(this.getstage()){
+		case 0: 				
+			if(!this.isOpen()){
+				this.setOpen(true);
+			}
+			else{
+				this.setOpen(false);
+			}
+			KeyManager.setCutsceneMode(true);
+			break;
+		case 1:
+			KeyManager.setCutsceneMode(false);
+			this.setstage(0);
+			game.getAudiomanager().playMusic(2, true);
+			switch(super.getVar(1)){
+			case 0:
+				super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 18, 53,"Reception");
 				break;
 			case 1:
-				KeyManager.setCutsceneMode(false);
-				this.setstage(0);
-				game.getAudiomanager().playMusic(2, true);
-				switch(super.getVar(1)){
-				case 0:
-					super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 18, 53,"Reception");
-					break;
-				case 1:
-					super.transport("/Worlds/Floor2Bathhouse/BathHouseEast.txt", 11, 20,"Bathhouse");
-					break;
-				case 2:
-					super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt", 21, 28,"East Offices");
-					break;
-				case 3:
-					super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/EastLobby.txt",11,16,"Aquarium");
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					super.transport("/Worlds/Floor7Infirmary/Triage/FastTrack.txt",12,6,"Triage");
-					break;
-				case 7:
-					break;
-				case 8:
-					break;
-				case 9:
-					break;
-				case 10:
-					break;
-				case 11:
-					break;
-				case 12:
-					break;
-				case 13:
-					break;
-				case 14:
-					break;
-					
-				}
-				this.setOpen(false);
+				super.transport("/Worlds/Floor2Bathhouse/BathHouseEast.txt", 11, 20,"Bathhouse");
+				break;
+			case 2:
+				super.transport("/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt", 21, 28,"East Offices");
+				break;
+			case 3:
+				super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/EastLobby.txt",11,16,"Aquarium");
+				break;
+			case 4:
+				break;
+			case 5:
+				super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLobby.txt",9,16,"Lachiplatre Land Lobby");
+				break;
+			case 6:
+				super.transport("/Worlds/Floor7Infirmary/Triage/FastTrack.txt",12,6,"Triage");
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
+				break;
+			case 11:
+				break;
+			case 12:
+				break;
+			case 13:
+				break;
+			case 14:
 				break;
 				
 			}
-		}		
+			this.setOpen(false);
+			break;
+			
+		}
+			
 	
 	}
 	

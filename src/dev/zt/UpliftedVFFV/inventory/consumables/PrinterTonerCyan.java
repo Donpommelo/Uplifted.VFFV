@@ -16,7 +16,7 @@ public class PrinterTonerCyan extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A cartridge of Cyan powder used by laser printers.\nCyan being a subelement combination of Blue and Green, like the life-filled water of a shallow pond.";
+	static String descr="A cartridge of Cyan powder used by laser printers. Cyan being a subelement combination of Blue and Green, like the life-filled water of a shallow pond.";
 	static String descrShort="Boosts Blue and Green Points";
 	public PrinterTonerCyan() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -15,7 +15,7 @@ public class Fishbones extends Item{
 	static int value = 300;
 	static int slot = 1;
 	static int lvlReq = 19;
-	static String descr="The dried remains of an ancient fish. Its probably a symbol of thanks\nin whatever country Svente emigrated from.";
+	static String descr="The dried remains of an ancient fish. Its probably a symbol of thanks in whatever country Svente emigrated from.";
 	static String descrShort = "temp";
 	public status[] enchantment = new status[0];
 	public Fishbones() {

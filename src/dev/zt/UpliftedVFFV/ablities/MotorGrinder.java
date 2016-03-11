@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class MotorGrinder extends Skills {
 
 	public static String name = "Motorgrinder";
-	public static String descr = "User summons crushing gears to\nbatter a foe and lower the\ntarget's Defense.";
+	public static String descr = "User summons crushing gears to batter a foe and crush armor.";
 	public static String descrShort = "Damage and lower Def.";
-	public static int cost = 13;
+	public static int cost = 15;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 6;	//Physical

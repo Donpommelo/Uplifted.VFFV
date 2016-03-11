@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Blind;
 public class BlindingStrike extends Skills {
 
 	public static String name = "Blinding Strike";
-	public static String descr = "User strikes at a foe's eyes,\npotentially blinding them.";
+	public static String descr = "User strikes at a victim's eyes or eye-substitutes. This underhanded maneuver has a chance of inflicting long-term vision impairment.";
 	public static String descrShort = "Damages and blinds target.";
 	public static int cost = 5;
 	public static int baseAcc = 90; public static int baseCrit = 0;

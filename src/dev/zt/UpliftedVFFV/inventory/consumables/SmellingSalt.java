@@ -20,7 +20,7 @@ public class SmellingSalt extends Item{
 	static int value = 12;
 	static int slot = 0;
 	static int lvlReq = 5;
-	static String descr="A package of chemicals used in reviving overworked or\ndead coworkers.";
+	static String descr="A package of chemicals used in reviving overworked or dead coworkers.";
 	static String descrShort="Revives target.";
 	public SmellingSalt() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

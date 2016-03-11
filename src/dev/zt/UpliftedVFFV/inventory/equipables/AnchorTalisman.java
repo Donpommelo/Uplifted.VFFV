@@ -17,7 +17,7 @@ public class AnchorTalisman extends Item{
 	static int value = 150;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A sturdy miniature anchor to be worn around one's neck.\nLets its wearer always know where he or she is despite any storm or uncertainty.";
+	static String descr="A sturdy miniature anchor to be worn around one's neck. Lets its wearer always know where he or she is despite any storm or uncertainty.";
 	static String descrShort="+10% Def\nImmune to one-hit-kills";
 	public status[] enchantment = new status[2];
 	public AnchorTalisman() {

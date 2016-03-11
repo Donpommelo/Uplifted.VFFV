@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Contagious;
 public class Plague extends Skills {
 
 	public static String name = "Plague";
-	public static String descr = "User infects target, causing/them to spread debuffs to allies.";
+	public static String descr = "User infects target, causing them to spread other illness to allies with disgusting sneezes and coughs.\nAlways wash your hands.";
 	public static String descrShort = "Inflicts Contagious on target.";
 	public static int cost = 16;
 	public static int baseAcc = 100; public static int baseCrit = 0;

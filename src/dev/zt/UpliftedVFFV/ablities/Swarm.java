@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class Swarm extends Skills {
 
 	public static String name = "Swarm";
-	public static String descr = "User incites a swarm amongst allies,\nincreasing the team's Speed.";
+	public static String descr = "User incites a swarm amongst allies, increasing the team's Speed.";
 	public static String descrShort = "Raises Spd of allies.";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;

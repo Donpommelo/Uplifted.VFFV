@@ -18,58 +18,57 @@ public class WarpNElevatortoLobby extends Event {
 	}
 	
 	public void run(){
-		if(super.getGamestate().getEvents()[52].isSelfswitch1()){
-			switch(this.getstage()){
-			case 0: 				
-				if(!this.isOpen()){
-					this.setOpen(true);
-				}
-				else{
-					this.setOpen(false);
-				}
-				KeyManager.setCutsceneMode(true);
+		switch(this.getstage()){
+		case 0: 				
+			if(!this.isOpen()){
+				this.setOpen(true);
+			}
+			else{
+				this.setOpen(false);
+			}
+			KeyManager.setCutsceneMode(true);
+			break;
+		case 1:
+			KeyManager.setCutsceneMode(false);
+			this.setstage(0);
+			game.getAudiomanager().playMusic(2, true);
+			switch(super.getVar(1)){
+			case 0:
+				super.transport("/Worlds/Floor1Reception/SouthLobbyExitHall.txt", 17, 15,"Reception");
 				break;
 			case 1:
-				KeyManager.setCutsceneMode(false);
-				this.setstage(0);
-				game.getAudiomanager().playMusic(2, true);
-				switch(super.getVar(1)){
-				case 0:
-					super.transport("/Worlds/Floor1Reception/SouthLobbyExitHall.txt", 17, 15,"Reception");
-					break;
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				case 5:
-					break;
-				case 6:
-					break;
-				case 7:
-					break;
-				case 8:
-					break;
-				case 9:
-					break;
-				case 10:
-					break;
-				case 11:
-					break;
-				case 12:
-					break;
-				case 13:
-					break;
-				case 14:
-					break;
-					
-				}
-				this.setOpen(false);
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
+				break;
+			case 11:
+				break;
+			case 12:
+				break;
+			case 13:
+				break;
+			case 14:
 				break;
 				
 			}
-		}		
+			this.setOpen(false);
+			break;
+			
+		}
+		
 	
 	}
 	

@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.InvertedSwanEffect;
 public class InvertedSwan extends Skills {
 
 	public static String name = "Inverted Swan";
-	public static String descr = "User infuses a target\nthe grace of an upside-\nswan, granting a double\n-attack.";
-	public static String descrShort = "Gives a Double-Attack.\nThe second hit is Blue\naligned.";
-	public static int cost = 14;
+	public static String descr = "User infuses a target the grace of an upside-down swan, granting a double-attack.";
+	public static String descrShort = "Gives a Double-Attack.\nThe second hit is Blue aligned.";
+	public static int cost = 28;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;
 	public static int element = 1;	//Blue

@@ -16,6 +16,6 @@ public class WarpSouthRoom1toSouthMain extends Event {
 	public void run(){
 		super.getGamestate().getEvents()[307].setOpen(false);
 		super.getGamestate().getEvents()[307].setFrames(6);
-		super.transport("/Worlds/ElevatorsandBackroom/SouthLobbyMain.txt", 5, 17,"");
+		super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 5, 17,"");
 	}
 }

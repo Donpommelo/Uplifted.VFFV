@@ -13,8 +13,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 public class LockOn extends Skills {
 
 	public static String name = "Lock On";
-	public static String descr = "User Locks onto a target,\nincreasing vulnerable until\ninterrupted.";
-	public static String descrShort = "Increases target's Crit\nVulnerability. Interruptable.";
+	public static String descr = "User homes their attention on a target. Until this move is uninterrupted, its target's vulnerabilities will be easier for enemies to identify.";
+	public static String descrShort = "Increases target's Crit Vulnerability.\nInterruptable.";
 	public static int cost = 14;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

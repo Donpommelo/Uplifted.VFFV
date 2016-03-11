@@ -17,7 +17,7 @@ public class EnergySourceObsolete extends Item{
 	static int value = 500;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="An energy source that is powerful and efficient.\nYou can’t imagine why it became obsolete.";
+	static String descr="An energy source that is powerful and efficient. You can’t imagine why it became obsolete.";
 	static String descrShort="Vulnerable Mp Regen.";
 	public status[] enchantment = new status[1];
 	public EnergySourceObsolete() {

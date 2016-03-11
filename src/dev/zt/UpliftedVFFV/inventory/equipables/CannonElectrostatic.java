@@ -16,7 +16,7 @@ public class CannonElectrostatic extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="A luminous weapon that comes with its own shades\nto prevent its user from blinding him or herself.";
+	static String descr="A luminous weapon that comes with its own shades to prevent its user from blinding him or herself.";
 	static String descrShort="Fires on Wait.\nDamage and blind foes.";
 	public status[] enchantment = new status[1];
 	public CannonElectrostatic() {

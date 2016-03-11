@@ -25,7 +25,7 @@ public class GlimpseattheEnd extends Item{
 	static int slot = 2;
 	static int lvlReq = 1;
 	static String descr="TEMP";
-	static String descrShort="Damages all enemies\nif user is Silenced";
+	static String descrShort="Take a Glimpse at the End";
 	public GlimpseattheEnd() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 

@@ -17,7 +17,7 @@ public class FestusClaw extends Item{
 	static int value = 1100;
 	static int slot = 1;
 	static int lvlReq = 37;
-	static String descr="A pair of flexible claw-like wires. Built for the quiet rending of\nexposed skin or the strangling of noisy coworkers.";
+	static String descr="A pair of flexible claw-like wires. Built for the quiet rending of exposed skin or the strangling of noisy coworkers.";
 	static String descrShort="+35% Crit Chance\n+35% Crit Multiplier\nNullifies your non-crit actions.";
 	public status[] enchantment = new status[3];
 	public FestusClaw() {

@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Unresistant;
 public class MothBite extends Skills {
 
 	public static String name = "Mothbite";
-	public static String descr = "User unravels a target's being\ndamaging and removing resistances.";
-	public static String descrShort = "Damage and removes resistances\nfor remainder of round.";
+	public static String descr = "User unravels the fiber of a target's being, inflicting pain and leaving its victim at the mercy of the elements.";
+	public static String descrShort = "Damage and removes resistances for remainder of round.";
 	public static int cost = 32;
 	public static int baseAcc = 75; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

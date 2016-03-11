@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Updraft extends Skills {
 
 	public static String name = "Updraft";
-	public static String descr = "User creates violent eind\nthat deal Yellow damage\nto slower foes.";
+	public static String descr = "User creates violent wind that deal Yellow damage to slower foes.";
 	public static String descrShort = "Deals Yellow damage to slower foes.";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;

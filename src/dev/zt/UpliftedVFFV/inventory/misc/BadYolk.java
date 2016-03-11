@@ -16,7 +16,7 @@ public class BadYolk extends Item{
 	static int value = 4;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="The yolk of a bad egg. Useful in the preparation\nof allmanner of baked bads.";
+	static String descr="The yolk of a bad egg. Useful in the preparation of all manner of baked bads.";
 	static String descrShort="Increases target's Crit vulnerability.";
 	public BadYolk() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

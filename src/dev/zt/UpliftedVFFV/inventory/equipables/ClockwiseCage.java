@@ -16,8 +16,8 @@ public class ClockwiseCage extends Item{
 	static int value = 540;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr = "A peculiar wire birdcage.\nIts occupant occasionally brings you extra time.";
-	static String descrShort="+20% Initiative\n-1 turn Cooldown for\napplicable items and skills.";
+	static String descr = "A peculiar wire birdcage. Its occupant occasionally brings you extra time.";
+	static String descrShort="+20% Initiative\n-1 turn Cooldown for applicable items and skills.";
 	public status[] enchantment = new status[2];
 	public ClockwiseCage() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

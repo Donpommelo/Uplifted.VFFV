@@ -17,7 +17,7 @@ public class ThoughtFluid extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A bottle of liquified thoughts.\nA bottle this concentrated is bound to contain a good idea or two.";
+	static String descr="A bottle of liquified thoughts. A bottle this concentrated is bound to contain a good idea or two.";
 	static String descrShort="Buffs Int and Mp Regen";
 	public ThoughtFluid() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

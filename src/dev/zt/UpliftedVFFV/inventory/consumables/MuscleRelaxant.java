@@ -16,7 +16,7 @@ public class MuscleRelaxant extends Item{
 	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A tube of medicinal cream designed to\ncure stiffness of limbs.";
+	static String descr="A tube of medicinal cream designed to cure stiffness of limbs.";
 	static String descrShort="Cures Paralysis.";
 	public MuscleRelaxant() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

@@ -60,7 +60,13 @@ public class EventTestItems extends Event {
 		super.loot(new GlimpseattheEnd(), 600);
 		super.loot(new JanitorDonationForm(), 6);
 		super.loot(new MetalRations(), 6);
+		super.loot(new MagicBottle(), 1);
 		super.loot(new SummonSauce(), 6);
+		
+		super.loot(new ColoredPlasticBall(1,0,0), 1);
+		super.loot(new ColoredPlasticBall(0,1,0), 1);
+		super.loot(new ColoredPlasticBall(0,0,1), 1);
+
 		
 		super.loot(new RandomFoodSmall(), 1);
 		super.loot(new RandomFoodMedium(), 1);

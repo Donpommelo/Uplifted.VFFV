@@ -9,9 +9,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Terraform extends Skills {
 
 	public static String name = "Terraform";
-	public static String descr = "User shakes the very foundation\nof the building, scrambling\nremaining Turn Order";
-	public static String descrShort = "Damages and scrambles\nTurn Order";
-	public static int cost = 18;
+	public static String descr = "User shakes the very foundation of the building, scrambling remaining Turn Order";
+	public static String descrShort = "Damages and scrambles Turn Order";
+	public static int cost = 32;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = true;
 	public static int element = 2;	//Green
@@ -24,7 +24,8 @@ public class Terraform extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("All battlers look discombobulated.");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.em.hpChange(-25, perp, s,6);
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, s) * 0.75);
+			bs.bp.em.hpChange(damage, perp, s,6);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);

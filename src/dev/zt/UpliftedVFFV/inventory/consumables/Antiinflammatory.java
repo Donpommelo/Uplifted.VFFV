@@ -16,7 +16,7 @@ public class Antiinflammatory extends Item{
 	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A bottle of medicine for the purpose of lowering\ninflammation.";
+	static String descr="A bottle of medicine for the purpose of lowering inflammation.";
 	static String descrShort="Cures Combustibility.";
 	public Antiinflammatory() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

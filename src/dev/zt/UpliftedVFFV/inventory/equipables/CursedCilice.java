@@ -17,7 +17,7 @@ public class CursedCilice extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 15;
-	static String descr="A band lined with spikes lining the wrong side.\nFor those who believe pain builds character.";
+	static String descr="A band lined with spikes lining the wrong side. For those who believe pain builds character.";
 	static String descrShort="+15 Max Mp\nRegains Mp when taking damage.";
 	public status[] enchantment = new status[2];
 	public CursedCilice() {

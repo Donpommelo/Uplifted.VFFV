@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DamnedDescent extends Skills {
 
 	public static String name = "Damned Descent";
-	public static String descr = "User drops a target a considerable\ndistance. If this attack\nincapacitates a foe, the\nuser gains an extra turn.";
-	public static String descrShort = "Deals Red damage and\nrefunds turn if lethal.";
+	public static String descr = "User drops a target a considerable distance. Such a far distance, in fact, that Those Below may reward the deliverance of the fallen.";
+	public static String descrShort = "Deals Red damage and refunds turn if lethal.";
 	public static int cost = 11;
 	public static int baseAcc = 80; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

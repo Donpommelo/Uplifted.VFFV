@@ -19,7 +19,7 @@ public class MentalLeakage extends Item{
 	static int value = 3;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A handful of loose thoughts. You doubt it contains anything\nuseful.";
+	static String descr="A handful of loose thoughts. You doubt it contains anything useful.";
 	static String descrShort="Restore Mp.";
 	public MentalLeakage() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

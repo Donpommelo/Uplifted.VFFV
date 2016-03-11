@@ -34,21 +34,9 @@ public class FalseFace extends Item{
 		for(int i = 0; i< s.items.length; i++){
 			if(s.items[i] != null){
 				if(s.items[i].getLvlReq() > s.getLvl()){
-					s.items[i].unEnchantment(s, i,meep, game);
-					meep.loot(s.items[i],1);
-					s.items[i] = null;
-					for(int j=0; j < s.statuses.size(); j++){
-						if(s.statuses.get(j) != null){
-							if(s.statuses.get(j).perp.equals(s.itemDummy)){
-								s.statuses.remove(j);
-								j--;
-							}
-						}					
-					}
-					s.calcBuffs(null);
+					s.items[i].onUnEquip(s, slot, meep, game);
 				}
 			}
-			
 		}
 	}
 	

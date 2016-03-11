@@ -16,7 +16,7 @@ public class PrinterTonerMagenta extends Item{
 	static int value = 4;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A cartridge of magenta powder used by laser printers.\nMagenta being a subelement combination of Red and Purple, like the dizzying blaze of human ambition.";
+	static String descr="A cartridge of magenta powder used by laser printers. Magenta being a sub-element combination of Red and Purple, like the dizzying blaze of human ambition.";
 	static String descrShort="Boosts Red and Purple Points";
 	public PrinterTonerMagenta() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

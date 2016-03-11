@@ -17,7 +17,7 @@ public class EchoShell extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 28;
-	static String descr="A mysterious sea shell. It sounds like the ocean\nwhatever that sounds like.";
+	static String descr="A mysterious sea shell. It sounds like the ocean whatever that sounds like.";
 	static String descrShort = "+11 Def\nEchoes end-of-turn effects.";
 	public status[] enchantment = new status[2];
 	public EchoShell() {

@@ -43,7 +43,7 @@ public class InventoryManager implements Serializable{
 			this.backpack.remove(i);
 		}
 	}
-	
+		
 	public TreeMap<Item, Integer> battleItem(){
 		TreeMap<Item, Integer> temp = new TreeMap<Item, Integer>();
 		for(Map.Entry<Item,Integer> entry : backpack.entrySet()) {

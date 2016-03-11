@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.HealBlock;
 public class Entropy extends Skills {
 
 	public static String name = "Entropy";
-	public static String descr = "User makes a target succumb\nto decay, preventing them from healing.";
+	public static String descr = "User makes a victim succumb to decay, nullifying most attempts of regeneration life.";
 	public static String descrShort = "Heal-blocks target.";
 	public static int cost = 14;
 	public static int baseAcc = 100; public static int baseCrit = 0;

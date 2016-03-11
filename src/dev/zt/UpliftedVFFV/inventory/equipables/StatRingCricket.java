@@ -17,7 +17,7 @@ public class StatRingCricket extends Item{
 	static int value = 13;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="A ring adjorned by a metal cricket.\nCrickets are seen as symbols of good luck in certain cultures due to their musical aptitude.\nSome crickets were domesticated by the elite and, because of their fraility, must have been very lucky indeed.";
+	static String descr="A ring adjorned by a metal cricket. Crickets are seen as symbols of good luck in certain cultures due to their musical aptitude. Some crickets were domesticated by the elite and, because of their fraility, must have been very lucky indeed.";
 	static String descrShort="+15% Luk";
 	public status[] enchantment = new status[1];
 	public StatRingCricket() {

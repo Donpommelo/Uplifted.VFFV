@@ -37,6 +37,11 @@ public class SwitchManager {
  25: Floor B2 Visited
  26: West Cubicle Dungeon Complete
  27: West Cubicle Dungeon Extended Complete
+ 28: South Aquarium Tank Flooded
+ 29: East Aquarium Tank Flooded
+ 30: West Aquarium Tank Flooded
+ 31: Aquarium Dungeon Flooded
+
  
  */
 	

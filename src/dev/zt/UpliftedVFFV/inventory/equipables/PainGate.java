@@ -17,7 +17,7 @@ public class PainGate extends Item{
 	static int value = 175;
 	static int slot = 1;
 	static int lvlReq = 16;
-	static String descr="A sinister device that enables its wielder\nto enjoy their suffering in tidy, prescribed dosages.";
+	static String descr="A sinister device that enables its wielder to enjoy their suffering in tidy, prescribed dosages.";
 	static String descrShort="+25 Max Hp\nRounds damage taken to nearest 20.";
 	public status[] enchantment = new status[2];
 	public PainGate() {

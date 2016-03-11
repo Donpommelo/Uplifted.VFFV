@@ -13,7 +13,7 @@ public class SummonTwofish extends Item{
 	static int value = 999;
 	static int slot = 3;
 	static int lvlReq = 1;
-	static String descr="An artifact used in communicating with spirits. Hopefully the two fish\nare friends, because they're going to be enjoying each other's company\nfor a very long time.";
+	static String descr="An artifact used in communicating with spirits. Hopefully the two fish are friends, because they're going to be enjoying each other's company for a very long time.";
 	static String descrShort = "Summon spirit allies.";
 
 	public SummonTwofish() {

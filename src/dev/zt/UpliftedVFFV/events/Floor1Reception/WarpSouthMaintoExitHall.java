@@ -19,7 +19,8 @@ public class WarpSouthMaintoExitHall extends Event {
 	}
 
 	public void run(){
-		switch(this.getstage()){
+		super.getGamestate().getEvents()[360].run();
+/*		switch(this.getstage()){
 		case 0: 				
 			if(!this.isOpen()){
 				this.setOpen(true);
@@ -36,7 +37,7 @@ public class WarpSouthMaintoExitHall extends Event {
 			this.setOpen(false);
 			this.setFrames(0);
 			break;
-		}
+		}*/
 		
 	}
 	

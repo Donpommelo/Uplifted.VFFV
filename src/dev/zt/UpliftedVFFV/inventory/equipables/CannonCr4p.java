@@ -16,7 +16,7 @@ public class CannonCr4p extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 27;
-	static String descr="You aren't sure which parts of this clunky, rusty weapon\nare meant to be held and which are meant to be fired.";
+	static String descr="You aren't sure which parts of this clunky, rusty weapon are meant to be held and which are meant to be fired.";
 	static String descrShort="Fires on Wait.\nDamage foes.";
 	public status[] enchantment = new status[1];
 	public CannonCr4p() {

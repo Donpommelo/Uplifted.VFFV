@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 public class Scald extends Skills {
 
 	public static String name = "Scald";
-	public static String descr = "A spray of boiling hot liquid that\ncan inflict nasty burns.";
-	public static String descrShort = "Deals Red Damage and\ndegenerates Hp.";
+	public static String descr = "User attacks with a spray of boiling hot liquid that can inflict nasty burns.";
+	public static String descrShort = "Deals Red Damage and degenerates Hp.";
 	public static int cost = 5;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

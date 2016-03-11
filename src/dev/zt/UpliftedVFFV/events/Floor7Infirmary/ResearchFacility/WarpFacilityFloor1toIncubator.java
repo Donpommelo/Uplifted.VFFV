@@ -13,6 +13,6 @@ public class WarpFacilityFloor1toIncubator extends Event {
 	public void run(){
 		super.getGamestate().getEvents()[598].setOpen(false);
 		super.getGamestate().getEvents()[598].setFrames(6);
-		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/IncubatorRoom.txt", 6, 7,"");
+		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/IncubatorRoom.txt", 9, 7,"");
 	}
 }

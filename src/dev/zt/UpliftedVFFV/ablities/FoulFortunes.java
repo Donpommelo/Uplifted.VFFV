@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class FoulFortunes extends Skills {
 
 	public static String name = "Foul Fortune";
-	public static String descr = "User curses a foe\nlowering their Luck.";
-	public static String descrShort = "Lowers single targets Luk\n";
+	public static String descr = "User curses a foe, ruining any future gambling ambitions.";
+	public static String descrShort = "Lowers single targets Luk.";
 	public static int cost = 8;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;

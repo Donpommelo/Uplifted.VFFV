@@ -7,9 +7,9 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class HeresHow extends Skills {
 
 	public static String name = "Here's How";
-	public static String descr = "User shows an ally the right\nway of doing things, giving\nthem an extra turn.";
+	public static String descr = "User shows an ally all the ways they were doing everything wrong, giving them another opportunity to finally get it right.";
 	public static String descrShort = "Gives turn to ally.";
-	public static int cost = 10;
+	public static int cost = 20;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 6;	//Physical

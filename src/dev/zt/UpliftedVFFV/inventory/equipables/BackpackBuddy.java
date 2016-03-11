@@ -16,7 +16,7 @@ public class BackpackBuddy extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 10;
-	static String descr="A helpful stuffed friend that keeps\nyou and your other toys company.";
+	static String descr="A helpful stuffed friend that keeps you and your other toys company.";
 	static String descrShort="+25% Equipment Power";
 	public status[] enchantment = new status[1];
 	public BackpackBuddy() {

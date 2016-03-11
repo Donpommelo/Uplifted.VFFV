@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Queried;
 public class Query extends Skills {
 
 	public static String name = "Query";
-	public static String descr = "User researches a foe, gaining\nvaluable knowledge about its,\nelemental alignments and Hp.";
+	public static String descr = "User researches a foe, gaining valuable knowledge about its biographical information, elemental alignments and Hp.";
 	public static String descrShort = "Investigate enemy info.";
 	public static int cost = 0;
 	public static int baseAcc = 100; public static int baseCrit = 0;

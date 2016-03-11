@@ -12,8 +12,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Fixation extends Skills {
 
 	public static String name = "Fixation";
-	public static String descr = "User channels gaze on target,\nrevealing elemental\nweaknesses.";
-	public static String descrShort = "Negates target's Elemental\nresistance. Interruptable.";
+	public static String descr = "User channels unwavering gaze on target, revealing their most personal secrets and insecurities.";
+	public static String descrShort = "Negates target's Elemental resistance.\nInterruptable.";
 	public static int cost = 19;
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = true; public static boolean canCrit = true;
