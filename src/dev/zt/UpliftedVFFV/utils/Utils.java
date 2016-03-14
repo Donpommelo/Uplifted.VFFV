@@ -165,7 +165,7 @@ public class Utils {
 	 *  squareSize - Size of texture to be sampled. Larger values: More detail, less precision in size.
 	 * 	priority - Window focus. If not in focus, the box is drawn transparently.
 	 */
-	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
+	public static int drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
 			int squareSize, boolean priority){
 		Graphics2D g2d = (Graphics2D) g;
 		//Load texture and cut into subsections.
@@ -269,7 +269,7 @@ public class Utils {
 		}
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
-		
+		return yLine;
 	}
 	
 	//Wrapper for drawImage that draws a cursor. Pretty much like drawDialogueBox.

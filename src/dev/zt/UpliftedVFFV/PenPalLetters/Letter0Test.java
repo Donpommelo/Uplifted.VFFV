@@ -14,7 +14,7 @@ public class Letter0Test extends Letter{
 		int meep  = (int)(Math.random()*9);
 		switch (meep){
 		case 0:
-			return "Sorry, but I don¡¦t have enough to say about that topic to warrant sending a whole letter.";
+			return "Sorry, but I don't have enough to say about that topic to warrant sending a whole letter.";
 		case 1:
 			return "Sorry, but I think if I talked to you about that, I might create some sort of terrible time paradox.";
 		case 2:
@@ -30,7 +30,7 @@ public class Letter0Test extends Letter{
 		case 7:
 			return "Two gallons of milk, one dozen eggs, asparagus, cuttlefish, one pack of Lachiplatre.";
 		case 8:
-			return "I¡¦m pretty sure some of those words you are using have been abolished so I can¡¦t understand you.";
+			return "I'm pretty sure some of those words you are using have been abolished so I can't understand you.";
 		}
 		return "Eh. . . What's that?";
 	}

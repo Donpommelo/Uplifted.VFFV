@@ -10,7 +10,9 @@ import java.util.Set;
 import java.util.TreeMap;
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 //State for when the player is shoppin'. Modified version of ChoiceBranchState.
 public class ShoppingState extends State {
@@ -18,6 +20,7 @@ public class ShoppingState extends State {
 	private static final long serialVersionUID = 1L;
 	
 	public int EventId;
+	public BufferedImage window, windowClear;
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public int currentchoice, choicelocation,firstchoice, boxsize;
 	public int amount;
@@ -56,6 +59,9 @@ public class ShoppingState extends State {
 		Set<Item> temp = selection.keySet();
 		itemDisplay = temp.toArray(new Item[999]);
 		text = itemDisplay[choicelocation].getDescr();
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
+		windowClear = ImageLoader.loadImage("/ui/Window/WindowClear.png");
+
 	}
 
 	public void tick() {
@@ -156,28 +162,18 @@ public class ShoppingState extends State {
 			
 		}
 		g.drawImage(shopKeeper, 640-shopKeeper.getWidth(), 416-shopKeeper.getHeight(), null);
-		g.setColor(new Color(102, 178,255, 200));
-		g.fillRect(5, 5, 100, 50);
-		g.fillRect(0, 316, 640, 100);
-		g.fillRect(360, 5, 275, 25*boxsize);
-		g.setColor(new Color(200, 200,200, 200));
-		g.fillRect(360, 5+25*choicelocation, 275, 25);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.setColor(Color.BLACK);
-		g.drawString("Script: "+gs.Script,10,25);
+
+		String[] options = new String[selection.size()];
+		for(int i = 0; i < options.length; i++){
+			options[i] = selection.keySet().toArray(new Item[selection.size()])[i].getName();
+		}
+		Utils.drawMenu(g, window, options, Color.black, 18, choicelocation, 360, 5, 275, 30*boxsize, 1,boxsize,firstchoice,16, true);
+		Utils.drawDialogueBox(g, window, "Script: "+gs.Script, 18, Color.black, 5, 5, 100, 50, 16, true);
 		for(int i=0;i<boxsize;i++){
-			g.drawString(itemDisplay[firstchoice+i].getName(), 365, 25+25*i);
-			g.drawString(selection.get(itemDisplay[firstchoice+i])+" Script", 575,25+25*i);
+			g.drawString(selection.get(itemDisplay[firstchoice+i])+" Script", 575,40+25*i);
 		}
-		g.setColor(new Color(255, 255,255));
-		g.fillRect(210, 5, 150, 150);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-		g.setColor(new Color(0,0,0));
-		if(itemDisplay[choicelocation].getDescr()!=null){
-			int y=320;
-			for (String line : text.split("\n"))
-		        g.drawString(line, 5, y += g.getFontMetrics().getHeight());
-		}
+		Utils.drawDialogueBox(g, window, text, 18, Color.black, 0, 316, 625, 80, 16, true);
+
 		if(selected){
 			g.setColor(new Color(102, 178,255, 200));
 			g.fillRect(180, 200, 275, 50);

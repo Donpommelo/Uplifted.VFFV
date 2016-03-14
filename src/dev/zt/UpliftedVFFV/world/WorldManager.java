@@ -67,8 +67,9 @@ public class WorldManager implements Serializable{
 	public void renderNameplate(Graphics g){
 		//renders scrolling nameplate. 
 		if(!this.Worldname.equals("")){
-			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 520, 
-					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), g.getFontMetrics().stringWidth(this.Worldname)+20, 25, 16, true);
+			int boxwidth = g.getFontMetrics().stringWidth(this.Worldname)+25;
+			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 630-boxwidth, 
+					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), boxwidth, 25, 16, true);
 		}
 	}
 	

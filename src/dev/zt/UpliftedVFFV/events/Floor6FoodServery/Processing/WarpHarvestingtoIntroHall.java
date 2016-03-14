@@ -13,6 +13,6 @@ public class WarpHarvestingtoIntroHall extends Event {
 	public void run(){
 		super.getGamestate().getEvents()[475].setOpen(false);
 		super.getGamestate().getEvents()[475].setFrames(6);
-		super.transport("/Worlds/Floor6FoodServery/Processing/IntroHall.txt",16,8,"Backroom");
+		super.transport("/Worlds/Floor6FoodServery/Processing/IntroHall.txt",16,8,"");
 	}
 }

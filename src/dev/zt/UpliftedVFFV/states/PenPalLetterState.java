@@ -33,7 +33,7 @@ public class PenPalLetterState extends State {
 	//Pointer for menu that pops up when letter is ready to send.
 	private int sendPointer, letterSelected,pointerLocation;
 	private int maxLetters = 14;
-	private int maxHeight = 800;
+	private int maxHeight;
 	int y;
 	//Variable for displaying flashing cursor.
 	private int flashCounter;
@@ -59,6 +59,7 @@ public class PenPalLetterState extends State {
 		flashCounter = 0;
 		flash = false;
 		y = 0;
+		maxHeight = 0;
 	}
 
 	public void tick() {
@@ -71,7 +72,7 @@ public class PenPalLetterState extends State {
 						if(prompt.length() > 0){
 							prompt.deleteCharAt(prompt.length() - 1);
 						}
-						game.getKeyManager().disable(150);
+						game.getKeyManager().disable(125);
 					}
 					else if(key.equals("Enter")){
 						game.getKeyManager().setTypeMode(false);
@@ -94,13 +95,13 @@ public class PenPalLetterState extends State {
 								prompt.append(key.toLowerCase());
 							}
 						}
-						game.getKeyManager().disable(150);
+						game.getKeyManager().disable(125);
 					} else if(key.equals("Space")){
 						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
 						if(prompt.length() < 20){
 							prompt.append(" ");
 						}
-						game.getKeyManager().disable(150);
+						game.getKeyManager().disable(125);
 					}
 				}
 				break;
@@ -111,6 +112,7 @@ public class PenPalLetterState extends State {
 							//Send.
 							mode = 3;
 							reply = findText(prompt.toString());
+							y = 0;
 							break;
 						case 1:
 							//Revise.
@@ -198,7 +200,7 @@ public class PenPalLetterState extends State {
 					game.getKeyManager().disable(delayNext);
 				}
 				if(game.getKeyManager().down){
-					if(y+maxHeight>416){
+					if(y>-maxHeight){
 						y-=3;
 					}
 				}
@@ -244,7 +246,7 @@ public class PenPalLetterState extends State {
 			}
 			break;
 		case 3:
-			Utils.drawDialogueBox(g, window, reply, 18, Color.black, 125, 5+y, 400, 1000, 32, true);
+			maxHeight = Utils.drawDialogueBox(g, window, reply, 18, Color.black, 125, 5+y, 400, 1000, 32, true);
 			break;
 		}
 	}

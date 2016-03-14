@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.Battle.Animations.UseItemAnim;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -81,5 +83,10 @@ public UseItem(int index, Item i, GameState gs) {
 	public boolean silenceBlocked(){
 		return false;
 	}
+	
+	public BattleAnimation getBa() {
+		return new UseItemAnim(thing);
+	}
+	
 	
 }

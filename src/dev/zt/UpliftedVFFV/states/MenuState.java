@@ -27,7 +27,7 @@ public class MenuState extends State {
 
 	private AudioManager audio;
 	
-	private BufferedImage window, window2, window3, window4;
+	private BufferedImage window, window2, window3, window4, window5;
 	private GameState gamestate;
 	//Menu cursor and option pointers.
 	private int optionSelected, characterSelected, itemSelected, itemPointer, 
@@ -57,6 +57,7 @@ public class MenuState extends State {
 		window2 = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 		window3 = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		window4 = ImageLoader.loadImage("/ui/Window/WindowYellowPaper.png");
+		window5 = ImageLoader.loadImage("/ui/Window/WindowClear.png");
 		this.gamestate=gs;
 		audio = game.getAudiomanager();
 		optionSelected=0;
@@ -860,10 +861,10 @@ public class MenuState extends State {
 					g.setFont(new Font("Chewy", Font.PLAIN, 12));
 					
 					//Flavor.
-					Utils.drawDialogueBox(g, window2, curItem.getDescr(), 12, Color.black, 340, 50, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
+					Utils.drawDialogueBox(g, window5, curItem.getDescr(), 12, Color.black, 340, 50, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
 					
 					//Effects.
-					Utils.drawDialogueBox(g, window2, curItem.getDescrShort(), 12, Color.black, 440, 140, 160, 80, 16, optionChosen && !(useitemChosen || equipChosen));
+					Utils.drawDialogueBox(g, window5, curItem.getDescrShort(), 12, Color.black, 440, 140, 160, 80, 16, optionChosen && !(useitemChosen || equipChosen));
 
 					//Tags.
 					String tag = "Tags:  ";

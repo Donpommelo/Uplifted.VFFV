@@ -508,7 +508,7 @@ public class Event implements Serializable{
 	public static Event event474 = new WarpIntroHalltoEatery(5,11,474);
 	public static Event event475 = new WarpIntroHalltoHarvesting(16,7,475);
 	public static Event event476 = new WarpIntroHalltoResynthesizing(8,7,476);
-	//477: Intro Hall to Distributions.
+	public static Event event477 = new WarpIntroHalltoDistribution(5,7,477);
 	public static Event event478 = new WarpHarvestingtoIntroHall(13,48,478);
 	public static Event event479 = new WarpHarvestingtoProcessing1(18,10,479);
 	public static Event event480 = new WarpProcessing1toHarvesting(25,18,480);
@@ -528,7 +528,25 @@ public class Event implements Serializable{
 	public static Event event494 = new WarpWestProcessingtoWElevator(8,15,494);
 	public static Event event495 = new WarpResynthesizingtoProcessing2(22,7,495);
 	public static Event event496 = new WarpResynthesizingtoIntroHall(12,37,496);
-
+	public static Event event497 = new WarpResynthesizingtoFoodPyramid(7,12,497);
+	public static Event event498 = new WarpResynthesizingtoGreenHouseHall(26,22,498);
+	public static Event event499 = new WarpFoodPyramidtoResynth(28,42,499);
+	public static Event event500 = new WarpFoodPyramidtoProduce(12,37,500);
+	public static Event event501 = new WarpFoodPyramidtoButchery(10,31,501);
+	public static Event event502 = new WarpFoodPyramidtoBakery(8,25,502);
+	public static Event event503 = new WarpFoodPyramidtoSweetShop(6,19,503);
+	public static Event event504 = new WarpFoodPyramidtoDistillery(5,11,504);
+	public static Event event505 = new WarpProducetoFoodPyramid(16,41,505);
+	public static Event event506 = new WarpButcherytoFoodPyramid(6,34,506);
+	public static Event event507 = new WarpBakerytoFoodPyramid(20,34,507);
+	public static Event event508 = new WarpSweetShoptoFoodPyramid(11,20,508);
+	public static Event event509 = new WarpDistillerytoFoodPyramid(10,19,509);
+	public static Event event510 = new WarpGreenHouseHalltoResynth(3,16,510);
+	public static Event event511 = new WarpGreenHouseHalltoGreenHouse(16,6,511);
+	public static Event event512 = new WarpGreenHousetoHall(25,56,512);
+	//513: Greenhouse to Stairwell
+	public static Event event514 = new WarpDistributiontoIntroHall(27,17,514);
+	//515: Distribution to Shipping Warehouse Dungeon
 	
 	//-549: remainder of warps for Servery
 	
@@ -575,7 +593,7 @@ public class Event implements Serializable{
 	public static Event event590 = new WarpFacilityFloor1toImpalefier(11,23,590);
 	public static Event event591 = new WarpFacilityFloor1toIncubator(5,23,591);
 	public static Event event592 = new WarpFacilityFloor1toCulturing(8,23,592);
-	//593: Research facility to floor 2
+	public static Event event593 = new WarpFacilityFloor1toFloor2(23,24,593);
 	public static Event event594 = new WarpJClosettoFacilityFloor1(5,11,594);
 	public static Event event595 = new WarpCentrifugetoFacilityFloor1(6,13,595);
 	public static Event event596 = new WarpExtractionatortoFacilityFloor1(6,13,596);
@@ -583,6 +601,35 @@ public class Event implements Serializable{
 	public static Event event598 = new WarpIncubatortoFacilityFloor1(9,6,598);
 	public static Event event599 = new WarpIncubatortoWElevator(6,13,599);
 	public static Event event600 = new WarpCulturingtoFacilityFloor1(6,6,600);
+	public static Event event601 = new WarpFacilityFloor2toFloor1(22,22,601);
+	public static Event event602 = new WarpFacilityFloor2toDeconstruction(3,29,602);
+	public static Event event603 = new WarpFacilityFloor2toConstruction(18,25,603);
+	//604: Upper Facility to Stairwell room.
+	public static Event event605 = new WarpDeconstructiontoFacilityFloor2(24,21,605);
+	public static Event event606 = new WarpDeconstructiontoMorgue(15,9,606);
+	public static Event event607 = new WarpDeconstructiontoCatalogueRoom(3,9,607);
+	public static Event event608 = new WarpDeconstructiontoDissection(9,33,608);
+	public static Event event609 = new WarpMorguetoDeconstruction(3,12,609);
+	public static Event event610 = new WarpCatalogueRoomtoDeconstruction(11,9,610);
+	public static Event event611 = new WarpDissectiontoDeconstruction(34,6,611);
+	public static Event event612 = new WarpDissectiontoSieveRoom(39,12,612);
+	public static Event event613= new WarpDissectiontoLoggingRoom(11,11,613);
+	public static Event event614 = new WarpDissectiontoEOP(10,26,614);
+	public static Event event615 = new WarpSieveRoomtoDissection(2,24,615);
+	public static Event event616 = new WarpLoggingRoomtoDissection(28,12,616);
+	public static Event event617 = new WarpEOPtoDissection(21,6,617);
+	public static Event event618 = new WarpConstructiontoFacilityFloor2(5,29,618);
+	public static Event event619 = new WarpConstructiontoLaboratory(6,13,619);
+	public static Event event620 = new WarpConstructiontoWeavingRoom(18,23,620);
+	public static Event event621 = new WarpConstructiontoButterflyGarden(18,5,621);
+	public static Event event622 = new WarpConstructiontoAssemblyLine(31,21,622);
+	public static Event event623 = new WarpConstructiontoLightningRod(31,6,623);
+	//624: extra maybe?
+	public static Event event625 = new WarpLaboratorytoConstruction(31,6,625);
+	public static Event event626 = new WarpWeavingRoomtoConstruction(7,17,626);
+	public static Event event627 = new WarpButterflyGardentoConstruction(13,31,627);
+	public static Event event628 = new WarpAssemblyLinetoConstruction(3,24,628);
+	public static Event event629 = new WarpLightningRodtoConstruction(3,14,629);
 
 	
 

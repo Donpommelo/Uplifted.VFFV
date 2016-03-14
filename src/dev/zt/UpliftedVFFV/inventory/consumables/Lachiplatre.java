@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.PenPalLetters.Letter;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -27,8 +28,14 @@ public class Lachiplatre extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.em.hpChange(2, perp, vic,6);
-		bs.bp.em.bpChange(2,vic);
+		if(Letter.letters[1].isFound()){
+			bs.bp.em.hpChange(5, perp, vic,6);
+			bs.bp.em.bpChange(5,vic);
+		}
+		else{
+			bs.bp.em.hpChange(1, perp, vic,6);
+			bs.bp.em.bpChange(1,vic);
+		}
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
@@ -41,8 +48,14 @@ public class Lachiplatre extends Item{
 	}
 	
 	public void use(Schmuck s,Game game, StateManager sm,GameState gs){
-		s.hpChange(2);
-		s.bpChange(2);
+		if(Letter.letters[1].isFound()){
+			s.hpChange(5);
+			s.bpChange(5);
+		}
+		else{
+			s.hpChange(1);
+			s.bpChange(1);
+		}
 		StateManager.states.push(new NotificationState(game, gs, sm, "The Lachiplatre tastes like nothing . . . yet tastes familiar . . .", 0));
 	}
 }

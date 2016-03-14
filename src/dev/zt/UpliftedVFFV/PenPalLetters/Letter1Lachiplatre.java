@@ -5,17 +5,21 @@ public class Letter1Lachiplatre extends Letter{
 	protected static String[] prompts = {"Lachiplatre","Lachiplatres"};
 	boolean found;
 	int id;
-	public static String text = "Oh those things? The little bun-things, right? You don't have them there? That's odd. They've been everywhere for as "
-			+ "long as I can remember. And when I say 'been everywhere', I mean, quite literally everywhere. Hell, I'm in the middle of "
-			+ "the ocean and I can't throw a rock without hitting one or two. Not that there are any rocks in the middle of the ocean; "
-			+ "only more lachiplatres. Anyways, a lachiplatre is a sort of folded bread-like food, stuffed with some kind of bland paste. "
-			+ "They're digestible, I guess, but I can't really give them any more than that. Normally, they just lie around, cluttering up"
-			+ "the streets, but I've been stricken more than once by Lachiplatres falling from the sky. Sometimes it get so bad whole "
-			+ "streets get buried and people can't leave their houses. Eventually, though, the rain always comes to turn the lachiplatre"
-			+ " into mush to be washed away. I guess I always took it for granted. Y'know, you got your rain and snow and then you got "
-			+ "your Lachiplatre; it never really stuck out to me as strange. I don't really know where all the Lachiplatre came from."
-			+ " And nobody ever bothers to question it. It is taboo, I suppose, to question something that has supposedly done a lot of"
-			+ " good in the past.";
+	public static String text = "Oh those things? The little bun-things, right? You have them too, right?"
+			+ " I’ve always been under the impression that they’ve existed since the beginning of time. They’ve "
+			+ "been everywhere for as long as I can remember. And when I say “been everywhere”, I mean, quite "
+			+ "literally everywhere. Hell, I’m stranded in the middle of the ocean and I can’t throw a rock "
+			+ "without hitting one or two. Not that there are any rocks in the middle of the ocean; just more"
+			+ " lachiplatres.\nNormally, they just lie around, cluttering up the ground, and I’ve been stricken"
+			+ " more than once by Lachiplatres falling from the sky. Eventually, though, the rain always comes"
+			+ " to turn the lachiplatre into mush to be washed away.\nAnyways, a lachiplatre is a sort of folded"
+			+ " bread-like food, stuffed with some kind of bland, dry paste. They are digestible, I guess, but "
+			+ "I can’t really give them any more than that. And they are very nutritious, I assume, seeing as I"
+			+ " have eaten nothing else for months and haven’t died yet.\nEach lachiplatre is precisely six"
+			+ " inches in both width and length. Every specimen I’ve seen shared those exact measurements"
+			+ " besides those that have been nibbled on by fishes. To see such artificial uniformity fall from"
+			+ " the sky like cascades of rain or snow . . . I take it as divine will that starvation is not my"
+			+ " intended method of dying.";
 	public Letter1Lachiplatre(int id){
 		super(prompts,id, text);
 	}	

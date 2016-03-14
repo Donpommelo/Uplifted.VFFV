@@ -182,4 +182,9 @@ public class Skills implements Serializable{
 	public BufferedImage getIcon(){
 		return Assets.skillIcons[iconIndex];
 	}
+
+	public BattleAnimation getBa() {
+		return ba;
+	}
+	
 }

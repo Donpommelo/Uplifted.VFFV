@@ -57,7 +57,7 @@ public class EventElevatorPanel extends Event {
 	}
 	
 	public void ChoiceMade(int i){
-		if(!super.getSwitch(3)){
+		if(super.getSwitch(3)){
 			if((i == 11 || i == 12) && super.getQuest(5) <= 6){
 				Dialog[] d = new Dialog[1];
 				d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I'm not authorized to go the Basement yet./");

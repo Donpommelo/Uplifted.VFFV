@@ -140,7 +140,7 @@ public class BattleText {
 		if(scenes.get(0).getA() != null){
 			if(!actionRun){
 				if(frame < scenes.get(0).getA().skill.ba.frames){
-					scenes.get(0).getA().skill.ba.animateAction(frame, scenes.get(0).getA(), g);
+					scenes.get(0).getA().skill.getBa().animateAction(frame, scenes.get(0).getA(), g);
 					frame++;
 				}
 				else{

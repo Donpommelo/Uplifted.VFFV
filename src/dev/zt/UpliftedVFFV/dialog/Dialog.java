@@ -66,9 +66,6 @@ public class Dialog {
 		
 		if(!SpeakerName.equals("meep"))				//displays speaker's name in a box.
 		{
-//			g.fillRect(5, 286,6+SpeakerName.length()*8, 25);
-//			g.setColor(Color.BLACK);
-//			g.drawString(SpeakerName, 8, 304);
 			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, height - 136, 25 + SpeakerName.length() * 8, 32, 16, true);
 		}
 		g.setColor(Color.black);					//displays text. / indicates a new line

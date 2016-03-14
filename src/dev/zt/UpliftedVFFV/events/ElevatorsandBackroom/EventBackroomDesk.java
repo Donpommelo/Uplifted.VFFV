@@ -14,8 +14,8 @@ public class EventBackroomDesk extends Event {
 		super(Assets.White,idnum,x, y, stagenum);
 	}
 	
-	public void run(){
-			if(super.getSwitch(3)){
+	public void run(){	
+		if(super.getSwitch(3)){
 				Dialog[] d = new Dialog[1];
 				if(super.itemNumCheck(new PostageStamp()) == 0){
 					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",0,"You don't have any Postage Stamps./");

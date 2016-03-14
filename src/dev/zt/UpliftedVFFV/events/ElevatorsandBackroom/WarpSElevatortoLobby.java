@@ -35,7 +35,7 @@ public class WarpSElevatortoLobby extends Event {
 				game.getAudiomanager().playMusic(2, true);
 				switch(super.getVar(1)){
 				case 0:
-					super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 18, 53,"Reception");
+					super.transport("/Worlds/Floor1Reception/SouthLobbyMain.txt", 17, 53,"Reception");
 					break;
 				case 1:
 					super.transport("/Worlds/Floor2Bathhouse/BathHouseSouth.txt", 9, 21,"Bathhouse");
