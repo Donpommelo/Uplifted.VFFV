@@ -23,8 +23,8 @@ public class Petrify extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene(vic.getName()+" was petrified!");
-		bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
-		bs.bp.stm.addStatus(vic, new Stunned(2,perp, 60));	
-		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,1.5,perp,10));
+		bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, perp,50));
+		bs.bp.stm.addStatus(vic, new Stunned(2,perp, vic,60));	
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,1.5,perp,vic,10));
 	}	
 }

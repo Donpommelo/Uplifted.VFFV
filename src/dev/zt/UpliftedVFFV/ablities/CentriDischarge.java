@@ -21,12 +21,12 @@ public class CentriDischarge extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
 		bs.bp.em.hpChange(damage, perp, vic,3);
-		bs.bp.stm.addStatus(perp, new StatBuffMult(5,4,1.25, perp,75));
+		bs.bp.stm.addStatus(perp, new StatBuffMult(5,4,1.25, perp,perp,75));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,3);
-		bs.bp.stm.addStatus(perp, new StatBuffMult(5,4,2, perp,25));	
+		bs.bp.stm.addStatus(perp, new StatBuffMult(5,4,2, perp,perp,25));	
 	}
 }

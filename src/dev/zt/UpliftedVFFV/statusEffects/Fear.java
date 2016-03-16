@@ -13,8 +13,8 @@ public class Fear extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public Schmuck Frighter;
-	public Fear(int i, Schmuck perp, Schmuck frighter, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Fear(int i, Schmuck perp, Schmuck vic, Schmuck frighter, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.Frighter = frighter;
 	}
 	

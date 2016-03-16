@@ -74,7 +74,7 @@ public class BattleUI {
 		//Eventually, make some bosses immune to this.
 		for(int i = 0; i < bs.bs.enemySelectable.size(); i++){
 			Schmuck temp = bs.bs.enemySelectable.get(i);				
-			if(bs.bp.stm.checkStatus(temp, new Queried(temp, 50))){
+			if(bs.bp.stm.checkStatus(temp, new Queried(temp, temp,50))){
 				drawEnemyBar(g, temp);
 			}
 		}

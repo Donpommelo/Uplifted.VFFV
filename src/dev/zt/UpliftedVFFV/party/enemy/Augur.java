@@ -58,9 +58,9 @@ public class Augur extends Schmuck{
 		}
 		int mostStacks = 0;
 		for(Schmuck s : bs.bp.allies){
-			if(bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,0)).getExtraVar1() > mostStacks){
+			if(bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,this,0)).getExtraVar1() > mostStacks){
 				target = s;
-				mostStacks = bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,0)).getExtraVar1();
+				mostStacks = bs.bp.stm.findStatus(s, new IntrusiveThoughtEffect(this,this,0)).getExtraVar1();
 			}
 		}
 

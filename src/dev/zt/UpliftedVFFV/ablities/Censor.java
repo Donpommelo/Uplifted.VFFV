@@ -20,10 +20,10 @@ public class Censor extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new Silenced(3, perp, 50));
+		bs.bp.stm.addStatus(vic, new Silenced(3, perp, vic,50));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new Silenced((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 50));	
+		bs.bp.stm.addStatus(vic, new Silenced((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,50));	
 	}
 }

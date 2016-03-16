@@ -13,8 +13,8 @@ public class ElemBlock extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public int blocked;
-	public ElemBlock(int i, int block, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public ElemBlock(int i, int block, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.blocked = block;
 	}
 	

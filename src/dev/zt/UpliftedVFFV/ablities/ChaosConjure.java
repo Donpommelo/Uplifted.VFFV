@@ -24,7 +24,7 @@ public class ChaosConjure extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("All battlers were discombobulated!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(this,2, perp, 50));
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,2, perp, perp,50));
 			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 				bs.bp.em.hpChange(-55, perp, s,6);
 			}

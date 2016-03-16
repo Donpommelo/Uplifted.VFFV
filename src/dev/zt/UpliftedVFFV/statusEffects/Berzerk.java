@@ -11,8 +11,8 @@ public class Berzerk extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Berzerk(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Berzerk(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Berzerk(int pr){
@@ -22,7 +22,7 @@ public class Berzerk extends status{
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(Math.random() < .75 && a.getSkill().getTargetType() == 0){
 			Schmuck newTarget = bs.bp.battlers.get((int)(Math.random()*bs.bp.battlers.size()));
-			if(bs.bp.stm.checkStatus(newTarget, new incapacitate(newTarget))){
+			if(bs.bp.stm.checkStatus(newTarget, new incapacitate(newTarget,newTarget))){
 				a.target = newTarget;
 				bs.bp.bt.addScene(s.getName()+" is going Berserk!");
 				bs.bp.bt.addScene(s.getName()+" targeted a random character!");

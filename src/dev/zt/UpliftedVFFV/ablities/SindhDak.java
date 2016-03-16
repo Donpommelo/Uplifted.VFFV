@@ -19,12 +19,12 @@ public class SindhDak extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new SindhDakStatus(3, perp, 10));
+		bs.bp.stm.addStatus(vic, new SindhDakStatus(3, perp, vic,10));
 		bs.bp.bt.addScene(vic.getName()+" is ready to spread the message!");
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new SindhDakStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 20));	
+		bs.bp.stm.addStatus(vic, new SindhDakStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, vic, 20));	
 		bs.bp.bt.addScene(vic.getName()+" is ready to spread the message!");
 	}
 	

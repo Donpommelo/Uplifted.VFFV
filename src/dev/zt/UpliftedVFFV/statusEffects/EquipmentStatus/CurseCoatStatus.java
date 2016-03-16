@@ -22,7 +22,7 @@ public class CurseCoatStatus extends status{
 			rolled = true;
 			bs.bp.bt.addScene(s.getName()+"'s Curse Coat replaces the debuff with a different one!");
 			bs.bp.stm.removeStatus(s, st);
-			status newstatus = bs.bp.stm.randomBad(st.getDuration(), st.perp);
+			status newstatus = bs.bp.stm.randomBad(st.getDuration(), st.perp, s);
 			bs.bp.stm.addStatus(s, newstatus);
 			
 		}

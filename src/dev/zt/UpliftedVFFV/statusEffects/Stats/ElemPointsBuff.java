@@ -12,8 +12,8 @@ public class ElemPointsBuff extends status{
 	public static Boolean decay = true;
 	public int statChanged;
 	public double statIncrement;
-	public ElemPointsBuff(int i, int stat, int amount, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public ElemPointsBuff(int i, int stat, int amount, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}

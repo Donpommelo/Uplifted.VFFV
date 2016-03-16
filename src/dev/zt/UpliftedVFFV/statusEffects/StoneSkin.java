@@ -12,8 +12,8 @@ public class StoneSkin extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
 	public double percent;
-	public StoneSkin(int i, double percent, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public StoneSkin(int i, double percent, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.percent = percent;
 	}
 	
@@ -24,7 +24,7 @@ public class StoneSkin extends status{
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(damage*percent/5 <= -1){
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(5,34,-damage*percent/5,vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(5,34,-damage*percent/5,vic,vic,50));
 		}
 		return damage;
 	}	

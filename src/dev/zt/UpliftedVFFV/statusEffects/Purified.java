@@ -9,8 +9,8 @@ public class Purified extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;	
-	public Purified(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Purified(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Purified(int pr){

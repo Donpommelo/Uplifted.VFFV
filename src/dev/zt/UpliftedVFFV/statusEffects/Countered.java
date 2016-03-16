@@ -12,8 +12,8 @@ public class Countered extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public Countered(int i, Schmuck perp, Schmuck counterer, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Countered(int i, Schmuck perp, Schmuck vic, Schmuck counterer, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Countered(int pr){

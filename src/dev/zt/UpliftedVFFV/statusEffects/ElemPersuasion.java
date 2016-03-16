@@ -12,8 +12,8 @@ public class ElemPersuasion extends status{
 	public static Boolean decay = true;
 	public int elemBoost;
 	public int amount;
-	public ElemPersuasion(int i, int start, int amount, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public ElemPersuasion(int i, int start, int amount, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.elemBoost = start;
 		this.amount = amount;
 	}

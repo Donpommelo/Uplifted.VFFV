@@ -25,7 +25,7 @@ public class TomeofEcdysis extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50, 1, new StatBuffMult(5,3,.9 *(1-s.getEquipPow()),s,50));
+		enchantment[0] = new StatusonHit(50, 1, new StatBuffMult(5,3,.9 *(1-s.getEquipPow()),s,s,50));
 		return enchantment;
 	}
 }

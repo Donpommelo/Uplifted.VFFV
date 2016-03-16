@@ -23,8 +23,8 @@ public class ShedFlesh extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(perp, new Purified(2,perp,50));
-		bs.bp.stm.addStatus(perp, new LimitedUse(this,2, perp, 50));
+		bs.bp.stm.addStatus(perp, new Purified(2,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new LimitedUse(this,2, perp, perp,50));
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

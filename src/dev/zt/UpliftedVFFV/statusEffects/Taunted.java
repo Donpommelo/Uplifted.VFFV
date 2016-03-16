@@ -12,8 +12,8 @@ public class Taunted extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public Schmuck Taunter;
-	public Taunted(int i, Schmuck perp, Schmuck taunter, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Taunted(int i, Schmuck perp, Schmuck vic, Schmuck taunter, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.Taunter = taunter;
 	}
 	

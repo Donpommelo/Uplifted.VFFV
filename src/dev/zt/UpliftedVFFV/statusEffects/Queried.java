@@ -9,8 +9,8 @@ public class Queried extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
-	public Queried(Schmuck perp, int pr){
-		super(1, name, perm, visible, removedEnd, decay, perp, pr);
+	public Queried(Schmuck perp, Schmuck vic, int pr){
+		super(1, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}	
 
 	public String inflictText(Schmuck s){

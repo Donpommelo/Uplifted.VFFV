@@ -20,10 +20,10 @@ public class Entropy extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new HealBlock(3, perp, 100));
+		bs.bp.stm.addStatus(vic, new HealBlock(3, perp, vic,100));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new HealBlock((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 100));	
+		bs.bp.stm.addStatus(vic, new HealBlock((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic, 100));	
 	}
 }

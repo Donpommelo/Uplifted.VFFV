@@ -13,8 +13,8 @@ public class Scapegoating extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public Schmuck Goat;
-	public Scapegoating(int i, Schmuck perp, Schmuck goat, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Scapegoating(int i, Schmuck perp, Schmuck vic, Schmuck goat, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.Goat = goat;
 	}
 	

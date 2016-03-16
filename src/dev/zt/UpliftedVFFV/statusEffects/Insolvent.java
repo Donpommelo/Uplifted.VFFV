@@ -12,8 +12,8 @@ public class Insolvent extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public Insolvent(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Insolvent(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Insolvent(int pr){

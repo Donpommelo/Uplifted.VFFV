@@ -19,8 +19,8 @@ public class Channeling extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
-	public Channeling(int dt, int du, status st, boolean aob, boolean eor, boolean disr,Schmuck perp, Schmuck target, int pr){
-		super(1, name, perm, visible, removedEnd, decay, perp, pr);
+	public Channeling(int dt, int du, status st, boolean aob, boolean eor, boolean disr,Schmuck perp, Schmuck vic, Schmuck target, int pr){
+		super(1, name, perm, visible, removedEnd, decay, perp, vic,pr);
 		this.damageThreshold = dt;
 		this.duration = du;
 		this.Status = st;

@@ -20,14 +20,14 @@ public class CannonElectrostaticStatus extends status{
 	}
 	
 	public void onDillyDally(Schmuck s, BattleState bs){
-		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50)) || bs.bp.stm.checkStatus(s, new CrawlingFortressStatus(50))){
+		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50)) || bs.bp.stm.checkStatus(s, new CrawlingFortressStatus(50))){
 			bs.bp.bt.addScene(s.getName()+" fires "+s.getPronoun(1)+" Electrostatic Cannon!");
 			for(Schmuck foe : bs.bp.getSelectableEnemies(s)){
 				int damage = (int)(bs.bp.em.logScaleDamage(s, foe) / bs.bp.getSelectableEnemies(s).size()*(1 + s.getEquipPow()));
 				bs.bp.em.hpChange(damage, s, foe,6);
-				bs.bp.stm.addStatus(foe, new Blind(1, s, 50));
+				bs.bp.stm.addStatus(foe, new Blind(1, s,foe,50));
 			}
-			bs.bp.stm.addStatus(s, new CoolingDown(5, s, 50));
+			bs.bp.stm.addStatus(s, new CoolingDown(5, s, s,50));
 		}
 	}
 	

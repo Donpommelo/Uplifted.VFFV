@@ -36,7 +36,7 @@ public class StatusManager {
 					}
 				}
 			}
-			if(bs.bs.alliesSelectable.contains(s) && !checkStatus(s,new incapacitate(s)) && bs.bs.alliesSelectable.size() == 1){
+			if(bs.bs.alliesSelectable.contains(s) && !checkStatus(s,new incapacitate(s,s)) && bs.bs.alliesSelectable.size() == 1){
 				bs.bp.bt.addScene("You and everyone you care about are dead.");
 			}			
 		}
@@ -111,7 +111,12 @@ public class StatusManager {
 			
 		if(added){
 			if(!stat.inflictText(s).equals("")){
-				bs.bp.bt.addScene(stat.inflictText(s));
+				if(stat.getBa(s) != null){
+					bs.bp.bt.addScene(stat.inflictText(s), stat.getBa(s), true);
+				}
+				else{
+					bs.bp.bt.addScene(stat.inflictText(s));
+				}
 			}
 			
 			//Activate all of the target's on-status effects.
@@ -215,7 +220,7 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
-					if(!checkStatus(s, new incapacitate(s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(10))){
+					if(!checkStatus(s, new incapacitate(s,s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(10))){
 						if(s.statuses.get(i).duration==0){
 							if(!s.statuses.get(i).cureText(s).equals("")){
 								bs.bp.bt.addScene(s.statuses.get(i).cureText(s));
@@ -252,96 +257,96 @@ public class StatusManager {
 		}
 	}
 	
-	public status randomBad(int duration, Schmuck s){
-		status status = new Stunned(duration,s,50);
+	public status randomBad(int duration, Schmuck s, Schmuck vic){
+		status status = new Stunned(duration,s,vic,50);
 		int statnum = (int)(Math.random()*29);
 		switch(statnum){
 		case 0:
-			status = new Asleep(duration,s,50);
+			status = new Asleep(duration,s,vic,50);
 			break;
 		case 1:
-			status = new Berzerk(duration,s,50);
+			status = new Berzerk(duration,s,vic,50);
 			break;
 		case 2:
-			status = new Blind(duration,s,50);
+			status = new Blind(duration,s,vic,50);
 			break;
 		case 3:
-			status = new Combustibility(duration,s,50);
+			status = new Combustibility(duration,s,vic,50);
 			break;
 		case 4:
-			status = new Contagious(duration,s,50);
+			status = new Contagious(duration,s,vic,50);
 			break;
 		case 5:
-			status = new Delicious(duration,.50,s,50);
+			status = new Delicious(duration,.50,s,vic,50);
 			break;
 		case 6:
-			status = new Disarmed(duration,s,50);
+			status = new Disarmed(duration,s,vic,50);
 			break;
 		case 7:
-			status = new ElemBlock(duration,(int)(Math.random()*7),s,50);
+			status = new ElemBlock(duration,(int)(Math.random()*7),s,vic,50);
 			break;
 		case 8:
-			status = new Frozen(duration,s,50);
+			status = new Frozen(duration,s,vic,50);
 			break;
 		case 9:
-			status = new HealBlock(duration,s,100);
+			status = new HealBlock(duration,s,vic,100);
 			break;
 		case 10:
-			status = new Hypochondriac(duration,s,50);
+			status = new Hypochondriac(duration,s,vic,50);
 			break;
 		case 11:
-			status = new Impatient(duration,s,50);
+			status = new Impatient(duration,s,vic,50);
 			break;
 		case 12:
-			status = new Impotent(duration,s,100);
+			status = new Impotent(duration,s,vic,100);
 			break;
 		case 13:
-			status = new Insolvent(duration,s,50);
+			status = new Insolvent(duration,s,vic,50);
 			break;
 		case 14:
-			status = new Intimidated(duration,0.5,s,50);
+			status = new Intimidated(duration,0.5,s,vic,50);
 			break;
 		case 15:
-			status = new Isolated(duration,s,50);
+			status = new Isolated(duration,s,vic,50);
 			break;
 		case 16:
-			status = new MeterBlock(duration,s,100);
+			status = new MeterBlock(duration,s,vic,100);
 			break;
 		case 17:
-			status = new Negative(duration,s,50);
+			status = new Negative(duration,s,vic,50);
 			break;
 		case 18:
-			status = new Paralysis(duration,s,50);
+			status = new Paralysis(duration,s,vic,50);
 			break;
 		case 19:
-			status = new Poisoned(duration,s,50);
+			status = new Poisoned(duration,s,vic,50);
 			break;
 		case 20:
-			status = new Pursued(duration,s,50);
+			status = new Pursued(duration,s,vic,50);
 			break;
 		case 21:
-			status = new Silenced(duration,s,50);
+			status = new Silenced(duration,s,vic,50);
 			break;
 		case 22:
-			status = new Unresistant(duration,s,50);
+			status = new Unresistant(duration,s,vic,50);
 			break;
 		case 23:
-			status = new StatBuffMult(duration,2,.8,s,50);
+			status = new StatBuffMult(duration,2,.8,s,vic,50);
 			break;
 		case 24:
-			status = new StatBuffMult(duration,3,.8,s,50);
+			status = new StatBuffMult(duration,3,.8,s,vic,50);
 			break;
 		case 25:
-			status = new StatBuffMult(duration,4,.8,s,50);
+			status = new StatBuffMult(duration,4,.8,s,vic,50);
 			break;
 		case 26:
-			status = new StatBuffMult(duration,5,.8,s,50);
+			status = new StatBuffMult(duration,5,.8,s,vic,50);
 			break;
 		case 27:
-			status = new StatBuffMult(duration,6,.8,s,50);
+			status = new StatBuffMult(duration,6,.8,s,vic,50);
 			break;
 		case 28:
-			status = new StatBuffMult(duration,7,.8,s,50);
+			status = new StatBuffMult(duration,7,.8,s,vic,50);
 			break;
 		}
 		return status;

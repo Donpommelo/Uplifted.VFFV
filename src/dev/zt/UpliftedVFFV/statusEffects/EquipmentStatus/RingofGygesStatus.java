@@ -22,7 +22,7 @@ public class RingofGygesStatus extends status{
 		if(uses > 0 ){
 			if(vic.getCurrentHp() + damage <= .1*vic.getMaxHp()){
 				bs.bp.bt.addScene(vic.getName()+"'s Ring of Gyges grants Invisibility!");
-				bs.bp.stm.addStatus(vic, new Untouchable(2, vic, 50));
+				bs.bp.stm.addStatus(vic, new Untouchable(2, vic, vic, 50));
 				uses--;
 			}
 		}		

@@ -21,14 +21,14 @@ public class PantherPoise extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene(perp.getName()+" looks poised to strike!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.stm.addStatus(s, new PantherPoiseEffect(2,perp, 90));
+			bs.bp.stm.addStatus(s, new PantherPoiseEffect(2,perp,s, 90));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.bt.addScene(perp.getName()+" looks poised to strike!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(3*(1.5+perp.getCritMulti()-s.getCritRes())),perp, 90));
+			bs.bp.stm.addStatus(s, new PantherPoiseEffect((int)(3*(1.5+perp.getCritMulti()-s.getCritRes())),perp,s, 90));
 		}
 	}
 }

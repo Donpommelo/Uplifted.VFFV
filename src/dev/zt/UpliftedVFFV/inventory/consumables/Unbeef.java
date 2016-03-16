@@ -24,7 +24,7 @@ public class Unbeef extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp, 30) );
+		bs.bp.stm.removeStatus(vic, new BeefedUp(1, perp, vic,30) );
 	}
 
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

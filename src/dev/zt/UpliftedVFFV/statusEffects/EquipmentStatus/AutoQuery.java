@@ -16,7 +16,7 @@ public class AutoQuery extends status{
 		bs.bp.bt.addScene(s.getName()+"'s Auto Querier scans all foes!");
 		for(Schmuck e : bs.bp.getSelectableEnemies(s)){
 			bs.bp.bt.addScene("A(n) "+ e.getName()+". "+ e.getCurrentHp()+"/"+e.getMaxHp()+" Hp");
-			bs.bp.stm.addStatus(e, new Queried(s,50));
+			bs.bp.stm.addStatus(e, new Queried(s,e,50));
 		}
 	}
 }

@@ -23,7 +23,7 @@ public class Haunt extends Skills {
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			int damage = (int)(bs.bp.em.logScaleDamage(perp, s)*(1.5+perp.getCritMulti()-s.getCritRes()) * (1 + perp.getEquipPow()) * 0.6);
 			bs.bp.em.hpChange(damage, perp, s,6);
-			bs.bp.stm.addStatus(s, new StatBuffMult(5,3,.9 *(1-perp.getEquipPow()),perp,80));
+			bs.bp.stm.addStatus(s, new StatBuffMult(5,3,.9 *(1-perp.getEquipPow()),perp,s,80));
 		}
 	}
 }

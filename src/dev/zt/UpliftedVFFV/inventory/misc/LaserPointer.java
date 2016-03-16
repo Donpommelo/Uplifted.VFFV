@@ -26,7 +26,7 @@ public class LaserPointer extends Item{
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		if(bs.bp.TurnOrderQueue.size() !=0 && bs.bp.TurnOrderQueue.get(1) != null){
 			if(bs.bp.TurnOrderQueue.get(1).getUser() == vic && bs.bp.TurnOrderQueue.get(1).skill.getTargetType() == 1){
-				bs.bp.stm.addStatus(vic, new Blind(0,perp,50));
+				bs.bp.stm.addStatus(vic, new Blind(0,perp,vic,50));
 				}
 			else{
 				bs.bp.bt.addScene(vic.getName()+" was annoyed, but not harmed!");

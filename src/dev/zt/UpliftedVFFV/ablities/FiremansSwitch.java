@@ -22,11 +22,11 @@ public class FiremansSwitch extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 	
-		bs.bp.stm.addStatus(vic, new Combustibility(3, perp, 40));
+		bs.bp.stm.addStatus(vic, new Combustibility(3, perp, vic,40));
 
 	}
 		
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new Combustibility(5, perp, 40));
+		bs.bp.stm.addStatus(vic, new Combustibility(5, perp, vic, 40));
 	}	
 }

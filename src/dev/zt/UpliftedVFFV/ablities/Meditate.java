@@ -23,9 +23,9 @@ public class Meditate extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		status st = new MeditateEffect(0,perp, 50);
+		status st = new MeditateEffect(0,perp, perp, 50);
 		bs.bp.stm.addStatus(perp, st);
-		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/5,8,st,false,false,true,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/5,8,st,false,false,true,perp,perp,perp,50));
 	}
 	
 	public void TOQChange(Action a, BattleState bs){

@@ -13,8 +13,8 @@ public class Impatient extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Impatient(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Impatient(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Impatient(int pr){

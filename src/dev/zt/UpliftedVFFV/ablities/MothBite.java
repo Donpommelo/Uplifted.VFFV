@@ -21,12 +21,12 @@ public class MothBite extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.6);
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Unresistant(0, perp,50));
+		bs.bp.stm.addStatus(vic, new Unresistant(0, perp,vic,50));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.6);
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Unresistant(1, perp,50));
+		bs.bp.stm.addStatus(vic, new Unresistant(1, perp,vic,50));
 	}
 }

@@ -13,12 +13,12 @@ public class TyrianPlumEffect extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public TyrianPlumEffect(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public TyrianPlumEffect(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public void onActionUser(BattleState bs, Action a){
-		if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp))){
+		if(!bs.bp.stm.checkStatus(perp,  new incapacitate(perp,perp))){
 			bs.bp.bt.addScene(perp.getName()+"'s Tyrian Plum drains health");
 			int damage = (int)(bs.bp.em.logScaleDamage(perp, a.getUser())* 0.2);
 			bs.bp.em.hpChange((int)(-damage*(1+perp.getHealPower())), perp, perp,2);

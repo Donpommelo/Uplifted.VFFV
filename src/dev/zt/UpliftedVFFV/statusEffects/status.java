@@ -3,6 +3,8 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.Battle.Animations.DefaultStatusAnim;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -43,9 +45,11 @@ public class status implements Serializable{
 	public Boolean decay = true;		//Whether the status's duration decreases at the end of each round.
 	public int extraVar1;					//For stackable statuses
 	public int priority;				//Status priority. Higher priority statuses have their effects applied first.
-	public Schmuck perp;				//Schmuck who inflicted this status
+	public Schmuck perp, vic;			//Schmuck who inflicted this status, Schmuck afflicted
+	
+	public BattleAnimation ba;			//Animation played when this status is inflicted.
 		
-	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Boolean dec, Schmuck p, int pr){
+	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Boolean dec, Schmuck p, Schmuck v, int pr){
 		this.duration=i;
 		this.name = n;
 		this.perm = perm;
@@ -53,8 +57,23 @@ public class status implements Serializable{
 		this.removedEnd = end;
 		this.decay = dec;
 		this.perp = p;
+		this.vic = v;
 		this.priority = pr;
 		this.extraVar1 = 1;
+	}
+	
+	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Boolean dec, Schmuck p, Schmuck v, int pr, BattleAnimation ba){
+		this.duration=i;
+		this.name = n;
+		this.perm = perm;
+		this.visible = vis;
+		this.removedEnd = end;
+		this.decay = dec;
+		this.perp = p;
+		this.vic = v;
+		this.priority = pr;
+		this.extraVar1 = 1;
+		this.ba = ba;
 	}
 	
 	//For creating Equipment Statuses
@@ -86,6 +105,18 @@ public class status implements Serializable{
 		this.priority = priority;
 	}
 	
+	public BattleAnimation getBa(Schmuck s) {
+		return new DefaultStatusAnim(this,s);
+	}
+	
+	public Schmuck getVic() {
+		return vic;
+	}
+
+	public void setVic(Schmuck vic) {
+		this.vic = vic;
+	}
+
 	//Activates upon selecting a move. Atm used for restricting; if certain moves are selected, they are replaced
 	//Implemented in Phase 2 of Battle Processor
 	//GOOD: REPLACING/ADDING ACTIONS, CHANGING TARGETS.

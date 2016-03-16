@@ -20,7 +20,7 @@ public class Query extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new Queried(perp, 50));
+		bs.bp.stm.addStatus(vic, new Queried(perp, vic,50));
 		bs.bp.bt.addScene("A(n) "+ vic.getName()+". "+ vic.getCurrentHp()+"/"+vic.getMaxHp()+" Hp");
 		bs.bp.bt.addScene(vic.getBioShort());
 	}

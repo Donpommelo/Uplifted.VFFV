@@ -23,7 +23,7 @@ public class BlindingStrike extends Skills {
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
-			bs.bp.stm.addStatus(vic, new Blind(3, perp, 50));
+			bs.bp.stm.addStatus(vic, new Blind(3, perp, vic,50));
 		}
 	}
 	
@@ -31,7 +31,7 @@ public class BlindingStrike extends Skills {
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
-			bs.bp.stm.addStatus(vic, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+			bs.bp.stm.addStatus(vic, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,80));	
 		}
 	}
 }

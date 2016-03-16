@@ -12,8 +12,8 @@ public class Poisoned extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public Schmuck inflicter;
-	public Poisoned(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Poisoned(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.inflicter = perp;
 	}
 	

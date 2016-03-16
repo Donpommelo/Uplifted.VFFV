@@ -19,11 +19,11 @@ public class InvertedSwan extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new InvertedSwanEffect(1, perp, 15));
+		bs.bp.stm.addStatus(vic, new InvertedSwanEffect(1, perp, vic, 15));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new InvertedSwanEffect((int)(1+perp.getCritMulti()-vic.getCritRes()), perp, 15));		
+		bs.bp.stm.addStatus(vic, new InvertedSwanEffect((int)(1+perp.getCritMulti()-vic.getCritRes()), perp, vic, 15));		
 	}
 
 	public boolean startTarget(){

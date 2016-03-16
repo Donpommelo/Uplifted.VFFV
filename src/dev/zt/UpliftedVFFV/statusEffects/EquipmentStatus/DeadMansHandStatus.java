@@ -14,7 +14,7 @@ public class DeadMansHandStatus extends status{
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){
-		if(bs.bp.stm.checkStatus(s, new incapacitate(s))){
+		if(bs.bp.stm.checkStatus(s, new incapacitate(s,s))){
 			bs.bp.TurnOrderQueue.add(new Action(s, s, new Haunt(0), bs));
 		}
 	}

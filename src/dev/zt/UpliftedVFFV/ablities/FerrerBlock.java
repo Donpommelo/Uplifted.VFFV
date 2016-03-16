@@ -22,8 +22,8 @@ public class FerrerBlock extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,34,vic.getMaxHp()/5 * (1+perp.getHealPower()),perp,50));
-		bs.bp.stm.addStatus(vic, new Frozen(2, perp, 40));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(2,34,vic.getMaxHp()/5 * (1+perp.getHealPower()),perp,vic,50));
+		bs.bp.stm.addStatus(vic, new Frozen(2, perp, vic, 40));
 	}
 
 }

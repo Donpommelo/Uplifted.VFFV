@@ -12,8 +12,8 @@ public class FadingStrikeEffect extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
 	public Schmuck Target;
-	public FadingStrikeEffect(int i, Schmuck perp, Schmuck target, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public FadingStrikeEffect(int i, Schmuck perp, Schmuck vic, Schmuck target, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic,pr);
 		this.Target = target;
 	}
 

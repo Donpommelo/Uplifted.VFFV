@@ -10,8 +10,8 @@ public class Hypochondriac extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Hypochondriac(int i,Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Hypochondriac(int i,Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Hypochondriac(int pr){

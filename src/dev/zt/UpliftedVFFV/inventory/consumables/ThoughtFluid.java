@@ -25,8 +25,8 @@ public class ThoughtFluid extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 1.25*(1+perp.getItemPow()), perp, 30));
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 35, 7*(1+perp.getItemPow()), perp, 50));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 1.25*(1+perp.getItemPow()), perp,vic, 30));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 35, 7*(1+perp.getItemPow()), perp, vic, 50));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

@@ -28,7 +28,7 @@ public class MidgeBlood extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(3,34,(int)(15*(1+perp.getItemPow())), perp, 40));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(3,34,(int)(15*(1+perp.getItemPow())), perp, vic,40));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

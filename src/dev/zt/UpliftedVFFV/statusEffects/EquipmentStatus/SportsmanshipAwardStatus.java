@@ -13,8 +13,8 @@ public class SportsmanshipAwardStatus extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = false;
-	public SportsmanshipAwardStatus(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public SportsmanshipAwardStatus(int i, Schmuck perp, Schmuck vic,int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp,vic, pr);
 	}
 	
 	public SportsmanshipAwardStatus(int pr){

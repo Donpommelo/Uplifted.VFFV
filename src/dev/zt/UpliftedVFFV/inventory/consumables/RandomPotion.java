@@ -688,73 +688,73 @@ public class RandomPotion extends Item{
 			bs.bp.em.hpChange(-75, perp, vic, 6);
 			break;
 		case "Domination":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 2, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 2, 1.5, perp, vic,50));
 			break;
 		case "Fortification":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 3, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 3, 1.5, perp, vic,50));
 			break;
 		case "Immediacy":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 4, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 4, 1.5, perp, vic,50));
 			break;
 		case "Competance":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 5, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 5, 1.5, perp, vic,50));
 			break;
 		case "Fortune":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 7, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 7, 1.5, perp, vic,50));
 			break;
 		case "Lucidity":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 1.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 1.5, perp, vic,50));
 			break;
 		case "Impotence":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 2, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 2, 0.5, perp, vic,50));
 			break;
 		case "Fraility":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 3, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 3, 0.5, perp, vic,50));
 			break;
 		case "Sloth":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 4, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 4, 0.5, perp, vic,50));
 			break;
 		case "Buffoonery":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 5, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 5, 0.5, perp, vic,50));
 			break;
 		case "Misfortune":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 7, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 7, 0.5, perp, vic,50));
 			break;
 		case "Idiocy":
-			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(3, 6, 0.5, perp, vic,50));
 			break;
 		case "Precision":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 0, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 0, 0.5, perp, vic,50));
 			break;
 		case "Dodginess":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 1, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 1, 0.5, perp, vic,50));
 			break;
 		case "Dynamism":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 16, 0.5, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 17, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 16, 0.5, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 17, 0.5, perp, vic,50));
 			break;
 		case "Punctuality":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 14, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 14, 0.5, perp, vic,50));
 			break;
 		case "Variance":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 15, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 15, 0.5, perp, vic,50));
 			break;
 		case "Efficiency":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 13, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 13, 0.5, perp, vic,50));
 			break;
 		case "Resistances":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 19, 0.25, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 20, 0.25, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 21, 0.25, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 22, 0.25, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 23, 0.25, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 19, 0.25, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 20, 0.25, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 21, 0.25, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 22, 0.25, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 23, 0.25, perp, vic,50));
 			break;
 		case "Corrosion":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 10, -0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 10, -0.5, perp, vic,50));
 			break;
 		case "Vulnerability":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 28, -0.5, perp, 50));
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 32, -0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 28, -0.5, perp, vic,50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 32, -0.5, perp, vic,50));
 			break;
 		case "Experience":
 			bs.bp.bt.addScene(vic.getName()+" gains 30 Exp!");
@@ -765,102 +765,102 @@ public class RandomPotion extends Item{
 			bs.gs.scriptChange(30);
 			break;
 		case "Dormancy":
-			bs.bp.stm.addStatus(vic, new Asleep(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Asleep(3,perp,vic,50));
 			break;
 		case "Infancy":
-			bs.bp.stm.addStatus(vic, new BaselineStats(3,perp,5));
+			bs.bp.stm.addStatus(vic, new BaselineStats(3,perp,vic,5));
 			break;
 		case "Beefyness":
-			bs.bp.stm.addStatus(vic, new BeefedUp(3,perp,50));
+			bs.bp.stm.addStatus(vic, new BeefedUp(3,perp,vic,50));
 			break;
 		case "Rage":
-			bs.bp.stm.addStatus(vic, new Berzerk(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Berzerk(3,perp,vic,50));
 			break;
 		case "Combustibility":
-			bs.bp.stm.addStatus(vic, new Combustibility(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Combustibility(3,perp,vic,50));
 			break;
 		case "Proliferation":
-			bs.bp.stm.addStatus(vic, new Contagious(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Contagious(3,perp,vic,50));
 			break;
 		case "Reflection":
-			bs.bp.stm.addStatus(vic, new DamageReflect(3, 0.5, perp,50));
+			bs.bp.stm.addStatus(vic, new DamageReflect(3, 0.5, perp,vic,50));
 			break;
 		case "Palatability":
-			bs.bp.stm.addStatus(vic, new Delicious(3, 0.5, perp,50));
+			bs.bp.stm.addStatus(vic, new Delicious(3, 0.5, perp,vic,50));
 			break;
 		case "Pacifism":
-			bs.bp.stm.addStatus(vic, new Disarmed(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Disarmed(3,perp,vic,50));
 			break;
 		case "Terror":
-			bs.bp.stm.addStatus(vic, new Fear(3,perp, perp,50));
+			bs.bp.stm.addStatus(vic, new Fear(3,perp, perp,vic,50));
 			break;
 		case "Frost":
-			bs.bp.stm.addStatus(vic, new Frozen(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Frozen(3,perp,vic,50));
 			break;
 		case "Stagnation":
-			bs.bp.stm.addStatus(vic, new HealBlock(3,perp,50));
-			bs.bp.stm.addStatus(vic, new MeterBlock(3,perp,50));
+			bs.bp.stm.addStatus(vic, new HealBlock(3,perp,vic,50));
+			bs.bp.stm.addStatus(vic, new MeterBlock(3,perp,vic,50));
 			break;
 		case "Impatience":
-			bs.bp.stm.addStatus(vic, new Impatient(3,perp,50));
+			bs.bp.stm.addStatus(vic, new Impatient(3,perp,vic,50));
 			break;
 		case "Intimidation":
-			bs.bp.stm.addStatus(vic, new Intimidated(3, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new Intimidated(3, 0.5, perp, vic,50));
 			break;
 		case "Invisibility":
-			bs.bp.stm.addStatus(vic, new Invisible(3, perp, 50));
+			bs.bp.stm.addStatus(vic, new Invisible(3, perp, vic,50));
 			break;
 		case "Invulnerability":
-			bs.bp.stm.addStatus(vic, new Invuln(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Invuln(3, perp, vic,100));
 			break;
 		case "Isolation":
-			bs.bp.stm.addStatus(vic, new Isolated(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Isolated(3, perp, vic,100));
 			break;
 		case "Insolvency":
-			bs.bp.stm.addStatus(vic, new Insolvent(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Insolvent(3, perp, vic,100));
 			break;
 		case "Masochism":
-			bs.bp.stm.addStatus(vic, new Masochist(3, 0.5, perp, 100));
+			bs.bp.stm.addStatus(vic, new Masochist(3, 0.5, perp, vic,100));
 			break;
 		case "Misalignment":
-			bs.bp.stm.addStatus(vic, new Misaligned(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Misaligned(3, perp, vic,100));
 			break;
 		case "Momentum":
-			bs.bp.stm.addStatus(vic, new Momentum(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Momentum(3, perp, vic,100));
 			bs.bp.bt.addScene(vic.getName()+" gained Momentum!");
 			break;
 		case "Negativity":
-			bs.bp.stm.addStatus(vic, new Negative(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Negative(3, perp, vic,100));
 			break;
 		case "Palsy":
-			bs.bp.stm.addStatus(vic, new Paralysis(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Paralysis(3, perp, vic,100));
 			break;
 		case "Toxicity":
-			bs.bp.stm.addStatus(vic, new Poisoned(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Poisoned(3, perp, vic,100));
 			break;
 		case "Purification":
-			bs.bp.stm.addStatus(vic, new Purified(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Purified(3, perp, vic,100));
 			break;
 		case "Inaudibility":
-			bs.bp.stm.addStatus(vic, new Silenced(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Silenced(3, perp, vic,100));
 			break;
 		case "Stupefication":
-			bs.bp.stm.addStatus(vic, new Stunned(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Stunned(3, perp, vic,100));
 			break;
 		case "Vision":
-			bs.bp.stm.addStatus(vic, new TrueSight(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new TrueSight(3, perp, vic,100));
 			break;
 		case "Unresistance":
-			bs.bp.stm.addStatus(vic, new Unresistant(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Unresistant(3, perp, vic,100));
 			break;
 		case "Vampirism":
-			bs.bp.stm.addStatus(vic, new Vampirism(3, 0.5, perp, 100));
+			bs.bp.stm.addStatus(vic, new Vampirism(3, 0.5, perp, vic,100));
 			break;
 		case "Volatility":
-			bs.bp.stm.addStatus(vic, new Volatile(3, perp, 100));
+			bs.bp.stm.addStatus(vic, new Volatile(3, perp, vic,100));
 			break;
 		case "Cowardice":
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 25, 0.5, perp, 50));
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(3, 25, 0.5, perp, vic,50));
 			break;
 		}
 	}

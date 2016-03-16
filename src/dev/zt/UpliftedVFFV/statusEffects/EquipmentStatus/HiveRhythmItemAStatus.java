@@ -22,22 +22,22 @@ public class HiveRhythmItemAStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm B-A chord echoes Powerfully!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 2, 1.1 *(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 2, 1.1 *(1+a.getUser().getEquipPow()), a.getUser(), ally,50));
 				}
 			}
 			break;
 		case 2:
 			bs.bp.bt.addScene("Hive Rhythm C-A chord echoes Explosively!");
 			for(Schmuck enemy : bs.bp.getSelectableEnemies(a.getUser())){
-				bs.bp.stm.addStatus(enemy, new Combustibility(0,a.getUser(), 50));
+				bs.bp.stm.addStatus(enemy, new Combustibility(0,a.getUser(), enemy, 50));
 			}
 			break;
 		case 3:
 			bs.bp.bt.addScene("Hive Rhythm D-A chord echoes Dynamically!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 16, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
-					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 17, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 16, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
+					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 17, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;

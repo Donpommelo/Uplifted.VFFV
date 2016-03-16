@@ -13,6 +13,6 @@ public class NewtonsCradleStatus extends status{
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+"'s Newton's Cradle gives "+s.getPronoun(3)+" the Momentum!");
-		bs.bp.stm.addStatus(s, new Momentum(1,s,50));
+		bs.bp.stm.addStatus(s, new Momentum(1,s,s,50));
 	}	
 }

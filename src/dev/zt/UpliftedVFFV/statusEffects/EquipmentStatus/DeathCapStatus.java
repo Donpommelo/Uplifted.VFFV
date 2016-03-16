@@ -22,7 +22,7 @@ public class DeathCapStatus extends status{
 				bs.bp.bt.addScene(vic.getName()+"'s Death Cap releases Red Spores!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 					if(Math.random() < .6*vic.getBuffedLuk()/s.getBuffedLuk()){
-						bs.bp.stm.addStatus(s, new Combustibility((int)(3*(1+vic.getEquipPow())), vic, 50));
+						bs.bp.stm.addStatus(s, new Combustibility((int)(3*(1+vic.getEquipPow())), vic, s,50));
 					}
 				}
 				break;
@@ -30,7 +30,7 @@ public class DeathCapStatus extends status{
 				bs.bp.bt.addScene(vic.getName()+"'s Death Cap releases Blue Spores!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 					if(Math.random() < .6*vic.getBuffedLuk()/s.getBuffedLuk()){
-						bs.bp.stm.addStatus(s, new Frozen((int)(3*(1+vic.getEquipPow())), vic, 50));
+						bs.bp.stm.addStatus(s, new Frozen((int)(3*(1+vic.getEquipPow())), vic,s, 50));
 					}
 				}
 				break;
@@ -38,7 +38,7 @@ public class DeathCapStatus extends status{
 				bs.bp.bt.addScene(vic.getName()+"'s Death Cap releases Green Spores!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 					if(Math.random() < .6*vic.getBuffedLuk()/s.getBuffedLuk()){
-						bs.bp.stm.addStatus(s, new Poisoned((int)(4*(1+vic.getEquipPow())), vic, 50));
+						bs.bp.stm.addStatus(s, new Poisoned((int)(4*(1+vic.getEquipPow())), vic,s, 50));
 					}
 				}
 				break;
@@ -46,7 +46,7 @@ public class DeathCapStatus extends status{
 				bs.bp.bt.addScene(vic.getName()+"'s Death Cap releases Yellow Spores!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 					if(Math.random() < .6*vic.getBuffedLuk()/s.getBuffedLuk()){
-						bs.bp.stm.addStatus(s, new Paralysis((int)(4*(1+vic.getEquipPow())), vic, 50));
+						bs.bp.stm.addStatus(s, new Paralysis((int)(4*(1+vic.getEquipPow())), vic,s, 50));
 					}
 				}
 				break;
@@ -54,7 +54,7 @@ public class DeathCapStatus extends status{
 				bs.bp.bt.addScene(vic.getName()+"'s Death Cap releases Purple Spores!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 					if(Math.random() < .6*vic.getBuffedLuk()/s.getBuffedLuk()){
-						bs.bp.stm.addStatus(s, new Asleep((int)(4*(1+vic.getEquipPow())), vic, 50));
+						bs.bp.stm.addStatus(s, new Asleep((int)(4*(1+vic.getEquipPow())), vic,s, 50));
 					}
 				}
 				break;

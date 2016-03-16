@@ -20,10 +20,10 @@ public class FoulFortunes extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new StatBuffMult(4,7,.75, perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(4,7,.75, perp,vic,60));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(4*(1.5+perp.getCritMulti()-vic.getCritRes())),2,.75, perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(4*(1.5+perp.getCritMulti()-vic.getCritRes())),2,.75, perp,vic,60));
 	}
 }

@@ -12,11 +12,11 @@ public class KidneyStoneStatus extends status{
 	}
 		
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50))){
+		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50))){
 			if(st.isBad() && !st.perm){
 				bs.bp.bt.addScene(s.getName()+"'s Kidney Stone removes the ailment!");
 				bs.bp.stm.removeStatus(s, st);
-				bs.bp.stm.addStatus(s, new CoolingDown(3, s, 50));
+				bs.bp.stm.addStatus(s, new CoolingDown(3, s,s, 50));
 			}
 		}
 	}

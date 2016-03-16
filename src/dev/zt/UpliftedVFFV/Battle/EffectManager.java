@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.Battle;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.Battle.Animations.DeathAnim;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -81,7 +82,7 @@ public class EffectManager {
 		}*/
 		
 		//Extra check to ensure that the target is not incapacitated.
-		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
+		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic,vic))){
 			if(finalDamage > 0){
 				
 				//perp's heal-give effects and target's heal-receive effects activate.
@@ -116,7 +117,7 @@ public class EffectManager {
 				vic.statusProcTime(20, bs, null, perp, 0, 0, true, null);
 				
 				//Add incapacitate status and remove all of the target's actions from the TOQ
-				bs.bp.stm.addStatus(vic, new incapacitate(perp));
+				bs.bp.stm.addStatus(vic, new incapacitate(perp,vic));
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
 						if(a.user==vic){
@@ -125,9 +126,7 @@ public class EffectManager {
 					}
 					
 				}
-				
-				//Update target for good measure
-				bs.bs.targetUpdate();
+
 			}
 			
 			//Prevent overheal.

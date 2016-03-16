@@ -20,9 +20,9 @@ public class KillSwitchStatus extends status{
 			reviveTimer--;
 		}
 		else{
-			if(bs.bp.stm.checkStatus(s, new incapacitate(s))){
+			if(bs.bp.stm.checkStatus(s, new incapacitate(s,s))){
 				bs.bp.bt.addScene(s.getName()+"'s Kill Switch crackles with life!");
-				bs.bp.stm.removeStatus(s, new incapacitate(s));
+				bs.bp.stm.removeStatus(s, new incapacitate(s,s));
 				bs.bp.stm.removeStatus(s, this);
 				bs.bp.em.hpChange((int)(5*(1+s.getEquipPow())*(1+s.getRegenBonus())), s, s, 3);
 			}

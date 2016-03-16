@@ -21,10 +21,10 @@ public class ScaryFace extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new Intimidated(3, 0.5, perp, 40));
+		bs.bp.stm.addStatus(vic, new Intimidated(3, 0.5, perp, vic, 40));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), 0.5, perp, 40));	
+		bs.bp.stm.addStatus(vic, new Intimidated((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), 0.5, perp, vic,40));	
 	}
 }

@@ -19,7 +19,7 @@ public class Fade extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(perp, new Invisible(2, perp, 50));
+		bs.bp.stm.addStatus(perp, new Invisible(2, perp, perp,50));
 
 	}
 		

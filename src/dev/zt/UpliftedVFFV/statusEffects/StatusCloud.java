@@ -13,8 +13,8 @@ public class StatusCloud extends status{
 	public static Boolean decay = true;
 	public status st;
 	public double perc;
-	public StatusCloud(int i, double perc, status st, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public StatusCloud(int i, double perc, status st, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.st = st;
 		this.perc = perc;
 	}
@@ -27,6 +27,7 @@ public class StatusCloud extends status{
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(-damage > vic.getMaxHp() * perc){
 			if(Math.random() < .6*vic.getBuffedLuk()/perp.getBuffedLuk()){
+				st.setVic(perp);
 				bs.bp.stm.addStatus(perp,st);
 			}
 		}

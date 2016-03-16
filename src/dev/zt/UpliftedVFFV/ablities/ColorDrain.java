@@ -20,7 +20,7 @@ public class ColorDrain extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(int i = 0; i < 5; i++){
-			bs.bp.stm.addStatus(vic, new ElemPointsBuffMult(5,i,.9,perp,50));
+			bs.bp.stm.addStatus(vic, new ElemPointsBuffMult(5,i,.9,perp,vic,50));
 		}
 		if(bs.bp.getSelectableEnemies(perp).contains(vic)){
 			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.8);

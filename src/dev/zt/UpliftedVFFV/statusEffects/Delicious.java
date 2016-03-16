@@ -11,8 +11,8 @@ public class Delicious extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Delicious(int i, double percent, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Delicious(int i, double percent, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.percent = percent;
 	}
 	

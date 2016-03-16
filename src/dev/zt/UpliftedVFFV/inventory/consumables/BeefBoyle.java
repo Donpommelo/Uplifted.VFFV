@@ -26,8 +26,8 @@ public class BeefBoyle extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(perp, new BeefedUp(5, perp, 30));
-		bs.bp.stm.addStatus(perp, new Silenced(5, perp, 30));
+		bs.bp.stm.addStatus(perp, new BeefedUp(5, perp, perp, 30));
+		bs.bp.stm.addStatus(perp, new Silenced(5, perp, perp, 30));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

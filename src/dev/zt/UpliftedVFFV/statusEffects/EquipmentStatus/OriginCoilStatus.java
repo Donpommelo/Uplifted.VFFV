@@ -19,12 +19,12 @@ public class OriginCoilStatus extends status{
 	}
 	
 	public void onDillyDally(Schmuck s, BattleState bs){
-		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50))){
+		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50))){
 			bs.bp.bt.addScene(s.getName()+"'s Origin Coil activates!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(s)){
 				bs.bp.em.hpChange((int)(75*(1+s.getEquipPow()) * (1+s.getHealPower())*(1+ally.getRegenBonus())), s, ally, 6);
 			}	
-			bs.bp.stm.addStatus(s, new CoolingDown(5, s, 50));
+			bs.bp.stm.addStatus(s, new CoolingDown(5, s,s, 50));
 		}
 	}
 	

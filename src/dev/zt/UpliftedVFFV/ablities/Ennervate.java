@@ -20,12 +20,12 @@ public class Ennervate extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new StatBuffMult(2,2,.9, perp,60));
-		bs.bp.stm.addStatus(vic, new StatBuffMult(2,4,.9, perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,2,.9, perp,vic,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,4,.9, perp,vic,60));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),2,.9, perp,60));
-		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),4,.9, perp,60));		
+		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),2,.9, perp,vic,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult((int)(2*(1.5+perp.getCritMulti()-vic.getCritRes())),4,.9, perp,vic,60));		
 	}
 }

@@ -11,8 +11,8 @@ public class Cleave extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
 	public double cleave;
-	public Cleave(int i, double amount, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Cleave(int i, double amount, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.cleave = amount;
 	}
 	

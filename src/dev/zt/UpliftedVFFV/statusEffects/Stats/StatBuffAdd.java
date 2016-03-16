@@ -12,8 +12,8 @@ public class StatBuffAdd extends status{
 	public static Boolean decay = true;
 	public int statChanged;
 	public double statIncrement;
-	public StatBuffAdd(int i, int stat, double amount, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public StatBuffAdd(int i, int stat, double amount, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}

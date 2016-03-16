@@ -22,7 +22,7 @@ public class BlindingLight extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			if(Math.random() < .6*perp.getBuffedLuk()/s.getBuffedLuk()){
-				bs.bp.stm.addStatus(s, new Blind(3, perp, 50));
+				bs.bp.stm.addStatus(s, new Blind(3, perp, s,50));
 			}
 		}
 	}
@@ -30,7 +30,7 @@ public class BlindingLight extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			if(Math.random() < .6*perp.getBuffedLuk()/s.getBuffedLuk()){
-				bs.bp.stm.addStatus(s, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+				bs.bp.stm.addStatus(s, new Blind((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, s,80));	
 			}
 		}		
 	}

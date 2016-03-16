@@ -16,8 +16,8 @@ public class LimitedUse extends status{
 	public int usesLeft;
 	public int origUses;
 	public Skills move;
-	public LimitedUse(Skills m, int uses, Schmuck perp, int pr){
-		super(1, name, perm, visible, removedEnd, decay, perp, pr);
+	public LimitedUse(Skills m, int uses, Schmuck perp, Schmuck vic, int pr){
+		super(1, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.move = m;
 		this.origUses = uses+1;
 		this.usesLeft = (int)(uses + perp.getChargeBonus());

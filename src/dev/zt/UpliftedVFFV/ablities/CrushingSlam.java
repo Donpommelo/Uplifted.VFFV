@@ -38,6 +38,6 @@ public class CrushingSlam extends Skills {
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.8);
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Stunned(2,perp, 80));
+		bs.bp.stm.addStatus(vic, new Stunned(2,perp, vic, 80));
 	}
 }

@@ -20,10 +20,10 @@ public class Plague extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new Contagious(4, perp, 50));
+		bs.bp.stm.addStatus(vic, new Contagious(4, perp, vic,50));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new Contagious((int)(4*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 50));	
+		bs.bp.stm.addStatus(vic, new Contagious((int)(4*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,50));	
 	}
 }

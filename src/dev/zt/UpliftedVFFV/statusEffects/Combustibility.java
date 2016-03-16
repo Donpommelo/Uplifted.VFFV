@@ -14,8 +14,8 @@ public class Combustibility extends status{
 	public Schmuck inflicter;
 	int damageSaved;
 	int turnsLeft;
-	public Combustibility(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Combustibility(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.inflicter = perp;
 		this.damageSaved = 0;
 		this.turnsLeft = i;

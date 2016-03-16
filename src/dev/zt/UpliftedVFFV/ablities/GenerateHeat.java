@@ -20,13 +20,13 @@ public class GenerateHeat extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new ElemPointsBuff(4, 0, 15, perp, 50));
+			bs.bp.stm.addStatus(ally, new ElemPointsBuff(4, 0, 15, perp, ally,50));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new ElemPointsBuff(5, 0, 25, perp, 50));
+			bs.bp.stm.addStatus(ally, new ElemPointsBuff(5, 0, 25, perp, ally, 50));
 		}	
 	}
 }

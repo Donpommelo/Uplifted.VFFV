@@ -20,11 +20,11 @@ public class TyrianPlum extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new TyrianPlumEffect(6,perp, 70));
+		bs.bp.stm.addStatus(vic, new TyrianPlumEffect(6,perp, vic, 70));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new TyrianPlumEffect((int)(6*(1+perp.getCritMulti()-vic.getCritRes())),perp, 70));	
+		bs.bp.stm.addStatus(vic, new TyrianPlumEffect((int)(6*(1+perp.getCritMulti()-vic.getCritRes())),perp, vic, 70));	
 	}
 
 }

@@ -24,8 +24,8 @@ public class PrinterTonerMagenta extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 0, (int)(20 * (1 + perp.getItemPow())), perp,5));
-		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 4, (int)(20 * (1 + perp.getItemPow())), perp,5));
+		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 0, (int)(20 * (1 + perp.getItemPow())), perp,vic,5));
+		bs.bp.stm.addStatus(vic, new ElemPointsBuff(5, 4, (int)(20 * (1 + perp.getItemPow())), perp,vic,5));
 
 	}
 	

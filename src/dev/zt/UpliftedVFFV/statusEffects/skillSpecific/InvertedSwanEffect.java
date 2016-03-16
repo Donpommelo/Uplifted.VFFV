@@ -13,8 +13,8 @@ public class InvertedSwanEffect extends status{
 	public static Boolean visible = false;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public InvertedSwanEffect(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public InvertedSwanEffect(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

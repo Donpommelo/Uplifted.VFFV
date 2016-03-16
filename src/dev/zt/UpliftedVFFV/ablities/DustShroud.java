@@ -24,9 +24,9 @@ public class DustShroud extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("All allies became Untargetable!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, perp,50));
 			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-				bs.bp.stm.addStatus(s, new Invisible(2, perp, 50));
+				bs.bp.stm.addStatus(s, new Invisible(2, perp, s,50));
 			}
 	}
 	

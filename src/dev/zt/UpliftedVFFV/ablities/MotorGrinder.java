@@ -21,13 +21,13 @@ public class MotorGrinder extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8, perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8, perp,vic,60));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8*(1+perp.getCritMulti()-vic.getCritRes()), perp,60));
+		bs.bp.stm.addStatus(vic, new StatBuffMult(2,3,.8*(1+perp.getCritMulti()-vic.getCritRes()), perp,vic,60));
 	}
 	
 }

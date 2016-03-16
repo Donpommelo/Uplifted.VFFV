@@ -68,13 +68,13 @@ public class GlimpseattheEnd extends Item{
 			case 1:
 				bs.bp.bt.addScene("You see a distant smoke-stacks churning out the very sky itself!");
 				for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-					bs.bp.stm.addStatus(s, new ElemPointsBuff(10,3,30, perp,50));
+					bs.bp.stm.addStatus(s, new ElemPointsBuff(10,3,30, perp,s,50));
 				}
 				break;
 			case 2:
 				bs.bp.bt.addScene("You see a vivid image; a sturdy and resolute anchor!");
 				for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-					bs.bp.stm.addStatus(s, new Invuln(0, perp, 100));
+					bs.bp.stm.addStatus(s, new Invuln(0, perp, s,100));
 					ArrayList<status> removed = new ArrayList<status>();
 					for(status st : s.statuses){
 						if(!st.perm && st.isBad()){
@@ -90,16 +90,16 @@ public class GlimpseattheEnd extends Item{
 			case 3:
 				bs.bp.bt.addScene("You see a chamber of people locked away in endless sleep!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-					bs.bp.stm.addStatus(s, new Asleep(5,perp,50));
+					bs.bp.stm.addStatus(s, new Asleep(5,perp,s,50));
 				}
 				break;
 			case 4:
 				bs.bp.bt.addScene("You see a fleet of aging ships and all the oceans in between!");
 				for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
-					bs.bp.stm.addStatus(s, new Isolated(5,perp,50));
+					bs.bp.stm.addStatus(s, new Isolated(5,perp,s,50));
 				}
 				for(Schmuck s : bs.bp.getSelectableAllies(perp)){
-					bs.bp.stm.addStatus(s, new Isolated(5,perp,50));
+					bs.bp.stm.addStatus(s, new Isolated(5,perp,s,50));
 				}
 				break;
 			case 5:

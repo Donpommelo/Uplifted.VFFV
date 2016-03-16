@@ -20,11 +20,11 @@ public class DullRose extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new DullRoseStatus(3, perp, 10));
+		bs.bp.stm.addStatus(vic, new DullRoseStatus(3, perp, vic,10));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new DullRoseStatus((int)(3*(1+perp.getCritMulti())), perp, 20));	
+		bs.bp.stm.addStatus(vic, new DullRoseStatus((int)(3*(1+perp.getCritMulti())), perp, vic, 20));	
 	}
 	
 	public boolean startTarget(){

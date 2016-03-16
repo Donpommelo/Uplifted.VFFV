@@ -13,8 +13,8 @@ public class StatusonHit extends status{
 	public static Boolean decay = true;
 	public status st;
 	public double perc;
-	public StatusonHit(int i, double perc, status st, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public StatusonHit(int i, double perc, status st, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.st = st;
 		this.perc = perc;
 	}
@@ -26,20 +26,12 @@ public class StatusonHit extends status{
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		if(Math.random() < perc * (1+perp.getEquipPow())*(float)(perp.getBuffedLuk()/vic.getBuffedLuk())){
+			st.setVic(vic);
 			bs.bp.stm.addStatus(vic, st);
 		}
 	}
 	
-	public String inflictText(Schmuck s){
-		return "";
-	}
-
-	public String cureText(Schmuck s){
-		return "";
-	}
-
 	public int stackingEffect(){
 		return 2;
 	}
-	
 }

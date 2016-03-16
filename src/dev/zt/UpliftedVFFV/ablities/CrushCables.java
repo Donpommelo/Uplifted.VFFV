@@ -23,12 +23,12 @@ public class CrushCables extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * .75);
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Paralysis(3, perp, 40));
+		bs.bp.stm.addStatus(vic, new Paralysis(3, perp, vic, 40));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * .75);
 		bs.bp.em.hpChange(damage, perp, vic,6);
-		bs.bp.stm.addStatus(vic, new Paralysis((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+		bs.bp.stm.addStatus(vic, new Paralysis((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic, 80));	
 	}
 }

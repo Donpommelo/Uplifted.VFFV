@@ -25,7 +25,7 @@ public class CarrotJuice extends Item{
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
 		bs.bp.em.bpChange((int)(25*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
-		bs.bp.stm.addStatus(vic, new BonusStatBuff(5,0,.25, perp,75));
+		bs.bp.stm.addStatus(vic, new BonusStatBuff(5,0,.25, perp,vic,75));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

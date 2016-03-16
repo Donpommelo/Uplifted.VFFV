@@ -10,8 +10,8 @@ public class Impotent extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public Impotent(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Impotent(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

@@ -36,7 +36,7 @@ public class BattleText {
 	//Duration before scene automatically moves to next
 	public int autoscroll = 120;
 	
-	public int frame, autoWait;
+	public int frame, attackScene, autoWait;
 	
 	public BattleText(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy, BattleState bs){
 		this.game=game;
@@ -48,6 +48,7 @@ public class BattleText {
 		this.scrolling = false;
 		this.actionRun = false;
 		this.frame = 0;
+		this.attackScene = 0;
 		this.autoWait = 0;
 	}
 	
@@ -78,7 +79,7 @@ public class BattleText {
 		
 		//If a null action is queued up, mark it as already done.
 		if(!scenes.isEmpty()){
-			if(scenes.get(0).getA() == null){
+			if(scenes.get(0).getA() == null && scenes.get(0).getBa() == null){
 				actionRun = true;
 			}	
 		}
@@ -139,47 +140,56 @@ public class BattleText {
 		//When it is done animating, run its effects in the Battle Processor.
 		if(scenes.get(0).getA() != null){
 			if(!actionRun){
-				if(frame < scenes.get(0).getA().skill.ba.frames){
-					scenes.get(0).getA().skill.getBa().animateAction(frame, scenes.get(0).getA(), g);
-					frame++;
+				if(attackScene < scenes.get(0).getA().skill.getBa().length){
+					if(frame < scenes.get(0).getA().skill.getBa()[attackScene].frames){
+						scenes.get(0).getA().skill.getBa()[attackScene].animateAction(frame, scenes.get(0).getA(), g);
+						frame++;
+					}
+					else{
+						frame = 0;
+						attackScene++;
+					}
 				}
 				else{
 					frame = 0;
+					attackScene = 0;
 					actionRun = true;
 					bs.bp.runAction(scenes.get(0).getA());
+					bs.bs.locationUpdate();
 				}
 			}
 		}
 		
 		//Do the same thing for scenes that are not attached to actions.
 		if(scenes.get(0).getBa() != null){
-//			if(!actionRun){
+			if(!actionRun){
 				if(frame < scenes.get(0).getBa().frames){
-					scenes.get(0).getBa().animateEffect(frame, g);
+					scenes.get(0).getBa().animateEffect(frame, g,bs);
 					frame++;
 				}
 				else{
 					frame = 0;
 					actionRun = true;
+					bs.bs.locationUpdate();
 				}
-//			}
+			}
 		}
 		
 	}
 	
 	//Animate Actions
 	public void addScene(String text, Action a, Boolean auto){
-		this.scenes.add(new BattleScene(text,a, true));
+		this.scenes.add(new BattleScene(text,a, true,bs));
 	}
 	
 	//Animate non-action effects
 	public void addScene(String text, BattleAnimation ba, Boolean auto){
-		this.scenes.add(new BattleScene(text,ba, true));
+		this.scenes.add(new BattleScene(text,ba, true,bs));
 	}
 	
 	//Text without animations
 	public void addScene(String text){
-		this.scenes.add(new BattleScene(text, true));
+		this.scenes.add(new BattleScene(text, true,bs));
 	}
 
 }

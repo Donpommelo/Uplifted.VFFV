@@ -21,7 +21,7 @@ public class IntrusiveThought extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.em.hpChange(-(3), perp, vic,4);
-		bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(perp, 50));	
+		bs.bp.stm.addStatus(vic, new IntrusiveThoughtEffect(perp, vic, 50));	
 	}
 	
 }

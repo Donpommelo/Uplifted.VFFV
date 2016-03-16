@@ -15,8 +15,8 @@ public class Asleep extends status{
 	public static Boolean decay = true;
 	public Schmuck inflicter;
 	int wakeThreshold;
-	public Asleep(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Asleep(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.inflicter = perp;
 		this.wakeThreshold = 0;
 	}

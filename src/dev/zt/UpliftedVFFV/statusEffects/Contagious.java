@@ -10,8 +10,8 @@ public class Contagious extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;	
-	public Contagious(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Contagious(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Contagious(int pr){

@@ -33,7 +33,7 @@ public class EmpDusa extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Plexiglas is just glass that perplees all attempts at breakage./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Plexiglas is just glass that perplexes all attempts at breakage./");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

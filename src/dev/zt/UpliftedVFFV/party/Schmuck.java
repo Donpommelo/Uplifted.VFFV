@@ -117,7 +117,7 @@ public class Schmuck implements Serializable{
 		tempStats[0]+=hp;
 		if(tempStats[0]<0){
 			tempStats[0]=0;
-			statuses.add(new incapacitate(this));
+			statuses.add(new incapacitate(this,this));
 			for(int i=0; i<statuses.size(); i++){
 				if(statuses.get(i)!=null){
 					if(statuses.get(i).perm != true){
@@ -213,7 +213,7 @@ public class Schmuck implements Serializable{
 		this.statusesChecked.clear();
 		while(!this.statuses.isEmpty()){
 			status tempStatus = this.statuses.get(0);
-			if(!bs.bp.stm.checkStatus(this, new incapacitate(this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this,this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
 				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
 					switch(procTime){
 					//Case 0: Start of Fight Effects

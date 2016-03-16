@@ -16,7 +16,7 @@ public class Deplorable extends status{
 	}
 	
 	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
-		if(s.getCurrentHp() != s.getMaxHp() && !bs.bp.stm.checkStatus(s, new incapacitate(s))){
+		if(s.getCurrentHp() != s.getMaxHp() && !bs.bp.stm.checkStatus(s, new incapacitate(s,s))){
 			bs.bp.bt.addScene(s.getName()+"'s Deplorable Apparatus regrows damaged parts!");
 			bs.bp.em.hpChange((int)(s.getMaxHp()/3*(1+s.getEquipPow())*(1+s.getRegenBonus())),s,s,6);
 		}

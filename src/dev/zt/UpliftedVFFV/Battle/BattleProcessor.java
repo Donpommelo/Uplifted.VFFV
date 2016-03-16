@@ -189,7 +189,7 @@ public class BattleProcessor {
 							for(int i=0 ; i<bs.bs.enemySelectable.size();i++){
 								
 								//Enemy actions found using getAction function under Schmuck if enemy is not incapacitated and player team is not empty.
-								if(!stm.checkStatus(bs.bs.enemySelectable.get(i), new incapacitate(bs.bs.enemySelectable.get(i))) && !bs.bs.alliesSelectable.isEmpty()){
+								if(!stm.checkStatus(bs.bs.enemySelectable.get(i), new incapacitate(bs.bs.enemySelectable.get(i),bs.bs.enemySelectable.get(i))) && !bs.bs.alliesSelectable.isEmpty()){
 									TurnOrderQueue.add(bs.bs.enemySelectable.get(i).getAction(bs));
 								}
 								else{
@@ -273,7 +273,7 @@ public class BattleProcessor {
 							}
 							
 							//If targeting incapacitated unit, display text
-							if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target)) && tempAction.getSkill().getTargetType()==0){
+							if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target,tempAction.target)) && tempAction.getSkill().getTargetType()==0){
 								bt.addScene("But the target was incapacitated!");
 							}
 						}
@@ -433,7 +433,7 @@ public class BattleProcessor {
 					}
 				}
 				for(Schmuck s :allies){
-					if(stm.checkStatus(s,new incapacitate(s))){
+					if(stm.checkStatus(s,new incapacitate(s,s))){
 						numReady++;
 					}
 				}
@@ -519,7 +519,7 @@ public class BattleProcessor {
 			
 			
 			//Update targets for good measure.
-			bs.bs.targetUpdate();
+//			bs.bs.targetUpdate();
 		}
 		else{
 			bt.addScene(tempPerp.getName()+" didn't have the Motivation to use "+tempSkill.getName()+"!");
@@ -555,24 +555,24 @@ public class BattleProcessor {
 		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(!stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 		}
 		else{
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(!stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
@@ -584,24 +584,24 @@ public class BattleProcessor {
 		ArrayList<Schmuck> selectables = new ArrayList<Schmuck>();
 		if(allies.contains(s)){
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(!stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 		}
 		else{
 			for(Schmuck m : bs.bs.enemySelectable){
-				if(!stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(!stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}
 			for(Schmuck m : bs.bs.alliesSelectable){
-				if(stm.checkStatus(m,new Misaligned(0, m, 50))){
+				if(stm.checkStatus(m,new Misaligned(0, m,m, 50))){
 					selectables.add(m);
 				}
 			}

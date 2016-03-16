@@ -13,8 +13,8 @@ public class Frozen extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	public Schmuck inflicter;
-	public Frozen(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Frozen(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.inflicter = perp;
 	}
 	

@@ -23,7 +23,7 @@ public class BlightBite extends Skills {
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
 		bs.bp.em.hpChange(damage, perp, vic,6);		
 		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
-			bs.bp.stm.addStatus(vic, new Poisoned(3, perp, 40));
+			bs.bp.stm.addStatus(vic, new Poisoned(3, perp, vic,40));
 		}
 	}
 	
@@ -31,7 +31,7 @@ public class BlightBite extends Skills {
 		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
 		bs.bp.em.hpChange(damage, perp, vic,6);
 		if(Math.random() < .6*perp.getBuffedLuk()/vic.getBuffedLuk()){
-			bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, 80));	
+			bs.bp.stm.addStatus(vic, new Poisoned((int)(3*(1.5+perp.getCritMulti()-vic.getCritRes())), perp, vic,80));	
 		}
 	}
 

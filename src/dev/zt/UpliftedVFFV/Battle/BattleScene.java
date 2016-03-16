@@ -1,5 +1,7 @@
 package dev.zt.UpliftedVFFV.Battle;
 
+import dev.zt.UpliftedVFFV.states.BattleState;
+
 public class BattleScene {
 
 	//A Battle Scene is the the thing that Battle Text displays.
@@ -17,23 +19,26 @@ public class BattleScene {
 	
 	//The animation if there is one.
 	public BattleAnimation ba;
-	
+	public BattleState bs;
 	//Most Battle Scenes right now are just a line of text that scrolls automaticall.
-	public BattleScene(String t, Action act, Boolean au){
+	public BattleScene(String t, Action act, Boolean au, BattleState bs){
 		this.text = t;
 		this.a = act;
 		this.auto = au;
+		this.bs = bs;
 	}
 	
-	public BattleScene(String t, BattleAnimation ba, Boolean au){
+	public BattleScene(String t, BattleAnimation ba, Boolean au, BattleState bs){
 		this.text = t;
 		this.auto = au;
 		this.ba = ba;
+		this.bs = bs;
 	}
 	
-	public BattleScene(String t, Boolean au){
+	public BattleScene(String t, Boolean au, BattleState bs){
 		this.text = t;
 		this.auto = au;
+		this.bs = bs;
 	}
 	
 	

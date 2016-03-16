@@ -2,7 +2,7 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
-import dev.zt.UpliftedVFFV.Battle.Animations.StandardAttackAnim;
+import dev.zt.UpliftedVFFV.Battle.Animations.UserWindUpAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.BandagedSwordStatus;
@@ -18,8 +18,7 @@ public class StandardAttack extends Skills {
 	public static boolean canMiss = true; public static boolean canCrit = true;
 	public static int element = 6;	//Physical
 	public static int targetType = 0;	//Any Single Target
-	public static int maxFrames = 30;
-	public static BattleAnimation ba = new StandardAttackAnim();
+	public static BattleAnimation[] ba = {new UserWindUpAnim()};
 	public StandardAttack(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, 0, baseAcc, baseCrit, canMiss, canCrit, ba);
 	}
@@ -39,7 +38,7 @@ public class StandardAttack extends Skills {
 		//Blue Aligned reduce the Spd of targets
 		case 2:
 			bs.bp.em.hpChange(damage, perp, vic,1);
-			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,vic,50));
 			break;
 		//Green Aligned gain Life-Steal
 		case 3:
@@ -84,7 +83,7 @@ public class StandardAttack extends Skills {
 		//Blue Aligned reduce the Sod of targets
 		case 2:
 			bs.bp.em.hpChange(damage, perp, vic,1);
-			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,50));
+			bs.bp.stm.addStatus(vic, new StatBuffMult(1,4,.75,perp,vic,50));
 			break;
 		//Green Aligned gain Life-Steal
 		case 3:

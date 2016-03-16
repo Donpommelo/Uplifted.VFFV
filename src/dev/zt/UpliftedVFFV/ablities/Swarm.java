@@ -20,13 +20,13 @@ public class Swarm extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.25, perp, 50));
+			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.25, perp, ally,50));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck ally : bs.bp.getSelectableAllies(perp)){
-			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.75, perp, 50));
+			bs.bp.stm.addStatus(ally, new StatBuffMult(2, 4, 1.75, perp, ally,50));
 		}	
 	}
 }

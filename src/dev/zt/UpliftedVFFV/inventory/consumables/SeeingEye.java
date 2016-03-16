@@ -24,7 +24,7 @@ public class SeeingEye extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(perp, new TrueSight(3, perp, 70));
+		bs.bp.stm.addStatus(perp, new TrueSight(3, perp, perp, 70));
 	}
 	
 	public int getTargetType(){

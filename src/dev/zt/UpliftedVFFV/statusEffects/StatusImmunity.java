@@ -11,8 +11,8 @@ public class StatusImmunity extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
 	public status immune;
-	public StatusImmunity(int i, status imm, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public StatusImmunity(int i, status imm, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.immune = imm;
 	}
 	

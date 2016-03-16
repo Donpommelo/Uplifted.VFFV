@@ -16,7 +16,7 @@ public class Envenomed extends status{
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		bs.bp.bt.addScene(s.getName()+"'s Envenomed Earth makes "+s.getPronoun(3)+" feel sick!");
-		bs.bp.stm.addStatus(s, new Poisoned(5, s, 50));
+		bs.bp.stm.addStatus(s, new Poisoned(5, s, s,50));
 	}
 	
 	public void endoffightEffect(Schmuck s, Boolean won, BattleState bs){

@@ -30,7 +30,7 @@ public class HiveRhythmItemBStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm C-B chord echoes Smoothly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 1, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 1, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;
@@ -38,7 +38,7 @@ public class HiveRhythmItemBStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm D-B chord echoes Protectively!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 3, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 3, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;
@@ -46,7 +46,7 @@ public class HiveRhythmItemBStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm E-B chord echoes Resiliently!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new PrismaticResistance(0, .5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new PrismaticResistance(0, .5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;

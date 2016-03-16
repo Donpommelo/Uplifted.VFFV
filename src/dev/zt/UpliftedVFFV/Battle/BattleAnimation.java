@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.io.Serializable;
 
+import dev.zt.UpliftedVFFV.states.BattleState;
+
 
 public class BattleAnimation implements Serializable{
 	
@@ -28,7 +30,7 @@ public class BattleAnimation implements Serializable{
 	}
 	
 	//This will be run for non-action effects, often the result of statuses.
-	public void animateEffect(int frame, Graphics g){
+	public void animateEffect(int frame, Graphics g, BattleState bs){
 		
 	}
 }

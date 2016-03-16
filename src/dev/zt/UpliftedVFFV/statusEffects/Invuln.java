@@ -10,8 +10,8 @@ public class Invuln extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
-	public Invuln(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Invuln(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp,vic, pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

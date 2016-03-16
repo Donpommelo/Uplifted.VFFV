@@ -22,7 +22,7 @@ public class ForceofWill extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene("All enemies were dazed!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, 50));
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp, perp, 50));
 			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 				for(int i = 0; i<bs.bp.TurnOrderQueue.size(); i++){
 					if(bs.bp.TurnOrderQueue.get(i)!=null){

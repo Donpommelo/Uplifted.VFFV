@@ -15,8 +15,8 @@ public class SindhDakStatus extends status{
 	
 	public boolean turnused;
 	
-	public SindhDakStatus(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public SindhDakStatus(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		turnused = true;
 	}
 

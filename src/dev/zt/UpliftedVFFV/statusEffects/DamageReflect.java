@@ -11,8 +11,8 @@ public class DamageReflect extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = true;
 	public double percent;
-	public DamageReflect(int i, double percent, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public DamageReflect(int i, double percent, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.percent = percent;
 	}
 	

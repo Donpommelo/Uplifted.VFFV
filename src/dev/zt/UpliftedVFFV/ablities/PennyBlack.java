@@ -19,11 +19,11 @@ public class PennyBlack extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.stm.addStatus(vic, new PennyBlackStatus(3, perp, 20));
+		bs.bp.stm.addStatus(vic, new PennyBlackStatus(3, perp, vic, 20));
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, new PennyBlackStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp, 20));	
+		bs.bp.stm.addStatus(vic, new PennyBlackStatus((int)(3*(1+perp.getCritMulti()-vic.getCritRes())), perp,vic, 20));	
 	}
 	
 	public boolean startTarget(){

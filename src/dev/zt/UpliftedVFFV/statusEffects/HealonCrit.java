@@ -15,7 +15,7 @@ public class HealonCrit extends status{
 	}
 	
 	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){
-		bs.bp.bt.addScene(perp.getName()+" restores HealtH from the blow!");
+		bs.bp.bt.addScene(perp.getName()+" restores Health from the blow!");
 		bs.bp.em.hpChange((int)(percent*perp.getMaxBp()), perp,vic,6);
 	}
 }

@@ -16,7 +16,7 @@ public class MaskofFestusStatus extends status{
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
 		if(Math.random()<.5*(1+perp.getEquipPow())*(float)(perp.getBuffedLuk()/vic.getBuffedLuk())){
 			bs.bp.bt.addScene(". . .");
-			bs.bp.stm.addStatus(vic, new Silenced(1, perp, 50));
+			bs.bp.stm.addStatus(vic, new Silenced(1, perp, vic, 50));
 		}
 	}
 	

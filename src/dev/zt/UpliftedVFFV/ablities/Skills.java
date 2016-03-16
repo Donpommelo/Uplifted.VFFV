@@ -34,7 +34,7 @@ public class Skills implements Serializable{
 													
 	private int iconIndex;							//The index of the miniicon of the skill in the Battle Menu
 	
-	public BattleAnimation ba;						//Animation played upon casting skill
+	public BattleAnimation[] ba;						//Animation played upon casting skill
 	
 	
 	//Constructor for skills with no icon yet (most skills)
@@ -51,7 +51,8 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
-		this.ba = new DefaultAnim();
+		this.ba = new BattleAnimation[1];
+		this.ba[0]= new DefaultAnim();
 	}
 	
 	//Constructor for skills with icon but no animation yet
@@ -68,13 +69,13 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
-		this.ba = new DefaultAnim();
-	}
+		this.ba = new BattleAnimation[1];
+		this.ba[0]= new DefaultAnim();	}
 	
 	//Constructor for skill with icon and animation.
 	//Move everything to here eventually
 	public Skills(int index, int t, int elem, String name, String descr, String descrShort, int cost, int icon, int acc, int crit,
-			boolean canMiss, boolean canCrit, BattleAnimation ba){
+			boolean canMiss, boolean canCrit, BattleAnimation[] ba){
 		this.name = name;
 		this.descr = descr;
 		this.descrShort = descrShort;
@@ -86,7 +87,7 @@ public class Skills implements Serializable{
 		this.baseCrit = crit;
 		this.canMiss = canMiss;
 		this.canCrit = canCrit;
-		this.ba = ba;
+		this.ba= ba;
 	}
 	
 	//This method is run whenever a skill is used.
@@ -130,7 +131,6 @@ public class Skills implements Serializable{
 	//I plan to use later for enemy AI stuff. Until then, ignore.
 	public int damageCalc(Schmuck perp, Schmuck vic, BattleState bs){
 		return 0;
-
 	}
 	
 	//Getters and Setters for skill variables.
@@ -183,7 +183,7 @@ public class Skills implements Serializable{
 		return Assets.skillIcons[iconIndex];
 	}
 
-	public BattleAnimation getBa() {
+	public BattleAnimation[] getBa() {
 		return ba;
 	}
 	

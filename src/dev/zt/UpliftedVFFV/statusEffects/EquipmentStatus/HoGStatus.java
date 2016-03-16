@@ -13,11 +13,11 @@ public class HoGStatus extends status{
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){
-		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,50))){
+		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50))){
 			bs.bp.bt.addScene(s.getName()+"'s Hand of Glory Activates!");
 			Schmuck target = bs.bp.getSelectableEnemies(s).get((int)(Math.random()*bs.bp.getSelectableEnemies(s).size()));
-			bs.bp.stm.addStatus(target, new Stunned((int)(2 * (1 + s.getEquipPow())),perp, 50));				
-			bs.bp.stm.addStatus(s, new CoolingDown(5, s, 50));
+			bs.bp.stm.addStatus(target, new Stunned((int)(2 * (1 + s.getEquipPow())),perp,target, 50));				
+			bs.bp.stm.addStatus(s, new CoolingDown(5, s, s,50));
 		}
 	}
 

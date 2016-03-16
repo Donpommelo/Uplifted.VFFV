@@ -24,7 +24,7 @@ public class Stimulant extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.removeStatus(vic, new Asleep(1, perp, 50) );
+		bs.bp.stm.removeStatus(vic, new Asleep(1, perp, vic,50) );
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

@@ -23,7 +23,7 @@ public class HiveRhythmItemCStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm A-C chord echoes Concretely!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 10, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 10, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;
@@ -31,21 +31,21 @@ public class HiveRhythmItemCStatus extends status{
 			bs.bp.bt.addScene("Hive Rhythm B-C chord echoes Hungrily!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new Vampirism(0, 0.25*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new Vampirism(0, 0.25*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;
 		case 3:
 			bs.bp.bt.addScene("Hive Rhythm D-C chord echoes Poisonously!");
 			for(Schmuck enemy : bs.bp.getSelectableEnemies(a.getUser())){
-				bs.bp.stm.addStatus(enemy, new Poisoned((int)(2*(1+a.getUser().getEquipPow())),a.getUser(), 50));
+				bs.bp.stm.addStatus(enemy, new Poisoned((int)(2*(1+a.getUser().getEquipPow())),a.getUser(), enemy, 50));
 			}
 			break;
 		case 4:
 			bs.bp.bt.addScene("Hive Rhythm E-C chord echoes Expertly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
 				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 5, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), 50));
+					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 5, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;

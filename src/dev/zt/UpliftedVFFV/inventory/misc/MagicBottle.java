@@ -29,7 +29,7 @@ public class MagicBottle extends Item{
 		else{
 			bs.bp.em.bpChange(75, perp);
 			bs.bp.em.hpChange(75,perp, perp,1);
-			bs.bp.stm.addStatus(perp, new ElemPointsBuff(5,1,15,perp,50));
+			bs.bp.stm.addStatus(perp, new ElemPointsBuff(5,1,15,perp,perp,50));
 			this.setCharges(this.getCharges()-1);
 			bs.bp.bt.addScene(this.getCharges()+" charges remaining!");
 		}

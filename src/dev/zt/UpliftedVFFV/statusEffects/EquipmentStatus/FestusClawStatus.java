@@ -15,7 +15,7 @@ public class FestusClawStatus extends status{
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.silenceBlocked()){
 			if(bs.bp.calcCrit(a)){
-				bs.bp.stm.addStatus(s, new BonusStatBuff(0,16,10,s,100));
+				bs.bp.stm.addStatus(s, new BonusStatBuff(0,16,10,s,s,100));
 			}
 			else{
 				bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to do something, but no one heard . . ."),bs));

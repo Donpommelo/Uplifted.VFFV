@@ -25,7 +25,7 @@ public class PrehistSynapse extends status{
 		s.hpChange(damage);
 		damage = 0;
 		if(s.getCurrentHp() == 0){
-			bs.bp.stm.addStatus(s, new incapacitate(s));
+			bs.bp.stm.addStatus(s, new incapacitate(s,s));
 		}
 	}
 }

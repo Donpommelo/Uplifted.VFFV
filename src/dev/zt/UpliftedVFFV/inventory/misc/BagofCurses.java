@@ -25,9 +25,9 @@ public class BagofCurses extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
-		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp));
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp, vic));
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp, vic));
+		bs.bp.stm.addStatus(vic, bs.bp.stm.randomBad((int)(3 *(1+perp.getItemPow())), perp, vic));
 	}
 	
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){

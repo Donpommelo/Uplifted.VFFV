@@ -12,8 +12,8 @@ public class Isolated extends status{
 	public static Boolean visible = true;
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
-	public Isolated(int i, Schmuck perp, int pr){
-		super(i, name, perm, visible, removedEnd, decay, perp, pr);
+	public Isolated(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
 	public Isolated(int pr){

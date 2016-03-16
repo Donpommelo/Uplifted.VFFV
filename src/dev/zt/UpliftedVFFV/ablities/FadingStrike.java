@@ -23,10 +23,10 @@ public class FadingStrike extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		status st = new FadingStrikeEffect(0,perp,vic, 50);
+		status st = new FadingStrikeEffect(0,perp,perp, vic, 50);
 		bs.bp.stm.addStatus(perp, st);
-		bs.bp.stm.addStatus(perp, new Invisible(1,perp,50));
-		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/10,8,st,false,false,true,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new Invisible(1,perp,perp,50));
+		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/10,8,st,false,false,true,perp,perp,perp,50));
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
