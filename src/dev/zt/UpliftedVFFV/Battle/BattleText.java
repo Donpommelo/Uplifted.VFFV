@@ -147,6 +147,9 @@ public class BattleText {
 					}
 					else{
 						frame = 0;
+						//If an action has multiple animation scenes, run it after each scene with the number as an input
+						//This is used for multi-hitting abilities like Double Geneva
+						bs.bp.runAction(scenes.get(0).getA(),attackScene);
 						attackScene++;
 					}
 				}
@@ -154,7 +157,7 @@ public class BattleText {
 					frame = 0;
 					attackScene = 0;
 					actionRun = true;
-					bs.bp.runAction(scenes.get(0).getA());
+					bs.bp.runAction(scenes.get(0).getA(),99999);
 					bs.bs.locationUpdate();
 				}
 			}

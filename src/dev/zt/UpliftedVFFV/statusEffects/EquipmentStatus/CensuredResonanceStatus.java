@@ -11,7 +11,7 @@ public class CensuredResonanceStatus extends status{
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){
-		if(st.getName() == "Stats Changed" || st.getName() == "Elementally Aligned"){
+		if(st.isStat()){
 			if(!st.perm){
 				bs.bp.bt.addScene(s.getName()+"'s Censured Resonance echoes the buff!");
 				for(Schmuck ally : bs.bp.getSelectableAllies(s)){

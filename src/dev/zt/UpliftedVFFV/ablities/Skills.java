@@ -102,6 +102,15 @@ public class Skills implements Serializable{
 		run(user,target,bs);
 	}
 	
+	//Testing multi-stage attack animations
+	public void run(Schmuck user, Schmuck target, BattleState bs, int stage){
+
+	}
+	
+	public void runCrit(Schmuck user, Schmuck target, BattleState bs, int stage){
+		run(user,target,bs, stage);
+	}
+	
 	//Returns whether a skill is blocked by the Silence status.
 	//Most skills are.
 	//notable omissions: Attacking, Waiting, using an Item, Running.

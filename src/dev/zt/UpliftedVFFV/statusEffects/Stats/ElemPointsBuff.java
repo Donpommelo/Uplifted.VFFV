@@ -59,6 +59,38 @@ public class ElemPointsBuff extends status{
 		}
 		return s.getName()+" became "+ plusminus +" "+ stat + " aligned!";
 	}
+	
+	public String getName(){
+		String stat = "";
+		String plusminus = "";
+		switch(statChanged){
+		case 0:
+			stat = "Red";
+			break;
+		case 1:
+			stat = "Blue";
+			break;
+		case 2:
+			stat = "Green";
+			break;
+		case 3:
+			stat = "Yellow";
+			break;
+		case 4:
+			stat = "Purple";
+			break;
+		case 5:
+			stat = "???";
+			break;
+		}
+		if(statIncrement>1){
+			plusminus = "+";
+		}
+		else{
+			plusminus = "-";
+		}
+		return plusminus+" "+stat;
+	}
 
 	public String cureText(Schmuck s){
 		return "";//s.getName()+"'s elemental alignments went back to normal";
@@ -66,5 +98,9 @@ public class ElemPointsBuff extends status{
 	
 	public int stackingEffect(){
 		return 2;
+	}
+	
+	public Boolean isStat(){
+		return true;
 	}
 }

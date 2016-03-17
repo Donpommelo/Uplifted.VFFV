@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class DeathAnim extends BattleAnimation{
 	
-	static int frames = 200;
+	static int frames = 100;
 	Schmuck vic;
 	public DeathAnim(Schmuck vic){
 		super(frames);
@@ -21,11 +21,11 @@ public class DeathAnim extends BattleAnimation{
 		if(!bs.allies.contains(vic)){
 			Graphics2D g2d = (Graphics2D) g;
 			float alpha = 1f;
-			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha + frame * -0.005f));
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha + frame * -0.01f));
 		    g2d.drawImage(vic.getBattleSprite(), vic.getX(), vic.getY(), null);
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
 		}
-	    if(frame == 0 || frame == 199){
+	    if(frame == 0 || frame == 99){
 		    bs.bs.targetUpdate();
 	    }
 	}

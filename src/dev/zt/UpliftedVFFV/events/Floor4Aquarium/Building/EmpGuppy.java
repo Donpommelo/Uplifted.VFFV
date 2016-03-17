@@ -8,13 +8,13 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
-public class EmpHarrison extends Event {
+public class EmpGuppy extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeF;
 	public static int numstage = 0;
 	public int move;
-	public EmpHarrison(float x, float y, int idnum) {
+	public EmpGuppy(float x, float y, int idnum) {
 		super(img,idnum,x, y, numstage);
 		xPos=x;
 		yPos=y;
@@ -36,29 +36,32 @@ public class EmpHarrison extends Event {
 		if (Player.runlast==3){
 			this.test.runlast = 2;
 		}
-		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What an educational experience./Aquariums are pretty much history museums for fish./");
-		super.Dialog(d, 0, this.getId(), true);
+		Dialog[] d = new Dialog[2];
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh boy oh boy oh boy oh boy./");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I can't wait to see all the fish!/I'm pretty sure that's my only reason for even showing up at work./");
+		super.Dialog(d, 1, this.getId(), true);
 	}
 	
 	public void walkCycle(){
 		move++;
-		if(move >= 300){
+		if(move >= 75){
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:
-				if(super.getY()>29){
-					super.moveUp();
-				}
+				super.moveUp();
 				break;
 			case 1:
 				super.moveDown();
 				break;
 			case 2:
-				super.moveLeft();
+				if(super.getX()>9){
+					super.moveLeft();
+				}
 				break;
 			case 3:
-				super.moveRight();
+				if(super.getX()<16){
+					super.moveRight();
+				}
 				break;
 			}
 			move = 0;

@@ -53,7 +53,7 @@ public class BonusStatBuff extends status{
 			stat = "Bonus Item Drop";
 			break;
 		case 5:
-			stat = "Fortune";
+			stat = "Oxygen Level";
 			break;
 		case 6:
 			stat = "Elemental Alignment";
@@ -166,6 +166,140 @@ public class BonusStatBuff extends status{
 		}
 		return s.getName()+"'s "+stat+" was "+plusminus+"!";
 	}
+	
+	public String getName(){
+		String stat = "";
+		String plusminus = "";
+		switch(statChanged){
+		case 0:
+			stat = "Accuracy";
+			break;
+		case 1:
+			stat = "Evasion";
+			break;
+		case 2:
+			stat = "Script Drop Rate";
+			break;
+		case 3:
+			stat = "Exp Gain Rate";
+			break;
+		case 4:
+			stat = "Item Drop Rate";
+			break;
+		case 5:
+			stat = "Oxygen Level";
+			break;
+		case 6:
+			stat = "Elemental Alignment";
+			break;
+		case 7:
+			stat = "Damage Amplification";
+			break;
+		case 8:
+			stat = "Damage Resistance";
+			break;
+		case 9:
+			stat = "Item Power";
+			break;
+		case 10:
+			stat = "Equipment Power";
+			break;
+		case 11:
+			stat = "Monster Level";
+			break;
+		case 12:
+			stat = "Combat Frequency";
+			break;
+		case 13:
+			stat = "Motivation Cost Reduction";
+			break;
+		case 14:
+			stat = "Combat Initiative";
+			break;
+		case 15:
+			stat = "Damage Variance";
+			break;
+		case 16:
+			stat = "Critical Chance";
+			break;
+		case 17:
+			stat = "Critical Multiplier";
+			break;
+		case 18:
+			stat = "Heal Power";
+			break;
+		case 19:
+			stat = "Red Resistance";
+			break;
+		case 20:
+			stat = "Blue Resistance";
+			break;
+		case 21:
+			stat = "Green Resistance";
+			break;
+		case 22:
+			stat = "Yellow Resistance";
+			break;
+		case 23:
+			stat = "Purple Resistance";
+			break;
+		case 24:
+			stat = "??? Resistance";
+			break;
+		case 25:
+			stat = "Runaway Chance";
+			break;
+		case 26:
+			stat = "Primary Damage Stat";
+			break;
+		case 27:
+			stat = "Level Requirement Modification";
+			break;
+		case 28:
+			stat = "Critical Resistance";
+			break;
+		case 29:
+			stat = "Regeneration Bonus";
+			break;
+		case 30:
+			stat = "Charge Bonus";
+			break;
+		case 31:
+			stat = "Cooldown Bonus";
+			break;
+		case 32:
+			stat = "Crit Avoidance";
+			break;
+		case 33:
+			stat = "Channeling Bonus";
+			break;
+		case 34:
+			stat = "Hp Regeneration";
+			break;
+		case 35:
+			stat = "Mp Regeneration";
+			break;
+		case 36:
+			stat = "Primary Defense Stat";
+			break;
+		case 37:
+			stat = "Attack Damage";
+			break;
+		case 38:
+			stat = "Damage Reduction";
+			break;
+		case 39:
+			stat = "Haggling Ability";
+			break;
+		}
+		if(statIncrement>1){
+			plusminus = "+";
+		}
+		else{
+			plusminus = "-";
+		}
+		return plusminus+" "+stat;
+	}
 
 	public String cureText(Schmuck s){
 		return "";//s.getName()+"'s stats went back to normal";
@@ -187,5 +321,9 @@ public class BonusStatBuff extends status{
 				return true;
 			}
 		}
+	}
+	
+	public Boolean isStat(){
+		return true;
 	}
 }

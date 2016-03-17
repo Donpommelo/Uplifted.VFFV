@@ -2,6 +2,8 @@ package dev.zt.UpliftedVFFV.dialog;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -68,6 +70,11 @@ public class Dialog {
 		{
 			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, height - 136, 25 + SpeakerName.length() * 8, 32, 16, true);
 		}
+		/*Graphics2D g2 = (Graphics2D)g;
+	    RenderingHints rh = new RenderingHints(
+	             RenderingHints.KEY_TEXT_ANTIALIASING,
+	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+	    g2.setRenderingHints(rh);*/
 		g.setColor(Color.black);					//displays text. / indicates a new line
 		for(int i = 1; i < charIndex; i++){
 			int y = height - 96;

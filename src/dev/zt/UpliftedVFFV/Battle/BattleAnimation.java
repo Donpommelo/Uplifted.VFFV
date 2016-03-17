@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.io.Serializable;
 
+import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 
@@ -15,8 +16,8 @@ public class BattleAnimation implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	//frames: the number of frames in a specific animation.
-	int frames;
-	
+	public int frames;
+	public Schmuck target;
 	public BattleAnimation(int frames){
 		this.frames = frames;
 	}
@@ -32,5 +33,9 @@ public class BattleAnimation implements Serializable{
 	//This will be run for non-action effects, often the result of statuses.
 	public void animateEffect(int frame, Graphics g, BattleState bs){
 		
+	}
+	
+	public Schmuck getTarget(){
+		return target;
 	}
 }

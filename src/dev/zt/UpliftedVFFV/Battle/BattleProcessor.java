@@ -465,7 +465,7 @@ public class BattleProcessor {
 	}
 	
 	//Used every time an action is run.
-	public void runAction(Action tempAction){
+	public void runAction(Action tempAction, int stage){
 		
 		//The skill, user and target of the action being processed.
 		Skills tempSkill = tempAction.skill;		
@@ -477,43 +477,60 @@ public class BattleProcessor {
 		if((int)(tempSkill.getCost()*(1-tempPerp.getMpCost())) <= tempPerp.getCurrentBp()){
 			
 			//Spend Mp
-			em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
+			if(stage == 99999){
+				em.bpChange((int)(-tempSkill.getCost()*(1-tempPerp.getMpCost())), tempPerp);
+			}
 			
 			//Check for Crits.
 			if(calcCrit(tempAction)){
-				bt.addScene("A Critical hit!");
-				tempSkill.runCrit(tempPerp,tempVic,bs);
+				if(stage != 99999){
+					tempSkill.runCrit(tempPerp,tempVic,bs, stage);
+				}
+				else{
+					bt.addScene("A Critical hit!");
+					tempSkill.runCrit(tempPerp,tempVic,bs);
+					//Activate On Crit Effects
+					tempPerp.statusProcTime(8, bs, tempAction, tempVic, 0, 0, true, null);
+				}
 				
-				//Activate On Crit Effects
-				tempPerp.statusProcTime(8, bs, tempAction, tempVic, 0, 0, true, null);
+				
 			}
 			else {
 				
 				//Check for misses
 				if(!calcHit(tempAction)){
-					bt.addScene(tempPerp.getName() + " missed!");
-					
-					//Activate User's Post-Action Effects
-					tempPerp.statusProcTime(9, bs, tempAction, null, 0, 0, true, null);
-					
+					if(stage == 99999){
+						bt.addScene(tempPerp.getName() + " missed!");
+						
+						//Activate User's on-miss Effects
+						tempPerp.statusProcTime(9, bs, tempAction, null, 0, 0, true, null);
+					}
 				}
 				else{
 					//Run action normally
-					tempSkill.run(tempPerp,tempVic,bs);
+					if(stage != 99999){
+						//Run abilities with multiple animation stages
+						tempSkill.run(tempPerp,tempVic,bs,stage);
+					}
+					else{
+						//Run abilities with only 1 animation stage
+						tempSkill.run(tempPerp,tempVic,bs);
+					}
 				}
 			}
 			
 			if(tempAction != null){
-				
-				//Activate User's Post-Action Effects
-				tempPerp.statusProcTime(5, bs, tempAction, null, 0, 0, true, null);
-				
-				//Activate Target's Post-Action Effects
-				tempPerp.statusProcTime(6, bs, tempAction, null, 0, 0, true, null);
-				
-				//Also, run everyone's on-any-action effects
-				for(Schmuck s : battlers){
-					s.statusProcTime(7, bs, tempAction, s, 0, 0, true, null);
+				if(stage == 99999){
+					//Activate User's Post-Action Effects
+					tempPerp.statusProcTime(5, bs, tempAction, null, 0, 0, true, null);
+					
+					//Activate Target's Post-Action Effects
+					tempPerp.statusProcTime(6, bs, tempAction, null, 0, 0, true, null);
+					
+					//Also, run everyone's on-any-action effects
+					for(Schmuck s : battlers){
+						s.statusProcTime(7, bs, tempAction, s, 0, 0, true, null);
+					}
 				}
 			}
 			

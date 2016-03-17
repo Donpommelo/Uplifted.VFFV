@@ -7,23 +7,24 @@ import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.equipables.UsurpersChemSet;
 
-public class EmpHarrison extends Event {
+public class EmpArchie extends Event {
 
 	public static float xPos,yPos;
-	public static BufferedImage img=Assets.EmployeeF;
-	public static int numstage = 0;
+	public static BufferedImage img=Assets.EmployeeM2;
+	public static int stagenum = 0;
 	public int move;
-	public EmpHarrison(float x, float y, int idnum) {
-		super(img,idnum,x, y, numstage);
+	public EmpArchie(float x, float y, int idnum) {
+		super(img,idnum,x, y, stagenum);
 		xPos=x;
 		yPos=y;
 		move = 0;
-		this.test.runlast = 0;
+		this.test.runlast = 1;
 	}
 	
 	public void run(){
-		test.setImgShown(SpriteSorter.SpriteSort(7,Assets.EmployeeF));
+		test.setImgShown(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 		if (Player.runlast==0){
 			this.test.runlast = 1;
 		}
@@ -36,20 +37,19 @@ public class EmpHarrison extends Event {
 		if (Player.runlast==3){
 			this.test.runlast = 2;
 		}
-		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What an educational experience./Aquariums are pretty much history museums for fish./");
-		super.Dialog(d, 0, this.getId(), true);
+		Dialog[] d = new Dialog[2];
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Wow. Did you know that the surface of this planet is mostly water?/");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess we're pretty lucky to have ended up on land, then./I mean, the odds really weren't in our favor./");
+		super.Dialog(d, 1, this.getId(), true);
 	}
 	
 	public void walkCycle(){
 		move++;
-		if(move >= 300){
+		if(move >= 200){
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:
-				if(super.getY()>29){
-					super.moveUp();
-				}
+				super.moveUp();
 				break;
 			case 1:
 				super.moveDown();
@@ -64,8 +64,16 @@ public class EmpHarrison extends Event {
 			move = 0;
 		}
 	}
-	
+
 	public boolean isSolid(int i){
 		return true;
+	}
+	
+	public void setY(float y) {
+		this.y = y;
+	}
+	
+	public void setX(float x) {
+		this.x = x;
 	}
 }

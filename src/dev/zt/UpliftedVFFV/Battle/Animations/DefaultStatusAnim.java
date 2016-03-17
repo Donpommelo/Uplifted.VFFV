@@ -20,10 +20,10 @@ public class DefaultStatusAnim extends BattleAnimation{
 	
 	public void animateEffect(int frame, Graphics g, BattleState bs){
 		if(frame < 40){
-			g.drawString("+"+st.getName(), s.getX()+s.getBattleSprite().getWidth()/2, s.getY()-frame + 70);
+			g.drawString(st.getName(), s.getX()+s.getBattleSprite().getWidth()/2, s.getY()-frame + 70);
 		}
 		else {
-			g.drawString("+"+st.getName(), s.getX()+s.getBattleSprite().getWidth()/2, s.getY()+30);
+			g.drawString(st.getName(), s.getX()+s.getBattleSprite().getWidth()/2, s.getY()+30);
 		}
 	}
 }

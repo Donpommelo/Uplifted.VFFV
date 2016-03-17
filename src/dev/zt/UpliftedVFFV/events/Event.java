@@ -631,7 +631,17 @@ public class Event implements Serializable{
 	public static Event event628 = new WarpAssemblyLinetoConstruction(3,24,628);
 	public static Event event629 = new WarpLightningRodtoConstruction(3,14,629);
 
-	
+	public static Event empShedd = new EmpShedd(27,20,640);
+	public static Event empFischer = new EmpFischer(5,22,641);
+	public static Event empGuppy = new EmpGuppy(13,19,642);
+	public static Event empFreddy = new EmpFreddy(12,14,643);
+	public static Event empHarrison = new EmpHarrison(9,34,644);
+	public static Event empLeeuwenhoek = new EmpLeeuwenhoek(10,24,645);
+	public static Event empSwann = new EmpSwann(7,21,646);
+	public static Event empSen = new EmpSen(22,9,647);
+	public static Event empCoral = new EmpCoral(18,20,648);
+	public static Event empWashington = new EmpWashington(14,9,649);
+
 
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);

@@ -312,6 +312,11 @@ public class status implements Serializable{
 		return false;
 	}
 	
+	//Is this status a basic stat-changer?
+	public Boolean isStat(){
+		return false;
+	}
+
 	//For use with Limited Use stuff
 	public Skills getMove(){
 		return new StandardAttack(0);
