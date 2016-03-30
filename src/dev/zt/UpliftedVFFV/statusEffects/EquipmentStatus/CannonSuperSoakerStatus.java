@@ -15,12 +15,12 @@ public class CannonSuperSoakerStatus extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = false;
 	
-	public CannonSuperSoakerStatus(int pr){
-		super(name, pr);
+	public CannonSuperSoakerStatus(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void onDillyDally(Schmuck s, BattleState bs){
-		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50)) || bs.bp.stm.checkStatus(s, new CrawlingFortressStatus(50))){
+		if(!bs.bp.stm.checkStatus(s, new CoolingDown(0,s,s,50)) || bs.bp.stm.checkStatus(s, new CrawlingFortressStatus(s,50))){
 			bs.bp.bt.addScene(s.getName()+" fires "+s.getPronoun(1)+" Super Soaker!");
 			for(Schmuck foe : bs.bp.getSelectableEnemies(s)){
 				int damage = (int)(bs.bp.em.logScaleDamage(s, foe) / bs.bp.getSelectableEnemies(s).size()*(1 + s.getEquipPow()));

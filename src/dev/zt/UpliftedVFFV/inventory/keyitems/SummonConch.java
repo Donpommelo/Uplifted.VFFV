@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class SummonConch extends Item{
 
-	static int id = 2;
+	static int id = 30;
 	static String name = "Summoning Conch";
 	static boolean menu = false;
 	static boolean battle = false;

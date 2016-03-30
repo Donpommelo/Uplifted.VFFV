@@ -36,23 +36,23 @@ public class FloorManagerSouth extends Event {
 			if(super.itemNumCheck(new MonsterCoffee()) == 1){
 				if(!this.isSelfswitch1()){
 					Dialog[] d = new Dialog[9];
-					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Hey, Operator, You weren't planning on leaving, were you?/I don't believe your shift is over yet./");
-					d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"N . . . no sir. I was just . . ./");
-					d[2] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"I have no ear for excuses. Just get back to work.//. . . well actually . . ./");
-					d[3] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Say, now that you're down here, why don't you make yourself useful./Could you be so kind as to fetch me my coffee?/It is in a room to the West of here./");
-					d[4] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks in advance./");
+					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Hey, Operator, You weren't planning on leaving, were you?/I don't believe your shift is over yet.");
+					d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"N . . . no sir. I was just . . .");
+					d[2] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"I have no ear for excuses. Just get back to work.//. . . well actually . . .");
+					d[3] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Say, now that you're down here, why don't you make yourself useful. Could you be so kind as to fetch me my coffee? It is in a room to the West of here.");
+					d[4] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks in advance.");
 					d[5] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Wait, you already have it?/Huh . . ./");
-					d[6] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks, I guess . . ./");
-					d[7] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh. That's much better./You probably weren't expecting a reward, but here is one anyways./");
-					d[8] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the False Face!/");
+					d[6] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks, I guess . . .");
+					d[7] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh. That's much better./You probably weren't expecting a reward, but here is one anyways.");
+					d[8] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the False Face!");
 					super.Dialog(d, 8, this.getId(), true);
 					this.setSelfswitch1(true);
 				}
 				else{
 					Dialog[] d = new Dialog[3];
-					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thank you Operator./");
-					d[1] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh . . . This must be what it feels like to give orders./I could get used to this./Anyways, you should have this. As a token of thanks./");
-					d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the False Face!/");
+					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thank you Operator.");
+					d[1] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh . . . This must be what it feels like to give orders. I could get used to this. Anyways, you should have this. As a token of thanks.");
+					d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the False Face!");
 					super.Dialog(d, 2, this.getId(), true);
 
 				}
@@ -64,24 +64,24 @@ public class FloorManagerSouth extends Event {
 			else{
 				if(super.getQuest(7) == 3){
 					Dialog[] d = new Dialog[1];
-					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh. My day is started right, thank you Operator./But I still can't let you leave work right now. Sorry./Trust me, it's for your own good./");
+					d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Ahh. My day is started right, thank you Operator. But I still can't let you leave work right now. Sorry. Trust me, it's for your own good.");
 					super.Dialog(d, 0, this.getId(), true);
 				}
 				else{
 					if(!this.isSelfswitch1()){
 						Dialog[] d = new Dialog[5];
-						d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Hey, Operator, You weren't planning on leaving, were you?/I don't believe your shift is over yet./");
-						d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"N . . . no sir. I was just . . ./");
-						d[2] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"I have no ear for excuses. Just get back to work.//. . . well actually . . ./");
-						d[3] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Say, now that you're down here, why don't you make yourself useful./Could you be so kind as to fetch me my coffee?/It is in a room to the West of here./");
-						d[4] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks in advance./");
+						d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Hey, Operator, You weren't planning on leaving, were you? I don't believe your shift is over yet.");
+						d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"N . . . no sir. I was just . . .");
+						d[2] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"I have no ear for excuses. Just get back to work.//. . . well actually . . .");
+						d[3] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Say, now that you're down here, why don't you make yourself useful. Could you be so kind as to fetch me my coffee? It is in a room to the West of here.");
+						d[4] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Thanks in advance.");
 						super.Dialog(d, 4, this.getId(), true);
 						super.setQuest(7, 1);
 						this.setSelfswitch1(true);
 					}
 					else{
 						Dialog[] d = new Dialog[1];
-						d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Fetch me my coffee yet?/I'd get it myself, but I'm not supposed to leave./");
+						d[0] = new Dialog("Floor Manager","/CharacterBusts/3rdEastOffices-1.png",1,"Fetch me my coffee yet?/I'd get it myself, but I'm not supposed to leave.");
 						super.Dialog(d, 0, this.getId(), true);
 					}
 				}

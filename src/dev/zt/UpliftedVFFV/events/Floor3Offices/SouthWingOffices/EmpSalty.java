@@ -33,8 +33,8 @@ public class EmpSalty extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Why can't I stop playing something that just makes me angry and frustrated?/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess even that beats boredom./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Why can't I stop playing something that just makes me angry and frustrated?");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess even that beats boredom.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

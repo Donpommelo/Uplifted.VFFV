@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BloodwoodsOvercoatStatus extends status{
 	
-	public BloodwoodsOvercoatStatus(int pr){
-		super("Bloodwood's Blessing", pr);
+	public BloodwoodsOvercoatStatus(Schmuck v,int pr){
+		super("Bloodwood's Blessing", v,pr);
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

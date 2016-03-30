@@ -30,7 +30,7 @@ public class EmpLateNeet extends Event {
 			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeM2));
 		}
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I regret taking for granted my long hours of unemployed freetime./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I regret taking for granted my long hours of unemployed freetime.");
 		super.Dialog(d, 0, this.getId(), true);	}
 
 	public boolean isSolid(int i){

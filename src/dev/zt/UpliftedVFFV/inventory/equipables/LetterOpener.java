@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class LetterOpener extends Item{
 
-	static int id = 2;
+	static int id = 13;
 	static String name = "Letter Opener";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class LetterOpener extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(37,(int)(7*(1+s.getEquipPow())), 50);
+		enchantment[0] = new BonusStatBuff(37,(int)(7*(1+s.getEquipPow())), s,50);
 		return enchantment;
 	}
 }

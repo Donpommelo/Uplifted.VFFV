@@ -33,7 +33,7 @@ public class EmpNostalgic extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Whenever things go wrong, I like to look back at fond memories of that one time where/things went right. That way, things only need to go right once./Good moments truly are forever./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Whenever things go wrong, I like to look back at fond memories of that one time where things went right. That way, things only need to go right once.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -20,7 +20,7 @@ public class EventSafe15 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a thermos of . . . coffee?/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a thermos of . . . coffee?");
 			super.Dialog(d, 0, this.getId(), true);
 			super.loot(new MonsterCoffee(), 1);
 			this.setTex(Assets.SafeOpened);

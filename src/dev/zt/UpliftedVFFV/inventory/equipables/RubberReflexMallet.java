@@ -25,7 +25,7 @@ public class RubberReflexMallet extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50,1,new BonusStatBuff(0,16,1,s,s,50));
+		enchantment[0] = new StatusonHit(1,new BonusStatBuff(0,16,1,s,s,50),s,50);
 		return enchantment;
 	}
 

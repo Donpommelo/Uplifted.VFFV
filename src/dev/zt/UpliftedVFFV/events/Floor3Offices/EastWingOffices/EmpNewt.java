@@ -37,9 +37,9 @@ public class EmpNewt extends Event {
 			switch(this.getstage()){
 			case 0: 
 				Dialog[] d = new Dialog[3];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Have you ever stolen something from a coworker, only to realize you didn't want it?/");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Anyways, why don't you take this?/And don't tell anyone I gave it to you./");
-				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Newton's Cradle!/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Have you ever stolen something from a coworker, only to realize you didn't want it?");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Anyways, why don't you take this?/And don't tell anyone I gave it to you.");
+				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Newton's Cradle!");
 				super.Dialog(d, 2, this.getId(), true);	
 				super.loot(new NewtonCradle(), 1);
 				break;
@@ -53,7 +53,7 @@ public class EmpNewt extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Sometimes, it's enough that others have less./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Sometimes, it's enough that others have less.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));
 			this.setstage(1);

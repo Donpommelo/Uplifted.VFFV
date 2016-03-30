@@ -24,7 +24,7 @@ public class AutoQuerier extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AutoQuery(100);
+		enchantment[0] = new AutoQuery(s,100);
 		return enchantment;
 	}
 }

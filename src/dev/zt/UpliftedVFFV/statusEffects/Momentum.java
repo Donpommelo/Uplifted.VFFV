@@ -13,10 +13,6 @@ public class Momentum extends status{
 	public Momentum(int i, Schmuck perp, Schmuck vic, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, vic,pr);
 	}
-	
-	public Momentum(int pr){
-		super(name, pr);
-	}	
 		
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		bs.bp.bt.addScene(perp.getName()+"'s Momentum transfered to "+vic.getName()+"!");

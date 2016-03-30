@@ -33,7 +33,7 @@ public class EmpJade extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh boy. Adulthood is every bit as terrible as childhood led me to believe./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh boy. Adulthood is every bit as terrible as childhood led me to believe.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

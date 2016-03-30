@@ -13,8 +13,8 @@ public class BeefedUp extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public BeefedUp(int pr){
-		super(name, pr);
+	public BeefedUp(Schmuck v,int pr){
+		super(name,v,pr);
 	}	
 	
 	public void statchanges(Schmuck s){

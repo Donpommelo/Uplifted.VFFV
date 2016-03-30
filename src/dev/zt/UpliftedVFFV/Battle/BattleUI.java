@@ -60,14 +60,14 @@ public class BattleUI {
 			
 			
 			//Write out skills for debugging.
-			g.setColor(new Color(0,0,0));
+/*			g.setColor(new Color(0,0,0));
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
 			if(a != null){
 				g.drawString(a.user.getName()+" "+a.skill.getName(),110, 45+25*bs.bp.TurnOrderQueue.indexOf(a));
 			}
 			else{
 				g.drawString("null",110,45+25*bs.bp.TurnOrderQueue.indexOf(a));
-			}
+			}*/
 		}
 		
 		//Draw enemy gauge if foe has been queried.

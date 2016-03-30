@@ -14,8 +14,8 @@ public class HealBlock extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public HealBlock(int pr){
-		super(name, pr);
+	public HealBlock(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

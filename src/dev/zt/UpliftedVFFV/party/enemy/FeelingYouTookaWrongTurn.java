@@ -26,8 +26,8 @@ public class FeelingYouTookaWrongTurn extends Schmuck{
 	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 20, baseVoid = 0;
 	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
 
-	public static String name = "Wandering Mind";
-	public static String plural = "Wandering Minds";
+	public static String name = "The Feeling You Took a Wrong Turn";
+	public static String plural = "The Feelings You Took a Wrong Turn";
 	public static String pronoun = "it";
 	
 	public static int sprite = 14;

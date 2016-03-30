@@ -34,8 +34,8 @@ public class EmpFlammable extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I was looking for a fire alarm to pull because I was bored, but I noticed there aren't/any. Not one. In the entire South Wing Offices!/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What reckless disregard for employee well-being! I wonder why Management is so/ stoically unafraid of fire./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I was looking for a fire alarm to pull because I was bored, but I noticed there aren't any. Not one. In the entire South Wing Offices!");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What reckless disregard for employee well-being! I wonder why Management is so stoically unafraid of fire.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

@@ -24,8 +24,8 @@ public class GloveoftheMaker extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(9,.3, 50);
-		enchantment[1] = new BonusStatBuff(10,.1, 50);
+		enchantment[0] = new BonusStatBuff(9,.3, s,50);
+		enchantment[1] = new BonusStatBuff(10,.1, s,50);
 		return enchantment;
 	}
 

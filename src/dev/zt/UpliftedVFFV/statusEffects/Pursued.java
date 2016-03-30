@@ -16,8 +16,8 @@ public class Pursued extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Pursued(int pr){
-		super(name, pr);
+	public Pursued(Schmuck v,int pr){
+		super(name,v, pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

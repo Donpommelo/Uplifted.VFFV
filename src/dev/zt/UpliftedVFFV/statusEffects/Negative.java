@@ -14,10 +14,6 @@ public class Negative extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic,pr);
 	}
 	
-	public Negative(int pr){
-		super(name, pr);
-	}
-	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		vic.hpChange(-damage);
 		return 0;

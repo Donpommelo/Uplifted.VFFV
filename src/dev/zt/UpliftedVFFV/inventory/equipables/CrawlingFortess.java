@@ -25,8 +25,8 @@ public class CrawlingFortess extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CrawlingFortressStatus(20);
-		enchantment[1] = new StatBuffMult(2, .5, 20);
+		enchantment[0] = new CrawlingFortressStatus(s,20);
+		enchantment[1] = new StatBuffMult(2, .5, s,20);
 
 		return enchantment;
 	}

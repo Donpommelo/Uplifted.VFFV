@@ -11,8 +11,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class HiveRhythmItemBStatus extends status{
 	
 	status buff;
-	public HiveRhythmItemBStatus(int pr, status st){
-		super("Hive Rhythm : B", pr);
+	public HiveRhythmItemBStatus(Schmuck v,int pr, status st){
+		super("Hive Rhythm : B", v, pr);
 		this.buff = st;
 	}
 	
@@ -21,7 +21,7 @@ public class HiveRhythmItemBStatus extends status{
 		case 0:
 			bs.bp.bt.addScene("Hive Rhythm A-B chord echoes Salubriously!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.em.hpChange((int)(25*(1+a.getUser().getEquipPow())*(1+ally.getRegenBonus())), a.getUser(), ally, 1);
 				}
 			}
@@ -29,7 +29,7 @@ public class HiveRhythmItemBStatus extends status{
 		case 2:
 			bs.bp.bt.addScene("Hive Rhythm C-B chord echoes Smoothly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.stm.addStatus(ally, new BonusStatBuff(0, 1, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
@@ -37,7 +37,7 @@ public class HiveRhythmItemBStatus extends status{
 		case 3:
 			bs.bp.bt.addScene("Hive Rhythm D-B chord echoes Protectively!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 3, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
@@ -45,15 +45,15 @@ public class HiveRhythmItemBStatus extends status{
 		case 4:
 			bs.bp.bt.addScene("Hive Rhythm E-B chord echoes Resiliently!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.stm.addStatus(ally, new PrismaticResistance(0, .5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
 			break;
 		}
 		for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-			if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-				bs.bp.stm.findStatus(ally, new HiveRhythmBuffStatus(50)).setExtraVar1(1);
+			if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
+				bs.bp.stm.findStatus(ally, new HiveRhythmBuffStatus(ally,50)).setExtraVar1(1);
 			}
 		}
 	}

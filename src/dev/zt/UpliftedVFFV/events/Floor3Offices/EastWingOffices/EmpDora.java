@@ -33,12 +33,12 @@ public class EmpDora extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Some doors are locked from one side. If you find the side that isn't locked,/you can permanently unlock the door for future travel./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Maybe I should go around locking them again./Hah! That would be hilarious!/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Some doors are locked from one side. If you find the side that isn't locked, you can permanently unlock the door for future travel.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Maybe I should go around locking them again./Hah! That would be hilarious!");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
-			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
+			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 			this.setstage(0);
 			break;
 			

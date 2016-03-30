@@ -38,19 +38,19 @@ public class EmpJerome1 extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[7];
-			d[0] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Hello there. Which offices do you come from?/");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Offices?/");
-			d[2] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Which offices? South, East, West or. . . Er. . .whatever the fourth one was?/");
-			d[3] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"I woulda wagered you were a West Office Employee, but you seemed a little too/. . . lively, y'know? But you looked too nice to be from East Wing./And I haven't seen you around South./");
-			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Oh. I'm not from any of the offices. I'm the Operator. I work in the Elevators./");
-			d[5] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Elevators? We have elevators in this building?/I guess I've always been more of a stairs person anyways./");
-			d[6] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Stairs. . ./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Hello there. Which offices do you come from?");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Offices?");
+			d[2] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Which offices? South, East, West or. . . Er. . .whatever the fourth one was?");
+			d[3] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"I woulda wagered you were a West Office Employee, but you seemed a little too . . . lively, y'know? But you looked too nice to be from East Wing.");
+			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Oh. I'm not from any of the offices. I'm the Operator. I work in the Elevators.");
+			d[5] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Elevators? We have elevators in this building? I guess I've always been more of a stairs person anyways.");
+			d[6] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Stairs. . .");
 			super.Dialog(d, 6, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Remind me to try that elevator thing some time./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Gerome1small.png",1,"Remind me to try that elevator thing some time.");
 			super.Dialog(d, 0, this.getId(), true);
 		}
 	}

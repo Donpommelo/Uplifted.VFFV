@@ -37,8 +37,8 @@ public class EmpDonutGuy extends Event {
 			switch(this.getstage()){
 			case 0: 
 				Dialog[] d = new Dialog[2];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Hey, today was my day to get breakfast for the office, but Mick isn't here because of a/kidney stone or whatever./You can have his donut if you want./");
-				d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Some guy gave you a Donut!/It seems to be one of those strange, niche flavors./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Hey, today was my day to get breakfast for the office, but Mick isn't here because of a kidney stone or whatever. You can have his donut if you want.");
+				d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Some guy gave you a Donut!/It seems to be one of those strange, niche flavors.");
 				super.Dialog(d, 1, this.getId(), true);	
 				super.loot(new FennelDonut(),1);
 				break;
@@ -52,7 +52,7 @@ public class EmpDonutGuy extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Mick always had the worse taste in donuts./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Mick always had the worse taste in donuts.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM2));
 			this.setstage(1);

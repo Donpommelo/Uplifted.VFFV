@@ -37,16 +37,16 @@ public class EmpAshli extends Event {
 			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d = new Dialog[4];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Files . . ./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Deliver . . ./");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . . take . . ./");
-				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained The <> Files!/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Files . . .");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Deliver . . .");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . . take . . .");
+				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained The <> Files!");
 				super.Dialog(d, 3, this.getId(), true);
 				super.loot(new TheTentativelyNamedFiles(), 1);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . ./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . .");
 				super.Dialog(d, 0, this.getId(), true);
 			}
 			

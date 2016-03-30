@@ -16,8 +16,8 @@ public class Countered extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Countered(int pr){
-		super(name, pr);
+	public Countered(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void onActionTarget(BattleState bs, Action a){

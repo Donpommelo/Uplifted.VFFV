@@ -25,8 +25,8 @@ public class TomeofPermanence extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TomeofPermanenceStatus(50);
-		enchantment[1] = new StatBuffAdd(0, (int)(15*(1+s.getEquipPow())), 50);
+		enchantment[0] = new TomeofPermanenceStatus(s,50);
+		enchantment[1] = new StatBuffAdd(0, (int)(15*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 

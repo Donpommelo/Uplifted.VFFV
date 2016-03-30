@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class Paperweight extends Item{
 
-	static int id = 2;
+	static int id = 4;
 	static String name = "Paperweight";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class Paperweight extends Item{
 	}
 		
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new StatBuffAdd(3,(int)(5*(1+s.getEquipPow())), 50);
+		enchantment[0] =  new StatBuffAdd(3,(int)(5*(1+s.getEquipPow())), s,50);
 		return enchantment;
 	}
 }

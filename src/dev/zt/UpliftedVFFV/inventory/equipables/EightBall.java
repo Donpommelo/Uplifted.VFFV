@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class EightBall extends Item{
 
-	static int id = 2;
+	static int id = 27;
 	static String name = "8-Ball";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,7 +25,7 @@ public class EightBall extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemPointsBuff(5,(int)(15*(1+s.getEquipPow())), 50);
+		enchantment[0] = new ElemPointsBuff(5,(int)(15*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 

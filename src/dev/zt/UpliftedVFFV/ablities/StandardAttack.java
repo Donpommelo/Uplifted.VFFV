@@ -115,7 +115,7 @@ public class StandardAttack extends Skills {
 	}
 		
 	public void TOQChange(Action a, BattleState bs){
-		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(50)) || a.getUser().getElemAlignment() == 4){
+		if(bs.bp.stm.checkStatus(a.user, new BandagedSwordStatus(a.user,50)) || a.getUser().getElemAlignment() == 4){
 			bs.bp.TurnOrderQueue.remove(a);
 			bs.bp.TurnOrderQueue.add(0, a);
 		}

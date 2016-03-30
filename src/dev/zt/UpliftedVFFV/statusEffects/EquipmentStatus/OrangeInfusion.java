@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class OrangeInfusion extends status{
 	
-	public OrangeInfusion(int pr){
-		super("Orange Infusion", pr);
+	public OrangeInfusion(Schmuck v,int pr){
+		super("Orange Infusion", v,pr);
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){		

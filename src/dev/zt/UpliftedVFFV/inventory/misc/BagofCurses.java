@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class BagofCurses extends Item{
 	
-	static int id = 2;
+	static int id = 35;
 	static String name = "Bag of Assorted Curses";
 	static boolean menu = false;
 	static boolean battle = true;

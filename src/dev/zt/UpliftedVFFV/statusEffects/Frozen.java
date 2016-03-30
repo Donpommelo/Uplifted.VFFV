@@ -18,8 +18,8 @@ public class Frozen extends status{
 		this.inflicter = perp;
 	}
 	
-	public Frozen(int pr){
-		super(name, pr);
+	public Frozen(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

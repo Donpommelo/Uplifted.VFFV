@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class AetherFeather extends Item{
 
-	static int id = 2;
+	static int id = 32;
 	static String name = "Aether Feather";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,8 +25,8 @@ public class AetherFeather extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(0, .15 * (1 + s.getEquipPow()), 50);
-		enchantment[1] = new ElemPointsBuff(3,(int)(5* (1 + s.getEquipPow())),30);
+		enchantment[0] = new BonusStatBuff(0, .15 * (1 + s.getEquipPow()), s,50);
+		enchantment[1] = new ElemPointsBuff(3,(int)(5* (1 + s.getEquipPow())),s,30);
 		return enchantment;
 	}
 }

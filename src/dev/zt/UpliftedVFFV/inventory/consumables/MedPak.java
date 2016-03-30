@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class MedPak extends Item{
 
-	static int id = 2;
+	static int id = 6;
 	static String name = "Med-Pak";
 	static boolean menu = true;
 	static boolean battle = true;
@@ -20,7 +20,7 @@ public class MedPak extends Item{
 	static int value = 5;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A container of useful medicines. The Infirmary distributes these to other floors to avoid having to actually see any of your faces.";
+	static String descr="A container of useful medicines. The Infirmary distributes these to other floors to avoid having to actually see any of you.";
 	static String descrShort="Restore Hp.";
 	public MedPak() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

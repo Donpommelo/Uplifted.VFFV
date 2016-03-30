@@ -24,7 +24,7 @@ public class MadnessMantra extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new MadnessMantraStatus(75);
+		enchantment[0] = new MadnessMantraStatus(s,75);
 		return enchantment;
 	}
 	

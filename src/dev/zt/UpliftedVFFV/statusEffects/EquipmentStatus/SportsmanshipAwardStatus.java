@@ -17,8 +17,8 @@ public class SportsmanshipAwardStatus extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp,vic, pr);
 	}
 	
-	public SportsmanshipAwardStatus(int pr){
-		super(name, pr);
+	public SportsmanshipAwardStatus(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

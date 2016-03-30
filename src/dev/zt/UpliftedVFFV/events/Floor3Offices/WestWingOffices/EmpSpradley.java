@@ -34,8 +34,8 @@ public class EmpSpradley extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"This level of workplace gravity is only understandable./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The work we do here is more important than you can possibly imagine./How other offices manage such frivolity is beyond me./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"This level of workplace gravity is only understandable.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The work we do here is more important than you can possibly imagine. How other offices manage such frivolity is beyond me.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

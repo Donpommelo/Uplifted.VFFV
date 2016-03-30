@@ -33,7 +33,7 @@ public class EmpMrClean extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"This is hardly appropriate./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"This is hardly appropriate.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

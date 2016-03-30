@@ -18,8 +18,8 @@ public class StatBuffAdd extends status{
 		this.statIncrement = amount;
 	}
 	
-	public StatBuffAdd(int stat, int amount, int pr){
-		super(name, pr);
+	public StatBuffAdd(int stat, int amount, Schmuck v,int pr){
+		super(name, v,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}	

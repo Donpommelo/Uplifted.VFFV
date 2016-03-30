@@ -33,8 +33,8 @@ public class EmpPhelp extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"They used to have separate tanks for each kind of fish, but I prefer it like this./More exhibit, less fillers and wall in between./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Only the strong fish would survive./Those are the ones I care to see./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"They used to have separate tanks for each kind of fish, but I prefer it like this. More exhibit, less fillers and wall in between.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Only the strong fish would survive./Those are the ones I care to see.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

@@ -24,7 +24,7 @@ public class EmpathyLink extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EmpathyLinkStatus(5);
+		enchantment[0] = new EmpathyLinkStatus(s,5);
 		return enchantment;
 	}
 	

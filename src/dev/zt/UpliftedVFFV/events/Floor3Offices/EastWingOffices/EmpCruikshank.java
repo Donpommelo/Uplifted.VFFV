@@ -33,8 +33,8 @@ public class EmpCruikshank extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Sometimes I get the feeling that Carloc is reading my mind or something./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"That must be where she gets all her good ideas from./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Sometimes I get the feeling that Carloc is reading my mind or something.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"That must be where she gets all her good ideas from.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

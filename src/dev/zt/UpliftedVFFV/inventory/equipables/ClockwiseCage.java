@@ -25,8 +25,8 @@ public class ClockwiseCage extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(14,.20*(1+s.getEquipPow()), 50);
-		enchantment[1] = new BonusStatBuff(31,1, 50);
+		enchantment[0] = new BonusStatBuff(14,.20*(1+s.getEquipPow()),s, 50);
+		enchantment[1] = new BonusStatBuff(31,1, s,50);
 		return enchantment;
 	}
 

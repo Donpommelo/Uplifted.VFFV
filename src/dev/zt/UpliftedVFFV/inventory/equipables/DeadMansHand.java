@@ -26,9 +26,9 @@ public class DeadMansHand extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DeadMansHandStatus(80);
-		enchantment[1] = new Undead(80);
-		enchantment[2] = new ElemPointsBuff(4,(int)(10*(1+s.getEquipPow())), 50);
+		enchantment[0] = new DeadMansHandStatus(s,80);
+		enchantment[1] = new Undead(s,80);
+		enchantment[2] = new ElemPointsBuff(4,(int)(10*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 

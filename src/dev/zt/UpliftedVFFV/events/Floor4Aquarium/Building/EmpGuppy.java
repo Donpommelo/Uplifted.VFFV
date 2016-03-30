@@ -37,8 +37,8 @@ public class EmpGuppy extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[2];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh boy oh boy oh boy oh boy./");
-		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I can't wait to see all the fish!/I'm pretty sure that's my only reason for even showing up at work./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh boy oh boy oh boy oh boy.");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I can't wait to see all the fish!/I'm pretty sure that's my only reason for even showing up at work.");
 		super.Dialog(d, 1, this.getId(), true);
 	}
 	

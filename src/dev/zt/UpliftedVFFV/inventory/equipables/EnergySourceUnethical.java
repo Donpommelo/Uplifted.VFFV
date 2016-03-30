@@ -24,7 +24,7 @@ public class EnergySourceUnethical extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EnergyUnethical(50);
+		enchantment[0] = new EnergyUnethical(s,50);
 		return enchantment;
 	}
 }

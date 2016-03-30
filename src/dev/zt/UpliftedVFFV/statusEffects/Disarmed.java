@@ -16,8 +16,8 @@ public class Disarmed extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Disarmed(int pr){
-		super(name, pr);
+	public Disarmed(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

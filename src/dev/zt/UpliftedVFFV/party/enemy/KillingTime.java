@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.ColorDrain;
 import dev.zt.UpliftedVFFV.ablities.FadingStrike;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
+import dev.zt.UpliftedVFFV.ablities.PunctualPucture;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.inventory.Item;
@@ -29,7 +30,7 @@ public class KillingTime extends Schmuck{
 	public static String plural = "Killing Times";
 	public static String pronoun = "it";
 	
-	public static int sprite = 17;
+	public static int sprite = 19;
 	public static int menusprite = 0;
 	
 	public static Skills[] levelSkills = {};
@@ -39,7 +40,7 @@ public class KillingTime extends Schmuck{
 	public final static double[] dropRates = {};
 	public final static status[] intrinsicStatuses = {};
 	
-	public final static String bioShort = "TEMP";
+	public final static String bioShort = "Stringent enforcer of deadlines and progress.";
 	public final static String bioLong = "";
 	
 	public KillingTime(int level) {
@@ -56,7 +57,7 @@ public class KillingTime extends Schmuck{
 		else{
 			switch (random){
 			case 0:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new PunctualPucture(0),bs);
 				break;
 			}
 		}	

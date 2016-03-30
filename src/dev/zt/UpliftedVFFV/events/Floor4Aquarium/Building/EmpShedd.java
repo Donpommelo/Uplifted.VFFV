@@ -33,8 +33,8 @@ public class EmpShedd extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, I came here to skip work, but I don't have an Aquarium Pass./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess I'll just have to loiter around the other exhibits instead . . ./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, I came here to skip work, but I don't have an Aquarium Pass.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess I'll just have to loiter around the other exhibits instead . . .");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

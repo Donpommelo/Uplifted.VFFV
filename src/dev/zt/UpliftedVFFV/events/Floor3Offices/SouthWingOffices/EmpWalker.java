@@ -34,16 +34,16 @@ public class EmpWalker extends Event {
 		case 0: 
 			if(!this.isSelfswitch1()){
 				Dialog[] d = new Dialog[4];
-				d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What are you guys doing?/");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh, we were just taking a short break from working hard./I thought a couple of games would bring back our laboring spirits./");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"The game is called The Neverending Walk of Self-Improvement./Its this dungeon-crawler about a depressed guy who descends into the Labyrinth in/search of spiritual fufillment./");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I'd let you take a controller after this game ends, but as the name suggests,/the game never ends./");
+				d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What are you guys doing?");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh, we were just taking a short break from working hard. I thought a couple of games would bring back our laboring spirits.");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"The game is called The Neverending Walk of Self-Improvement. Its about a depressed guy who descends into the Labyrinth in search of spiritual fufillment.");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I'd let you take a controller after this game ends, but as the name suggests, the game never ends.");
 				super.Dialog(d, 3, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Any break that I'd need to take a break from doesn't count in my book./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Any break that I'd need to take a break from doesn't count in my book.");
 				super.Dialog(d, 0, this.getId(), true);
 
 			}

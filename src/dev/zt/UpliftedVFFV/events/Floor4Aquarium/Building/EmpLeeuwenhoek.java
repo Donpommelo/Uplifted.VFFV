@@ -32,9 +32,10 @@ public class EmpLeeuwenhoek extends Event {
 		}
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Why is there no 'Aquatic Fowl of the World' exhibit?/My employee benefits go into this Aquarium. I just wanna see some geese./");
-			super.Dialog(d, 0, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Why is there no 'Aquatic Fowl of the World' exhibit?/My employee benefits go into this Aquarium.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I just wanna see some geese . . .");
+			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeM1));

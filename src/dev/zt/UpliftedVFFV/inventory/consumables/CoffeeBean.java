@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class CoffeeBean extends Item{
 
-	static int id = 2;
+	static int id = 26;
 	static String name = "Roasted Coffee Bean";
 	static boolean menu = true;
 	static boolean battle = true;

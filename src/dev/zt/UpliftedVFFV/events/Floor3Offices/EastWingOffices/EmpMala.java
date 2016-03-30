@@ -33,7 +33,7 @@ public class EmpMala extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Don't mind the mess./Clearly that Janitor fellow isn't doing his job./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Don't mind the mess./Clearly that Janitor fellow isn't doing his job.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -13,8 +13,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 public class HiveRhythmItemDStatus extends status{
 
 	status buff;
-	public HiveRhythmItemDStatus(int pr, status st){
-		super("Hive Rhythm : D", pr);
+	public HiveRhythmItemDStatus(Schmuck v,int pr, status st){
+		super("Hive Rhythm : D",v, pr);
 		this.buff = st;
 	}
 	
@@ -23,7 +23,7 @@ public class HiveRhythmItemDStatus extends status{
 		case 0:
 			bs.bp.bt.addScene("Hive Rhythm A-D chord echoes Urgently!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.stm.addStatus(ally, new BonusStatBuff(1, 14, 0.5*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
@@ -31,7 +31,7 @@ public class HiveRhythmItemDStatus extends status{
 		case 1:
 			bs.bp.bt.addScene("Hive Rhythm B-D chord echoes Purifyingly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					ArrayList<status> removed = new ArrayList<status>();
 					for(status st : ally.statuses){
 						if(!st.perm && st.isBad()){
@@ -52,7 +52,7 @@ public class HiveRhythmItemDStatus extends status{
 		case 2:
 			bs.bp.bt.addScene("Hive Rhythm C-D chord echoes Rapidly!");
 			for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
+				if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
 					bs.bp.stm.addStatus(ally, new StatBuffMult(3, 4, 1.1*(1+a.getUser().getEquipPow()), a.getUser(), ally, 50));
 				}
 			}
@@ -65,8 +65,8 @@ public class HiveRhythmItemDStatus extends status{
 			break;
 		}
 		for(Schmuck ally : bs.bp.getSelectableAllies(a.getUser())){
-			if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(50))){
-				bs.bp.stm.findStatus(ally, new HiveRhythmBuffStatus(50)).setExtraVar1(3);
+			if(bs.bp.stm.checkStatus(ally, new HiveRhythmBuffStatus(ally,50))){
+				bs.bp.stm.findStatus(ally, new HiveRhythmBuffStatus(ally,50)).setExtraVar1(3);
 			}
 		}
 	}

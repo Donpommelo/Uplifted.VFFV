@@ -308,17 +308,7 @@ public class Item implements Comparable<Item>, Serializable{
 			return Assets.skillIcons[4];
 		}
 	}
-	
-	public BufferedImage getImage(){
-		//Return image picture if it exists, otherwise use a placeholder.
-		if(Assets.itemSprites!= null && Assets.itemSprites.length > Id && Assets.itemSprites[Id] != null){
-			return Assets.itemSprites[Id];
-		}
-		else{
-			return Assets.skillIcons[4];
-		}
-	}
-	
+		
 	public String toString(){
 		return getName();
 	}

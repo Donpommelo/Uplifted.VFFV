@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class HirtzCompassStatus extends status{
 
-	public HirtzCompassStatus(int pr){
-		super("Finding Weakness", pr);
+	public HirtzCompassStatus(Schmuck v,int pr){
+		super("Finding Weakness", v,pr);
 	}
 	
 	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){

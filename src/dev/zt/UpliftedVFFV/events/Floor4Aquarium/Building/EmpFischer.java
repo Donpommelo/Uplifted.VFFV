@@ -32,10 +32,11 @@ public class EmpFischer extends Event {
 		
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I'd question why our company has an Aquarium, but I wouldn't want it to disappear./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Like, what if I reminded Management that this wasn't standard industry practice?/What if that made them close the Aquarium?/I would feel terrible. All my coworkers would hate me./");
-			super.Dialog(d, 1, this.getId(), true);			
+			Dialog[] d = new Dialog[3];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I'd question why our company has an Aquarium, but I wouldn't want it to disappear.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Like, what if I reminded Management that this wasn't standard industry practice?/What if that made them close the Aquarium?/");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I would feel terrible. All my coworkers would hate me./");
+			super.Dialog(d, 2, this.getId(), true);			
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeF));

@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class SmellingSalt extends Item{
 
-	static int id = 2;
+	static int id = 12;
 	static String name = "Smellingsalt";
 	static boolean menu = true;
 	static boolean battle = true;

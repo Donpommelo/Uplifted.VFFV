@@ -12,8 +12,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class CopyItem extends status{
 	
 	public ArrayList<status> copiedStatuses = new ArrayList<status>();
-	public CopyItem(int pr){
-		super("Imitation Item", pr);
+	public CopyItem(Schmuck v,int pr){
+		super("Imitation Item", v,pr);
 	}
 	
 		public void startoffightEffect(Schmuck s, BattleState bs){//

@@ -33,7 +33,7 @@ public class EmpCoral extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hmm. Is this a petting zoo? For fish?/A petting aquarium?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hmm. Is this a petting zoo? For fish?/A petting aquarium?");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

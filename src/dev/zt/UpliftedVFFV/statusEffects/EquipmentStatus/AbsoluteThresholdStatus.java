@@ -17,8 +17,8 @@ public class AbsoluteThresholdStatus extends status{
 		this.percent = percent;
 	}
 	
-	public AbsoluteThresholdStatus(double percent, int pr){
-		super(name, pr);
+	public AbsoluteThresholdStatus(double percent, Schmuck vic, int pr){
+		super(name,vic, pr);
 		this.percent = percent;
 	}
 	

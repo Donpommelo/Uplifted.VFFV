@@ -24,7 +24,7 @@ public class SimmerResent extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SimmeringResentmentStatus(50);
+		enchantment[0] = new SimmeringResentmentStatus(s,50);
 		return enchantment;
 	}
 }

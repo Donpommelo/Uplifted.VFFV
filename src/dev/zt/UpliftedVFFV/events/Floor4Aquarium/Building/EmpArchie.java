@@ -38,8 +38,8 @@ public class EmpArchie extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[2];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Wow. Did you know that the surface of this planet is mostly water?/");
-		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess we're pretty lucky to have ended up on land, then./I mean, the odds really weren't in our favor./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Wow. Did you know that the surface of this planet is mostly water?");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I guess we're pretty lucky to have ended up on land, then. I mean, the odds really weren't in our favor.");
 		super.Dialog(d, 1, this.getId(), true);
 	}
 	
@@ -49,13 +49,17 @@ public class EmpArchie extends Event {
 			int rand = (int)(Math.random()*4);
 			switch(rand){
 			case 0:
-				super.moveUp();
+				if(super.getY() > 16){
+					super.moveUp();
+				}
 				break;
 			case 1:
 				super.moveDown();
 				break;
 			case 2:
-				super.moveLeft();
+				if(super.getX() > 6){
+					super.moveLeft();
+				}
 				break;
 			case 3:
 				super.moveRight();

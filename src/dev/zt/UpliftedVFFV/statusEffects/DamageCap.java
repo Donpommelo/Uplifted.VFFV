@@ -18,8 +18,8 @@ public class DamageCap extends status{
 		this.capAmount = cap;
 	}
 	
-	public DamageCap(int stat, int cap, int pr){
-		super(name, pr);
+	public DamageCap(int stat, int cap, Schmuck v,int pr){
+		super(name, v,pr);
 		this.statChanged = stat;
 	}
 	

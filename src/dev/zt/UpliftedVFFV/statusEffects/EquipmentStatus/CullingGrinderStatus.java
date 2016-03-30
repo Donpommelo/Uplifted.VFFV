@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CullingGrinderStatus extends status{
 	
-	public CullingGrinderStatus(int pr){
-		super("Culling", pr);
+	public CullingGrinderStatus(Schmuck v,int pr){
+		super("Culling", v,pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

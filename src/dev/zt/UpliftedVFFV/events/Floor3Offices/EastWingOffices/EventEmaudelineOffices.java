@@ -36,25 +36,27 @@ public class EventEmaudelineOffices extends Event {
 			this.setTex(SpriteSorter.SpriteSort(4,Assets.Emaudeline));
 		}
 		if(!this.isSelfswitch1()){
-			Dialog[] d = new Dialog[12];
-			d[0] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Hello there. You are looking for something, right?/Yes, I can see it in your eyes./");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Yes, we were looking for Suite 521 before we got distracted./Do you know where that is?/");
-			d[2] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"I'm afraid not./I suppose that makes two of us then./");
-			d[3] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"I too, am in pursuit of that which remains to be found./Perhaps you know of the Central Light?/");
-			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . ./");
-			d[5] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"No? Hmm. Oh well. It's a wonderful thing, really./The Central Light serves as the source of all the light in the building!/The very light we are using right now to see each other!/");
-			d[6] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Think of it as the building's generator! Every company has one./Streams of radiance are formed there to be distributed to the rest of the building /through millions of intricate prisms!/");
-			d[7] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"That's why this building has no ceilings!/");
-			d[8] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Say, why don't we cooperate? Yes, us . . . purposeful employees ought to stick together./If you find the Light, do find a way to tell me. And if I come across this Suite 521,/you will be the first to know./");
-			d[9] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . ./");
-			d[10] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Sure./");
-			d[11] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Stellar!/An extra pair of eyes is always appreciated!/");
-			super.Dialog(d, 11, this.getId(), true);
+			Dialog[] d = new Dialog[14];
+			d[0] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Hello there. You are looking for something, right?/Yes, I can see it in your eyes.");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Yes, we were looking for Suite 521 before we got distracted. Do you know where that is?");
+			d[2] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"I'm afraid not./I suppose that makes two of us then.");
+			d[3] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"I too, am in pursuit of that which remains to be found. Perhaps you know of the Central Light?");
+			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . .");
+			d[5] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"No? Hmm. Oh well. It's a wonderful thing, really. The Central Light serves as the source of all the light in the building! The very light we are using right now to see each other!");
+			d[6] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Think of it as the building's generator! Every company has one.");
+			d[7] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"From it, streams of radiance are formed there to be distributed to the rest of the building through millions of intricate prisms!");
+			d[8] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"That's why this building has no ceilings.");
+			d[9] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Say, why don't we cooperate? Yes, us . . . purposeful employees ought to stick together.");
+			d[10] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"If you find the Light, do find a way to tell me. And if I come across this Suite 521, you will be the first to know.");
+			d[11] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . .");
+			d[12] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Sure.");
+			d[13] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Stellar!/An extra pair of eyes is always appreciated!");
+			super.Dialog(d, 13, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[12];
-			d[0] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"May good fortune light both our ways./");
+			d[0] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"May good fortune light both our ways.");
 			super.Dialog(d, 0, this.getId(), true);
 		}
 			

@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class ExplosiveCrit extends status{
 
 	public int damage;
-	public ExplosiveCrit(int damage, int pr){
-		super("Explosive Crits", pr);
+	public ExplosiveCrit(int damage,Schmuck v, int pr){
+		super("Explosive Crits",v, pr);
 		this.damage = damage;
 	}
 	

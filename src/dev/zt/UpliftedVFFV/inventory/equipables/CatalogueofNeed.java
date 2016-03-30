@@ -24,7 +24,7 @@ public class CatalogueofNeed extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CatoNeedStatus(100);
+		enchantment[0] = new CatoNeedStatus(s,100);
 		return enchantment;
 	}
 	

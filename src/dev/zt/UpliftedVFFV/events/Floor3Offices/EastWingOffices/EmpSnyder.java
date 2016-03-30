@@ -33,7 +33,7 @@ public class EmpSnyder extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"What are you doing here?/Shouldn't you be staring at a wall in some elevator somewhere?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"What are you doing here?/Shouldn't you be staring at a wall in some elevator somewhere?");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -26,8 +26,8 @@ public class BandagedSword extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BandagedSwordStatus(50);
-		enchantment[1] = new StatBuffAdd(5,(int)(7*(1+s.getEquipPow())), 20);
+		enchantment[0] = new BandagedSwordStatus(s,50);
+		enchantment[1] = new StatBuffAdd(5,(int)(7*(1+s.getEquipPow())),s, 20);
 		return enchantment;
 	}
 	

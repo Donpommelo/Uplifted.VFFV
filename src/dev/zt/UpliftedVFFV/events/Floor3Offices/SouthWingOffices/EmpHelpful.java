@@ -36,13 +36,13 @@ public class EmpHelpful extends Event {
 			if(!this.isSelfswitch1()){
 				Dialog[] d = new Dialog[2];
 				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"That hallway to the West leads to the West Wing Offices./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"That advice was helpful, right? Right./Well, that's enough work for the day. Time to go back to staring off into space./");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"That advice was helpful, right? Right./Well, that's enough work for the day. Time to go back to/staring off into space./");
 				super.Dialog(d, 1, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I helped you, so any work you do is vicariously done by me too./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I gave you directions, so any work you do is vicariously done by me too./");
 				super.Dialog(d, 0, this.getId(), true);
 			}
 			

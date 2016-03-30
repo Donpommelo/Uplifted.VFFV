@@ -34,7 +34,7 @@ public class EmpMathis extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I've never seen any of my coworkers take a break from work./But, then again, I'm too focused to ever check./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I've never seen any of my coworkers take a break from work. But, then again, I'm too focused to ever check.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

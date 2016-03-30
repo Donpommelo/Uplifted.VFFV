@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EnergyVolatile extends status{
 	
-	public EnergyVolatile(int pr){
-		super("Volatile (Energy Source)", pr);
+	public EnergyVolatile(Schmuck v,int pr){
+		super("Volatile (Energy Source)", v,pr);
 	}
 	
 	public int spendMeterEffect(Schmuck s, BattleState bs, int mp){

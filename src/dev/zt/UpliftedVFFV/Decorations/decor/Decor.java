@@ -14,6 +14,7 @@ import dev.zt.UpliftedVFFV.world.WorldManager;
 
 public class Decor {
 	int id;
+	int xDim,yDim;
 	static WorldManager world;
 	protected static Game game;
 	protected static GameState gamestate;
@@ -111,6 +112,7 @@ public class Decor {
 	public static Decor aquatunnelarchhorz2below = new DecorAquaTunnelArchHorz2Below(88);
 	public static Decor aquatunnelarchhorz3below = new DecorAquaTunnelArchHorz3Below(89);
 	public static Decor aquatunnelarchcornerbelow = new DecorAquaTunnelArchCornerBelow(90);
+	public static Decor filterunderwatervariable = new FilterUnderwaterVariable(91);
 
 	public static Decor parallaxtest = new DecorParallaxTest(1000);
 
@@ -123,6 +125,8 @@ public class Decor {
 	
 	public Decor(BufferedImage texture, int idnum) {
 		this.tex = texture;
+		this.xDim = tex.getWidth();
+		this.yDim = tex.getHeight();
 		this.id = idnum;
 		decors[id] = this;
 	}
@@ -132,7 +136,12 @@ public class Decor {
 	}
 	
 	public void render(Graphics g, Game game, int x, int y) {
-		g.drawImage(tex,(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()),(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()), tex.getWidth(), tex.getHeight(), null);
+		if((int)(x - game.getGameCamera().getxOffset() * parallaxMultX()) < 640 &&
+			(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()+this.getxDim()) > 0 &&
+			(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()) < 416 &&
+			(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()+this.getyDim())>0){
+			g.drawImage(tex,(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()),(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()), tex.getWidth(), tex.getHeight(), null);
+		}
 	}
 
 	//Tex is the image that the Decoration is represented by.
@@ -153,6 +162,10 @@ public class Decor {
 		return 0;
 	}
 	
+	public boolean isRendered(GameState gs){
+		return true;
+	}
+	
 	public double parallaxMultX(){
 		return 1;
 	}
@@ -160,5 +173,14 @@ public class Decor {
 	public double parallaxMultY(){
 		return 1;
 	}
+
+
+	public int getxDim() {
+		return xDim;
+	}
+
+	public int getyDim() {
+		return yDim;
+	}	
 
 }

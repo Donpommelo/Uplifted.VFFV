@@ -36,7 +36,7 @@ public class EmpPality extends Event {
 
 			Dialog[] d = new Dialog[2];
 			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Beyond this threshold lies the harsh realities of the workplace./If work were not difficult, there would be no honor in submitting ourselves to it.");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Be warned, adulthood is a one-way door./");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Be warned, adulthood is a one-way door.");
 			super.Dialog(d, 1, this.getId(), true);
 
 			

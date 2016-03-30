@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class AutoQuery extends status{
 	
-	public AutoQuery(int pr){
-		super("Auto-Query", pr);
+	public AutoQuery(Schmuck v,int pr){
+		super("Auto-Query",v, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

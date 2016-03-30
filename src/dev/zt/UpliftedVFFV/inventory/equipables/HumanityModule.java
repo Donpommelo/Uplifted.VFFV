@@ -26,8 +26,8 @@ public class HumanityModule extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new HumanityModuleStatus(50);
-		enchantment[1] = new ElemPointsBuff(3,(int)(10*(1+s.getEquipPow())), 50);
+		enchantment[0] = new HumanityModuleStatus(s,50);
+		enchantment[1] = new ElemPointsBuff(3,(int)(10*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 }

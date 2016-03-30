@@ -25,7 +25,7 @@ public class EnergySourceObsolete extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EnergyObsolete(0);
+		enchantment[0] = new EnergyObsolete(s,0);
 		return enchantment;
 	}
 }

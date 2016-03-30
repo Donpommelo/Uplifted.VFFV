@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BloodSealStatus extends status{
 
-	public BloodSealStatus(int pr){
-		super("Blood Pact Made", pr);
+	public BloodSealStatus(Schmuck v,int pr){
+		super("Blood Pact Made", v,pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

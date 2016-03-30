@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class TomeoftheEndStatus extends status{
 	
-	public TomeoftheEndStatus(int pr){
-		super("Ending", pr);
+	public TomeoftheEndStatus(Schmuck v,int pr){
+		super("Ending", v,pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

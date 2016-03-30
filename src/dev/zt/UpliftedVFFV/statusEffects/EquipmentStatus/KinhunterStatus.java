@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class KinhunterStatus extends status{
 
-	public KinhunterStatus(int pr){
-		super("Kin Hunter", pr);
+	public KinhunterStatus(Schmuck v,int pr){
+		super("Kin Hunter", v,pr);
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

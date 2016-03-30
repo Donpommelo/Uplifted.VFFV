@@ -17,8 +17,8 @@ public class Impatient extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Impatient(int pr){
-		super(name, pr);
+	public Impatient(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

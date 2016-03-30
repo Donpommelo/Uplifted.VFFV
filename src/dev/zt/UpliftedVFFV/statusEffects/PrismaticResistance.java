@@ -16,8 +16,8 @@ public class PrismaticResistance extends status{
 		this.buffAmount = amount;
 	}
 	
-	public PrismaticResistance(double amount, int pr){
-		super("Prismatic Resistance", pr);
+	public PrismaticResistance(double amount,Schmuck v, int pr){
+		super("Prismatic Resistance", v,pr);
 		this.buffAmount = amount;
 
 	}	

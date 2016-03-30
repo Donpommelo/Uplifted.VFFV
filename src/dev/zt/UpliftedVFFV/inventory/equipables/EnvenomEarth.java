@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.Envenomed;
 
 public class EnvenomEarth extends Item{
 
-	static int id = 2;
+	static int id = 49;
 	static String name = "Envenomed Earth";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,7 +25,7 @@ public class EnvenomEarth extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Envenomed(this, 1);
+		enchantment[0] = new Envenomed(this,s, 1);
 		return enchantment;
 	}
 

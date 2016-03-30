@@ -14,8 +14,8 @@ public class BalancedStats extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public BalancedStats(int pr){
-		super("Balanced", pr);
+	public BalancedStats(Schmuck v,int pr){
+		super(name, v, pr);
 	}	
 
 	public void statchanges(Schmuck s){

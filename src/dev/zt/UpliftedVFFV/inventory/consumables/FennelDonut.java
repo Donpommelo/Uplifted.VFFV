@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class FennelDonut extends Item{
 
-	static int id = 2;
+	static int id = 1;
 	static String name = "Fennel Off-Gazpacho Donut";
 	static boolean menu = true;
 	static boolean battle = true;

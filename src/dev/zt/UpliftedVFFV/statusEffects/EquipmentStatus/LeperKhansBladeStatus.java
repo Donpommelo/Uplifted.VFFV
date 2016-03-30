@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class LeperKhansBladeStatus extends status{
 	
-	public LeperKhansBladeStatus(int pr){
-		super("Leperosy", pr);
+	public LeperKhansBladeStatus(Schmuck v,int pr){
+		super("Leperosy", v,pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

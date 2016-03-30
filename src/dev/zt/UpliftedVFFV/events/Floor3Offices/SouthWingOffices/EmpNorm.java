@@ -33,8 +33,8 @@ public class EmpNorm extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I could have sworn my cubical was here yesterday, but now there seems to be a hallway/instead./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I wonder if this is some sort of practical joke./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I could have sworn my cubical was here yesterday, but now there seems to be a hallway instead.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I wonder if this is some sort of practical joke.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

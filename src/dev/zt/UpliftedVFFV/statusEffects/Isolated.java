@@ -16,8 +16,8 @@ public class Isolated extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Isolated(int pr){
-		super(name, pr);
+	public Isolated(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

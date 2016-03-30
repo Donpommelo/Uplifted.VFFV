@@ -38,7 +38,7 @@ public class EmpCooley extends Event {
 			//This is the dialog that first occurs when the npc is spoken to
 			case 0: 
 				Dialog[] d1 = new Dialog[1];
-				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I reckon the more time I waste at this water cooler, the less work I have to do./");
+				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I reckon the more time I waste at this water cooler, the less work I have to do.");
 				super.Dialog(d1, 0, this.getId(), true);
 				break;
 				
@@ -46,7 +46,7 @@ public class EmpCooley extends Event {
 			//this allow for the event to consist of many different parts.
 			case 1:
 				Dialog[] d2 = new Dialog[1];
-				d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Say, wanna learn something cool?/");
+				d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Say, wanna learn something cool?");
 				super.Dialog(d2, 0, this.getId(), true);
 				super.ChoiceBranch(this.getId(), Choices, 100);
 				break;
@@ -57,7 +57,7 @@ public class EmpCooley extends Event {
 		}
 		else{
 			Dialog[] d2 = new Dialog[1];
-			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"If you get attacked by a Red-Aligned enemy, don't forget to stop, drop and roll./");
+			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"If you get attacked by a Red-Aligned enemy, don't forget to stop, drop and roll.");
 			super.Dialog(d2, 0, this.getId(), true);
 			this.setstage(2);
 		}
@@ -67,23 +67,23 @@ public class EmpCooley extends Event {
 		switch(i){
 		case 0:
 			Dialog[] d = new Dialog[11];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Many abilities and creatures are aligned to one of several elements./These elements are color-coded for your convenience./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do you see the Blue tab on this water cooler?/When pressed, a stream of cold water comes out./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"This is because coldness and water are commonly associated with the Blue element . . ./");
-			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I see./");
-			d[4] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Likewise, the Red tab represents the Red elemental alignment./");
-			d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"That's why, when pressed, it releases a destructive gout of fire./");
-			d[6] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"There are several other elements, each with their own unique/abilities, strengths and weaknesses./");
-			d[7] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"A character's affinity for an element can be measured by his/Color Points. Your Color Points can be examined from the menu under 'Party'./");
-			d[8] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Each Color Point improves the effectiveness of skills of that/color, as well as affecting your Elemental Resistances./Boost any one Color enough and become Elementally Aligned!/");
-			d[9] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Elementally Aligned units receive a boost when using abilities of the same color, as well as/gaining special, elementally infused standard attacks!/");
-			d[10] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Well . . . that's all I got. Time to go back to counting wrinkles on the carpet./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Many abilities and creatures are aligned to one of several elements. These elements are color-coded for your convenience.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do you see the Blue tab on this water cooler?/When pressed, a stream of cold water comes out.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"This is because coldness and water are commonly associated with the Blue element . . .");
+			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I see.");
+			d[4] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Likewise, the Red tab represents the Red elemental alignment.");
+			d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"That's why, when pressed, it releases a destructive gout of fire.");
+			d[6] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"There are several other elements, each with their own unique abilities, strengths and weaknesses.");
+			d[7] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"A character's affinity for an element can be measured by his Color Points. Your Color Points can be examined from the menu under 'Party'.");
+			d[8] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Each Color Point improves the effectiveness of skills of that color, as well as affecting your Elemental Resistances. Boost any one Color enough and become Elementally Aligned!");
+			d[9] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Elementally Aligned units receive a boost when using abilities of the same color, as well as gaining special, elementally infused standard attacks!");
+			d[10] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Well . . . that's all I got. Time to go back to counting wrinkles on the carpet.");
 			super.Dialog(d, 10, this.getId(), true);
 			this.setSelfswitch1(true);
 			break;
 		case 1:
 			Dialog[] d2 = new Dialog[1];
-			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Oh. Well, if you change your mind, I'll probably still be here./");
+			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Oh. Well, if you change your mind, I'll probably still be here.");
 			super.Dialog(d2, 0, this.getId(), true);
 			break;
 		}

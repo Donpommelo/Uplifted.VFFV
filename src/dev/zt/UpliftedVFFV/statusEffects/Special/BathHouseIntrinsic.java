@@ -13,8 +13,8 @@ public class BathHouseIntrinsic extends status{
 	public static Boolean decay = false;
 	public GameState gs;
 	
-	public BathHouseIntrinsic(int pr){
-		super(name, pr);
+	public BathHouseIntrinsic(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void statchanges(Schmuck s){

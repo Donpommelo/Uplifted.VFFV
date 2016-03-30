@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class DeadMansHandStatus extends status{
 		
-	public DeadMansHandStatus(int pr){
-		super("Haunting", pr);
+	public DeadMansHandStatus(Schmuck v,int pr){
+		super("Haunting", v,pr);
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){

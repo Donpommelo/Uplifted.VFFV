@@ -38,15 +38,15 @@ public class EmpEmily1 extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"?/");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning. Is something wrong?/");
-			d[2] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"Oh, no. Not at all. Its just that. . . I didn't know you ever left your elevator./Seeing you out here just came to me as a bit of a shock./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"?");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning. Is something wrong?");
+			d[2] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"Oh, no. Not at all. Its just that. . . I didn't know you ever left your elevator. Seeing you out here just came to me as a bit of a shock.");
 			super.Dialog(d, 2, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"You ought to spend more time in the Building with the rest of us./Being cooped up all day in an elevator can't be good for you./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Emily1small.png",1,"You ought to spend more time in the Building with the rest of us. Being cooped up all day in an elevator can't be good for you.");
 			super.Dialog(d, 0, this.getId(), true);
 
 		}

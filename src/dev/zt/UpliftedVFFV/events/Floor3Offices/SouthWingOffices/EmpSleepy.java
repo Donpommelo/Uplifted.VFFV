@@ -37,10 +37,10 @@ public class EmpSleepy extends Event {
 			switch(this.getstage()){
 			case 0: 
 				Dialog[] d = new Dialog[4];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Aw shucks. Just my luck./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I left my phone in this room, but when I came back to get it, there was a meeting going/on that I was supposed to attend, and now I'm stuck here./");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey, why don't you take one of these?/I always keep a couple on me in case I pass out from boredom./");
-				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Smellingsalt!/Consume to revive incapacitated allies!/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Aw shucks. Just my luck.");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I left my phone in this room, but when I came back to get it, there was a meeting going on that I was supposed to attend, and now I'm stuck here.");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey, why don't you take one of these? I always keep a couple on me in case I pass out from boredom.");
+				d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Smellingsalt!/Consume to revive incapacitated allies!");
 				super.Dialog(d, 3, this.getId(), true);	
 				super.loot(new SmellingSalt(), 1);
 				break;
@@ -54,7 +54,7 @@ public class EmpSleepy extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"You'll need those Smellingsalts to stay awake if you're here for the meeting./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"You'll need those Smellingsalts to stay awake if you're here for the meeting.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(4,Assets.EmployeeF));
 			this.setstage(1);

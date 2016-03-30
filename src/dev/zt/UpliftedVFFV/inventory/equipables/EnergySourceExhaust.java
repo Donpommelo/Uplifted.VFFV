@@ -24,7 +24,7 @@ public class EnergySourceExhaust extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EnergyExhaust(50);
+		enchantment[0] = new EnergyExhaust(s,50);
 		return enchantment;
 	}
 }

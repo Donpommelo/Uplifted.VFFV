@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class MidgeProboscis extends Item{
 
-	static int id = 2;
+	static int id = 16;
 	static String name = "Midge Proboscis";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class MidgeProboscis extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Vampirism(.2*(1+s.getEquipPow()), 75);
+		enchantment[0] = new Vampirism(.2*(1+s.getEquipPow()), s,75);
 		return enchantment;
 	}
 }

@@ -20,8 +20,8 @@ public class EventSafe2 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe is filled with confiscated distractions./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You grab a Laser Pointer before anyone notices./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe is filled with confiscated distractions.");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You grab a Laser Pointer before anyone notices.");
 			super.Dialog(d, 1, this.getId(), true);
 			super.loot(new LaserPointer(), 1);
 			this.setTex(Assets.SafeOpened);

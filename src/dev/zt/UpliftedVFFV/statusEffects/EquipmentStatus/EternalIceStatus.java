@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EternalIceStatus extends status{
 
-	public EternalIceStatus(int pr){
-		super("Eternally Icy", pr);
+	public EternalIceStatus(Schmuck v,int pr){
+		super("Eternally Icy", v,pr);
 	}
 	
 	public void statchanges(Schmuck s){

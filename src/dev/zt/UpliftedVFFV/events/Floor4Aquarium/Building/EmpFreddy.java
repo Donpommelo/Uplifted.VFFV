@@ -33,7 +33,7 @@ public class EmpFreddy extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Is that machine over there . . . an interactive exhibit?/I'm too scared to touch it myself./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Is that machine over there . . . an interactive exhibit?/I'm too scared to touch it myself.");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

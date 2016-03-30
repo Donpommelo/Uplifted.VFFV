@@ -16,7 +16,7 @@ public class EventAquariumInfoBoard extends Event {
 	
 	public void run(){
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"'Aquarium exhibits have been temporarily relocated due to unforeseen circumstances.'//-Management./");
+		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"'Aquarium exhibits have been temporarily relocated due to unforeseen circumstances./'-Management'");
 		super.Dialog(d, 0, this.getId(), true);	}
 	
 	public boolean isSolid(int i){

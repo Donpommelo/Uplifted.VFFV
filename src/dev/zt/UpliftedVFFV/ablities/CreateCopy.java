@@ -55,7 +55,7 @@ public class CreateCopy extends Skills {
 		else{
 			bs.bp.enemy.add(summon);
 		}
-		bs.bp.stm.addStatus(summon, new DespawnonDeath(50));
+		bs.bp.stm.addStatus(summon, new DespawnonDeath(summon,50));
 		bs.bs.locationUpdate();
 		bs.bs.targetUpdate();
 	}

@@ -37,7 +37,7 @@ public class EmpRory extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I'm only lost because this office was designed by an idiot./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I'm only lost because this office was designed by an idiot.");
 		super.Dialog(d, 0, this.getId(), true);
 	}
 	

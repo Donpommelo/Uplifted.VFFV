@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class TommorowmanTalismanStatus extends status{
 	
 	ArrayList<status> delayed;
-	public TommorowmanTalismanStatus(int pr){
-		super("Tommorowing", pr);
+	public TommorowmanTalismanStatus(Schmuck v,int pr){
+		super("Tommorowing",v, pr);
 		this.delayed = new ArrayList<status>();
 	}
 	

@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class DrippingFang extends Item{
 
-	static int id = 2;
+	static int id = 36;
 	static String name = "Dripping Fang";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -27,7 +27,7 @@ public class DrippingFang extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50, 1, new Delicious(2,.2*(s.getEquipPow()),s,s,50));
+		enchantment[0] = new StatusonHit(1.0, new Delicious(2,.2*(s.getEquipPow()),s,s,50),s,50);
 		return enchantment;
 	}
 }

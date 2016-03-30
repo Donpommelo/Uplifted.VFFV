@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class LemonyFresh extends Item{
 
-	static int id = 2;
+	static int id = 10;
 	static String name = "Lemony Fresh";
 	static boolean menu = true;
 	static boolean battle = true;

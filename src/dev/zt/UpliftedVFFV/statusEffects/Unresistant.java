@@ -13,8 +13,8 @@ public class Unresistant extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Unresistant(int pr){
-		super(name, pr);
+	public Unresistant(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void statchanges(Schmuck s){

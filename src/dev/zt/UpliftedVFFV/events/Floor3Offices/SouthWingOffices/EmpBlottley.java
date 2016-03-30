@@ -33,7 +33,7 @@ public class EmpBlottley extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Maybe if I feign illness, George will let me take the day off and let me go to/the aquarium instead. That would be pretty nice./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Maybe if I feign illness, George will let me take the day off and let me go to the aquarium instead. That would be pretty nice.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

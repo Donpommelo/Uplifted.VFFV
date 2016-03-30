@@ -32,19 +32,19 @@ public class EmpBallpitGuy extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[6];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"What a disappointment./Looks like we're going to need more colored plastic balls./");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What's going on here?/");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Well, this was originally a conference room, you see./But we barely had any conferences, and nobody showed up to the few we did have./So we decided to turn this room into a Ball Pit instead./");
-			d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do you like it? It was my idea./I always wanted to have a ball pit in this office./");
-			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"It's . . . interesting./");
-			d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Sadly, its not full yet, which makes getting in and out a real hassle./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"What a disappointment./Looks like we're going to need more colored plastic balls.");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What's going on here?");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Well, this was originally a conference room, you see. But we barely had any conferences, and nobody showed up to the few we did have. So we turned it into a Ball Pit instead.");
+			d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do you like it? It was my idea. I always wanted to have a ball pit in this office.");
+			d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"It's . . . interesting.");
+			d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Sadly, its not full yet, which makes getting in and out a real hassle.");
 
 			super.Dialog(d, 5, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, when this thing is done, it'll be amazing./The other offices will be so jealous./");	
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, when this thing is done, it'll be amazing. The other offices will be so jealous.");	
 			super.Dialog(d, 0, this.getId(), true);
 		}
 	}

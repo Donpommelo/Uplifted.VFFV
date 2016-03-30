@@ -33,7 +33,7 @@ public class EmpNonconformist extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I refuse to work in the same room as those losers./Wouldn't want any of their stupidity and patheticness to rub off on me./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I refuse to work in the same room as those losers./Wouldn't want any of their stupidity and patheticness to rub off on me.");
 			super.Dialog(d, 0, this.getId(), true);	
 			break;
 		case 1:

@@ -34,8 +34,8 @@ public class EmpScott extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Speros is the head of these cubicles./His work ethic and commitment to the company are unparalleled./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"We should all strive to be a little more like Speros./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Speros is the head of these cubicles./His work ethic and commitment to the company are unparalleled.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"We should all strive to be a little more like Speros.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

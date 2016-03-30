@@ -14,8 +14,8 @@ public class BaselineStats extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public BaselineStats(int pr){
-		super("Baseline Stats", pr);
+	public BaselineStats(Schmuck v,int pr){
+		super(name,v, pr);
 	}	
 
 	public void statchanges(Schmuck s){

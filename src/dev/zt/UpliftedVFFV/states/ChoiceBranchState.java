@@ -2,6 +2,7 @@ package dev.zt.UpliftedVFFV.states;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.Game;
@@ -160,7 +161,7 @@ public class ChoiceBranchState extends State {
 //			for(int i=0;i<boxsize;i++){
 //				g.drawString(num[firstchoice+i], 5, 50+25*i);
 //			}
-			Utils.drawMenu(g, window, num, Color.black, 18, choicelocation,5, 300-30*boxsize, width,5+30*(boxsize),1,boxsize,firstchoice,16,true);
+			Utils.drawMenu(g, window, num, Color.black, 18, new Font("Courier", Font.PLAIN, 18),choicelocation,5, 200-30*boxsize, width,5+30*(boxsize),1,boxsize,firstchoice,16,true,true);
 		}
 		if(firstchoice != 0){
 			g.drawImage(Assets.Uparrow, width/2, 145, null);

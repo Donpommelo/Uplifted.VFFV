@@ -26,12 +26,12 @@ public class BloodSeal extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BloodSealStatus(10);
-		enchantment[1] = new StatBuffMult(2,1.15*(1+s.getEquipPow()), 25);
-		enchantment[2] = new StatBuffMult(3,1.15*(1+s.getEquipPow()), 25);
-		enchantment[3] = new StatBuffMult(4,1.15*(1+s.getEquipPow()), 25);
-		enchantment[4] = new BonusStatBuff(34, (int)(8*(1+s.getEquipPow())), 50);
-		enchantment[5] = new BonusStatBuff(35, (int)(8*(1+s.getEquipPow())), 50);
+		enchantment[0] = new BloodSealStatus(s,10);
+		enchantment[1] = new StatBuffMult(2,1.15*(1+s.getEquipPow()),s, 25);
+		enchantment[2] = new StatBuffMult(3,1.15*(1+s.getEquipPow()),s, 25);
+		enchantment[3] = new StatBuffMult(4,1.15*(1+s.getEquipPow()),s, 25);
+		enchantment[4] = new BonusStatBuff(34, (int)(8*(1+s.getEquipPow())),s, 50);
+		enchantment[5] = new BonusStatBuff(35, (int)(8*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 

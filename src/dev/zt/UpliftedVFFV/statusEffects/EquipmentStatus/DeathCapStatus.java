@@ -11,8 +11,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class DeathCapStatus extends status{
 	
-	public DeathCapStatus(int pr){
-		super("Elementally Reactive Spores", pr);
+	public DeathCapStatus(Schmuck v,int pr){
+		super("Elementally Reactive Spores",v, pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

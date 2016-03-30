@@ -33,8 +33,8 @@ public class EmpGladys extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The South Wing Offices have failed to complete their part of this/very important joint initiative./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It is a shame that I am too busy to file a complaint to Human Resources./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The South Wing Offices have failed to complete their part of this very important joint initiative.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It is a shame that I am too busy to file a complaint to Human Resources.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

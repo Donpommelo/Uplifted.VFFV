@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class UsurpersChemSet extends Item{
 
-	static int id = 2;
+	static int id = 46;
 	static String name = "Usurper's Chemistry Set";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -26,8 +26,8 @@ public class UsurpersChemSet extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusonHit(50, .5 *(1 + s.getEquipPow()), new Poisoned(3,s,s,50));
-		enchantment[1] = new StatBuffAdd(5, (int)(8*(1+s.getEquipPow())), 50);
+		enchantment[0] = new StatusonHit(.5 *(1 + s.getEquipPow()), new Poisoned(3,s,s,50),s,50);
+		enchantment[1] = new StatBuffAdd(5, (int)(8*(1+s.getEquipPow())), s,50);
 		return enchantment;
 	}
 }

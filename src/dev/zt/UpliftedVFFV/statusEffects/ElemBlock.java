@@ -18,8 +18,8 @@ public class ElemBlock extends status{
 		this.blocked = block;
 	}
 	
-	public ElemBlock(int block, int pr){
-		super(name, pr);
+	public ElemBlock(int block, Schmuck v,int pr){
+		super(name, v,pr);
 		this.blocked = block;
 	}
 	

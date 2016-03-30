@@ -33,8 +33,8 @@ public class EmpRevenge extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"An eye for an eye makes the whole world blind,/but an eye for nothing . . . that just doesn't sit well with me./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Unless I'm the one losing nothing, of course./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"An eye for an eye makes the whole world blind, but an eye for nothing . . . that just doesn't sit well with me.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Unless I'm the one losing nothing, of course.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

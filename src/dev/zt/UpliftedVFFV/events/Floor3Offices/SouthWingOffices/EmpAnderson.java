@@ -33,7 +33,7 @@ public class EmpAnderson extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Collaborating with South Office on this initiative was a mistake./This has not been a productive session./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Collaborating with South Office on this initiative was a mistake. This has not been a productive session.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

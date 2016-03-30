@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.Battle;
 
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BattleScene {
 
@@ -20,6 +21,7 @@ public class BattleScene {
 	//The animation if there is one.
 	public BattleAnimation ba;
 	public BattleState bs;
+	public status st;
 	//Most Battle Scenes right now are just a line of text that scrolls automaticall.
 	public BattleScene(String t, Action act, Boolean au, BattleState bs){
 		this.text = t;
@@ -35,12 +37,19 @@ public class BattleScene {
 		this.bs = bs;
 	}
 	
+	public BattleScene(String t, BattleAnimation ba, status st, Boolean au, BattleState bs){
+		this.text = t;
+		this.auto = au;
+		this.st = st;
+		this.ba = ba;
+		this.bs = bs;
+	}
+	
 	public BattleScene(String t, Boolean au, BattleState bs){
 		this.text = t;
 		this.auto = au;
 		this.bs = bs;
 	}
-	
 	
 	//Getters and Setters
 	
@@ -66,6 +75,14 @@ public class BattleScene {
 
 	public void setBa(BattleAnimation ba) {
 		this.ba = ba;
+	}
+	
+	public status getSt() {
+		return st;
+	}
+
+	public void setSt(status st) {
+		this.st = st;
 	}
 
 	public boolean isAuto() {

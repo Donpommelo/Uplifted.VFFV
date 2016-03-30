@@ -34,8 +34,8 @@ public class EmpVenda extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I've been staring at this vending machine for hours now./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"My coworkers must think I'm really health conscious./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I've been staring at this vending machine for hours now.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"My coworkers must think I'm really health conscious.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

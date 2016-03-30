@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class VoodooPinStatus extends status{
 	
-	public VoodooPinStatus(int pr){
-		super("Voodoo", pr);
+	public VoodooPinStatus(Schmuck v,int pr){
+		super("Voodoo",v, pr);
 	}
 
 	

@@ -18,10 +18,6 @@ public class Paralysis extends status{
 		this.inflicter = perp;
 	}
 	
-	public Paralysis(int pr){
-		super(name, pr);
-	}
-	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		double stunchance = 0;
 		if(inflicter.getYellowPoints() > 100){

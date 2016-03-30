@@ -35,8 +35,8 @@ public class EmpSteger extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"To the South is a Bus Stop that can take you to East Offices if you'd like./It is a useful shortcut for those who travel frequently./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The less time spent commuting, the more productive the employee./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"To the South is a Bus Stop that can take you to East Offices if you'd like. It is a useful shortcut for those who travel frequently.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The less time spent commuting, the more productive the employee.");
 			super.Dialog(d, 1, this.getId(), true);
 
 			

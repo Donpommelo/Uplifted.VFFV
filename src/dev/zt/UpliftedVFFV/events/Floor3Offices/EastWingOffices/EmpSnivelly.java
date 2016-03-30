@@ -33,19 +33,19 @@ public class EmpSnivelly extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Heh, I hope you aren't upset or anything./Don't be a poor sport./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Heh, I hope you aren't upset or anything./Don't be a poor sport.");
 			switch(super.getQuest(5)){
 			case 0:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Hmm? Haven't seen you before./I think. Probably wouldn't remember if I did./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Hmm? Haven't seen you before./I think. Probably wouldn't remember if I did.");
 				break;
 			case 1:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Oh, I'm pretty sure we've never met before in my life./Nah, this is a brand new lobby./Same interior designer. That's all./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Oh, I'm pretty sure we've never met before in my life. Nah, this is a brand new lobby.Same interior designer. That's all.");
 				break;
 			case 2:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Not that I've ever seen you before, but you should keep pluggin' along./Whatever it is you're doing./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Not that I've ever seen you before, but you should keep pluggin' along. Whatever it is you're doing.");
 				break;
 			case 3:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Hehehehe./Can't stop now. You've already made it so far./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Hehehehe./Can't stop now. You've already made it so far.");
 				break;
 			}
 			super.Dialog(d, 0, this.getId(), true);

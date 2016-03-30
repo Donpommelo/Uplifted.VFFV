@@ -33,7 +33,7 @@ public class EmpBrown extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"The South Wing representatives haven't even shown up yet./We have no choice but to begin the meeting without them./How unfortunate./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"The South Wing representatives haven't even shown up yet. We have no choice but to begin the meeting without them. How unfortunate.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

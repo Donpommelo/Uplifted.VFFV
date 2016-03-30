@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class MponCrit extends status{
 
 	double percent;
-	public MponCrit(double amount, int pr){
-		super("Mp on Crit", pr);
+	public MponCrit(double amount, Schmuck v,int pr){
+		super("Mp on Crit",v, pr);
 		this.percent = amount;
 	}
 	

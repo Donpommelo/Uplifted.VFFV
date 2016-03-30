@@ -16,8 +16,8 @@ public class DullRoseStatus extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp,vic, pr);
 	}
 	
-	public DullRoseStatus(int pr){
-		super(name, pr);
+	public DullRoseStatus(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

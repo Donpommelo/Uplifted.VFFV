@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class MeterShield extends status{
 	
 	public double percent;	
-	public MeterShield(double percent, int pr){
-		super("Meter Shield", pr);
+	public MeterShield(double percent, Schmuck v,int pr){
+		super("Meter Shield", v,pr);
 		this.percent = percent;
 	}
 	

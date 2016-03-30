@@ -20,8 +20,8 @@ public class EventSafe6 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find some little metal pieces./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Metal Rations x6!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find some little metal pieces.");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Metal Rations x6!");
 			super.Dialog(d, 1, this.getId(), true);
 			super.loot(new MetalRations(), 6);
 			this.setTex(Assets.SafeOpened);

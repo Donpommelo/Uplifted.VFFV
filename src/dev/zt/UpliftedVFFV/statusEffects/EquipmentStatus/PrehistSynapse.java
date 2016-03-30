@@ -10,8 +10,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class PrehistSynapse extends status{
 	
 	public int damage = 0;
-	public PrehistSynapse(int pr){
-		super("Delayed Response", pr);
+	public PrehistSynapse(Schmuck v,int pr){
+		super("Delayed Response", v, pr);
 	}
 			
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

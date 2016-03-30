@@ -34,8 +34,8 @@ public class EmpPlum extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Man, it weren't for this job this job I'd probably be famous by now./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Or at the very least, happy./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Man, it weren't for this job this job I'd probably be famous by now.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Or at the very least, happy.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

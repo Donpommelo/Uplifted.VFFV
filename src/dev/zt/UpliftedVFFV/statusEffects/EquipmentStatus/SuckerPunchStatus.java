@@ -8,13 +8,13 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class SuckerPunchStatus extends status{
 	
-	public SuckerPunchStatus(int pr){
-		super("Sucker Punching", pr);
+	public SuckerPunchStatus(Schmuck v,int pr){
+		super("Sucker Punching", v,pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){
 		for(Schmuck e : bs.bp.getSelectableEnemies(s)){
-			bs.bp.stm.addStatus(e, new Suckered(100,s));
+			bs.bp.stm.addStatus(e, new Suckered(s,100,s));
 		}
 	}
 }

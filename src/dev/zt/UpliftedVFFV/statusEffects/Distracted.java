@@ -16,8 +16,8 @@ public class Distracted extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Distracted(int pr){
-		super(name, pr);
+	public Distracted(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 
 	public String inflictText(Schmuck s){

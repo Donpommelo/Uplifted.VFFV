@@ -18,8 +18,8 @@ public class Scapegoating extends status{
 		this.Goat = goat;
 	}
 	
-	public Scapegoating(int pr){
-		super(name, pr);
+	public Scapegoating(Schmuck v,int pr){
+		super(name,v, pr);
 	}
 	
 	public void preActionTarget(Schmuck s, Action a, BattleState bs){

@@ -20,10 +20,10 @@ public class EventSafe5 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[4];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find . . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,". . . oh dear . . ./");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You don't like where this is going./");
-			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Magnum!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find . . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,". . . oh dear . . .");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You don't like where this is going.");
+			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Magnum!");
 
 			super.Dialog(d, 3, this.getId(), true);
 			super.loot(new Magnum(), 1);

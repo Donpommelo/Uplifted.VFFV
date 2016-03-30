@@ -33,8 +33,8 @@ public class EmpUnderminer extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You better be careful down here./One of these days, the cubicles above our heads will collapse from the collective/weight of the bloated egos of our peers./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I certainly hope to be there when it happens./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You better be careful down here./One of these days, the cubicles above our heads will collapse from the collective weight of the bloated egos of our peers.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I certainly hope to be there when it happens.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

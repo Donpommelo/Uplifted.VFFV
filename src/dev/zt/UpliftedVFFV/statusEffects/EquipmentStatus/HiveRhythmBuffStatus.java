@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class HiveRhythmBuffStatus extends status{
 
-	public HiveRhythmBuffStatus(int pr){
-		super("One with the Hive", pr);
+	public HiveRhythmBuffStatus(Schmuck v,int pr){
+		super("One with the Hive",v, pr);
 		this.setExtraVar1(6);
 	}
 	

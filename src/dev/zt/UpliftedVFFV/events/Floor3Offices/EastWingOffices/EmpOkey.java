@@ -33,8 +33,8 @@ public class EmpOkey extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Oh dear. Did you fall down the stairs?/I hope you're ok./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"No? You didn't?/Wait, that's what your face usually looks like?/Oh my. How embarrassing./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Oh dear. Did you fall down the stairs? I hope you're ok.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"No? You didn't?/Wait, that's what your face usually looks like?/Oh my. How embarrassing.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

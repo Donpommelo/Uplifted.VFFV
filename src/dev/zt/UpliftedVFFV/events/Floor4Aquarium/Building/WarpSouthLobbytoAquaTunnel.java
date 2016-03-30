@@ -21,23 +21,28 @@ public class WarpSouthLobbytoAquaTunnel extends Event {
 
 	
 	public void run(){
-		switch(this.getstage()){
-		case 0: 				
-			if(!this.isOpen()){
-				this.setOpen(true);
-			}
-			else{
+		if(!super.getGamestate().getEvents()[701].isSelfswitch2()){
+			super.getGamestate().getEvents()[701].run();
+		}
+		else{
+			switch(this.getstage()){
+			case 0: 				
+				if(!this.isOpen()){
+					this.setOpen(true);
+				}
+				else{
+					this.setOpen(false);
+				}
+				KeyManager.setCutsceneMode(true);
+				break;
+			case 1:
+				KeyManager.setCutsceneMode(false);
+				this.setstage(0);
+				super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelSouthWest.txt",31,60,"");
 				this.setOpen(false);
+				this.setFrames(0);
+				break;
 			}
-			KeyManager.setCutsceneMode(true);
-			break;
-		case 1:
-			KeyManager.setCutsceneMode(false);
-			this.setstage(0);
-			super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelSouthWest.txt",31,60,"");
-			this.setOpen(false);
-			this.setFrames(0);
-			break;
 		}
 	}
 

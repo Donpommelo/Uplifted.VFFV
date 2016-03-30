@@ -35,8 +35,8 @@ public class EmpNestle extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I can't remember the last time our company got bad press for unethical decisions./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"That means we're one of the good ones, right?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I can't remember the last time our company got bad press for unethical decisions.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"That means we're one of the good ones, right?");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

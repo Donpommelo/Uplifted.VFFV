@@ -21,8 +21,8 @@ public class Combustibility extends status{
 		this.turnsLeft = i;
 	}
 	
-	public Combustibility(int pr){
-		super(name, pr);
+	public Combustibility(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){	

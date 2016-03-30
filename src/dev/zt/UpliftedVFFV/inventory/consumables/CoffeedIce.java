@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Asleep;
 
 public class CoffeedIce extends Item{
 
-	static int id = 2;
+	static int id = 11;
 	static String name = "Coffee'd Ice";
 	static boolean menu = true;
 	static boolean battle = true;
@@ -29,7 +29,7 @@ public class CoffeedIce extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.stm.removeStatus(vic, new Asleep(50));
+		bs.bp.stm.removeStatus(vic, new Asleep(vic,50));
 		bs.bp.em.hpChange((int)(45*(1+perp.getItemPow())*(1+vic.getRegenBonus())),perp, vic,6);
 		bs.bp.em.bpChange((int)(55*(1+perp.getItemPow())*(1+vic.getRegenBonus())),vic);
 	}

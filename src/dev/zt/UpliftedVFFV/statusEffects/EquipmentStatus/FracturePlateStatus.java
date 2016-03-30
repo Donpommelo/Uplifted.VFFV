@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class FracturePlateStatus extends status{
 
-	public FracturePlateStatus(int pr){
-		super("Fracturing", pr);
+	public FracturePlateStatus(Schmuck v,int pr){
+		super("Fracturing",v, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

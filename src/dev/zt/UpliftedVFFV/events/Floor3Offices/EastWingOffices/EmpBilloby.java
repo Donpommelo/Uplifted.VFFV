@@ -33,7 +33,7 @@ public class EmpBilloby extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"It warms my heart to see someone as challenged and disadvantaged/as you still try their very best./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"It warms my heart to see someone as challenged and disadvantaged as you still try their very best.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

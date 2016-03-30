@@ -121,7 +121,7 @@ public class Skills implements Serializable{
 	//The text displayed when a skill is used.
 	//Played right before the skill is actually casted in the Battle Processor.
 	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
-		return "";
+		return perp.getName()+" used "+getName()+"!";
 	}
 	
 	//If this skill starts of targeting your own team, this function returns true.

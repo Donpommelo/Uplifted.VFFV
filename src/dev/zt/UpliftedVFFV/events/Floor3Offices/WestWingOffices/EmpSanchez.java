@@ -35,8 +35,8 @@ public class EmpSanchez extends Event {
 		case 0: 
 			
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . ./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Is this . . . what unemployment feels like?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . .");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Is this . . . what unemployment feels like?");
 			super.Dialog(d, 1, this.getId(), true);
 			
 			break;

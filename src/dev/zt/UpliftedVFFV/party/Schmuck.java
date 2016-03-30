@@ -50,6 +50,7 @@ public class Schmuck implements Serializable{
 	
 	public boolean targetable;
 	public boolean visible = true;
+	public boolean defaultLocation = true;
 	public int flashDuration, damageTaken, colorDamage;
 	public int x = 0;
 	public int y = 0;
@@ -213,8 +214,8 @@ public class Schmuck implements Serializable{
 		this.statusesChecked.clear();
 		while(!this.statuses.isEmpty()){
 			status tempStatus = this.statuses.get(0);
-			if(!bs.bp.stm.checkStatus(this, new incapacitate(this,this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(10))){
-				if(!bs.bp.stm.checkStatus(this, new Purified(0))){
+			if(!bs.bp.stm.checkStatus(this, new incapacitate(this,this)) || tempStatus.runWhenDead() || bs.bp.stm.checkStatus(this, new Undead(this,10))){
+				if(!bs.bp.stm.checkStatus(this, new Purified(this,0))){
 					switch(procTime){
 					//Case 0: Start of Fight Effects
 					case 0:
@@ -437,6 +438,9 @@ public class Schmuck implements Serializable{
 			for(status s : this.statuses){
 				if(s != null){
 					s.statchanges(this);
+					if(bs != null){
+						s.statchanges(this,bs);
+					}
 				}
 			}
 		}
@@ -651,6 +655,10 @@ public class Schmuck implements Serializable{
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String newName){
+		this.name = newName;
 	}
 	
 	public String getPlural() {
@@ -1118,8 +1126,12 @@ public class Schmuck implements Serializable{
 		return visible;
 	}
 	
-	public boolean defaultLocation() {
-		return true;
+	public boolean getDefaultLocation() {
+		return defaultLocation;
+	}
+	
+	public void setDefaultLocation(boolean defloc) {
+		defaultLocation = defloc;
 	}
 
 	public void setVisible(boolean visible) {

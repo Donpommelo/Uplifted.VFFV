@@ -32,14 +32,14 @@ public class EmpLocksley extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I'm so jealous of those West Wing guys on the other side of that door./Their office is probably so much cooler than ours./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"They're probably tired all the time because of all the late-night partying they do./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I'm so jealous of those West Wing guys on the other side of that door. Their office is probably so much cooler than ours.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"They're probably tired all the time because of all the late-night partying they do.");
 			super.Dialog(d, 1, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, they even locked the door so we can't disturb their fun./");	
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Man, they even locked the door so we can't disturb their fun.");	
 			super.Dialog(d, 0, this.getId(), true);
 		}
 	}

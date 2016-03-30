@@ -16,8 +16,8 @@ public class Cannabalism extends status{
 		this.lifesteal = amount;
 	}
 	
-	public Cannabalism(double amount, int pr){
-		super(name, pr);
+	public Cannabalism(double amount, Schmuck v,int pr){
+		super(name, v,pr);
 		this.lifesteal = amount;
 	}
 	

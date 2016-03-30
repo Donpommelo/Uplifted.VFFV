@@ -24,11 +24,11 @@ public class RainbowScale extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemPointsBuff(0,(int)(4*(1+s.getEquipPow())),50);
-		enchantment[1] = new ElemPointsBuff(1,(int)(4*(1+s.getEquipPow())),50);
-		enchantment[2] = new ElemPointsBuff(2,(int)(4*(1+s.getEquipPow())),50);
-		enchantment[3] = new ElemPointsBuff(3,(int)(4*(1+s.getEquipPow())),50);
-		enchantment[4] = new ElemPointsBuff(4,(int)(4*(1+s.getEquipPow())),50);
+		enchantment[0] = new ElemPointsBuff(0,(int)(4*(1+s.getEquipPow())),s,50);
+		enchantment[1] = new ElemPointsBuff(1,(int)(4*(1+s.getEquipPow())),s,50);
+		enchantment[2] = new ElemPointsBuff(2,(int)(4*(1+s.getEquipPow())),s,50);
+		enchantment[3] = new ElemPointsBuff(3,(int)(4*(1+s.getEquipPow())),s,50);
+		enchantment[4] = new ElemPointsBuff(4,(int)(4*(1+s.getEquipPow())),s,50);
 
 		return enchantment;
 	}

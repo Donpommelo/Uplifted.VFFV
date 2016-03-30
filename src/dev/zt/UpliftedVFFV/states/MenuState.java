@@ -655,8 +655,9 @@ public class MenuState extends State {
 			exit=false;
 		}
 		
-		String[] options = {"Party", "Inventory", "Map", "Directory", "Objectives", "Quit"};
-		Utils.drawMenu(g, window, options, Color.black, 25, optionSelected, 5, 5, 125, 380, !optionChosen);
+		String[] options = {"Party", "Inventory", "Map", "Directory", "To-Do", "Quit"};
+		Utils.drawMenu(g, window, options, Color.black, 25, new Font("Courier", Font.PLAIN, 18),optionSelected, 5, 5, 125, 380, !optionChosen);
+		g.setFont(new Font("Courier", Font.PLAIN, 15));
 		g.drawString(gamestate.Script + " Script", 25, 375);
 		
 		if(optionChosen){
@@ -673,7 +674,7 @@ public class MenuState extends State {
 					g.fillRect(145, 20, 150, 200);
 					g.drawImage(tempSchmuck.getMenuSprite(), 140, 10, 135, 201, null);
 					g.setColor(Color.black);
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.setFont(new Font("Courier", Font.PLAIN, 12));
 					g.drawString(tempSchmuck.getName() + " Lvl " + tempSchmuck.getLvl(), 145, 30);
 					g.setColor(Color.lightGray);
 					g.fillRect(145, 212, 200, 28);
@@ -705,18 +706,17 @@ public class MenuState extends State {
 							g.drawImage(Assets.Downarrow, 265 - Assets.Downarrow.getWidth() / 2, 390, null);
 						}
 						for(int i=skillLocation;i<=skillLocation+3 && i<tempSchmuck.skills.size();i++){			
-							g.drawString(tempSchmuck.skills.get(i).getName() + "  " +
-									(int)(tempSchmuck.skills.get(i).getCost() * (1-tempSchmuck.getMpCost())) + " Mp", 
-									150, 274 + 36 * skillnum);
+							g.drawString(tempSchmuck.skills.get(i).getName(),150, 274 + 36 * skillnum);
+							g.drawString((int)(tempSchmuck.skills.get(i).getCost() * (1-tempSchmuck.getMpCost())) + " Mp", 330, 274 + 36 * skillnum);
 		
 							skillnum++;
 						}	
 						for(int i = 0; i < 4 && i < tempSchmuck.skills.size(); i++){	
-							g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 254 + 36 * i, null);
+	//						g.drawImage(tempSchmuck.skills.get(skillLocation+i).getIcon(), 355, 254 + 36 * i, null);
 						}
 						
 						//Draw info box.
-						Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescr(), 18, Color.black, 396, 240, 235, 150, 16, characterChosen);
+						Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescr(), 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
 	//					if(!tempSchmuck.skills.get(skillSelected).getDescr().equals("meep")){
 	//						int y = 245;
 	//						for (String line : tempSchmuck.skills.get(skillSelected).getDescr().split("\n"))
@@ -724,7 +724,7 @@ public class MenuState extends State {
 	//					}
 						//Draw extra skill info.
 						if(toggleXtraInfo){
-							Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescrShort(), 16, Color.black, 275, 225 + 36 * skillPointer, 160, 72, 16, true);
+							Utils.drawDialogueBox(g, window2, tempSchmuck.skills.get(skillSelected).getDescrShort(), 16, Color.black, 275, 225 + 36 * skillPointer, 200, 72, 16, true);
 						}
 					} else if(characterTab == 1){
 						//Equipment tab.
@@ -747,32 +747,32 @@ public class MenuState extends State {
 						for(int i = equipLocation; i <= equipLocation + 3 && i < tempSchmuck.getItemSlots(); i++){			
 							if(tempSchmuck.getItems()[i] == null){
 								g.setColor(Color.black);
-								g.drawString("Nothing", 220, 272 + 36 * displayIndex);
-								g.fillRect(175, 249 + 36 * displayIndex, 36, 36);
-								g.setColor(Color.white);
-								g.fillRect(177, 251 + 36 * displayIndex, 32, 32);
+								g.drawString((i+1)+". Nothing", 160, 272 + 36 * displayIndex);
+//								g.fillRect(175, 249 + 36 * displayIndex, 36, 36);
+//								g.setColor(Color.white);
+//								g.fillRect(177, 251 + 36 * displayIndex, 32, 32);
 							}
 							else{
 								g.setColor(Color.black);
-								g.drawString(tempSchmuck.getItems()[i].getName(), 220, 272 + 36 * displayIndex);
-								g.fillRect(175, 250 + 36 * displayIndex, 36, 36);
-								g.setColor(Color.white);
-								g.drawImage(tempSchmuck.getItems()[i].getIcon(), 177, 252 + 36 * displayIndex, null);
+								g.drawString((i+1)+". "+tempSchmuck.getItems()[i].getName(), 160, 272 + 36 * displayIndex);
+//								g.fillRect(175, 250 + 36 * displayIndex, 36, 36);
+//								g.setColor(Color.white);
+//								g.drawImage(tempSchmuck.getItems()[i].getIcon(), 177, 252 + 36 * displayIndex, null);
 							}
 							displayIndex++;
 						}
 						
 						//Draw info box.
 						if(tempSchmuck.getItems()[equipSelected] != null){
-							Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(), 18, Color.black, 396, 240, 235, 150, 16, characterChosen);
+							Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(), 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
 						} else{
-							Utils.drawDialogueBox(g, window2, "An empty pocket.", 18, Color.black, 396, 240, 235, 150, 16, characterChosen);
+							Utils.drawDialogueBox(g, window2, "An empty pocket.", 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
 						}
 						
 						//Draw unequip option.
 						if(toggleXtraInfo){
 							String[] options1 = {"Equip", "Unequip", "Exit"};
-							Utils.drawMenu(g, window3, options1, Color.white, 16, quipPointer, 280, 222 + 36 * equipPointer, 120, 80, 1, 3, 0, 16, true);
+							Utils.drawMenu(g, window3, options1, Color.white, 16,new Font("Courier", Font.PLAIN, 16), quipPointer, 280, 222 + 36 * equipPointer, 120, 80, 1, 3, 0, 16, true, true);
 						}
 						
 					} else if(characterTab == 2){
@@ -787,7 +787,7 @@ public class MenuState extends State {
 					}
 					
 					//Draw Alignment bars.
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.setFont(new Font("Courier", Font.PLAIN, 18));
 					g.setColor(Color.black);
 					for(int i = 0; i < 6; i++){
 						g.fillRect(325, 42 + 25 * i, 16, 16);
@@ -833,17 +833,26 @@ public class MenuState extends State {
 			case 1:				
 				//Build string array from current tab.
 				String[] printThis = new String[tempBackpack.get(backpackTab).size()];
+				String[] quantities = new String[tempBackpack.get(backpackTab).size()];
 				for(int i = 0; i < tempBackpack.get(backpackTab).size(); i++){
-					printThis[i] = tempBackpack.get(backpackTab).get(i).toString() + " x " + gamestate.inventorymanager.backpack.get(tempBackpack.get(backpackTab).get(i));
+					quantities[i] = " x " + gamestate.inventorymanager.backpack.get(tempBackpack.get(backpackTab).get(i));
+					printThis[i] = tempBackpack.get(backpackTab).get(i).toString();
 				}
 				
-				Utils.drawMenu(g, window, printThis, Color.black, 15, itemPointer, 130, 48, 180, 365, 1, backpackDisplaySize, 
-						backpackLocation, 16, optionChosen && !(useitemChosen || equipChosen));
-				Utils.drawDialogueBox(g, window, "", 16, Color.black, 320, 5, 316, 250, 16, optionChosen && !(useitemChosen || equipChosen));
+				Utils.drawDialogueBox(g, window, "", 16, Color.black, 130, 48, 200, 365, 16, optionChosen && !(useitemChosen || equipChosen));
+
+				
+				Utils.drawMenu(g, window5, printThis, Color.black, 12, new Font("Courier", Font.PLAIN, 12),itemPointer, 130, 48, 150, 365, 1, backpackDisplaySize, 
+						backpackLocation, 16, optionChosen && !(useitemChosen || equipChosen), true);
+				
+				Utils.drawMenu(g, window5, quantities, Color.black, 12, new Font("Courier", Font.PLAIN, 12),itemPointer, 270, 48, 200, 365, 1, backpackDisplaySize, 
+						backpackLocation, 16, optionChosen && !(useitemChosen || equipChosen),false);
+				
+				Utils.drawDialogueBox(g, window, "", 16, Color.black, 335, 4, 300, 400, 16, optionChosen && !(useitemChosen || equipChosen));
 				
 				//Draw backpack tabs.
 				String[] packTabs = {"Cons", "Equip", "Misc", "Key"};
-				Utils.drawMenu(g, window, packTabs, Color.black, 15, backpackTab, 130, 2, 180, 32, 4, 1, 0, 16, optionChosen && !(useitemChosen || equipChosen));
+				Utils.drawMenu(g, window, packTabs, Color.black, 13, new Font("Courier", Font.PLAIN, 13),backpackTab, 130, 2, 200, 32, 4, 1, 0, 16, optionChosen && !(useitemChosen || equipChosen), true);
 				Item curItem = null;
 				if(tempBackpack.get(backpackTab).size() > 0){	
 					curItem = tempBackpack.get(backpackTab).get(itemSelected);
@@ -852,19 +861,20 @@ public class MenuState extends State {
 				//Draw item icon and description.
 				if(curItem != null){
 					//Icon.
-					g.drawImage(curItem.getImage(), 375 - curItem.getImage().getWidth() / 2, 
-							160 - curItem.getImage().getHeight() / 2, null);
+					g.drawImage(curItem.getIcon(), 414,	50, null);
 					//Name.
-					g.setFont(new Font("Chewy", Font.PLAIN, 18));
+					g.setFont(new Font("Courier", Font.PLAIN, 18));
 					g.setColor(Color.black);
-					g.drawString(curItem.getName(), 350, 40);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
+//					g.drawString(curItem.getName(), 350, 40);
+					Utils.drawDialogueBox(g, window5, curItem.getName(), 18, Color.black, 340, 10, 290, 100, 16, optionChosen && !(useitemChosen || equipChosen));
+
+					g.setFont(new Font("Courier", Font.PLAIN, 12));
 					
 					//Flavor.
-					Utils.drawDialogueBox(g, window5, curItem.getDescr(), 12, Color.black, 340, 50, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
+					Utils.drawDialogueBox(g, window5, curItem.getDescr(), 12, Color.black, 350, 190, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
 					
 					//Effects.
-					Utils.drawDialogueBox(g, window5, curItem.getDescrShort(), 12, Color.black, 440, 140, 160, 80, 16, optionChosen && !(useitemChosen || equipChosen));
+					Utils.drawDialogueBox(g, window5, curItem.getDescrShort(), 12, Color.black, 350, 300, 260, 80, 16, optionChosen && !(useitemChosen || equipChosen));
 
 					//Tags.
 					String tag = "Tags:  ";
@@ -883,17 +893,17 @@ public class MenuState extends State {
 					if(curItem.isLegendary()){
 						tag = tag + "*LEGENDARY* ";
 					}
-					g.drawString(tag, 340, 250);
+					g.drawString(tag, 350, 400);
 				} else{
-					g.drawString("Lint", 350, 40);
+					g.drawString("Lint", 350, 400);
 				}
 
 				if(backpackLocation > 0){
-					g.drawImage(Assets.Uparrow, 220 - Assets.Uparrow.getWidth() / 2, 38, null);
+					g.drawImage(Assets.Uparrow, 230 - Assets.Uparrow.getWidth() / 2, 38, null);
 				}
 				if(backpackLocation < tempBackpack.get(backpackTab).size() - backpackDisplaySize){
 					if(gamestate.inventorymanager.backpack.size()!=0){
-						g.drawImage(Assets.Downarrow, 220 - Assets.Downarrow.getWidth() / 2, 392, null);
+						g.drawImage(Assets.Downarrow, 230 - Assets.Downarrow.getWidth() / 2, 392, null);
 					}
 				}
 				//Draw item action menu.
@@ -902,7 +912,7 @@ public class MenuState extends State {
 						Utils.drawDialogueBox(g, window2, "", 18, Color.black, 300, 36 + 25 * itemPointer, 80, 80, 16, itemChosen);
 						Utils.drawCursor(g, window2, 299, 40 + 25 * itemPointer + 38 * itemOption, 80, 32, itemChosen);
 						
-						g.setFont(new Font("Chewy", Font.PLAIN, 18));
+						g.setFont(new Font("Courier", Font.PLAIN, 18));
 						if(curItem.isUsedfromMenu()){
 							g.setColor(Color.black);
 						} else{
@@ -926,13 +936,15 @@ public class MenuState extends State {
 					//Equipping stuff.
 					if(equipChosen && !progFlag){
 						//Show dialogue box indicating equipment usage.
-						g.setColor(Color.yellow);
+/*						g.setColor(Color.yellow);
 						Stroke oldStroke = ((Graphics2D) g).getStroke();
 						((Graphics2D) g).setStroke(new BasicStroke(3));
 						g.drawRect(450, 240 + itemslot * 40, 36, 36);
 						((Graphics2D) g).setStroke(oldStroke);
-						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);
-						Utils.drawDialogueBox(g, window2, curItem.getName(), 16, Color.black, 492, 240 + itemslot * 40, 120, 25, 16, true);
+						g.drawImage(curItem.getIcon(), 452, 242 + itemslot * 40, null);*/
+						Utils.drawCursor(g, window2, 450, 240 + 40 * itemslot, 150, 25, false);
+						FontMetrics metrics = g.getFontMetrics();
+						Utils.drawDialogueBox(g, window2, curItem.getName(), 12, Color.black,  150 + characterSelected * 100, 120, metrics.stringWidth(curItem.getName()) + 8, 25, 16, true);
 					} else if(equipChosen && progFlag){
 //							Utils.drawDialogueBox(g, window3, "Item Equipped!", 16, Color.white,  320 - 50, 208 - 100, 200, 32, 16, true);						
 					}
@@ -956,7 +968,7 @@ public class MenuState extends State {
 			case 4:
 				Utils.drawDialogueBox(g, window4, "", 18, Color.black, 140, 5, 400, 400, 48, optionChosen);
 				g.setColor(Color.black);
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setFont(new Font("Courier", Font.PLAIN, 18));
 				g.drawString("To - Do List", 300, 30);
 				g.drawString("1: Operate Elevators", 152, 50);
 				int numquests = 1;
@@ -972,7 +984,7 @@ public class MenuState extends State {
 			case 5:
 				if(optionChosen){
 					String[] quitOptions = {"YES I Would Like to Quit the Game.", "NO I Made a Mistake and Would Rather Keep Playing"};
-					Utils.drawMenu(g, window3, quitOptions, Color.white, 25, quitPointer, 128, 128, 400, 75, true);
+					Utils.drawMenu(g, window3, quitOptions, Color.white, 25, new Font("Courier", Font.PLAIN, 18), quitPointer, 128, 128, 400, 75, true);
 				}
 				break;				
 		}
@@ -1002,15 +1014,15 @@ public class MenuState extends State {
 		g.fillRect(148, 182, 142, 218);
 		g.drawImage(tempSchmuck.getMenuSprite(), 140, 175, 150, 225, null);
 		g.setColor(Color.black);
-		g.setFont(new Font("Chewy", Font.PLAIN, 12));
-		g.drawString(tempSchmuck.getName() +" Lvl "+tempSchmuck.getLvl(), 338, 194);
-		g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp", 575, 194);
+		g.setFont(new Font("Courier", Font.PLAIN, 12));
+		g.drawString(tempSchmuck.getName() +" Lvl "+tempSchmuck.getLvl(), 150, 194);
+		g.drawString((int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)+"/"+(int)(Math.pow(tempSchmuck.Lvl,2)*10)+" Exp", 510, 194);
 		g.setColor(Color.darkGray);
-		g.fillRect(408, 188, 160, 5);
+		g.fillRect(338, 188, 160, 5);
 		g.setColor(Color.green);
-		g.fillRect(408, 188, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
+		g.fillRect(338, 188, 160*(int)(tempSchmuck.getExp()-Math.pow(tempSchmuck.Lvl-1,2)*10)/(int)(Math.pow(tempSchmuck.Lvl,2)*10), 5);
 		g.setColor(Color.black);
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g.setFont(new Font("Courier", Font.PLAIN, 18));
 		g.drawString("Hp: ", 300, 220);
 		g.drawString("Bp: ", 300, 245);
 		g.drawString("Pow: ", 300, 270);
@@ -1020,7 +1032,7 @@ public class MenuState extends State {
 		g.drawString("Int: ", 300, 370);
 		g.drawString("Luk: ", 300, 395);
 		
-		FontMetrics metrics = g.getFontMetrics(new Font("Chewy", Font.PLAIN, 18));
+		FontMetrics metrics = g.getFontMetrics(new Font("Courier", Font.PLAIN, 18));
 		for(int i = 0; i < tempSchmuck.baseStats.length; i++){
 			if(i <= 1){
 				if(i == 0){
@@ -1048,21 +1060,21 @@ public class MenuState extends State {
 					g.drawString(tempSchmuck.getMaxBp() + "", 340 + metrics.stringWidth(tempSchmuck.getCurrentBp() + "/"), 220 + 25);
 				}
 			} else{
-				g.drawString(tempSchmuck.baseStats[i] + "", 340, 220 + 25 * i);
+				g.drawString(" "+tempSchmuck.baseStats[i] + "", 340, 220 + 25 * i);
 				if(tempSchmuck.buffedStats[i] != tempSchmuck.baseStats[i]){
 					if(tempSchmuck.buffedStats[i] > tempSchmuck.baseStats[i]){
 						g.setColor(Color.green);
 					} else if (tempSchmuck.buffedStats[i] < tempSchmuck.baseStats[i]){
 						g.setColor(Color.red);
 					}
-					g.drawString("(" + tempSchmuck.buffedStats[i] + ")", 345 + metrics.stringWidth(tempSchmuck.baseStats[i] + ""), 220 + 25 * i);
+					g.drawString("(" + tempSchmuck.buffedStats[i] + ")", 345 + metrics.stringWidth(tempSchmuck.baseStats[i] + " "), 220 + 25 * i);
 				}
 			}
 			g.setColor(Color.black);
 		}
 		
 		//Alignment.
-		g.setFont(new Font("Chewy", Font.PLAIN, 12));
+		g.setFont(new Font("Courier", Font.PLAIN, 12));
 		g.fillRect(308, 184, 16, 16);
 		switch((int)tempSchmuck.getElemAlignment()){
 			case 0:
@@ -1090,20 +1102,21 @@ public class MenuState extends State {
 		g.fillRect(309, 185, 14, 14);
 		
 		//Items.
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g.setFont(new Font("Courier", Font.PLAIN, 18));
 		g.setColor(Color.black);
 		g.drawString("Equipment", 455, 235);
+		g.setFont(new Font("Courier", Font.PLAIN, 12));
 		for(int i = 0; i < tempSchmuck.getItemSlots(); i++){
 			if(tempSchmuck.getItems()[i] == null){
-				g.setColor(Color.black);
-				g.drawString("Nothing", 500, 260 + 40 * i);
-				g.fillRect(450, 240 + i * 40, 36, 36);
+//				g.setColor(Color.black);
+				g.drawString((i+1)+". N/A", 450, 260 + 40 * i);
+//				g.fillRect(450, 240 + i * 40, 36, 36);
 			}
 			else{
 				g.setColor(Color.black);
-				g.drawString(tempSchmuck.getItems()[i].getName(), 500, 260 + 40 * i);
-				g.fillRect(450, 240 + i * 40, 36, 36);
-				g.drawImage(tempSchmuck.getItems()[i].getIcon(), 452, 242 + i * 40, null);
+				g.drawString((i+1)+". "+tempSchmuck.getItems()[i].getName(), 450, 260 + 40 * i);
+//				g.fillRect(450, 240 + i * 40, 36, 36);
+//				g.drawImage(tempSchmuck.getItems()[i].getIcon(), 452, 242 + i * 40, null);
 			}
 		}
 	}

@@ -24,7 +24,7 @@ public class CannonSuperSoaker extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CannonSuperSoakerStatus(55);
+		enchantment[0] = new CannonSuperSoakerStatus(s,55);
 		return enchantment;
 	}
 

@@ -167,7 +167,7 @@ public class ShoppingState extends State {
 		for(int i = 0; i < options.length; i++){
 			options[i] = selection.keySet().toArray(new Item[selection.size()])[i].getName();
 		}
-		Utils.drawMenu(g, window, options, Color.black, 18, choicelocation, 360, 5, 275, 30*boxsize, 1,boxsize,firstchoice,16, true);
+		Utils.drawMenu(g, window, options, Color.black, 18, new Font("Courier", Font.PLAIN, 18),choicelocation, 360, 5, 275, 30*boxsize, 1,boxsize,firstchoice,16, true,true);
 		Utils.drawDialogueBox(g, window, "Script: "+gs.Script, 18, Color.black, 5, 5, 100, 50, 16, true);
 		for(int i=0;i<boxsize;i++){
 			g.drawString(selection.get(itemDisplay[firstchoice+i])+" Script", 575,40+25*i);

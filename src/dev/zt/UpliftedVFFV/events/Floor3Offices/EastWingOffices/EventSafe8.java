@@ -20,9 +20,9 @@ public class EventSafe8 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find . . . something!/");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Simmering Resentment!/");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You carefully pour it into your inventory./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Inside the safe you find . . . something!");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Simmering Resentment!");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You carefully pour it into your inventory.");
 			super.Dialog(d, 2, this.getId(), true);
 			super.loot(new SimmerResent(), 1);
 			this.setTex(Assets.SafeOpened);

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class BadYolk extends Item{
 	
-	static int id = 2;
+	static int id = 18;
 	static String name = "Bad Yolk";
 	static boolean menu = false;
 	static boolean battle = true;

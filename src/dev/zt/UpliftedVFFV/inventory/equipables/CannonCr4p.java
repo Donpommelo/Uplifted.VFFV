@@ -24,7 +24,7 @@ public class CannonCr4p extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CannonCr4pStatus(45);
+		enchantment[0] = new CannonCr4pStatus(s,45);
 		return enchantment;
 	}
 

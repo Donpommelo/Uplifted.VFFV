@@ -20,7 +20,7 @@ public class EventSafe14 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a single Postage Stamp!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found a single Postage Stamp!");
 			super.Dialog(d, 0, this.getId(), true);
 			super.loot(new PostageStamp(), 1);
 			this.setTex(Assets.SafeOpened);

@@ -24,7 +24,7 @@ public class EnergySourceVolatile extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EnergyVolatile(50);
+		enchantment[0] = new EnergyVolatile(s,50);
 		return enchantment;
 	}
 }

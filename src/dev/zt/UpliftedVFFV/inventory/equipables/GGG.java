@@ -27,9 +27,9 @@ public class GGG extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Cannabalism(.40*(1+s.getEquipPow()), 80);
-		enchantment[1] = new StatusAbsorb(80);
-		enchantment[2] = new StatBuffAdd(5,(int)(11*(1+s.getEquipPow())),50);
+		enchantment[0] = new Cannabalism(.40*(1+s.getEquipPow()), s,80);
+		enchantment[1] = new StatusAbsorb(s,80);
+		enchantment[2] = new StatBuffAdd(5,(int)(11*(1+s.getEquipPow())),s,50);
 		return enchantment;
 	}
 	

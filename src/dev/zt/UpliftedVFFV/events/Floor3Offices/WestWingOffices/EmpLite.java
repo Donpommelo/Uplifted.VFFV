@@ -35,7 +35,7 @@ public class EmpLite extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It is the work that has no purpose that demonstrates true discipline./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It is the work that has no purpose that demonstrates true discipline.");
 			super.Dialog(d, 0, this.getId(), true);
 
 			

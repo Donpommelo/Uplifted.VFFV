@@ -25,7 +25,7 @@ public class SleepytimeSurprise extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SleepytimeSurpriseStatus(50);
+		enchantment[0] = new SleepytimeSurpriseStatus(s,50);
 		return enchantment;
 	}
 	

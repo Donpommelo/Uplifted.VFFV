@@ -52,7 +52,7 @@ public class EventWaterDrainLeverSouth extends Event {
 			break;		
 		case 1:
 			Dialog[] d1 = new Dialog[1];
-			if(super.getSwitch(28)){
+			if(!super.getSwitch(28)){
 				d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Turn OFF?/");
 			}
 			else{
@@ -66,12 +66,40 @@ public class EventWaterDrainLeverSouth extends Event {
 
 	public void ChoiceMade(int i){
 		if(i == 0){
-			Dialog[] d1 = new Dialog[1];
 			if(super.getSwitch(28)){
-				d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump OFF./Water drains from the clear chamber./");
+				Dialog[] d = new Dialog[1];
+				d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump OFF./Water drains from the clear chamber./");
+				super.Dialog(d, 0, this.getId(), true);
 			}
 			else{
-				d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump ON./Water fills the clear chamber./");
+				if(super.getVar(23) == 0){
+					if(super.getQuest(8) > 0){
+						Dialog[] d1 = new Dialog[1];
+						d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump ON./Water fills the clear chamber. You see a Dolphin pass through the pipes./");
+						d1[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The Strikebreaking dolphin moves through a pipe leading East./");
+						super.Dialog(d1, 1, this.getId(), true);
+					}
+					else{
+						Dialog[] d1 = new Dialog[0];
+						d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump ON./Water fills the clear chamber. You see a Dolphin pass through the pipes./");
+						super.Dialog(d1, 0, this.getId(), true);
+					}
+					super.setVar(23, 1);
+					if(super.getSwitch(29)){
+						super.setVar(23, 2);
+						if(super.getSwitch(30)){
+							super.setVar(23, 3);
+							if(super.getSwitch(31)){
+								super.setVar(23, 4);
+							}
+						}
+					}
+				}
+				else{
+					Dialog[] d2 = new Dialog[1];
+					d2[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump ON./Water fills the clear chamber. You see a Dolphin pass through the pipes./");
+					super.Dialog(d2, 1, this.getId(), true);
+				}
 			}
 			super.setSwitch(28, !super.getSwitch(8));
 		}

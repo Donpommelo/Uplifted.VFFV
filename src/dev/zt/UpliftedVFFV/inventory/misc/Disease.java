@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 
 public class Disease extends Item{
 	
-	static int id = 2;
+	static int id = 21;
 	static String name = "Disease";
 	static boolean menu = false;
 	static boolean battle = true;

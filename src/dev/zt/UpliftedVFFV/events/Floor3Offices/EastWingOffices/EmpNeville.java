@@ -33,7 +33,7 @@ public class EmpNeville extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Heh, welcome to the East Offices buddy!/Cozy in here, isn't it?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Heh, welcome to the East Offices buddy!/Cozy in here, isn't it?");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

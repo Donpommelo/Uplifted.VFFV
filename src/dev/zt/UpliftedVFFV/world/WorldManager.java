@@ -1,12 +1,15 @@
 package dev.zt.UpliftedVFFV.world;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.tiles.Black;
 import dev.zt.UpliftedVFFV.tiles.Tile;
@@ -24,6 +27,8 @@ public class WorldManager implements Serializable{
 	public Tile[][] actualTiles;				//matrix of tiles.
 	public String Worldname, path;					//name that shows up in nameplate upon entering new location. ""=no nameplate
 	private int nameplate=0;					//controls location of nameplate
+	private int fade, fadeframe, fadeId;		//Is it fading? -1: fading out 1: fading in How faded? 
+	private Event e;
 	double enemyrate;
 	public int enemynum, enemylvl;
 	public static TreeMap<Integer, Integer> enemy;
@@ -33,6 +38,8 @@ public class WorldManager implements Serializable{
 		this.Worldname=name;
 		this.path = path;
 		loadWorld(path);
+		this.fade = 0;
+		this.fadeframe = 0;
 	}
 	
 	public void setWorld(String path, String name){
@@ -67,10 +74,46 @@ public class WorldManager implements Serializable{
 	public void renderNameplate(Graphics g){
 		//renders scrolling nameplate. 
 		if(!this.Worldname.equals("")){
-			int boxwidth = g.getFontMetrics().stringWidth(this.Worldname)+25;
+			int boxwidth = g.getFontMetrics().stringWidth(this.Worldname)+60;
 			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 630-boxwidth, 
-					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), boxwidth, 25, 16, true);
+					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), boxwidth, 25, 18, true);
 		}
+	}
+	
+	public void renderTransition(Graphics g){
+		if(fade == -1){
+			Graphics2D g2d = (Graphics2D) g;
+			float alpha = 0f;
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha + fadeframe * 0.01f));
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, game.getWidth(), game.getHeight());
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+		}
+		if(fade == 1){
+			Graphics2D g2d = (Graphics2D) g;
+			float alpha = 1f;
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha + fadeframe * -0.01f));
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, game.getWidth(), game.getHeight());
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+		}
+		if(fadeframe < 100){
+			fadeframe++;
+		}
+		if(fadeframe == 99 && e != null){
+			e.getEvents()[fadeId].setstage(e.getEvents()[fadeId].getstage()+1);
+			e.getEvents()[fadeId].run();
+		}
+	}
+	
+	public void fade(int inout){
+		fade = inout;
+		fadeframe = 0;
+	}
+	
+	public void fadeId(int eventId, Event e){
+		this.fadeId = eventId;
+		this.e = e;
 	}
 	
 	//used in rendering tiles. searches the array of tiles in the Tile class for a tile that corresponds to the index of a specific x-y coordinate in the world

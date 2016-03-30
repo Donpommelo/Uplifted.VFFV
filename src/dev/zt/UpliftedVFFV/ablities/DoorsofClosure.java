@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DoorsofClosure extends Skills {
 
 	public static String name = "Doors of Closure";
-	public static String descr = "User summons a pair of sliding doors to close violently when enemies least expect it. This slow attack strikes all foes with physical damage.";
+	public static String descr = "User summons a pair of sliding doors to close violently on enemies. This slow attack strikes all foes with physical damage.";
 	public static String descrShort = "Damages all enemies.\nLoses initiative";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;

@@ -24,13 +24,13 @@ public class Fixation extends Skills {
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		status st = new Unresistant(50);
+		status st = new Unresistant(vic,50);
 		bs.bp.stm.addStatus(vic, st);
 		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/4,15,st,false,false,true,perp,perp,vic,50));
 	}
 
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		status st = new Unresistant(50);
+		status st = new Unresistant(vic,50);
 		bs.bp.stm.addStatus(vic, st);
 		bs.bp.stm.addStatus(perp, new Channeling(perp.getMaxHp()/2,15,st,false,false,true,perp,perp,vic,50));
 	}

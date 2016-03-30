@@ -12,8 +12,8 @@ public class CatoWantStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public CatoWantStatus(int pr){
-		super("Wanting", pr);
+	public CatoWantStatus(Schmuck v,int pr){
+		super("Wanting", v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

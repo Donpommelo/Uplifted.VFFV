@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class FishWater extends Item{
 	
-	static int id = 2;
+	static int id = 3;
 	static String name = "Fish Water";
 	static boolean menu = false;
 	static boolean battle = false;

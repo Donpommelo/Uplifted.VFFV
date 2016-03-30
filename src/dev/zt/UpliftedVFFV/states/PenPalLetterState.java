@@ -1,5 +1,6 @@
 package dev.zt.UpliftedVFFV.states;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -237,12 +238,12 @@ public class PenPalLetterState extends State {
 			Utils.drawDialogueBox(g, window, "Dear Pen Pal:", 18, Color.black, 125, 5, 400, 400, 32, true);
 			g.drawString("Could you tell me about " + prompt.toString() + "?", 150, 85);
 			String finishedOptions[] = {"Send!", "Revise", "Read Old Letters","Nevermind"};
-			Utils.drawMenu(g, window2, finishedOptions, Color.black, 18, sendPointer, 250, 200, 150, 120, true);
+			Utils.drawMenu(g, window2, finishedOptions, Color.black, 18, new Font("Courier", Font.PLAIN, 18), sendPointer, 250, 200, 150, 120, true);
 			break;
 		case 2:
 			if(received != null){
 				Utils.drawDialogueBox(g, window, "Old Mail", 18, Color.black, 125, 5, 400, 400, 32, true);
-				Utils.drawMenu(g, window, received, Color.black, 18, sendPointer, 125, 5, 400, 400, 1,maxLetters,pointerLocation,16,true);
+				Utils.drawMenu(g, window, received, Color.black, 18, new Font("Courier", Font.PLAIN, 18),sendPointer, 125, 5, 400, 400, 1,maxLetters,pointerLocation,16,true,true);
 			}
 			break;
 		case 3:

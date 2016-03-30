@@ -12,8 +12,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class DailyDoseStatus extends status{
 	
-	public DailyDoseStatus(int pr){
-		super("Prescribed", pr);
+	public DailyDoseStatus(Schmuck v,int pr){
+		super("Prescribed", v,pr);
 	}
 	
 	

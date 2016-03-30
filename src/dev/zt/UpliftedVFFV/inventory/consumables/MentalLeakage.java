@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class MentalLeakage extends Item{
 
-	static int id = 2;
+	static int id = 15;
 	static String name = "Mental Leakage";
 	static boolean menu = true;
 	static boolean battle = true;

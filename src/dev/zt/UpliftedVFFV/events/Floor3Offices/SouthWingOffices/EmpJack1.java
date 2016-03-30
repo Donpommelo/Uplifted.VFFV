@@ -38,16 +38,16 @@ public class EmpJack1 extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[4];
-			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hey there! Are you looking for something?/");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Yes. Yes I was. Do you know where Suite 521 is?/");
-			d[2] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hmm. Doesn't ring a bell. Sorry./");
-			d[3] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"But best of luck in finding it, wherever it is./There are some mighty strange places in this building./Hopefully this 'Suite 521' of yours ain't one of them./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hey there! Are you looking for something?");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Yes. Yes I was. Do you know where Suite 521 is?");
+			d[2] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Hmm. Doesn't ring a bell. Sorry.");
+			d[3] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"But best of luck in finding it, wherever it is./There are some mighty strange places in this building./Hopefully this 'Suite 521' of yours ain't one of them.");
 			super.Dialog(d, 3, this.getId(), true);
 			this.setSelfswitch1(true);;
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Did you find what you were looking for yet?/Well, don't give up./");
+			d[0] = new Dialog("Employee","/CharacterBusts/Jack1small.png",1,"Did you find what you were looking for yet?/Well, don't give up.");
 			super.Dialog(d, 0, this.getId(), true);
 
 		}

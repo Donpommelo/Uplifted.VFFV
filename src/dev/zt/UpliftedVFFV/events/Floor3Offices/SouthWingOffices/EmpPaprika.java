@@ -37,10 +37,10 @@ public class EmpPaprika extends Event {
 			switch(this.getstage()){
 			case 0: 
 				Dialog[] d = new Dialog[4];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh no. My paperwork is trapped underneath an insurmountably heavy boulder./");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Surely it would be unreasonable to expect me to work given the circumstances./");
-				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Paperweight!/Some Items can be equipped from the menu under the 'Equipment' tab!/");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey!  I . . . uh . . . thanks . . ./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Oh no. My paperwork is trapped underneath an insurmountably heavy boulder.");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Surely it would be unreasonable to expect me to work given the circumstances.");
+				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Paperweight!/Some Items can be equipped from the menu under the 'Equipment' tab!");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Hey!  I . . . uh . . . thanks . . .");
 				super.Dialog(d, 3, this.getId(), true);	
 				super.loot(new Paperweight(), 1);
 				break;
@@ -54,7 +54,7 @@ public class EmpPaprika extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Drat. All my paperwork blew away./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Drat. All my paperwork blew away.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeF));
 			this.setstage(1);

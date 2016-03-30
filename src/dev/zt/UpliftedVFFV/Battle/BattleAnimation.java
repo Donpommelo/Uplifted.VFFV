@@ -26,7 +26,7 @@ public class BattleAnimation implements Serializable{
 	//Default animation has the skill name moving from user to target.
 	public void animateAction(int frame, Action a, Graphics g){
 		g.setColor(new Color(255, 255, 0));
-		g.setFont(new Font("Chewy", Font.PLAIN, 50));
+		g.setFont(new Font("Courier", Font.PLAIN, 50));
 		g.drawString(a.skill.getName(), frame*8, 208);
 	}
 	

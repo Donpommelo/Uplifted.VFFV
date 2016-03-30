@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EnergyUnethical extends status{
 	
-	public EnergyUnethical(int pr){
-		super("Unethical", pr);
+	public EnergyUnethical(Schmuck v,int pr){
+		super("Unethical", v,pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

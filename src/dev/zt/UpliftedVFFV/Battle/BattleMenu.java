@@ -35,7 +35,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 public class BattleMenu{
 	
 	private AudioManager audio;
-	private BufferedImage window;
+	private BufferedImage window;//,windowClear;
 	public int currentlyTargeted;		//Schmuck being targeted for attack, skill use or item use
 	public int actionSelected;			//Action chosen 0:Attack | 1: Skill | 2: Item | 3: Wait | 4: Run
 		
@@ -97,6 +97,7 @@ public class BattleMenu{
 		phase = 1;
 		audio = game.getAudiomanager();
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
+//		windowClear = ImageLoader.loadImage("/ui/Window/WindowClear.png");
 		//If the Schmuck chose to Wait in the Planning phase of Battle Processor.
 		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally" && bs.bp.phase == 2){
 			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
@@ -509,7 +510,7 @@ public class BattleMenu{
 			g.setColor(new Color(255, 255, 51, 225));
 			g.fillRect(menux, menuy - 40 + 32 * actionSelected, 110, 32);
 			g.fillRect(menux , menuy - 65, 110, 25);
-			g.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
 			g.setColor(Color.white);
 			
 			g.drawString(currentSchmuck.getName(), menux, menuy - 50);
@@ -518,6 +519,13 @@ public class BattleMenu{
 			g.drawString("Item", menux + 55, menuy + 44);
 			g.drawString("Wait", menux + 55, menuy + 76);
 			g.drawString("Run", menux + 55, menuy + 108);
+//			Utils.drawDialogueBox(g, window, "", 18, Color.black, menux, menuy - 50, 110, 170, 16, true);
+//			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, menux, menuy - 80, 110, 10, 16, true);
+
+/*			String[] choices = {"Attack","Skills","Item","Wait","Run"};
+			Utils.drawMenu(g, windowClear, choices, Color.black, 18,new Font("TimesRoman", Font.PLAIN, 18),actionSelected,menux+40, menuy - 40,
+					110, 160,1,5,0,16,true,true);*/
+
 			
 			//Displays mini-icons for actions
 			switch(actionSelected){
@@ -560,10 +568,10 @@ public class BattleMenu{
 				g.setColor(new Color(255, 255, 51, 225));
 				g.fillRect(menux , menuy - 65, 110, 25);
 				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
 				g.setColor(Color.white);
 				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
-				g.setFont(new Font("Chewy", Font.PLAIN, 12));
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
 				//If Schmuck has no skills, Do Nothing is displayed.
 				if(skills.size()==0){
 					g.drawString("Do Nothing", menux + 3, menuy - 10);
@@ -573,7 +581,8 @@ public class BattleMenu{
 					skillnum = 0;        //Keeps track of number of skills                                                                                                                                                                                                                                                                               
 					for(int i = backpackLocation; i <= backpackLocation + 4 && i < currentSchmuck.skills.size(); i++){			
 						g.setColor(Color.white);
-						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1-currentSchmuck.getMpCost()))+" Mp", menux + 3, menuy - 10 + 25 * (skillnum));
+						g.drawString(skills.get(i).getName(), menux + 3, menuy - 10 + 25 * (skillnum));
+						g.drawString((int)(skills.get(i).getCost()*(1-currentSchmuck.getMpCost()))+" Mp", menux+90, menuy - 10 + 25 * (skillnum));
 						skillnum++;
 					}
 					
@@ -599,10 +608,10 @@ public class BattleMenu{
 				g.setColor(new Color(255, 255, 51, 225));
 				g.fillRect(menux, menuy - 65, 110, 25);
 				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
-				g.setFont(new Font("Chewy", Font.PLAIN, 18));
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
 				g.setColor(Color.white);
 				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
-				g.setFont(new Font("Chewy", Font.PLAIN, 12));
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
 				if(gs.inventorymanager.backpack.size()==0){
 					g.drawString("Nothing x999", menux + 3, menuy - 10);
 				}

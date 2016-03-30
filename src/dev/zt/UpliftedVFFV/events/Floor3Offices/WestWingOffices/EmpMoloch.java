@@ -34,7 +34,7 @@ public class EmpMoloch extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It is good that this office has no windows./That would be too distracting./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It is good that this office has no windows. That would be too distracting.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

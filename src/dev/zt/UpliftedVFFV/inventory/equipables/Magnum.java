@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Magnum extends Item{
 
-	static int id = 2;
+	static int id = 50;
 	static String name = "Magnum";
 	static boolean menu = false;
 	static boolean battle = false;

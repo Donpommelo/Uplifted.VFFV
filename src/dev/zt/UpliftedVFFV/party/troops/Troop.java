@@ -33,6 +33,7 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop21 = new Troop21OfficeDiversityEast(21);
 	public static Troop Troop22 = new Troop22PortentGang(22);
 	public static Troop Troop23 = new Troop23LeaderandCo2(23);
+	public static Troop Troop24 = new Troop24KillingTime(24);
 
 	
 	protected final int id;

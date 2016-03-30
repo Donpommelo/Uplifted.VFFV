@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class Envenomed extends status{
 	
 	public EnvenomEarth e;
-	public Envenomed(EnvenomEarth e, int pr){
-		super("Envenomed", pr);
+	public Envenomed(EnvenomEarth e, Schmuck v,int pr){
+		super("Envenomed", v,pr);
 		this.e = e;
 	}
 	

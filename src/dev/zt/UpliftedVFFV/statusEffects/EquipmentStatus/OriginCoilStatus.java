@@ -14,8 +14,8 @@ public class OriginCoilStatus extends status{
 	public static Boolean removedEnd = false;
 	public static Boolean decay = true;
 	
-	public OriginCoilStatus(int pr){
-		super(name, pr);
+	public OriginCoilStatus(Schmuck v,int pr){
+		super(name, v,  pr);
 	}
 	
 	public void onDillyDally(Schmuck s, BattleState bs){

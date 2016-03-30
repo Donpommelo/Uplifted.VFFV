@@ -20,10 +20,10 @@ public class EventSafe12 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[4];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The crate is filled with . . . water?/");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find a strange pendant submerged at the bottom./");
-			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Anchor Talisman!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The crate is filled with . . . water?");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find a strange pendant submerged at the bottom.");
+			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Anchor Talisman!");
 			super.Dialog(d, 3, this.getId(), true);
 			super.loot(new AnchorTalisman(), 1);
 			this.setTex(Assets.SafeOpened);

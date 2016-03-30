@@ -25,7 +25,7 @@ public class TomeoftheEnd extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TomeoftheEndStatus(0);
+		enchantment[0] = new TomeoftheEndStatus(s,0);
 		return enchantment;
 	}
 	

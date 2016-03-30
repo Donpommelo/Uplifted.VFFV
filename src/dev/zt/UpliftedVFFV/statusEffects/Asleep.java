@@ -21,8 +21,8 @@ public class Asleep extends status{
 		this.wakeThreshold = 0;
 	}
 	
-	public Asleep(int pr){
-		super(name, pr);
+	public Asleep(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
@@ -30,10 +30,10 @@ public class Asleep extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(0))){
+		if(!bs.bp.stm.checkStatus(perp, new DreamEaterStatus(perp,0))){
 			wakeThreshold -= damage;
 			if(wakeThreshold >= vic.getMaxHp()/10+inflicter.getPurplePoints()){
-				bs.bp.stm.removeStatus(vic, new Asleep(0));
+				bs.bp.stm.removeStatus(vic, new Asleep(perp,0));
 				bs.bp.bt.addScene(vic.getName()+" was startled awake!");
 			}
 		}

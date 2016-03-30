@@ -24,7 +24,7 @@ public class AbyssalInsignia extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AbyssalInsigniaStatus(100);
+		enchantment[0] = new AbyssalInsigniaStatus(s,100);
 		return enchantment;
 	}
 	

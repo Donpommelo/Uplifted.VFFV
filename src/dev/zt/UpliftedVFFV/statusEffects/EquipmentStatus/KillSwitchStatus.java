@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class KillSwitchStatus extends status{
 	
 	int reviveTimer;
-	public KillSwitchStatus(int pr){
-		super("Killed?", pr);
+	public KillSwitchStatus(Schmuck v,int pr){
+		super("Killed?", v,pr);
 		this.reviveTimer = 3;
 		
 	}

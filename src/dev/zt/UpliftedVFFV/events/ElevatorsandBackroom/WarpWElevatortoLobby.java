@@ -8,6 +8,8 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
 import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.statusEffects.Special.BathHouseIntrinsic;
+import dev.zt.UpliftedVFFV.statusEffects.Special.UnderwaterPenalty;
 
 public class WarpWElevatortoLobby extends Event {
 
@@ -44,6 +46,11 @@ public class WarpWElevatortoLobby extends Event {
 				break;
 			case 3:
 				super.transport("/Worlds/Floor4Aquarium/AquariumTank/TankMain.txt",24,24,"Aquarium Tank");
+				if(!super.getSwitch(33)){
+					super.setSwitch(33, true);
+					super.getGamestate().getPartymanager().getParty().get(0).statuses.add(new UnderwaterPenalty(super.getGamestate().getPartymanager().getParty().get(0),15));
+				}
+				super.setSwitch(34, true);
 				break;
 			case 4:
 				break;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class CatchersGlove extends Item{
 
-	static int id = 2;
+	static int id = 22;
 	static String name = "Catcher's Mitt";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class CatchersGlove extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(4, .11 *(1+s.getEquipPow()), 50);
+		enchantment[0] = new BonusStatBuff(4, .11 *(1+s.getEquipPow()),s, 50);
 		return enchantment;
 	}
 }

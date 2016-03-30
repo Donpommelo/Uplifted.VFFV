@@ -34,7 +34,7 @@ public class EmpTuck extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Working all day like this can't be good for one's health./I'm really only getting distracted because I want to live to see my grandchildren./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Working all day like this can't be good for one's health. I'm really only getting distracted because I want to live to see my grandchildren.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -26,8 +26,8 @@ public class TheTentativelyNamedFiles extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusCloud(50, .1, new Asleep(2,s,s,50));
-		enchantment[1] = new StatBuffAdd(6,(int)(5*(1+s.getEquipPow())),50);
+		enchantment[0] = new StatusCloud(50,.1, s,new Asleep(2,s,s,50));
+		enchantment[1] = new StatBuffAdd(6,(int)(5*(1+s.getEquipPow())),s,50);
 		return enchantment;
 	}
 }

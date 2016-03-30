@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.Battle.Animations.OpeningCircleTargetAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Queried;
@@ -15,8 +17,9 @@ public class Query extends Skills {
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 6;	//Physical
 	public static int targetType = 0;	//Any Single Target
+	public static BattleAnimation[] ba = {new OpeningCircleTargetAnim(1)};
 	public Query(int index) {
-		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
+		super(index, targetType, element, name, descr, descrShort, cost, 1, baseAcc, baseCrit, canMiss, canCrit,ba);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	

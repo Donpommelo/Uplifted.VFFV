@@ -33,7 +33,7 @@ public class EmpRussell extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Unacceptable. . .simply unacceptable!/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Unacceptable. . .simply unacceptable!");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class ManilaFolder extends Item{
 
-	static int id = 2;
+	static int id = 28;
 	static String name = "Manila Folder";
 	static boolean menu = false;
 	static boolean battle = false;

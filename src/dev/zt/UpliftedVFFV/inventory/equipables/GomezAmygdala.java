@@ -25,8 +25,8 @@ public class GomezAmygdala extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffAdd(6 ,(int)(11*(1+s.getEquipPow())),50);
-		enchantment[1] = new BonusStatBuff(26,4,50);
+		enchantment[0] = new StatBuffAdd(6 ,(int)(11*(1+s.getEquipPow())),s,50);
+		enchantment[1] = new BonusStatBuff(26,4,s,50);
 		return enchantment;
 	}
 	

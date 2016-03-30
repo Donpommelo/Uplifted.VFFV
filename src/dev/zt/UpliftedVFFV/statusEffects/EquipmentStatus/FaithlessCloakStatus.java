@@ -10,8 +10,8 @@ public class FaithlessCloakStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public FaithlessCloakStatus(int pr){
-		super("Faithless",pr);
+	public FaithlessCloakStatus(Schmuck v,int pr){
+		super("Faithless",v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BadShell extends Item{
 
-	static int id = 2;
+	static int id = 19;
 	static String name = "Bad Shell";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class BadShell extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DamageBlock(.50*(1+ s.getEquipPow()) ,(int)(5*(1+s.getEquipPow())) ,6 ,50);
+		enchantment[0] = new DamageBlock(.50*(1+ s.getEquipPow()) ,(int)(5*(1+s.getEquipPow())) ,6 ,s,50);
 		return enchantment;
 	}
 }

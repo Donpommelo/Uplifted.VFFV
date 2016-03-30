@@ -18,8 +18,8 @@ public class StatusonHit extends status{
 		this.st = st;
 		this.perc = perc;
 	}
-	public StatusonHit(int pr, double perc, status st){
-		super(name, pr);
+	public StatusonHit(double perc, status st, Schmuck v, int pr){
+		super(name, v,pr);
 		this.st = st;
 		this.perc = perc;
 	}

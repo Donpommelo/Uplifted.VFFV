@@ -33,19 +33,19 @@ public class EmpHabette extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hmm? You're still around?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hmm? You're still around?");
 			switch(super.getQuest(5)){
 			case 0:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"See you around./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"See you around.");
 				break;
 			case 1:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Attaboy./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Attaboy.");
 				break;
 			case 2:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Look at you go./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Look at you go.");
 				break;
 			case 3:
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Halfway there./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Halfway there.");
 				break;
 			}
 			super.Dialog(d, 0, this.getId(), true);

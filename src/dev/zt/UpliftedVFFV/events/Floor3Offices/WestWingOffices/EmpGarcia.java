@@ -35,7 +35,7 @@ public class EmpGarcia extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Work is purpose./Company is family./Unemployment is death./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Work is purpose./Company is family./Unemployment is death.");
 			super.Dialog(d, 0, this.getId(), true);
 
 			

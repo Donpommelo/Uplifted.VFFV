@@ -73,8 +73,8 @@ public class Utils {
 	 * 	height - Height of window to be drawn.
 	 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
 	 */
-	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor, int fontHeight,
-			int cursorIndex, int x, int y, int width, int height, boolean priority){
+	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor,
+			int fontHeight,Font font,int cursorIndex, int x, int y, int width, int height, boolean priority){
 		
 		Graphics2D g2d = (Graphics2D) g;
 		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, squareSize, priority);
@@ -87,7 +87,7 @@ public class Utils {
 		drawCursor(g2d, window, x, y + (25 * cursorIndex) + 12, width, fontHeight, priority);
 
 		//Draw menu options.
-		g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g2d.setFont(font);
 		g2d.setColor(fontColor);
 		for(int i = 0; i < options.length; i++){
 			g2d.drawString(options[i], x + 21, y + 35 + (25 * i));
@@ -116,9 +116,9 @@ public class Utils {
 		 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
 		 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 		 */
-		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor, int fontHeight,
-				int cursorIndex, int x, int y, int width, int height, int optionx, int optiony, int frame, int customSquareSize,
-				boolean priority){
+		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor,
+				int fontHeight, Font font,int cursorIndex, int x, int y, int width, int height, int optionx,
+				int optiony, int frame, int customSquareSize,boolean priority, boolean drawCursor){
 			Graphics2D g2d = (Graphics2D) g;
 			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, customSquareSize, priority);
 			
@@ -128,23 +128,39 @@ public class Utils {
 			}
 			
 			//Draw cursor.
-			drawCursor(g2d, window, x + (width / optionx - 2) * (cursorIndex % optionx), y + (25 * (cursorIndex / optionx)) + 8, width / optionx + 5, fontHeight, priority);
+			if(drawCursor){
+				drawCursor(g2d, window, x + (width / optionx - 2) * (cursorIndex % optionx), y + (25 * (cursorIndex / optionx)) + 8, width / optionx + 5, fontHeight, priority);
+			}
 			//Draw menu options.
-			g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
+			g2d.setFont(font);
 			g2d.setColor(fontColor);
+			int xLoc = 5;
 			if(options.length > 0){	
 				int listPosition = 0;
-				g2d.setFont(new Font("Chewy", Font.PLAIN, fontHeight));
+				g2d.setFont(new Font("Courier", Font.PLAIN, fontHeight));
 				for(int i = frame * optionx; i < optionx * (frame + optiony) && i < options.length; i++){
 					if(options[i] != null){
-						g2d.drawString(options[i].toString(), x + 15 + (width / optionx) * (listPosition % optionx), y + 28 + (25 * (listPosition / optionx)));
+						xLoc = (width / optionx)* (listPosition % optionx);
+						for(String word : options[i].toString().split("")){
+							if(xLoc + g2d.getFontMetrics().stringWidth(word+"...") < width){
+								 g2d.drawString(word, x+12+xLoc, y + 28 + (25 * (listPosition / optionx)));
+							}
+							else{
+								g2d.drawString("...", x+12+xLoc, y + 28 + (25 * (listPosition / optionx)));
+								break;
+							}
+							xLoc += g2d.getFontMetrics().stringWidth(word+"");
+						}
+//						g2d.drawString(options[i].toString(), x + 15 + (width / optionx) * (listPosition % optionx), y + 28 + (25 * (listPosition / optionx)));
 						listPosition++;
 					} else{
 						break;
 					}
 				}
 			} else{
-				g2d.drawString("EMPTY", x + 15, y + 28);
+				if(drawCursor){
+					g2d.drawString("EMPTY", x + 15, y + 28);
+				}
 			}
 			
 			//Reset transparency.
@@ -247,24 +263,24 @@ public class Utils {
 		}
 		
 		//Draw text.
-		g2d.setFont(new Font("Chewy", Font.PLAIN, fontSize));
+		g2d.setFont(new Font("Courier", Font.PLAIN, fontSize));
 		g2d.setColor(fontColor);
 //		g2d.drawString(text, x + 12, y + 25);
 		//Wrapping text
 		int yLine = y;
-		int xLoc = 0;
+		int xLoc = 5;
 		for (String line : text.split("\n")){
-	        yLine += g.getFontMetrics().getHeight();
+	        yLine += g2d.getFontMetrics().getHeight();
 	        xLoc = 0;
 			for(String word : line.split(" ")){
-				if(xLoc + g.getFontMetrics().stringWidth(word) < width-10){
+				if(xLoc + g2d.getFontMetrics().stringWidth(word) < width-5){
 					 g2d.drawString(word, x+12+xLoc, yLine);
 				}
 				else{
 					xLoc = 0;
-					g2d.drawString(word, x+12, yLine += g.getFontMetrics().getHeight());
+					g2d.drawString(word, x+12, yLine += g2d.getFontMetrics().getHeight());
 				}
-				xLoc += g.getFontMetrics().stringWidth(word+" ");
+				xLoc += g2d.getFontMetrics().stringWidth(word+" ");
 			}
 		}
 		//Reset transparency.

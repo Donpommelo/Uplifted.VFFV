@@ -35,8 +35,8 @@ public class EmpTurner extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The secret to good health is diligent and unwavering labor./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"I never leave this cubicle. And look at me./I've never been to the Infirmary in my life!/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"The secret to good health is diligent and unwavering labor.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"I never leave this cubicle. And look at me. I've never been to the Infirmary in my life!");
 			super.Dialog(d, 1, this.getId(), true);
 
 			

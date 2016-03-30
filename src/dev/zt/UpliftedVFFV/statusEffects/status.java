@@ -77,7 +77,7 @@ public class status implements Serializable{
 	}
 	
 	//For creating Equipment Statuses
-	public status(String n, int pr){
+	public status(String n,Schmuck v, int pr){
 		this.name = n;
 		this.priority = pr;
 		this.duration = 1;
@@ -85,6 +85,7 @@ public class status implements Serializable{
 		this.visible = false;
 		this.removedEnd = false;
 		this.decay = false;
+		this.vic = v;
 		this.extraVar1 = 1;
 		this.perp = new Schmuck();
 	}
@@ -232,6 +233,10 @@ public class status implements Serializable{
 
 	}
 	
+	public void statchanges(Schmuck s, BattleState bs){
+
+	}
+	
 	//Occurs right before a character makes a delayed move
 	//Implemented upon initializing a battleMenu
 	public void onDillyDally(Schmuck s, BattleState bs){
@@ -269,11 +274,11 @@ public class status implements Serializable{
 		return script;
 	}
 		
-	//not currently used
-	public void run(Schmuck s){
+	//Used for animated statuses
+	public void postAnimRun(BattleState bs){
 		
 	}
-		
+			
 	public String inflictText(Schmuck s){
 		return "";
 	}

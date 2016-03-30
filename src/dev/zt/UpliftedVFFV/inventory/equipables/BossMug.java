@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class BossMug extends Item{
 
-	static int id = 2;
+	static int id = 25;
 	static String name = "#1 Boss Mug";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class BossMug extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(35,(int)(5*(1+s.getEquipPow())), 35);
+		enchantment[0] = new BonusStatBuff(35,(int)(5*(1+s.getEquipPow())),s, 35);
 		return enchantment;
 	}
 }

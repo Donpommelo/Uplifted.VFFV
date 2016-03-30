@@ -33,7 +33,7 @@ public class EmpHero extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Ever since I got a job here, I've started to think I just might not be the main/character in this story./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Ever since I got a job here, I've started to think I just might not be the main character in this story.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

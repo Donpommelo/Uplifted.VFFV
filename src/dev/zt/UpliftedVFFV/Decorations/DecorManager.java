@@ -38,7 +38,7 @@ public class DecorManager {
 	//will be eventually used for parallax stuff
 	public void renderBelowBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow() == -2){
+			if(Decorations[i].renderBelow() == -2 && Decorations[i].isRendered(gs)){
 				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}
@@ -49,7 +49,9 @@ public class DecorManager {
 	//This also includes standard decor that is higher up than the player.
 	public void renderBelow(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i])){
+			if(Decorations[i].renderBelow() == -1 ||(Decorations[i].renderBelow() != -2 &&
+					Decorations[i].renderBelow() != 1 && gs.getPlayer().getPlayerY() > DecorCoords[1][i]
+							&& Decorations[i].isRendered(gs))){
 				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}
@@ -60,7 +62,9 @@ public class DecorManager {
 	//This also includes standard decor that is lower down than the player.
 	public void renderAbove(Graphics g){
 		for(int i = 0; i<Decorations.length; i++){
-			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -2 && Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i])){
+			if(Decorations[i].renderBelow() == 1||(Decorations[i].renderBelow() != -2 &&
+					Decorations[i].renderBelow() != -1 && gs.getPlayer().getPlayerY() <= DecorCoords[1][i]
+							&& Decorations[i].isRendered(gs))){
 				Decorations[i].render(g, game, DecorCoords[0][i],DecorCoords[1][i]);
 			}
 		}

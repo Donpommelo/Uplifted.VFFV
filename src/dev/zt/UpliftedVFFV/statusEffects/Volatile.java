@@ -14,8 +14,8 @@ public class Volatile extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Volatile(int pr){
-		super(name, pr);
+	public Volatile(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

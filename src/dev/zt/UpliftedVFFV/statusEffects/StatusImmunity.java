@@ -16,8 +16,8 @@ public class StatusImmunity extends status{
 		this.immune = imm;
 	}
 	
-	public StatusImmunity(status imm, int pr){
-		super(name, pr);
+	public StatusImmunity(status imm, Schmuck v,int pr){
+		super(name, v,pr);
 		this.immune = imm;
 	}
 

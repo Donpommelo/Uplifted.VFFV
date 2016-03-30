@@ -264,7 +264,8 @@ public class SaveFileState extends State {
 			if(mode == 1 && currentchoice != numFiles-1){
 				Utils.drawDialogueBox(g, window, "Overwrite Saved Data?", 18, Color.black, 430, 10+currentchoice*134, 200, 32, 16, true);
 			}
-			Utils.drawMenu(g, window, choices, Color.black, 18, yesno, 527, 57+currentchoice*134, 100, 64, true);
+			Utils.drawMenu(g, window, choices, Color.black, 18, new Font("Courier", Font.PLAIN, 18), yesno,
+					527, 57+currentchoice*134, 100, 64, true);
 			
 		}
 		

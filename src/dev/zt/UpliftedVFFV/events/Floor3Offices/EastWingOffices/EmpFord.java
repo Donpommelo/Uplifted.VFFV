@@ -33,8 +33,8 @@ public class EmpFord extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Why should I bother to get anything done?/Someone else would just steal the credit afterwards./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I refuse to be on the losing end of that exchange./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Why should I bother to get anything done?/Someone else would just steal the credit afterwards.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I refuse to be on the losing end of that exchange.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class MidgeBlood extends Item{
 
-	static int id = 2;
+	static int id = 17;
 	static String name = "Midge Blood";
 	static boolean menu = true;
 	static boolean battle = true;

@@ -25,7 +25,7 @@ public class KillSelf extends Skills {
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		bs.bp.bt.addScene(perp.getName()+" presses "+perp.getPronoun(1)+" Kill Switch!");
 		bs.bp.stm.addStatus(perp, new incapacitate(perp,perp));
-		bs.bp.stm.addStatus(perp, new KillSwitchStatus(0));
+		bs.bp.stm.addStatus(perp, new KillSwitchStatus(perp,0));
 		perp.setCurrentHp(0);
 	}
 	

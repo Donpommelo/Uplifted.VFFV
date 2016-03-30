@@ -20,8 +20,8 @@ public class EventSafe7 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe contains some medicine!/");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Antivenom x3!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe contains some medicine!");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Antivenom x3!");
 			super.Dialog(d, 1, this.getId(), true);
 			super.loot(new Antivenom(), 3);
 			this.setTex(Assets.SafeOpened);

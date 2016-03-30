@@ -31,8 +31,8 @@ public class KillSwitch extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		s.learnSkill(test);
-		enchantment[0] = new BonusStatBuff(16, .1*(1+s.getEquipPow()), 50);
-		enchantment[1] = new BonusStatBuff(37, 12*(1+s.getEquipPow()), 25);
+		enchantment[0] = new BonusStatBuff(16, .1*(1+s.getEquipPow()), s,50);
+		enchantment[1] = new BonusStatBuff(37, 12*(1+s.getEquipPow()),s, 25);
 		return enchantment;
 	}
 	

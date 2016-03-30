@@ -24,7 +24,7 @@ public class DailyDose extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DailyDoseStatus(90);
+		enchantment[0] = new DailyDoseStatus(s,90);
 		return enchantment;
 	}
 }

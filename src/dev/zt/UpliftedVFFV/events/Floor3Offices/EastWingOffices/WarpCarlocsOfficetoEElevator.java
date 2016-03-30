@@ -21,8 +21,8 @@ public class WarpCarlocsOfficetoEElevator extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The door is locked./");
-			d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You shouldn't be poking around in other people's offices./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The door is locked.");
+			d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You shouldn't be poking around in other people's offices.");
 			super.Dialog(d, 1, this.getId(), true);
 
 		}

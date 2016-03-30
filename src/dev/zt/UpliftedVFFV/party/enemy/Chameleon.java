@@ -39,7 +39,7 @@ public class Chameleon extends Schmuck{
 	
 	public final static Item[] itemDrops = {new RainbowScale()};
 	public final static double[] dropRates = {0.5};
-	public final static status[] intrinsicStatuses = {new ElemPersuasion(4,20,50)};
+	public final static status[] intrinsicStatuses = {new ElemPersuasion(4,20,null,50)};
 	
 	public final static String bioShort = "TEMP";
 	public final static String bioLong = "";

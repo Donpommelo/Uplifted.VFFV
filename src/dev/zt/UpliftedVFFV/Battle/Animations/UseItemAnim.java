@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class UseItemAnim extends BattleAnimation{
@@ -12,24 +13,34 @@ public class UseItemAnim extends BattleAnimation{
 	boolean ally;
 	BattleState bs;
 	Item used;
-	static int frames = 65;
-	public UseItemAnim(Item i){
+	Schmuck s;
+	static int frames = 100;
+	public UseItemAnim(Item i,Schmuck s){
 		super(frames);
 		this.used = i;
+		this.s = s;
 	}
 	
 	public void animateAction(int frame, Action a, Graphics g){
-		int xLoc = 0;
-		if(frame<25){
-			xLoc = 10 * frame;
+		if(frame < 40){
+			g.drawImage(used.getIcon(),a.getUser().getX()+a.user.getBattleSprite().getWidth()/2,
+					a.user.getY()-frame,null);
 		}
-		else if(frame<40){
-			xLoc = 250 + 1*(frame-25);
+		else {
+			g.drawImage(used.getIcon(),a.getUser().getX()+a.user.getBattleSprite().getWidth()/2,
+					a.user.getY()-40,null);
 		}
-		else{
-			xLoc = 265 + 10*(frame-40);
-		}
-		g.drawImage(used.getImage(),xLoc,200,null);
-
 	}
+	
+	public void animateEffect(int frame, Graphics g, BattleState bs){
+		if(frame < 40){
+			g.drawImage(used.getIcon(),s.getX()+s.getBattleSprite().getWidth()/2,
+					s.getY()-frame,null);
+		}
+		else {
+			g.drawImage(used.getIcon(),s.getX()+s.getBattleSprite().getWidth()/2,
+					s.getY()-40,null);
+		}
+	}
+	
 }

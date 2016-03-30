@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class RatTail extends Item{
 
-	static int id = 2;
+	static int id = 20;
 	static String name = "Rattail";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class RatTail extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(14, .15 * (1 + s.getEquipPow()), 50);
+		enchantment[0] = new BonusStatBuff(14, .15 * (1 + s.getEquipPow()),s, 50);
 		return enchantment;
 	}
 }

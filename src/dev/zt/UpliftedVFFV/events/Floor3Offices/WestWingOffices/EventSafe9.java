@@ -20,9 +20,9 @@ public class EventSafe9 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some sort of elaborate scanning device!/");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained the Future-Tech Auto-Querier!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some sort of elaborate scanning device!");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained the Future-Tech Auto-Querier!");
 			super.Dialog(d, 2, this.getId(), true);
 			super.loot(new AutoQuerier(), 1);
 			this.setTex(Assets.SafeOpened);

@@ -16,7 +16,7 @@ public class Antivenom extends Item{
 	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A bottle of medicine designed to flush your body of poison.";
+	static String descr="A bottle of pills designed to flush your body of all manner of poisons.";
 	static String descrShort="Cures Poison.";
 	public Antivenom() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

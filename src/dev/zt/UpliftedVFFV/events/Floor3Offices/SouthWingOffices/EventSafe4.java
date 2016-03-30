@@ -20,9 +20,9 @@ public class EventSafe4 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"New pants! Score!/");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Slacker Slacks./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"New pants! Score!");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Slacker Slacks.");
 			super.Dialog(d, 2, this.getId(), true);
 			super.loot(new SlackerSlacks(), 1);
 			this.setTex(Assets.SafeOpened);

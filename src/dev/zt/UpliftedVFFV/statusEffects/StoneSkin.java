@@ -17,8 +17,8 @@ public class StoneSkin extends status{
 		this.percent = percent;
 	}
 	
-	public StoneSkin(double percent, int pr){
-		super(name, pr);
+	public StoneSkin(double percent,Schmuck v, int pr){
+		super(name, v,pr);
 		this.percent = percent;
 	}
 	

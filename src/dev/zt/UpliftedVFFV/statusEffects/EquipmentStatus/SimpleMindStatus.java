@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class SimpleMindStatus extends status{
 	
-	public SimpleMindStatus(int pr){
-		super("Simple", pr);
+	public SimpleMindStatus(Schmuck v,int pr){
+		super("Simple", v,pr);
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

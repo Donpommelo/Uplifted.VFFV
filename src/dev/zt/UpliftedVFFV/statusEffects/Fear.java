@@ -18,8 +18,8 @@ public class Fear extends status{
 		this.Frighter = frighter;
 	}
 	
-	public Fear(int pr){
-		super(name, pr);
+	public Fear(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

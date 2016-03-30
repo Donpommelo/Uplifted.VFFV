@@ -30,7 +30,7 @@ public class EventBackroomBed extends Event {
 		switch(choice){
 		case 0:
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Its a comfy bed./But you don't feel like sleeping right now and probably couldn't if you tried./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Its a comfy bed. But you don't feel like sleeping right now and probably couldn't if you tried.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

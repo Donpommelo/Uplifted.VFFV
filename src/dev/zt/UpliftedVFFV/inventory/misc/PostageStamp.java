@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class PostageStamp extends Item{
 
-	static int id = 2;
+	static int id = 14;
 	static String name = "Postage Stamp";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -25,7 +25,7 @@ public class CullingGrinder extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CullingGrinderStatus(50);
+		enchantment[0] = new CullingGrinderStatus(s,50);
 		return enchantment;
 	}
 	

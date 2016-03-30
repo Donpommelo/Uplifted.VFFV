@@ -33,8 +33,8 @@ public class EmpDeborah extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You seem like the sort of fellow who'd recognize a lucrative new multi-level/marketing opportunity if he saw one./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hey! Come back! I'm talking to you!/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You seem like the sort of fellow who'd recognize a lucrative new multi-level marketing opportunity if he saw one.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hey! Come back! I'm talking to you!");
 			super.Dialog(d, 1, this.getId(), true);			
 			break;
 		case 1:

@@ -25,7 +25,7 @@ public class RecyclerBolus extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new RecyclerBolusStatus(50);
+		enchantment[0] = new RecyclerBolusStatus(s,50);
 		return enchantment;
 	}
 	

@@ -14,8 +14,8 @@ public class MeterBlock extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public MeterBlock(int pr){
-		super(name, pr);
+	public MeterBlock(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	

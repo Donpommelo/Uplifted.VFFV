@@ -24,7 +24,7 @@ public class EnergySourceOvercharge extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new EnergyOvercharged(50);
+		enchantment[0] = new EnergyOvercharged(s,50);
 		return enchantment;
 	}
 }

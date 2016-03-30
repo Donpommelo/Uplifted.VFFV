@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class BasementKeyCard extends Item{
 
-	static int id = 2;
+	static int id = 29;
 	static String name = "Basement Keycard";
 	static boolean menu = false;
 	static boolean battle = false;

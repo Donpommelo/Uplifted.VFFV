@@ -34,8 +34,8 @@ public class EmpLiang extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Originally, we had a receptionist here to great newcomers to the offices./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"But we decided that was not the most productive use of office space./So now I work here instead./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Originally, we had a receptionist here to great newcomers to the offices.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"But we decided that was not the most productive use of office space. So now I work here instead.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

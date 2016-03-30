@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class RecyclerBolusStatus extends status{
 	
-	public RecyclerBolusStatus(int pr){
-		super("Recycler Bolus Effect", pr);
+	public RecyclerBolusStatus(Schmuck v,int pr){
+		super("Recycler Bolus Effect", v, pr);
 	}
 	
 	public int onHealTargetEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

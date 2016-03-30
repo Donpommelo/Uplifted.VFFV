@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CannonElectrostaticStat
 
 public class CannonElectrostatic extends Item{
 
-	static int id = 2;
-	static String name = "Electrostatic Cannon";
+	static int id = 41;
+	static String name = "Cationic Cannon";
 	static boolean menu = false;
 	static boolean battle = false;
 	static boolean consume = false;
@@ -24,7 +24,7 @@ public class CannonElectrostatic extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CannonElectrostaticStatus(60);
+		enchantment[0] = new CannonElectrostaticStatus(s,60);
 		return enchantment;
 	}
 

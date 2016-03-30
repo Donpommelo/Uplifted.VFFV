@@ -86,7 +86,7 @@ public UseItem(int index, Item i, GameState gs) {
 	
 	public BattleAnimation[] getBa() {
 		ba = new BattleAnimation[1];
-		ba[0] = new UseItemAnim(thing);
+		ba[0] = new UseItemAnim(thing,new Schmuck());
 		return ba;
 	}
 	

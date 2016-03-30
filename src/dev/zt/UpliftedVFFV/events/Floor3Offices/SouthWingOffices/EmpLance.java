@@ -33,7 +33,7 @@ public class EmpLance extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It pains me to think about how much more work I could have completed if/this meeting began on time./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It pains me to think about how much more work I could have completed if this meeting began on time.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

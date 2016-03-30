@@ -34,7 +34,7 @@ public class EmpLorena extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"We should all take pride in our work./Work is what separates us from the animals./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"We should all take pride in our work./Work is what separates us from the animals.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

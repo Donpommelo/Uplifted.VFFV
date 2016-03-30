@@ -25,9 +25,9 @@ public class FestusMask extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffAdd(5,(int)(11*(1+s.getEquipPow())),15);
-		enchantment[1] = new StatBuffAdd(4,(int)(11*(1+s.getEquipPow())),15);
-		enchantment[2] = new MaskofFestusStatus(0);
+		enchantment[0] = new StatBuffAdd(5,(int)(11*(1+s.getEquipPow())),s,15);
+		enchantment[1] = new StatBuffAdd(4,(int)(11*(1+s.getEquipPow())),s,15);
+		enchantment[2] = new MaskofFestusStatus(s,0);
 		return enchantment;
 	}
 	

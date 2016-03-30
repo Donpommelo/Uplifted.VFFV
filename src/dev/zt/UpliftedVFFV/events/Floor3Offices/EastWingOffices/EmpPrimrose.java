@@ -33,7 +33,7 @@ public class EmpPrimrose extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You seem like the kind of person who uses the 'Wait' command while already Waiting/and accidently passes his turn instead./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You seem like the kind of person who uses the 'Wait' command while already Waiting and accidently passes his turn instead.");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

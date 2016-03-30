@@ -92,7 +92,8 @@ public class Assets {
 		SpriteSheet ActionIcons = new SpriteSheet(ImageLoader.loadImage("/textures/SkillIcon.png"));
 		SpriteSheet FurnitureBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/FurnitureBackroom.png"));
 		SpriteSheet Furniture3rdFloor = new SpriteSheet(ImageLoader.loadImage("/textures/Furniture3rd.png"));
-		
+		SpriteSheet ItemIcons1 = new SpriteSheet(ImageLoader.loadImage("/Items/ItemSheet1.png"));
+
 		//Newer Spritesheets
 		SpriteSheet TilesetBackroom = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorsAndBackroom.png"));
 		SpriteSheet TilesetBackroomWalls = new SpriteSheet(ImageLoader.loadImage("/textures/ElevatorsAndBackroomWalls.png"));
@@ -142,12 +143,62 @@ public class Assets {
 		stickers[2] = ImageLoader.loadImage("/CharacterBusts/Player-5.png");	//2 - Pen Pal.
 		
 		//Item icons.
-		//TODO: Load item and skill icons from icon sheet.
-//		int numItems = 100;
-//		itemIcons = new BufferedImage[numItems];
-//		itemSprites = new BufferedImage[numItems];
-		itemIcons = null;
-		itemSprites = null;		
+		int numItems = 100;
+		int itemSize = 128;
+		itemIcons = new BufferedImage[numItems];
+		itemIcons[0] = ItemIcons1.crop(0,0,itemSize,itemSize);						//Misc Food Item
+		itemIcons[1] = ItemIcons1.crop(itemSize,0,itemSize,itemSize);				//Donut
+		itemIcons[2] = ItemIcons1.crop(2*itemSize,0,itemSize,itemSize);				//Laser Pointer
+		itemIcons[3] = ItemIcons1.crop(3*itemSize,0,itemSize,itemSize);				//Fishwater
+		itemIcons[4] = ItemIcons1.crop(4*itemSize,0,itemSize,itemSize);				//Paperweight
+		itemIcons[5] = ItemIcons1.crop(5*itemSize,0,itemSize,itemSize);				//Slacks
+		itemIcons[6] = ItemIcons1.crop(6*itemSize,0,itemSize,itemSize);				//Medpak
+		itemIcons[7] = ItemIcons1.crop(7*itemSize,0,itemSize,itemSize);				//Caffeine Patch
+		itemIcons[8] = ItemIcons1.crop(8*itemSize,0,itemSize,itemSize);				//Melted Ice-Cream
+		itemIcons[9] = ItemIcons1.crop(9*itemSize,0,itemSize,itemSize);				//Carrot Juice
+		itemIcons[10] = ItemIcons1.crop(0,itemSize,itemSize,itemSize);				//Lemony Fresh
+		itemIcons[11] = ItemIcons1.crop(itemSize,itemSize,itemSize,itemSize);		//Coffee'd Ice
+		itemIcons[12] = ItemIcons1.crop(2*itemSize,itemSize,itemSize,itemSize);		//SmellingSalt
+		itemIcons[13] = ItemIcons1.crop(3*itemSize,itemSize,itemSize,itemSize);		//Letter Opener
+		itemIcons[14] = ItemIcons1.crop(4*itemSize,itemSize,itemSize,itemSize);		//Postage Stamp
+		itemIcons[15] = ItemIcons1.crop(5*itemSize,itemSize,itemSize,itemSize);		//Mental Leakage
+		itemIcons[16] = ItemIcons1.crop(6*itemSize,itemSize,itemSize,itemSize);		//Midge Proboscis
+		itemIcons[17] = ItemIcons1.crop(7*itemSize,itemSize,itemSize,itemSize);		//Midge Blood
+		itemIcons[18] = ItemIcons1.crop(8*itemSize,itemSize,itemSize,itemSize);		//Bad Yolk
+		itemIcons[19] = ItemIcons1.crop(9*itemSize,itemSize,itemSize,itemSize);		//Bad Shell
+		itemIcons[20] = ItemIcons1.crop(0,2*itemSize,itemSize,itemSize);			//Rattail
+		itemIcons[21] = ItemIcons1.crop(itemSize,2*itemSize,itemSize,itemSize);		//Disease
+		itemIcons[22] = ItemIcons1.crop(2*itemSize,2*itemSize,itemSize,itemSize);	//Catcher's Mitt
+		itemIcons[23] = ItemIcons1.crop(3*itemSize,2*itemSize,itemSize,itemSize);	//Catcher's Mask
+		itemIcons[24] = ItemIcons1.crop(4*itemSize,2*itemSize,itemSize,itemSize);	//Seeing Eye
+		itemIcons[25] = ItemIcons1.crop(5*itemSize,2*itemSize,itemSize,itemSize);	//#1 Boss Mug
+		itemIcons[26] = ItemIcons1.crop(6*itemSize,2*itemSize,itemSize,itemSize);	//Roasted Coffee Bean
+		itemIcons[27] = ItemIcons1.crop(7*itemSize,2*itemSize,itemSize,itemSize);	//8-Ball
+		itemIcons[28] = ItemIcons1.crop(8*itemSize,2*itemSize,itemSize,itemSize);	//Manila Folder
+		itemIcons[29] = ItemIcons1.crop(9*itemSize,2*itemSize,itemSize,itemSize);	//Basement Key Card
+		itemIcons[30] = ItemIcons1.crop(0,3*itemSize,itemSize,itemSize);			//Summoning Conch
+		itemIcons[31] = ItemIcons1.crop(itemSize,3*itemSize,itemSize,itemSize);		//Summoning Sauce
+		itemIcons[32] = ItemIcons1.crop(2*itemSize,3*itemSize,itemSize,itemSize);	//Aether Feather
+		itemIcons[33] = ItemIcons1.crop(3*itemSize,3*itemSize,itemSize,itemSize);	//Curse Coat
+		itemIcons[34] = ItemIcons1.crop(4*itemSize,3*itemSize,itemSize,itemSize);	//Voodoo Pin
+		itemIcons[35] = ItemIcons1.crop(5*itemSize,3*itemSize,itemSize,itemSize);	//Bag of Curses
+		itemIcons[36] = ItemIcons1.crop(6*itemSize,3*itemSize,itemSize,itemSize);	//Dripping Fang
+		itemIcons[37] = ItemIcons1.crop(7*itemSize,3*itemSize,itemSize,itemSize);	//Black Printer Toner
+		itemIcons[38] = ItemIcons1.crop(8*itemSize,3*itemSize,itemSize,itemSize);	//Cyan Printer Toner
+		itemIcons[39] = ItemIcons1.crop(9*itemSize,3*itemSize,itemSize,itemSize);	//Magenta Printer Toner
+		itemIcons[40] = ItemIcons1.crop(0,4*itemSize,itemSize,itemSize);			//Yellow Printer Toner
+		itemIcons[41] = ItemIcons1.crop(itemSize,4*itemSize,itemSize,itemSize);		//Cationic Cannon
+		itemIcons[42] = ItemIcons1.crop(2*itemSize,4*itemSize,itemSize,itemSize);	//Unheard Word
+		itemIcons[43] = ItemIcons1.crop(3*itemSize,4*itemSize,itemSize,itemSize);	//Reverberator
+		itemIcons[44] = ItemIcons1.crop(4*itemSize,4*itemSize,itemSize,itemSize);	//Thought Fluid
+		itemIcons[45] = ItemIcons1.crop(5*itemSize,4*itemSize,itemSize,itemSize);	//Glimpse of the End
+		itemIcons[46] = ItemIcons1.crop(6*itemSize,4*itemSize,itemSize,itemSize);	//Usurper's Chem Set
+		itemIcons[47] = ItemIcons1.crop(7*itemSize,4*itemSize,itemSize,itemSize);	//Faithless Cloak
+		itemIcons[48] = ItemIcons1.crop(8*itemSize,4*itemSize,itemSize,itemSize);	//Newton's Cradle
+		itemIcons[49] = ItemIcons1.crop(9*itemSize,4*itemSize,itemSize,itemSize);	//Envenomed Earth
+		itemIcons[50] = ItemIcons1.crop(0,5*itemSize,itemSize,itemSize);			//Magnum
+		itemIcons[51] = ItemIcons1.crop(itemSize,5*itemSize,itemSize,itemSize);		//Metal Ration
+	
 		
 		//Skill Icons.
 		int numSkills = 10;
@@ -160,7 +211,7 @@ public class Assets {
 		skillIcons[5] = ActionIcons.crop(160,0,32,32);			//5 - Run.
 		
 		//Battle Sprites.
-		int numSprites = 19;
+		int numSprites = 20;
 		battleSprites = new BufferedImage[numSprites];
 		battleSprites[0] = ImageLoader.loadImage("/BattleSprites/Operator.png");			//0 - Operator.
 		battleSprites[1] = ImageLoader.loadImage("/BattleSprites/PenPal.png");				//1 - Pen Pal.
@@ -181,6 +232,8 @@ public class Assets {
 //		battleSprites[16] = ImageLoader.loadImage("/BattleSprites/Auger.png");				//16 - Auger.
 		battleSprites[17] = ImageLoader.loadImage("/BattleSprites/Chameleon.png");			//17 - Chameleon.
 		battleSprites[18] = ImageLoader.loadImage("/BattleSprites/Copy Cat.png");			//18 - Copy Cat.
+		battleSprites[19] = ImageLoader.loadImage("/BattleSprites/KillingTime.png");		//19 - Killing Time.
+//		battleSprites[20] = ImageLoader.loadImage("/BattleSprites/Floater.png");			//20 - Floater.
 
 		//UI elements and other icons.
 		Uparrow = arrowup.crop(0, 0 ,32, 32);

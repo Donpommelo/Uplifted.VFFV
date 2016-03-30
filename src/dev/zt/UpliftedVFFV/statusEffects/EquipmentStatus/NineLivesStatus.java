@@ -10,8 +10,8 @@ public class NineLivesStatus extends status{
 	public int duration;
 	public Boolean perm = false;
 	public Boolean visible = true;
-	public NineLivesStatus(int pr){
-		super("Nine Lives",pr);
+	public NineLivesStatus(Schmuck v,int pr){
+		super("Nine Lives",v,pr);
 	}
 	
 	public void statchanges(Schmuck s){

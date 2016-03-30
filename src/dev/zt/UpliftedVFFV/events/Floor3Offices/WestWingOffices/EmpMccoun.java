@@ -35,8 +35,8 @@ public class EmpMccoun extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"When I first took this job, this building felt labyrinthine and infinite./But routine and tedium have made it feel so small./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It shrinks a little more every workday./Soon we will all be huddled together in the same crushingly small broom closet./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"When I first took this job, this building felt labyrinthine and infinite. But routine and tedium have made it feel so small.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"It shrinks a little more every workday. Soon we will all be huddled together in the same crushingly small broom closet.");
 			super.Dialog(d, 1, this.getId(), true);
 
 			

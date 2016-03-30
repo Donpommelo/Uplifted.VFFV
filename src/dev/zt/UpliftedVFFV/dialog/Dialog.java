@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.dialog;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -16,6 +17,7 @@ import dev.zt.UpliftedVFFV.utils.Utils;
 public class Dialog {
 
 	public String text;
+	public String[] lines;
 	public BufferedImage window;
 	public int position;
 	public BufferedImage speaker;
@@ -44,6 +46,8 @@ public class Dialog {
 		
 		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
 
+		lines = text.split("/");
+
 	}
 	
 	public void tick(){
@@ -61,30 +65,60 @@ public class Dialog {
 		else{		
 			g.drawImage(speaker, width-speaker.getWidth(), height-speaker.getHeight(), null);
 		}
-//		g.setColor(new Color(102, 178,255, 200));
-//		g.setFont(new Font("Chewy", Font.PLAIN, 18));
-//		g.fillRect(0, 316, 640, 100);
 		Utils.drawDialogueBox(g, window, "", 18, Color.black, 0, height - 100, width - 15, 80, 16, true);
 		
 		if(!SpeakerName.equals("meep"))				//displays speaker's name in a box.
 		{
-			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, height - 136, 25 + SpeakerName.length() * 8, 32, 16, true);
+			Utils.drawDialogueBox(g, window, SpeakerName, 18, Color.black, 5, height - 136, g.getFontMetrics().stringWidth(SpeakerName)+15, 32, 16, true);
 		}
 		/*Graphics2D g2 = (Graphics2D)g;
 	    RenderingHints rh = new RenderingHints(
 	             RenderingHints.KEY_TEXT_ANTIALIASING,
 	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	    g2.setRenderingHints(rh);*/
+		
+		g.setFont(new Font("Courier", Font.PLAIN, 16));
 		g.setColor(Color.black);					//displays text. / indicates a new line
-		for(int i = 1; i < charIndex; i++){
+		
+		
+/*		for(int i = 1; i < charIndex; i++){
 			int y = height - 96;
 			String temp = text.substring(0, i);
 			for (String line : temp.split("/"))
 		        g.drawString(line, 10, y += g.getFontMetrics().getHeight());		//causes text to form new lines
+		}*/
+		int charsPrinted = 0;
+		int hardCodedLine = 0;
+		int currentY = height - 96 +  g.getFontMetrics().getHeight();
+		int currentX = 10;
+		while(charsPrinted < charIndex){
+			for(String word : lines[hardCodedLine].split(" ")){
+				if(charsPrinted + word.length() > charIndex && currentX + g.getFontMetrics().stringWidth(word) < width-10){
+					 g.drawString(word.substring(0,charIndex - charsPrinted), currentX, currentY);
+				}
+				else{
+					if(currentX + g.getFontMetrics().stringWidth(word) < width-10){
+						 g.drawString(word, currentX, currentY);
+					}
+					else{
+						currentX = 10;
+						g.drawString(word, 10, currentY += g.getFontMetrics().getHeight());
+					}
+				}
+				currentX += g.getFontMetrics().stringWidth(word+" ");
+				charsPrinted += (word.length()+1);
+				if(charsPrinted >= charIndex){
+					break;
+				}
+			}
+			hardCodedLine++;
+			currentX = 10;
+			currentY += g.getFontMetrics().getHeight();
 		}
+		
 		if(charIndex<text.length()){			//charIndex increases each time it is rendered so text scrolls
 			scrolling=true;
-			charIndex++;
+				charIndex++;
 		}
 		else{					
 			scrolling=false;					//if the text is done scrolling, charIndex stops increasing

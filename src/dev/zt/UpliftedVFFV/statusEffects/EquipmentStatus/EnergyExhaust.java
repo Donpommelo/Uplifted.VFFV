@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class EnergyExhaust extends status{
 	
 	public double energy;
-	public EnergyExhaust(int pr){
-		super("Exhaustible", pr);
+	public EnergyExhaust(Schmuck v,int pr){
+		super("Exhaustible", v,pr);
 		energy = 0;
 	}
 	

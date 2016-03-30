@@ -34,8 +34,8 @@ public class EmpPorter extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Welcome to the West Wing Offices./Please do not disturb our workers, as they are hard at work./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . . That includes me./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Welcome to the West Wing Offices./Please do not disturb our workers, as they are hard at work.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,". . . That includes me.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

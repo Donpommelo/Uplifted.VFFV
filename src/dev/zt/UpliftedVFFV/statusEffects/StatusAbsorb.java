@@ -14,8 +14,8 @@ public class StatusAbsorb extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public StatusAbsorb(int pr){
-		super(name, pr);
+	public StatusAbsorb(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){

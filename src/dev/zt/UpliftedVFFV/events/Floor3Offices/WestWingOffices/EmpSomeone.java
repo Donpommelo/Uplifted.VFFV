@@ -34,7 +34,7 @@ public class EmpSomeone extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Don't you have somewhere to go and somework to do?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Don't you have somewhere to go and somework to do?");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

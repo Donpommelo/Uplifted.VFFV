@@ -25,7 +25,7 @@ public class StatRingBeetle extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffMult(3, 1.15 * (1 + s.getEquipPow()), 50);
+		enchantment[0] = new StatBuffMult(3, 1.15 * (1 + s.getEquipPow()), s,50);
 		return enchantment;
 	}
 }

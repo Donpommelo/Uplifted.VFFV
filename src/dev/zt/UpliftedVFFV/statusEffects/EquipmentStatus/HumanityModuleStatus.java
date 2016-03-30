@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class HumanityModuleStatus extends status{
 	
-	public HumanityModuleStatus(int pr){
-		super("Humane", pr);
+	public HumanityModuleStatus(Schmuck v,int pr){
+		super("Humane", v, pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

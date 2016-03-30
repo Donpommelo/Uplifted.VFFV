@@ -34,17 +34,17 @@ public class EmpRubella extends Event {
 		case 0: 
 			if(!this.isSelfswitch1()){
 				Dialog[] d = new Dialog[5];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Heh, you looking for something?/");
-				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I was supposed to be looking for Suite 521./Do you know where that is?/");
-				d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Let me look around to see if it's in East Offices./");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . ./");
-				d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Nope./It ain't in here./Sorry pal./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Heh, you looking for something?");
+				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I was supposed to be looking for Suite 521./Do you know where that is?");
+				d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Let me look around to see if it's in East Offices.");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . .");
+				d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Nope./It ain't in here./Sorry pal.");
 				super.Dialog(d, 4, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You want me to look again or something?/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You want me to look again or something?");
 				super.Dialog(d, 0, this.getId(), true);
 
 			}

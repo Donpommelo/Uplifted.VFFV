@@ -25,10 +25,10 @@ public class RingofTesting extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(2,.5, 15);
-		enchantment[1] = new BonusStatBuff(16,.25, 50);
-		enchantment[2] = new BonusStatBuff(17,2, 50);
-		enchantment[3] = new ElemPointsBuff(3,15, 99);
+		enchantment[0] = new BonusStatBuff(2,.5, s,15);
+		enchantment[1] = new BonusStatBuff(16,.25, s,50);
+		enchantment[2] = new BonusStatBuff(17,2, s,50);
+		enchantment[3] = new ElemPointsBuff(3,15, s,99);
 		return enchantment;
 	}
 

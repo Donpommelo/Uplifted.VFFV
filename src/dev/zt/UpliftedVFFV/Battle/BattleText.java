@@ -9,6 +9,7 @@ import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.StateManager;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BattleText {
 	
@@ -119,7 +120,7 @@ public class BattleText {
 		
 		//Draws text box where scene text is displayed
 		g.setColor(new Color(160, 160, 160, 200));
-		g.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
 		g.fillRect(0, 0, 640, 28);
 		g.setColor(new Color(0,0,0));
 		
@@ -174,10 +175,12 @@ public class BattleText {
 					frame = 0;
 					actionRun = true;
 					bs.bs.locationUpdate();
+					if(scenes.get(0).getSt() != null){
+						scenes.get(0).getSt().postAnimRun(bs);
+					}
 				}
 			}
-		}
-		
+		}		
 	}
 	
 	//Animate Actions
@@ -188,6 +191,10 @@ public class BattleText {
 	//Animate non-action effects
 	public void addScene(String text, BattleAnimation ba, Boolean auto){
 		this.scenes.add(new BattleScene(text,ba, true,bs));
+	}
+	
+	public void addScene(String text, BattleAnimation ba, status st, Boolean auto){
+		this.scenes.add(new BattleScene(text,ba,st, true,bs));
 	}
 	
 	//Text without animations

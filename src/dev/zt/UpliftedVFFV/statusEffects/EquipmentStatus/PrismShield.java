@@ -5,8 +5,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PrismShield extends status{
 	
-	public PrismShield(int pr){
-		super("Prism Shield", pr);
+	public PrismShield(Schmuck v,int pr){
+		super("Prism Shield", v, pr);
 	}
 	
 	public void statchanges(Schmuck s){

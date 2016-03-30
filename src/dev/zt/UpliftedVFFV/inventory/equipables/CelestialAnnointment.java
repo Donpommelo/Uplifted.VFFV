@@ -29,8 +29,8 @@ public class CelestialAnnointment extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffMult(6,1.25*(1+s.getEquipPow()), 30);
-		enchantment[1] = new ElemPointsBuff(3, (int)(50*(1+s.getEquipPow())), 50);
+		enchantment[0] = new StatBuffMult(6,1.25*(1+s.getEquipPow()),s, 30);
+		enchantment[1] = new ElemPointsBuff(3, (int)(50*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 	

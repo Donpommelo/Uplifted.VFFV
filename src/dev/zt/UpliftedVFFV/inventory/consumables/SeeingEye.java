@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.TrueSight;
 
 public class SeeingEye extends Item{
 
-	static int id = 2;
+	static int id = 24;
 	static String name = "Seeing Eye";
 	static boolean menu = false;
 	static boolean battle = true;

@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class NewtonsCradleStatus extends status{
 
-	public NewtonsCradleStatus(int pr){
-		super("Carrying Momentum", pr);
+	public NewtonsCradleStatus(Schmuck v,int pr){
+		super("Carrying Momentum",v, pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

@@ -32,9 +32,10 @@ public class EmpIvan extends Event {
 		}
 		switch(this.getstage()){
 		case 0: 
-			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Such irresponsibility . . . This behaviour should not be tolerated./. . . We are the most well-respected and looked-up-to company in the business./This sort of thing could harm our reputations./");
-			super.Dialog(d, 0, this.getId(), true);
+			Dialog[] d = new Dialog[2];
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Such irresponsibility . . . This behaviour should not be tolerated. We are the most well-respected and looked-up-to company in the business.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"This sort of thing could harm our reputations.");
+			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:
 			this.setTex(SpriteSorter.SpriteSort(7,Assets.EmployeeM1));

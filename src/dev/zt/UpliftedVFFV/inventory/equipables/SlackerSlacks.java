@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SlackerSlacksStatus;
 
 public class SlackerSlacks extends Item{
 
-	static int id = 2;
+	static int id = 5;
 	static String name = "Slacker Slacks";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,7 +25,7 @@ public class SlackerSlacks extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SlackerSlacksStatus(50);
+		enchantment[0] = new SlackerSlacksStatus(s,50);
 		return enchantment;
 	}
 }

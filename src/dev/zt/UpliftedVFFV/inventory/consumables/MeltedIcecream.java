@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class MeltedIcecream extends Item{
 
-	static int id = 2;
+	static int id = 8;
 	static String name = "Melted Ice Cream";
 	static boolean menu = true;
 	static boolean battle = true;

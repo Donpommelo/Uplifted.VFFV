@@ -17,7 +17,7 @@ public class EventBackroomHatrack extends Event {
 	
 	public void run(){
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A Hat Rack./There are three hooks for your one hat./");
+		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A Hat Rack./Three hooks for your one hat.");
 		super.Dialog(d, 0, this.getId(), true);
 	}
 	

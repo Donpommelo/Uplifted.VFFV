@@ -25,8 +25,8 @@ public class HnHFake extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CopyItem(0);
-		enchantment[1] = new StatBuffMult(0,.75,80);
+		enchantment[0] = new CopyItem(s,0);
+		enchantment[1] = new StatBuffMult(0,.75,s,80);
 		return enchantment;
 	}
 	

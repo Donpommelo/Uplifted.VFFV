@@ -39,16 +39,16 @@ public class EmpCartographer extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[4];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Say, are you new to this office? You should take a Pocket Map./ This building can really be a maze sometimes./");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Thank you sir!/");
-			d[2] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Hey, wait! This is just a blank sheet of paper!/");
-			d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"You're supposed to fill it in yourself as you explore. Saves us the effort of making/new maps whenever we renovate./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Say, are you new to this office? You should take a Pocket Map. This building can really be a maze sometimes.");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Thank you sir!");
+			d[2] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Hey, wait! This is just a blank sheet of paper!");
+			d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"You're supposed to fill it in yourself as you explore. Saves us the effort of making new maps whenever we renovate.");
 			super.Dialog(d, 3, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"If this building was well designed, its employees wouldn't need maps./");	
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"If this building was well designed, its employees wouldn't need maps.");	
 			super.Dialog(d, 0, this.getId(), true);
 		}
 	}

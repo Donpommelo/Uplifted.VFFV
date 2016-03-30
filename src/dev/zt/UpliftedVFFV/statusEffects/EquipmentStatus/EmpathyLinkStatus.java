@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EmpathyLinkStatus extends status{
 	
-	public EmpathyLinkStatus(int pr){
-		super("Empathy", pr);
+	public EmpathyLinkStatus(Schmuck v,int pr){
+		super("Empathy",v, pr);
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){

@@ -10,8 +10,8 @@ public class MadnessMantraStatus extends status{
 
 	public int stack;
 	public Skills lastUsed;
-	public MadnessMantraStatus(int pr){
-		super("Maddening", pr);
+	public MadnessMantraStatus(Schmuck v,int pr){
+		super("Maddening", v,pr);
 	}
 	
 	public void startoffightEffect(Schmuck s, BattleState bs){

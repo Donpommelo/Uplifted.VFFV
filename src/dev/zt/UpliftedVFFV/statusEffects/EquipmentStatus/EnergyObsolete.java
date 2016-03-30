@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EnergyObsolete extends status{
 	
-	public EnergyObsolete(int pr){
-		super("Exhaustible", pr);
+	public EnergyObsolete(Schmuck v,int pr){
+		super("Exhaustible", v, pr);
 	}
 
 	public int gainMeterEffect(Schmuck s, BattleState bs, int mp){

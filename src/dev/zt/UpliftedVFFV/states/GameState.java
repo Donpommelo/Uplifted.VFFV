@@ -65,11 +65,11 @@ public class GameState extends State {
 		
 //		String StartingFloor = "/Worlds/Floor1Reception/SouthLobbyMain.txt";
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/WestWingOffices/WestCubicleFinal.txt";
-//		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumBuilding/SouthLobby.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt";
+		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumBuilding/DeepestSeaDungeon.txt";
 //		String StartingFloor = "/Worlds/Floor6FoodServery/Processing/FoodPyramid.txt";
 //		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Floor2Main.txt";
-		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
 
@@ -171,6 +171,7 @@ public class GameState extends State {
 		eventmanager.renderAbove(g);
 		decormanager.renderAbove(g);
 		worldmanager.renderNameplate(g);
+		worldmanager.renderTransition(g);
 		if(!game.getGameCamera().cameraControl){
 			if(game.getGameCamera().getShakeDuration()<1){
 				game.getGameCamera().setCameraControl(true);

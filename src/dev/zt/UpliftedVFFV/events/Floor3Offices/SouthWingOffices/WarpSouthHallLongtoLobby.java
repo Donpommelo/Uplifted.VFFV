@@ -21,7 +21,7 @@ public class WarpSouthHallLongtoLobby extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Hmm. Odd. This door appears to be blocked on the other side./ I think someone propped up some furniture against it. . ./");
+			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Hmm. Odd. This door appears to be blocked on the other side. I think someone propped up some furniture against it. . .");
 			super.Dialog(d, 0, this.getId(), true);		}
 	}
 	

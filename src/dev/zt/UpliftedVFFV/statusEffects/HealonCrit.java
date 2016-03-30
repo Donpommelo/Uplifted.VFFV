@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 public class HealonCrit extends status{
 
 	double percent;
-	public HealonCrit(double amount, int pr){
-		super("Heal on Crit", pr);
+	public HealonCrit(double amount, Schmuck v,int pr){
+		super("Heal on Crit", v,pr);
 		this.percent = amount;
 	}
 	

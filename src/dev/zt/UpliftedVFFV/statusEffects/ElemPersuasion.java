@@ -18,8 +18,8 @@ public class ElemPersuasion extends status{
 		this.amount = amount;
 	}
 	
-	public ElemPersuasion(int start, int amount, int pr){
-		super(name, pr);
+	public ElemPersuasion(int start, int amount, Schmuck v,int pr){
+		super(name, v,pr);
 		this.elemBoost = start;
 		this.amount = amount;
 	}

@@ -33,8 +33,8 @@ public class EmpHobbes extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Watching other people play video games is great!/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Sometimes, actually playing is too stressful./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Watching other people play video games is great!");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Sometimes, actually playing is too stressful.");
 
 			super.Dialog(d, 1, this.getId(), true);
 			break;

@@ -13,8 +13,8 @@ public class TrueSight extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public TrueSight(int pr){
-		super(name, pr);
+	public TrueSight(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 
 	public String inflictText(Schmuck s){

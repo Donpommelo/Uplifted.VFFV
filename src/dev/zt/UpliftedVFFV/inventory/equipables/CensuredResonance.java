@@ -25,7 +25,7 @@ public class CensuredResonance extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CensuredResonanceStatus(100);
+		enchantment[0] = new CensuredResonanceStatus(s,100);
 		return enchantment;
 	}
 	

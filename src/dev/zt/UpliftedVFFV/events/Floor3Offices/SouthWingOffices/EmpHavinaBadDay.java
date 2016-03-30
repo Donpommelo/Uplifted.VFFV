@@ -33,7 +33,7 @@ public class EmpHavinaBadDay extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Days like these make me realize why all my cool friends did drugs./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Days like these make me realize why all my cool friends did drugs.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

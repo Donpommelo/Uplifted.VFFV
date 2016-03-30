@@ -20,8 +20,8 @@ public class EventSafe10 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found 3 Postage Stamps!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found 3 Postage Stamps!");
 			super.Dialog(d, 1, this.getId(), true);
 			super.loot(new PostageStamp(), 3);
 			this.setTex(Assets.SafeOpened);

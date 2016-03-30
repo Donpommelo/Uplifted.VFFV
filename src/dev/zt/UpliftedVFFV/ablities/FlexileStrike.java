@@ -12,7 +12,7 @@ public class FlexileStrike extends Skills {
 	public static String descrShort = "Damages two random enemies.";
 	public static int cost = 6;
 	public static int baseAcc = 100; public static int baseCrit = 0;
-	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static boolean canMiss = true; public static boolean canCrit = false;
 	public static int element = 6;	//Physical
 	public static int targetType = 1;	//No Target
 	public static BattleAnimation[] ba = {new FlexileStrikeAnim(),new FlexileStrikeAnim()};

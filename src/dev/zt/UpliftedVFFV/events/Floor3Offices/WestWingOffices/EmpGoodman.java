@@ -34,9 +34,9 @@ public class EmpGoodman extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"This company was founded on a basis of selflessness and community./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Those in the present must toil if a better world is to be inherited by those of the/future./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Those in the past who sacrificed then as we do now must be remembered and/revered. Otherwise stability and security may be taken for granted./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"This company was founded on a basis of selflessness and community.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Those in the present must toil if a better world is to be inherited by those of the future.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Those in the past who sacrificed then as we do now must be remembered and revered. Otherwise stability and security may be taken for granted.");
 			super.Dialog(d, 2, this.getId(), true);
 			break;
 		case 1:

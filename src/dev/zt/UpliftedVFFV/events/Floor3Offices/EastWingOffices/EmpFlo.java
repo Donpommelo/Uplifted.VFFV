@@ -37,8 +37,8 @@ public class EmpFlo extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[2];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You must be using lots of Plus Monster Level effects.//Because seeing your face is really making me angry./");
-		d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"At least I'd drop better loot if you defeated me.//Heh. Like that'd ever happen./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You must be using lots of Plus Monster Level effects. Because seeing your face is really making me angry.");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"At least I'd drop better loot if you defeated me./Heh. Like that'd ever happen.");
 		super.Dialog(d, 1, this.getId(), true);
 	}
 	

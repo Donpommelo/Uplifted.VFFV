@@ -30,8 +30,8 @@ public class DamageBlock extends status{
 		this.elem = elem;
 	}
 	
-	public DamageBlock(double percent, int amount, int elem, int pr){
-		super(name, pr);
+	public DamageBlock(double percent, int amount, int elem,Schmuck v, int pr){
+		super(name,v, pr);
 		this.percent = percent;
 		this.amount = amount;
 		this.elem = elem;

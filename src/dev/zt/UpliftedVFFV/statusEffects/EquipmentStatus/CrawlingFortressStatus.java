@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CrawlingFortressStatus extends status{
 
-	public CrawlingFortressStatus(int pr){
-		super("Bombarding", pr);
+	public CrawlingFortressStatus(Schmuck v,int pr){
+		super("Bombarding", v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

@@ -33,9 +33,9 @@ public class EmpGymnist extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I. . . I've done it! Oh, this is wonderful!/");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What happened?/");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I've finally succeeded in tricking myself into believing I've accomplished something great./Hah. Classic./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I. . . I've done it! Oh, this is wonderful!");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"What happened?");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I've finally succeeded in tricking myself into believing I've accomplished something great. Hah. Classic.");
 			super.Dialog(d, 2, this.getId(), true);
 			break;
 		case 1:

@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 
 public class UnheardWord extends Item{
 	
-	static int id = 2;
+	static int id = 42;
 	static String name = "Unheard Word";
 	static boolean menu = false;
 	static boolean battle = true;
@@ -25,7 +25,7 @@ public class UnheardWord extends Item{
 	}
 		
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		if(bs.bp.stm.checkStatus(perp, new Silenced(0))){
+		if(bs.bp.stm.checkStatus(perp, new Silenced(perp,0))){
 			bs.bp.bt.addScene("The Unheard Word echoes in the minds of enemies!");
 			for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 				int damage = (int)(bs.bp.em.logScaleDamage(perp, s) * 1.5);

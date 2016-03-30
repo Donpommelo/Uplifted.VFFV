@@ -37,8 +37,8 @@ public class EmpPillock extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[2];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I can't believe my coworkers stole my idea and tried to pass it off as their own!/");
-		d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Especially after all the effort I spent stealing it from my other coworkers./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"I can't believe my coworkers stole my idea and tried to pass it off as their own!");
+		d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Especially after all the effort I spent stealing it from my other coworkers.");
 		super.Dialog(d, 1, this.getId(), true);
 	}
 	

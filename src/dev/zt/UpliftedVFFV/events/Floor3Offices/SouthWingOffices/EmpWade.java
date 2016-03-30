@@ -39,8 +39,8 @@ public class EmpWade extends Event {
 			//This is the dialog that first occurs when the npc is spoken to
 			case 0: 
 				Dialog[] d1 = new Dialog[2];
-				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Splash. Splash./");
-				d1[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Why is your cubical filled with water?/");
+				d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Splash. Splash.");
+				d1[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Why is your cubical filled with water?");
 				super.Dialog(d1, 1, this.getId(), true);
 				break;
 				
@@ -48,7 +48,7 @@ public class EmpWade extends Event {
 			//this allow for the event to consist of many different parts.
 			case 1:
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I got it as a souvenir from the Aquarium. Want some?/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"I got it as a souvenir from the Aquarium. Want some?");
 				super.Dialog(d, 0, this.getId(), true);
 				super.ChoiceBranch(this.getId(), Choices, 100);
 				break;
@@ -60,7 +60,7 @@ public class EmpWade extends Event {
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Water sure is great./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Water sure is great.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
 			this.setstage(2);
@@ -71,14 +71,14 @@ public class EmpWade extends Event {
 		switch(i){
 		case 0:
 			Dialog[] d1 = new Dialog[2];
-			d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Here you go. Enjoy./");
-			d1[1] = new Dialog("meep","/CharacterBusts/Arturo.png",0,"You Obtained Fishwater!/Fresh from the Fourth Floor Aquarium!./");
+			d1[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Here you go. Enjoy.");
+			d1[1] = new Dialog("meep","/CharacterBusts/Arturo.png",0,"You Obtained Fishwater!/Fresh from the Fourth Floor Aquarium!.");
 			super.Dialog(d1, 1, this.getId(), true);
 			super.loot(new FishWater(), 1);
 			break;
 		case 1:
 			Dialog[] d2 = new Dialog[2];
-			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Suit yourself./");
+			d2[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Suit yourself.");
 			super.Dialog(d2, 1, this.getId(), true);
 			break;
 		}

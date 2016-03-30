@@ -13,8 +13,8 @@ public class SpringHeeledJumpersStatus extends status{
 	public static Boolean decay = true;
 	public boolean powdef;
 	public int counter;
-	public SpringHeeledJumpersStatus(int pr){
-		super(name, pr);
+	public SpringHeeledJumpersStatus(Schmuck v,int pr){
+		super(name,v, pr);
 		this.powdef = true;
 		this.counter = 0;
 	}

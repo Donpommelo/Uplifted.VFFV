@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class ThoughtFluid extends Item{
 
-	static int id = 2;
+	static int id = 44;
 	static String name = "Thought Fluid";
 	static boolean menu = false;
 	static boolean battle = true;

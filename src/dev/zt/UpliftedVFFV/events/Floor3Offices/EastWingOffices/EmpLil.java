@@ -40,16 +40,16 @@ public class EmpLil extends Event {
 		if(!this.isSelfswitch1()){
 			this.setSelfswitch1(true);
 			Dialog[] d = new Dialog[5];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I thought I saw you earlier./Were my coworkers leading you in circles?/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Well, no hard feelings I hope. They do that to everyone./And not just to be mean. It teaches people a valuable lesson./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Approaching the same thing from a different perspective can lead to new insights!/Retreading familiar locations can open your eyes to unexpected secrets!/");
-			d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . ./");
-			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Nah. I'm kidding. They're just jerks./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"I thought I saw you earlier./Were my coworkers leading you in circles?");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Well, no hard feelings I hope. They do that to everyone. And not just to be mean. It teaches people a valuable lesson.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Approaching the same thing from a different perspective can lead to new insights! Retreading familiar locations can open your eyes to unexpected secrets!");
+			d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . .");
+			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Nah. I'm kidding. They're just jerks.");
 			super.Dialog(d, 4, this.getId(), true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Did you take what I said to heart?/Is that why you're still hanging around here?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Did you take what I said to heart? Is that why you're still hanging around here?");
 			super.Dialog(d, 0, this.getId(), true);
 
 		}

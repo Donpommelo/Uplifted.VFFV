@@ -15,7 +15,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class GlimpseattheEnd extends Item{
 	
-	static int id = 2;
+	static int id = 45;
 	static String name = "Glimpse of the End";
 	static boolean menu = false;
 	static boolean battle = true;

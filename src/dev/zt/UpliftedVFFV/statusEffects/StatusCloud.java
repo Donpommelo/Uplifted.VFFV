@@ -18,8 +18,8 @@ public class StatusCloud extends status{
 		this.st = st;
 		this.perc = perc;
 	}
-	public StatusCloud(int pr, double perc, status st){
-		super("Status Cloud", pr);
+	public StatusCloud(int pr, double perc, Schmuck v,status st){
+		super("Status Cloud", v,pr);
 		this.st = st;
 		this.perc = perc;
 	}

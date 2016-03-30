@@ -24,7 +24,7 @@ public class NineLives extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new NineLivesStatus(100);
+		enchantment[0] = new NineLivesStatus(s,100);
 		return enchantment;
 	}
 	

@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class MetalRations extends Item{
 
-	static int id = 2;
+	static int id = 51;
 	static String name = "Metal Rations";
 	static boolean menu = false;
 	static boolean battle = false;

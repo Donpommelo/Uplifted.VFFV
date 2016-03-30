@@ -13,7 +13,7 @@ public class EmpShoebanfoo extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeM2;
-	public static int stagenum = 0;
+	public static int stagenum = 1;
 	public int move;
 	public EmpShoebanfoo(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
@@ -39,19 +39,19 @@ public class EmpShoebanfoo extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[6];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Rrrgh. That Carloc . . . Who does she think she is?/");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Bossing us around like that . . . I swear one of these days . . ./I'm going to . . ./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,". . . Oh./I . . . uh . . . didn't see you there./D . . . did you hear anything?/");
-			d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You . . . aren't going to tell Carloc I said anything, right?/Please?/");
-			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"What if I give you something?/Uh . . . here! Yeah, take this. Just don't say anything to Carloc./");
-			d[5] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Usurper's Chemistry Set!/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Rrrgh. That Carloc . . . Who does she think she is?");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"Bossing us around like that . . . I swear one of these days . . .I'm going to . . .");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,". . . Oh. I . . . uh . . . didn't see you there. D . . . did you hear anything?");
+			d[3] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You . . . aren't going to tell Carloc I said anything, right? Please?");
+			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"What if I give you something?/Uh . . . here! Yeah, take this. Just don't say anything to Carloc.");
+			d[5] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Usurper's Chemistry Set!");
 			super.setSelfswitch1(true);
 			super.Dialog(d, 5, this.getId(), true);
 			super.loot(new UsurpersChemSet(), 1);
 		} 
 		else{ 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You didn't mention this me to Carloc, did you?/No, you must not have. I feel like I would be able to tell./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"You didn't mention this me to Carloc, did you?/No, you must not have. I feel like I would be able to tell.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(10,Assets.EmployeeM1));
 			this.setstage(1);

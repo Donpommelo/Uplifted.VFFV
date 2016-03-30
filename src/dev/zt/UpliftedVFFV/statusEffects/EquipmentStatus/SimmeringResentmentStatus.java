@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class SimmeringResentmentStatus extends status{
 	
 	Schmuck spited;
-	public SimmeringResentmentStatus(int pr){
-		super("Resentful", pr);
+	public SimmeringResentmentStatus(Schmuck v,int pr){
+		super("Resentful", v,pr);
 	}
 	
 	public int dealdamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

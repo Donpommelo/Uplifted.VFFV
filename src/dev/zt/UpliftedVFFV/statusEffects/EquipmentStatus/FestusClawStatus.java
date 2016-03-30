@@ -9,8 +9,8 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class FestusClawStatus extends status{
 
-	public FestusClawStatus(int pr){
-		super("Claws of Festus Status", pr);
+	public FestusClawStatus(Schmuck v,int pr){
+		super("Claws of Festus Status", v,pr);
 	}
 	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.silenceBlocked()){

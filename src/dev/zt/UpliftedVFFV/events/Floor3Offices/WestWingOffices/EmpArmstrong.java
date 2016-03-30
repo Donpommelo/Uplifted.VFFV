@@ -34,8 +34,8 @@ public class EmpArmstrong extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I . . . guess I couldn't take it anymore . . ./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It is only right for those like us to be superceded by the more worthy . . ./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I . . . guess I couldn't take it anymore . . .");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"It is only right for those like us to be superceded by the more worthy . . .");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

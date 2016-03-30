@@ -14,8 +14,8 @@ public class Hypochondriac extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Hypochondriac(int pr){
-		super(name, pr);
+	public Hypochondriac(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

@@ -16,8 +16,8 @@ public class Silenced extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Silenced(int pr){
-		super(name, pr);
+	public Silenced(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
 	public void preActionUser(Schmuck s, Action a, BattleState bs){

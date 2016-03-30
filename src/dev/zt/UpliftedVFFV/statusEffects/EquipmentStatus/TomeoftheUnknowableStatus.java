@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class TomeoftheUnknowableStatus extends status{
 	
-	public TomeoftheUnknowableStatus(int pr){
-		super("Unknowable", pr);
+	public TomeoftheUnknowableStatus(Schmuck v,int pr){
+		super("Unknowable",v, pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

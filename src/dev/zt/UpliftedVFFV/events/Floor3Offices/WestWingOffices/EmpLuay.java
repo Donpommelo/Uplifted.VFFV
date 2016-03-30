@@ -36,15 +36,15 @@ public class EmpLuay extends Event {
 			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d = new Dialog[3];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Do you know how West Wing Offices manages its high rate of productivity?/");
-				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"By making necessary sacrifices./");
-				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Sleepytime Surprise!/");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Do you know how West Wing Offices manages its high rate of productivity?");
+				d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"By making necessary sacrifices.");
+				d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained the Sleepytime Surprise!");
 				super.Dialog(d, 2, this.getId(), true);
 			}
 			else{
 				this.setSelfswitch1(true);
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Sleep eludes me, but this quarter's report shall not./");
+				d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Sleep eludes me, but this quarter's report shall not.");
 				super.Dialog(d, 0, this.getId(), true);
 			}
 			

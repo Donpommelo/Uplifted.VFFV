@@ -33,9 +33,9 @@ public class EmpBusdon extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"The employee Super-Speed transport shuttle sure is useful to get from place to place./Sometimes I even forget I'm in a bus at all./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"The bus works by reading the minds of its passengers and preemptively moving to/their desired destination./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"If you walk in with no destination in mind, then . . ./Well, I don't really know. Never happens to me. I'm too purposeful./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"The employee Super-Speed transport shuttle sure is useful to get from place to place. Sometimes I even forget I'm in a bus at all.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"The bus works by reading the minds of its passengers and preemptively moving to their desired destination.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-1.png",1,"If you walk in with no destination in mind, then . . . Well, I don't really know. Never happens to me. I'm too purposeful.");
 			super.Dialog(d,2, this.getId(), true);
 			break;
 		case 1:

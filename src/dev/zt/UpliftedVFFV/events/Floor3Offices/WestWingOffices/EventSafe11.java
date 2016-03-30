@@ -20,10 +20,10 @@ public class EventSafe11 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[4];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"It is filled with . . . soil?/");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You dig out a strange pendant./");
-			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Loamskin Talisman!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"It is filled with . . . soil?");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You dig out a strange pendant.");
+			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Loamskin Talisman!");
 			super.Dialog(d, 3, this.getId(), true);
 			super.loot(new LoamSkinTalisman(), 1);
 			this.setTex(Assets.SafeOpened);

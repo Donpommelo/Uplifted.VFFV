@@ -16,7 +16,7 @@ public class ShedFlesh extends Skills {
 	public static int baseAcc = 100; public static int baseCrit = 0;
 	public static boolean canMiss = false; public static boolean canCrit = false;
 	public static int element = 3;	//Yellow
-	public static int targetType = 1;	//Any Single Target
+	public static int targetType = 1;	//No Target
 	public ShedFlesh(int index) {
 		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 

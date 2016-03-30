@@ -22,8 +22,8 @@ public class EventAmdahlOffices extends Event {
 		if(!this.isSelfswitch1()){
 			this.setSelfswitch1(true);
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Amdahl","/CharacterBusts/Amdahl1small.png",1,"Salutations my Elevator-Operating friend./Pray tell, what business brings you so far from the elevators?/");
-			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"/");
+			d[0] = new Dialog("Amdahl","/CharacterBusts/Amdahl1small.png",1,"Salutations my Elevator-Operating friend./Pray tell, what business brings you so far from the elevators?");
+			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"");
 			super.Dialog(d, 0, this.getId(), true);
 		}
 		else{

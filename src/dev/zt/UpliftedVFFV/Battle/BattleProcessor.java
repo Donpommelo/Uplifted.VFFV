@@ -263,18 +263,27 @@ public class BattleProcessor {
 						
 						//If action is neither "Wait" nor null, run action
 						if(!tempAction.skill.getName().equals("Extra Turn") && !tempAction.skill.getName().equals("Dilly Dally") && tempAction != null){
+							if(!calcHit(tempAction)){
+								bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs));
+								bt.addScene(tempPerp.getName() + " missed!");
+								
+								//Activate User's on-miss Effects
+								tempPerp.statusProcTime(9, bs, tempAction, null, 0, 0, true, null);
 							
-							//Display text for using skill.
-							if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
-								bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
 							}
 							else{
-								bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
-							}
-							
-							//If targeting incapacitated unit, display text
-							if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target,tempAction.target)) && tempAction.getSkill().getTargetType()==0){
-								bt.addScene("But the target was incapacitated!");
+								//Display text for using skill.
+								if(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs) == ""){
+									bt.addScene(tempAction.user.getName()+" used "+tempAction.getSkill().getName()+"!",tempAction, false);
+								}
+								else{
+									bt.addScene(tempAction.getSkill().useName(tempAction.user, tempAction.target, bs), tempAction, false);
+								}
+								
+								//If targeting incapacitated unit, display text
+								if(stm.checkStatus(tempAction.getTarget(), new incapacitate(tempAction.target,tempAction.target)) && tempAction.getSkill().getTargetType()==0){
+									bt.addScene("But the target was incapacitated!");
+								}
 							}
 						}
 						
@@ -411,8 +420,8 @@ public class BattleProcessor {
 	public void render(Graphics g) {
 		
 		//Indicate round number
-		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 75, 28, 16, true);
-		
+		Utils.drawDialogueBox(g, window, "Round: " + roundNum, 16, Color.white, 0, 30, 120, 28, 16, true);
+
 		//If any text needs to be rendered, do that.
 		if(!bt.scenes.isEmpty()){
 			bt.render(g);
@@ -439,7 +448,7 @@ public class BattleProcessor {
 				}
 				if(numReady == allies.size()){ 
 					allReady = true;
-					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 65, 120, 40, 16, true);
+					Utils.drawDialogueBox(g, window, "Ready (ENTER)", 18, Color.white, 0, 65, 150, 40, 16, true);
 				}
 				
 				//Render Battle Menu if a Schmuck is selected
@@ -492,31 +501,19 @@ public class BattleProcessor {
 					//Activate On Crit Effects
 					tempPerp.statusProcTime(8, bs, tempAction, tempVic, 0, 0, true, null);
 				}
-				
-				
 			}
 			else {
 				
-				//Check for misses
-				if(!calcHit(tempAction)){
-					if(stage == 99999){
-						bt.addScene(tempPerp.getName() + " missed!");
-						
-						//Activate User's on-miss Effects
-						tempPerp.statusProcTime(9, bs, tempAction, null, 0, 0, true, null);
-					}
+				//Run action normally
+				if(stage != 99999){
+					//Run abilities with multiple animation stages
+					tempSkill.run(tempPerp,tempVic,bs,stage);
 				}
 				else{
-					//Run action normally
-					if(stage != 99999){
-						//Run abilities with multiple animation stages
-						tempSkill.run(tempPerp,tempVic,bs,stage);
-					}
-					else{
-						//Run abilities with only 1 animation stage
-						tempSkill.run(tempPerp,tempVic,bs);
-					}
+					//Run abilities with only 1 animation stage
+					tempSkill.run(tempPerp,tempVic,bs);
 				}
+				
 			}
 			
 			if(tempAction != null){
@@ -546,7 +543,7 @@ public class BattleProcessor {
 	
 	//Returns true if an input action hits and false otherwise
 	public Boolean calcHit(Action a){
-		if(em.getAcc(a.user, a.target, a.skill.getBaseAcc()) || !a.skill.canMiss() || stm.checkStatus(a.user, new TrueSight(50))){
+		if(em.getAcc(a.user, a.target, a.skill.getBaseAcc()) || !a.skill.canMiss() || stm.checkStatus(a.user, new TrueSight(a.user,50))){
 			return true;
 		}
 		else{

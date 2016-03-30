@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EnergyOvercharged extends status{
 	
-	public EnergyOvercharged(int pr){
-		super("Overcharged", pr);
+	public EnergyOvercharged(Schmuck v,int pr){
+		super("Overcharged", v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

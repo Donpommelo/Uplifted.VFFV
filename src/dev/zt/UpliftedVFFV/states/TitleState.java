@@ -14,7 +14,7 @@ public class TitleState extends State {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private BufferedImage testImage, window;
+	private BufferedImage testImageup,testImagenone,testImagedown, window;
 	private boolean controls, about;
 	private boolean exit;
 	private StateManager statemanager;
@@ -27,7 +27,9 @@ public class TitleState extends State {
 	public TitleState(Game game, StateManager sm){
 		super(game,sm);
 		setStateType("title");
-		testImage = ImageLoader.loadImage("/textures/title.png");
+		testImageup = ImageLoader.loadImage("/Screens/u0.jpg");
+		testImagedown = ImageLoader.loadImage("/Screens/d0.jpg");
+		testImagenone = ImageLoader.loadImage("/Screens/n0.jpg");
 		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
 		controls = false;
 		about = false;
@@ -97,12 +99,29 @@ public class TitleState extends State {
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 640, 416);
-		g.drawImage(testImage, 48, 0, null);
+		switch(optionChosen){
+		case 0:
+			g.drawImage(testImageup, 0, 0, 640,416,null);
+			break;
+		case 1:
+			g.drawImage(testImageup, 0, 0, 640,416,null);
+			break;
+		case 2:
+			g.drawImage(testImagenone, 0, 0, 640,416,null);
+			break;
+		case 3:
+			g.drawImage(testImagenone, 0, 0, 640,416,null);
+			break;
+		case 4:
+			g.drawImage(testImagedown, 0, 0, 640,416,null);
+			break;
+		}
 		//g.setColor(new Color(102, 178,255));
 		//g.fillRect(360,200, 150, 100);
 
 		String[] options = {"New Game", "Continue Game", "Controls", "About", "Quit"};
-		Utils.drawMenu(g, window, options, Color.white, 25, optionChosen, 360, 200, 150, 144, true);
+		Utils.drawMenu(g, window, options, Color.white, 25, new Font("Courier", Font.PLAIN, 18), optionChosen,
+				400, 250, 160, 144, true);
 		
 		if(controls){
 			g.setColor(new Color(102, 178,255));

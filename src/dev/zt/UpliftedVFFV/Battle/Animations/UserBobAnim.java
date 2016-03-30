@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class UserBobAnim extends BattleAnimation{
 	
@@ -20,4 +21,5 @@ public class UserBobAnim extends BattleAnimation{
 			a.user.setY(a.user.getY()-3);
 		}
 	}
+	
 }

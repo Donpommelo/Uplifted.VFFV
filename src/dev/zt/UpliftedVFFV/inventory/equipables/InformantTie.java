@@ -24,7 +24,7 @@ public class InformantTie extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new OrangeInfusion(0);
+		enchantment[0] = new OrangeInfusion(s,0);
 		return enchantment;
 	}
 	

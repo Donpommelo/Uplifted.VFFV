@@ -14,8 +14,8 @@ public class Contagious extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Contagious(int pr){
-		super(name, pr);
+	public Contagious(Schmuck v,int pr){
+		super(name, v,pr);
 	}	
 		
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

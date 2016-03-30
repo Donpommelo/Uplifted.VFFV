@@ -117,7 +117,8 @@ public class EffectManager {
 				vic.statusProcTime(20, bs, null, perp, 0, 0, true, null);
 				
 				//Add incapacitate status and remove all of the target's actions from the TOQ
-				bs.bp.stm.addStatus(vic, new incapacitate(perp,vic));
+//				bs.bp.stm.addStatus(vic, new incapacitate(perp,vic));
+				bs.bp.bt.addScene("", new DeathAnim(vic), true);
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
 						if(a.user==vic){
@@ -180,9 +181,10 @@ public class EffectManager {
 	
 	//Returns true or false if a given ability hits or misses.
 	public Boolean getAcc(Schmuck perp, Schmuck vic, int baseAcc){
-		int acc = 0;
+		double acc = baseAcc;
 		if(vic.getBuffedLuk() != 0){
-			acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
+			acc *= (double)(perp.getBuffedSkl())/(double)(vic.getBuffedLuk());
+			acc += 100*(perp.getBonusAcc()-vic.getBonusEva());
 		}
 		else{
 			acc = 1;
@@ -197,14 +199,15 @@ public class EffectManager {
 	
 	//returns true or false if a given ability crits or not.
 	public Boolean getCrit(Schmuck perp, Schmuck vic, Skills s){
-		double crit = 0;
+		double crit = s.getBaseCrit();
 		if(vic.getBuffedLuk() != 0){
-			crit = perp.getBuffedSkl()/(vic.getBuffedLuk() * vic.getBuffedLuk()) + perp.getCritChance() - vic.getCritAvoid() + s.getBaseCrit()/100;
+			crit *= (double)(perp.getBuffedSkl())/(double)(vic.getBuffedLuk());
+			crit += 100*( perp.getCritChance() - vic.getCritAvoid());
 		}
 		else{
 			crit = 1;
 		}
-		if(Math.random() <= crit){
+		if((int)(Math.random()*100) <= crit){
 			return true;
 		}
 		else{

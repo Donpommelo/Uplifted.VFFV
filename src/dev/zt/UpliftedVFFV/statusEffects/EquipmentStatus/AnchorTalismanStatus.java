@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class AnchorTalismanStatus extends status{
 	
-	public AnchorTalismanStatus(int pr){
-		super("Anchored", pr);
+	public AnchorTalismanStatus(Schmuck v,int pr){
+		super("Anchored", v,pr);
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){

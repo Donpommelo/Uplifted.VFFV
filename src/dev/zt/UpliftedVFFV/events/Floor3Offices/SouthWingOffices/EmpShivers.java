@@ -33,7 +33,7 @@ public class EmpShivers extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Are you the guy George hired to see if we were doing any work?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Are you the guy George hired to see if we were doing any work?");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

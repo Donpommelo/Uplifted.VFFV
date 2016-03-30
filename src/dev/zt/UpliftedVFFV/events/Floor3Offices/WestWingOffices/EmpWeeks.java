@@ -35,8 +35,8 @@ public class EmpWeeks extends Event {
 		case 0: 
 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Eating dinner gives 500 calories./A good run burns about 500 calories./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Why not just do neither?/Maintain constant net change and save a couple of hours for more work./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Eating dinner gives 500 calories./A good run burns about 500 calories.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-3.png",1,"Why not just do neither?/Maintain constant net change and save a couple of hours for more work.");
 			super.Dialog(d, 1, this.getId(), true);
 
 			

@@ -14,19 +14,22 @@ public class DespawnonDeath extends status{
 		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public DespawnonDeath(int pr){
-		super(name, pr);
+	public DespawnonDeath(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 
 	public void onDeath(Schmuck perp, Schmuck vic, BattleState bs){
-		if(bs.bp.allies.contains(vic)){
+		//Do nothing. Removal from enemy team is now handled after animation. This is to prevent animations
+		//from clashing weirdly with preemptive enemy placement updating
+		
+	/*	if(bs.bp.allies.contains(vic)){
 			bs.bp.allies.remove(vic);
 		}
 		if(bs.bp.enemy.contains(vic)){
 			bs.bp.enemy.remove(vic);
 		}
 		bs.bs.locationUpdate();
-		bs.bs.targetUpdate();
+		bs.bs.targetUpdate();*/
 	}
 	
 }

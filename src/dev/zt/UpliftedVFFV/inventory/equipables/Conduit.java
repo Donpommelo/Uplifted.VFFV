@@ -24,7 +24,7 @@ public class Conduit extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(13,.3*(1+s.getEquipPow()), 35);
+		enchantment[0] = new BonusStatBuff(13,.3*(1+s.getEquipPow()),s, 35);
 		return enchantment;
 	}
 }

@@ -24,7 +24,7 @@ public class SpringHeeledJumpers extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SpringHeeledJumpersStatus(50);
+		enchantment[0] = new SpringHeeledJumpersStatus(s,50);
 		return enchantment;
 	}
 }

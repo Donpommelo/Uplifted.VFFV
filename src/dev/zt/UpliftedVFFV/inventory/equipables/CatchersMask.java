@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CatchersMask extends Item{
 
-	static int id = 2;
+	static int id = 23;
 	static String name = "Catcher's Mask";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,7 +25,7 @@ public class CatchersMask extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusImmunity(new Blind(0), 5);
+		enchantment[0] = new StatusImmunity(new Blind(s,0), s,5);
 		return enchantment;
 	}
 }

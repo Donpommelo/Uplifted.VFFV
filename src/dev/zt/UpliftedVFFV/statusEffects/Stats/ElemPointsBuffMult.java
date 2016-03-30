@@ -18,8 +18,8 @@ public class ElemPointsBuffMult extends status{
 		this.statIncrement = amount;
 	}
 	
-	public ElemPointsBuffMult(int stat, double amount, int pr){
-		super("Elementally Aligned", pr);
+	public ElemPointsBuffMult(int stat, double amount, Schmuck v,int pr){
+		super("Elementally Aligned", v,pr);
 		this.statChanged = stat;
 		this.statIncrement = amount;
 	}

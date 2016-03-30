@@ -46,8 +46,8 @@ public class WarpSElevatortoLobby extends Event {
 						if(!this.isSelfswitch3()){
 							this.setSelfswitch3(true);
 							Dialog[] d = new Dialog[2];
-							d[0] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ," Floor 3! This place certainly seems familiar!/We should ask around to see if anyone can help us find Suite 521./");
-							d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll look around for someone knowledgable./");
+							d[0] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Floor 3! This place certainly seems familiar!/We should ask around to see if anyone can help us find Suite 521.");
+							d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll look around for someone knowledgable.");
 							super.Dialog(d, 1, this.getId(), true);
 							super.setQuest(1, 1);
 						}

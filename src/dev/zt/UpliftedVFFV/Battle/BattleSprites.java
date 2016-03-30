@@ -117,7 +117,7 @@ public class BattleSprites {
 		int sumSize1 = -20;
 		//Place allies.
 		for(int i=0;i<allies.size();i++){
-			if(allies.get(i).defaultLocation()){
+			if(allies.get(i).getDefaultLocation()){
 				sumSize1 += (allies.get(i).getBattleSprite().getWidth() - 28);
 				allies.get(i).setX(sumSize1-80);
 				allies.get(i).setY(250 + ((25 - allies.size() * 2) * i) - allies.size() * 12);
@@ -127,7 +127,7 @@ public class BattleSprites {
 		//Place enemies.
 		int sumSize2 = 0;
 		for(int i=0;i<enemy.size();i++){
-			if(enemy.get(i).defaultLocation()){
+			if(enemy.get(i).getDefaultLocation()){
 				sumSize2 += (enemy.get(i).getBattleSprite().getWidth()-40);
 				enemy.get(i).setX(610-sumSize2);			
 				enemy.get(i).setY(10-15*i+enemy.size()*15);

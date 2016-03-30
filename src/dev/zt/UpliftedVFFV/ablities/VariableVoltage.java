@@ -12,7 +12,7 @@ public class VariableVoltage extends Skills {
 	public static String descrShort = "Deals random Yellow damage to enemies.";
 	public static int cost = 22;
 	public static int baseAcc = 100; public static int baseCrit = 0;
-	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static boolean canMiss = true; public static boolean canCrit = false;
 	public static int element = 3;	//Yellow
 	public static int targetType = 1;	//No Target
 	public static BattleAnimation[] ba = {new VariableVoltageAnim(),new VariableVoltageAnim(),new VariableVoltageAnim(),new VariableVoltageAnim(),new VariableVoltageAnim(),new VariableVoltageAnim(),new VariableVoltageAnim()};

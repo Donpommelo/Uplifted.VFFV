@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class TomeofPermanenceStatus extends status{
 	
-	public TomeofPermanenceStatus(int pr){
-		super("Permanent", pr);
+	public TomeofPermanenceStatus(Schmuck v,int pr){
+		super("Permanent", v,pr);
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){

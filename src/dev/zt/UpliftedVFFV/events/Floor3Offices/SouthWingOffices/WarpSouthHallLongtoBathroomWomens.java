@@ -17,11 +17,11 @@ public class WarpSouthHallLongtoBathroomWomens extends Event {
 	public void run(){
 		//super.transport("/Worlds/Floor3Offices/SouthWingOffices/RestroomWomens.txt", 4, 9,"");
 		Dialog[] d = new Dialog[5];
-		d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . ./");
-		d[1] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,". . . ?/");
-		d[2] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Oh, that's the women's bathroom. I can't go in there./");
-		d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,". . .That's not what I was confused about./I was wondering why you were planning to go in there at all./I'm certain that Suite 521 is not a bathroom./");
-		d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . ./");
+		d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . .");
+		d[1] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,". . . ?");
+		d[2] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Oh, that's the women's bathroom. I can't go in there.");
+		d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,". . .That's not what I was confused about. I was wondering why you were planning to go in there at all. I'm certain that Suite 521 is not a bathroom.");
+		d[4] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . .");
 		super.Dialog(d, 4, this.getId(), true);
 	}
 	

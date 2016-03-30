@@ -2,14 +2,12 @@ package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.CoolingDown;
-import dev.zt.UpliftedVFFV.statusEffects.Stunned;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class HiredHandStatus extends status{
 	
-	public HiredHandStatus(int pr){
-		super("Hiring Hands", pr);
+	public HiredHandStatus(Schmuck v,int pr){
+		super("Hiring Hands",v, pr);
 	}
 
 	public void preBattlePhase(Schmuck s, BattleState bs){

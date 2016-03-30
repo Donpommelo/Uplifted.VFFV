@@ -34,8 +34,8 @@ public class EmpDamon extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I cannot describe my gratitude to the company for this work./I don't know what I would be doing were it not for this job./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Probably selling drugs or committing petty crime./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"I cannot describe my gratitude to the company for this work. I don't know what I would be doing were it not for this job.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Probably selling drugs or committing petty crime.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

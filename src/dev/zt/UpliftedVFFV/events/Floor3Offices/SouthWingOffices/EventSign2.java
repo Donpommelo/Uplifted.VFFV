@@ -17,7 +17,7 @@ public class EventSign2 extends Event {
 	
 	public void run(){
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"North: Mailroom./West: South Lobby./East: East Offices./");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"North: Mailroom./West: South Lobby./East: East Offices.");
 			super.Dialog(d, 0, this.getId(), true);		
 	}
 	

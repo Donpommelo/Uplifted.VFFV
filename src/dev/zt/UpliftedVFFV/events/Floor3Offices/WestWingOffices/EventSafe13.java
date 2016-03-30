@@ -20,9 +20,9 @@ public class EventSafe13 extends Event {
 	public void run(){
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . ./");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some paperwork in the safe./");
-			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Proof of Will x3!/");
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You open the safe. . .");
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You find some paperwork in the safe.");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Proof of Will x3!");
 			super.Dialog(d, 2, this.getId(), true);
 			super.loot(new AnchorTalisman(), 1);
 			this.setTex(Assets.SafeOpened);

@@ -16,8 +16,8 @@ public class Cleave extends status{
 		this.cleave = amount;
 	}
 	
-	public Cleave(double amount, int pr){
-		super(name, pr);
+	public Cleave(double amount, Schmuck v,int pr){
+		super(name, v,pr);
 		this.cleave = amount;
 	}
 	

@@ -1,6 +1,6 @@
 package dev.zt.UpliftedVFFV;
 
-
+//import com.sun.java.swing.*;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.Serializable;
@@ -65,11 +65,7 @@ public class Game implements Runnable, Serializable{
 	//	statemanager.init();
 		
 	}
-	
-	
-
-	int x=0;													
-																
+																	
 	private void tick(){										//Every tick, the game runs the tick() of the current state
 		keyManager.tick();
 		

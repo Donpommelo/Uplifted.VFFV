@@ -1,7 +1,5 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
-import dev.zt.UpliftedVFFV.Battle.BattleAnimation;
-import dev.zt.UpliftedVFFV.Battle.Animations.DeathAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class incapacitate extends status{
@@ -23,9 +21,9 @@ public class incapacitate extends status{
 		return s.getName()+" was Revived!";
 	}
 	
-	public BattleAnimation getBa(Schmuck s) {
+/*	public BattleAnimation getBa(Schmuck s) {
 		return new DeathAnim(s);
-	}
+	}*/
 	
 	public Boolean isDisable(){
 		return true;

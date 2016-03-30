@@ -38,14 +38,14 @@ public class EmpAndretheTall extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Ugh. An Ill Rat bit me and now I feel a little queasy./");
-			d[1] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"I better drop by the 7th Floot Infirmary for medicine./");
+			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Ugh. An Ill Rat bit me and now I feel a little queasy.");
+			d[1] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"I better drop by the 7th Floot Infirmary for medicine.");
 			super.Dialog(d, 1, this.getId(), true);
 			this.setSelfswitch1(true);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Whatever you're looking for, I can't see it from up here./");
+			d[0] = new Dialog("Employee","/CharacterBusts/AndreThe1.png",1,"Whatever you're looking for, I can't see it from up here.");
 			super.Dialog(d,0, this.getId(), true);
 		}
 	}

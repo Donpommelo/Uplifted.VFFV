@@ -25,7 +25,7 @@ public class DeathCap extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DeathCapStatus(50);
+		enchantment[0] = new DeathCapStatus(s,50);
 		return enchantment;
 	}
 

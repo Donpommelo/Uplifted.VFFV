@@ -208,7 +208,7 @@ public class StatusManager {
 				return st;
 			}
 		}
-		return new Purified(50);	//This is really dumb. You are going to regret this later	
+		return new Purified(s,50);	//This is really dumb. You are going to regret this later	
 	}
 	
 	public void endofRound(BattleState bs){
@@ -220,7 +220,7 @@ public class StatusManager {
 		for(Schmuck s : battlers){
 			for(int i=0; i<s.statuses.size(); i++){
 				if(s.statuses.get(i)!=null){
-					if(!checkStatus(s, new incapacitate(s,s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(10))){
+					if(!checkStatus(s, new incapacitate(s,s)) || s.statuses.get(i).runWhenDead() || checkStatus(s, new Undead(s,10))){
 						if(s.statuses.get(i).duration==0){
 							if(!s.statuses.get(i).cureText(s).equals("")){
 								bs.bp.bt.addScene(s.statuses.get(i).cureText(s));

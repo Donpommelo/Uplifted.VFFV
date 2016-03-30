@@ -37,7 +37,7 @@ public class EmpHarrison extends Event {
 			this.test.runlast = 2;
 		}
 		Dialog[] d = new Dialog[1];
-		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What an educational experience./Aquariums are pretty much history museums for fish./");
+		d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"What an educational experience./Aquariums are pretty much history museums for fish.");
 		super.Dialog(d, 0, this.getId(), true);
 	}
 	

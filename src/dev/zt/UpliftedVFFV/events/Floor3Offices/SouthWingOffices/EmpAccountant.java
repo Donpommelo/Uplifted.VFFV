@@ -34,7 +34,7 @@ public class EmpAccountant extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Are you the exterminator?/That's a shame. This monster infestation is the most interesting thing that has ever/happened in this office./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Are you the exterminator?/That's a shame. This monster infestation is the most interesting thing that has ever happened in this office.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

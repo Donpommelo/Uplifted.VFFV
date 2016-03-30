@@ -33,7 +33,7 @@ public class EmpSwann extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"All this fish is making me hungry./Too bad the Food Servery on the 6th floor doesn't have any good seafood . . ./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"All this fish is making me hungry./Too bad the Food Servery on the 6th floor doesn't have any good seafood . . .");
 			super.Dialog(d, 0, this.getId(), true);			
 			break;
 		case 1:

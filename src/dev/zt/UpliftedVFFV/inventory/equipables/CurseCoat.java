@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CurseCoatStatus;
 
 public class CurseCoat extends Item{
 
-	static int id = 2;
+	static int id = 33;
 	static String name = "Curse Coat";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -24,7 +24,7 @@ public class CurseCoat extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new CurseCoatStatus(50);
+		enchantment[0] = new CurseCoatStatus(s,50);
 		return enchantment;
 	}
 }

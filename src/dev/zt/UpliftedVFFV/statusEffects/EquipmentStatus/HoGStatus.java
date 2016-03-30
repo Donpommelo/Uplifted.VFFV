@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class HoGStatus extends status{
 	
-	public HoGStatus(int pr){
-		super("Glorious", pr);
+	public HoGStatus(Schmuck v,int pr){
+		super("Glorious", v, pr);
 	}
 	
 	public void preBattlePhase(Schmuck s, BattleState bs){

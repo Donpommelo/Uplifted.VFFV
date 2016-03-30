@@ -39,18 +39,18 @@ public class EmpPudding extends Event {
 		}
 		if(!this.isSelfswitch1()){
 			Dialog[] d = new Dialog[5];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . . If I don't up the dosage soon, my coworkers might develop an immunity. . ./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hey, you there!/You seem like the sort of fellow who has had their fair share of poison./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Here, you should take this./It's really fun to play with./");
-			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained Envenomed Earth!/It makes you feel a little queasy./");
-			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"If you have any kids, you should give it to them./They'll love it./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,". . . If I don't up the dosage soon, my coworkers might develop an immunity. . .");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Hey, you there! You seem like the sort of fellow who has had their fair share of poison.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"Here, you should take this./It's really fun to play with.");
+			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You obtained Envenomed Earth!/It makes you feel a little queasy.");
+			d[4] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"If you have any kids, you should give it to them./They'll love it.");
 			super.Dialog(d, 4, this.getId(), true);
 			this.setSelfswitch1(true);
 			super.loot(new EnvenomEarth(), 1);
 		}
 		else{
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"No matter how sick they get, my coworkers always seem to recover./My Green Alignment Points must be too low./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"No matter how sick they get, my coworkers always seem to recover. My Green Alignment Points must be too low.");
 			super.Dialog(d, 0, this.getId(), true);
 			this.setTex(SpriteSorter.SpriteSort(1,Assets.EmployeeF));
 //			this.setstage(1);

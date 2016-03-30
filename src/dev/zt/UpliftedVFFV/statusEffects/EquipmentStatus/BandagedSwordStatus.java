@@ -5,8 +5,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BandagedSwordStatus extends status{
 		
-	public BandagedSwordStatus(int pr){
-		super("Bandanged Sword Status", pr);
+	public BandagedSwordStatus(Schmuck v,int pr){
+		super("Bandanged Sword Status",v, pr);
 	}	
 		
 	public String inflictText(Schmuck s){

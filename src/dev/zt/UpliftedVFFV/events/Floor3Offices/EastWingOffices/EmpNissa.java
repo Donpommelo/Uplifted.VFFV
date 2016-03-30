@@ -33,7 +33,7 @@ public class EmpNissa extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You sure look like you've had a rough morning./Maybe several./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdEastOffices-3.png",1,"You sure look like you've had a rough morning./Maybe several.");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

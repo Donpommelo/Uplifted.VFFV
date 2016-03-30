@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.Battle.Animations.PoisonAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
@@ -17,14 +18,22 @@ public class Poisoned extends status{
 		this.inflicter = perp;
 	}
 	
-	public Poisoned(int pr){
-		super(name, pr);
+	public Poisoned(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 		
 	public void endofAnyAction(BattleState bs, Action a, Schmuck s){
-		bs.bp.em.hpChange(-(s.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,s,2);
+		bs.bp.bt.addScene("", new PoisonAnim(s),this, false);
 	}
 
+	public void postAnimRun(BattleState bs){
+		bs.bp.em.hpChange(-(vic.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,vic,2);
+	}
+	
+	public int getFrames(){
+		return 0;
+	}
+	
 	public String inflictText(Schmuck s){
 		return s.getName()+" was Poisoned!";
 	}

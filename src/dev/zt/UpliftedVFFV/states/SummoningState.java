@@ -255,8 +255,8 @@ public class SummoningState extends State {
 				for(int i = 0; i < summonSauces.size(); i++){
 					sauces[i] = summonSauces.get(i).getName();
 				}
-				Utils.drawMenu(g, window, sauces , Color.black, 15, itemPointer, 260, 48, 180, 200, 1, 5, 
-						frameLocation, 16, true);
+				Utils.drawMenu(g, window, sauces , Color.black, 15, new Font("Courier", Font.PLAIN, 15),itemPointer, 260, 48, 180, 200, 1, 5, 
+						frameLocation, 16, true,true);
 				break;
 			case 2:
 				g.setFont(new Font("Chewy", Font.PLAIN, 12));
@@ -264,8 +264,8 @@ public class SummoningState extends State {
 				g.drawImage(summonObjects.get(summoner).getIcon(),15,15, null);
 				
 				String[] options = {"Yes", "No"};
-				Utils.drawMenu(g, window, options , Color.black, 15, yesno, 400, 300, 200, 64, 2, 1, 
-						0, 16, true);
+				Utils.drawMenu(g, window, options , Color.black, 15, new Font("Courier", Font.PLAIN, 15),yesno, 400, 300, 200, 64, 2, 1, 
+						0, 16, true,true);
 				break;
 			case 3:
 				gs.getPartymanager().recruit(summon);

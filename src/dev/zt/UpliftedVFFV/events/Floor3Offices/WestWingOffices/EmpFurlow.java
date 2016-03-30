@@ -34,9 +34,9 @@ public class EmpFurlow extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[3];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"No matter how much work you finish, there will always be the option to go further./It is the mark of a valuable employee to go above and beyond the requirements of his/contract./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Pass through this door to the East if you wish to demonstrate such character./Think of it as paid overtime./");
-			d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"You know how difficult it is to back out of overtime you already signed up for?/Consider mental preparation beforehand./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"No matter how much work you finish, there will always be the option to go further. It is the mark of a valuable employee to go above and beyond the requirements of his contract. ");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"Pass through this door to the East if you wish to demonstrate such character. Think of it as paid overtime.");
+			d[2] = new Dialog("Employee","/CharacterBusts/3rdWestOffices-1.png",1,"You know how difficult it is to back out of overtime you already signed up for? Consider mental preparation beforehand.");
 			super.Dialog(d, 2, this.getId(), true);
 			break;
 		case 1:

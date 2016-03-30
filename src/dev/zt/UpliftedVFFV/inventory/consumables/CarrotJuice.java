@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class CarrotJuice extends Item{
 	
-	static int id = 2;
+	static int id = 9;
 	static String name = "Carbonated Carrot Juice";
 	static boolean menu = false;
 	static boolean battle = true;

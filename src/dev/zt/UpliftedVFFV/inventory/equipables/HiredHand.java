@@ -25,7 +25,7 @@ public class HiredHand extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new HiredHandStatus(50);
+		enchantment[0] = new HiredHandStatus(s,50);
 		return enchantment;
 	}
 	

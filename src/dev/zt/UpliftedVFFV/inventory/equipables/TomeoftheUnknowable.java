@@ -25,8 +25,8 @@ public class TomeoftheUnknowable extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new TomeoftheUnknowableStatus(50);
-		enchantment[1] = new StatBuffAdd(4, (int)(8*(1+s.getEquipPow())), 50);
+		enchantment[0] = new TomeoftheUnknowableStatus(s,50);
+		enchantment[1] = new StatBuffAdd(4, (int)(8*(1+s.getEquipPow())),s, 50);
 		return enchantment;
 	}
 

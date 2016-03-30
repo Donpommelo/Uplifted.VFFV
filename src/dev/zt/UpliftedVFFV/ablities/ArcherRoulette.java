@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class ArcherRoulette extends Skills {
 	
 	public static String name = "Archer Roulette";
-	public static String descr = "User produces a powerful projectile and prays to lucky stars. While the user attempts to direct this attack, it has a high chance of misfiring and striking a different enemy than the one intended.";
+	public static String descr = "User produces a powerful projectile. While the user attempts to direct this attack, it may misfire and striking a different enemy than the one intended.";
 	public static String descrShort = "Powerful attack with a chance to hit wrong enemy.";
 	public static int cost = 17;
 	public static int baseAcc = 100; public static int baseCrit = 0;

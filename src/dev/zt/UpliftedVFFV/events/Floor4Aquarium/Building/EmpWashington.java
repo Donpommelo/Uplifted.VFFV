@@ -33,7 +33,7 @@ public class EmpWashington extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do employees still need to wash their hands after playing in the petting tank?/I mean, its filled with water . . ./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Do employees still need to wash their hands after playing in the petting tank? I mean, its filled with water . . .");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

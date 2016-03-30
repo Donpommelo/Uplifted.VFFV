@@ -8,8 +8,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 public class CurseCoatStatus extends status{
 	
 	public boolean rolled;
-	public CurseCoatStatus(int pr){
-		super("Cursed?", pr);
+	public CurseCoatStatus(Schmuck v,int pr){
+		super("Cursed?", v,pr);
 		this.rolled = false;
 	}
 	

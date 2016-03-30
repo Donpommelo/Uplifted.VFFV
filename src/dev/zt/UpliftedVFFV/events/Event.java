@@ -15,6 +15,7 @@ import dev.zt.UpliftedVFFV.events.Floor3Offices.EastWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices.*;
 import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Building.*;
+import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Dungeon.*;
 import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Tunnel.*;
 import dev.zt.UpliftedVFFV.events.Floor4Aquarium.Tank.*;
 import dev.zt.UpliftedVFFV.events.Floor6FoodServery.FoodCourt.*;
@@ -471,7 +472,27 @@ public class Event implements Serializable{
 	public static Event event418 = new WarpTanktoWElevator(24,24,418);
 	public static Event event419 = new WarpTank1toTank2(66,16,419);
 	public static Event event420 = new WarpTank2toTank1(81,25,420);
-	//421-440 reserved for aquarium dungeon warps
+	public static Event event421 = new WarpTanktoDungeon(12,74,421);
+	public static Event event422 = new WarpDungeontoTank(16,40,422);
+	public static Event event423 = new WarpCentraltoDrainRoom(6,6,423);
+	public static Event event424 = new WarpCentraltoRaisedHall(25,6,424);
+	public static Event event425 = new WarpCentraltoBonusRoom(12,15,425);
+	public static Event event426 = new WarpCentraltoMasterControlRoom(16,22,426);
+//427:Drain Room to Gutter
+	public static Event event428 = new WarpDrainRoomtoCentral(25,6,428);
+	public static Event event429 = new WarpDrainRoomtoJCloset(10,15,429);
+	public static Event event430 = new WarpJClosettoDrainRoom(5,11,430);
+	public static Event event431 = new WarpRaisedRoomtoCentral(16,33,431);
+	public static Event event432 = new WarpRaisedRoomtoMazeLeft(18,9,432);
+	public static Event event433 = new WarpRaisedRoomtoMazeRight(43,11,433);
+	public static Event event434 = new WarpMazetoRaisedRoomLeft(5,66,434);
+	public static Event event435 = new WarpMazetoRaisedRoomRight(52,11,435);
+	public static Event event436 = new WarpMazetoCloggedRoom(3,10,436);
+	public static Event event437 = new WarpCloggedRoomtoMaze(28,14,437);
+	public static Event event438 = new WarpBonusRoomtoCentral(5,11,438);
+	public static Event event439 = new WarpMasterControlRoomtoCentral(5,11,439);
+//440: Gutter to ?
+	
 	public static Event event441 = new WarpFoodCourtLobbytoSElevator(22,25,441);
 	public static Event event442 = new WarpFoodCourtLobbytoEatery(22,6,442);
 	public static Event event443 = new WarpFoodCourtLobbytoSeatery(26,9,443);
@@ -641,8 +662,56 @@ public class Event implements Serializable{
 	public static Event empSen = new EmpSen(22,9,647);
 	public static Event empCoral = new EmpCoral(18,20,648);
 	public static Event empWashington = new EmpWashington(14,9,649);
+	public static Event empCarrie = new EmpCarrie(9,26,650);
+	public static Event empDory = new EmpDory(13,7,651);
+	public static Event empUrsula = new EmpUrsula(16,12,652);
+	public static Event empSal = new EmpSal(16,12,653);
+	public static Event empArchie = new EmpArchie(14,18,654);
+	public static Event empAriel = new EmpAriel(14,27,655);
+	public static Event empCassandra = new EmpCassandra(14,27,656);
+	public static Event empBrutus = new EmpBrutus(17,29,657);
+	public static Event empBelle = new EmpBelle(17,30,658);
+	public static Event empBigTuna = new EmpBigTuna(17,31,659);
+	public static Event empCamela = new EmpCamela(17,33,660);
+	public static Event empDonJon = new EmpDonJon(17,34,661);
+	public static Event empNemo = new EmpNemo(17,36,662);
+	public static Event empMack = new EmpMack(20,28,663);
+	public static Event empSlithrice = new EmpSlithrice(20,32,664);
+	public static Event empThumbs = new EmpThumbs(20,33,665);
+	public static Event empFinn = new EmpFinn(20,36,666);
+	public static Event empEcho = new EmpEcho(20,37,667);
+	public static Event empBubbles = new EmpBubbles(20,38,668);
+	public static Event empDorf = new EmpDorf(26,40,669);
+//670-674: More stadium employees?
+	public static Event empLucifer = new EmpLucifer(7,10,675);
+	public static Event empFlores = new EmpFlores(19,16,676);
+	public static Event empCat = new EmpCat(6,11,677);
+	public static Event empTeasdale = new EmpTeasdale(20,17,678);
+	public static Event empDana = new EmpDana(14,27,679);
+	public static Event empHale = new EmpHale(7,15,680);
+	public static Event empPastacus = new EmpPastacus(11,10,681);
+	public static Event empVerena = new EmpVerena(6,23,682);
+	public static Event empNoelle = new EmpNoelle(8,12,683);
+	public static Event empBrannigan = new EmpBrannigan(14,8,684);
+	public static Event empDusa = new EmpDusa(31,45,685);
+	public static Event empGlass = new EmpGlass(38,37,686);
+	public static Event empWaldorf = new EmpWaldorf(16,19,687);
+	public static Event empPearl = new EmpPearl(31,22,688);
+	public static Event empFlander = new EmpFlander(16,17,689);
+	public static Event empMoby = new EmpMoby(19,30,690);
+	public static Event empSandy = new EmpSandy(25,31,691);
+	public static Event empShelly = new EmpShelly(18,21,692);
+	public static Event empBruce = new EmpBruce(28,22,693);
+//-700: East Tunnel + Lobby Employees.
+	public static Event eventPassChecker = new EventPassChecker(20,7,701);
+	public static Event eventRingMaster = new EventRingMaster(29,43,702);
+	public static Event eventPettingZookeeper = new EventPettingZooKeeper(13,16,703);
+	public static Event eventWaterDrainLeverSouth = new EventWaterDrainLeverSouth(10,7,704);
+	public static Event eventWaterDrainLeverEast = new EventWaterDrainLeverEast(5,7,705);
+	public static Event eventWaterDrainLeverWest = new EventWaterDrainLeverWest(37,34,706);
+	public static Event eventWaterDrainLeverMaster = new EventMasterDrain(8,7,707);
 
-
+	
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
 	public static Event testSummon = new SummonSignIntern(0,0,1002);
@@ -878,6 +947,12 @@ public class Event implements Serializable{
 	//Causes screen to shake for a duration
 	public void screenShake(int shake){
 		game.getGameCamera().screenShake(shake);
+	}
+	
+	//Causes screen to fade to black (-1) or from black (1)
+	public void fade(int inout, int eventId){
+		gamestate.getWorld().fadeId(eventId, this);
+		gamestate.getWorld().fade(inout);
 	}
 		
 	//Choicebranch state, lets player make decision between a list of choices.

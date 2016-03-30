@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class CensuredResonanceStatus extends status{
 	
-	public CensuredResonanceStatus(int pr){
-		super("Resonating", pr);
+	public CensuredResonanceStatus(Schmuck v,int pr){
+		super("Resonating", v,pr);
 	}
 	
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

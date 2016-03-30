@@ -3,13 +3,12 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CurseCoatStatus;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.VoodooPinStatus;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class VoodooPin extends Item{
 
-	static int id = 2;
+	static int id = 34;
 	static String name = "Voodoo Pin";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -26,8 +25,8 @@ public class VoodooPin extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new VoodooPinStatus(95);
-		enchantment[1] = new BonusStatBuff(23, .15 * (1+s.getEquipPow()),50);
+		enchantment[0] = new VoodooPinStatus(s,95);
+		enchantment[1] = new BonusStatBuff(23, .15 * (1+s.getEquipPow()),s,50);
 
 		return enchantment;
 	}

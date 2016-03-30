@@ -59,15 +59,15 @@ public class WarpBackroomtoElevator extends Event {
 			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d = new Dialog[9];
-				d[0] = new Dialog("Employee" ,"/CharacterBusts/3rdSouthOffices-1.png" ,1 ,"Hey. Look who finally lifted himself out of bed./");
-				d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"!!!/");
-				d[2] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Oh. You surprised me. Sorry, I seem to have woken up late today. I hope I haven't kept/you waiting for too long. So, what floor for you?/");
-				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Don't worry about it. I'm not in any sort of rush./I don't really do any actual work here anyways./Oh, and the Sixth Floor, please. As usual./");
-				d[4] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Right away!/");
-				d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Oh, and one more thing./");
-				d[6] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Hmm?/");
-				d[7] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"My boss wanted me to warn you not to . . . uh. . ./Try not to . . . er . . . Don't go to the . . . um./Drat. I forgot. Oh well./");
-				d[8] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll . . . keep that in mind . . ./");
+				d[0] = new Dialog("Employee" ,"/CharacterBusts/3rdSouthOffices-1.png" ,1 ,"Hey. Look who finally lifted himself out of bed.");
+				d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"!!!");
+				d[2] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Oh. You surprised me. Sorry, I seem to have woken up late today. I hope I haven't kept you waiting for too long./So, what floor for you?");
+				d[3] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Don't worry about it. I'm not in any sort of rush./I don't really do any actual work here anyways./Oh, and the Sixth Floor, please. As usual.");
+				d[4] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Right away!");
+				d[5] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Oh, and one more thing.");
+				d[6] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"Hmm?");
+				d[7] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"My boss wanted me to warn you not to . . . uh. . ./Try not to . . . er . . . Don't go to the . . . um./Drat. I forgot. Oh well.");
+				d[8] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I'll . . . keep that in mind . . .");
 				super.Dialog(d, 8, this.getId(), true);
 			}
 			this.setstage(0);

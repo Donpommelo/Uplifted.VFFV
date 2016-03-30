@@ -12,8 +12,8 @@ public class Suckered extends status{
 	public static Boolean removedEnd = true;
 	public static Boolean decay = false;
 	public Schmuck puncher;	
-	public Suckered(int pr, Schmuck perp){
-		super(name, pr);
+	public Suckered(Schmuck v,int pr, Schmuck perp){
+		super(name, v,pr);
 		this.puncher = perp;
 	}
 	

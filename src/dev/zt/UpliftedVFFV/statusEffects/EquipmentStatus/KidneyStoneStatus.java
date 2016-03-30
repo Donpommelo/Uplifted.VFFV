@@ -7,8 +7,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class KidneyStoneStatus extends status{
 
-	public KidneyStoneStatus(int pr){
-		super("Filtering", pr);
+	public KidneyStoneStatus(Schmuck v,int pr){
+		super("Filtering", v,pr);
 	}
 		
 	public void onStatusInflict(Schmuck s, status st, BattleState bs){

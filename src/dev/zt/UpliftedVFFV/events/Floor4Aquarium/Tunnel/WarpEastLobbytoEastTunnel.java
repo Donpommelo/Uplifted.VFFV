@@ -11,9 +11,13 @@ public class WarpEastLobbytoEastTunnel extends Event {
 	}
 
 	public void run(){
-		super.getGamestate().getEvents()[415].setOpen(false);
-		super.getGamestate().getEvents()[415].setFrames(6);
-		super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelEast.txt",31,14,"");
-		
+		if(!super.getGamestate().getEvents()[701].isSelfswitch2()){
+			super.getGamestate().getEvents()[701].run();
+		}
+		else{
+			super.getGamestate().getEvents()[415].setOpen(false);
+			super.getGamestate().getEvents()[415].setFrames(6);
+			super.transport("/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelEast.txt",31,14,"");
+		}
 	}
 }

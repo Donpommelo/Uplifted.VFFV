@@ -25,8 +25,8 @@ public class AnchorTalisman extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AnchorTalismanStatus(10);
-		enchantment[1] = new StatBuffMult(3, 1.1*(1+s.getEquipPow()),30);
+		enchantment[0] = new AnchorTalismanStatus(s,10);
+		enchantment[1] = new StatBuffMult(3, 1.1*(1+s.getEquipPow()),s,30);
 		return enchantment;
 	}
 }

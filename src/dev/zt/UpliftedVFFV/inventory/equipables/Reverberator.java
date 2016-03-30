@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Reverberator extends Item{
 
-	static int id = 2;
+	static int id = 43;
 	static String name = "Reverberator";
 	static boolean menu = false;
 	static boolean battle = false;
@@ -25,7 +25,7 @@ public class Reverberator extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatusImmunity(new Silenced(0), 5);
+		enchantment[0] = new StatusImmunity(new Silenced(s,0), s,5);
 		return enchantment;
 	}
 }

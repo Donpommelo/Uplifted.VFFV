@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class CaffeinePatch extends Item{
 
-	static int id = 2;
+	static int id = 7;
 	static String name = "Caffeine Patch";
 	static boolean menu = true;
 	static boolean battle = true;

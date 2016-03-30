@@ -26,8 +26,8 @@ public class SuckerPunch extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new SuckerPunchStatus(50);
-		enchantment[1] = new StatBuffAdd(5,(int)(12 * (1+s.getEquipPow())),50);
+		enchantment[0] = new SuckerPunchStatus(s,50);
+		enchantment[1] = new StatBuffAdd(5,(int)(12 * (1+s.getEquipPow())),s,50);
 		return enchantment;
 	}
 }

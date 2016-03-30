@@ -34,8 +34,8 @@ public class EmpQuiddity extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[2];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Sometimes we have contests between the four wings of the Offices. Or so I hear./I've never shown up to one. No one else from South Wing has either for that matter./");
-			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I think its easier to deal with loss when you make no effort to prevent it./");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"Sometimes we have contests between the four wings of the Offices. Or so I hear. I've never shown up to one. No one else from South Wing has either for that matter.");
+			d[1] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-3.png",1,"I think its easier to deal with loss when you make no effort to prevent it.");
 			super.Dialog(d, 1, this.getId(), true);
 			break;
 		case 1:

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class PrinterTonerMagenta extends Item{
 
-	static int id = 2;
+	static int id = 39;
 	static String name = "Magenta Printer Toner";
 	static boolean menu = false;
 	static boolean battle = true;

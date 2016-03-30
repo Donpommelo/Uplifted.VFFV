@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class RandomFoodMedium extends Item{
 
-	static int id = 2;
+	static int id = 0;
 	static String name = "fewd";
 	static boolean menu = true;
 	static boolean battle = true;

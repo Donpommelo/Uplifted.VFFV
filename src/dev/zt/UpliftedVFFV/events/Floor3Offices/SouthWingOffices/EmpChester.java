@@ -33,7 +33,7 @@ public class EmpChester extends Event {
 		switch(this.getstage()){
 		case 0: 
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Drat. Why does this office block all the good websites?/");
+			d[0] = new Dialog("Employee","/CharacterBusts/3rdSouthOffices-1.png",1,"Drat. Why does this office block all the good websites?");
 			super.Dialog(d, 0, this.getId(), true);
 			break;
 		case 1:

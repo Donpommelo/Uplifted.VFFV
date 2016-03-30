@@ -6,8 +6,8 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EchoShellStatus extends status{
 	
-	public EchoShellStatus(int pr){
-		super("Echoing", pr);
+	public EchoShellStatus(Schmuck v,int pr){
+		super("Echoing", v,pr);
 	}
 		
 	public void endofturnEffect(Schmuck s, BattleState bs){
