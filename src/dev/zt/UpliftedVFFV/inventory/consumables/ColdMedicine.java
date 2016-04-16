@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Frozen;
 
 public class ColdMedicine extends Item{
 
-	static int id = 2;
+	static int id = 57;
 	static String name = "Cold Medicine";
 	static boolean menu = false;
 	static boolean battle = true;

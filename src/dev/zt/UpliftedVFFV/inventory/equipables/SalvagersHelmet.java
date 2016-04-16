@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SalvagerHelmetStatus;
 
 public class SalvagersHelmet extends Item{
 
-	static int id = 2;
+	static int id = 78;
 	static String name = "Salvager's Helmet";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -2,13 +2,12 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.DamageBlock;
 import dev.zt.UpliftedVFFV.statusEffects.StoneSkin;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class LoamSkinTalisman extends Item{
 
-	static int id = 2;
+	static int id = 71;
 	static String name = "Loamskin Talisman";
 	static boolean menu = false;
 	static boolean battle = false;

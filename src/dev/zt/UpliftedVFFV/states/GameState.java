@@ -65,10 +65,10 @@ public class GameState extends State {
 		
 //		String StartingFloor = "/Worlds/Floor1Reception/SouthLobbyMain.txt";
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/EastOfficesCarlocsOfficePlus.txt";
-		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumBuilding/DeepestSeaDungeon.txt";
-//		String StartingFloor = "/Worlds/Floor6FoodServery/Processing/FoodPyramid.txt";
-//		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Floor2Main.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt";
+		String StartingFloor = "/Worlds/Floor4Aquarium/WetworksDungeon/BlockedPipeRoom.txt";
+//		String StartingFloor = "/Worlds/Floor6FoodServery/FoodCourt/Eatery.txt";
+//		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Floor1Main.txt";
 //		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
@@ -173,12 +173,18 @@ public class GameState extends State {
 		worldmanager.renderNameplate(g);
 		worldmanager.renderTransition(g);
 		if(!game.getGameCamera().cameraControl){
-			if(game.getGameCamera().getShakeDuration()<1){
-				game.getGameCamera().setCameraControl(true);
-			}
-			else{
+			if(game.getGameCamera().getShakeDuration()>0){
 				game.getGameCamera().screenShake(game.getGameCamera().getShakeDuration());
+
 			}
+			else if(game.getGameCamera().getMoveDuration()>0){
+				game.getGameCamera().move();
+			}
+			
+			else{
+//				game.getGameCamera().setCameraControl(true);
+			}
+			
 		}		
 		
 	}

@@ -41,9 +41,11 @@ public class SwitchManager {
  29: East Aquarium Tank Flooded
  30: West Aquarium Tank Flooded
  31: Aquarium Dungeon Flooded
- 32: Spa Extra Options explained.
+ 32: Spa Extra Options explained
  33: Underwater discovered
- 34: Currently underwater.
+ 34: Currently underwater
+ 35: Left Blockage Cleared
+ 36: Right Blockage Cleared
 
  
  */

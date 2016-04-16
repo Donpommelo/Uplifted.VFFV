@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Combustibility;
 
 public class Antiinflammatory extends Item{
 
-	static int id = 2;
+	static int id = 55;
 	static String name = "Anti-Inflammatory";
 	static boolean menu = false;
 	static boolean battle = true;

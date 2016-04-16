@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Paralysis;
 
 public class MuscleRelaxant extends Item{
 
-	static int id = 2;
+	static int id = 60;
 	static String name = "Muscle Relaxant";
 	static boolean menu = false;
 	static boolean battle = true;

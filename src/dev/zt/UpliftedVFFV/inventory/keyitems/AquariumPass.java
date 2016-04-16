@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class AquariumPass extends Item{
 
-	static int id = 2;
+	static int id = 74;
 	static String name = "Aquarium Pass";
 	static boolean menu = false;
 	static boolean battle = false;

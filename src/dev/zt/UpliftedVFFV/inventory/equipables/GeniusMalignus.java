@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.GeniusMalignusStatus;
 
 public class GeniusMalignus extends Item{
 
-	static int id = 2;
+	static int id =70;
 	static String name = "Genius Malignus";
 	static boolean menu = false;
 	static boolean battle = false;

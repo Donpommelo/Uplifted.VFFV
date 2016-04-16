@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SalvagerScrapRipperStat
 
 public class SalvagersScrapRipper extends Item{
 
-	static int id = 2;
+	static int id = 79;
 	static String name = "Salvager's Scrap Ripper";
 	static boolean menu = false;
 	static boolean battle = false;

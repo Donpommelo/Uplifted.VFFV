@@ -1,18 +1,14 @@
 package dev.zt.UpliftedVFFV.inventory.consumables;
 
-import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.states.NotificationState;
-import dev.zt.UpliftedVFFV.states.StateManager;
 import dev.zt.UpliftedVFFV.statusEffects.*;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.*;
 
 public class RandomPotion extends Item{
 
-	static int id = 2;
+	static int id = 61;
 	static String name = "pohshun";
 	static boolean menu = false;
 	static boolean battle = true;

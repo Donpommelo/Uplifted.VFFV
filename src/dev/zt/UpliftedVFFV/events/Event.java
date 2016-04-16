@@ -312,7 +312,7 @@ public class Event implements Serializable{
 	public static Event empRory = new EmpRory(15,7,245);
 	public static Event empDora = new EmpDora(8,14,246);
 	public static Event empNonconformist = new EmpNonconformist(4,8,247);
-	public static Event empOkey = new EmpOkey(14,9,248);
+	public static Event empOkey = new EmpOkey(13,9,248);
 	public static Event empLil = new EmpLil(17,9,249);
 	public static Event empShoebanfoo = new EmpShoebanfoo(18,27,250);
 	public static Event empPillock = new EmpPillock(17,13,251);
@@ -478,7 +478,7 @@ public class Event implements Serializable{
 	public static Event event424 = new WarpCentraltoRaisedHall(25,6,424);
 	public static Event event425 = new WarpCentraltoBonusRoom(12,15,425);
 	public static Event event426 = new WarpCentraltoMasterControlRoom(16,22,426);
-//427:Drain Room to Gutter
+	public static Event event427 = new WarpDungeontoGutter(37,24,427);
 	public static Event event428 = new WarpDrainRoomtoCentral(25,6,428);
 	public static Event event429 = new WarpDrainRoomtoJCloset(10,15,429);
 	public static Event event430 = new WarpJClosettoDrainRoom(5,11,430);
@@ -491,8 +491,7 @@ public class Event implements Serializable{
 	public static Event event437 = new WarpCloggedRoomtoMaze(28,14,437);
 	public static Event event438 = new WarpBonusRoomtoCentral(5,11,438);
 	public static Event event439 = new WarpMasterControlRoomtoCentral(5,11,439);
-//440: Gutter to ?
-	
+	public static Event event440 = new WarpGuttertoDungeon(30,57,440);
 	public static Event event441 = new WarpFoodCourtLobbytoSElevator(22,25,441);
 	public static Event event442 = new WarpFoodCourtLobbytoEatery(22,6,442);
 	public static Event event443 = new WarpFoodCourtLobbytoSeatery(26,9,443);
@@ -504,8 +503,8 @@ public class Event implements Serializable{
 	public static Event event449 = new WarpEaterytoProcessing(26,13,449);
 	public static Event event450 = new WarpLLandtoEatery(6,33,450);
 	public static Event event451 = new WarpLLandtoLLLobby(48,29,451);
-	public static Event event452 = new WarpLLandtoBallpitYellow(20,8,452);
-	public static Event event453 = new WarpLLandtoBallpitBlue(41,8,453);
+	public static Event event452 = new WarpLLandtoBallpitYellow(21,6,452);
+	public static Event event453 = new WarpLLandtoBallpitBlue(40,6,453);
 	public static Event event454 = new WarpLLandtoInner(41,8,454);
 	public static Event event455 = new WarpLLandtoFloor2(22,12,455);
 	//LLand to extra room?
@@ -710,7 +709,16 @@ public class Event implements Serializable{
 	public static Event eventWaterDrainLeverEast = new EventWaterDrainLeverEast(5,7,705);
 	public static Event eventWaterDrainLeverWest = new EventWaterDrainLeverWest(37,34,706);
 	public static Event eventWaterDrainLeverMaster = new EventMasterDrain(8,7,707);
-
+	public static Event safe16 = new EventSafe16(14,7,708);
+	
+	
+	public static Event eventBlockageLeft = new EventBlockageLeft(7,8,715);
+	public static Event eventBlockageRight = new EventBlockageRight(23,8,716);
+	
+	//717-730: Aquarium Events and whatever
+	
+	
+	
 	
 	public static Event testBattle = new EventTestBattle(0,0,1000);
 	public static Event testItems = new EventTestItems(0,0,1001);
@@ -949,6 +957,16 @@ public class Event implements Serializable{
 		game.getGameCamera().screenShake(shake);
 	}
 	
+	//Moves screen to a given coordinate in a given number of frames 
+	public void cameraMove(float newX, float newY, int speed){
+		game.getGameCamera().slowMove(newX, newY, speed);
+	}
+	
+	//Resets Camera on player
+	public void cameraLock(){
+		game.getGameCamera().setCameraControl(true);
+	}
+	
 	//Causes screen to fade to black (-1) or from black (1)
 	public void fade(int inout, int eventId){
 		gamestate.getWorld().fadeId(eventId, this);
@@ -966,9 +984,19 @@ public class Event implements Serializable{
 
 	}
 	
-	//Choicebranch state, lets player make decision between a list of choices.
+	//Choicebranch state, lets player make decision between a list of choices with descriptions.
 	public static void ChoiceBranch(int EventId, String[] choices, String[] descr, int width){
 		StateManager.states.push(new ChoiceBranchState(game, gamestate, statemanager,EventId,choices,descr,width));
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();			
+		}
+
+	}
+	
+	public static void TypingState(int EventId, String introText,int maxLetters){
+		StateManager.states.push(new TypingState(game, gamestate, statemanager,introText, maxLetters, EventId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -1138,6 +1166,19 @@ public class Event implements Serializable{
 	public void ChoiceMade(int i) {
 		
 		
+	}
+	
+	//overrode by individual events. This is called when a typing state is called and a string is made.
+	//The string is typed and, if the event is not done running, will increment the event stage
+	public void textMade(String text) {
+		
+		
+	}
+	
+	//Embarrassingly heavy-handed way of recording a single string in the game (Petting Aquarium Familiar Name)
+	//Overridden by one thing. Maybe use to record other event-tied strings later? idk I feel bad.
+	public String getName(){
+		return "";
 	}
 	
 	//Returns game. not used as of now.

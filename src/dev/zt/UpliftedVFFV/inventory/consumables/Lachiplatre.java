@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Lachiplatre extends Item{
 
-	static int id = 2;
+	static int id = 59;
 	static String name = "Lachiplatre";
 	static boolean menu = true;
 	static boolean battle = true;

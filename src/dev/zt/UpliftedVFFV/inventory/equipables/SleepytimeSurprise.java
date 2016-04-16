@@ -3,12 +3,11 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AbsoluteThresholdStatus;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SleepytimeSurpriseStatus;
 
 public class SleepytimeSurprise extends Item{
 
-	static int id = 2;
+	static int id = 73;
 	static String name = "Sleepytime Surprise";
 	static boolean menu = false;
 	static boolean battle = false;

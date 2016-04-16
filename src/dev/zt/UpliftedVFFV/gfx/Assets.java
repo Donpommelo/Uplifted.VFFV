@@ -48,7 +48,8 @@ public class Assets {
 
 	public static BufferedImage WritingDesk1, Bed1,Tv, Trashcan, Calendar, WelcomeMat,Dresser, HatRack, Sign, StairsUp, StairsDown,
 		HorizRug, VertiRug, Cupboard, Fridge, KitchenCounter, FlowerTable, Monolith, notPenPal, Cuidado, InfoPanel, Board, Projector,
-		StairsRight0, StairsRight1, StairsRight2, StairsRight3, StairsLeft0, StairsLeft1, StairsLeft2, StairsLeft3,
+		StairsRight0, StairsRight1, StairsRight2, StairsRight3,StairsRight3Diag,StairsRight3Alt, StairsLeft0,
+		StairsLeft1, StairsLeft2, StairsLeft3,StairsLeft3Diag,StairsLeft3Alt,
 		Poster1, Poster2, Poster3, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart,
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
 		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
@@ -67,7 +68,7 @@ public class Assets {
 	
 	public static BufferedImage ElevatorCeiling, ElevatorWalls, OfficeCeiling, OfficeWalls, LobbyCeiling, LobbyWalls;
 	public static BufferedImage BlackWall, BlackCeiling, AquariumWall, AquariumCeiling, GreyWall, GreyCeiling;	
-	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter;
+	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter0,DarkFilter1,DarkFilter2,DarkFilter3,DarkFilter4;
 	
 	public static BufferedImage southMonolith;
 	
@@ -143,7 +144,7 @@ public class Assets {
 		stickers[2] = ImageLoader.loadImage("/CharacterBusts/Player-5.png");	//2 - Pen Pal.
 		
 		//Item icons.
-		int numItems = 100;
+		int numItems = 500;
 		int itemSize = 128;
 		itemIcons = new BufferedImage[numItems];
 		itemIcons[0] = ItemIcons1.crop(0,0,itemSize,itemSize);						//Misc Food Item
@@ -198,7 +199,44 @@ public class Assets {
 		itemIcons[49] = ItemIcons1.crop(9*itemSize,4*itemSize,itemSize,itemSize);	//Envenomed Earth
 		itemIcons[50] = ItemIcons1.crop(0,5*itemSize,itemSize,itemSize);			//Magnum
 		itemIcons[51] = ItemIcons1.crop(itemSize,5*itemSize,itemSize,itemSize);		//Metal Ration
-	
+		itemIcons[52] = ItemIcons1.crop(2*itemSize,5*itemSize,itemSize,itemSize);	//Summoning Twofish
+		itemIcons[53] = ItemIcons1.crop(3*itemSize,5*itemSize,itemSize,itemSize);	//Summoning Lotus
+		itemIcons[54] = ItemIcons1.crop(4*itemSize,5*itemSize,itemSize,itemSize);	//Charcoal
+		itemIcons[55] = ItemIcons1.crop(5*itemSize,5*itemSize,itemSize,itemSize);	//Antiinflammatory
+		itemIcons[56] = ItemIcons1.crop(6*itemSize,5*itemSize,itemSize,itemSize);	//Bettergent
+		itemIcons[57] = ItemIcons1.crop(7*itemSize,5*itemSize,itemSize,itemSize);	//Cold Medicine
+		itemIcons[58] = ItemIcons1.crop(8*itemSize,5*itemSize,itemSize,itemSize);	//Cough Drops
+		itemIcons[59] = ItemIcons1.crop(9*itemSize,5*itemSize,itemSize,itemSize);	//Lachiplatre
+		itemIcons[60] = ItemIcons1.crop(0,6*itemSize,itemSize,itemSize);			//Muscle Relaxant
+		itemIcons[61] = ItemIcons1.crop(itemSize,6*itemSize,itemSize,itemSize);		//Random Potion
+		itemIcons[62] = ItemIcons1.crop(2*itemSize,6*itemSize,itemSize,itemSize);	//Stat Scrubber
+		itemIcons[63] = ItemIcons1.crop(3*itemSize,6*itemSize,itemSize,itemSize);	//Stimulant
+		itemIcons[64] = ItemIcons1.crop(4*itemSize,6*itemSize,itemSize,itemSize);	//Janitor Donation Form
+		itemIcons[65] = ItemIcons1.crop(5*itemSize,6*itemSize,itemSize,itemSize);	//Magic Bottle
+		itemIcons[66] = ItemIcons1.crop(6*itemSize,6*itemSize,itemSize,itemSize);	//Sleeping Pills
+		itemIcons[67] = ItemIcons1.crop(7*itemSize,6*itemSize,itemSize,itemSize);	//Z-Drug
+		itemIcons[68] = ItemIcons1.crop(8*itemSize,6*itemSize,itemSize,itemSize);	//Proof of Will
+		itemIcons[69] = ItemIcons1.crop(9*itemSize,6*itemSize,itemSize,itemSize);	//Simmering Resentment
+		itemIcons[70] = ItemIcons1.crop(0,7*itemSize,itemSize,itemSize);			//Genius Malignus
+		itemIcons[71] = ItemIcons1.crop(itemSize,7*itemSize,itemSize,itemSize);		//Loamskin Talisman
+		itemIcons[72] = ItemIcons1.crop(2*itemSize,7*itemSize,itemSize,itemSize);	//Anchor Talisman
+		itemIcons[73] = ItemIcons1.crop(3*itemSize,7*itemSize,itemSize,itemSize);	//Sleepytime Surprise
+		itemIcons[74] = ItemIcons1.crop(4*itemSize,7*itemSize,itemSize,itemSize);	//Aquarium Pass
+		itemIcons[75] = ItemIcons1.crop(5*itemSize,7*itemSize,itemSize,itemSize);	//Aquarium Souvenir T-shirt
+		itemIcons[76] = ItemIcons1.crop(6*itemSize,7*itemSize,itemSize,itemSize);	//Souvenir Coin
+		itemIcons[77] = ItemIcons1.crop(7*itemSize,7*itemSize,itemSize,itemSize);	//Fishbowl Helmet
+		itemIcons[78] = ItemIcons1.crop(8*itemSize,7*itemSize,itemSize,itemSize);	//Salvager's Helmet
+		itemIcons[79] = ItemIcons1.crop(9*itemSize,7*itemSize,itemSize,itemSize);	//Salvager's Scrap-Ripper
+		itemIcons[80] = ItemIcons1.crop(0,8*itemSize,itemSize,itemSize);			//Salvager's Toolbelt
+		itemIcons[81] = ItemIcons1.crop(itemSize,8*itemSize,itemSize,itemSize);		//Fish Food
+		itemIcons[82] = ItemIcons1.crop(2*itemSize,8*itemSize,itemSize,itemSize);	//Mangrove Talisman
+		itemIcons[83] = ItemIcons1.crop(3*itemSize,8*itemSize,itemSize,itemSize);	//False Face
+		itemIcons[84] = ItemIcons1.crop(4*itemSize,8*itemSize,itemSize,itemSize);	//Monster Coffee
+		itemIcons[85] = ItemIcons1.crop(5*itemSize,8*itemSize,itemSize,itemSize);	//
+		itemIcons[86] = ItemIcons1.crop(6*itemSize,8*itemSize,itemSize,itemSize);	//
+		itemIcons[87] = ItemIcons1.crop(7*itemSize,8*itemSize,itemSize,itemSize);	//
+		itemIcons[88] = ItemIcons1.crop(8*itemSize,8*itemSize,itemSize,itemSize);	//
+		itemIcons[89] = ItemIcons1.crop(9*itemSize,8*itemSize,itemSize,itemSize);	//
 		
 		//Skill Icons.
 		int numSkills = 10;
@@ -325,10 +363,17 @@ public class Assets {
 		StairsRight1 = ThirdFloorTiles.crop((int) (8.5*width),(int)(1.5*width),width,height);
 		StairsRight2 = ThirdFloorTiles.crop((int) (8.5*width),(int)(2.5*width),width,height);
 		StairsRight3 = ThirdFloorTiles.crop((int) (8.5*width),(int)(3.5*width),width,height);
+		StairsRight3Diag = ThirdFloorTiles.crop((int) (8.5*width),(int)(8.5*width),width,height);
+		StairsRight3Alt = ThirdFloorTiles.crop(8*width,5*width,width,height);
+
+		
 		StairsLeft0 = ThirdFloorTiles.crop((int) (10.5*width),(int)(0.5*width),width,height);
 		StairsLeft1 = ThirdFloorTiles.crop((int) (10.5*width),(int)(1.5*width),width,height);
 		StairsLeft2 = ThirdFloorTiles.crop((int) (10.5*width),(int)(2.5*width),width,height);
 		StairsLeft3 = ThirdFloorTiles.crop((int) (10.5*width),(int)(3.5*width),width,height);
+		StairsLeft3Diag = ThirdFloorTiles.crop((int) (10.5*width),(int)(8.5*width),width,height);
+		StairsLeft3Alt = ThirdFloorTiles.crop(11*width,5*width,width,height);
+
 		
 		Ceiling1 = TilesetBackroomWalls.crop(0, 0, 2*width, 3*height);
 		Wall1 = TilesetBackroomWalls.crop(0, 3*height, 2*width, 2*height);
@@ -450,7 +495,11 @@ public class Assets {
 		WestClocksAnalogF = WestClocks.crop(9*width, 6*height, 3*width, 3*height);
 		WestClocksAnalogB = WestClocks.crop(9*width, 9*height, 3*width, 3*height);
 		UnderwaterFilter = ImageLoader.loadImage("/textures/UnderwaterFilter.png");
-		DarkFilter = ImageLoader.loadImage("/textures/DarkFilter.png");
+		DarkFilter3 = ImageLoader.loadImage("/textures/DarkFilter0.png");
+		DarkFilter2 = ImageLoader.loadImage("/textures/DarkFilter1.png");
+		DarkFilter1 = ImageLoader.loadImage("/textures/DarkFilter2.png");
+		DarkFilter0 = ImageLoader.loadImage("/textures/DarkFilter3.png");
+
 		FogFilter = ImageLoader.loadImage("/textures/FogFilter.png");
 
 	}

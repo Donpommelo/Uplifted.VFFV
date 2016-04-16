@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 
 public class CoughDrops extends Item{
 
-	static int id = 2;
+	static int id = 58;
 	static String name = "Cough Drops";
 	static boolean menu = false;
 	static boolean battle = true;

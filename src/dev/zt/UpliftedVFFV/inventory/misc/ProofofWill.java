@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ProofofWill extends Item{
 
-	static int id = 2;
+	static int id = 68;
 	static String name = "Proof of Will";
 	static boolean menu = false;
 	static boolean battle = true;

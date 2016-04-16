@@ -22,7 +22,7 @@ public class EventMasterDrain extends Event {
 			if(!this.isSelfswitch1()){
 				this.setSelfswitch1(true);
 				Dialog[] d1 = new Dialog[2];
-				d1[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"This lever looks like al lthe others./But more important.");
+				d1[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"This lever looks like all the others./But more important.");
 				d1[1] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"There seem to be additional options./Wanna try one?/");
 				super.Dialog(d1,1, this.getId(), true);
 			}
@@ -61,7 +61,7 @@ public class EventMasterDrain extends Event {
 				Choices[4] = "Master Drain (On)";
 			}
 			super.Dialog(d1, 0, this.getId(), true);
-			super.ChoiceBranch(this.getId(), Choices, 100);
+			super.ChoiceBranch(this.getId(), Choices, 500);
 			break;
 		}
 	}

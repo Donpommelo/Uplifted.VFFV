@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -258,6 +259,10 @@ public class Item implements Comparable<Item>, Serializable{
 	
 	public boolean isSummonSauce(){
 		return false;
+	}
+	
+	public Skills getVCR(){
+		return null;
 	}
 	
 	public void summonBonus(Schmuck s){

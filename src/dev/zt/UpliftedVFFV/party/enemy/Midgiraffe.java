@@ -1,12 +1,13 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.CrushingSlam;
+import dev.zt.UpliftedVFFV.ablities.Floorquake;
 import dev.zt.UpliftedVFFV.ablities.LifeDrain;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.Swarm;
-import dev.zt.UpliftedVFFV.ablities.Updraft;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.consumables.MidgeBlood;
 import dev.zt.UpliftedVFFV.inventory.equipables.AetherFeather;
@@ -66,7 +67,10 @@ public class Midgiraffe extends Schmuck{
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
 				break;
 			case 2:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Swarm(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new CrushingSlam(0),bs);
+				break;
+			case 3:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Floorquake(0),bs);
 				break;
 			}
 		}	

@@ -13,7 +13,7 @@ public class EmpShoebanfoo extends Event {
 
 	public static float xPos,yPos;
 	public static BufferedImage img=Assets.EmployeeM2;
-	public static int stagenum = 1;
+	public static int stagenum = 0;
 	public int move;
 	public EmpShoebanfoo(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);

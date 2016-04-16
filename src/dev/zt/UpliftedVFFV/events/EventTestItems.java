@@ -24,12 +24,14 @@ public class EventTestItems extends Event {
 
 	
 	public void run(){
+//		super.cameraMove(0, 0, 50);
+		//super.screenShake(50);
 		super.recruit(new PenPal(1));
 		super.scriptChange(1000);
 		
 		super.loot(new AngryBeef(), 2);
 		super.loot(new Antiinflammatory(), 6);
-		super.loot(new Antivenom(), 6);
+		super.loot(new Charcoal(), 6);
 		super.loot(new BeefBoyle(), 3);
 		super.loot(new Bettergent(), 6);
 		super.loot(new CaffeinePatch(), 5);
@@ -205,6 +207,7 @@ public class EventTestItems extends Event {
 		super.loot(new TomeofPermanence(), 1);
 		super.loot(new TomeoftheEnd(), 1);
 		super.loot(new TomeoftheUnknowable(), 1);
+		super.loot(new Torchlight(), 5);
 		super.loot(new UsurpersChemSet(),2);
 		super.loot(new VoodooPin(), 1);
 		super.loot(new ZenBand(), 1);

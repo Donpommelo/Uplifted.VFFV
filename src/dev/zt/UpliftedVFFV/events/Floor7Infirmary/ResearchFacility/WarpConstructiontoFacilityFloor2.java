@@ -11,6 +11,6 @@ public class WarpConstructiontoFacilityFloor2 extends Event {
 	}
 
 	public void run(){
-		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/Floor2Main.txt", 17, 25,"Upper Facility");
+		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/Floor2Main.txt", 17, 24,"Upper Facility");
 	}
 }

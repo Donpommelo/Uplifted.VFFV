@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class ZDrug extends Item{
 
-	static int id = 2;
+	static int id = 67;
 	static String name = "Z-Drug";
 	static boolean menu = false;
 	static boolean battle = false;

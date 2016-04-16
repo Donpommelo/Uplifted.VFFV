@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class MagicBottle extends Item{
 	
-	static int id = 2;
+	static int id = 65;
 	static String name = "Magic Bottle";
 	static boolean menu = false;
 	static boolean battle = true;

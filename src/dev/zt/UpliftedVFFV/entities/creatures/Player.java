@@ -126,22 +126,24 @@ public class Player extends Creature implements Serializable{
 			if(e!=Event.event0 && e.runnable()){		//if the player is on top of a square containing an event, the event is run
 				e.run();
 			}
-			double temp = Math.random()*100;
-			wall = false;
-			
-			combatFreq = 0;
-			for(Schmuck s : gamestate.partymanager.party){
-				combatFreq += s.getCombatFreq();
-			}
-			if(temp < enemyChance*(1+combatFreq)){			//enemy stuff				
-				enemyChance = 0.0;
-				encounter();
-			}
 			else{
-				if(enemyChance < gamestate.getWorld().getEnemyrate()){
-					enemyChance += 0.1;
+				double temp = Math.random()*100;
+				wall = false;
+				
+				combatFreq = 0;
+				for(Schmuck s : gamestate.partymanager.party){
+					combatFreq += s.getCombatFreq();
 				}
-			}
+				if(temp < enemyChance*(1+combatFreq)){			//enemy stuff				
+					enemyChance = 0.0;
+//					encounter();
+				}
+				else{
+					if(enemyChance < gamestate.getWorld().getEnemyrate()){
+						enemyChance += 0.1;
+					}
+				}
+			}		
 		}
 		
 		//if the player is running in any direction, xMove and yMove are changed and the player begins moving, thus increasing step

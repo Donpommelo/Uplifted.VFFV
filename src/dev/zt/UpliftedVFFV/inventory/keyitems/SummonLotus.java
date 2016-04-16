@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class SummonLotus extends Item{
 
-	static int id = 2;
+	static int id = 53;
 	static String name = "Summoning Lotus";
 	static boolean menu = false;
 	static boolean battle = false;

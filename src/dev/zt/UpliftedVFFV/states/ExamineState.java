@@ -81,7 +81,7 @@ public class ExamineState extends State{
 	public void render(Graphics g) {
 		StateManager.getStates().pop();
 		StateManager.getStates().peek().render(g);
-		g.drawImage(Assets.DarkFilter,0,0,null);
+//		g.drawImage(Assets.DarkFilter0,0,0,null);
 		StateManager.getStates().push(this);
 		g.drawImage(image, x, y, null);
 		if(y+height>416){

@@ -13,6 +13,6 @@ public class WarpBallpitYellowtoLLand extends Event {
 	public void run(){
 		super.getGamestate().getEvents()[452].setOpen(false);
 		super.getGamestate().getEvents()[452].setFrames(6);
-		super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt",20,9,"");
+		super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1.txt",21,7,"");
 	}
 }

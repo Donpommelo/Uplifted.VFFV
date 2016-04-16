@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Bettergent extends Item{
 
-	static int id = 2;
+	static int id = 56;
 	static String name = "Bettergent";
 	static boolean menu = false;
 	static boolean battle = true;

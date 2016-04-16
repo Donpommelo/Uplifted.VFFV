@@ -113,6 +113,10 @@ public class Decor {
 	public static Decor aquatunnelarchhorz3below = new DecorAquaTunnelArchHorz3Below(89);
 	public static Decor aquatunnelarchcornerbelow = new DecorAquaTunnelArchCornerBelow(90);
 	public static Decor filterunderwatervariable = new FilterUnderwaterVariable(91);
+	public static Decor stairsright3Diag = new DecorStairsRight3Diag(92);
+	public static Decor stairsright3Alt = new DecorStairsRight3Alt(93);
+	public static Decor stairsleft3Diag = new DecorStairsLeft3Diag(94);
+	public static Decor stairsleft3Alt = new DecorStairsLeft3Alt(95);
 
 	public static Decor parallaxtest = new DecorParallaxTest(1000);
 
@@ -135,7 +139,7 @@ public class Decor {
 		
 	}
 	
-	public void render(Graphics g, Game game, int x, int y) {
+	public void render(Graphics g, Game game, GameState gs, int x, int y) {
 		if((int)(x - game.getGameCamera().getxOffset() * parallaxMultX()) < 640 &&
 			(int)(x - game.getGameCamera().getxOffset() * parallaxMultX()+this.getxDim()) > 0 &&
 			(int)(y - game.getGameCamera().getyOffset()* parallaxMultY()) < 416 &&

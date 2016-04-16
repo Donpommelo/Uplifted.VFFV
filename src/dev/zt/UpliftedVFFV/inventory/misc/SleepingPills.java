@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class SleepingPills extends Item{
 
-	static int id = 2;
+	static int id = 66;
 	static String name = "Sleeping Pills";
 	static boolean menu = false;
 	static boolean battle = false;

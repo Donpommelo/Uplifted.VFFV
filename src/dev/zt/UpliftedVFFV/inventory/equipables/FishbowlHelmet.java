@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class FishbowlHelmet extends Item{
 
-	static int id = 2;
+	static int id = 77;
 	static String name = "Fishbowl Helmet";
 	static boolean menu = false;
 	static boolean battle = false;

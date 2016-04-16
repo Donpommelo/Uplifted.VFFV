@@ -1,7 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus;
 
 import dev.zt.UpliftedVFFV.inventory.consumables.Antiinflammatory;
-import dev.zt.UpliftedVFFV.inventory.consumables.Antivenom;
+import dev.zt.UpliftedVFFV.inventory.consumables.Charcoal;
 import dev.zt.UpliftedVFFV.inventory.consumables.ColdMedicine;
 import dev.zt.UpliftedVFFV.inventory.consumables.CoughDrops;
 import dev.zt.UpliftedVFFV.inventory.consumables.MuscleRelaxant;
@@ -33,10 +33,10 @@ public class DailyDoseStatus extends status{
 			bs.bp.stm.removeStatus(s, st);
 			bs.gs.inventorymanager.use(new ColdMedicine());
 		}
-		if(st.getName() == "Poison" && bs.gs.inventorymanager.backpack.containsKey(new Antivenom())){
+		if(st.getName() == "Poison" && bs.gs.inventorymanager.backpack.containsKey(new Charcoal())){
 			bs.bp.bt.addScene(s.getName()+"'s Daily Dose automatically uses Antivenom!");
 			bs.bp.stm.removeStatus(s, st);
-			bs.gs.inventorymanager.use(new Antivenom());
+			bs.gs.inventorymanager.use(new Charcoal());
 		}
 		if(st.getName() == "Paralysis" && bs.gs.inventorymanager.backpack.containsKey(new MuscleRelaxant())){
 			bs.bp.bt.addScene(s.getName()+"'s Daily Dose automatically uses Muscle Relaxant!");

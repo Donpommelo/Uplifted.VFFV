@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class SummonTwofish extends Item{
 
-	static int id = 2;
+	static int id = 52;
 	static String name = "Summoning Twofish";
 	static boolean menu = false;
 	static boolean battle = false;

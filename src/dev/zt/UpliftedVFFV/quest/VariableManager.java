@@ -32,9 +32,13 @@ public class VariableManager {
  21: Global Level Modifier
  22: Levels Drained in Wetworks Dungeon
  23: Aquarium Quest Variable: Location of Strikebreaker
- 24: Petting Fish Selection ()
+ 24: Petting Fish Selection (Stingray, Lobster, )
  25: Petting Fish Level
  26: Buttonman's Button-down Buttons
+ 27: Elevator Conversation Progress ()
+ 28: Elevator Conversation Last
+ 29: Light Source Level
+ 30: 
  */
 	
 	public VariableManager(Game g){

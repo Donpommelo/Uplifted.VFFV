@@ -11,6 +11,6 @@ public class WarpFacilityFloor2toDeconstruction extends Event {
 	}
 
 	public void run(){
-		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/Deconstruction1.txt", 20, 23,"Deconstruction");
+		super.transport("/Worlds/Floor7Infirmary/ResearchFacility/Deconstruction1.txt", 23, 21,"Deconstruction");
 	}
 }

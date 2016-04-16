@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SalvagerToolBeltStatus;
 
 public class SalvagersToolbelt extends Item{
 
-	static int id = 2;
+	static int id = 80;
 	static String name = "Salvager's Toolbelt";
 	static boolean menu = false;
 	static boolean battle = false;

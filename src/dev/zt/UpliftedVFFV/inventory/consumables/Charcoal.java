@@ -5,10 +5,10 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 
-public class Antivenom extends Item{
+public class Charcoal extends Item{
 
-	static int id = 2;
-	static String name = "Antivenom";
+	static int id = 54;
+	static String name = "Charcoal";
 	static boolean menu = false;
 	static boolean battle = true;
 	static boolean consume = true;
@@ -16,9 +16,9 @@ public class Antivenom extends Item{
 	static int value = 8;
 	static int slot = 0;
 	static int lvlReq = 1;
-	static String descr="A bottle of pills designed to flush your body of all manner of poisons.";
+	static String descr="Lumps of black charcoal, designed to flush the body of poisons.";
 	static String descrShort="Cures Poison.";
-	public Antivenom() {
+	public Charcoal() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
 
 	}

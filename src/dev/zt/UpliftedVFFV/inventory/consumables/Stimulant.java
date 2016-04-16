@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Asleep;
 
 public class Stimulant extends Item{
 
-	static int id = 2;
+	static int id = 63;
 	static String name = "Stimulant";
 	static boolean menu = false;
 	static boolean battle = true;

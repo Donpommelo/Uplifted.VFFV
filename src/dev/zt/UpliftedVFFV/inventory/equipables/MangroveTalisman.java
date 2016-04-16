@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.MangroveTalismanStatus;
 
 public class MangroveTalisman extends Item{
 
-	static int id = 2;
+	static int id = 82;
 	static String name = "Mangrove Talisman";
 	static boolean menu = false;
 	static boolean battle = false;

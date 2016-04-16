@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class AnchorTalisman extends Item{
 
-	static int id = 2;
+	static int id = 72;
 	static String name = "Anchor Talisman";
 	static boolean menu = false;
 	static boolean battle = false;

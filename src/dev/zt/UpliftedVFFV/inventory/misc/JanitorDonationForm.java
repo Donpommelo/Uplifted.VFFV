@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class JanitorDonationForm extends Item{
 	
-	static int id = 2;
+	static int id = 64;
 	static String name = "Janitor Donation Form";
 	static boolean menu = true;
 	static boolean battle = true;
@@ -27,8 +27,16 @@ public class JanitorDonationForm extends Item{
 	}
 	
 	public void use(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.addScene("The Janitor's opinion of you improves!");
-		bs.gs.setVar(12, bs.gs.getVar(12)+1);
+		if(bs.gs.Script >=20){
+			bs.bp.bt.addScene("The Janitor's opinion of you improves!");
+			bs.gs.setVar(12, bs.gs.getVar(12)+1);
+			bs.gs.scriptChange(-20);
+		}
+		else{
+			bs.bp.bt.addScene("But "+perp.getPronoun(1)+" didn't have enough script!");
+			bs.gs.inventorymanager.loot(this, 1);
+		}
+		
 
 	}
 	
@@ -37,8 +45,17 @@ public class JanitorDonationForm extends Item{
 	}
 	
 	public void use(Game game, StateManager sm,GameState gs){
+		if(gs.Script >=20){
 			gs.setVar(12, gs.getVar(12)+1);
+			gs.scriptChange(-20);
 			StateManager.states.push(new NotificationState(game, gs, sm, "You can feel the Janitor smiling approvingly.", 0));
+
+		}
+		else{
+			StateManager.states.push(new NotificationState(game, gs, sm, "You don't have the script to donate!", 0));
+			gs.inventorymanager.loot(this, 1);
+		}
+		
 	}
 
 

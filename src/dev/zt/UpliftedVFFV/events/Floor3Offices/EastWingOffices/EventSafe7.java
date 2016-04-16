@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.inventory.consumables.Antivenom;
+import dev.zt.UpliftedVFFV.inventory.consumables.Charcoal;
 import dev.zt.UpliftedVFFV.states.GameState;
 
 public class EventSafe7 extends Event {
@@ -23,7 +23,7 @@ public class EventSafe7 extends Event {
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The safe contains some medicine!");
 			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained Antivenom x3!");
 			super.Dialog(d, 1, this.getId(), true);
-			super.loot(new Antivenom(), 3);
+			super.loot(new Charcoal(), 3);
 			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}

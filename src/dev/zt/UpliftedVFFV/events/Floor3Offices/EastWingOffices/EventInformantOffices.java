@@ -72,12 +72,11 @@ public class EventInformantOffices extends Event {
 				d2[7] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,". . .");
 				d2[8] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,". . . Anyways, take this./Without some sort of Summoning Sauce, Memories will be too hazy to be helpful.");
 				d2[9] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Obtained 3 Packets of Summoning Sauce!");
-				d2[10] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"Take care. May you remain safe and informed.");
+				d2[10] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"Now if you don't mind, I intend to enjoy the remainder of my lunch break./Do take care.");
 				super.Dialog(d2, 10, this.getId(), true);
 				super.loot(new SummonConch(), 1);
 				super.loot(new SummonSauce(), 3);
 				super.setQuest(3, 2);
-				super.setQuest(4, 4);
 				super.setSwitch(10, true);
 				this.setSelfswitch1(true);
 				break;
@@ -95,7 +94,7 @@ public class EventInformantOffices extends Event {
 			}
 			else{
 				Dialog[] d = new Dialog[1];
-				d[0] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"That is enough talk for now. We both have much still to learn.");
+				d[0] = new Dialog("Informant","/CharacterBusts/Informant1small.png",1,"That is enough talk for now.");
 				super.Dialog(d, 0, this.getId(), true);
 			}
 			

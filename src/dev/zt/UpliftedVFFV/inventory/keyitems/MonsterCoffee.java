@@ -4,7 +4,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class MonsterCoffee extends Item{
 
-	static int id = 2;
+	static int id = 84;
 	static String name = "'Coffee'";
 	static boolean menu = false;
 	static boolean battle = false;

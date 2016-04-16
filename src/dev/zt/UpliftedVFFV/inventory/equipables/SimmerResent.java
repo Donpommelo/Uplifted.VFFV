@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SimmeringResentmentStat
 
 public class SimmerResent extends Item{
 
-	static int id = 2;
+	static int id = 69;
 	static String name = "Simmering Resentment";
 	static boolean menu = false;
 	static boolean battle = false;

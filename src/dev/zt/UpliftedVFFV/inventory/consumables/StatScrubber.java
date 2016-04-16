@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.BaselineStats;
 
 public class StatScrubber extends Item{
 
-	static int id = 2;
+	static int id = 62;
 	static String name = "Stat Scrubber";
 	static boolean menu = false;
 	static boolean battle = true;

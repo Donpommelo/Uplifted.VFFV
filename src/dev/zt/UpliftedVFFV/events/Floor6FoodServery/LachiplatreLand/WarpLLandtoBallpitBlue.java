@@ -47,7 +47,7 @@ public class WarpLLandtoBallpitBlue extends Event {
 				this.setFrames(this.getFrames()+1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()== 1312){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX()== 1280){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
@@ -58,7 +58,7 @@ public class WarpLLandtoBallpitBlue extends Event {
 				this.setFrames(this.getFrames()-1);
 			}
 			else{
-				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 1312){
+				if(KeyManager.isCutsceneMode() && gs.getPlayer().getPlayerX() == 1280){
 					this.setstage(this.getstage()+1);
 					run();
 				}	
