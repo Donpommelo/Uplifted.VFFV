@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class RubberReflexMallet extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Rubber Reflex Mallet";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuffMult;
 
 public class SportsmanshipAward extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Sportsmanship Award";
 	static boolean menu = false;
 	static boolean battle = false;

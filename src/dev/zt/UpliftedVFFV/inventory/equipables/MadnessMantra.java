@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.MadnessMantraStatus;
 
 public class MadnessMantra extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Madness Mantra";
 	static boolean menu = false;
 	static boolean battle = false;

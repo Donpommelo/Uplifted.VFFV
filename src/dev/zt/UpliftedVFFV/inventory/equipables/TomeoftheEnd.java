@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.TomeoftheEndStatus;
 
 public class TomeoftheEnd extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Tome of the End";
 	static boolean menu = false;
 	static boolean battle = false;

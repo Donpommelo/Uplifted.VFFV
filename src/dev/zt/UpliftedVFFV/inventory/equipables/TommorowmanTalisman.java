@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class TommorowmanTalisman extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Tommorowman's Talisman";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AbyssalInsigniaStatus;
 
 public class AbyssalInsignia extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Abyssal Insignia";
 	static boolean menu = false;
 	static boolean battle = false;

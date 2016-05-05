@@ -253,6 +253,10 @@ public class Item implements Comparable<Item>, Serializable{
 		return summon;
 	}
 	
+	public void setSummon(Schmuck s){
+		this.summon = s;
+	}
+	
 	public boolean isSummonObject(){
 		return false;
 	}

@@ -9,9 +9,9 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.equipables.AquariumSouvenirTshirt;
 import dev.zt.UpliftedVFFV.inventory.equipables.CannonSuperSoaker;
 import dev.zt.UpliftedVFFV.inventory.equipables.FishbowlHelmet;
-import dev.zt.UpliftedVFFV.inventory.equipables.GlowintheDarkTshirt;
 import dev.zt.UpliftedVFFV.inventory.equipables.PelicanPlushToy;
 import dev.zt.UpliftedVFFV.inventory.equipables.StickOnGills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -25,7 +25,7 @@ public class EventGiftShopSouvenirs extends Event {
 	public ArrayList<Item> stuff = new ArrayList<Item>();
 	public static int stagenum = 0;
 	public EventGiftShopSouvenirs(float x, float y, int idnum) {
-		super(Assets.VendingMachine,idnum,x, y, stagenum);
+		super(Assets.Table8,idnum,x, y, stagenum);
 		
 	}
 	
@@ -48,7 +48,7 @@ public class EventGiftShopSouvenirs extends Event {
 		stuff.add(new FishbowlHelmet());
 		stuff.add(new StickOnGills());
 		stuff.add(new CannonSuperSoaker());
-		stuff.add(new GlowintheDarkTshirt());
+		stuff.add(new AquariumSouvenirTshirt());
 
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));

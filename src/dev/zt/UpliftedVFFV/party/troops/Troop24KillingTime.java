@@ -2,7 +2,6 @@ package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.enemy.CopyCat;
 import dev.zt.UpliftedVFFV.party.enemy.KillingTime;
 
 public class Troop24KillingTime extends Troop{

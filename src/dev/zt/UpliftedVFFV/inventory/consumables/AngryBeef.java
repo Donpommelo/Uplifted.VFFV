@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Berzerk;
 
 public class AngryBeef extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Angry Beef";
 	static boolean menu = false;
 	static boolean battle = true;

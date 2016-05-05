@@ -11,6 +11,8 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.misc.GlimpseattheEnd;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.DespawnonDeath;
+import dev.zt.UpliftedVFFV.statusEffects.SummononDeath;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.skillSpecific.IntrusiveThoughtEffect;
 
@@ -18,7 +20,7 @@ public class Harbinger extends Schmuck{
 
 //	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=80,startBp=100,startPow=35, startDef=45, startSpd=32, startSkl=49, startLuk=28, startInt=78;
+	public final static int startHp=110,startBp=100,startPow=35, startDef=45, startSpd=32, startSkl=49, startLuk=28, startInt=78;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
 	public final static double hpGrowth=38.2, bpGrowth=34.7, powGrowth=4.3, defGrowth=3.4, spdGrowth=8.6, sklGrowth=4.5, intGrowth=10.9, lukGrowth=6.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
@@ -31,7 +33,7 @@ public class Harbinger extends Schmuck{
 	public static String plural = "Harbingers";
 	public static String pronoun = "it";
 	
-	public static int sprite = 11;
+	public static int sprite = 29;
 	public static int menusprite = 0;
 	
 	public static Skills[] levelSkills = {new IntrusiveThought(0), new ForeseeIll(0)};
@@ -39,7 +41,9 @@ public class Harbinger extends Schmuck{
 	
 	public final static Item[] itemDrops = {new GlimpseattheEnd(), new GlimpseattheEnd(), new GlimpseattheEnd()};
 	public final static double[] dropRates = {1, .75, .5};
-	public final static status[] intrinsicStatuses = {};
+	
+	public final static Schmuck[] summons = {new Augur(1),new Augur(1),new Augur(1)};
+	public final static status[] intrinsicStatuses = {new SummononDeath(summons[0],summons, 50), new DespawnonDeath(summons[0],50)};
 	
 	public final static String bioShort = "TEMP";
 	public final static String bioLong = "";

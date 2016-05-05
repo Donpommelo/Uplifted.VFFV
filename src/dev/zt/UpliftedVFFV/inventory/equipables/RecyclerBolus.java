@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.RecyclerBolusStatus;
 public class RecyclerBolus extends Item{
 
 	
-	static int id = 2;
+	static int id = 42;
 	static String name = "Recycler Bolus";
 	static boolean menu = false;
 	static boolean battle = false;

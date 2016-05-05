@@ -151,13 +151,13 @@ public class TitleState extends State {
 			g.drawString("Welcome to the Uplifted Demo", 315, 100);
 			g.drawString("Uplifted is a 2D, turn-based, rpg game.", 315, 125);
 			g.drawString("All content is subject to change.", 315, 150);
-			g.drawString("Special Thanks to Mrs Lorena.", 315, 175);
+		/*	g.drawString("Special Thanks to Mrs Lorena.", 315, 175);
 			g.drawString("Michael Cheng: Opening Theme.", 315, 200);
 			g.drawString("youtube.com/user/symphony9711.", 315, 225);
 			g.drawString("Iwilldevouryourkittens: Battle Theme.", 315, 250);
 			g.drawString("soundcloud.com/iwilldevouryourkittens", 315, 275);
 			g.drawString("And everyone who supported and playtested.", 315, 300);
-			g.drawString("Send comments to donpommelo@gmail.com", 315, 325);			
+			g.drawString("Send comments to donpommelo@gmail.com", 315, 325);	*/		
 			g.drawImage(ImageLoader.loadImage("/CharacterBusts/Player-5.png"), -40, -139, null);
 			
 		}

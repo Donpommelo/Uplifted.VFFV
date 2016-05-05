@@ -34,9 +34,16 @@ public class UnderwaterPenalty extends status{
 	}
 	
 	public void endofturnEffect(Schmuck s, BattleState bs){
-		switch(bs.gs.getVar(24)){
-		
+		String name = bs.gs.getEvents()[703].getName();
+
+		if(name != ""){
+			switch(bs.gs.getVar(24)){
+			case 0:
+				
+				break;
+			}
 		}
+		
 		if(bs.gs.getSwitch(34)){
 			bs.bp.bt.addScene("Being underwater makes breathing difficult!", new PoisonAnim(s),this, false);
 		}

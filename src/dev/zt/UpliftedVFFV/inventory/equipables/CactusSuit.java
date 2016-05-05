@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class CactusSuit extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Cactus Suit";
 	static boolean menu = false;
 	static boolean battle = false;

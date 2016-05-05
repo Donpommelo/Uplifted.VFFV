@@ -7,7 +7,6 @@ import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class StatusManager {

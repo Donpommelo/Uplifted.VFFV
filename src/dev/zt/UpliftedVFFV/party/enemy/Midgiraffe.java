@@ -7,10 +7,9 @@ import dev.zt.UpliftedVFFV.ablities.LifeDrain;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.ablities.Swarm;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.inventory.consumables.MidgeBlood;
-import dev.zt.UpliftedVFFV.inventory.equipables.AetherFeather;
+import dev.zt.UpliftedVFFV.inventory.equipables.LuckHoof;
 import dev.zt.UpliftedVFFV.inventory.equipables.MidgeProboscis;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
@@ -34,13 +33,13 @@ public class Midgiraffe extends Schmuck{
 	public static String plural = "Midgiraffe";
 	public static String pronoun = "it";
 	
-	public static int sprite = 10;
+	public static int sprite = 26;
 	public static int menusprite = 0;
 	
 	public static Skills[] levelSkills = {};
 	public static int[] levelReqs = {};
 	
-	public final static Item[] itemDrops = {new MidgeBlood(), new MidgeProboscis(), new AetherFeather()};
+	public final static Item[] itemDrops = {new MidgeBlood(), new MidgeProboscis(), new LuckHoof()};
 	public final static double[] dropRates = {.5, .2, .15};
 	public final static status[] intrinsicStatuses = {};
 	

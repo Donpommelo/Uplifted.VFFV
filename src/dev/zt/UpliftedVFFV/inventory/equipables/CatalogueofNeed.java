@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CatoNeedStatus;
 
 public class CatalogueofNeed extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Catalogue of Need";
 	static boolean menu = false;
 	static boolean battle = false;

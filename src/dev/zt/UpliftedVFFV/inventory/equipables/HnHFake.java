@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class HnHFake extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Half-n-Half's Fake";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SpringHeeledJumpersStat
 
 public class SpringHeeledJumpers extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Spring-Heels";
 	static boolean menu = false;
 	static boolean battle = false;

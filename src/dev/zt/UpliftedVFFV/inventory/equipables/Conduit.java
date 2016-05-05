@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class Conduit extends Item{
 
-	static int id = 2;
+	static int id = 85;
 	static String name = "Conduit";
 	static boolean menu = false;
 	static boolean battle = false;

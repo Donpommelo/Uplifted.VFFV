@@ -15,8 +15,6 @@ public class EventEmployeeIntro extends Event {
 
 	public static float xPos,yPos;
 	public static int stagenum=7;		
-	public boolean drawn = true;
-	public boolean solid = true;
 	public static BufferedImage img=Assets.EmployeeM2;
 	public static BufferedImage[] scenes = new BufferedImage[2]; 
 	public EventEmployeeIntro(float x, float y, int idnum) {
@@ -65,8 +63,6 @@ public class EventEmployeeIntro extends Event {
 				break;
 			case 4:
 				EventManager.getEvents()[(int)(this.getX())][(int)(this.getY())]=0;
-				drawn = false;
-				solid = false;
 				this.setSelfswitch1(true);
 				super.getGamestate().getEvents()[3].setOpen(false);
 				super.Timer(this.getId(), 60);
@@ -108,10 +104,10 @@ public class EventEmployeeIntro extends Event {
 	}
 	
 	public boolean drawn(){
-		return drawn;
+		return !this.isSelfswitch1();
 	}
 	
 	public boolean loaded(){
-		return drawn;
+		return !this.isSelfswitch1();
 	}
 }

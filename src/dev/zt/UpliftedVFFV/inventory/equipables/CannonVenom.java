@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CannonVenomStatus;
 
 public class CannonVenom extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Venom Cannon";
 	static boolean menu = false;
 	static boolean battle = false;

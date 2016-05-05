@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class KidneyStone extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Kidney Stone";
 	static boolean menu = false;
 	static boolean battle = false;

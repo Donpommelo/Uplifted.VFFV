@@ -169,6 +169,9 @@ public class BattleState extends State {
 		}
 		else if(bp.fightlost()){
 			StateManager.getStates().pop();
+			StateManager.getStates().push(new NotificationState(game, gs, statemanager, "TEMPORARY GAME OVER SCREEN", EventId));
+
+
 		}
 		if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
 			gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);

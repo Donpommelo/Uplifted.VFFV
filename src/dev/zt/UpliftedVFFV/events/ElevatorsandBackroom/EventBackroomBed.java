@@ -18,7 +18,7 @@ public class EventBackroomBed extends Event {
 		Dialog[] d = new Dialog[1];
 		d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A made bed./");
 		super.Dialog(d, 0, this.getId(), true);
-		super.ChoiceBranch(this.getId(), choices, 120);
+		super.ChoiceBranch(this.getId(), choices, 200);
 	}
 
 	public boolean isSolid(int i){

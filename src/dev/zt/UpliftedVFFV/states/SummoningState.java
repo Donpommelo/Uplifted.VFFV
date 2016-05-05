@@ -268,10 +268,13 @@ public class SummoningState extends State {
 						0, 16, true,true);
 				break;
 			case 3:
-				gs.getPartymanager().recruit(summon);
-				summon.expGain(summonObjects.get(summoner).getXp());
-				summonsauce.summonBonus(summon);
-				gs.inventorymanager.use(summonsauce);
+				if(yesno == 0){
+					gs.getPartymanager().recruit(summon);
+					summon.expGain(summonObjects.get(summoner).getXp());
+					summonsauce.summonBonus(summon);
+					gs.inventorymanager.use(summonsauce);
+					summonObjects.get(summoner).setSummon(summon);
+				}
 				if(game.getKeyManager().space || game.getKeyManager().x){
 					StateManager.getStates().pop();
 					game.getKeyManager().disable(delayNext);

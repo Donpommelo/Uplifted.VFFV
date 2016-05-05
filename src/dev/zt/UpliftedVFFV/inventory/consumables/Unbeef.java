@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.BeefedUp;
 
 public class Unbeef extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Unbeef";
 	static boolean menu = false;
 	static boolean battle = true;

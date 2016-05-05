@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class CompoundVitreous extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Compound Vitreous";
 	static boolean menu = false;
 	static boolean battle = false;

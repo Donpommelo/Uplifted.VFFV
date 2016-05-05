@@ -9,6 +9,10 @@ import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.consumables.BelugaBubblegum;
+import dev.zt.UpliftedVFFV.inventory.consumables.SaltedNori;
+import dev.zt.UpliftedVFFV.inventory.consumables.SweetishFish;
+import dev.zt.UpliftedVFFV.inventory.misc.FishFood;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 
 
@@ -20,7 +24,7 @@ public class EventGiftShopSnacks extends Event {
 	public ArrayList<Item> stuff = new ArrayList<Item>();
 	public static int stagenum = 0;
 	public EventGiftShopSnacks(float x, float y, int idnum) {
-		super(Assets.VendingMachine,idnum,x, y, stagenum);
+		super(Assets.Table8,idnum,x, y, stagenum);
 		
 	}
 	
@@ -40,6 +44,12 @@ public class EventGiftShopSnacks extends Event {
 			discount += s.getDiscountBonus();
 		}
 
+		stuff.add(new FishFood());
+		stuff.add(new BelugaBubblegum());
+		stuff.add(new SweetishFish());
+		stuff.add(new SaltedNori());
+		
+		
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));
 		}

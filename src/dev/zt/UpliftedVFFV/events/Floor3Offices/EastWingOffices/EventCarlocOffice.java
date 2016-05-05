@@ -22,14 +22,15 @@ public class EventCarlocOffice extends Event {
 			if(this.isSelfswitch1()){
 					if(super.getQuest(5) == 6){
 						super.setQuest(5, 7);
-						Dialog[] d = new Dialog[5];
-						d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You’ve finished already! What a challenging yet satisfying quest! You should feel very accomplished!");
+						Dialog[] d = new Dialog[6];
+						d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You’ve finished already!/What a challenging yet satisfying quest!/You should feel very accomplished!");
 						d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,". . . Is something wrong?/You seem on edge.");
-						d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Anyways, now for your final reward!/I present you with the Basement Key!/With this card, you can access the Company Town on floor B1!");
-						d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Let me unlock the elevator in my room so you can head down there immediately.");
-						d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Why don’t you go shop and socialize with your coworkers like a well-adjusted employee?");
+						d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You've just completed a very grand quest!/Set your mind at ease. I'm not going to pounce on you or anything.");
+						d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Anyways, now for your final reward!/I present to you the Basement Key!/With this card, you can access the Company Town on floor B1!");
+						d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Let me unlock the elevator in my room so you can head down there immediately.");
+						d[5] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Why don’t you go shop and socialize with your coworkers like a well-adjusted employee?");
 						super.loot(new BasementKeyCard(), 1);
-						super.Dialog(d, 4, this.getId(), true);
+						super.Dialog(d, 5, this.getId(), true);
 					}
 					else if(super.getQuest(5) == 7){
 						Dialog[] d = new Dialog[1];
@@ -44,13 +45,14 @@ public class EventCarlocOffice extends Event {
 			}
 			else{
 				if(super.itemNumCheck(new ManilaFolder()) > 0 ){
-					Dialog[] d = new Dialog[5];
-					d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Mam, we've got the folder here, but the Informant wanted us to tell you . . .");
+					Dialog[] d = new Dialog[6];
+					d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Mam, we've got the folder here, and the Informant wanted us to tell you . . .");
 					d[1] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Oh, never mind him, just give me the Folder./Ah yes, that's the one! And at a record time too!");
-					d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Now, for the next part of your little quest. I need you to deliver this package to my coworker in the West Wing Offices.");
-					d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You can be certain that this quest will be well worth your time. Are we understood?");
-					d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Run along now, but bear in mind that the West Wing is both tougher and more productive than the other wings.");
-					super.Dialog(d, 4, this.getId(), true);
+					d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Now, for the next part of your little quest. I need you to deliver this package to my coworker, Speros.");
+					d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"He lives in . . . er . . . /He works in the West Wing Offices.");
+					d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Now, you can be certain that this quest will be well worth your time. Are we understood?");
+					d[5] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Run along now, but bear in mind that the West Wing is both tougher and more productive than the other wings.");
+					super.Dialog(d, 5, this.getId(), true);
 					super.setQuest(5, 5);
 					super.setQuest(3, 1);
 					this.setSelfswitch1(true);

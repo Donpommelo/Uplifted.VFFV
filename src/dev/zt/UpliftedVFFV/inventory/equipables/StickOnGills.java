@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class StickOnGills extends Item{
 
-	static int id = 2;
+	static int id = 91;
 	static String name = "Stick-On Gills";
 	static boolean menu = false;
 	static boolean battle = false;

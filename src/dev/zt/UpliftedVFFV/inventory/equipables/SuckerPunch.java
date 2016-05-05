@@ -3,13 +3,12 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SpringHeeledJumpersStatus;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.SuckerPunchStatus;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class SuckerPunch extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Sucker Punch";
 	static boolean menu = false;
 	static boolean battle = false;

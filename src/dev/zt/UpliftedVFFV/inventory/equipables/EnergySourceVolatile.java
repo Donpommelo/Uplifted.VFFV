@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EnergyVolatile;
 
 public class EnergySourceVolatile extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Volatile Energy Source";
 	static boolean menu = false;
 	static boolean battle = false;

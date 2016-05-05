@@ -4,11 +4,10 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EnergyObsolete;
-import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EnergyOvercharged;
 
 public class EnergySourceObsolete extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Obsolete Energy Source";
 	static boolean menu = false;
 	static boolean battle = false;

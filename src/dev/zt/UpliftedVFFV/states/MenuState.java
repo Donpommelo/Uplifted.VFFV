@@ -1,12 +1,9 @@
 package dev.zt.UpliftedVFFV.states;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
@@ -575,9 +572,13 @@ public class MenuState extends State {
 						break;
 					case 2:
 						//TODO: Map.
+						StateManager.getStates().push(new NotificationState(game, gamestate, statemanager, "NOT IMPLEMENTED YET", 0));
+						exit = true;
 						break;
 					case 3:
 						//TODO: Employee Directory/Worstiary. Should have own state perhaps.
+						StateManager.getStates().push(new NotificationState(game, gamestate, statemanager, "NOT IMPLEMENTED YET", 0));
+						exit = true;
 						break;
 					case 4:
 						if(game.getKeyManager().space){
@@ -593,6 +594,9 @@ public class MenuState extends State {
 							if(quitPointer == 1){
 								optionChosen = false;
 							} else if(quitPointer == 0){
+								
+								audio.playMusic(0, false);
+								
 								audio.playSound("/Audio/option_toggle.wav", false);
 								StateManager.getStates().pop();
 								StateManager.getStates().pop();

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class BladeoftheFallen extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Blade of the Fallen";
 	static boolean menu = false;
 	static boolean battle = false;

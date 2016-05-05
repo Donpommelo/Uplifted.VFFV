@@ -34,13 +34,30 @@ public class EventElevatorConversation extends Event {
 		if (Player.runlast==3){
 			this.setTex(SpriteSorter.SpriteSort(4,img));
 		}
-		switch(convId){
-		case 1:
-			break;
-		case 1000:
-			//Random conversations
-			break;
+		if(this.isSelfswitch1()){
+			switch(convId){
+			case 1:
+				
+				break;
+			case 1000:
+				//Random conversations
+				break;
+			}
 		}
+		else{
+			super.setVar(28, super.getVar(28)+1);
+			this.setSelfswitch1(true);
+			switch(convId){
+			case 1:
+				
+				break;
+			case 1000:
+				//Random conversations
+				super.setVar(28, super.getVar(28)-1);
+				break;
+			}
+		}
+		
 		
 	}
 	
@@ -50,14 +67,20 @@ public class EventElevatorConversation extends Event {
 	
 	public boolean loaded(){
 		if(super.getQuest(1) > 2){
+			this.setSelfswitch1(true);
 			if(super.getVar(28) < super.getVar(27)){
-				super.setVar(28,super.getVar(28)+1);
 				convId = super.getVar(28);
+				switch(convId){
+				
+				}
+				this.setSelfswitch4(true);
 				return true;
 			}
 			else{
-				if(Math.random() < .30){
-					convId = 1000;
+				this.setSelfswitch1(false);
+				double rand = Math.random();
+				if(rand < .30){
+					convId = (int)((rand+1)*1000);
 					return true;
 				}
 				else{

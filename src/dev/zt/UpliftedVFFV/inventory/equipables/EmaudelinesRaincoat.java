@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class EmaudelinesRaincoat extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Emaudeline's Raincoat";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Silenced;
 public class BeefBoyle extends Item{
 	
 	
-	static int id = 2;
+	static int id = 42;
 	static String name = "Beef Boyleston";
 	static boolean menu = false;
 	static boolean battle = true;

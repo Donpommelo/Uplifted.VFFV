@@ -18,18 +18,22 @@ public class EventCarlocLobby extends Event {
 	
 	public void run(){
 		if(!this.isSelfswitch1()){
-			Dialog[] d = new Dialog[9];
+			Dialog[] d = new Dialog[13];
 			d[0] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Hmm? Are you lost? Are you looking for someone?");
 			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0," Mam, could you tell us where we can find Suite 521?");
 			d[2] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Suite . . . 5 . . . 2 . . . ?");
 			d[3] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,". . .");
-			d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Y'know what? I think I have a . . . better plan./You're on a quest, right? Yes, yes you seem like the questing type to me. Why don't you do a little favor for me.");
-			d[5] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"I'd like you to run along that hallway to the North and find The Informant. He looks exactly like yourself except with a different uniform.");
-			d[6] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Think of it as a sidequest!");
-			d[7] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Once you locate him, ask him for a Manila Folder and bring it back to me. There! That's simple enough, isn't it?");
-			d[8] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"If you still care about . . . whatever it was you first asked me about, well this quest will no doubt contribute greatly to your progress. I assure you.");
+			d[4] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Y'know what? I think I have a . . . better plan./You are on a . . . quest, right?");
+			d[5] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Yes, yes you certainly seem like the questing type to me./Could I ask a small favor from you?");
+			d[6] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"You seem like a reliable sort of fellow./The kind of employee who would never let his coworkers down.");
+			d[7] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"I would like you to run along that hallway to the North and find The Informant. He looks exactly like yourself except with a different uniform.");
+			d[8] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Think of it as a sidequest!");
+			d[9] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"Once you locate the Informant, ask him for a Manila Folder and bring it back to me.");
+			d[10] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1," There! That's simple enough, isn't it?");
+			d[11] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"If you still care about . . . whatever it was you first asked me about, well this quest will no doubt contribute greatly to your progress. I assure you.");
+			d[12] = new Dialog("Carloc","/CharacterBusts/3rdEastOffices-5.png",1,"That is how sidequests work, isn't it?/Yes, of course it is.");
 			this.setSelfswitch1(true);
-			super.Dialog(d, 8, this.getId(), true);
+			super.Dialog(d, 12, this.getId(), true);
 			super.setQuest(5, 1);
 		}
 		else{

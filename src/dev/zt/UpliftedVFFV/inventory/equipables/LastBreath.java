@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.LastBreathStatus;
 
 public class LastBreath extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Last Breath";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ColoredPlasticBall extends Item{
 	
-	static int id = 2;
+	static int id = 42;
 	static String name = "OVERRIDE";
 	static boolean menu = false;
 	static boolean battle = true;

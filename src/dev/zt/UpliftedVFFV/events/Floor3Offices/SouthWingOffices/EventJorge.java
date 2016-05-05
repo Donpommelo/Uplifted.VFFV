@@ -60,6 +60,9 @@ public class EventJorge extends Event {
 					d2[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Arrggh. . .  I'm calling security!");
 					super.Dialog(d2, 0, this.getId(), true);
 				}
+				else{
+					this.setstage(0);
+				}
 				break;
 			case 4:
 				this.setstage(0);

@@ -38,7 +38,12 @@ public class VariableManager {
  27: Elevator Conversation Progress ()
  28: Elevator Conversation Last
  29: Light Source Level
- 30: 
+ 30: Amdahl Points...?
+ 31: 
+ 32: 
+ 33: 
+ 34: 
+ 
  */
 	
 	public VariableManager(Game g){

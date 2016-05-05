@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Poisoned;
 
 public class BeefUnwell extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Beef Unwellington";
 	static boolean menu = false;
 	static boolean battle = true;

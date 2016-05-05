@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EventTriviaGuyOffices extends Event {
 	
 	public String[] Choices={"A: Balustrade","B: Apron","C: Escutcheon Tube","D: Guide Rails","E: Buffer"};			//list of choices used in the choicebranch
-	public static int stagenum = 1;			
+	public static int stagenum = 2;			
 	public static BufferedImage img=SpriteSorter.SpriteSort(1,Assets.EmployeeM1);
 	public EventTriviaGuyOffices(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
@@ -47,7 +47,7 @@ public class EventTriviaGuyOffices extends Event {
 				Dialog[] d1 = new Dialog[1];
 				d1[0] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"That's all I've got now, but be on the lookout! You never know when the need for knowledge will strike!");
 				super.Dialog(d1, 0, this.getId(), true);
-
+				super.setstage(2);
 			}
 			break;
 		case 1:
@@ -56,6 +56,9 @@ public class EventTriviaGuyOffices extends Event {
 			super.Dialog(d1, 0, this.getId(), true);
 			super.ChoiceBranch(this.getId(), Choices, 300);
 			this.setSelfswitch1(true);
+	//		this.setstage(1);
+			break;
+		case 2:
 			this.setstage(0);
 			break;
 			
@@ -64,13 +67,14 @@ public class EventTriviaGuyOffices extends Event {
 	
 	public void ChoiceMade(int i){
 		if(i == 1){
-			Dialog[] d1 = new Dialog[5];
+			Dialog[] d1 = new Dialog[6];
 			d1[0] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,". . .");
 			d1[1] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"CORRECT! WE HAVE A WINNER! CONGRATULATIONS ARE IN ORDER!");
-			d1[2] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"The Car Apron, also known as the Toe Guard serves as an extra line of defense against the dangers of an open elevator shaft! You can never be too careful, really when it comes to the lives of fellow coworkers!");
-			d1[3] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"Such knowledge! I expected no less from our building's one and only elevator operator!Oh, and as for your reward . . .");
-			d1[4] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Trivia Trinket!");
-			super.Dialog(d1, 4, this.getId(), true);
+			d1[2] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"The Car Apron, also known as the Toe Guard serves as an extra line of defense against the dangers of an open elevator shaft!");
+			d1[3] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"You can never be too careful, really when it comes to the lives of fellow coworkers!");
+			d1[4] = new Dialog("Trivia Guy","/CharacterBusts/TriviaGuysmall.png",1,"Such knowledge! I expected no less from our building's one and only elevator Operator!/Oh, and as for your reward . . .");
+			d1[5] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You Obtained the Trivia Trinket!");
+			super.Dialog(d1, 5, this.getId(), true);
 			//Get Reward Item
 		}
 		else{

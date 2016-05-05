@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class PelicanPlushToy extends Item{
 
-	static int id = 2;
+	static int id = 90;
 	static String name = "Pelican Plush Toy";
 	static boolean menu = false;
 	static boolean battle = false;

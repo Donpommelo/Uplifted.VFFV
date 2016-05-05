@@ -73,7 +73,7 @@ public class EventJanitor1 extends Event {
 			Dialog[] d = new Dialog[1];
 			d[0] = new Dialog("Janitor","/CharacterBusts/Janitor2small.png",1,"So, what'll it be?");
 			super.Dialog(d, 0, this.getId(), true);
-			super.ChoiceBranch(this.getId(), Choices, 100);
+			super.ChoiceBranch(this.getId(), Choices, 150);
 			break;
 		case 2:
 			this.setstage(0);

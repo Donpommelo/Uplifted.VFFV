@@ -11,7 +11,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class FensClippedWings extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Fen's Clipped Wings";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -65,6 +65,10 @@ public class EventElevatorPanel extends Event {
 			else if(super.getVar(1)!= i){
 				super.setVar(1,i);
 				super.screenShake(50);
+				//Possibly run important elevator Conversation: run event #55
+				if(super.getGamestate().getEvents()[55].isSelfswitch4()){
+					super.getGamestate().getEvents()[55].run();
+				}
 			}
 		
 		}

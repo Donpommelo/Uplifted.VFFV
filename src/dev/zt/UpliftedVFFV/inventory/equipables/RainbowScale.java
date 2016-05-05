@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class RainbowScale extends Item{
 
-	static int id = 2;
+	static int id = 88;
 	static String name = "Rainbow Scale";
 	static boolean menu = false;
 	static boolean battle = false;

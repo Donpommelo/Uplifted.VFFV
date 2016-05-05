@@ -3,12 +3,11 @@ package dev.zt.UpliftedVFFV.inventory.equipables;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class StatRingFirefly extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Firefly Ring";
 	static boolean menu = false;
 	static boolean battle = false;

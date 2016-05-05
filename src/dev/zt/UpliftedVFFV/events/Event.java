@@ -109,7 +109,7 @@ public class Event implements Serializable{
 	public static Event eventpenpal = new EventPenPal(5,7,52);
 	public static Event eventelevatorpanel = new EventElevatorPanel(6,6,53);
 	public static Event eventemployeeIntro = new EventEmployeeIntro(4,9,54);
-	//Event 55: Elevator Conversations?
+	public static Event eventelevatorConv = new EventElevatorConversation(4,7,55);
 	public static Event eventreceptionist = new EmpReceptionist(9,9,56);
 	public static Event eventreceptionistdesk = new EventReceptionistDesk(9,10,57);
 	public static Event eventempCarto = new EmpCartographer(5,11,58);
@@ -507,7 +507,7 @@ public class Event implements Serializable{
 	public static Event event453 = new WarpLLandtoBallpitBlue(40,6,453);
 	public static Event event454 = new WarpLLandtoInner(41,8,454);
 	public static Event event455 = new WarpLLandtoFloor2(22,12,455);
-	//LLand to extra room?
+	public static Event event456 = new WarpEaterytoExtended(2,56,456);
 	public static Event event457 = new WarpLLLobbytoLLand(3,13,457);
 	public static Event event458 = new WarpLLLobbytoEElevator(9,17,458);
 	public static Event event459 = new WarpLLLobbytoLLandFloor2(9,6,459);
@@ -524,7 +524,7 @@ public class Event implements Serializable{
 	public static Event event470 = new WarpLLandFloor2toInner(40,7,470);
 	public static Event event471 = new WarpLLandFloor2toJCloset(26,12,471);
 	public static Event event472 = new WarpJClosettoLLandFloor2(5,11,472);
-	//473: Extra room to LLand?
+	public static Event event473 = new WarpExtendedtoEatery(39,33,473);
 	public static Event event474 = new WarpIntroHalltoEatery(5,11,474);
 	public static Event event475 = new WarpIntroHalltoHarvesting(16,7,475);
 	public static Event event476 = new WarpIntroHalltoResynthesizing(8,7,476);
@@ -710,8 +710,9 @@ public class Event implements Serializable{
 	public static Event eventWaterDrainLeverWest = new EventWaterDrainLeverWest(37,34,706);
 	public static Event eventWaterDrainLeverMaster = new EventMasterDrain(8,7,707);
 	public static Event safe16 = new EventSafe16(14,7,708);
-	
-	
+	//safes 17-25?
+	public static Event eventGiftShopSnacks = new EventGiftShopSnacks(5,11,713);
+	public static Event eventGiftShopSouvenir = new EventGiftShopSouvenirs(0,0,714);
 	public static Event eventBlockageLeft = new EventBlockageLeft(7,8,715);
 	public static Event eventBlockageRight = new EventBlockageRight(23,8,716);
 	

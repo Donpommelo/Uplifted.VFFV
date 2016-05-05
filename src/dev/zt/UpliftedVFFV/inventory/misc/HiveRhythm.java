@@ -7,15 +7,13 @@ import dev.zt.UpliftedVFFV.inventory.equipables.HiveRhythmB;
 import dev.zt.UpliftedVFFV.inventory.equipables.HiveRhythmC;
 import dev.zt.UpliftedVFFV.inventory.equipables.HiveRhythmD;
 import dev.zt.UpliftedVFFV.inventory.equipables.HiveRhythmE;
-import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.NotificationState;
 import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class HiveRhythm extends Item{
 	
-	static int id = 2;
+	static int id = 42;
 	static String name = "Hive Rhythm";
 	static boolean menu = true;
 	static boolean battle = false;

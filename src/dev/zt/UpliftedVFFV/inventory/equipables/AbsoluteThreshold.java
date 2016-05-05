@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AbsoluteThresholdStatus
 
 public class AbsoluteThreshold extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Absolute Threshold";
 	static boolean menu = false;
 	static boolean battle = false;

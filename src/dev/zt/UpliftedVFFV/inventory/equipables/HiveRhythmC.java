@@ -13,7 +13,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class HiveRhythmC extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Hive Rhythm: C";
 	static boolean menu = false;
 	static boolean battle = false;

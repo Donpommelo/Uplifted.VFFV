@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class TomeofEcdysis extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Tome of Ecdysis";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.EmpathyLinkStatus;
 
 public class EmpathyLink extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Empathy Link";
 	static boolean menu = false;
 	static boolean battle = false;

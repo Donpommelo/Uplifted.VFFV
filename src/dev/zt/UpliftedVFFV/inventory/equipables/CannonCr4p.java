@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CannonCr4pStatus;
 
 public class CannonCr4p extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "CR4P Cannon";
 	static boolean menu = false;
 	static boolean battle = false;

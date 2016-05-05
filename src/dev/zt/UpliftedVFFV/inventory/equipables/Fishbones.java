@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Fishbones extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Fishbones";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -232,11 +232,21 @@ public class Assets {
 		itemIcons[82] = ItemIcons1.crop(2*itemSize,8*itemSize,itemSize,itemSize);	//Mangrove Talisman
 		itemIcons[83] = ItemIcons1.crop(3*itemSize,8*itemSize,itemSize,itemSize);	//False Face
 		itemIcons[84] = ItemIcons1.crop(4*itemSize,8*itemSize,itemSize,itemSize);	//Monster Coffee
-		itemIcons[85] = ItemIcons1.crop(5*itemSize,8*itemSize,itemSize,itemSize);	//
-		itemIcons[86] = ItemIcons1.crop(6*itemSize,8*itemSize,itemSize,itemSize);	//
-		itemIcons[87] = ItemIcons1.crop(7*itemSize,8*itemSize,itemSize,itemSize);	//
-		itemIcons[88] = ItemIcons1.crop(8*itemSize,8*itemSize,itemSize,itemSize);	//
-		itemIcons[89] = ItemIcons1.crop(9*itemSize,8*itemSize,itemSize,itemSize);	//
+		itemIcons[85] = ItemIcons1.crop(5*itemSize,8*itemSize,itemSize,itemSize);	//Conduit
+		itemIcons[86] = ItemIcons1.crop(6*itemSize,8*itemSize,itemSize,itemSize);	//Auto-Querier
+		itemIcons[87] = ItemIcons1.crop(7*itemSize,8*itemSize,itemSize,itemSize);	//Lucky Hoof
+		itemIcons[88] = ItemIcons1.crop(8*itemSize,8*itemSize,itemSize,itemSize);	//Rainbow Scale
+		itemIcons[89] = ItemIcons1.crop(9*itemSize,8*itemSize,itemSize,itemSize);	//Sweetish Fish
+		itemIcons[90] = ItemIcons1.crop(0,9*itemSize,itemSize,itemSize);			//Pelican Plush Toy
+		itemIcons[91] = ItemIcons1.crop(itemSize,9*itemSize,itemSize,itemSize);		//Stick-On Gills
+		itemIcons[92] = ItemIcons1.crop(2*itemSize,9*itemSize,itemSize,itemSize);	//Torchlight
+		itemIcons[93] = ItemIcons1.crop(3*itemSize,9*itemSize,itemSize,itemSize);	//Beluga Bubblegum
+		itemIcons[94] = ItemIcons1.crop(4*itemSize,9*itemSize,itemSize,itemSize);	//Salted Nori
+		itemIcons[95] = ItemIcons1.crop(5*itemSize,9*itemSize,itemSize,itemSize);	//Placeholder
+		itemIcons[96] = ItemIcons1.crop(6*itemSize,9*itemSize,itemSize,itemSize);	//
+		itemIcons[97] = ItemIcons1.crop(7*itemSize,9*itemSize,itemSize,itemSize);	//
+		itemIcons[98] = ItemIcons1.crop(8*itemSize,9*itemSize,itemSize,itemSize);	//
+		itemIcons[99] = ItemIcons1.crop(9*itemSize,9*itemSize,itemSize,itemSize);	//
 		
 		//Skill Icons.
 		int numSkills = 10;
@@ -249,7 +259,7 @@ public class Assets {
 		skillIcons[5] = ActionIcons.crop(160,0,32,32);			//5 - Run.
 		
 		//Battle Sprites.
-		int numSprites = 20;
+		int numSprites = 50;
 		battleSprites = new BufferedImage[numSprites];
 		battleSprites[0] = ImageLoader.loadImage("/BattleSprites/Operator.png");			//0 - Operator.
 		battleSprites[1] = ImageLoader.loadImage("/BattleSprites/PenPal.png");				//1 - Pen Pal.
@@ -271,7 +281,20 @@ public class Assets {
 		battleSprites[17] = ImageLoader.loadImage("/BattleSprites/Chameleon.png");			//17 - Chameleon.
 		battleSprites[18] = ImageLoader.loadImage("/BattleSprites/Copy Cat.png");			//18 - Copy Cat.
 		battleSprites[19] = ImageLoader.loadImage("/BattleSprites/KillingTime.png");		//19 - Killing Time.
-//		battleSprites[20] = ImageLoader.loadImage("/BattleSprites/Floater.png");			//20 - Floater.
+		battleSprites[20] = ImageLoader.loadImage("/BattleSprites/Floater.png");			//20 - Floater.
+		battleSprites[21] = ImageLoader.loadImage("/BattleSprites/Feeling of Being Watched.png");		//21 - Feeling of Being Watched.
+		battleSprites[22] = ImageLoader.loadImage("/BattleSprites/Feeling of Having Taken a Wrong Turn.png");		//22 - Feeling you took a Wrong turn
+		battleSprites[23] = ImageLoader.loadImage("/BattleSprites/Nothing But a Feeling.png");			//23 - Just a Feeling
+		battleSprites[24] = ImageLoader.loadImage("/BattleSprites/Plated Ghost.png");			//24 - Plated Ghost
+		battleSprites[25] = ImageLoader.loadImage("/BattleSprites/Pleated Ghost.png");			//25 - Pleated Ghost
+		battleSprites[26] = ImageLoader.loadImage("/BattleSprites/Midgiraffe.png");			//26 - Midgiraffe
+		battleSprites[27] = ImageLoader.loadImage("/BattleSprites/Stilts.png");				//27 - Stilts
+		battleSprites[28] = ImageLoader.loadImage("/BattleSprites/Man's Best Friend.png");	//28 - Men's Best Friends
+		battleSprites[29] = ImageLoader.loadImage("/BattleSprites/Harbinger.png");			//29 - Harbinger
+		battleSprites[30] = ImageLoader.loadImage("/BattleSprites/Fortress Mindspace.png");	//30 - Fortress Mindspace
+		battleSprites[31] = ImageLoader.loadImage("/BattleSprites/Mindspace Overseer.png");	//31 - Mindspace Overseer
+		battleSprites[32] = ImageLoader.loadImage("/BattleSprites/Panopticon.png");			//32 - Panopticon
+
 
 		//UI elements and other icons.
 		Uparrow = arrowup.crop(0, 0 ,32, 32);

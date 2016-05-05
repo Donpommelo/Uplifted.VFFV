@@ -34,7 +34,16 @@ public class Troop implements Comparable<Troop>{
 	public static Troop Troop22 = new Troop22PortentGang(22);
 	public static Troop Troop23 = new Troop23LeaderandCo2(23);
 	public static Troop Troop24 = new Troop24KillingTime(24);
-
+	public static Troop Troop25 = new Troop25MansBestFriends(25);
+	public static Troop Troop26 = new Troop26Harbinger(26);
+	public static Troop Troop27 = new Troop27Floaters(27);
+	public static Troop Troop28 = new Troop28Panopticon(28);
+	public static Troop Troop29 = new Troop29FeelingYouTookAWrongTurn(29);
+	public static Troop Troop30 = new Troop30FeelingofBeingWatched(30);
+	public static Troop Troop31 = new Troop31JustAFeeling(31);
+	public static Troop Troop32 = new Troop32PleatedPlatedGhosts(32);
+	public static Troop Troop33 = new Troop33FortressMindspace(33);
+	public static Troop Troop34 = new Troop34Midgiraffe(34);
 	
 	protected final int id;
 	public ArrayList<Schmuck> troop=new ArrayList<Schmuck>();

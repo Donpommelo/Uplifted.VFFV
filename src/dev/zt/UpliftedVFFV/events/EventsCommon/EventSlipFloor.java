@@ -4,9 +4,7 @@ import java.awt.image.BufferedImage;
 
 import dev.zt.UpliftedVFFV.entities.creatures.Player;
 import dev.zt.UpliftedVFFV.events.Event;
-import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
-import dev.zt.UpliftedVFFV.world.EventManager;
 
 
 
@@ -21,9 +19,10 @@ public class EventSlipFloor extends Event {
 	public void run(){
 		int pX = (int)(gamestate.getPlayer().getPlayerX()/32);
 		int pY = (int)(gamestate.getPlayer().getPlayerY()/32);
+		gamestate.getPlayer().setStill(true);
 		if (Player.runlast==0){
 			if(!gamestate.getWorld().getTile(pX,pY-1).isSolid() && !gamestate.getEventmanager().getEvent(pX,pY-1).isSolid(0)){
-					gamestate.getPlayer().movePlayer(0);
+				gamestate.getPlayer().movePlayer(0);
 			}
 		}
 		if (Player.runlast==1){

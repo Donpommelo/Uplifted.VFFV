@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DeathCapStatus;
 
 public class DeathCap extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Death Cap";
 	static boolean menu = false;
 	static boolean battle = false;

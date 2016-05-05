@@ -1,6 +1,5 @@
 package dev.zt.UpliftedVFFV.events.Floor3Offices.WestWingOffices;
 
-import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 
@@ -18,9 +17,15 @@ public class WarpCubicleDungeontoTrashChute extends Event {
 			super.fite(24, this.getId(), false,true);
 			break;
 		case 1:
-			super.transport("/Worlds/Floor3Offices/WestWingOffices/DumpChute.txt",9,37,"");
-			super.setVar(16, 0);
-			super.Timer(this.getId(), 10);
+			if(isFightwon()){
+				super.transport("/Worlds/Floor3Offices/WestWingOffices/DumpChute.txt",9,37,"");
+				super.setVar(16, 0);
+				super.Timer(this.getId(), 10);
+	//			super.cameraMove(0, 0, 100);
+			}
+			else{
+				this.setstage(0);
+			}
 			break;
 		case 2:
 			this.setstage(0);

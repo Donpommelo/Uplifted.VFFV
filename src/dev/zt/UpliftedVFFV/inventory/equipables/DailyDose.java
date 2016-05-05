@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.DailyDoseStatus;
 
 public class DailyDose extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Daily Dose";
 	static boolean menu = false;
 	static boolean battle = false;

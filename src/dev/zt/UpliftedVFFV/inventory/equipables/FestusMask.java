@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class FestusMask extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Mask of Sympathy";
 	static boolean menu = false;
 	static boolean battle = false;

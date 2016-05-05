@@ -37,7 +37,7 @@ public class Silenced extends status{
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+"'s voice came back.";
+		return s.getName()+"'s voice came back!";
 	}
 	
 	public Boolean isBad(){

@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class DeadMansHand extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Dead Man's Hand";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.IronSightsStatus;
 
 public class IronSights extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Iron Sights";
 	static boolean menu = false;
 	static boolean battle = false;

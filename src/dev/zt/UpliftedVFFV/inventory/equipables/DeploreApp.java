@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.Deplorable;
 
 public class DeploreApp extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Deplorable Apparatus";
 	static boolean menu = false;
 	static boolean battle = false;

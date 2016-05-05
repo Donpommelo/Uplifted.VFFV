@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.NineLivesStatus;
 
 public class NineLives extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Ninth Life";
 	static boolean menu = false;
 	static boolean battle = false;

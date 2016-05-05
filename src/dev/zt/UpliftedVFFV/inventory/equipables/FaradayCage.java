@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.MeterShield;
 
 public class FaradayCage extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Faraday's Cage";
 	static boolean menu = false;
 	static boolean battle = false;

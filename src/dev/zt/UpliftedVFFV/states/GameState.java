@@ -43,6 +43,8 @@ public class GameState extends State {
 //	public int floor;
 	public int Script=0;												//starting currency. Change later for save stuff
 	
+	public long startTime,elapsedTime;
+	
 	//Upon creation, the gamestate will load the starting World and events. Other worlds are loaded through events and such
 	//This can be temporarily changed for the purpose of testing
 	//Come back to this starting world/event stuff later when you want to make save states
@@ -65,21 +67,26 @@ public class GameState extends State {
 		
 //		String StartingFloor = "/Worlds/Floor1Reception/SouthLobbyMain.txt";
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt";
-		String StartingFloor = "/Worlds/Floor4Aquarium/WetworksDungeon/BlockedPipeRoom.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt";
+//		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelEast.txt";
 //		String StartingFloor = "/Worlds/Floor6FoodServery/FoodCourt/Eatery.txt";
 //		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Floor1Main.txt";
 //		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
-//		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
+		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
 
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		
 		eventmanager = new EventManager(game,this,StartingFloor);
 		decormanager = new DecorManager(game, this, StartingFloor);
 
+		worldmanager.fade(1);
+		
 		player = new Player(game, 32*worldmanager.getSpawnX(), 32*worldmanager.getSpawnY(), this);										//creates player
 		game.getAudiomanager().playMusic(1,true);
 		game.getGameCamera().centerOnEntity(player);
+		
+		//Item Hax
+		//Event.events[1001].run();
 	}
 	
 	//Dummy gamestate used to read and display save files
@@ -91,6 +98,8 @@ public class GameState extends State {
 		eventselfswitchmanager = new EventSelfSwitchManager(game);
 		Events = new Event(game, sm,this);											//creates a new Event class that controls all events
 		player = new Player(game, 0, 0, this);										//creates player
+		
+
 	}
 
 	public WorldManager getWorld() {
@@ -286,5 +295,7 @@ public class GameState extends State {
 		stream.writeObject(variablemanager.variables);
 		stream.writeObject(questmanager.quests);
 
+		//Save game time
+		
 	}
 }

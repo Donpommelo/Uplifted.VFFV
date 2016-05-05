@@ -32,6 +32,7 @@ public class EventAmdahlOffices extends Event {
 			d[11] = new Dialog("Amdahl","/CharacterBusts/Amdahl1small.png",1,"Maybe your Pen Pal wouldn't approve?/Well you better hurry then.");
 			d[12] = new Dialog("Amdahl","/CharacterBusts/Amdahl1small.png",1,"You wouldn't want to get mulch in the carpet, would you? You know how hard our Janitor already works.");
 			super.Dialog(d, 12, this.getId(), true);
+			super.setVar(30, super.getVar(30)+1);
 		}
 		else{
 			Dialog[] d = new Dialog[1];

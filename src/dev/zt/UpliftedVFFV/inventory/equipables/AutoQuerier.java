@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AutoQuery;
 
 public class AutoQuerier extends Item{
 
-	static int id = 2;
+	static int id = 86;
 	static String name = "Future-Tech Autoquerier";
 	static boolean menu = false;
 	static boolean battle = false;

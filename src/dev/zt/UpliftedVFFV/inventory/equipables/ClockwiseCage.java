@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class ClockwiseCage extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Clockwise Cage";
 	static boolean menu = false;
 	static boolean battle = false;

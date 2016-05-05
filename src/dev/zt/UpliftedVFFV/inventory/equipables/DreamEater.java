@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class DreamEater extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Dream Eater";
 	static boolean menu = false;
 	static boolean battle = false;

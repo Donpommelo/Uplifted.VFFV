@@ -8,7 +8,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
 
 public class InfernalRacket extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Infernal Racket";
 	static boolean menu = false;
 	static boolean battle = false;

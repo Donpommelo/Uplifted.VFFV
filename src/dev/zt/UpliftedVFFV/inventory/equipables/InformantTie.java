@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.OrangeInfusion;
 
 public class InformantTie extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Informant's Tie";
 	static boolean menu = false;
 	static boolean battle = false;

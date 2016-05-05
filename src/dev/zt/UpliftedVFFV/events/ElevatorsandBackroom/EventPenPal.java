@@ -12,7 +12,6 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 
 public class EventPenPal extends Event {
 
-	public boolean drawn = false;
 	public static int stagenum = 0;
 	public static BufferedImage img=SpriteSorter.SpriteSort(10,Assets.PenPal);
 	public EventPenPal(float x, float y, int idnum) {
@@ -66,15 +65,12 @@ public class EventPenPal extends Event {
 	}
 	
 	public boolean drawn(){
-		return drawn;
+		return super.getGamestate().getEvents()[53].isSelfswitch1();
 	}
 	
-	public void setDrawn(boolean drawn){
-		this.drawn = drawn;
-	}
 	
 	public boolean loaded(){
-		return drawn;
+		return super.getGamestate().getEvents()[53].isSelfswitch1() && !super.getGamestate().getEvents()[53].isSelfswitch2();
 	}
 	
 }

@@ -7,7 +7,7 @@ import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CullingGrinderStatus;
 
 public class CullingGrinder extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Culling Grinder";
 	static boolean menu = false;
 	static boolean battle = false;

@@ -1,20 +1,17 @@
 package dev.zt.UpliftedVFFV.inventory.equipables;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.ablities.ShedFlesh;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.VoidCall;
 import dev.zt.UpliftedVFFV.inventory.InventoryManager;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.statusEffects.DamageReflect;
 import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffAdd;
 
 public class CalloftheVoid extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Call of the Void";
 	static boolean menu = false;
 	static boolean battle = false;

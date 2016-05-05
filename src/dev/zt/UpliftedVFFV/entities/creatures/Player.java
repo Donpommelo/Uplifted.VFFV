@@ -24,6 +24,7 @@ public class Player extends Creature implements Serializable{
 	
 	protected boolean runup,runleft,runright,rundown=false;
 	public boolean wall;
+	public boolean still;
 	protected int rightleft;
 	protected int step=0;
 	public static int enemyCalc=0;
@@ -119,6 +120,9 @@ public class Player extends Creature implements Serializable{
 		
 		//if step is 16, that means the player has successfully moved 32 pixels in whatever direction. The player stops moving and step is reset
 		if(step==16){
+			
+			still = false;
+			
 			runup=false; runleft=false; runright=false; rundown=false;
 			step=0;
 			
@@ -128,7 +132,6 @@ public class Player extends Creature implements Serializable{
 			}
 			else{
 				double temp = Math.random()*100;
-				wall = false;
 				
 				combatFreq = 0;
 				for(Schmuck s : gamestate.partymanager.party){
@@ -136,14 +139,15 @@ public class Player extends Creature implements Serializable{
 				}
 				if(temp < enemyChance*(1+combatFreq)){			//enemy stuff				
 					enemyChance = 0.0;
-//					encounter();
+					encounter();
 				}
 				else{
 					if(enemyChance < gamestate.getWorld().getEnemyrate()){
 						enemyChance += 0.1;
 					}
 				}
-			}		
+			}
+			wall = false;			
 		}
 		
 		//if the player is running in any direction, xMove and yMove are changed and the player begins moving, thus increasing step
@@ -263,7 +267,7 @@ public class Player extends Creature implements Serializable{
 	//if the player is not currently walking, a sprite is chosen based on the which direction the player is facing
 	public void render(Graphics g) {
 //		super.render(g);
-			if(runup==false && rundown==false && runleft==false && runright==false){
+			if((runup==false && rundown==false && runleft==false && runright==false) || still){
 			if(runlast==0){
 				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -280,7 +284,7 @@ public class Player extends Creature implements Serializable{
 		
 		//if the player is currently in the process of walking, its sprite cycles through the frames of its walk animation
 		//consider adding a separate animationmanager later for all animations
-		if(runup==true){
+		else if(runup==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
 				g.drawImage(SpriteSorter.SpriteSort(10,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -292,7 +296,7 @@ public class Player extends Creature implements Serializable{
 				g.drawImage(SpriteSorter.SpriteSort(11,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}				
 		}
-		if(rundown==true){
+		else if(rundown==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
 				g.drawImage(SpriteSorter.SpriteSort(1,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -305,7 +309,7 @@ public class Player extends Creature implements Serializable{
 			}	
 				
 		}
-		if(runleft==true){
+		else if(runleft==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
 				g.drawImage(SpriteSorter.SpriteSort(4,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -317,7 +321,7 @@ public class Player extends Creature implements Serializable{
 				g.drawImage(SpriteSorter.SpriteSort(5,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}	
 		}
-		if(runright==true){
+		else if(runright==true){
 			if(step==9||step==10||step==11||step==12||step==13||step==14||step==15||step==16){
 				g.drawImage(SpriteSorter.SpriteSort(7,img), (int) (playerx- game.getGameCamera().getxOffset()),(int)(playery- game.getGameCamera().getyOffset()-32), width, height, null);
 			}
@@ -372,6 +376,9 @@ public class Player extends Creature implements Serializable{
 		}
 	}
 	
+	public void setStill(boolean st){
+		this.still = st;
+	}
 
 	
 }

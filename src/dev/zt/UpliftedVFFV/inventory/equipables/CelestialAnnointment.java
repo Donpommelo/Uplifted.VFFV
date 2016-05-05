@@ -12,7 +12,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.StatBuffMult;
 
 public class CelestialAnnointment extends Item{
 
-	static int id = 2;
+	static int id = 42;
 	static String name = "Celestial Anointment";
 	static boolean menu = false;
 	static boolean battle = false;

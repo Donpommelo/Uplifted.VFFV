@@ -1,8 +1,7 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.Coalesce;
-import dev.zt.UpliftedVFFV.ablities.Ennervate;
+import dev.zt.UpliftedVFFV.ablities.Haunt;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
@@ -30,7 +29,7 @@ public class FeelingYouTookaWrongTurn extends Schmuck{
 	public static String plural = "The Feelings You Took a Wrong Turn";
 	public static String pronoun = "it";
 	
-	public static int sprite = 14;
+	public static int sprite = 22;
 	public static int menusprite = 0;
 	
 	public static Skills[] levelSkills = {};
@@ -49,7 +48,7 @@ public class FeelingYouTookaWrongTurn extends Schmuck{
 	}
 	
 	public Action getAction(BattleState bs){
-		int random = (int)(Math.random()*3);
+		int random = (int)(Math.random()*4);
 		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
 		if(bs.bs.alliesTargets.isEmpty()){
 			return new Action(this,this,new PassTurn(0),bs);
@@ -57,13 +56,16 @@ public class FeelingYouTookaWrongTurn extends Schmuck{
 		else{
 			switch (random){
 			case 0:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Ennervate(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Haunt(0),bs);
 				break;
 			case 1:
 				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
 				break;
 			case 2:
-				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Coalesce(0),bs);
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Haunt(0),bs);
+				break;
+			case 3:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Haunt(0),bs);
 				break;
 			}
 		}	

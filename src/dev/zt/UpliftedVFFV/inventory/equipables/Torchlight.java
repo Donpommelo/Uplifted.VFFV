@@ -9,7 +9,7 @@ import dev.zt.UpliftedVFFV.statusEffects.Stats.BonusStatBuff;
 
 public class Torchlight extends Item{
 
-	static int id = 50;
+	static int id = 92;
 	static String name = "Torchlight";
 	static boolean menu = false;
 	static boolean battle = false;
