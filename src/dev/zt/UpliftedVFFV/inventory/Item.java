@@ -167,7 +167,6 @@ public class Item implements Comparable<Item>, Serializable{
 	public void onEquip(Schmuck s, int slot, InventoryManager meep, Game game) {
 		Item replaced = null;
 		if(s.items[slot] != null){
-			meep.loot(s.items[slot],1);
 			replaced = s.items[slot];
 		}
 		if(replaced != null){

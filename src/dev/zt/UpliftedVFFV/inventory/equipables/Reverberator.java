@@ -17,7 +17,7 @@ public class Reverberator extends Item{
 	static int value = 20;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="Wooden core of a Screamer. An endless source of repetitive noise.";
+	static String descr="Metal core of a Screamer. An endless source of repetitive noise.";
 	static String descrShort="Immunity to Silence";
 	public status[] enchantment = new status[1];
 	public Reverberator() {

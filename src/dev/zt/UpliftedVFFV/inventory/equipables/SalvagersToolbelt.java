@@ -16,7 +16,7 @@ public class SalvagersToolbelt extends Item{
 	static int value = 750;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A utility belt with ";
 	static String descrShort="The right tool for the job!/Scales with +Item Drop";
 	public status[] enchantment = new status[1];
 	public SalvagersToolbelt() {

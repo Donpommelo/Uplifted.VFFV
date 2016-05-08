@@ -24,7 +24,7 @@ public class GlimpseattheEnd extends Item{
 	static int value = 23;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A single syllable of ";
 	static String descrShort="Take a Glimpse at the End";
 	public GlimpseattheEnd() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);
@@ -63,6 +63,7 @@ public class GlimpseattheEnd extends Item{
 				bs.bp.bt.addScene("You see an empty void above, lit by countless stars!");
 				for(Schmuck s : bs.bp.getSelectableAllies(perp)){
 					bs.bp.em.bpChange(50, s);
+					bs.bp.em.hpChange(50, perp,s,6);
 				}
 				break;
 			case 1:

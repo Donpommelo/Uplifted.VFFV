@@ -17,7 +17,7 @@ public class UnheardWord extends Item{
 	static int value = 23;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A potent arcane incantation uttered to quietly to be heard under ordinary circumstance.";
 	static String descrShort="Damages all enemies\nif user is Silenced";
 	public UnheardWord() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

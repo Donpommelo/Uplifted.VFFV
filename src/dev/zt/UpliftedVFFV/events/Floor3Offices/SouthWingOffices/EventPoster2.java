@@ -14,7 +14,6 @@ public class EventPoster2 extends Event {
 	}
 	
 	public void run(){
-//	acting head poster
 	}
 	
 	public boolean isSolid(int i){

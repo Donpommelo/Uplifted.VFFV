@@ -53,7 +53,8 @@ public class Assets {
 		Poster1, Poster2, Poster3, TransparentTable, SmallPokerTable, SnookerTable, BigPokerTable, JanitorBench, JanitorCart,
 		JanitorShelves,	VertTunnelArch1, VertTunnelArch2, VertTunnelArch3, HorzTunnelArch1, HorzTunnelArch2, HorzTunnelArch3,
 		TunnelArchCorner, RightArrowSign, LeftArrowSign, BigScreenTv, Vidya, Puddle,ExitSign, AirVent, BigMailThing,
-		RailLeft, RailMiddle, RailRight, BlackDoor;
+		RailLeft, RailMiddle, RailRight, BlackDoor, Grafitti1,Grafitti2, LadderDown,LadderUp,PosterRed,PosterBlue,
+		PosterGreen,PosterLong;
 	
 	public static BufferedImage WestClocksDigital330,WestClocksDigital315,WestClocksDigital900,WestClocksDigital600,
 	WestClocksDigital645, WestClocksAnalogE,WestClocksAnalogW,WestClocksAnalogN,WestClocksAnalogS,WestClocksAnalogR,
@@ -70,7 +71,7 @@ public class Assets {
 	public static BufferedImage BlackWall, BlackCeiling, AquariumWall, AquariumCeiling, GreyWall, GreyCeiling;	
 	public static BufferedImage UnderwaterFilter, FogFilter, DarkFilter0,DarkFilter1,DarkFilter2,DarkFilter3,DarkFilter4;
 	
-	public static BufferedImage southMonolith;
+	public static BufferedImage southMonolith,BluePosterExamine;
 	
 	public static Dialog[] dialog;
 	
@@ -104,6 +105,7 @@ public class Assets {
 		SpriteSheet Doors = new SpriteSheet(ImageLoader.loadImage("/textures/Doors1.png"));
 		SpriteSheet WestClocks = new SpriteSheet(ImageLoader.loadImage("/textures/WestClocks.png"));
 		southMonolith = ImageLoader.loadImage("/textures/SouthMonolith.png");
+		BluePosterExamine = ImageLoader.loadImage("/textures/consolation constellation.png");
 
 		//Load system resources, reused resources and stuff.
 		//Character walking Sprites.
@@ -465,14 +467,22 @@ public class Assets {
 		WaterCooler = Furniture3rdFloor.crop(6*width, 0, width, height*2);
 		Clock = Furniture3rdFloor.crop(7*width, 0, width, height);
 		VendingMachine = Furniture3rdFloor.crop(8*width, 0, width, height*2);
-		LeftArrowSign = Furniture3rdFloor.crop(2*width, 3*height, width, height);
-		RightArrowSign = Furniture3rdFloor.crop(3*width, 3*height, width, height);
+		LeftArrowSign = Furniture3rdFloor.crop(2*width, 4*height, width, height);
+		RightArrowSign = Furniture3rdFloor.crop(3*width, 4*height, width, height);
+		Grafitti1= Furniture3rdFloor.crop(4*width, 4*height, width, height);
+		Grafitti2 = Furniture3rdFloor.crop(5*width, 4*height, width, height);
 		BigScreenTv = Furniture3rdFloor.crop(6*width, 2*height, 2*width, 2*height);
 		Vidya = Furniture3rdFloor.crop(6*width, 4*height, width, height);
 		ExitSign = Furniture3rdFloor.crop(2*width, 3*height, width, height);
 		AirVent = Furniture3rdFloor.crop(5*width, 3*height, width, height);
 		BigMailThing = Furniture3rdFloor.crop(3*width, 7*height, 2*width, 3*height);
 		Puddle = Furniture3rdFloor.crop(10*width, 3*height, 2*width, 2*height);
+		LadderDown = Furniture3rdFloor.crop(6*width, 7*height, 1*width, 1*height);
+		PosterRed = Furniture3rdFloor.crop(0, 6*height, width, height);
+		PosterBlue = Furniture3rdFloor.crop(1*width, 6*height, width, height);
+		PosterGreen = Furniture3rdFloor.crop(2*width, 6*height, width, height);
+		PosterLong = Furniture3rdFloor.crop(3*width, 6*height, 2*width, height);
+
 		
 		VertTunnelArch1 = ThirdFloorMisc.crop(0, 0, 7*width, height);
 		VertTunnelArch2 = ThirdFloorMisc.crop(0,1*height, 7*width, 3*height);

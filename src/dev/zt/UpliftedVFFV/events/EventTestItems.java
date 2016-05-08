@@ -28,7 +28,7 @@ public class EventTestItems extends Event {
 		//super.screenShake(50);
 		super.recruit(new PenPal(1));
 		super.scriptChange(1000);
-		
+
 		super.loot(new AngryBeef(), 2);
 		super.loot(new Antiinflammatory(), 6);
 		super.loot(new BadYolk(), 6);

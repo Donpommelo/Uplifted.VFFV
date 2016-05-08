@@ -74,7 +74,7 @@ public class EventWaterDrainLeverSouth extends Event {
 			else{
 				if(super.getVar(23) == 0){
 					if(super.getQuest(8) > 0){
-						Dialog[] d1 = new Dialog[1];
+						Dialog[] d1 = new Dialog[2];
 						d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You turn the pump ON./Water fills the clear chamber. You see a Dolphin pass through the pipes./");
 						d1[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The Strikebreaking dolphin moves through a pipe leading East./");
 						super.Dialog(d1, 1, this.getId(), true);

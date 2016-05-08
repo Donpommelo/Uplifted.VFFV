@@ -33,8 +33,8 @@ public class EventPenPal extends Event {
 			this.setTex(SpriteSorter.SpriteSort(4,Assets.PenPal));
 		}
 		if(this.isSelfswitch1()==false){
-			Dialog[] d = new Dialog[13];
-			d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning . . . er . . . mam?");
+			Dialog[] d = new Dialog[14];
+			d[0] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good morning . . . er . . . ma'am?");
 			d[1] = new Dialog("Operator", "/CharacterBusts/Player-1.png",0,"What floor for you?");
 			d[2] = new Dialog("???","/CharacterBusts/Player-5.png",1,". . .");
 			d[3] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Are those . . . envelopes?");
@@ -46,8 +46,9 @@ public class EventPenPal extends Event {
 			d[9] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Er . . . I'm afraid I don't know where Suite 521 is . . .");
 			d[10] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"What? But . . . but you work here!");
 			d[11] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Well, I guess I don't leave the Elevator often . . .");
-			d[12] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Drat! We must find the location of Suite 521! Take me to Floor 3! The Offices seem like the kind of place where Management would put something important.");
-			super.Dialog(d, 12, this.getId(), true);
+			d[12] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"Drat! We must find the location of Suite 521! Take me to Floor 3!/Immediately!");
+			d[13] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",1,"The 3rd Floor Offices seem like the kind of place where Management would put something important.");
+			super.Dialog(d, 13, this.getId(), true);
 			super.setSwitch(1, true);
 			super.setQuest(0, 1);
 			this.setSelfswitch1(true);

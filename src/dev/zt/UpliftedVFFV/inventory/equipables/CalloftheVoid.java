@@ -20,7 +20,7 @@ public class CalloftheVoid extends Item{
 	static int value = 760;
 	static int slot = 1;
 	static int lvlReq = 38;
-	static String descr="TEMP";
+	static String descr="A hollow horn made of some unidentifiable material. Its unsettling sound and foul taste dissuade blowing.";
 	static String descrShort="+10 Int\nLets you heed the void's call.";
 	static Skills test = new VoidCall(0);
 	public status[] enchantment = new status[1];

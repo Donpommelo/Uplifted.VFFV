@@ -1,6 +1,7 @@
 package dev.zt.UpliftedVFFV.statusEffects.Special;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
@@ -17,11 +18,11 @@ public class BathHouseIntrinsic extends status{
 		super(name, v,pr);
 	}
 	
-	public void statchanges(Schmuck s){
-		int meep = gs.getVar(15);
+	public void statchanges(Schmuck s, BattleState bs){
+		int meep = bs.gs.getVar(15);
 		switch(meep){
 		case 1:
-			for(Schmuck ally : gs.getPartymanager().getParty()){
+			for(Schmuck ally : bs.gs.getPartymanager().getParty()){
 				ally.bonusStats[34]+=(int)(s.getMaxHp()*.025);
 				ally.bonusStats[35]+=(int)(s.getMaxBp()*.025);
 			}
@@ -33,7 +34,7 @@ public class BathHouseIntrinsic extends status{
 			s.bonusStats[12] -= .25;
 			break;
 		case 4:
-			for(Schmuck ally : gs.getPartymanager().getParty()){
+			for(Schmuck ally : bs.gs.getPartymanager().getParty()){
 				ally.bonusStats[2] -= .9;
 				ally.bonusStats[3] -= .9;
 				ally.bonusStats[4] -= .9;

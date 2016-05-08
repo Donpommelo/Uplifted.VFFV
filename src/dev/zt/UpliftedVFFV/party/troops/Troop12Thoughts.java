@@ -15,7 +15,7 @@ public class Troop12Thoughts extends Troop{
 	public ArrayList<Schmuck> genTroop(int ML){
 		this.bonusML = ML;
 		ArrayList<Schmuck> troop=new ArrayList<Schmuck>();
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 4; i++){
 			int num = (int)(Math.random()*3);
 			switch(num){
 			case 0:

@@ -15,7 +15,7 @@ public class EnvenomEarth extends Item{
 	static boolean target = false;
 	static int value = 300;
 	static int slot = 1;
-	static int lvlReq = 9;
+	static int lvlReq = 4;
 	static String descr="Something probably died on this.";
 	static String descrShort = "Poisons user and makes tougher. Eventually";
 	public int points = 0;

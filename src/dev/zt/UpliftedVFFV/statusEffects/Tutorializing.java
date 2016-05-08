@@ -27,7 +27,7 @@ public class Tutorializing extends status{
 			d[0] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Well, you've survived your first round of combat!/How does it feel?");
 			d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"I . . . I'm not sure. . .");
 			d[2] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Perhaps more guidance is needed./Allow me to elaborate in greater detail the options at your disposal.");
-			d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"First is 'Attack'. This act of violence can be directed towards a single target;a simple and effective method of letting others know how you feel.");
+			d[3] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"First is 'Attack'. This act of violence can be directed towards a single target.");
 			d[4] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Next is 'Skill'. This brings up a character's collection of special talents. These can have all manner of effects, so be sure to carefully read their descriptions!");
 			d[5] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Most skills require Motivation Points (Mp) in order to use. Remember that an unmotivated employee is a soon-to-be-fired one.");
 			d[6] = new Dialog("Pen Pal","/CharacterBusts/Player-5.png",0,"Moving on, we have the 'Item' option. You don't seem to need any items right now, but when you do, keep this option in mind in case you feel the need for a mid-battle snack.");

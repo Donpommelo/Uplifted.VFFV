@@ -46,7 +46,7 @@ public class EventAda extends Event {
 			Dialog[] d1 = new Dialog[1];
 			d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Get Bathhouse aura? Current: "+current+".");
 			super.Dialog(d1, 0, this.getId(), true);
-			super.ChoiceBranch(this.getId(), Choices, Descriptions, 100);
+			super.ChoiceBranch(this.getId(), Choices, Descriptions, 200);
 			break;
 		}
 	}

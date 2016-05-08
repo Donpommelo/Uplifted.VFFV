@@ -184,7 +184,7 @@ public class Schmuck implements Serializable{
 	}
 	
 	public void equip(Item i, int slot, InventoryManager meep, Game game){
-		if(this.getLvl() < 0 * i.lvlReq * (1 - this.getLvlReqMod())){ //remove 0 later when you aren't testing anymore
+		if(this.getLvl() < i.lvlReq * (1 - this.getLvlReqMod())){ //remove 0 later when you aren't testing anymore
 			StateManager.states.push(new NotificationState(game, meep.getGs(), meep.getGs().getStateManager(), "Your level is too low to use this!", 0));
 		}
 		else{

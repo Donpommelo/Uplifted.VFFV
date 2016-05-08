@@ -16,7 +16,7 @@ public class PelicanPlushToy extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 10;
-	static String descr="TEMP";
+	static String descr="An adorable stuffed toy in the shape of a pelican, one of the company's four mascots. You figure that every child of an employee has one of them.";
 	static String descrShort="-30% Heal Power";
 	public status[] enchantment = new status[1];
 	public PelicanPlushToy() {

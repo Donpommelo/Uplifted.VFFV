@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.statusEffects;
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invisible extends status{
 	
@@ -13,6 +14,10 @@ public class Invisible extends status{
 	public static Boolean decay = true;
 	public Invisible(int i, Schmuck perp, Schmuck vic, int pr){
 		super(i, name, perm, visible, removedEnd, decay, perp, vic,pr);
+	}
+	
+	public void preActionTarget(Schmuck s, Action a, BattleState bs){
+		bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,a.getTarget().getName()+"'s Invisibility prevents "+s.getName()+" from targeting "+a.getTarget().getPronoun(3)+"!"),bs));
 	}
 		
 	public String inflictText(Schmuck s){

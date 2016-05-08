@@ -17,7 +17,7 @@ public class UsurpersChemSet extends Item{
 	static boolean target = false;
 	static int value = 260;
 	static int slot = 1;
-	static int lvlReq = 24;
+	static int lvlReq = 1;
 	static String descr="A tool for change that no one wants to see used twice.";
 	static String descrShort="+8 Skl\nChance to Poison on attack.";
 	public status[] enchantment = new status[2];

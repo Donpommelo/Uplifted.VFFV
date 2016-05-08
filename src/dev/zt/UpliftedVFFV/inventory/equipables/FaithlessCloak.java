@@ -16,7 +16,7 @@ public class FaithlessCloak extends Item{
 	static boolean target = false;
 	static int value = 200;
 	static int slot = 1;
-	static int lvlReq = 45;
+	static int lvlReq = 1;
 	static String descr="A shifty and distrustful piece of clothing.\nIts most well-protected areas are located in the back.";
 	static String descrShort="+5 Def\nTake -90% damage from allies";
 	public status[] enchantment = new status[2];

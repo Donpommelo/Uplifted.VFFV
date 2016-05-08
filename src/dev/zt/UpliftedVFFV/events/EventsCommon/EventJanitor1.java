@@ -13,9 +13,14 @@ import dev.zt.UpliftedVFFV.events.SpriteSorter;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.consumables.Bettergent;
 import dev.zt.UpliftedVFFV.inventory.consumables.CaffeinePatch;
 import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 import dev.zt.UpliftedVFFV.inventory.consumables.SmellingSalt;
+import dev.zt.UpliftedVFFV.inventory.consumables.StatScrubber;
+import dev.zt.UpliftedVFFV.inventory.equipables.Conduit;
+import dev.zt.UpliftedVFFV.inventory.misc.JanitorDonationForm;
+import dev.zt.UpliftedVFFV.inventory.misc.MagicBottle;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
 import dev.zt.UpliftedVFFV.inventory.misc.SummonSauce;
 import dev.zt.UpliftedVFFV.party.Schmuck;
@@ -116,9 +121,18 @@ public class EventJanitor1 extends Event {
 			stuff.add(new SmellingSalt());
 			
 		}
+		if(super.getVar(12) >= 2){
+			stuff.add(new Bettergent());
+			stuff.add(new StatScrubber());
+			stuff.add(new Conduit());
+		}
 		if(super.getVar(12) >= 3){
-			stuff.add(new SummonSauce());
 			stuff.add(new SleepingPills());
+			stuff.add(new SummonSauce());
+			stuff.add(new JanitorDonationForm());
+		}
+		if(super.getVar(12) >= 5){
+			stuff.add(new MagicBottle());
 		}
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));

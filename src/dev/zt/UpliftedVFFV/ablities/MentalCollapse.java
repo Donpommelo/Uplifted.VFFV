@@ -24,7 +24,7 @@ public class MentalCollapse extends Skills {
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
 		for(Schmuck s : bs.bp.getSelectableAllies(vic)){
-			int damage = (int)(vic.getBuffedInt());
+			int damage = (int)(vic.getBuffedInt() * 0.5);
 			bs.bp.em.hpChange(-damage, perp, s,4);	
 		}
 	}

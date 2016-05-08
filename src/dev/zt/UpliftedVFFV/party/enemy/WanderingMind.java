@@ -21,7 +21,7 @@ public class WanderingMind extends Schmuck{
 	
 	public final static int startHp=98,startBp=67,startPow=29, startDef=58, startSpd=35, startSkl=39, startLuk=17, startInt=61;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=53.6, bpGrowth=44.7, powGrowth=3.7, defGrowth=4.7, spdGrowth=2.8, sklGrowth=1.9, intGrowth=3.1, lukGrowth=1.9;
+	public final static double hpGrowth=41.6, bpGrowth=44.7, powGrowth=3.7, defGrowth=4.7, spdGrowth=2.8, sklGrowth=1.9, intGrowth=3.1, lukGrowth=1.9;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=2;
 	public final static int scrDrop=4;

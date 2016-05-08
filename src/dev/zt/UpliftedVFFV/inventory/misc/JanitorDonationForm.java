@@ -16,10 +16,10 @@ public class JanitorDonationForm extends Item{
 	static boolean battle = true;
 	static boolean consume = true;
 	static boolean target = false;
-	static int value = 50;
+	static int value = 1;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="Some legal jargon designed to facilitate acts of generosity towards your local janitor friend.";
 	static String descrShort="Donate 20 Script to the Janitor";
 	public JanitorDonationForm() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

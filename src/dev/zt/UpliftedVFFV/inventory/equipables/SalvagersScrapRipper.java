@@ -16,7 +16,7 @@ public class SalvagersScrapRipper extends Item{
 	static int value = 750;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A tool used by Salvagers to convert underwater wreckage into transportable scrap metal.";
 	static String descrShort="+15% Crit Chance/On Crit: Increases Item Drops";
 	public status[] enchantment = new status[1];
 	public SalvagersScrapRipper() {

@@ -16,7 +16,7 @@ public class LaserPointer extends Item{
 	static int value = 10;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A hand-held device used for distract one's inner cat.";
 	static String descrShort="Sometimes Blind target.\nNot consumed on use.";
 	public LaserPointer() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

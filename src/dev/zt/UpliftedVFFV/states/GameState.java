@@ -67,12 +67,12 @@ public class GameState extends State {
 		
 //		String StartingFloor = "/Worlds/Floor1Reception/SouthLobbyMain.txt";
 //		String StartingFloor = "/Worlds/Floor2Bathhouse/BathHouseSouth.txt";
-//		String StartingFloor = "/Worlds/Floor3Offices/EastWingOffices/ActualEastWing.txt";
+//		String StartingFloor = "/Worlds/Floor3Offices/SouthWingOffices/SouthHallSmall.txt";
 //		String StartingFloor = "/Worlds/Floor4Aquarium/AquariumTunnel/AquariumTunnelEast.txt";
 //		String StartingFloor = "/Worlds/Floor6FoodServery/FoodCourt/Eatery.txt";
 //		String StartingFloor = "/Worlds/Floor7Infirmary/ResearchFacility/Floor1Main.txt";
-//		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
-		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
+		String StartingFloor = "/Worlds/ElevatorsandBackroom/HomeSweetElevator.txt";
+//		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/CombatTesting.txt";
 //		String StartingFloor = "/Worlds/ProbablyNotActuallyintheGame/EventTesting.txt";
 
 		worldmanager = new WorldManager(game, StartingFloor,"Home Sweet Home");		

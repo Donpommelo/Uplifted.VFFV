@@ -16,7 +16,7 @@ public class VoodooPin extends Item{
 	static boolean target = false;
 	static int value = 670;
 	static int slot = 1;
-	static int lvlReq = 24;
+	static int lvlReq = 1;
 	static String descr="TEMP";
 	static String descrShort="+15% Purple Resist\nReflects enemy debuffs";
 	public status[] enchantment = new status[2];

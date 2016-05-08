@@ -17,7 +17,7 @@ public class AtomicPunchThrusters extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 34;
-	static String descr="A bulky pair of gloves that harness the power of splitting atoms to punch and irradiate foes.";
+	static String descr="A bulky pair of gloves that harness the power of split atoms to punch and irradiate foes.";
 	static String descrShort="+15% Crit Chance\nExplosive Crits!";
 	public status[] enchantment = new status[2];
 	public AtomicPunchThrusters() {

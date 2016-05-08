@@ -20,7 +20,7 @@ public class Screamer extends Schmuck{
 	
 	public final static int startHp=78,startBp=50,startPow=38, startDef=80, startSpd=65, startSkl=56, startLuk=8, startInt=16;
 	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
-	public final static double hpGrowth=35.3, bpGrowth=33.7, powGrowth=4.7, defGrowth=4.3, spdGrowth=2.3, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
+	public final static double hpGrowth=26.3, bpGrowth=33.7, powGrowth=4.7, defGrowth=4.3, spdGrowth=2.3, sklGrowth=1.6, intGrowth=1.2, lukGrowth=.5;
 	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
 	public final static int expDrop=6;
 	public final static int scrDrop=1;

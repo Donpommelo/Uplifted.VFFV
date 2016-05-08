@@ -16,7 +16,7 @@ public class SalvagersHelmet extends Item{
 	static int value = 750;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A rusty diving helmet used by Salvagers to provide visibility in the murky depths.";
 	static String descrShort="+10% Item Drops (20% Underwater)\n-30% Underwater Penalty";
 	public status[] enchantment = new status[1];
 	public SalvagersHelmet() {

@@ -18,7 +18,7 @@ public class AquariumSouvenirTshirt extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A souvenir t-shirt with a glow-in-the-dark picture of a fish. Lets your boss know why you get so little work done.";
 	static String descrShort="+25% Blue Resistance\nLight up dark areas.";
 	public status[] enchantment = new status[1];
 	public AquariumSouvenirTshirt() {

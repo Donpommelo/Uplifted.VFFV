@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.inventory.consumables.Charcoal;
 import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 import dev.zt.UpliftedVFFV.states.GameState;
 
@@ -19,11 +20,14 @@ public class EventSafe1 extends Event {
 	
 	public void run(){
 		if(!this.isSelfswitch1()){
-			Dialog[] d = new Dialog[2];
+			Dialog[] d = new Dialog[4];
 			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You found some MedPaks inside the safe!/Always handy in case of Officeplace accidents!");
-			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Medpaks can be used from the menu ('Z') under the Consumable tab of your Inventory! They can also be used in combat under 'Items'!");
-			super.Dialog(d, 1, this.getId(), true);
+			d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Found some Charcoal too!/Looks like someone in the offices likes alternative medicine.");
+			d[2] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Medpaks and other items can be used from the menu ('Z') under the Consumable tab of your Inventory! They can also be used in combat under 'Items'!");
+			d[3] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"They can also be used in combat under 'Items'!");
+			super.Dialog(d, 3, this.getId(), true);
 			super.loot(new MedPak(), 3);
+			super.loot(new Charcoal(), 2);
 			this.setTex(Assets.SafeOpened);
 			this.setSelfswitch1(true);
 		}

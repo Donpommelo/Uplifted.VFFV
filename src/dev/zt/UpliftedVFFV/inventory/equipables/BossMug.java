@@ -15,7 +15,7 @@ public class BossMug extends Item{
 	static boolean target = false;
 	static int value = 35;
 	static int slot = 1;
-	static int lvlReq = 5;
+	static int lvlReq = 1;
 	static String descr="A coffee mug belonging to the number one boss. You certainly don't know anyone in this office who fits that description, so don't bother looking for its rightful owner.";
 	static String descrShort="+5 Mp Regen";
 	public status[] enchantment = new status[1];
