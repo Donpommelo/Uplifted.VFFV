@@ -24,9 +24,13 @@ public class DamageCap extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		int cap = capAmount;
+		if(this.isEquipment()){
+			cap = (int) (cap * (1-vic.getEquipPow()));
+		}
 		if(statChanged == elem || statChanged == 7){
-			if(damage > capAmount){
-				damage = capAmount;
+			if(damage > cap){
+				damage = cap;
 			}
 		}
 		return damage;

@@ -164,10 +164,10 @@ public class ChoiceBranchState extends State {
 			Utils.drawMenu(g, window, num, Color.black, 18, new Font("Courier", Font.PLAIN, 18),choicelocation,5, 200-30*boxsize, width,5+30*(boxsize),1,boxsize,firstchoice,16,true,true);
 		}
 		if(firstchoice != 0){
-			g.drawImage(Assets.Uparrow, width/2, 145, null);
+			g.drawImage(Assets.Uparrow, width/2, 200-30*boxsize, null);
 		}
 		if(firstchoice != num.length - boxsize){
-			g.drawImage(Assets.Downarrow, width/2, 140 + 32 * boxsize, null);
+			g.drawImage(Assets.Downarrow, width/2, 200, null);
 		}
 		
 		if(descriptions != null){

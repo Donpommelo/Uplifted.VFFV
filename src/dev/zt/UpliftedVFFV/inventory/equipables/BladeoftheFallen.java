@@ -26,10 +26,10 @@ public class BladeoftheFallen extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new Cleave(.2*(1+s.getEquipPow()),s, 50);
-		enchantment[1] = new BonusStatBuff(0,-.25,s,50);
-		enchantment[2] = new BonusStatBuff(14,-.5,s,50);
-		enchantment[3] = new StatBuffAdd(2,(int)(12*(1+s.getEquipPow())),s,50);
+		enchantment[0] = new Cleave(.2,s, 50);
+		enchantment[1] = new BonusStatBuff(0,-.25,s,55);
+		enchantment[2] = new BonusStatBuff(14,-.5,s,55);
+		enchantment[3] = new StatBuffAdd(2,12 ,s,55);
 		return enchantment;
 	}
 }

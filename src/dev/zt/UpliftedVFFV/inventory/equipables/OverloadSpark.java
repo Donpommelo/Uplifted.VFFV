@@ -26,8 +26,8 @@ public class OverloadSpark extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new ElemPointsBuff(3,(int)(8*(1+s.getEquipPow())), s,50);
-		enchantment[1] = new BonusStatBuff(30,1,s, 50);
+		enchantment[0] = new ElemPointsBuff(3,8, s,55);
+		enchantment[1] = new BonusStatBuff(30,1,s, 55);
 
 		return enchantment;
 	}

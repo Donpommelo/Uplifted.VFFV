@@ -16,7 +16,7 @@ public class IronSights extends Item{
 	static int value = 1000;
 	static int slot = 1;
 	static int lvlReq = 30;
-	static String descr="TEMP";
+	static String descr="A metal scope designed for sharpshooting from a safe distance.";
 	static String descrShort="+50% Accuracy and +30% Crit chance when moving last";
 	
 	public status[] enchantment = new status[1];

@@ -22,8 +22,12 @@ public class Vampirism extends status{
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+		double ls = lifesteal;
+		if(this.isEquipment()){
+			ls = ls *(1+vic.getEquipPow());
+		}
 		bs.bp.bt.addScene(perp.getName()+" drains "+vic.getName()+"'s life.");
-		bs.bp.em.hpChange(-(int)(damage*lifesteal*(1+perp.getHealPower())), perp, perp,6);
+		bs.bp.em.hpChange(-(int)(damage*ls*(1+perp.getHealPower())), perp, perp,6);
 	}
 	
 	public String inflictText(Schmuck s){

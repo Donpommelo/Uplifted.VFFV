@@ -10,7 +10,7 @@ import dev.zt.UpliftedVFFV.inventory.Item;
 
 public class EventPurpleGate extends Event {
 
-	public static int stagenum = 2;
+	public static int stagenum = 3;
 	public String[] Choices;			//list of choices used in the choicebranch
 	public ArrayList <Item> balls;
 	public Item ball1;
@@ -31,19 +31,20 @@ public class EventPurpleGate extends Event {
 		switch(this.getstage()){
 		case 0:
 			if(this.isSelfswitch1()){
-				super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/FieldsofLachiplatre.txt",15,41,"");
-				this.setstage(2);
+				super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand2.txt",12,22,"");
+				this.setstage(0);
 			}
 			else{
-				if(balls.size() < 1){
-					Dialog[] d = new Dialog[1];
-					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"<Entry text>/");
-					super.Dialog(d, 0, this.getId(), true);
+				if(balls.size() < 1){					
+					Dialog[] d = new Dialog[2];
+					d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A mysterious Purple arch with a ball-shaped receptacle.");
+					d[1] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You don't have anything to place into the hole.");
+					super.Dialog(d, 1, this.getId(), true);
 					this.setstage(2);
 				}
 				else{
 					Dialog[] d1 = new Dialog[1];
-					d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"Write stuff here later./");
+					d1[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A mysterious Purple arch with a ball-shaped receptacle.");
 					super.Dialog(d1, 0, this.getId(), true);
 				}
 			}		
@@ -57,18 +58,17 @@ public class EventPurpleGate extends Event {
 			for(int i = 0; i < balls.size();i++){
 				Choices[i+1] = balls.get(i).getName()+" x"+super.itemNumCheck(balls.get(i));
 			}
-			super.ChoiceBranch(this.getId(), Choices, 200);
+			super.ChoiceBranch(this.getId(), Choices, 300);
 			
 			break;
 		case 2:
 			if(ball1 != null){
 				int color1 = ball1.getCharges();
 				if(color1 == 4){
-					super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/FieldsofLachiplatre.txt",15,41,"");
 					super.loot(ball1, -1);
 					this.setSelfswitch1(true);
 					Dialog[] d3 = new Dialog[1];
-					d3[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"A door unlocks./");
+					d3[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The arch crackles with energy./A portal is reopened!");
 					super.Dialog(d3, 0, this.getId(), true);
 				}
 				else{
@@ -82,6 +82,9 @@ public class EventPurpleGate extends Event {
 				this.setstage(0);
 			}
 			break;
+		case 3:
+			this.setstage(0);
+			break;
 		}
 		
 	}
@@ -91,16 +94,18 @@ public class EventPurpleGate extends Event {
 			this.setstage(0);
 		}
 		else{
-			if(ball1 == null){
-				ball1 = balls.get(i-1);
-				this.setstage(2);
-				this.run();
-			}
+			ball1 = balls.get(i-1);
+			this.setstage(2);
+			this.run();
 		}
 		
 	}
 	
 	public boolean isSolid(int i){
+		return true;
+	}
+	
+	public boolean isDoor(){
 		return true;
 	}
 }

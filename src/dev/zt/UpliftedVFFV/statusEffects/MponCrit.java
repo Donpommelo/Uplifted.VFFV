@@ -14,7 +14,11 @@ public class MponCrit extends status{
 	}
 	
 	public void onCrit(Schmuck perp,Schmuck vic, Action a, BattleState bs){
+		double perc = percent;
+		if(this.isEquipment()){
+			perc = perc *(1+vic.getEquipPow());
+		}
 		bs.bp.bt.addScene(perp.getName()+" restores Motivation from the blow!");
-		bs.bp.em.bpChange((int)(percent*perp.getMaxBp()), perp);
+		bs.bp.em.bpChange((int)(perc*perp.getMaxBp()), perp);
 	}
 }

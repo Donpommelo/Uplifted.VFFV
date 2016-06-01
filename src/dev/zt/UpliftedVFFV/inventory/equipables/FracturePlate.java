@@ -26,8 +26,8 @@ public class FracturePlate extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new FracturePlateStatus(s,75);
-		enchantment[1] = new StatBuffAdd(3, (int)(11*(1+s.getEquipPow())),s, 50);
-		enchantment[2] = new StatBuffAdd(0, (int)(55*(1+s.getEquipPow())),s, 50);
+		enchantment[1] = new StatBuffAdd(3, 11,s, 55);
+		enchantment[2] = new StatBuffAdd(0, 55,s, 55);
 		return enchantment;
 	}
 	

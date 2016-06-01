@@ -22,10 +22,14 @@ public class Cleave extends status{
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
+		double clv = cleave;
+		if(this.isEquipment()){
+			clv = clv *(1+perp.getEquipPow());
+		}
 		bs.bp.bt.addScene(perp.getName()+"'s attack damages all foes!");
 		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
 			if(!s.equals(vic)){
-				bs.bp.em.hpChange((int)(damage * cleave), perp, s,6);
+				bs.bp.em.hpChange((int)(damage * clv), perp, s,6);
 			}
 		}
 	}

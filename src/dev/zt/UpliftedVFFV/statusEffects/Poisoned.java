@@ -4,6 +4,7 @@ import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.Battle.Animations.PoisonAnim;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.RedTideTalismanStatus;
 
 public class Poisoned extends status{
 	
@@ -27,7 +28,12 @@ public class Poisoned extends status{
 	}
 
 	public void postAnimRun(BattleState bs){
-		bs.bp.em.hpChange(-(vic.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,vic,2);
+		if(bs.bp.stm.checkStatus(inflicter, new RedTideTalismanStatus(inflicter,50))){
+			bs.bp.em.hpChange(-(vic.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,vic,0);
+		}
+		else{
+			bs.bp.em.hpChange(-(vic.getMaxHp()/100+inflicter.getGreenPoints()/2),inflicter,vic,2);
+		}
 	}
 	
 	public int getFrames(){

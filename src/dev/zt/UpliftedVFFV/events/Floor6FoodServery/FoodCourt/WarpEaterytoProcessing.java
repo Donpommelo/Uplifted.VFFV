@@ -11,6 +11,19 @@ public class WarpEaterytoProcessing extends Event {
 	}
 
 	public void run(){
-		super.transport("/Worlds/Floor6FoodServery/Processing/IntroHall.txt",21,10,"Backroom");
+		if(super.getGamestate().getEvents()[753].isSelfswitch1()){
+			super.transport("/Worlds/Floor6FoodServery/Processing/IntroHall.txt",21,10,"Backroom");
+		}
+		else{
+			super.getGamestate().getEvents()[753].run();
+		}
+	}
+	
+	public boolean isSolid(int i){
+		return true;
+	}
+	
+	public boolean isDoor(){
+		return true;
 	}
 }

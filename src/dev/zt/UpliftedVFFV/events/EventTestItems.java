@@ -80,9 +80,14 @@ public class EventTestItems extends Event {
 		
 		
 
-		super.loot(new ColoredPlasticBall(1,0,0), 1);
-		super.loot(new ColoredPlasticBall(0,1,0), 1);
-		super.loot(new ColoredPlasticBall(0,0,1), 1);
+		super.loot(new ColoredPlasticBall(1,0,0), 7);
+		super.loot(new ColoredPlasticBall(0,1,0), 7);
+		super.loot(new ColoredPlasticBall(0,0,1), 7);
+		super.loot(new ColoredPlasticBall(1,1,0), 1);
+		super.loot(new ColoredPlasticBall(0,1,2), 1);
+		super.loot(new ColoredPlasticBall(2,0,1), 1);
+		super.loot(new ColoredPlasticBall(1,1,2), 1);
+
 		super.loot(new RandomFoodSmall(), 1);
 		super.loot(new RandomFoodMedium(), 1);
 		super.loot(new RandomFoodLarge(), 1);

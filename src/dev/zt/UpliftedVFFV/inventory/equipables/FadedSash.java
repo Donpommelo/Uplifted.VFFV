@@ -25,8 +25,8 @@ public class FadedSash extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] =  new BonusStatBuff(7,-.25,s, 20);
-		enchantment[1] =  new BonusStatBuff(8,.25,s, 20);
+		enchantment[0] =  new BonusStatBuff(7,-.25,s, 25);
+		enchantment[1] =  new BonusStatBuff(8,.25,s, 25);
 		return enchantment;
 	}
 }

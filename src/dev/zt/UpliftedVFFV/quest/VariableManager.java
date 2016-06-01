@@ -39,10 +39,13 @@ public class VariableManager {
  28: Elevator Conversation Last
  29: Light Source Level
  30: Amdahl Points...?
- 31: 
- 32: 
- 33: 
- 34: 
+ 31: Processing Quest: Produce (0: None, 1: )
+ 32: Processing Quest: Protein (0: None, 1: )
+ 33: Processing Quest: Dairy (0: None, 1: )
+ 34: Processing Quest: Bread (0: None, 1: )
+ 35: Processing Quest: Condiment (0: None, 1: )
+ 36: 
+ 37: 
  
  */
 	

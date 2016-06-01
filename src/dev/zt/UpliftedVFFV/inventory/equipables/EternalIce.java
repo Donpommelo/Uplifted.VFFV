@@ -27,7 +27,7 @@ public class EternalIce extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new EternalIceStatus(s,60);
-		enchantment[1] = new StatBuffAdd(0,(int)(17*(1+s.getEquipPow())), s,10);
+		enchantment[1] = new StatBuffAdd(0,17, s,10);
 		return enchantment;
 	}
 	

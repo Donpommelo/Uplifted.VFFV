@@ -22,10 +22,10 @@ public class Volatile extends status{
 		if(damage>Math.random()*500){
 			bs.bp.bt.addScene("The blow causes "+vic.getName()+"'s bucket to explode!");
 			for(Schmuck s : bs.bs.enemySelectable){
-				s.hpChange(-60);
+				s.hpChange(-100);
 			}
 			for(Schmuck s : bs.bs.alliesSelectable){
-				s.hpChange(-60);
+				s.hpChange(-100);
 			}
 		}
 		bs.bs.targetUpdate();

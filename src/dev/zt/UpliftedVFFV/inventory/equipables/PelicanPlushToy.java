@@ -16,7 +16,7 @@ public class PelicanPlushToy extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 10;
-	static String descr="An adorable stuffed toy in the shape of a pelican, one of the company's four mascots. You figure that every child of an employee has one of them.";
+	static String descr="An adorable stuffed toy in the shape of a pelican, one of the company's four mascots. You figure the children of every employee all own one.";
 	static String descrShort="-30% Heal Power";
 	public status[] enchantment = new status[1];
 	public PelicanPlushToy() {
@@ -25,7 +25,7 @@ public class PelicanPlushToy extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(18,0.3*(1+s.getEquipPow()), s,50);
+		enchantment[0] = new BonusStatBuff(18,0.3, s,55);
 		return enchantment;
 	}
 }

@@ -25,7 +25,7 @@ public class HirtzCompass extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(16,.15*(1+s.getEquipPow()),s, 50);
+		enchantment[0] = new BonusStatBuff(16,.15,s, 55);
 		enchantment[1] = new HirtzCompassStatus(s,50);
 		return enchantment;
 	}

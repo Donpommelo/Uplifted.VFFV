@@ -17,7 +17,7 @@ public class EchoShell extends Item{
 	static int value = 800;
 	static int slot = 1;
 	static int lvlReq = 28;
-	static String descr="A mysterious sea shell. It sounds like the ocean whatever that sounds like.";
+	static String descr="A mysterious sea shell. It sounds like the ocean. Whatever that sounds like.";
 	static String descrShort = "+11 Def\nEchoes end-of-turn effects.";
 	public status[] enchantment = new status[2];
 	public EchoShell() {
@@ -27,7 +27,7 @@ public class EchoShell extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new EchoShellStatus(s,100);
-		enchantment[1] = new StatBuffAdd(3,(int)(11*(1+s.getEquipPow())), s,40);
+		enchantment[1] = new StatBuffAdd(3,11, s,45);
 		return enchantment;
 	}
 	

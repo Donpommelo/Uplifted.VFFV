@@ -25,7 +25,12 @@ public class BonusStatBuffMult extends status{
 	}
 		
 	public void statchanges(Schmuck s){
-		s.bonusStats[this.statChanged]*=statIncrement;
+		if(this.isEquipment() && statChanged != 6 && statChanged != 10 && statChanged != 26 && statChanged != 36){
+			s.bonusStats[this.statChanged] *= (statIncrement * (1+s.getEquipPow()));
+		}
+		else{
+			s.bonusStats[this.statChanged]*=statIncrement;
+		}
 	}
 	
 	public String inflictText(Schmuck s){

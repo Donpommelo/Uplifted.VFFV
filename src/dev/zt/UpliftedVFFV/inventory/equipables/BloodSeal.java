@@ -18,7 +18,7 @@ public class BloodSeal extends Item{
 	static int value = 3;		//Intentionally low for muh lore.
 	static int slot = 1;
 	static int lvlReq = 48;
-	static String descr="This isn't the most sinister contract you've signed before in your employment,but it's definitely up there.";
+	static String descr="This isn't the most sinister contract you've signed before in your employment, but it's definitely up there.";
 	static String descrShort = "+15% Pow, Def and Spd\n+8 Hp and Mp Regen.\nKills wielder on 9th round of combat.";
 	public status[] enchantment = new status[6];
 	public BloodSeal() {
@@ -27,11 +27,11 @@ public class BloodSeal extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BloodSealStatus(s,10);
-		enchantment[1] = new StatBuffMult(2,1.15*(1+s.getEquipPow()),s, 25);
-		enchantment[2] = new StatBuffMult(3,1.15*(1+s.getEquipPow()),s, 25);
-		enchantment[3] = new StatBuffMult(4,1.15*(1+s.getEquipPow()),s, 25);
-		enchantment[4] = new BonusStatBuff(34, (int)(8*(1+s.getEquipPow())),s, 50);
-		enchantment[5] = new BonusStatBuff(35, (int)(8*(1+s.getEquipPow())),s, 50);
+		enchantment[1] = new StatBuffMult(2,1.15,s, 20);
+		enchantment[2] = new StatBuffMult(3,1.15,s, 20);
+		enchantment[3] = new StatBuffMult(4,1.15,s, 20);
+		enchantment[4] = new BonusStatBuff(34, 8,s, 55);
+		enchantment[5] = new BonusStatBuff(35, 8,s, 55);
 		return enchantment;
 	}
 

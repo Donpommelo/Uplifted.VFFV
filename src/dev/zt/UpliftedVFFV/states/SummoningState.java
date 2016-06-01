@@ -270,6 +270,10 @@ public class SummoningState extends State {
 			case 3:
 				if(yesno == 0){
 					gs.getPartymanager().recruit(summon);
+					if(summonObjects.get(summoner).getSummon() != null){
+						summonObjects.get(summoner).setXp(summonObjects.get(summoner).getSummon().exp);
+						gs.getPartymanager().unrecruit(summonObjects.get(summoner).getSummon());
+					}
 					summon.expGain(summonObjects.get(summoner).getXp());
 					summonsauce.summonBonus(summon);
 					gs.inventorymanager.use(summonsauce);

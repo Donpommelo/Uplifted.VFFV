@@ -27,7 +27,7 @@ public class CompoundVitreous extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new CompoundVitreousStatus(s,100);
-		enchantment[1] = new BonusStatBuff(16, .13*(1+s.getEquipPow()),s, 50);
+		enchantment[1] = new BonusStatBuff(16, .13,s, 55);
 		return enchantment;
 	}
 	

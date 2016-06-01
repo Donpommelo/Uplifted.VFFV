@@ -16,7 +16,7 @@ public class CurseCoat extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 24;
-	static String descr="A ragged coat dripping with the residue of millions of long-forgotten curses.You really ought to get it washed.";
+	static String descr="A ragged coat dripping with the residue of millions of long-forgotten curses. You really ought to get it washed.";
 	static String descrShort="Rerolls debuffs.";
 	public status[] enchantment = new status[1];
 	public CurseCoat() {

@@ -27,8 +27,8 @@ public class TommorowmanTalisman extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new TommorowmanTalismanStatus(s,50);
-		enchantment[1] = new StatBuffAdd(6,(int)(11*(1+s.getEquipPow())),s, 25);
-		enchantment[2] = new BonusStatBuff(14,(int)(.15*(1+s.getEquipPow())), s,50);
+		enchantment[1] = new StatBuffAdd(6,11,s, 25);
+		enchantment[2] = new BonusStatBuff(14,0.15, s,45);
 		return enchantment;
 	}
 

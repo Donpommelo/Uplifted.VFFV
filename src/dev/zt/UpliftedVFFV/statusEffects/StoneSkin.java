@@ -23,8 +23,12 @@ public class StoneSkin extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
-		if(damage*percent/5 <= -1){
-			bs.bp.stm.addStatus(vic, new BonusStatBuff(5,34,-damage*percent/5,vic,vic,50));
+		double perc = percent;
+		if(this.isEquipment()){
+			perc = perc *(1+vic.getEquipPow());
+		}
+		if(damage*perc/5 <= -1){
+			bs.bp.stm.addStatus(vic, new BonusStatBuff(5,34,-damage*perc/5,vic,vic,50));
 		}
 		return damage;
 	}	

@@ -10,12 +10,12 @@ import dev.zt.UpliftedVFFV.states.GameState;
 
 
 
-public class WarpBallpitYellowtoLLandInner extends Event {
+public class WarpBallpitRedtoLLandInner extends Event {
 
 	public static BufferedImage img=Assets.ClearDoor1;
 
 	public static int stagenum = 1;
-	public WarpBallpitYellowtoLLandInner(float x, float y, int idnum) {
+	public WarpBallpitRedtoLLandInner(float x, float y, int idnum) {
 		super(img,idnum,x, y, stagenum);
 	}	
 

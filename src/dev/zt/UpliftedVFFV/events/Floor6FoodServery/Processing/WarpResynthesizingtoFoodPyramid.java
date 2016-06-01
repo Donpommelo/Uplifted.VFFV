@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events.Floor6FoodServery.Processing;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
@@ -21,24 +22,33 @@ public class WarpResynthesizingtoFoodPyramid extends Event {
 
 	
 	public void run(){
-		switch(this.getstage()){
-		case 0: 				
-			if(!this.isOpen()){
-				this.setOpen(true);
-			}
-			else{
+		if(super.getQuest(13) >1){
+			switch(this.getstage()){
+			case 0: 				
+				if(!this.isOpen()){
+					this.setOpen(true);
+				}
+				else{
+					this.setOpen(false);
+				}
+				KeyManager.setCutsceneMode(true);
+				break;
+			case 1:
+				KeyManager.setCutsceneMode(false);
+				this.setstage(0);
+				super.transport("/Worlds/Floor6FoodServery/Processing/FoodPyramid.txt",28,41,"Food Pyramid");
 				this.setOpen(false);
+				this.setFrames(0);
+				break;
 			}
-			KeyManager.setCutsceneMode(true);
-			break;
-		case 1:
-			KeyManager.setCutsceneMode(false);
-			this.setstage(0);
-			super.transport("/Worlds/Floor6FoodServery/Processing/FoodPyramid.txt",28,41,"Food Pyramid");
-			this.setOpen(false);
-			this.setFrames(0);
-			break;
 		}
+		else{
+			Dialog[] d2 = new Dialog[1];
+			d2[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"The door is locked.");
+			super.Dialog(d2, 0, this.getId(), true);
+			this.setstage(1);
+		}
+		
 	}
 
 	public void tick(GameState gs) {

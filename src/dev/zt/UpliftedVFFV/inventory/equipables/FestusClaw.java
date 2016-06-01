@@ -26,8 +26,8 @@ public class FestusClaw extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new FestusClawStatus(s,0);
-		enchantment[1] = new BonusStatBuff(16,.35*(1+s.getEquipPow()), s,25);
-		enchantment[2] = new BonusStatBuff(17,.35*(1+s.getEquipPow()),s, 25);
+		enchantment[1] = new BonusStatBuff(16,.35, s,25);
+		enchantment[2] = new BonusStatBuff(17,.35,s, 25);
 		return enchantment;
 	}
 	

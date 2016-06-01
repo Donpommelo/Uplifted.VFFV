@@ -503,20 +503,20 @@ public class Event implements Serializable{
 	public static Event event449 = new WarpEaterytoProcessing(26,13,449);
 	public static Event event450 = new WarpLLandtoEatery(6,33,450);
 	public static Event event451 = new WarpLLandtoLLLobby(48,29,451);
-	public static Event event452 = new WarpLLandtoBallpitYellow(21,6,452);
-	public static Event event453 = new WarpLLandtoBallpitBlue(40,6,453);
+	public static Event event452 = new WarpLLandtoBallpitRed(21,6,452);
+	//public static Event event453 = new WarpLLandtoBallpitBlue(40,6,453);
 	public static Event event454 = new WarpLLandtoInner(41,8,454);
-	public static Event event455 = new WarpLLandtoFloor2(22,12,455);
+	//public static Event event455 = new WarpLLandtoFloor2(22,12,455);
 	public static Event event456 = new WarpEaterytoExtended(2,56,456);
 	public static Event event457 = new WarpLLLobbytoLLand(3,13,457);
 	public static Event event458 = new WarpLLLobbytoEElevator(9,17,458);
 	public static Event event459 = new WarpLLLobbytoLLandFloor2(9,6,459);
-	public static Event event460 = new WarpBallpitYellowtoLLand(19,27,460);
-	public static Event event461 = new WarpBallpitYellowtoLLandInner(12,20,461);
+	public static Event event460 = new WarpBallpitRedtoLLand(19,27,460);
+	public static Event event461 = new WarpBallpitRedtoLLandInner(12,20,461);
 	public static Event event462 = new WarpBallpitBluetoLLand(5,27,462);
 	public static Event event463 = new WarpBallpitBluetoLLandInner(12,20,463);
 	public static Event event464 = new WarpLLandInnertoOuter(9,40,464);
-	public static Event event465 = new WarpLLandInnertoBallpitYellow(5,31,465);
+	public static Event event465 = new WarpLLandInnertoBallpitRed(5,31,465);
 	public static Event event466 = new WarpLLandInnertoBallpitBlue(24,31,466);
 	public static Event event467 = new WarpLLandInnertoLLandFloor2(13,6,467);
 	public static Event event468 = new WarpLLandFloor2toFloor1(12,23,468);
@@ -717,8 +717,38 @@ public class Event implements Serializable{
 	public static Event eventBlockageRight = new EventBlockageRight(23,8,716);
 	
 	//717-730: Aquarium Events and whatever
-	
-	
+	public static Event eventShopJuice = new EventShopJuice(28,21,740);
+	public static Event eventShopDogginDaves = new EventShopDogginDaves(28,29,741);
+	public static Event eventShopSauce = new EventShopSauce(28,37,742);
+	public static Event eventShopAngrys = new EventShopAngrys(25,48,743);
+	public static Event eventShopTunzoFunns = new EventShopTunzoFunns(19,48,744);
+	public static Event eventShopPhlegmings = new EventShopPhlegmings(13,48,745);
+	public static Event eventShopCanteen = new EventShopRedJujube(7,48,746);
+	public static Event eventShopFish = new EventShopFishGuy(6,23,747);
+	public static Event eventShopGarden = new EventShopGarden(14,10,748);
+	public static Event eventShopLachiplatre = new EventShopLachiplatre(20,10,749);
+	public static Event eventShopIceCream = new EventShopIceCream(26,10,750);
+
+	public static Event eventWaitressCutscene = new EventWaitressCutscene(40,12,752);
+	public static Event eventGuard = new EventGuard(40,12,753);
+	public static Event eventInformantFoodCourt = new EventInformantFoodCourt(14,10,754);
+	public static Event eventBlueGate = new EventRedGate(40,6,755);
+	public static Event eventPurpleGate = new EventPurpleGate(22,12,756);
+	public static Event eventChartreuseGate = new EventChartreuseGate(17,6,757);
+	public static Event eventVermillionGate = new EventVermillionGate(36,16,758);
+	public static Event eventCitronGate = new EventCitronGate(43,7,759);
+	public static Event eventBallReceptacle = new Eventreceptacle1(14,34,760);
+	public static Event eventChartreuseGateBack = new EventChartreuseGateBack(6,11,761);
+	public static Event eventVermillionGateBack = new EventVermillionGateBack(7,11,762);
+	public static Event eventCitronGateBack = new EventCitronGateBack(21,41,763);
+	public static Event eventForeman = new EventForeman(22,13,764);
+	public static Event eventLachiplatrePile = new EventLachiplatrePile(0,0,765);
+	public static Event eventGreeterMachine = new EventGreeterMachine(46,24,766);
+
+	public static Event eventTourGuideEntry = new EventTourGuideEntry(15,10,770);
+	public static Event eventTourGuideWest= new EventTourGuideWest(13,8,771);
+	public static Event eventTourGuideExamination= new EventTourGuideExamination(4,8,772);
+
 	
 	
 	public static Event testBattle = new EventTestBattle(0,0,1000);
@@ -726,7 +756,6 @@ public class Event implements Serializable{
 	public static Event testSummon = new SummonSignIntern(0,0,1002);
 	public static Event testPushBlock = new EventPushBlock(0,0,1003);
 	public static Event testIceFloor = new EventSlipFloor(0,0,1004);
-	public static Event testCrafting = new Eventreceptacle1(0,0,1005);
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 64;
 	protected BufferedImage tex;
@@ -1037,8 +1066,8 @@ public class Event implements Serializable{
 	}
 	
 	//Shopping state with list of items and prices.
-	public static void shop(int EventId,TreeMap<Item, Integer> choices, BufferedImage sk){
-		StateManager.states.push(new ShoppingState(game,gamestate,statemanager,EventId,choices,sk));
+	public static void shop(int EventId,TreeMap<Item, Integer> choices, BufferedImage sk, int shopId){
+		StateManager.states.push(new ShoppingState(game,gamestate,statemanager,EventId,choices,sk,shopId));
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -1077,6 +1106,11 @@ public class Event implements Serializable{
 		if(gamestate.partymanager.party.contains(unrecruit)){
 			gamestate.partymanager.party.remove(unrecruit);
 		}
+	}
+	
+	//Buy enough stuff: get special dialogue and maybe an item?
+	public void shopBonus(int munny){
+		
 	}
 	
 	//Adds num items i to your inventory
@@ -1362,5 +1396,18 @@ public class Event implements Serializable{
 	public Event[] getEvents() {
 		return events;
 	}	
+	
+	//Stuff for custom shop strings
+	public String shopOpen(){
+		return "Welcome! How may I help you?";
+	}
+	
+	public String boughtString(Item i, int num, int scr){
+		return "Bought "+num+" "+i.getName()+"('s) for "+num*scr+" Script!";
+	}
+	
+	public void buyingSpree(int totalSpent){
+		
+	}
 	
 }

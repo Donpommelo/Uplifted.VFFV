@@ -28,6 +28,9 @@ public class BonusStatBuff extends status{
 		if(this.statChanged == 6 || this.statChanged == 26 || this.statChanged == 36){
 			s.bonusStats[this.statChanged] = statIncrement;
 		}
+		else if(this.isEquipment() && statChanged != 10){
+			s.bonusStats[this.statChanged] += (statIncrement * (1+s.getEquipPow()));
+		}
 		else{
 			s.bonusStats[this.statChanged] += statIncrement;
 		}

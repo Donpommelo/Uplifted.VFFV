@@ -16,7 +16,7 @@ public class MangroveTalisman extends Item{
 	static int value = 150;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="Tangled talisman of the all-absorbing mangrove root.";
 	static String descrShort="Absorbs first negative status in a fight\nInflicts absorbed status on attacking enemies.";
 	public status[] enchantment = new status[1];
 	public MangroveTalisman() {

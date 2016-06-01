@@ -26,9 +26,9 @@ public class ZenBand extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(31,(int)(.3*(1+s.getEquipPow())), s,50);
-		enchantment[1] = new BonusStatBuff(34,(int)(5*(1+s.getEquipPow())), s,50);
-		enchantment[2] = new StatBuffAdd(3,(int)(5*(1+s.getEquipPow())), s,50);
+		enchantment[0] = new BonusStatBuff(31,0.3, s,55);
+		enchantment[1] = new BonusStatBuff(34,5, s,55);
+		enchantment[2] = new StatBuffAdd(3,5, s,55);
 		return enchantment;
 	}
 

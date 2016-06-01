@@ -27,9 +27,9 @@ public class BackpackBaphomet extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(10,-.75, s,50);
-		enchantment[1] = new StatBuffMult(2,1.25, s,35);
-		enchantment[2] = new ElemPointsBuffMult(0,1.25,s, 35);
+		enchantment[0] = new BonusStatBuff(10,-.75, s,5);
+		enchantment[1] = new StatBuffMult(2,1.25, s,30);
+		enchantment[2] = new ElemPointsBuffMult(0,1.25,s, 40);
 		
 		return enchantment;
 	}

@@ -623,7 +623,7 @@ public class BattleMenu{
 						itemnum++;
 					}	
 					
-					Utils.drawDialogueBox(g,window, itemDisplay[itemSelected].getDescrShort(), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
+					Utils.drawDialogueBox(g,window, itemDisplay[itemSelected].getDescrShort(gs), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
 
 				}
 				if(backpackLocation!=0){

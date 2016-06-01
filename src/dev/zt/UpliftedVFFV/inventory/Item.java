@@ -114,7 +114,7 @@ public class Item implements Comparable<Item>, Serializable{
 		this.descr = descr;
 	}
 
-	public String getDescrShort() {
+	public String getDescrShort(GameState gs) {
 		return descrShort;
 	}
 	
@@ -245,6 +245,10 @@ public class Item implements Comparable<Item>, Serializable{
 	//Gives Xp of summoning Objects.
 	public int getXp(){
 		return exp;
+	}
+	
+	public void setXp(int xpChange){
+		this.exp += xpChange;
 	}
 	
 	//Gives Summon of summoning Objects.

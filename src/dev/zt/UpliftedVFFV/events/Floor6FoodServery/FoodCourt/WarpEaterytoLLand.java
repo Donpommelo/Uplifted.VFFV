@@ -43,7 +43,7 @@ public class WarpEaterytoLLand extends Event {
 			}
 		}
 		else{
-			if(super.getQuest(3) == 5){
+			if(super.getQuest(3) == 3){
 				Dialog[] d = new Dialog[8];
 				d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You produce the Shrinking Ray that the Informant gave you./");
 				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",1,"Uh, do you think this is safe? To use this on myself?");

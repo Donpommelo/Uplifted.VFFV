@@ -35,7 +35,8 @@ public class Assets {
 	public static BufferedImage Wall1, Wall2, Ceiling1, Ceiling2, ElevatorDoorWall,ElevatorWall;
 	public static BufferedImage White, ActuallyWhite, Black, Void,RedCarpet,WoodBoard, BlueCarpet, StoneFloor, AquaTile,WhiteTile
 	,RowCarpet,	WhiteCarpet, GlassTile, BlueSquareCarpet, BlueDiagCarpet, CircleCarpet, SandTile, DarkSandTile
-	,GreySquareCarpet,DarkRowCarpet, GreyGroutTile;
+	,GreySquareCarpet,DarkRowCarpet, Steel,Asphalt,BlueGreyCarpet,WeirdCarpet,PaleMarble,AlternatingTile,GreyGroutTile,
+	Brick,YellowCarpet,Grass,PurpleElevator,GreenElevator,RedElevator,YellowElevator;
 	
 	public static BufferedImage ElevatorPanel, ElevatorFloorMark, ElevatorWave, Smudge1, Smudge2;
 	public static BufferedImage Operator,PenPal,EmployeeM1,EmployeeM2,EmployeeF, Mover, Wiper, Emaudeline, Informant;
@@ -58,7 +59,7 @@ public class Assets {
 	
 	public static BufferedImage WestClocksDigital330,WestClocksDigital315,WestClocksDigital900,WestClocksDigital600,
 	WestClocksDigital645, WestClocksAnalogE,WestClocksAnalogW,WestClocksAnalogN,WestClocksAnalogS,WestClocksAnalogR,
-	WestClocksAnalogL,WestClocksAnalogF,WestClocksAnalogB;
+	WestClocksAnalogL,WestClocksAnalogF,WestClocksAnalogB,WestClocksDigital300,WestClocksDigital915;
 	
 	public static BufferedImage WorkDesk1, WorkDesk2, FilingCabinet, Sofa1,Sofa2, Sofa3, Sofa4, SafeClosed, SafeOpened,SafeClosed2,
 	WaterCooler,Clock, VendingMachine;
@@ -369,13 +370,18 @@ public class Assets {
 		BlueCarpet = TilesetBackroom.crop(6*width, 0, 2*width, 3*height);
 		AquaTile = TilesetBackroom.crop(8*width, 0, 2*width, 3*height);
 		GreyGroutTile = TilesetBackroom.crop(10*width, 0, 2*width, 3*height);
+		PurpleElevator = TilesetBackroom.crop(12*width, 0, 2*width, 3*height);
+		GreenElevator = TilesetBackroom.crop(0, 3*height, 2*width, 3*height);
+		RedElevator = TilesetBackroom.crop(2*width, 3*height, 2*width, 3*height);
+
 		StoneFloor = TilesetBackroom.crop(6*width, 3*height, 2*width, 3*height);
-		GlassTile = ThirdFloorTiles.crop(12*width,0,2*width,3*height);
+		YellowElevator = TilesetBackroom.crop(8*width, 3*height, 2*width, 3*height);
 
 		RowCarpet = ThirdFloorTiles.crop(0, 0, 2*width, 3*height);
 		WhiteCarpet = ThirdFloorTiles.crop(2*width, 0, 2*width, 3*height);
 		StairsUp = ThirdFloorTiles.crop(4*width,0,2*width,2*height);
 		StairsDown = ThirdFloorTiles.crop(6*width,0,2*width,2*height);
+		GlassTile = ThirdFloorTiles.crop(12*width,0,2*width,3*height);
 		BlueSquareCarpet = ThirdFloorTiles.crop(14*width, 0, 2*width, 3*height);
 		BlueDiagCarpet = ThirdFloorTiles.crop(0, 3*height, 2*width, 3*height);
 		CircleCarpet = ThirdFloorTiles.crop(2*width, 3*height, 2*width, 3*height);
@@ -383,6 +389,17 @@ public class Assets {
 		DarkSandTile = ThirdFloorTiles.crop(6*width, 3*height, 2*width, 3*height);
 		GreySquareCarpet = ThirdFloorTiles.crop(12*width, 3*height, 2*width, 3*height);
 		DarkRowCarpet = ThirdFloorTiles.crop(14*width, 3*height, 2*width, 3*height);
+
+		Steel = ThirdFloorTiles.crop(0, 6*height, 2*width, 3*height);
+		Asphalt = ThirdFloorTiles.crop(2*width, 6*height, 2*width, 3*height);
+		BlueGreyCarpet = ThirdFloorTiles.crop(4*width, 6*height, 2*width, 3*height);
+		WeirdCarpet = ThirdFloorTiles.crop(6*width, 6*height, 2*width, 3*height);
+		PaleMarble = ThirdFloorTiles.crop(12*width, 6*height, 2*width, 3*height);
+		AlternatingTile = ThirdFloorTiles.crop(14*width, 6*height, 2*width, 3*height);
+		Brick = ThirdFloorTiles.crop(0, 9*height, 2*width, 3*height);
+		YellowCarpet = ThirdFloorTiles.crop(2*width, 9*height, 2*width, 3*height);
+		Grass = ThirdFloorTiles.crop(4*width, 9*height, 2*width, 3*height);
+
 
 		StairsRight0 = ThirdFloorTiles.crop((int) (8.5*width),(int)(0.5*width),width,height);
 		StairsRight1 = ThirdFloorTiles.crop((int) (8.5*width),(int)(1.5*width),width,height);
@@ -477,7 +494,8 @@ public class Assets {
 		AirVent = Furniture3rdFloor.crop(5*width, 3*height, width, height);
 		BigMailThing = Furniture3rdFloor.crop(3*width, 7*height, 2*width, 3*height);
 		Puddle = Furniture3rdFloor.crop(10*width, 3*height, 2*width, 2*height);
-		LadderDown = Furniture3rdFloor.crop(6*width, 7*height, 1*width, 1*height);
+		LadderDown = Furniture3rdFloor.crop(6*width, 8*height, 1*width, 2*height);
+		LadderUp = Furniture3rdFloor.crop(5*width, 7*height, 1*width, 3*height);
 		PosterRed = Furniture3rdFloor.crop(0, 6*height, width, height);
 		PosterBlue = Furniture3rdFloor.crop(1*width, 6*height, width, height);
 		PosterGreen = Furniture3rdFloor.crop(2*width, 6*height, width, height);
@@ -496,7 +514,7 @@ public class Assets {
 		RailMiddle = Furniture3rdFloor.crop((int)(14.5*width), height, width, height);
 		RailRight = Furniture3rdFloor.crop((int)(15.5*width), height, width/2, height);
 
-		Table0 = FurnitureBackroom.crop(9*width, 3*height, width, height);
+		Table0 = FurnitureBackroom.crop(8*width, 3*height, width, height);
 		Table1 = FurnitureBackroom.crop(9*width, 3*height, width, height);
 		Table2 = FurnitureBackroom.crop(10*width, 3*height, width, height);
 		Table3 = FurnitureBackroom.crop(11*width, 3*height, width, height);
@@ -519,6 +537,8 @@ public class Assets {
 		WestClocksDigital900 = WestClocks.crop(0, 3*height, 3*width, 3*height);
 		WestClocksDigital600 = WestClocks.crop(0, 6*height, 3*width, 3*height);
 		WestClocksDigital645 = WestClocks.crop(0, 9*height, 3*width, 3*height);
+		WestClocksDigital300 = WestClocks.crop(3*width, 6*height, 3*width, 3*height);
+		WestClocksDigital915 = WestClocks.crop(3*width, 9*height, 3*width, 3*height);
 		WestClocksAnalogE = WestClocks.crop(6*width, 0, 3*width, 3*height);
 		WestClocksAnalogW = WestClocks.crop(6*width, 3*height, 3*width, 3*height);
 		WestClocksAnalogN = WestClocks.crop(6*width, 6*height, 3*width, 3*height);

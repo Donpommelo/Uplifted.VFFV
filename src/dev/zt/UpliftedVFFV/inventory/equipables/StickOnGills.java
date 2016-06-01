@@ -16,7 +16,7 @@ public class StickOnGills extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 10;
-	static String descr="TEMP";
+	static String descr="Adhesive gill stickers for employees that identify as fish.";
 	static String descrShort="-25% Underwater Penalty";
 	public status[] enchantment = new status[1];
 	public StickOnGills() {
@@ -25,7 +25,7 @@ public class StickOnGills extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(5,0.25*(1+s.getEquipPow()), s,50);
+		enchantment[0] = new BonusStatBuff(5,0.25, s,45);
 		return enchantment;
 	}
 }

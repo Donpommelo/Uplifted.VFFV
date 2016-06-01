@@ -66,15 +66,16 @@ public class WarpSElevatortoLobby extends Event {
 					super.transport("/Worlds/Floor6FoodServery/FoodCourt/SouthLobby.txt", 22, 25,"Food Servery");
 					if(super.getQuest(10)==0){
 						super.setQuest(10, 1);
-						Dialog[] d = new Dialog[7];
+						Dialog[] d = new Dialog[8];
 						d[0] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Ah, the Sixth Floor!/Say, is that a Food Court.");
 						d[1] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I believe so./could you smell it?");
 						d[2] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"...I know I have made the urgency of our mission clear, but...well...");
 						d[3] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"I've been stranded at sea for months with nothing to eat but seaweed and drifting Lachiplatre.");
 						d[4] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Could you perhaps pick something up to quell my appetite?");
 						d[5] = new Dialog("Operator" ,"/CharacterBusts/Player-1.png" ,0 ,"I guess that wouldn't be too much trouble.");
-						d[6] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Excellent! Nothing too heavy I suppose...How about a <TEMP>? That ought to help me focus on the quest at hand.");
-						super.Dialog(d, 6, this.getId(), true);
+						d[6] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Excellent! Nothing too heavy I suppose...How about a plate of Crystal Dumplings? That ought to help me focus on the quest at hand.");
+						d[7] = new Dialog("Pen Pal" ,"/CharacterBusts/Player-5.png" ,1 ,"Oh, and don't worry about money./I'll cover it. ;)");
+						super.Dialog(d, 7, this.getId(), true);
 					}
 					break;
 				case 6:

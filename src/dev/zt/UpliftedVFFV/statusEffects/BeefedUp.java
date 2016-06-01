@@ -1,6 +1,8 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.AngrysAngerStatus;
 
 public class BeefedUp extends status{
 
@@ -17,10 +19,16 @@ public class BeefedUp extends status{
 		super(name,v,pr);
 	}	
 	
-	public void statchanges(Schmuck s){
+	public void statchanges(Schmuck s, BattleState bs){
 		int bonus = (10-3*duration)*(10-3*duration)/100;
+
+		if(bs.bp.stm.checkStatus(s, new AngrysAngerStatus(s, 5))){
+			bonus = (int) (bonus * 1.50);
+		}
+		
 		s.buffedStats[2] *= (1+bonus);
-	}
+	}		
+	
 	
 	public String inflictText(Schmuck s){
 		return s.getName()+" looks Beefed Up!";

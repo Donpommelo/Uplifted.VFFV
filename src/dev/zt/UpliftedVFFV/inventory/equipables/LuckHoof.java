@@ -24,8 +24,8 @@ public class LuckHoof extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StatBuffAdd(3,(int)(8*(1+s.getEquipPow())), s,55);
-		enchantment[1] = new StatBuffAdd(7,(int)(11*(1+s.getEquipPow())), s,55);
+		enchantment[0] = new StatBuffAdd(3,8, s,55);
+		enchantment[1] = new StatBuffAdd(7,8, s,55);
 		return enchantment;
 	}
 }

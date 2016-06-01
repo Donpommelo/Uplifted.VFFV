@@ -18,18 +18,18 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class EventShopAngrys extends Event {
 
-	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Arturo.png");
+	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/ServeryMRedsmall.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public ArrayList<Item> stuff = new ArrayList<Item>();
 	public static int stagenum = 0;
 	public EventShopAngrys(float x, float y, int idnum) {
-		super(Assets.VendingMachine,idnum,x, y, stagenum);
+		super(Assets.Table8,idnum,x, y, stagenum);
 		
 	}
 	
 	public void run(){
 		getGoods();
-		super.shop(this.getId(),selection,shopKeeper);
+		super.shop(this.getId(),selection,shopKeeper,3);
 	}
 
 	public boolean isSolid(int i){
@@ -49,5 +49,9 @@ public class EventShopAngrys extends Event {
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));
 		}
+	}
+	
+	public String shopOpen(){
+		return "Welcome to Angry's!";
 	}
 }

@@ -16,7 +16,7 @@ public class SouvenirCoin extends Item{
 	static int value = 18;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A pressed coin displaying the Aquarium insignia.";
 	static String descrShort="+11% Script Drop.";
 	public status[] enchantment = new status[1];
 	public SouvenirCoin() {
@@ -24,7 +24,7 @@ public class SouvenirCoin extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(2, .11 *(1+s.getEquipPow()),s, 50);
+		enchantment[0] = new BonusStatBuff(2, .11 ,s, 45);
 		return enchantment;
 	}
 }

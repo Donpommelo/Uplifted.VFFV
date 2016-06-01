@@ -43,6 +43,7 @@ public class status implements Serializable{
 	public Boolean visible = true;		//Whether the status is visible in the UI
 	public Boolean removedEnd = true;	//Whether the status is removed at the end of combat.
 	public Boolean decay = true;		//Whether the status's duration decreases at the end of each round.
+	public Boolean equipment;			//Whether the status is given by equipment or not.
 	public int extraVar1;					//For stackable statuses
 	public int priority;				//Status priority. Higher priority statuses have their effects applied first.
 	public Schmuck perp, vic;			//Schmuck who inflicted this status, Schmuck afflicted
@@ -60,6 +61,7 @@ public class status implements Serializable{
 		this.vic = v;
 		this.priority = pr;
 		this.extraVar1 = 1;
+		this.equipment = false;
 	}
 	
 	public status(int i, String n, Boolean perm, Boolean vis, Boolean end, Boolean dec, Schmuck p, Schmuck v, int pr, BattleAnimation ba){
@@ -73,6 +75,7 @@ public class status implements Serializable{
 		this.vic = v;
 		this.priority = pr;
 		this.extraVar1 = 1;
+		this.equipment = false;
 		this.ba = ba;
 	}
 	
@@ -87,6 +90,7 @@ public class status implements Serializable{
 		this.decay = false;
 		this.vic = v;
 		this.extraVar1 = 1;
+		this.equipment = true;
 		this.perp = new Schmuck();
 	}
 	
@@ -116,6 +120,10 @@ public class status implements Serializable{
 
 	public void setVic(Schmuck vic) {
 		this.vic = vic;
+	}
+	
+	public Boolean isEquipment(){
+		return equipment;
 	}
 
 	//Activates upon selecting a move. Atm used for restricting; if certain moves are selected, they are replaced

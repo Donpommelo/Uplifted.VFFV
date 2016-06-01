@@ -24,7 +24,7 @@ public class LoamSkinTalisman extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new StoneSkin(.50 * (1+s.getEquipPow()),s,50);
+		enchantment[0] = new StoneSkin(.50,s,50);
 		return enchantment;
 	}
 }

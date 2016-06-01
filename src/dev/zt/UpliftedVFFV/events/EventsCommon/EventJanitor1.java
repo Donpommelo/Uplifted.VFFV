@@ -19,6 +19,7 @@ import dev.zt.UpliftedVFFV.inventory.consumables.MedPak;
 import dev.zt.UpliftedVFFV.inventory.consumables.SmellingSalt;
 import dev.zt.UpliftedVFFV.inventory.consumables.StatScrubber;
 import dev.zt.UpliftedVFFV.inventory.equipables.Conduit;
+import dev.zt.UpliftedVFFV.inventory.misc.DamageSponge;
 import dev.zt.UpliftedVFFV.inventory.misc.JanitorDonationForm;
 import dev.zt.UpliftedVFFV.inventory.misc.MagicBottle;
 import dev.zt.UpliftedVFFV.inventory.misc.SleepingPills;
@@ -98,7 +99,7 @@ public class EventJanitor1 extends Event {
 			break;
 		case 1:
 			getGoods();
-			super.shop(this.getId(),selection,shopKeeper);
+			super.shop(this.getId(),selection,shopKeeper,0);
 			this.setstage(2);
 			break;
 		case 2:
@@ -128,14 +129,27 @@ public class EventJanitor1 extends Event {
 		}
 		if(super.getVar(12) >= 3){
 			stuff.add(new SleepingPills());
-			stuff.add(new SummonSauce());
 			stuff.add(new JanitorDonationForm());
 		}
 		if(super.getVar(12) >= 5){
 			stuff.add(new MagicBottle());
+			stuff.add(new DamageSponge());
 		}
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));
 		}
 	}
+	
+	public String shopOpen(){
+		return "Got some real nice stuff here. Take a real good look.";
+	}
+	
+	public String boughtString(Item i, int num, int scr){
+		switch(i.getName()){
+		case "Med-Pak":
+			return "Test";
+		}
+		return "Bought "+num+" "+i.getName()+"('s) for "+num*scr+" Script!";
+	}
+	
 }

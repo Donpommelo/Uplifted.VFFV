@@ -25,7 +25,12 @@ public class ElemPointsBuff extends status{
 	}
 	
 	public void statchanges(Schmuck s){
-		s.buffedElemPoints[this.statChanged]+=statIncrement;
+		if(this.isEquipment()){
+			s.buffedElemPoints[this.statChanged] += (statIncrement * (1+s.getEquipPow()));
+		}
+		else{
+			s.buffedElemPoints[this.statChanged]+=statIncrement;
+		}
 	}
 	
 	public String inflictText(Schmuck s){

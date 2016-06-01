@@ -6,7 +6,7 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 
 public class White extends Tile{
 
-	public final static int id = 0;
+	public final static int id = 42;
 	public final static BufferedImage texture = Assets.White;
 	
 	public White() {

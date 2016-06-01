@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events.Floor6FoodServery.LachiplatreLand;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
@@ -21,23 +22,31 @@ public class WarpLLandInnertoLLandFloor2 extends Event {
 
 	
 	public void run(){
-		switch(this.getstage()){
-		case 0: 				
-			if(!this.isOpen()){
-				this.setOpen(true);
-			}
-			else{
+		if(!Event.events[470].isSelfswitch1()){
+			Dialog[] d = new Dialog[1];
+			d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"This door is locked from the other side./");
+			super.Dialog(d, 0, this.getId(), true);
+			this.setstage(1);
+		}
+		else{
+			switch(this.getstage()){
+			case 0: 				
+				if(!this.isOpen()){
+					this.setOpen(true);
+				}
+				else{
+					this.setOpen(false);
+				}
+				KeyManager.setCutsceneMode(true);
+				break;
+			case 1:
+				KeyManager.setCutsceneMode(false);
+				this.setstage(0);
+				super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand2.txt",40,6,"");
 				this.setOpen(false);
+				this.setFrames(0);
+				break;
 			}
-			KeyManager.setCutsceneMode(true);
-			break;
-		case 1:
-			KeyManager.setCutsceneMode(false);
-			this.setstage(0);
-			super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand2.txt",40,6,"");
-			this.setOpen(false);
-			this.setFrames(0);
-			break;
 		}
 	}
 

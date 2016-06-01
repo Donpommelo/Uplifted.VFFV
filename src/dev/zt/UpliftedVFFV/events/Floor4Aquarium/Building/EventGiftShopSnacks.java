@@ -19,7 +19,7 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 
 public class EventGiftShopSnacks extends Event {
 
-	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/Arturo.png");
+	public BufferedImage shopKeeper = ImageLoader.loadImage("/CharacterBusts/AquariumFsmall.png");
 	public TreeMap<Item, Integer> selection = new TreeMap<>();
 	public ArrayList<Item> stuff = new ArrayList<Item>();
 	public static int stagenum = 0;
@@ -31,7 +31,7 @@ public class EventGiftShopSnacks extends Event {
 	public void run(){
 //		super.Dialog(168, 168,this.getId());
 		getGoods();
-		super.shop(this.getId(),selection,shopKeeper);
+		super.shop(this.getId(),selection,shopKeeper,2);
 	}
 
 	public boolean isSolid(int i){

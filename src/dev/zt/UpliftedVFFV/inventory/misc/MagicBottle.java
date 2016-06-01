@@ -16,7 +16,7 @@ public class MagicBottle extends Item{
 	static int value = 10;
 	static int slot = 2;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A crystalline bottle designed to hold all manner of magical liquid.";
 	static String descrShort="OVERIDE";
 	public MagicBottle() {
 		super(id,name,menu,battle,consume,target,descr,descrShort,value,slot,lvlReq);

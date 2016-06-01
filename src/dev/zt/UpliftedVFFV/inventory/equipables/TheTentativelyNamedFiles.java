@@ -18,7 +18,7 @@ public class TheTentativelyNamedFiles extends Item{
 	static int value = 20;
 	static int slot = 1;
 	static int lvlReq = 3;
-	static String descr="TEMP.";
+	static String descr="A folder of boring paperwork. Even a mere glance at its contents can make an employee drowsy.";
 	static String descrShort="+5 Int\nSometimes inflicts Sleep on attacking foes.";
 	public status[] enchantment = new status[2];
 	public TheTentativelyNamedFiles() {
@@ -27,7 +27,7 @@ public class TheTentativelyNamedFiles extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new StatusCloud(50,.1, s,new Asleep(2,s,s,50));
-		enchantment[1] = new StatBuffAdd(6,(int)(5*(1+s.getEquipPow())),s,50);
+		enchantment[1] = new StatBuffAdd(6,5,s,45);
 		return enchantment;
 	}
 }

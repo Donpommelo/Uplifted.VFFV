@@ -25,8 +25,8 @@ public class AetherFeather extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(0, .15 * (1 + s.getEquipPow()), s,50);
-		enchantment[1] = new ElemPointsBuff(3,(int)(5* (1 + s.getEquipPow())),s,30);
+		enchantment[0] = new BonusStatBuff(0, .15, s,51);
+		enchantment[1] = new ElemPointsBuff(3, 5, s,31);
 		return enchantment;
 	}
 }

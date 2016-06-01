@@ -27,8 +27,8 @@ public class KidneyStone extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new KidneyStoneStatus(s,5);
-		enchantment[1] = new StatBuffAdd(0,(int)(18*(1+s.getEquipPow())), s,50);
-		enchantment[2] = new BonusStatBuff(34, (int)(5*(1+s.getEquipPow())), s,50);
+		enchantment[1] = new StatBuffAdd(0,18, s,45);
+		enchantment[2] = new BonusStatBuff(34, 5, s,45);
 		return enchantment;
 	}
 	

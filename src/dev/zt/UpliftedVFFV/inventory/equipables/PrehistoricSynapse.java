@@ -26,8 +26,8 @@ public class PrehistoricSynapse extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new PrehistSynapse(s,5);
-		enchantment[1] = new BonusStatBuff(1,0.11*(1+s.getEquipPow()), s,80);
-		enchantment[2] = new BonusStatBuff(16,0.11*(1+s.getEquipPow()), s,80);
+		enchantment[1] = new BonusStatBuff(1,0.11, s,75);
+		enchantment[2] = new BonusStatBuff(16,0.11, s,75);
 		return enchantment;
 	}
 	

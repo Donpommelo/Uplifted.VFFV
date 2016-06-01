@@ -32,7 +32,7 @@ public class EventVending1 extends Event {
 	public void run(){
 //		super.Dialog(168, 168,this.getId());
 		getGoods();
-		super.shop(this.getId(),selection,shopKeeper);
+		super.shop(this.getId(),selection,shopKeeper,1);
 	}
 
 	public boolean isSolid(int i){
@@ -52,5 +52,9 @@ public class EventVending1 extends Event {
 		for(Item i : stuff){
 			selection.put(i, (int)(i.value * (1 - discount)));
 		}
+	}
+	
+	public String shopOpen(){
+		return "You examine the vending machine and its offerings.";
 	}
 }

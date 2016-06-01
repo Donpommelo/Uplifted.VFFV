@@ -24,7 +24,7 @@ public class CatchersGlove extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(4, .11 *(1+s.getEquipPow()),s, 50);
+		enchantment[0] = new BonusStatBuff(4, .11 ,s, 55);
 		return enchantment;
 	}
 }

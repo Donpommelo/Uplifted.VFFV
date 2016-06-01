@@ -8,10 +8,19 @@ public class WarpCarlocsOfficetoBusRamp extends Event {
 	
 	public static int stagenum = 0;
 	public WarpCarlocsOfficetoBusRamp(float x, float y, int idnum) {
-		super(Assets.White,idnum,x, y, stagenum);
+		super(Assets.LadderUp,idnum,x, y, stagenum);
 	}
 		
 	public void run(){
 		super.transport("/Worlds/Floor3Offices/EastWingOffices/EastWingOutside.txt",20,13,"Bus Ramp");
+	}
+	
+	public boolean drawn(){
+		if(super.getQuest(5) > 3){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

@@ -18,7 +18,7 @@ public class Torchlight extends Item{
 	static int value = 200;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="A bright light at the end of a long, wooden pole. Used by employees that work in departments designed before proper lighting was introduced to the building.";
 	static String descrShort="+20% Accuracy\nLight up dark areas.";
 	public status[] enchantment = new status[1];
 	public Torchlight() {
@@ -26,7 +26,7 @@ public class Torchlight extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(1,0.20*(1+s.getEquipPow()), s,80);
+		enchantment[0] = new BonusStatBuff(1,0.20, s,85);
 		return enchantment;
 	}
 	

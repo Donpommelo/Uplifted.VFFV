@@ -14,5 +14,9 @@ public class WarpResynthesizingtoIntroHall extends Event {
 		super.getGamestate().getEvents()[476].setOpen(false);
 		super.getGamestate().getEvents()[476].setFrames(6);
 		super.transport("/Worlds/Floor6FoodServery/Processing/IntroHall.txt",8,8,"Backroom");
+		if(!this.isSelfswitch1()){
+			this.setSelfswitch1(true);
+			super.setQuest(13, 2);
+		}
 	}
 }

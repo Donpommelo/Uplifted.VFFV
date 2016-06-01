@@ -35,6 +35,7 @@ public class EventCarlocLobby extends Event {
 			this.setSelfswitch1(true);
 			super.Dialog(d, 12, this.getId(), true);
 			super.setQuest(5, 1);
+			super.setQuest(1, 5);
 		}
 		else{
 			Dialog[] d = new Dialog[2];

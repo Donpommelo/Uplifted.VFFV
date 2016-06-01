@@ -26,7 +26,7 @@ public class HandofGlory extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new HoGStatus(s,5);
-		enchantment[1] = new BonusStatBuff(0,.12*(1+s.getEquipPow()),s, 25);
+		enchantment[1] = new BonusStatBuff(0,.12,s, 25);
 		return enchantment;
 	}
 	

@@ -52,6 +52,7 @@ public class EventEmaudelineOffices extends Event {
 			d[12] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,". . . Sure.");
 			d[13] = new Dialog("Emaudeline","/CharacterBusts/Emaudeline1small.png",1,"Stellar!/An extra pair of eyes is always appreciated!");
 			super.Dialog(d, 13, this.getId(), true);
+			super.setQuest(4, 1);
 			this.setSelfswitch1(true);
 		}
 		else{
@@ -60,6 +61,15 @@ public class EventEmaudelineOffices extends Event {
 			super.Dialog(d, 0, this.getId(), true);
 		}
 			
+	}
+	
+	public boolean loaded(){
+		if(super.getQuest(4) == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
 	public boolean isSolid(int i){

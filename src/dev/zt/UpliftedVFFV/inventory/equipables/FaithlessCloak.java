@@ -26,7 +26,7 @@ public class FaithlessCloak extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new FaithlessCloakStatus(s,75);
-		enchantment[1] = new StatBuffAdd(3, (int)(5*(1+s.getEquipPow())), s,50);
+		enchantment[1] = new StatBuffAdd(3, 5, s,55);
 		return enchantment;
 	}
 

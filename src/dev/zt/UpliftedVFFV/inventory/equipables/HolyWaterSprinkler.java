@@ -28,9 +28,9 @@ public class HolyWaterSprinkler extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new MponCrit((.25*(1+s.getEquipPow())),s, 50);
-		enchantment[1] = new ElemPointsBuff(1,(int)(5*(1+s.getEquipPow())), s,50);
-		enchantment[2] = new BonusStatBuff(16,.12*(1+s.getEquipPow()), s,50);
+		enchantment[0] = new MponCrit(.25,s, 50);
+		enchantment[1] = new ElemPointsBuff(1,5, s,55);
+		enchantment[2] = new BonusStatBuff(16,.12, s,55);
 		return enchantment;
 	}
 }

@@ -24,7 +24,7 @@ public class LetterOpener extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(37,(int)(7*(1+s.getEquipPow())), s,50);
+		enchantment[0] = new BonusStatBuff(37,7, s,55);
 		return enchantment;
 	}
 }

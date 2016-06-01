@@ -24,7 +24,7 @@ public class BossMug extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(35,(int)(5*(1+s.getEquipPow())),s, 35);
+		enchantment[0] = new BonusStatBuff(35,5,s, 35);
 		return enchantment;
 	}
 }

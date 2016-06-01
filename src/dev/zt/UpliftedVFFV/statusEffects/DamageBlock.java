@@ -38,10 +38,16 @@ public class DamageBlock extends status{
 	}
 	
 	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		int am = this.amount;
+		double perc = this.percent;
+		if(this.isEquipment()){
+			am = (int) (am * (1 + vic.getEquipPow()));
+			perc = perc * (1 + vic.getEquipPow());
+		}
 		int finaldamage = damage;
 		if(elem == this.elem || this.elem == 7){
-			if(Math.random() <= this.percent){
-				finaldamage += this.amount;
+			if(Math.random() <= perc){
+				finaldamage += am;
 			}
 		}
 		if(finaldamage >= 0){

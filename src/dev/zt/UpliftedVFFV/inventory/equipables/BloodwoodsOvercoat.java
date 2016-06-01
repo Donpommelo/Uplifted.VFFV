@@ -26,8 +26,8 @@ public class BloodwoodsOvercoat extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new BloodwoodsOvercoatStatus(s,80);
-		enchantment[1] = new StatBuffAdd(5,(int)(13*(1+s.getEquipPow())), s,25);
-		enchantment[2] = new StatBuffAdd(6,(int)(13*(1+s.getEquipPow())),s, 25);
+		enchantment[1] = new StatBuffAdd(5,13 , s,25);
+		enchantment[2] = new StatBuffAdd(6,13 ,s, 25);
 		return enchantment;
 	}
 

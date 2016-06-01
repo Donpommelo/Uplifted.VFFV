@@ -24,7 +24,7 @@ public class AbsoluteThreshold extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new AbsoluteThresholdStatus(.05*(1+s.getEquipPow()),s, 90);
+		enchantment[0] = new AbsoluteThresholdStatus(.05,s, 90);
 		return enchantment;
 	}
 	

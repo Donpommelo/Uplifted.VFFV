@@ -3,6 +3,7 @@ package dev.zt.UpliftedVFFV.events.Floor6FoodServery.LachiplatreLand;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.input.KeyManager;
@@ -37,6 +38,12 @@ public class WarpBallpitBluetoLLandInner extends Event {
 			super.transport("/Worlds/Floor6FoodServery/LachiplatreLand/LachiplatreLand1Inner.txt",24,33,"");
 			this.setOpen(false);
 			this.setFrames(0);
+			if(!this.isSelfswitch1()){
+				this.setSelfswitch1(true);
+				Dialog[] d = new Dialog[1];
+				d[0] = new Dialog("meep","/CharacterBusts/Arturo.png",1,"You unlock the door when you pass through it./");
+				super.Dialog(d,0, this.getId(), true);
+			}
 			break;
 		}
 	}

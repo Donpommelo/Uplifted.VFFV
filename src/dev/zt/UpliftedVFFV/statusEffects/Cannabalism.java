@@ -22,8 +22,12 @@ public class Cannabalism extends status{
 	}
 	
 	public void onKill(Schmuck perp, Schmuck vic, BattleState bs){
+		double ls = lifesteal;
+		if(this.isEquipment()){
+			ls = ls * (1 + perp.getEquipPow());
+		}
 		bs.bp.bt.addScene(perp.getName()+" regained health from incapacitating "+vic.getName()+"!");
-		bs.bp.em.hpChange((int)(vic.getMaxHp()*lifesteal*(1+perp.getHealPower())), perp.itemDummy, perp,6);
+		bs.bp.em.hpChange((int)(vic.getMaxHp()*ls*(1+perp.getHealPower())), perp.itemDummy, perp,6);
 	}
 	
 	public String inflictText(Schmuck s){

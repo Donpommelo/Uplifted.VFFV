@@ -117,6 +117,12 @@ public class Decor {
 	public static Decor stairsright3Alt = new DecorStairsRight3Alt(93);
 	public static Decor stairsleft3Diag = new DecorStairsLeft3Diag(94);
 	public static Decor stairsleft3Alt = new DecorStairsLeft3Alt(95);
+	public static Decor postergreen = new DecorPosterGreen(96);
+	public static Decor posterred = new DecorPosterRed(97);
+	public static Decor posterblue = new DecorPosterBlue(98);
+	public static Decor posterlong = new DecorPosterLong(99);
+	public static Decor graffiti1 = new DecorGrafitti1(100);
+	public static Decor graffiti2 = new DecorGrafitti2(101);
 
 	public static Decor parallaxtest = new DecorParallaxTest(1000);
 

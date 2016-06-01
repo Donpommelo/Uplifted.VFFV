@@ -768,7 +768,7 @@ public class MenuState extends State {
 						
 						//Draw info box.
 						if(tempSchmuck.getItems()[equipSelected] != null){
-							Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(), 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
+							Utils.drawDialogueBox(g, window2, tempSchmuck.getItems()[equipSelected].getDescrShort(gamestate), 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
 						} else{
 							Utils.drawDialogueBox(g, window2, "An empty pocket.", 18, Color.black, 396, 190, 235, 200, 16, characterChosen);
 						}
@@ -878,7 +878,7 @@ public class MenuState extends State {
 					Utils.drawDialogueBox(g, window5, curItem.getDescr(), 12, Color.black, 350, 190, 260, 90, 16, optionChosen && !(useitemChosen || equipChosen));
 					
 					//Effects.
-					Utils.drawDialogueBox(g, window5, curItem.getDescrShort(), 12, Color.black, 350, 300, 260, 80, 16, optionChosen && !(useitemChosen || equipChosen));
+					Utils.drawDialogueBox(g, window5, curItem.getDescrShort(gamestate), 12, Color.black, 350, 300, 260, 80, 16, optionChosen && !(useitemChosen || equipChosen));
 
 					//Tags.
 					String tag = "Tags:  ";

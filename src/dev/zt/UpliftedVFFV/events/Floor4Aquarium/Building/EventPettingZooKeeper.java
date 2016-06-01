@@ -35,22 +35,22 @@ public class EventPettingZooKeeper extends Event {
 		case 0: 
 			if(!this.isSelfswitch1() || super.getVar(24) == 0){
 				Dialog[] d = new Dialog[2];
-				d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"TEMP");
-				d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"MORE TEMP");
+				d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"TEMP");
+				d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"MORE TEMP");
 				super.Dialog(d, 1, this.getId(), true);
 				this.setSelfswitch1(true);
 			}
 			else{
 				Dialog[] d = new Dialog[2];
-				d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"Well, I think that ought to be enough play for now. You should get back to work.");
-				d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"");
+				d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"Well, I think that ought to be enough play for now. You should get back to work.");
+				d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"");
 				super.Dialog(d, 1, this.getId(), true);
 				this.setstage(6);
 			}
 			break;
 		case 1:
 			Dialog[] d = new Dialog[1];
-			d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"Well, what do you say? Which fish do you wanna play with?");
+			d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"Well, what do you say? Which fish do you wanna play with?");
 			super.Dialog(d, 0, this.getId(), true);
 			super.ChoiceBranch(this.getId(), Choices, 400);
 			break;
@@ -94,8 +94,8 @@ public class EventPettingZooKeeper extends Event {
 	
 	public void textMade(String text) {
 		Dialog[] d = new Dialog[2];
-		d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,text+" . . .");
-		d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/3rdSouthOffices-1.png",1,"That's a good name. I'm sure "+text+" will be there for you when you need it.");
+		d[0] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,text+" . . .");
+		d[1] = new Dialog("Petting Zookeeper","/CharacterBusts/AquariumMsmall.png",1,"That's a good name. I'm sure "+text+" will be there for you when you need it.");
 		this.name = text;
 		super.Dialog(d, 1, this.getId(), true);
 		

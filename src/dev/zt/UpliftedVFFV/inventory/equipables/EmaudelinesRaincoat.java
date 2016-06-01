@@ -24,7 +24,7 @@ public class EmaudelinesRaincoat extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new DamageCap(1,(int)(200*(1-s.getEquipPow())),s, 0);
+		enchantment[0] = new DamageCap(1,200,s, 0);
 		return enchantment;
 	}
 	

@@ -26,7 +26,7 @@ public class AquariumSouvenirTshirt extends Item{
 	}
 	
 	public status[] getEnchantment(Schmuck s) {
-		enchantment[0] = new BonusStatBuff(19,0.25*(1+s.getEquipPow()), s,50);
+		enchantment[0] = new BonusStatBuff(19,0.25, s,55);
 		return enchantment;
 	}
 	

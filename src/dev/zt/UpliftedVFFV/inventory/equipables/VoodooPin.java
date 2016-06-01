@@ -17,7 +17,7 @@ public class VoodooPin extends Item{
 	static int value = 670;
 	static int slot = 1;
 	static int lvlReq = 1;
-	static String descr="TEMP";
+	static String descr="An ornamental pin used for torturing inanimate objects. Management prescribes these to frustrated employees to redirect anger away from coworkers.";
 	static String descrShort="+15% Purple Resist\nReflects enemy debuffs";
 	public status[] enchantment = new status[2];
 	public VoodooPin() {
@@ -26,7 +26,7 @@ public class VoodooPin extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new VoodooPinStatus(s,95);
-		enchantment[1] = new BonusStatBuff(23, .15 * (1+s.getEquipPow()),s,50);
+		enchantment[1] = new BonusStatBuff(23, .15 ,s,55);
 
 		return enchantment;
 	}

@@ -66,7 +66,7 @@ public UseItem(int index, Item i, GameState gs) {
 	}
 	
 	public String getDescrShort() {
-		return thing.getDescrShort();
+		return thing.getDescrShort(gs);
 	}
 	public int getTargetType(){
 		return thing.getTargetType();

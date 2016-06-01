@@ -1,17 +1,8 @@
 package dev.zt.UpliftedVFFV.inventory.misc;
 
-import java.util.ArrayList;
-
-import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.statusEffects.Asleep;
-import dev.zt.UpliftedVFFV.statusEffects.Invuln;
-import dev.zt.UpliftedVFFV.statusEffects.Isolated;
-import dev.zt.UpliftedVFFV.statusEffects.status;
-import dev.zt.UpliftedVFFV.statusEffects.Stats.ElemPointsBuff;
-
 
 public class FishFood extends Item{
 	

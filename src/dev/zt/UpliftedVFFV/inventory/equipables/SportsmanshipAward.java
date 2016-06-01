@@ -27,8 +27,8 @@ public class SportsmanshipAward extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		enchantment[0] = new SportsmanshipAwardStatus(s,50);
-		enchantment[1] = new BonusStatBuffMult(3,1.1*(1+s.getEquipPow()),s,50);
-		enchantment[2] = new BonusStatBuff(35,(int)(8*(1+s.getEquipPow())),s,50);
+		enchantment[1] = new BonusStatBuff(3,1.1,s,55);
+		enchantment[2] = new BonusStatBuff(35,8,s,55);
 
 		return enchantment;
 	}

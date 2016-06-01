@@ -31,7 +31,7 @@ public class CalloftheVoid extends Item{
 	
 	public status[] getEnchantment(Schmuck s) {
 		s.learnSkill(test);
-		enchantment[0] = new StatBuffAdd(6,(int)(10*(1+s.getEquipPow())), s,75);
+		enchantment[0] = new StatBuffAdd(6,10, s,75);
 		return enchantment;
 	}
 	

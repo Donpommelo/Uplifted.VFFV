@@ -54,7 +54,7 @@ public class Eventreceptacle1 extends Event {
 			for(int i = 0; i < balls.size();i++){
 				Choices[i+1] = balls.get(i).getName()+" x"+super.itemNumCheck(balls.get(i));
 			}
-			super.ChoiceBranch(this.getId(), Choices, 200);
+			super.ChoiceBranch(this.getId(), Choices, 400);
 			
 			break;
 		case 2:
@@ -66,7 +66,7 @@ public class Eventreceptacle1 extends Event {
 			for(int i = 0; i < balls.size();i++){
 				Choices[i+1] = balls.get(i).getName()+" x"+super.itemNumCheck(balls.get(i));
 			}
-			super.ChoiceBranch(this.getId(), Choices, 200);
+			super.ChoiceBranch(this.getId(), Choices, 400);
 			break;
 		case 3:
 			if(ball1 != null && ball2 != null){

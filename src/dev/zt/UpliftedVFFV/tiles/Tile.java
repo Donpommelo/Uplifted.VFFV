@@ -154,7 +154,49 @@ public class Tile {
 			break;
 		case 41:
 			t = new DarkRowCarpet();
-			break;			
+			break;
+		case 42:
+			t = new White();
+			break;
+		case 43:
+			t = new Steel();
+			break;
+		case 44:
+			t = new Asphalt();
+			break;
+		case 45:
+			t = new BlueGreyCarpet();
+			break;
+		case 46:
+			t = new WeirdCarpet();
+			break;
+		case 47:
+			t = new PaleMarble();
+			break;
+		case 48:
+			t = new AlternatingTile();
+			break;
+		case 49:
+			t = new Brick();
+			break;
+		case 50:
+			t = new YellowCarpet();
+			break;
+		case 51:
+			t = new Grass();
+			break;
+		case 52:
+			t = new PurpleElevator();
+			break;
+		case 53:
+			t = new GreenElevator();
+			break;
+		case 54:
+			t = new RedElevator();
+			break;
+		case 55:
+			t = new YellowElevator();
+			break;
 		}
 		return t;
 	}

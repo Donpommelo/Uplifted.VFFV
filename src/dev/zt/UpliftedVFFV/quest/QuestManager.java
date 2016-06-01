@@ -54,6 +54,8 @@ public class QuestManager {
 				return "Look for someone knowledgeable in the Offices.";
 			case 2:
 				return "Look for Jorge, in the Mailroom.";
+			case 4:
+				return "Explore the rest of the Offices.";
 			}
 		case 2:
 			return "Explore the building in search of clues.";
@@ -73,7 +75,7 @@ public class QuestManager {
 		case 4:
 			switch(stage){
 			case 1:
-				return "";
+				return "Help Emaudeline find the Central Light.";
 			}
 		case 5:
 			switch(stage){
@@ -112,11 +114,11 @@ public class QuestManager {
 		case 10:
 			switch(stage){
 			case 1:
-				return "Get your Pen Pal a <TEMP>";
+				return "Get your Pen Pal some Crystal Dumplings";
 			case 2:
-				return "Get your Pen Pal a <TEMP>";
+				return "Get your Pen Pal some Watercress Soup";
 			case 3:
-				return "Get your Pen Pal a <TEMP>";
+				return "Get your Pen Pal a Blue Fruit Juice";
 			}
 		case 11:
 			switch(stage){
@@ -134,7 +136,12 @@ public class QuestManager {
 			}
 		case 13:
 			switch(stage){
-			
+			case 1:
+				return "Finish your tour of the Processing Plant in the 6th Floor Food Servery.";
+			case 2:
+				return "Finish your tour of the Processing Plant in the 6th Floor Food Servery.";
+			case 3:
+				return "Make that Processing Guy a sandwich or whatever.";
 			}
 			
 		}
