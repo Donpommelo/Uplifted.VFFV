@@ -1,33 +1,29 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Invuln extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = false;
-	public Invuln(int i, Schmuck perp){
-		super(i, "Invulnerable", false, true, true, perp);
+	public static String name = "Invulnerability";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
+	public Invuln(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp,vic, pr);
 	}
 	
+	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+		bs.bp.bt.addScene(vic.getName()+"'s Invulnerability prevented damage!");
+		return 0;
+	}	
 	
-	
-	public void run(){
-		
-	}
-	
-
 	public String inflictText(Schmuck s){
-		return s.getName()+" was made invulnerable!";
-
-
+		return s.getName()+" was made Invulnerable!";
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s invulnerablility wore off!";
-
 	}
-	
-
 }

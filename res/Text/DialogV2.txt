@@ -1,4 +1,4 @@
-289
+294
 Employee
 3rdSouthOffices-1.png
 1
@@ -113,7 +113,7 @@ Player-5.png
 Well, are we going to Room 521 or not? Remember, we were going to check Floor 3./
 Operator
 Player-1.png
-1
+0
 I don't think that's the floor that was asked for./
 Operator
 Player-1.png
@@ -1160,19 +1160,19 @@ Player-1.png
 0
 Hey. . . uh. . . do you need any watering?/
 Pen Pal
-1
 Player-5.png
+1
 Watering? What do you mean?/
 Operator
 Player-1.png
 0
-Well, there's a water cooler right here, so are you thirtsy at all?/
+Well, there's a water cooler right here. Are you thirsty at all?/
 Pen Pal
-1
 Player-5.png
+1
 Oh, that. Goodness, no./Water is the last thing I need right now./I don't even want to look at it./
 Pen Pal
-1
 Player-5.png
+1
 But, that's very considerate of you to ask./You are very responsible./I knew you were the right person for this task./
 

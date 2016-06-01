@@ -11,6 +11,8 @@ public class GameCamera {
 	private float xOffset, yOffset;
 	public boolean cameraControl = true;
 	public int shakeDuration;
+	public int moveDuration;
+	private float xIncr,yIncr;
 	
 	public GameCamera(Game game, float xOffset, float yOffset){
 		this.game = game;
@@ -25,9 +27,10 @@ public class GameCamera {
 		}
 	}
 	
-	public void move(float xAmt, float yAmt){
-		xOffset += xAmt;
-		yOffset += yAmt;
+	public void move(){
+		xOffset += xIncr;
+		yOffset += yIncr;
+		moveDuration-=1;
 	}
 	
 	public float getxOffset() {
@@ -46,6 +49,15 @@ public class GameCamera {
 		this.yOffset = yOffset;
 	}
 	
+	public void slowMove(float newX, float newY, int speed){
+		if(newX != getxOffset() && newY != getyOffset()){
+			moveDuration = speed;
+			cameraControl = false;
+			xIncr = (newX-getxOffset())/speed;
+			yIncr = (newY-getyOffset())/speed;
+		}
+	}
+	
 	public void screenShake(int shake){
 		shakeDuration = shake;
 		cameraControl = false;
@@ -56,6 +68,9 @@ public class GameCamera {
 				setxOffset(getxOffset()+5);
 			}
 			shakeDuration--;
+			if(shakeDuration == 0){
+				cameraControl = true;
+			}
 		}
 
 	public boolean isCameraControl() {
@@ -73,8 +88,14 @@ public class GameCamera {
 	public void setShakeDuration(int shakeDuration) {
 		this.shakeDuration = shakeDuration;
 	}
-	
-	
-	
+
+	public int getMoveDuration() {
+		return moveDuration;
+	}
+
+	public void setMoveDuration(int moveDuration) {
+		this.moveDuration = moveDuration;
+	}
+		
 	
 }

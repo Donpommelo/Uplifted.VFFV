@@ -1,20 +1,14 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.inventory.Item;
-import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.states.BattleState;
-
-
 public class ActuallyNothing extends Skills {
 	
-public Item thing;
-
+	//This move does actually nothing, not even give a message.
+	//This move is used by enemies if the enemy is incapacitated or if the player party has no valid targets.
+	//The aforementioned scenario shouldn't ever really happen, but oh well.
+	
 	public ActuallyNothing(int index) {
-		super(index, 1,6, "", "", "", 0);
+		super(index, 1,6, "", "", "", 0,0,0,false,false);
 
 	}
 	
-	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-	
-	}
 }

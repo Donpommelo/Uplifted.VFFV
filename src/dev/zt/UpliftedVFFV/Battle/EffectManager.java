@@ -3,16 +3,18 @@ package dev.zt.UpliftedVFFV.Battle;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
+import dev.zt.UpliftedVFFV.Battle.Animations.DeathAnim;
+import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
-import dev.zt.UpliftedVFFV.statusEffects.HealBlock;
 import dev.zt.UpliftedVFFV.statusEffects.Invuln;
-import dev.zt.UpliftedVFFV.statusEffects.MeterBlock;
-import dev.zt.UpliftedVFFV.statusEffects.Undead;
 import dev.zt.UpliftedVFFV.statusEffects.incapacitate;
 
 public class EffectManager {
+	
+	//Effect Manager manages effects of battle. Sorta a helper to Battle Processor
+	//Calculates default damage, changinh Hp/Mp, calculating Misses/Crits
 	
 	public ArrayList<Schmuck> team;
 	public ArrayList<Schmuck> enemy;
@@ -21,90 +23,40 @@ public class EffectManager {
 	
 	public EffectManager(Game g, BattleState bs, GameState gs){
 		this.gs=gs;
-		this.bs=bs;
-//		this.team=bs.bp.allies;
-//		this.enemy=bs.bp.enemy;		
+		this.bs=bs;	
 	}
-	
-	public void hpChange(int hp, Schmuck perp, Schmuck vic){				
-		int finalDamage = hp;
-		if(finalDamage < 0){
-			finalDamage += perp.getDamAmp()*hp;
-			finalDamage -= vic.getDamRes()*hp;
-		}
-		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
-		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
-			if(finalDamage > 0){
-				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic))){
-					bs.bp.bt.textList.add(vic.getName()+" was prevented from healing!");
-				}
-				else{
-					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
-					vic.tempStats[0]+=finalDamage;
-				}
-			}
-			else{
-				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic))){
-					bs.bp.bt.textList.add(vic.getName()+" took no damage.");
-				}
-				else{
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" damage!");
-					bs.bs.flash(vic, 51);
-					for(int i=0; i<vic.statuses.size(); i++){
-						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,6);
-						}
-					}
-					vic.tempStats[0]+=finalDamage;
-				}				
-			}			
-			if(vic.tempStats[0]<=0){
-				vic.tempStats[0]=0;				
-				bs.bp.stm.addStatus(vic, new incapacitate(perp));
-				for(int i=0; i<perp.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(perp.statuses.get(i)!=null){
-							perp.statuses.get(i).onKill(perp,vic, bs);
-						}
-					}
-				}
-				for(int i=0; i<vic.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).onDeath(perp,vic, bs);
-						}
-					}
-				}
-				for(Action a : bs.bp.TurnOrderQueue){
-					if(a!=null){
-						if(a.user==vic){
-							bs.bp.TurnOrderQueue.set(bs.bp.TurnOrderQueue.indexOf(a),null);
-						}
-					}
-					
-				}
-//				bs.bs.targetUpdate();
-			}
-			if(vic.tempStats[0]>vic.buffedStats[0]){
-				vic.tempStats[0]=vic.buffedStats[0];
-			}
-		}
 		
-	}
-	
+	//Function called when hp is changed in battle. (Except in the case of Pure Damage)
+	//if the input hp is negative, that means damage is being done.
 	public void hpChange(int hp, Schmuck perp, Schmuck vic, int elem){
+		
+		//finalDamage is the number that will be returned at the end.
 		int finalDamage = hp;
+		
+		//If damage is being dealt, Damage Amplification and Resistance modify it.
 		if(finalDamage < 0){
 			finalDamage += (int)(perp.getDamAmp()*hp);
 			finalDamage -= (int)(vic.getDamRes()*hp);
-			finalDamage -= (int)(hp*(double)(vic.getBonusStats()[elem+19]/100));
-			finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
+			
+			//If elemental damage is being dealt, elemental alignment anf resistance are calculated.
+			if(elem != 6){
+				finalDamage -= (int)(hp*(double)(vic.getBonusStats()[elem+19]/100));
+				finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));
+			}	
 		}
 		else{
-			finalDamage = (int)(finalDamage*(1+vic.getBonusStats()[elem+19]));
+			
+			//Elementally aligned healing is also modified by alignment
+			if( elem != 6){
+				finalDamage += (int)(hp*(double)(perp.getBuffedElemPoints()[elem]/100));			
+			}
 		}
+		
+		//Damage variance is calculated
 		finalDamage += (int)((finalDamage)*(Math.random() * 2 * (perp.getDamageVariance()+.1)-(perp.getDamageVariance()+.1)));
-		String element = "";
+		
+		//Elements
+/*		String element = "";
 		switch(elem){
 		case 0:
 			element = "Red";
@@ -124,50 +76,49 @@ public class EffectManager {
 		case 5:
 			element = "Void";
 			break;
-		}
-		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic))){
+		case 6:
+			element = "";
+			break;
+		}*/
+		
+		//Extra check to ensure that the target is not incapacitated.
+		if(!bs.bp.stm.checkStatus(vic, new incapacitate(vic,vic))){
 			if(finalDamage > 0){
-				if(bs.bp.stm.checkStatus(vic, new HealBlock(0,vic))){
-					bs.bp.bt.textList.add(vic.getName()+" was prevented from healing!");
-				}
-				else{
-					bs.bp.bt.textList.add(vic.getName()+" restored "+finalDamage+" health!");
-					vic.tempStats[0]+=finalDamage;
-				}
+				
+				//perp's heal-give effects and target's heal-receive effects activate.
+				finalDamage = perp.statusProcTime(15, bs, null, vic, finalDamage, elem, true, null);
+				finalDamage = vic.statusProcTime(16, bs, null, perp, finalDamage, elem, true, null);
+				
+				//Final healing amount is finally modified by the target's regen bonus.
+				finalDamage *= (1+vic.getRegenBonus());
+				vic.tempStats[0]+=finalDamage;
+				bs.bs.flash(vic, 120, -finalDamage, elem);
 			}
+			
 			else{
-				if(bs.bp.stm.checkStatus(vic, new Invuln(0,vic))){
-					bs.bp.bt.textList.add(vic.getName()+"'s Invulnerability prvented damage!");
-				}
-				else{
-					bs.bp.bt.textList.add(vic.getName()+" received "+-finalDamage+" "+element+" damage!");
-					bs.bs.flash(vic, 51);
-					for(int i=0; i<vic.statuses.size(); i++){
-						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).takedamageEffect(perp,vic, bs, finalDamage,elem);
-						}
-					}
-					vic.tempStats[0]+=finalDamage;
-				}				
-			}	
-			vic.tempStats[0]+=finalDamage;
+				
+				//perp's damage-dealt effects and target's on-damage effects activate.
+				finalDamage = perp.statusProcTime(13, bs, null, vic, finalDamage, elem, true, null);
+				finalDamage = vic.statusProcTime(14, bs, null, perp, finalDamage, elem, true, null);
+
+				//Display text and do damage.
+				vic.tempStats[0]+=finalDamage;
+				bs.bs.flash(vic, 120, -finalDamage, elem);
+
+			}
+			
+			//After hp change, check if target is incapacitated
 			if(vic.tempStats[0]<=0){
-				vic.tempStats[0]=0;				
-				bs.bp.stm.addStatus(vic, new incapacitate(perp));
-				for(int i=0; i<perp.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(perp.statuses.get(i)!=null){
-							perp.statuses.get(i).onKill(perp,vic, bs);
-						}
-					}
-				}
-				for(int i=0; i<vic.statuses.size(); i++){
-					if(!bs.bp.stm.checkStatus(perp, new incapacitate(perp)) || bs.bp.stm.checkStatus(perp, new Undead(perp, 10))){
-						if(vic.statuses.get(i)!=null){
-							vic.statuses.get(i).onDeath(perp,vic, bs);
-						}
-					}
-				}
+				
+				//If so, set Hp to 0 and apply perp's on-kill effects and vic's on-death effects.
+				vic.tempStats[0]=0;
+				
+				perp.statusProcTime(19, bs, null, vic, 0, 0, true, null);
+				vic.statusProcTime(20, bs, null, perp, 0, 0, true, null);
+				
+				//Add incapacitate status and remove all of the target's actions from the TOQ
+//				bs.bp.stm.addStatus(vic, new incapacitate(perp,vic));
+				bs.bp.bt.addScene("", new DeathAnim(vic), true);
 				for(Action a : bs.bp.TurnOrderQueue){
 					if(a!=null){
 						if(a.user==vic){
@@ -176,37 +127,91 @@ public class EffectManager {
 					}
 					
 				}
-//				bs.bs.targetUpdate();
+
 			}
+			
+			//Prevent overheal.
 			if(vic.tempStats[0]>vic.buffedStats[0]){
 				vic.tempStats[0]=vic.buffedStats[0];
 			}
 		}
-		
 	}
 	
+	//For changes in Mp.
 	public void bpChange(int bp, Schmuck s){
-		if(!bs.bp.stm.checkStatus(s, new MeterBlock(0,s))){
-			s.tempStats[1]+=bp;
-			if(s.tempStats[1]<0){
-				s.tempStats[1]=0;
-			}
-			if(s.tempStats[1]>s.buffedStats[1]){
-				s.tempStats[1]=s.buffedStats[1];
-			}
+		int meterChange = bp;
+		
+		//Activate all on-gain-meter or on-spend-meter effects accordingly.
+		if(meterChange < 0){
+			meterChange = s.statusProcTime(17, bs, null, null, meterChange, 0, true, null);
 		}
 		else{
-			bs.bp.bt.textList.add(s.getName()+" was prevented from restoring meter!");
-
+			meterChange = s.statusProcTime(18, bs, null, null, meterChange, 0, true, null);
+			meterChange *= (1 + s.getRegenBonus());
 		}
 		
+		//Prevent Mp from being negative or more that max.
+		s.tempStats[1]+=meterChange;
+		if(s.getCurrentBp()<0){
+			s.setCurrentBp(0);
+		}
+		if(s.getCurrentBp()>s.getMaxBp()){
+			s.setCurrentBp(s.getMaxBp());
+		}
 	}
 	
-	public int getAcc(Schmuck perp, Schmuck vic){
-		int acc = (int)(100*perp.getBuffedSkl()/vic.getBuffedLuk()+100*(perp.getBonusAcc()-vic.getBonusEva()));
-		return acc;
+	//Calculate damage formla for most typical attacks
+	public int logScaleDamage(Schmuck perp, Schmuck vic){
+		double Attack = perp.buffedStats[(int)(perp.getDamageStat()+2)];
+		double Defense = vic.buffedStats[(int)(vic.getDefenseStat()+3)];
+		if(Defense == 0){
+			Defense = 1;
+		}
+		int damage = (int)(Attack * Math.log10(Attack) * Math.log10(1+Math.pow(Attack/Defense, 2))/Math.log(2));
+		
+		damage += perp.getAttackDamage();
+		damage -= vic.getDamageReduction();
+		
+		if(damage <= 0){
+			damage = 1;
+		}
+		
+		return -damage;
 	}
 	
+	//Returns true or false if a given ability hits or misses.
+	public Boolean getAcc(Schmuck perp, Schmuck vic, int baseAcc){
+		double acc = baseAcc;
+		if(vic.getBuffedLuk() != 0){
+			acc *= (double)(perp.getBuffedSkl())/(double)(vic.getBuffedLuk());
+			acc += 100*(perp.getBonusAcc()-vic.getBonusEva());
+		}
+		else{
+			acc = 1;
+		}
+		if((int)(Math.random()*100) <= acc){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	
-
+	//returns true or false if a given ability crits or not.
+	public Boolean getCrit(Schmuck perp, Schmuck vic, Skills s){
+		double crit = s.getBaseCrit();
+		if(vic.getBuffedLuk() != 0){
+			crit *= (double)(perp.getBuffedSkl())/(double)(vic.getBuffedLuk());
+			crit += 100*( perp.getCritChance() - vic.getCritAvoid());
+		}
+		else{
+			crit = 1;
+		}
+		if((int)(Math.random()*100) <= crit){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }

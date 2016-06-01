@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+C:\Users\Zachary Tu\workspace\Uplifted.VFFV\.metadata\.plugins\org.eclipse.jdt.core

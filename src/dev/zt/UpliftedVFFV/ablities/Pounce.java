@@ -7,29 +7,25 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Pounce extends Skills {
 
 	public static String name = "Pounce";
-	public static String descr = "User agilely leaps at a foe.\nA standard attack that tends\nto gain initiative.";
+	public static String descr = "User takes initiave and pounces on targets before they can react.";
 	public static String descrShort = "Deals damage and hits first.";
 	public static int cost = 1;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 6;	//Physical
+	public static int targetType = 0;	//Any Single Target
 	public Pounce(int index) {
-		super(index,0,6, name, descr, descrShort, cost);
-
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2]*.6))/vic.buffedStats[3], perp, vic);
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.6);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" uses Pounce!");
-		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.2+perp.getCritMulti())), perp, vic);	
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.6);
+		bs.bp.em.hpChange(damage, perp, vic,6);
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
@@ -37,5 +33,4 @@ public class Pounce extends Skills {
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
 	
-
 }

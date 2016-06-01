@@ -1,32 +1,35 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.gfx.Assets;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class InvertedSwanBonusAttack extends Skills {
 
+	
+	public static String name = "Extra Attack";
+	public static String descr = "User attacks a foe.";
+	public static String descrShort = "Deals damage target.";
+	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 1;	//Blue
+	public static int targetType = 0;	//Any Single Target
 	public InvertedSwanBonusAttack(int index) {
-		super(index, Assets.attack,1);
-
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+" again!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3], perp, vic,1);
-		}		
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
-		}		
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic));
+		bs.bp.em.hpChange(damage, perp, vic,1);
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" attacks "+vic.getName()+" again!");
-		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1.5+perp.getCritMulti())), perp, vic,1);		
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()));
+		bs.bp.em.hpChange(damage, perp, vic,1);
 	}
-	
-
+		
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" attacks "+vic.getName()+" again!";
+	}
+		
 }

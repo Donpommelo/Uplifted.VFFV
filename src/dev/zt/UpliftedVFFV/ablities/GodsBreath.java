@@ -10,31 +10,27 @@ import dev.zt.UpliftedVFFV.statusEffects.LimitedUse;
 public class GodsBreath extends Skills {
 
 	public static String name = "Gods Breath";
-	public static String descr = "User infuses allies with divine aether\ngiving allies invulnerability\nLimit : One use per fight.";
-	public static String descrShort = "Protects all allies\n1 use per fight.";
+	public static String descr = "User infuses allies with divine aether, rendering them temporarily protected from immediate harm.\nLimit : One use per fight.";
+	public static String descrShort = "Protects all allies Charges : 1";
 	public static int cost = 15;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 3;	//Yellow
+	public static int targetType = 1;	//No Target
 	public GodsBreath(int index) {
-		super(index,1,6, name, descr, descrShort, cost);
-
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Gods Breath!");
-		bs.bp.bt.textList.add("All allies were fortified!");
-			bs.bp.stm.addStatus(perp, new LimitedUse(0,this,0, perp));
-			for(Schmuck s : bs.bp.getAlliedTargets(perp)){
-				bs.bp.stm.addStatus(s, new Invuln(0, perp));
+		bs.bp.bt.addScene("All allies were fortified!");
+			bs.bp.stm.addStatus(perp, new LimitedUse(this,0, perp,perp, 50));
+			for(Schmuck s : bs.bp.getSelectableAllies(perp)){
+				bs.bp.stm.addStatus(s, new Invuln(0, perp, s,100));
 			}
-		
 	}
 	
 	public void TOQChange(Action a, BattleState bs){
 		bs.bp.TurnOrderQueue.remove(a);
 		bs.bp.TurnOrderQueue.add(0, a);
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
-
 }

@@ -5,43 +5,38 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Volatile extends status{
 	
-	public int duration;
-
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public Volatile(int i, Schmuck perp){
-		super(i, "Volatile", false, false, true, perp);
+	public static String name = "Volatility";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
+	public Volatile(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Volatile(Schmuck perp){
-		super("Volatile", false, false, perp);
+	public Volatile(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
-	
-	public void takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
+	public int takedamageEffect(Schmuck perp,Schmuck vic, BattleState bs, int damage, int elem){
 		if(damage>Math.random()*500){
-			bs.bp.bt.textList.add("The blow causes "+vic.getName()+"'s bucket to explode!");
+			bs.bp.bt.addScene("The blow causes "+vic.getName()+"'s bucket to explode!");
 			for(Schmuck s : bs.bs.enemySelectable){
-				s.hpChange(-60);
+				s.hpChange(-100);
 			}
 			for(Schmuck s : bs.bs.alliesSelectable){
-				s.hpChange(-60);
+				s.hpChange(-100);
 			}
 		}
 		bs.bs.targetUpdate();
+		return damage;
 	}	
 	
 	public String inflictText(Schmuck s){
-		return s.getName()+" is reflecting damage!";
-
+		return s.getName()+" looks unstable!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" is not longer reflecting damage.";
+		return s.getName()+" looks stable again!";
 	}
-	
-	public int getDuration(){
-		return duration;
-	}
-
 }

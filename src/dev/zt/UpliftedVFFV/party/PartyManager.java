@@ -1,26 +1,29 @@
 package dev.zt.UpliftedVFFV.party;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.zt.UpliftedVFFV.Game;
 
-public class PartyManager {
+public class PartyManager implements Serializable{
+	 
+	private static final long serialVersionUID = 1L;
 	
-//	private Game game;
+	//	private Game game;
 	public ArrayList<Schmuck> party=new ArrayList<Schmuck>(5);
 	
 	
 	public PartyManager(Game game){
 //		this.game=game;
-		Schmuck operator=new Operator();
+		Schmuck operator=new Operator(1);
 		party.add(operator);
-		Schmuck penpal=new PenPal();
+/*		Schmuck penpal=new PenPal(1);
 		party.add(penpal);
-/*		Schmuck penpal1=new PenPal();
+		Schmuck penpal1=new PenPal(1);
 		party.add(penpal1);
-		Schmuck penpal2=new PenPal();
+		Schmuck penpal2=new PenPal(1);
 		party.add(penpal2);
-		Schmuck penpal3=new PenPal();
+		Schmuck penpal3=new PenPal(1);
 		party.add(penpal3);*/
 		
 		

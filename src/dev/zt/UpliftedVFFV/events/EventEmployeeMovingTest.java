@@ -24,7 +24,6 @@ public class EventEmployeeMovingTest extends Event {
 //		walkCycle();
 		move = 0;
 	}
-	
 
 	public void walkCycle(){
 		move++;
@@ -76,20 +75,16 @@ public class EventEmployeeMovingTest extends Event {
 		return finalstage;
 	}
 	
-
-
-
 	public int getstage() {
 		return stage;
 	}
-
 
 	public void setstage(int stage) {
 		EventEmployeeMovingTest.stage = stage;
 	}
 	
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

@@ -1,25 +1,34 @@
 package dev.zt.UpliftedVFFV.ablities;
 
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
-import dev.zt.UpliftedVFFV.states.GameState;
 
 public class SkillNothing extends Skills {
 	
-public Item thing;
-public GameState gs;
-
-	public SkillNothing(int index, GameState gs) {
-		super(index,1,6,"","","",0);
-		this.gs=gs;
-
+	//Used if selecting a skill for a Schmuck that has no skill.
+	//Really more of a debug thing. The above scenario should never really happen.
+	//Differs from "Flavor Nothing" in that it is target.
+	
+	String flavorText = "";
+	public static String name = "";
+	public static String descr = "";
+	public static String descrShort = "";
+	public static int cost = 0;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = false;
+	public static int element = 6;	//Physical
+	public static int targetType = 0;	//Any Single Target
+	public SkillNothing(int index) {
+		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" did nothing in "+vic.getName()+"'s general direction.");
-		bs.bp.bt.textList.add(vic.getName()+" doesn't seem impressed.");
+		bs.bp.bt.addScene(vic.getName()+" doesn't seem impressed.");
 	}
-
+	
+	public String useName(Schmuck perp, Schmuck vic, BattleState bs){
+		return 	perp.getName()+" did nothing in "+vic.getName()+"'s general direction.";
+	}
+	
 
 }

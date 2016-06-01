@@ -1,52 +1,73 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
-
-import java.util.ArrayList;
-
 import dev.zt.UpliftedVFFV.Battle.Action;
+import dev.zt.UpliftedVFFV.ablities.Coalesce;
+import dev.zt.UpliftedVFFV.ablities.MentalCollapse;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+import dev.zt.UpliftedVFFV.ablities.ThinkDirty;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.consumables.MentalLeakage;
+import dev.zt.UpliftedVFFV.inventory.consumables.ThoughtFluid;
+import dev.zt.UpliftedVFFV.inventory.equipables.GeniusMalignus;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class WanderingMind extends Schmuck{
 
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {17,25,15,9,20,8,7,6};
-	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
-	public final static double[] statGrowths = {1.2 , .7 , 5.7 , 1.3 , 2.9 , 1,6 , 1.2 , .5};
-	public final static int expDrop=19;
-	public final static int scrDrop=1;
-	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static int[] elemRes = {10,10,10,10,10,0};
-	public static int[] baseStats=startStats;
-	public static int[] buffedStats=baseStats;
-	public static int[] tempStats={startStats[0],startStats[1]};
-	public ArrayList<Skills> skills;
-	public ArrayList<status> statuses;
-	public WanderingMind(int lvl) {
-		super("Wandering Mind",lvl,ImageLoader.loadImage("/BattleSprites/WanderingMind.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
-		calcStats(lvl);
-		this.bio = "TEST.";
+	public final static int startHp=98,startBp=67,startPow=29, startDef=58, startSpd=35, startSkl=39, startLuk=17, startInt=61;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=41.6, bpGrowth=44.7, powGrowth=3.7, defGrowth=4.7, spdGrowth=2.8, sklGrowth=1.9, intGrowth=3.1, lukGrowth=1.9;
+	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
+	public final static int expDrop=2;
+	public final static int scrDrop=4;
+	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 20, baseVoid = 0;
+	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
+
+	public static String name = "Wandering Mind";
+	public static String plural = "Wandering Minds";
+	public static String pronoun = "it";
+	
+	public static int sprite = 14;
+	public static int menusprite = 0;
+	
+	public static Skills[] levelSkills = {};
+	public static int[] levelReqs = {};
+	
+	public final static Item[] itemDrops = {new MentalLeakage(), new ThoughtFluid(), new GeniusMalignus()};
+	public final static double[] dropRates = {.75, .50, 1};
+	public final static status[] intrinsicStatuses = {};
+	
+	public final static String bioShort = "Malicious disembodied nervous system.";
+	public final static String bioLong = "";
+	
+	public WanderingMind(int level) {
+		super(name, plural, pronoun, level, sprite, menusprite, startStats, statGrowths, baseElem, expDrop, scrDrop, levelSkills,
+				levelReqs,itemDrops, dropRates, intrinsicStatuses, bioShort, bioLong);
 	}
-	
-	
 	
 	public Action getAction(BattleState bs){
-		if(!bs.bs.alliesTargets.isEmpty()){
-			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		if(bs.bp.getSelectableAllies(this).size() == 1 && (bs.bp.roundNum+4)%5 == 0){
+			return new Action(this,this,new ThinkDirty(0),bs);
 		}
 		else{
-			return new Action(this,this,new PassTurn(0),bs);
-
+			int random = (int)(Math.random()*1);
+			Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
+			if(bs.bs.alliesTargets.isEmpty()){
+				return new Action(this,this,new PassTurn(0),bs);
+			}
+			else{
+				switch (random){
+				case 0:
+					act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new MentalCollapse(0),bs);
+					break;
+				}
+			}	
+			return act;
 		}
-		
 	}
-
-
 }

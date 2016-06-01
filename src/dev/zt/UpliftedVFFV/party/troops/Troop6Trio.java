@@ -1,11 +1,7 @@
 package dev.zt.UpliftedVFFV.party.troops;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
-
-import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.enemy.Augur;
 import dev.zt.UpliftedVFFV.party.enemy.BadEgg;
 import dev.zt.UpliftedVFFV.party.enemy.IllRat;
@@ -27,46 +23,42 @@ public class Troop6Trio extends Troop{
 		num2 = (int)(Math.random()*3);
 		switch (num1){
 		case 0:
-			troop.add(new Midge(2+ML));
+			troop.add(new Midge(ML));
 			break;
 		case 1:
-			troop.add(new Augur(2+ML));
+			troop.add(new Augur(ML));
 			break;
 		case 2:
-			troop.add(new BadEgg(2+ML));
+			troop.add(new BadEgg(ML));
 			break;
 		}
 		switch (num2){
 		case 0:
-			troop.add(new BadEgg(3+ML));
+			troop.add(new BadEgg(1+ML));
 			break;
 		case 1:
-			troop.add(new RotThought(3+ML));
+			troop.add(new RotThought(1+ML));
 			break;
 		case 2:
-			troop.add(new IllRat(3+ML));
+			troop.add(new IllRat(1+ML));
 			break;
 		}
 		switch (num1){
 		case 0:
-			troop.add(new Midge(2+ML));
+			troop.add(new Midge(ML));
 			break;
 		case 1:
-			troop.add(new Augur(2+ML));
+			troop.add(new Augur(ML));
 			break;
 		case 2:
-			troop.add(new BadEgg(2+ML));
+			troop.add(new BadEgg(ML));
 			break;
 		}
 		
 		this.troop = troop;
 		return troop;
 	}
-	
-	public TreeMap<Item, Integer>  getDrops(double bonusDrop){
-		return super.getDrops(bonusDrop);
-	}
-	
+
 	public String encounterText(){
 		switch(num2){
 		case 0:
@@ -77,8 +69,6 @@ public class Troop6Trio extends Troop{
 			return "You are attacked by Ill Rat and co!";
 		}
 		return "You are beset by an assortment of foe!";
-		
-		
 	}
 	
 	public ArrayList<Schmuck> getTroop() {

@@ -2,75 +2,98 @@ package dev.zt.UpliftedVFFV.events.Floor3Offices.SouthWingOffices;
 
 import java.awt.image.BufferedImage;
 
+import dev.zt.UpliftedVFFV.dialog.Dialog;
 import dev.zt.UpliftedVFFV.events.Event;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.states.GameState;
 
 
 
 public class EventJorge extends Event {
 
-	public boolean selfswitch1=false;
 	public boolean fightwon=false;
-	public static int stage=0;						
-	public static int finalstage=4;		
+	public static int stagenum = 4;
 	public static BufferedImage img = Assets.Jorge1;
 	public EventJorge(float x, float y, int idnum) {
-		super(img,idnum,x, y);
-		
-	
+		super(img,idnum,x, y, stagenum);
 	}
 	
 	public void run(){
-			switch(stage){
+			switch(this.getstage()){
 			case 0: 
 				if(!isSelfswitch1()){
-					super.Dialog(98, 102,this.getId());
-					
+					Dialog[] d = new Dialog[6];
+					d[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Gah! Who is that? Can you not see that I am very busy?");
+					d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Good afternoon, sir! We were hoping you could point us towards Suite 521. Do you know where it is?");
+					d[2] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Harghmph. You came to waste my time with that? Who do you think you are?");
+					d[3] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Of course I know where it is. Suite Five-hundred and twenty Whatever, I know all about it. Hehehe. But I don't feel like telling you.");
+					d[4] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Yeah, If you lack the manners to not bother me and the common sense to find the damn room yourself, why should I help you?");
+					d[5] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"That seems. . .  unprofessional. . .");
+					super.Dialog(d, 5, this.getId(), true);
 				}
 				else{
-					super.Dialog(107, 107,this.getId());
-					stage=3;
+					Dialog[] d2 = new Dialog[1];
+					d2[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Grrr. Why haven't the guards gotten here yet?");
+					super.Dialog(d2, 0, this.getId(), true);
+					this.setstage(3);
 				}
 				break;
 			case 1:
-				super.Dialog(103, 105,this.getId());
+				Dialog[] d = new Dialog[3];
+				d[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"What's that!? Why you, you've got some nerve! Seeing as you clearly missed the Office Assembly on Conduct and Courtesy, it is my duty as South Wing Manager to teach you myself.");
+				d[1] = new Dialog("Operator","/CharacterBusts/Player-1.png",0,"Woah! Please, sir, calm down. We can talk about . . .");
+				d[2] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"C'mere! Don't make me chase you!");
+				super.Dialog(d, 2, this.getId(), true);
+
 				game.getAudiomanager().playMusic(4, true);
 				break;
 			case 2:
-				super.fite(0,this.getId(), false, false);
+				super.fite(15,this.getId(), false, false);
 				break;
 			case 3:
 				if(fightwon){
 					setSelfswitch1(true);
 					super.setSwitch(2,true);
+					super.setQuest(1, 3);
 					game.getAudiomanager().playMusic(2, true);
+					Dialog[] d2 = new Dialog[1];
+					d2[0] = new Dialog("Jorge","/CharacterBusts/3rdSouthOffices-5.png",0,"Arrggh. . .  I'm calling security!");
+					super.Dialog(d2, 0, this.getId(), true);
 				}
-				super.Dialog(106, 106,this.getId());
+				else{
+					this.setstage(0);
+				}
 				break;
 			case 4:
-				stage = 0;
+				this.setstage(0);
 				break;
 			}			
+	}
+	
+	public void tick(GameState gs){
+		this.setFrames(this.getFrames()+1);
+		if(this.getFrames()>=150){
+			this.setTex(Assets.Jorge4);
+		}
+		else if(this.getFrames()>=100){
+			this.setTex(Assets.Jorge3);
+		}
+		else if(this.getFrames()>=50){
+			this.setTex(Assets.Jorge2);
+		}
+		else {
+			this.setTex(Assets.Jorge1);
+		}
+		if(this.getFrames() >= 200){
+			this.setFrames(0);
+		}
 		
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
-	
-	public int getfinalstage() {
-		return finalstage;
-	}
-
-	public int getstage() {
-		return stage;
-	}
-
-
-	public void setstage(int stage) {
-		EventJorge.stage = stage;
-	}
-	
+		
 	public boolean isFightwon() {
 		return fightwon;
 	}
@@ -78,8 +101,5 @@ public class EventJorge extends Event {
 	public void setFightwon(boolean fightwon) {
 		this.fightwon = fightwon;
 	}
-	
-	public boolean getSelfSwitch1(){
-		return selfswitch1;
-	}
+
 }

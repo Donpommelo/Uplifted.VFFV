@@ -5,37 +5,41 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Vampirism extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
+	public static String name = "Vampiric";
+	public static Boolean perm = false;
+	public static Boolean visible = false;
+	public static Boolean removedEnd = true;
+	public static Boolean decay = true;
 	public double lifesteal;
-	public Vampirism(int i, double amount, Schmuck perp){
-		super(i, "Lifesteal", false, true, true, perp);
+	public Vampirism(int i, double amount, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 		this.lifesteal = amount;
 	}
 	
-	public Vampirism(double amount, Schmuck perp){
-		super("Lifesteal", true, false, perp);
+	public Vampirism(double amount, Schmuck v,int pr){
+		super("Vampiric", v,pr);
 		this.lifesteal = amount;
 	}
 	
 	public void attackModify(Schmuck perp,Schmuck vic, BattleState bs, int damage){
-		bs.bp.bt.textList.add(perp.getName()+" drains "+vic.getName()+"'s life.");
-		bs.bp.em.hpChange(-(int)(damage*lifesteal*(1+perp.getHealPower())), perp, perp);
+		double ls = lifesteal;
+		if(this.isEquipment()){
+			ls = ls *(1+vic.getEquipPow());
+		}
+		bs.bp.bt.addScene(perp.getName()+" drains "+vic.getName()+"'s life.");
+		bs.bp.em.hpChange(-(int)(damage*ls*(1+perp.getHealPower())), perp, perp,6);
 	}
 	
-	
 	public String inflictText(Schmuck s){
-		return s.getName()+" gained the ability lifesteal.";
-
+		return s.getName()+" became Vampiric!";
 	}
 
 	public String cureText(Schmuck s){
-		return s.getName()+" lost the ability to Lifesteal.";
+		return s.getName()+" is no longer Vampiric!";
 	}
 	
-	public int getDuration(){
-		return duration;
+	public int stackingEffect(){
+		return 3;
 	}
-
+	
 }

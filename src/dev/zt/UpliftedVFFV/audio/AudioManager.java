@@ -1,11 +1,15 @@
 package dev.zt.UpliftedVFFV.audio;
+import java.io.Serializable;
+
 import javax.sound.sampled.Clip;
 
 import dev.zt.UpliftedVFFV.Game;
 
-public class AudioManager {
+public class AudioManager implements Serializable{
 
-//	private Game game;
+	private static final long serialVersionUID = 8L;
+	
+	//	private Game game;
 	static Sound sounds;
 	
 	public AudioManager(Game g){

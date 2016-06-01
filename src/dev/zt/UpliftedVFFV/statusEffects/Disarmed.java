@@ -1,40 +1,40 @@
 package dev.zt.UpliftedVFFV.statusEffects;
 
 import dev.zt.UpliftedVFFV.Battle.Action;
-import dev.zt.UpliftedVFFV.ablities.DisarmedNothing;
+import dev.zt.UpliftedVFFV.ablities.FlavorNothing;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class Disarmed extends status{
 	
-	public int duration;
-	public Boolean perm = false;
-	public Boolean visible = true;
-	public Disarmed(int i, Schmuck perp){
-		super(i, "Disarmed", false, true, false, perp);
+	public static String name = "Disarm";
+	public static Boolean perm = false;
+	public static Boolean visible = true;
+	public static Boolean removedEnd = false;
+	public static Boolean decay = true;
+	public Disarmed(int i, Schmuck perp, Schmuck vic, int pr){
+		super(i, name, perm, visible, removedEnd, decay, perp, vic, pr);
 	}
 	
-	public Disarmed(Schmuck perp){
-		super("Disarmed", true, false, perp);
+	public Disarmed(Schmuck v,int pr){
+		super(name, v,pr);
 	}
 	
-	public void restrict(Schmuck s, Action a, BattleState bs){
+	public void preActionUser(Schmuck s, Action a, BattleState bs){
 		if(a.skill.getName().equals("Attack")){
-			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new DisarmedNothing(0),bs));
+			bs.bp.TurnOrderQueue.set(0, new Action(s,s,new FlavorNothing(0,s.getName()+" tried to use attack, but was Disarmed."),bs));
 		}
 	}
 
 	public String inflictText(Schmuck s){
-		return s.getName()+" was Disarmed.";
-
+		return s.getName()+" was Disarmed and can not attack!";
 	}
 
 	public String cureText(Schmuck s){
 		return s.getName()+"'s arms grew back.";
 	}
 	
-	public int getDuration(){
-		return duration;
+	public Boolean isBad(){
+		return true;
 	}
-
 }

@@ -3,36 +3,30 @@ package dev.zt.UpliftedVFFV.ablities;
 
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
+import dev.zt.UpliftedVFFV.statusEffects.Combustibility;
 
 public class FiremansSwitch extends Skills {
 
 	public static String name = "Fireman's Switch";
-	public static String descr = "User releases energy from\noverheated machinery to\ndamage foes.";
-	public static String descrShort = "Deals Red damage to all\nenemies except target.";
+	public static String descr = "User releases energy from overheated machinery to unleash delayed, explosive power.";
+	public static String descrShort = "Inflicts Combustibility.";
 	public static int cost = 12;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
+	public static int element = 0;	//Red
+	public static int targetType = 0;	//Any Single Target
 	public FiremansSwitch(int index) {
-		super(index,0,0, name, descr, descrShort, cost);
+		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Fireman's Switch!");	
-		
-		for(Schmuck s : bs.bp.getAlliedTargets(vic)){
-			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(s.buffedStats[3]*.8)), perp,s,0);
-			}		
-		}
+	
+		bs.bp.stm.addStatus(vic, new Combustibility(3, perp, vic,40));
+
 	}
 		
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Fireman's Switch!");	
-		bs.bp.bt.textList.add("A Critical blow!");
-		for(Schmuck s : bs.bp.getAlliedTargets(vic)){
-			if(!s.equals(vic)){
-				bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]*.8)*(1.5+perp.getCritMulti())), perp, vic,0);
-			}		
-		}
-	}
-
+		bs.bp.stm.addStatus(vic, new Combustibility(5, perp, vic, 40));
+	}	
 }

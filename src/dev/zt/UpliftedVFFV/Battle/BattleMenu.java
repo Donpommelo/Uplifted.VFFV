@@ -1,8 +1,11 @@
 package dev.zt.UpliftedVFFV.Battle;
 
+import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Set;
@@ -16,17 +19,23 @@ import dev.zt.UpliftedVFFV.ablities.SkillNothing;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
 import dev.zt.UpliftedVFFV.ablities.UseItem;
+import dev.zt.UpliftedVFFV.audio.AudioManager;
 import dev.zt.UpliftedVFFV.gfx.Assets;
+import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+//import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.states.GameState;
 import dev.zt.UpliftedVFFV.states.StateManager;
-import dev.zt.UpliftedVFFV.statusEffects.CatoWantStatus;
+import dev.zt.UpliftedVFFV.statusEffects.EquipmentStatus.CatoWantStatus;
+import dev.zt.UpliftedVFFV.utils.Utils;
 
 
 public class BattleMenu{
 	
+	private AudioManager audio;
+	private BufferedImage window;//,windowClear;
 	public int currentlyTargeted;		//Schmuck being targeted for attack, skill use or item use
 	public int actionSelected;			//Action chosen 0:Attack | 1: Skill | 2: Item | 3: Wait | 4: Run
 		
@@ -35,10 +44,17 @@ public class BattleMenu{
 	public int backpackLocation;		//Index of item or SKILL that occupies the uppermost space in the menu display
 	public int itemnum;					//Used to draw inventory contents
 	public int skillnum;				//used to draw skill list
-	public int TurnOrderQueue;			//Location in the TOQ an action is to be added to
-	public int phase;
-	public StateManager sm;
-	public Game game;
+	public int phase;					//The phase of action-creation.
+										//1: selecting options
+										//2: selecting skill or item (if chosen in phase 1)
+										//3: selecting target
+										//4: finalizing action and executing
+	
+	
+	
+	//KeyListener delay variables.
+	private int delayCursor = 120;
+	private int delaySelection = 300;
 	
 	//Turned on by pressing "x" anytime. Moves one menu screen backwards. De-selects options.
 	public Boolean exit = false; 			
@@ -46,10 +62,8 @@ public class BattleMenu{
 	//Whether targeting allies. Turned on/off by pressing up/down in targeting phase.
 	public Boolean teamTargeted = false;
 	
-	//Pointer that appears over the head of whoever is being targeted
-	public BufferedImage pointer = Assets.pointer;
-	
-	//Arraylist of all allies and enemies, targetable or untargetable. (Actual targets: bs.bs.alliesTargets and bs.bs.enemyTargets)
+	//Arraylist of all allies and enemies, targetable or untargetable.
+	//Actual targets: bs.bs.alliesTargets and bs.bs.enemyTargets
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	
@@ -57,11 +71,18 @@ public class BattleMenu{
 	public Schmuck currentSchmuck;
 	public Schmuck targetedSchmuck;
 	
+	//The Schmuck that BattleUI draws a pointer over.
+	public Schmuck pointed;
+	
 	//The Skill currently being chosen.
 	public Skills currentSkill;
 	
 	public BattleState bs;
 	public GameState gs;
+	public StateManager sm;
+	public Game game;
+	
+	//Battle Menu created when a Schmuck is selected.
 	public BattleMenu(Game game, StateManager sm, ArrayList<Schmuck>party,ArrayList<Schmuck>enemy, BattleState bs,Schmuck chosen,GameState gs){
 		this.game=game;
 		this.sm=sm;
@@ -70,592 +91,584 @@ public class BattleMenu{
 		this.allies = party;
 		this.enemy = enemy;
 		this.currentSchmuck=chosen;
+		teamTargeted = false;
 		currentlyTargeted=0;
 		actionSelected=0;
-		TurnOrderQueue=0;
 		phase = 1;
-		if(bs.bp.pauseTOQ){
-			for(int i=0; i<currentSchmuck.statuses.size(); i++){
-				if(currentSchmuck.statuses.get(i)!=null){
-					currentSchmuck.statuses.get(i).onDillyDally(currentSchmuck,bs);
-				}	
-			}
+		audio = game.getAudiomanager();
+		window = ImageLoader.loadImage("/ui/Window/WindowBlue2.png");
+//		windowClear = ImageLoader.loadImage("/ui/Window/WindowClear.png");
+		//If the Schmuck chose to Wait in the Planning phase of Battle Processor.
+		if(bs.bp.pauseTOQ && bs.bp.TurnOrderQueue.get(0).getSkill().getName() == "Dilly Dally" && bs.bp.phase == 2){
+			bs.bp.bt.addScene(currentSchmuck.getName()+" makes "+currentSchmuck.getPronoun(1)+" delayed move!");
+
+			//Activate User's On-Wait Effects
+			currentSchmuck.statusProcTime(10, bs, null, null, 0, 0, true, null);
 		}
+		
+		pointed = chosen;
 	}
 
 	public void tick() {
-		if(game.getKeyManager().x){
-			exit=true;
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
 		
-		switch(phase){
-		case 1:
-			if(game.getKeyManager().down){
-				if(actionSelected<4){
-					actionSelected++;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+		//Pressing 'x' moves one screen back, as usual.
+		if(game.getKeyManager().isActive()){
+			if(game.getKeyManager().x){
+				audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+				exit=true;
+				game.getKeyManager().disable(delayCursor);
 			}
-			if(game.getKeyManager().up){
-				if(actionSelected>0){
-					actionSelected--;
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+		
+			switch(phase){
 			
-			//Space selects an action, turning moveSelected on. 
-			//attackChosen is turned on unlike item or skill b/c it skips right into targeting phase with no additional selection.
-			//Otherwise, whatever menu or targeting depends on the actionSelected which is checked when moveSelected is true
-			if(game.getKeyManager().space){
-				switch(actionSelected){
-				case 0:
-					currentSkill = new StandardAttack(0);
-					phase+=2;
-					break;
-				case 1:
-					phase+=1;
-					break;
-				case 2:
-					phase+=1;
-					break;
-				case 3:
-					currentSkill = new DillyDally(0);
-					targetedSchmuck = currentSchmuck;
-					phase+=3;
-					break;
-				case 4:
-					currentSkill = new Runaway(0);
-					targetedSchmuck = currentSchmuck;
-					phase+=3;
-					break;
-				}
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			break;
-		case 2:
-			switch(actionSelected){
+			//Phase 1: Selecting options: Attack, skill, item, wait or run.
 			case 1:
-				//Space selects the currently highlighted skill if mp is available, turning on skillchosen so you can start targeting
-				if(game.getKeyManager().space){
-					if(currentSchmuck.skills.size()==0){
-						currentSkill = new SkillNothing(1,gs);
+				
+				//Up/Down select option out of 5 available
+				if(game.getKeyManager().down){
+					if(actionSelected<4){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						actionSelected++;
+						game.getKeyManager().disable(delayCursor);
 					}
-					else{
-						if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1+currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]
-								&& !bs.bp.stm.checkStatus(currentSchmuck, new CatoWantStatus(currentSchmuck, 100))){
-							bs.bp.bt.textList.add(currentSchmuck.getName()+" doesn't have the Motivation Points to do that.");
-						}
-						else{
-												
-							//This decides whether the targeting cursor starts off on an ally or enemy
-							if(!currentSchmuck.skills.isEmpty()){
-								currentSkill = currentSchmuck.skills.get(itemSelected);
-								teamTargeted =  currentSkill.startTarget(); // do to other stuff
-							}
-							phase++;
-						}
-					}
-					
-					
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				}
+				if(game.getKeyManager().up){
+					if(actionSelected>0){
+						audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+						actionSelected--;
+						game.getKeyManager().disable(delayCursor);
 					}
 				}
 				
-				//Arrow keys navigate the skill menu
-				if(game.getKeyManager().up){
-					if(itemSelected>0){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected--;
-						if(itemPointer==0){
-							backpackLocation--;
-						}
-						else{
-							itemPointer--;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+				//Space selects an action, turning moveSelected on. 
+				//attackChosen is turned on unlike item or skill b/c it skips right into targeting phase with no additional selection.
+				//Otherwise, whatever menu or targeting depends on the actionSelected which is checked when moveSelected is true
+				if(game.getKeyManager().space){
+					switch(actionSelected){
+					case 0:
+						currentSkill = new StandardAttack(0);
+						teamTargeted = false;
+						phase+=2;
+						break;
+					case 1:
+						phase+=1;
+						break;
+					case 2:
+						phase+=1;
+						break;
+					case 3:
+						currentSkill = new DillyDally(0);
+						targetedSchmuck = currentSchmuck;
+						phase+=3;
+						break;
+					case 4:
+						currentSkill = new Runaway(0);
+						targetedSchmuck = currentSchmuck;
+						phase+=3;
+						break;
 					}
-					
-				}
-				if(game.getKeyManager().down){
-					if(itemSelected<currentSchmuck.skills.size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected++;
-						if(itemPointer==4){
-							backpackLocation++;
-						}
-						else{
-							itemPointer++;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
+					game.getKeyManager().disable(delaySelection);
 				}
 				break;
-			case 2:
-				if(game.getKeyManager().space){
-					if(gs.inventorymanager.backpack.size()==0){
-						currentSkill = new ItemNothing(1,gs);
-					}
-					else{
-						currentSkill = new UseItem(1,gs.inventorymanager.backpack.keySet().toArray(new Item[999])[itemSelected],gs);
-					}
-					teamTargeted = currentSkill.startTarget();
-					phase++;			
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().up){
-					if(itemSelected>0){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected--;
-						if(itemPointer==0){
-							backpackLocation--;
-						}
-						else{
-							itemPointer--;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-					
-				}
-				if(game.getKeyManager().down){
-					if(itemSelected<gs.inventorymanager.backpack.size()-1){
-						game.getAudiomanager().playSound("/Audio/tutorial_ui_click_01.wav", false);
-						itemSelected++;
-						if(itemPointer==4){
-							backpackLocation++;
-						}
-						else{
-							itemPointer++;
-						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				break;
-			}
-			break;
-		case 3:
-			if(teamTargeted){
-				if(bs.bs.alliesTargets.isEmpty()){
-					teamTargeted = false;
-				}
-			}
-			else{
-				if(bs.bs.enemyTargets.isEmpty()){
-					teamTargeted = true;
-				}
-			}
-			switch(currentSkill.getTargetType()){
-	 		case 0:
-	 			if(game.getKeyManager().right){
-					if(teamTargeted==false){
-						if(currentlyTargeted>0){
-							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-					else{
-						if(currentlyTargeted<bs.bs.alliesTargets.size()-1){
-							currentlyTargeted++;
-						}
-					}
-					
-				}
-				if(game.getKeyManager().left){
-					if(teamTargeted==false){
-						if(currentlyTargeted<bs.bs.enemyTargets.size()-1){
-							currentlyTargeted++;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						
-						
-						}
-					else {
-						if(currentlyTargeted>0){
-							currentlyTargeted--;
-							try {
-								Thread.sleep(100);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-						
-					}
-				}
-				if(game.getKeyManager().up && teamTargeted==true && !bs.bs.enemyTargets.isEmpty()){
-					if(currentlyTargeted>=bs.bs.enemyTargets.size()){
-						currentlyTargeted=0;
-					}
-					else{
-						currentlyTargeted=bs.bs.enemyTargets.size()-1-currentlyTargeted;
-					}
-					teamTargeted=false;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-				}
-				if(game.getKeyManager().down && teamTargeted==false && !bs.bs.alliesTargets.isEmpty()){
-					if(currentlyTargeted>=bs.bs.alliesTargets.size()){
-						currentlyTargeted=0;
-					}
-					else{
-						currentlyTargeted=bs.bs.alliesTargets.size()-currentlyTargeted-1;
-					}
-					teamTargeted=true;
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-				}
-				if(game.getKeyManager().space){
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					if(teamTargeted){
-						targetedSchmuck = bs.bs.alliesTargets.get(currentlyTargeted);
-					}
-					else{
-						targetedSchmuck = bs.bs.enemyTargets.get(currentlyTargeted);
-					}
-					phase++;
-				}
-	 			break;
-	 		case 1:
-				targetedSchmuck = currentSchmuck;
-		 		phase++;
-	 			break;
-	 		case 2:
-	 			if(game.getKeyManager().right){
-	 				if(currentlyTargeted<allies.size()-1){
-						currentlyTargeted++;
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				if(game.getKeyManager().left){
-					if(currentlyTargeted>0){
-						currentlyTargeted--;
-											}	
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-				}
-				if(game.getKeyManager().space){
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					targetedSchmuck = allies.get(currentlyTargeted);
-		 			phase++;
-				}
-	 			break;
-	 		}
-			break;
-		case 4:
-			//if menu is being called by waiting, the action is in index 0 and will occur instantly.
-			if(bs.bp.pauseTOQ){
-				TurnOrderQueue=0;
-			}
-			//otherwise, if in planing stage, move will be placed according to user's sorted space in the TOQ
-			else{
-				TurnOrderQueue=bs.bp.currentlySelected;
-			}
-			if(actionSelected == 3 && bs.bp.pauseTOQ){
-				//if "Wait" is chosen, an extra pause at the beginning is given to prevent multiclicking as actions will be performed
-				//instantly. Change this later when keylistener is updated
-				try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}				
-				bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new PassTurn(0),bs));
-			}
-			else{
-				bs.bp.TurnOrderQueue.set(TurnOrderQueue,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
-			}
-			bs.bp.pauseTOQ=false;								//if dillydallying, end dillydally
-			if(bs.bp.currentlySelected < bs.bs.alliesSelectable.size()-1){		//Immediately selects next unit to give command to
-				bs.bp.currentlySelected++;						
-			}
-			else{
-				bs.bp.currentlySelected = 0;
-			}
-			ArrayList<Schmuck> temp = new ArrayList<Schmuck>();
-			for(Schmuck s : bs.bs.alliesSelectable){
-				temp.add(s);
-			}
-			for(Action a :bs.bp.TurnOrderQueue){				//If all allied schmucks have made actions, exit selection
-				if(a!=null){
-					if(temp.contains(a.user)){
-						temp.remove(a.user);
-						}
-					}
-				}
-			if(!temp.isEmpty()){
-				bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,bs.bs.alliesSelectable.get(bs.bp.currentlySelected),gs);
-
-			}
-			else{
-				bs.bp.selected = false;	
-			}			
-			break;
-		}
 			
+			//Phase 2: Selecting which item or skill to use (Only for skill and item options)	
+			case 2:
+				switch(actionSelected){
+				
+				//Case 1: Use Skill chosen
+				case 1:
+					//Space selects the currently highlighted skill if mp is available, turning on skillchosen so you can start targeting
+					if(game.getKeyManager().space){
+						
+						//If Schmuck has no skills, use "Do Nothing"
+						if(currentSchmuck.skills.size()==0){
+							currentSkill = new SkillNothing(1);
+						}
+						else{
+							//Sets currentSkill to skill selected.
+							currentSkill = currentSchmuck.skills.get(itemSelected);
+							
+							//This decides whether the targeting cursor starts off on an ally or enemy
+							teamTargeted =  currentSkill.startTarget();
+							
+							//If the player does not have Mp to use a skill, a warning is given.
+							//You can go ahead and try to use it anyways, if you want.
+							if((int)(currentSchmuck.skills.get(itemSelected).getCost()*(1-currentSchmuck.getMpCost()))>currentSchmuck.tempStats[1]){
+								bs.bp.bt.addScene("Warning: "+currentSchmuck.getName()+" might not have the Mp to do that!");
+							}
+							
+							phase++;	
+						}
+						game.getKeyManager().disable(delaySelection);
+					}
+					
+					//Arrow keys navigate the skill menu
+					if(game.getKeyManager().up){
+						if(itemSelected>0){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected--;
+							if(itemPointer==0){
+								backpackLocation--;
+							}
+							else{
+								itemPointer--;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+						
+					}
+					if(game.getKeyManager().down){
+						if(itemSelected<currentSchmuck.skills.size()-1){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected++;
+							if(itemPointer==4){
+								backpackLocation++;
+							}
+							else{
+								itemPointer++;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+					}
+					break;
+				//Case 2: Use Item Chosen	
+				case 2:
+					if(game.getKeyManager().space){
+						//If Backpack is empty, use Nothing.
+						if(gs.inventorymanager.backpack.size()==0){
+							currentSkill = new ItemNothing(1);
+						}
+						else{
+							audio.playSound("/Audio/option_toggle.wav", false);
+							currentSkill = new UseItem(1,gs.inventorymanager.battleItem().keySet().toArray(new Item[999])[itemSelected],gs);
+						}
+						
+						//This decides whether the targeting cursor starts off on an ally or enemy
+						teamTargeted = currentSkill.startTarget();
+						phase++;			
+						game.getKeyManager().disable(delaySelection);
+					}
+					//Arrow keys navigate Inventory.
+					if(game.getKeyManager().up){
+						if(itemSelected>0){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected--;
+							if(itemPointer==0){
+								backpackLocation--;
+							}
+							else{
+								itemPointer--;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+						
+					}
+					if(game.getKeyManager().down){
+						if(itemSelected<gs.inventorymanager.battleItem().size()-1){
+							audio.playSound("/Audio/tutorial_ui_click_01.wav", false);
+							itemSelected++;
+							if(itemPointer==4){
+								backpackLocation++;
+							}
+							else{
+								itemPointer++;
+							}
+							game.getKeyManager().disable(delayCursor);
+						}
+					}
+					break;
+				}
+				break;
+				
+			//Case 3: Targeting
+			case 3:
+				//If skill initially targets an empty team, the default team targeted is swapped.
+				if(teamTargeted){
+					if(bs.bs.alliesTargets.isEmpty()){
+						teamTargeted = false;
+					}
+				}
+				else{
+					if(bs.bs.enemyTargets.isEmpty()){
+						teamTargeted = true;
+					}
+				}
+				
+				switch(currentSkill.getTargetType()){
+				//Case 0: Skill can target any single targetable, non-incapacitated Schmuck
+		 		case 0:
+		 			//Left and right cycle through targeting members of the targeted team.
+		 			if(game.getKeyManager().right){
+						if(teamTargeted==false){
+							if(currentlyTargeted>0){
+								currentlyTargeted--;
+								game.getKeyManager().disable(delayCursor);
+							}
+						}
+						else{
+							if(currentlyTargeted<bs.bs.alliesTargets.size()-1){
+								currentlyTargeted++;
+								game.getKeyManager().disable(delayCursor);
+							}
+						}
+					}
+					if(game.getKeyManager().left){
+						if(teamTargeted==false){
+							if(currentlyTargeted<bs.bs.enemyTargets.size()-1){
+								currentlyTargeted++;
+								game.getKeyManager().disable(delayCursor);
+							}
+						}
+						else {
+							if(currentlyTargeted>0){
+								currentlyTargeted--;
+								game.getKeyManager().disable(delayCursor);
+							}
+							
+						}
+					}
+					//up and down swap which team is being targeted.
+					if(game.getKeyManager().up && teamTargeted==true && !bs.bs.enemyTargets.isEmpty()){
+						if(currentlyTargeted>=bs.bs.enemyTargets.size()){
+							currentlyTargeted=0;
+						}
+						else{
+							currentlyTargeted=bs.bs.enemyTargets.size()-1-currentlyTargeted;
+						}
+						teamTargeted=false;
+						game.getKeyManager().disable(delayCursor);
+					}
+					if(game.getKeyManager().down && teamTargeted==false && !bs.bs.alliesTargets.isEmpty()){
+						if(currentlyTargeted>=bs.bs.alliesTargets.size()){
+							currentlyTargeted=0;
+						}
+						else{
+							currentlyTargeted=bs.bs.alliesTargets.size()-currentlyTargeted-1;
+						}
+						teamTargeted=true;
+						game.getKeyManager().disable(delayCursor);
+					}
+					//space finalizes selection.
+					if(game.getKeyManager().space){
+						game.getKeyManager().disable(delaySelection);
+						if(teamTargeted){
+							targetedSchmuck = bs.bs.alliesTargets.get(currentlyTargeted);
+						}
+						else{
+							targetedSchmuck = bs.bs.enemyTargets.get(currentlyTargeted);
+						}
+						phase++;
+					}
+		 			break;
+		 		//Case 1: Skill has no target. Automatically targets first enemy and moves on to the next phase.	
+		 		case 1:
+		 			if(!bs.bp.getSelectableEnemies(currentSchmuck).isEmpty()){
+						targetedSchmuck = bs.bp.getSelectableEnemies(currentSchmuck).get(0);
+					}
+					else{
+						targetedSchmuck = currentSchmuck;
+					}
+			 		phase++;
+		 			break;
+		 		//Case 2: Rare. Can only target allies, even incapacitated ones. (Used for revives)
+		 		case 2:
+		 			//Right and Left cycle through all allies in party, regardless of targetability.
+		 			if(game.getKeyManager().right){
+		 				if(currentlyTargeted<allies.size()-1){
+							currentlyTargeted++;
+						}
+		 				game.getKeyManager().disable(delayCursor);
+					}
+					if(game.getKeyManager().left){
+						if(currentlyTargeted>0){
+							currentlyTargeted--;
+												}	
+						game.getKeyManager().disable(delayCursor);
+					}
+					//space finalizes selection and moves on to the next phase
+					if(game.getKeyManager().space){
+						game.getKeyManager().disable(delaySelection);
+						targetedSchmuck = allies.get(currentlyTargeted);
+			 			phase++;
+			 			game.getKeyManager().disable(delaySelection);
+					}
+		 			break;
+		 			//Feel free to add more targeting methods later if needed.
+		 		}
+				break;
+			//Case 4: Performing the finalized action. 	
+			case 4:
+				//if menu is being called by waiting, the action is in index 0 and will occur instantly.
+				if(bs.bp.pauseTOQ){
+					if(actionSelected == 3){
+						game.getKeyManager().disable(delaySelection);				
+						bs.bp.TurnOrderQueue.set(0, new Action(allies.get(bs.bp.currentlySelected),allies.get(bs.bp.currentlySelected),new PassTurn(0),bs));
+					}
+					else{
+						bs.bp.TurnOrderQueue.set(0,new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
+					}
+				}
+				
+				//otherwise, if in planning stage, move will be added to the TOQ.
+				else{
+					for(Action a:bs.bp.TurnOrderQueue){
+						if(a.getUser() == currentSchmuck){
+							bs.bp.TurnOrderQueue.remove(a);
+							break;
+						}
+					}
+					bs.bp.TurnOrderQueue.add(new Action(currentSchmuck,targetedSchmuck,currentSkill,bs));
+				}
+				
+				bs.bp.pauseTOQ=false;								//if dillydallying, end dillydally
+				
+				//Immediately selects next unit to give command to
+				if(bs.bp.currentlySelected < allies.size()-1){		
+					bs.bp.currentlySelected++;						
+				}
+				else{
+					bs.bp.currentlySelected = 0;
+				}
+				
+				//Checks if all allies have actions queued up yet.
+				ArrayList<Schmuck> temp = new ArrayList<Schmuck>();
+				for(Schmuck s : bs.bs.alliesSelectable){
+					temp.add(s);
+				}
+				for(Action a :bs.bp.TurnOrderQueue){				//If all allied schmucks have made actions, exit selection
+					if(a!=null){
+						if(temp.contains(a.user)){
+							temp.remove(a.user);
+						}
+					}
+				}
+				
+				//If allies have not moved yet, automatically pull up the menu for the next ally.
+				if(!temp.isEmpty() && bs.bs.alliesSelectable.contains(allies.get(bs.bp.currentlySelected))){
+					bs.bp.bm = new BattleMenu(game,sm,allies,enemy,bs,allies.get(bs.bp.currentlySelected),gs);
+				}
+				
+				//If all allies have moved, no menu is pulled up. Player can press enter to begin battle phase.
+				else{
+					bs.bp.selected = false;	
+				}			
+				break;
+			}
+		}		
 	}
 			
 
 	public void render(Graphics g) {
-		
 		//if exit is used by pressing x, actions will be de-selected. Eveything moves one menu screen back
 		if(exit==true){
 			switch(phase){
+			
+			//Phase 1: Selecting Option. 
 			case 1:
-				if(bs.bp.phase==1){		//If used in planning phase, character is deselected. 
+				//If used in planning phase, character is deselected. BattleMenu is exited. If dilly-dallying, this has no effect.
+				if(bs.bp.phase==1){		 
 					bs.bp.selected=false;
 				}
 				break;
+			
+			//Phase 2: Selecting Skill/Item	
 			case 2:
+				//Revert back to Option Selecting. All selection variables reset.
 				phase--;
 				itemSelected = 0;			
 				itemPointer = 0;
 				backpackLocation = 0;
 				break;
+				
+			//Phase 3: Targeting	
 			case 3:
+				//If Schmuck is targeting a skill or item, revert to Skill/Item Selection Phase
 				if(actionSelected != 0){
 					phase--;
 				}
+				//If Schmuck is targeting a standard attack, revert to option select Phase.
 				else{
 					phase -=2;
 				}
+				//Targeting variables reset.
+				currentlyTargeted = 0;
+				teamTargeted = false;
 				break;
 			}
 			exit=false;
 		}
 		
-		if(phase == 1 || phase == 3){
-			g.setColor(new Color(102, 178,255));
-			g.fillRect(540, 256,100,160);
-			g.setColor(new Color(255, 255,51));
-			g.fillRect(540,256+32*actionSelected, 100, 32);
-			g.fillRect(530,233,110,23);
-			g.setFont(new Font("Chewy", Font.PLAIN, 18));
-			g.setColor(new Color(0, 0,0));
+		//x,y coordinates of the option select menu
+		int menux = currentSchmuck.getX();
+		int menuy = currentSchmuck.getY();
+		
+		//If Selection Option or targeting standard attack, option select menu is visible.
+		if(phase == 1 || (phase == 3 && actionSelected == 0)){
+			g.setColor(new Color(0, 128, 255, 200));
+			//g.setColor(new Color(0, 0, 0, 200));
+			g.fillRect(menux, menuy - 40, 110, 160);
+			g.setColor(new Color(255, 255, 51, 225));
+			g.fillRect(menux, menuy - 40 + 32 * actionSelected, 110, 32);
+			g.fillRect(menux , menuy - 65, 110, 25);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
+			g.setColor(Color.white);
 			
-			g.drawString(currentSchmuck.getName(),540, 250);
-			
-			g.drawString("Attack", 540, 283);
-			g.drawString("Skills", 540, 315);
-			g.drawString("Item", 540, 347);
-			g.drawString("Wait", 540, 379);
-			g.drawString("Run", 540, 411);
+			g.drawString(currentSchmuck.getName(), menux, menuy - 50);
+			g.drawString("Attack", menux + 55, menuy - 20);
+			g.drawString("Skills", menux + 55, menuy + 12);
+			g.drawString("Item", menux + 55, menuy + 44);
+			g.drawString("Wait", menux + 55, menuy + 76);
+			g.drawString("Run", menux + 55, menuy + 108);
+//			Utils.drawDialogueBox(g, window, "", 18, Color.black, menux, menuy - 50, 110, 170, 16, true);
+//			Utils.drawDialogueBox(g, window, currentSchmuck.getName(), 18, Color.black, menux, menuy - 80, 110, 10, 16, true);
+
+/*			String[] choices = {"Attack","Skills","Item","Wait","Run"};
+			Utils.drawMenu(g, windowClear, choices, Color.black, 18,new Font("TimesRoman", Font.PLAIN, 18),actionSelected,menux+40, menuy - 40,
+					110, 160,1,5,0,16,true,true);*/
+
 			
 			//Displays mini-icons for actions
 			switch(actionSelected){
 			case 0:
-				g.drawImage(Assets.attack, 610, 256, null);
+				g.drawImage(Assets.skillIcons[0], menux + 8, menuy - 40, null);
 				break;
 			case 1:
-				g.drawImage(Assets.skill, 610, 288, null);
+				g.drawImage(Assets.skillIcons[1], menux + 8, menuy - 8, null);
 				break;
 			case 2:
-				g.drawImage(Assets.item, 610, 320, null);
+				g.drawImage(Assets.skillIcons[4], menux + 8, menuy + 24, null);
 				break;
 			case 3:
 				if(bs.bp.pauseTOQ){
-					g.drawImage(Assets.nothing, 610, 352, null);
+					g.drawImage(Assets.skillIcons[2], menux + 8, menuy + 56, null);
 				}
 				else{
-					g.drawImage(Assets.wait, 610, 352, null);
+					g.drawImage(Assets.skillIcons[3], menux + 8, menuy + 56, null);
 				}
 				break;
 			case 4:
-				g.drawImage(Assets.run, 610, 384, null);
+				g.drawImage(Assets.skillIcons[5], menux + 8, menuy + 88, null);
 				break;
 			}
 			
 		}
+		
+		//If selecting skill/item or targeting skill/item, skill or item menu is visible.
 		if(phase == 2 || phase == 3){
 			switch(actionSelected){
 			case 0:
-				//If attack is chosen, nothing is displayed, skips right to targeting phase
+				//If attack is chosen, nothing is displayed, skips right to targeting phase.
 				break;
+			//Case 1: Use Skill Chosen	
 			case 1:
-				//if Skill is chosen, a list of skills covers up the actions menu
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
+				//if Skill is chosen, a list of skills covers up the actions menu.
+				g.setColor(new Color(0, 128, 255, 200));
+				g.fillRect(menux, menuy - 40, 120, 160);
 				ArrayList<Skills> skills = currentSchmuck.skills;
-				g.setColor(new Color(255, 255,51));
-				g.fillRect(500, 216+25*itemPointer, 140, 25);
-				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				g.setColor(new Color(0, 0,0));
+				g.setColor(new Color(255, 255, 51, 225));
+				g.fillRect(menux , menuy - 65, 110, 25);
+				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
+				g.setColor(Color.white);
+				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
+				//If Schmuck has no skills, Do Nothing is displayed.
 				if(skills.size()==0){
-					g.drawString("Do Nothing", 505, 231);
+					g.drawString("Do Nothing", menux + 3, menuy - 10);
 				}
 				else{
-					
-					//Displays list of skill names and mp costs
-					skillnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+4 && i<currentSchmuck.skills.size();i++){			
-						g.setColor(new Color(0, 0,0));
-						g.drawString(skills.get(i).getName()+"  "+(int)(skills.get(i).getCost()*(1+currentSchmuck.getMpCost()))+" Mp", 505, 231+25*(skillnum));
+					//Displays list of skill names and mp costs.
+					skillnum = 0;        //Keeps track of number of skills                                                                                                                                                                                                                                                                               
+					for(int i = backpackLocation; i <= backpackLocation + 4 && i < currentSchmuck.skills.size(); i++){			
+						g.setColor(Color.white);
+						g.drawString(skills.get(i).getName(), menux + 3, menuy - 10 + 25 * (skillnum));
+						g.drawString((int)(skills.get(i).getCost()*(1-currentSchmuck.getMpCost()))+" Mp", menux+90, menuy - 10 + 25 * (skillnum));
 						skillnum++;
 					}
 					
-					//Short descriptions are also visible at the bottom
-					g.setColor(new Color(255, 255,255));
-					g.fillRect(505, 340, 130, 76);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(new Color(0, 0,0));
-					int y=340;
-					for (String line : skills.get(itemSelected).getDescrShort().split("\n")){
-						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
-					}			       
+					//Short descriptions are also visible to the side.
+					Utils.drawDialogueBox(g,window, skills.get(itemSelected).getDescrShort(), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
 				}
 				if(backpackLocation!=0){
-					g.drawImage(Assets.Uparrow,570,209,null);
+					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);
 				}
 				if(backpackLocation!=skills.size()-5 && skills.size()>5){
-					g.drawImage(Assets.Downarrow,570,334,null);
+					g.drawImage(Assets.Downarrow, menux + 60 - Assets.Downarrow.getWidth() / 2, menuy + 92, null);
 				}				
 				break;
+			
+			//Case 2: Use Item Chosen
 			case 2:	
-				
 				//Same as skills
-				g.setColor(new Color(102, 178,255));
-				g.fillRect(500, 210, 140, 206);
+				g.setColor(new Color(0, 128, 255, 200));
+				//g.setColor(new Color(0, 0, 0, 200));
+				g.fillRect(menux, menuy - 40, 120, 160);
 				Set<Item> temp = gs.inventorymanager.battleItem().keySet();
 				Item[] itemDisplay = temp.toArray(new Item[999]);
-				g.setColor(new Color(255, 255,51));
-				g.fillRect(500, 216+25*itemPointer, 140, 25);
-				g.setFont(new Font("Chewy", Font.PLAIN, 12));
-				g.setColor(new Color(0, 0,0));
+				g.setColor(new Color(255, 255, 51, 225));
+				g.fillRect(menux, menuy - 65, 110, 25);
+				g.fillRect(menux, menuy - 25 + 25 * itemPointer, 120, 25);
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
+				g.setColor(Color.white);
+				g.drawString(currentSchmuck.getName(), menux, menuy - 50);
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
 				if(gs.inventorymanager.backpack.size()==0){
-					g.drawString("Nothing x999", 505, 231);
+					g.drawString("Nothing x999", menux + 3, menuy - 10);
 				}
 				else{
 					itemnum=0;                                                                                                                                                                                                                                                                                       
-					for(int i=backpackLocation;i<=backpackLocation+4 && i<gs.inventorymanager.backpack.size();i++){			
-						g.setColor(new Color(0, 0,0));
-						g.drawString(itemDisplay[i].getName()+"  x"+gs.inventorymanager.backpack.get(itemDisplay[i]), 505, 231+25*(itemnum));
+					for(int i = backpackLocation; i <= backpackLocation + 4 && i < gs.inventorymanager.backpack.size(); i++){			
+						g.setColor(Color.white);
+						g.drawString(itemDisplay[i].getName() + "  x" + gs.inventorymanager.backpack.get(itemDisplay[i]), menux + 3, menuy - 10 + 25 * (itemnum));
 						itemnum++;
 					}	
-					g.setColor(new Color(255, 255,255));
-					g.fillRect(505, 340, 130, 76);
-					g.setFont(new Font("Chewy", Font.PLAIN, 12));
-					g.setColor(new Color(0, 0,0));
-					int y=340;
-					for (String line : itemDisplay[itemSelected].getDescrShort().split("\n")){
-						 g.drawString(line, 505, y += g.getFontMetrics().getHeight());
-					}
+					
+					Utils.drawDialogueBox(g,window, itemDisplay[itemSelected].getDescrShort(gs), 12, Color.black, menux + 120, menuy - 35, 125, 75, 16, true);
+
 				}
-			if(backpackLocation!=0){
-				g.drawImage(Assets.Uparrow,570,209,null);
-			}
-			if(backpackLocation!=gs.inventorymanager.backpack.size()-5 && gs.inventorymanager.backpack.size()>5){
-				g.drawImage(Assets.Downarrow,570,334,null);
-			}
+				if(backpackLocation!=0){
+					g.drawImage(Assets.Uparrow, menux + 60 - Assets.Uparrow.getWidth() / 2, menuy - 50, null);
+				}
+				if(backpackLocation!=gs.inventorymanager.battleItem().size()-5 && gs.inventorymanager.battleItem().size()>5){
+					g.drawImage(Assets.Downarrow, menux + 60 - Assets.Downarrow.getWidth() / 2, menuy + 92, null);
+				}
 				break;
 				
 				//For Wait and run actions, nothing is displayed. An action is instantly queued up instead.
 			}
 		}
 		
+		//If in Targeting Phase, a pointer is drawn over target.
 		if(phase == 3){
-			Schmuck pointed = currentSchmuck;
+			//pointed is used in BattleUI to draw pointer over. Default set to Schmuck performing action.
+			pointed = currentSchmuck;	
 			switch(currentSkill.getTargetType()){
-			case 0:
-				if(teamTargeted){
-					if(!bs.bs.alliesTargets.isEmpty()){
-						pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+			
+				//Case 0: Skill can target any single targetable ally or enemy
+				case 0:
+					if(teamTargeted){
+						if(!bs.bs.alliesTargets.isEmpty()){
+							pointed = bs.bs.alliesTargets.get(currentlyTargeted);
+						}
 					}
-				}
-				else{
-					if(!bs.bs.enemyTargets.isEmpty()){
-						pointed = bs.bs.enemyTargets.get(currentlyTargeted);
-					}
-				} 
-				break;
-			case 2:
-				pointed = allies.get(currentlyTargeted);
-				break;
-			}
-			
-			g.drawImage(pointer,pointed.getBattleSprite().getWidth()/2+pointed.getX()-16, pointed.getY()-10,null);
-			
-			g.setColor(new Color(102, 178,255));
-			g.fillRect(520, 0,140,25);
-			g.setFont(new Font("Chewy", Font.PLAIN, 16));
-			g.setColor(new Color(0, 0,0));
-			g.drawString(pointed.getName()+" ",520,20);
-			
+					else{
+						if(!bs.bs.enemyTargets.isEmpty()){
+							pointed = bs.bs.enemyTargets.get(currentlyTargeted);
+						}
+					} 
+					break;
+					
+				//Case 1: Skill is untargetable. Sets pointed to null to not draw a pointer
+				case 1:
+					pointed = null;
+					break;
+					
+				//Case 2: Skill targets any ally.	
+				case 2:
+					pointed = allies.get(currentlyTargeted);
+					break;
+				}	
 		}
-	
-	
-		itemnum++;
-		
 	}
-
-
-
 }
 

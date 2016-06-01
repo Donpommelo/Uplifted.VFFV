@@ -9,19 +9,23 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class Terraform extends Skills {
 
 	public static String name = "Terraform";
-	public static String descr = "User shakes the very foundation\nof the building, scrambling\nremaining Turn Order";
-	public static String descrShort = "Damages and scrambles\nTurn Order";
-	public static int cost = 18;
+	public static String descr = "User shakes the very foundation of the building, scrambling remaining Turn Order";
+	public static String descrShort = "Damages and scrambles Turn Order";
+	public static int cost = 32;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
+	public static int element = 2;	//Green
+	public static int targetType = 1;	//No Target
 	public Terraform(int index) {
-		super(index,1,2, name, descr, descrShort, cost);
+		super(index,1,2, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
-		bs.bp.bt.textList.add("All battlers look discombobulated.");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(s.buffedStats[3]*2), perp, s);
+		bs.bp.bt.addScene("All battlers look discombobulated.");
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, s) * 0.75);
+			bs.bp.em.hpChange(damage, perp, s,6);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);
@@ -38,10 +42,9 @@ public class Terraform extends Skills {
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" uses Terraform");
-		bs.bp.bt.textList.add("All battlers look critically discombobulated.");
-		for(Schmuck s : bs.bp.getEnemyTargets(perp)){
-			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti())), perp, s);
+		bs.bp.bt.addScene("All battlers look critically discombobulated.");
+		for(Schmuck s : bs.bp.getSelectableEnemies(perp)){
+			bs.bp.em.hpChange(-(int)(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3])*(1+perp.getCritMulti()-vic.getCritRes())), perp, s,6);
 		}
 		ArrayList<Action> temp = new ArrayList<Action>();
 		bs.bp.TurnOrderQueue.remove(0);
@@ -56,9 +59,4 @@ public class Terraform extends Skills {
 		}
 		bs.bp.TurnOrderQueue.add(0, new Action(perp, vic, new Terraform(0), bs));	
 	}
-	
-	public int getTargetType(){
-		return targetType;
-	}
-
 }

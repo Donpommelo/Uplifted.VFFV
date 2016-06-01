@@ -453,11 +453,11 @@ public class BattleMenuRetired{
 						Item[] itemDisplay= temp.toArray(new Item[999]);
 						if(gs.inventorymanager.backpack.size()==0){
 							if(teamTargeted==false){
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new ItemNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.enemyTargets.get(currentlyTargeted),new ItemNothing(1),bs));
 								
 							}
 							else{
-								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new ItemNothing(1,gs),bs));
+								bs.bp.TurnOrderQueue.set(TurnOrderQueue, new Action(allies.get(bs.bp.currentlySelected),bs.bs.alliesTargets.get(currentlyTargeted),new ItemNothing(1),bs));
 
 							}
 						}

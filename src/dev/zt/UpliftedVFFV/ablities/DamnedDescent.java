@@ -8,37 +8,34 @@ import dev.zt.UpliftedVFFV.states.BattleState;
 public class DamnedDescent extends Skills {
 
 	public static String name = "Damned Descent";
-	public static String descr = "User drops a target a considerable\ndistance. If this attack\nincapacitates a foe, the\nuser gains an extra turn.";
-	public static String descrShort = "Deals Red damage and\nrefunds turn if lethal.";
+	public static String descr = "User drops a target a considerable distance. Such a far distance, in fact, that Those Below may reward the deliverance of the fallen.";
+	public static String descrShort = "Deals Red damage and refunds turn if lethal.";
 	public static int cost = 11;
+	public static int baseAcc = 80; public static int baseCrit = 0;
+	public static boolean canMiss = true; public static boolean canCrit = true;
+	public static int element = 0;	//Red
+	public static int targetType = 0;	//Any Single Target
 	public DamnedDescent(int index) {
-		super(index,0,0, name, descr, descrShort, cost);
-
+		super(index, element, targetType, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
-		int hitChance = (int)(Math.random()*100);
-		if(hitChance<.8*bs.bp.em.getAcc(perp, vic)){
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/(int)(vic.buffedStats[3]*1.5), perp, vic,0);
-			if(vic.tempStats[0]==0){
-				bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
-				bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
-			}
-		}
-		else{
-			bs.bp.bt.textList.add(perp.getName()+" missed!");
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic) * 0.9);
+		bs.bp.em.hpChange(damage, perp, vic,0);
+		if(vic.tempStats[0]==0){
+			bs.bp.bt.addScene(perp.getName()+" claims "+vic.getName()+"'s soul!");
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){
-		bs.bp.bt.textList.add(perp.getName()+" used Damned Descent!");
-		bs.bp.bt.textList.add("A Critical blow!");
-		bs.bp.em.hpChange(((perp.buffedStats[2]*perp.buffedStats[2])/vic.buffedStats[3]), perp, vic);
+		int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes()) * 0.9);
+		bs.bp.em.hpChange(damage, perp, vic,0);
 		if(vic.tempStats[0]==0){
-			bs.bp.bt.textList.add(perp.getName()+"'s sin is repaid!");
-			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
-			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new DillyDally(0),bs));
+			bs.bp.bt.addScene(perp.getName()+" collects "+vic.getName()+"'s soul!");
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
+			bs.bp.TurnOrderQueue.add(new Action(perp,perp,new ExtraTurn(0),bs));
 		}	
 	}
+
 }

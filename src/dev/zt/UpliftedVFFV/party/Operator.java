@@ -1,11 +1,11 @@
 package dev.zt.UpliftedVFFV.party;
 
-
-import java.util.ArrayList;
-import java.util.TreeMap;
-
+import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.party.Schmuck;
+import dev.zt.UpliftedVFFV.statusEffects.status;
 import dev.zt.UpliftedVFFV.ablities.CentriDischarge;
+import dev.zt.UpliftedVFFV.ablities.CounterWeight;
+import dev.zt.UpliftedVFFV.ablities.CrushCables;
 import dev.zt.UpliftedVFFV.ablities.DamnedDescent;
 import dev.zt.UpliftedVFFV.ablities.DayattheFair;
 import dev.zt.UpliftedVFFV.ablities.DoorsofClosure;
@@ -14,59 +14,46 @@ import dev.zt.UpliftedVFFV.ablities.MotorGrinder;
 import dev.zt.UpliftedVFFV.ablities.SafeRoom;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.Terraform;
+import dev.zt.UpliftedVFFV.ablities.TowerofTerror;
 import dev.zt.UpliftedVFFV.ablities.VariableVoltage;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
-import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class Operator extends Schmuck{
 	
-//	public final static int startHp=50,startBp=35,startPow=17, startDef=18, startSpd=17, startSkl=13, startLuk=12, startInt=18;
-	public final static int[] startStats = {85,42,17,18,17,13,18,12};
-//	public final static double hpGrowth=1, bpGrowth=.7, powGrowth=1.2, defGrowth=1.3, spdGrowth=1.7, sklGrowth=1.5, intGrowth=1.9, lukGrowth=.9;
-	public final static double[] statGrowths = {1 , .7 , 1.2 , 1.3 , 1.7 , 1.5 , 1.9 , .9};
-//	public final static double[] statGrowths = {10 , 10 , 10 , 10 , 10 , 10 , 10 , 10};
-//	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
-//	public static int[] baseStats=startStats;
-//	public static int[] buffedStats=baseStats;
-	public static int[] tempStats={startStats[0],startStats[1]};
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static int[] elemRes = {20,10,10,20,10,0};
-	public static int Lvl=1;
-	public int exp=0;
-	public ArrayList<Skills> skills;
-	public TreeMap<Integer, Skills> levelSkills = new TreeMap<>();
-	public ArrayList<status> statuses;
-	public Operator() {
-		super("Operator",1,ImageLoader.loadImage("/BattleSprites/Operator.png"),ImageLoader.loadImage("/CharacterBusts/Player-1.png"), startStats, statGrowths,elemRes);
-		super.calcStats(1);
-		this.bio = "The building's dependable and friendly elevator Operator.";
-		this.skills = new ArrayList<Skills>(1);
-//		this.levelSkills = new TreeMap<Integer, Skills>();
-//		this.levelSkills.put(2, new SafeRoom(0));
-//		this.levelSkills.put(3, new FiremansSwitch(0));
-//		this.levelSkills.put(5, new VariableVoltage(0));
-//		this.levelSkills.put(10, new DamnedDescent(0));
-//		this.levelSkills.put(15, new CentriDischarge(0));
-//		this.levelSkills.put(18, new Terraform(0));
-//		this.levelSkills.put(21, new DayattheFair(0));
-		super.learnSkill(new DoorsofClosure(0));
-		super.learnSkill(new MotorGrinder(0));
-		super.learnSkill(new SafeRoom(0));
-		super.learnSkill(new FiremansSwitch(0));
-		super.learnSkill(new VariableVoltage(0));
-		super.learnSkill(new DamnedDescent(0));
-		super.learnSkill(new CentriDischarge(0));
-		super.learnSkill(new Terraform(0));
-		super.learnSkill(new DayattheFair(0));
-
-	}
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public TreeMap<Integer, Skills> getLevelSkills() {
-		return levelSkills;
-	}
-	public void setLevelSkills(TreeMap<Integer, Skills> levelSkills) {
-		this.levelSkills = levelSkills;
-	}
+	public final static int startHp=129,startBp=33,startPow=55, startDef=58, startSpd=45, startSkl=45, startInt=38, startLuk=35;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=33.5, bpGrowth=11.7, powGrowth=4.8, defGrowth=3.7, spdGrowth=3.7, sklGrowth=3.8, intGrowth=2.9, lukGrowth=1.9;
+	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
+	
+	public final static int expDrop = 2000;
+	public final static int scrDrop = 0;
+	
+	public final static int baseRed = 25, baseBlue = 5, baseGreen = 5, baseYellow = 25, basePurple = 10, baseVoid = 0;
+	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
+	
+	public final static String name = "Operator";
+	public final static String plural = "Operators";
+	public final static String pronoun = "he";
+	
+	public final static int sprite = 0;
+	public final static int menusprite = 1;
+	
+	public final static Skills[] levelSkills = {new DoorsofClosure(0), new MotorGrinder(0), new CrushCables(0),
+			new CentriDischarge(0), new SafeRoom(0), new FiremansSwitch(0), new VariableVoltage(0),
+			new CounterWeight(0), new DamnedDescent(0), new TowerofTerror(0), new Terraform(0),new DayattheFair(0)};
+	public final static int[] levelReqs = {0,0,2,3,5,7,12,15,18,21,25,30};
+//	public final static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0,0,0};
+	
+	public final static Item[] itemDrops = {};
+	public final static double[] dropRates = {};
+	public final static status[] intrinsicStatuses = {};
 
-
+	public final static String bioShort = "The building's dependable and friendly elevator Operator.";
+	public final static String bioLong = "";
+	
+	public Operator(int level) {
+		super(name, plural, pronoun, level, sprite, menusprite, startStats, statGrowths,baseElem, expDrop, scrDrop, levelSkills,
+				levelReqs,itemDrops, dropRates, intrinsicStatuses, bioShort, bioLong);
+	}
 }

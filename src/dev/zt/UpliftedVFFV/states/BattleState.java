@@ -3,20 +3,23 @@ package dev.zt.UpliftedVFFV.states;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
 import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.Battle.BattleBackground;
 import dev.zt.UpliftedVFFV.Battle.BattleMenu;
 import dev.zt.UpliftedVFFV.Battle.BattleProcessor;
 import dev.zt.UpliftedVFFV.Battle.BattleSprites;
-import dev.zt.UpliftedVFFV.events.Event;
+import dev.zt.UpliftedVFFV.Battle.BattleUI;
 import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
 import dev.zt.UpliftedVFFV.party.Schmuck;
-import dev.zt.UpliftedVFFV.party.Troop;
 import dev.zt.UpliftedVFFV.party.TroopManager;
+import dev.zt.UpliftedVFFV.party.troops.Troop;
 
 
 public class BattleState extends State {
+	
+	private static final long serialVersionUID = 1L;
 	
 	public String prevSong;
 	private BufferedImage elevatorDoors;
@@ -38,6 +41,7 @@ public class BattleState extends State {
 	public BattleBackground bb;
 	public TroopManager tm;
 	public BattleProcessor bp;
+	public BattleUI bui;
 	public ArrayList<Schmuck>allies=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> enemy=new ArrayList<Schmuck>();
 	public ArrayList<Schmuck> all=new ArrayList<Schmuck>();
@@ -45,28 +49,40 @@ public class BattleState extends State {
 	public int bonusML;
 	public BattleState(Game game, StateManager sm, ArrayList<Schmuck>party,int troopId, int eventId,boolean runnable, boolean music,GameState gs, int ML){
 		super(game,sm);
-//		game.getAudiomanager().playMusic(3);
+//		game.getAudiomanager().playMusic(3);;
 		this.gs=gs;
 		this.EventId = eventId;
 		this.runnable = runnable;
 		this.musicReplace = music;
 		tm= new TroopManager(game);
-//		bm = new BattleMenu(game,sm,party,tm.Troop(troopId),this);
 		this.allies = party;
 		this.bonusML = ML;
+		
+		//Adding Bonus ML from statuses
+		for(Schmuck s : gs.partymanager.party){
+			bonusML += s.getBonusML();
+		}
+		
+		//Adding Mind Control Device Bonus.
+		bonusML += gs.variablemanager.getVar(13);
+		
+		//Adding World Base Level
+		bonusML += gs.getWorld().getEnemylvl();
+		
+		//Adding Global Level Modifier
+		bonusML += gs.variablemanager.getVar(21);
+		
 		t = Troop.troops[troopId];
 		this.enemy = tm.Troop(troopId,bonusML);
 		bp = new BattleProcessor(game,sm,party,enemy,t,gs,this);
 		bs = new BattleSprites(game,sm,party,enemy,this);
-		bb = new BattleBackground(game,sm,this);	
+		bb = new BattleBackground(game,sm,this);
+		bui = new BattleUI(game,sm,party,enemy,this);
 		animatedDoors = new SpriteSheet(ImageLoader.loadImage("/textures/BattleIntro1.png"));
 		introScene = true;
 		introX = 0;
 		introY = 0;
 		frame = 0;
-//		currentlySelected=0;
-//		actionSelected=0;
-
 	}
 
 	public void tick() {
@@ -77,8 +93,6 @@ public class BattleState extends State {
 			bs.tick();
 			bp.tick();	
 		}
-//		bm.tick();
-
 	}
 			
 
@@ -96,12 +110,11 @@ public class BattleState extends State {
 				
 				g.drawImage(elevatorDoors,0,0,null);
 			}
-			else if(frame<=154){
-//				g.drawImage(floor, 0, 0,null);
-//				g.drawImage(wall, 0, -32, null);					
+			else if(frame<=154){					
 				bb.render(g);
 				bs.render(g);
 				bp.render(g);
+				bui.render(g);
 				introY = 416*(int)((frame-100)/3);
 				elevatorDoors = animatedDoors.crop(introX,7488-introY, 640, 416);
 				g.drawImage(elevatorDoors,0,0,null);
@@ -113,36 +126,56 @@ public class BattleState extends State {
 				bb.render(g);
 				bs.render(g);
 				bp.render(g);
+				bui.render(g);
 				introScene = false;
 			}
 			
 		}
-		else{
-//			g.drawImage(floor, 0, 0,null);
-//			g.drawImage(wall, 0, -32, null);	
+		else{	
 			bb.render(g);
 			bs.render(g);
 			bp.render(g);
-//			bm.render(g);
+			bui.render(g);
 		}
 
 		
 	}
 	
 	public void end(boolean victory){
+		
+		//Extra check to remove all statuses that should be removed a the end of battle
+		for(Schmuck s : bp.allies){
+			for(int i=0; i<s.statuses.size(); i++){
+				if(s.statuses.get(i)!=null){					
+					if(s.statuses.get(i).removedEnd){
+						bp.stm.hardRemoveStatus(s,s.statuses.get(i));
+						s.calcBuffs(this);
+						i--;
+					}
+				}
+			}
+		}
+		
+		//End Battle State
 		StateManager.getStates().pop();
+		
+		//Resume playing pre-battle music
 		game.getAudiomanager().playMusic(2, true);
-		//This is used for multistage event processing. If there are multiple stages in the event being run, the stage will
-		//increment and the event will be rerrun with the new stage.
+		
+		//This is used for multistage event processing. If there are multiple stages in the event being run,
+		//the stage will increment and the event will be rerrun with the new stage.
 		if(victory){
-			Event.events[this.EventId].setFightwon(true);
+			gs.getEvents()[this.EventId].setFightwon(true);
 		}
 		else if(bp.fightlost()){
 			StateManager.getStates().pop();
+			StateManager.getStates().push(new NotificationState(game, gs, statemanager, "TEMPORARY GAME OVER SCREEN", EventId));
+
+
 		}
-		if(Event.events[this.EventId].getstage()!=Event.events[this.EventId].getfinalstage()){
-			Event.events[this.EventId].setstage(Event.events[this.EventId].getstage()+1);
-			Event.events[this.EventId].run();
+		if(gs.getEvents()[this.EventId].getstage()!=gs.getEvents()[this.EventId].getfinalstage()){
+			gs.getEvents()[this.EventId].setstage(gs.getEvents()[this.EventId].getstage()+1);
+			gs.getEvents()[this.EventId].run();
 		}
 	}
 

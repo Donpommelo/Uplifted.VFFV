@@ -71,7 +71,7 @@ public class Sound {
 	
 	public void startMusic(int track, boolean looped){
 		if(currentSong!=null){
-			currentSong.stop();
+			currentSong.close();
 		}
 		switch(track){
 		case 0:

@@ -7,18 +7,20 @@ import dev.zt.UpliftedVFFV.gfx.Assets;
 public class EventTestBattle extends Event {
 
 	public EventTestBattle(float x, float y, int idnum) {
-		super(Assets.Black,idnum,x, y);
+		super(Assets.VendingMachine,idnum,x, y);
 		
-	
 	}
 	
 	public void run(){
-//		super.fite(14, this.id, true, true);
-		super.fite((int)(Math.random()*13), this.id, true, true);
+//		super.fite(2, this.id, true, true);
+//		super.fite((int)(Math.random() * 24), this.id, true, true);
+//		super.fite(21, this.id, true, true);
+
+		super.fite(20, this.id, true, true);
 
 	}
 	
-	public boolean isSolid(){
+	public boolean isSolid(int i){
 		return true;
 	}
 	

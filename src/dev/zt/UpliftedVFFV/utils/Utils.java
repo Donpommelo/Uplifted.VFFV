@@ -6,12 +6,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
+import dev.zt.UpliftedVFFV.Game;
 import dev.zt.UpliftedVFFV.gfx.SpriteSheet;
+import dev.zt.UpliftedVFFV.states.GameState;
+import dev.zt.UpliftedVFFV.states.StateManager;
 
 public class Utils {
 	
@@ -44,7 +44,16 @@ public class Utils {
 		}
 	}
 	
-/*****UTILS FOR MENU DRAWING*****/	
+	public static double parseDouble(String number){
+		try{
+			return Double.parseDouble(number);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0.0;
+		}
+	}
+	
+/*****UTILS FOR MENU DRAWING (NOT PROCESSING)*****/	
 
 	//Size of cuts, make smaller for more precision. Values <16 or >64 will probably break things.
 	private static int squareSize = 16;
@@ -57,56 +66,106 @@ public class Utils {
 	 *  options - List of menu options to display. Size/font not currently adjustable (Default font size 18).
 	 *  fontColor - Color of options.
 	 *  fontHeight - Height of cursor.
-	 *  cursor - Integer index of cursor.
+	 *  cursorIndex - Integer index of cursor.
 	 *  x - x coordinate of upper right menu corner.
 	 *  y - y coordinate of upper right menu corner.
 	 * 	width - Width of window to be drawn.
 	 * 	height - Height of window to be drawn.
 	 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
-	 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
 	 */
-	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor, int fontHeight,
-			int cursor, int x, int y, int width, int height, boolean priority, boolean drawCursor){
+	public static void drawMenu(Graphics g, BufferedImage window, String[] options, Color fontColor,
+			int fontHeight,Font font,int cursorIndex, int x, int y, int width, int height, boolean priority){
 		
 		Graphics2D g2d = (Graphics2D) g;
-		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, priority);
+		drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, squareSize, priority);
 		
 		//Set transparency according to priority.
 		if(!priority){
 			 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
 		}
 		
-		//Draw cursor.
-		drawCursor(g2d, window, x, y + (25 * cursor) + 12, width, fontHeight, priority);
-		
+		drawCursor(g2d, window, x, y + (25 * cursorIndex) + 12, width, fontHeight, priority);
+
 		//Draw menu options.
-		g2d.setFont(new Font("Chewy", Font.PLAIN, 18));
+		g2d.setFont(font);
 		g2d.setColor(fontColor);
-		for(int i = 0; i< options.length; i++){
-			g2d.drawString(options[i], x + 25, y + 35 + (25 * i));
+		for(int i = 0; i < options.length; i++){
+			g2d.drawString(options[i], x + 21, y + 35 + (25 * i));
 		}		
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 	}
 	
-	//Wrapper for drawImage that draws a custom menu background (for Elevator panels?).
-	/* Parameters:
-	 * 	g - Graphics object
-	 *	window - Name of menu texture. Texture should be an image of fixed size.
-	 *	window2 - Texture of window to use for secondary display.
-	 *	cursorTexture - Texture of cursor to draw.
-	 *  options - List of menu options to display. Size/font not currently adjustable (Default font size 18).
-	 *  fontColor - Color of options.
-	 *  cursor - Integer index of cursor.
-	 *  x - x coordinate of upper right menu corner.
-	 *  y - y coordinate of upper right menu corner.
-	 * 	width - Width of image to be drawn.
-	 * 	height - Height of image to be drawn.
-	 */
-	public static void drawElevatorMenu(Graphics g, BufferedImage window, BufferedImage window2, BufferedImage cursorTexture, 
-				String[] options, Color fontColor, int cursor, int x, int y, int width, int height){
-		
-	}
+	//Wrapper for drawImage that draws a scrolling menu with a controllable number of x and y options.
+		/* Parameters:
+		 g - Graphics object
+		 * 	window - Name of menu texture. Texture should be a 128 x 160 image divided into 4 squareSize x squareSize sections 
+		 * 		and with a 128 x 32 cursor texture at the bottom.
+		 *  options - List of menu options to display with toString(). Size/font not currently adjustable (Default font size 18).
+		 *  fontColor - Color of options.
+		 *  fontHeight - Height of cursor.
+		 *  cursorIndex - Integer index of cursor.
+		 *  x - x coordinate of upper right menu corner.
+		 *  y - y coordinate of upper right menu corner.
+		 * 	width - Width of window to be drawn.
+		 * 	height - Height of window to be drawn.
+		 *  optionx - Number of options displayed horizontally.
+		 *  optiony - number of options displayed vertically.
+		 *  frame - Reference location for displaying observable list.
+		 *  squareSize - Size of texture to be sampled. Larger values: More detail, less precision in size.
+		 * 	priority - Window focus. If not in focus, the menu is drawn transparently.
+		 * 	drawCursor - Determines whether to draw the cursor or not (For custom menus).
+		 */
+		public static void drawMenu(Graphics g, BufferedImage window, Object[] options, Color fontColor,
+				int fontHeight, Font font,int cursorIndex, int x, int y, int width, int height, int optionx,
+				int optiony, int frame, int customSquareSize,boolean priority, boolean drawCursor){
+			Graphics2D g2d = (Graphics2D) g;
+			drawDialogueBox(g2d, window, "", 18, fontColor, x, y, width, height, customSquareSize, priority);
+			
+			//Set transparency according to priority.
+			if(!priority){
+				 g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+			}
+			
+			//Draw cursor.
+			if(drawCursor){
+				drawCursor(g2d, window, x + (width / optionx - 2) * (cursorIndex % optionx), y + (25 * (cursorIndex / optionx)) + 8, width / optionx + 5, fontHeight, priority);
+			}
+			//Draw menu options.
+			g2d.setFont(font);
+			g2d.setColor(fontColor);
+			int xLoc = 5;
+			if(options.length > 0){	
+				int listPosition = 0;
+				g2d.setFont(new Font("Courier", Font.PLAIN, fontHeight));
+				for(int i = frame * optionx; i < optionx * (frame + optiony) && i < options.length; i++){
+					if(options[i] != null){
+						xLoc = (width / optionx)* (listPosition % optionx);
+						for(String word : options[i].toString().split("")){
+							if(xLoc + g2d.getFontMetrics().stringWidth(word+"...") < width){
+								 g2d.drawString(word, x+12+xLoc, y + 28 + (25 * (listPosition / optionx)));
+							}
+							else{
+								g2d.drawString("...", x+12+xLoc, y + 28 + (25 * (listPosition / optionx)));
+								break;
+							}
+							xLoc += g2d.getFontMetrics().stringWidth(word+"");
+						}
+//						g2d.drawString(options[i].toString(), x + 15 + (width / optionx) * (listPosition % optionx), y + 28 + (25 * (listPosition / optionx)));
+						listPosition++;
+					} else{
+						break;
+					}
+				}
+			} else{
+				if(drawCursor){
+					g2d.drawString("EMPTY", x + 15, y + 28);
+				}
+			}
+			
+			//Reset transparency.
+			g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
+		}
 	
 	//Wrapper for drawImage that draws a dialogue box.
 	/* Parameters:
@@ -119,10 +178,11 @@ public class Utils {
 	 *  y - y coordinate of upper right box corner.
 	 * 	width - Width of box to be drawn.
 	 * 	height - Height of box to be drawn.
+	 *  squareSize - Size of texture to be sampled. Larger values: More detail, less precision in size.
 	 * 	priority - Window focus. If not in focus, the box is drawn transparently.
 	 */
-	public static void drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
-			boolean priority){
+	public static int drawDialogueBox(Graphics g, BufferedImage window, String text, int fontSize, Color fontColor, int x, int y, int width, int height, 
+			int squareSize, boolean priority){
 		Graphics2D g2d = (Graphics2D) g;
 		//Load texture and cut into subsections.
 		SpriteSheet texture = new SpriteSheet(window);		
@@ -203,13 +263,29 @@ public class Utils {
 		}
 		
 		//Draw text.
-		g2d.setFont(new Font("Chewy", Font.PLAIN, fontSize));
+		g2d.setFont(new Font("Courier", Font.PLAIN, fontSize));
 		g2d.setColor(fontColor);
-		g2d.drawString(text, x + 12, y + 25);
-		
+//		g2d.drawString(text, x + 12, y + 25);
+		//Wrapping text
+		int yLine = y;
+		int xLoc = 5;
+		for (String line : text.split("\n")){
+	        yLine += g2d.getFontMetrics().getHeight();
+	        xLoc = 0;
+			for(String word : line.split(" ")){
+				if(xLoc + g2d.getFontMetrics().stringWidth(word) < width-5){
+					 g2d.drawString(word, x+12+xLoc, yLine);
+				}
+				else{
+					xLoc = 0;
+					g2d.drawString(word, x+12, yLine += g2d.getFontMetrics().getHeight());
+				}
+				xLoc += g2d.getFontMetrics().stringWidth(word+" ");
+			}
+		}
 		//Reset transparency.
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
-		
+		return yLine;
 	}
 	
 	//Wrapper for drawImage that draws a cursor. Pretty much like drawDialogueBox.
@@ -307,6 +383,8 @@ public class Utils {
 		g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 	}
 	
+	
+	
 	//Wrapper for drawImage that draws a menu for the shop interface.
 	/* Parameters:
 	 * 	g - Graphics object
@@ -327,5 +405,61 @@ public class Utils {
 	}
 
 /*****END MENU DRAWING UTILS*****/
+	
+/*****GAME SAVING AND LOADING******/
+	//Function that saves state to file.
+	/* Parameters:
+	 * 	saveSlot - Number of file to save gamestate to.
+	 * 	gamestate - Object containing game information. 
+	 */
+	public static void saveState(GameState gamestate, int eventID, int saveFile) throws IOException{
+		FileOutputStream fos = new FileOutputStream("res/Saves/" + saveFile + ".save");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		gamestate.writeObject(oos);
+		oos.close();
+	}
+	 
+	//Function that loads state from file.
+	/* Parameters:
+	 * game - Current game existing object.
+	 * sm - Current existing StateManager object. Along with "game", needed to construct new GameState.	
+	 * saveSlot - Number of file to load gamestate from.
+	 */
+	public static GameState loadState(Game game, StateManager sm, int saveSlot) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream("res/Saves/" + saveSlot + ".save");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		GameState loadState = new GameState(game, sm);
+		loadState.readObject(ois);
+		ois.close();
+		return loadState;
+	}	
 
+/*****GAME SAVING AND LOADING******/
+
+/*****ANIMATIONS*****/
+	//Function that returns an array of frames from an image for animations.
+	/* Parameters:
+	 * g - Graphics object
+	 * image - Image file containing animation frames with dimensions as specified by sheetWidth and numFrames.
+	 * width - Width of each frame.
+	 * height -Height of each frame.
+	 * numFrames - Total number of frames in the animation.
+	 * frameSkip - Numer of render cycles to spend on each frame. Affects animation speed and smoothness.
+	 */
+	
+	//Constants.
+	private static int sheetWidth = 1;		//Number of frames horizontally in each image.
+	
+	public static BufferedImage[] getFrames(Graphics g, BufferedImage image, int width, int height, int numFrames, int frameSkip){
+		//Create array of frames.
+		BufferedImage[] frames = new BufferedImage[numFrames];
+		SpriteSheet animation = new SpriteSheet(image);	
+		for(int i = 0; i < numFrames; i++){
+			frames[i] = animation.crop(i % sheetWidth, i / sheetWidth, width, height);
+		}
+		
+		return frames;
+	}
+
+/*****ANIMATIONS*****/
 }

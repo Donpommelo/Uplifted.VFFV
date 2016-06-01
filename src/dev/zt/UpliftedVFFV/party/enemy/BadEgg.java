@@ -1,52 +1,72 @@
 package dev.zt.UpliftedVFFV.party.enemy;
 
-
-import java.util.ArrayList;
-
 import dev.zt.UpliftedVFFV.Battle.Action;
 import dev.zt.UpliftedVFFV.ablities.PassTurn;
+import dev.zt.UpliftedVFFV.ablities.Poach;
+import dev.zt.UpliftedVFFV.ablities.ScaryFace;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.StandardAttack;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
+import dev.zt.UpliftedVFFV.inventory.Item;
+import dev.zt.UpliftedVFFV.inventory.equipables.BadShell;
+import dev.zt.UpliftedVFFV.inventory.misc.BadYolk;
 import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class BadEgg extends Schmuck{
 
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
-	public final static int startHp=100,startBp=50,startPow=12, startDef=20, startSpd=16, startSkl=8, startLuk=10, startInt=5;
-	public final static int[] startStats = {17,25,15,9,20,8,7,6};
-	public final static double hpGrowth=1, bpGrowth=1, powGrowth=1, defGrowth=1, spdGrowth=1, sklGrowth=1, intGrowth=1, lukGrowth=1;
-	public final static double[] statGrowths = {1.2 , .7 , 5.7 , 1.3 , 2.9 , 1,6 , 1.2 , .5};
-	public final static int expDrop=19;
+	public final static int startHp=30,startBp=30,startPow=40, startDef=26, startSpd=40, startSkl=39, startLuk=23, startInt=16;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=25.2, bpGrowth=24.7, powGrowth=12.2, defGrowth=3.3, spdGrowth=6.9, sklGrowth=7.6, intGrowth=5.2, lukGrowth=3.5;
+	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
+	public final static int expDrop=4;
 	public final static int scrDrop=1;
-	public static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static int[] elemRes = {10,10,10,10,10,0};
-	public static int[] baseStats=startStats;
-	public static int[] buffedStats=baseStats;
-	public static int[] tempStats={startStats[0],startStats[1]};
-	public ArrayList<Skills> skills;
-	public ArrayList<status> statuses;
-	public BadEgg(int lvl) {
-		super("Bad Egg",lvl,ImageLoader.loadImage("/BattleSprites/Bad Egg.png"), startStats, statGrowths,elemRes, expDrop, scrDrop);
-		calcStats(lvl);
-		this.bio = "The uncouth spirit of an unborn chicken.";
+	public final static int baseRed = 10, baseBlue = 10, baseGreen = 10, baseYellow = 10, basePurple = 10, baseVoid = 0;
+	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
+
+	public static String name = "Bad Egg";
+	public static String plural = "Bad Eggs";
+	public static String pronoun = "it";
+	
+	public static int sprite = 6;
+	public static int menusprite = 0;
+	
+	public static Skills[] levelSkills = {new Poach(0), new ScaryFace(0)};
+	public static int[] levelReqs = {0,0};
+	
+	public final static Item[] itemDrops = {new BadYolk(), new BadShell()};
+	public final static double[] dropRates = {.75, .25};
+	public final static status[] intrinsicStatuses = {};
+	
+	public final static String bioShort = "The uncouth spirit of an unborn chicken.";
+	public final static String bioLong = "";
+	
+	public BadEgg(int level) {
+		super(name, plural, pronoun, level, sprite, menusprite, startStats, statGrowths,baseElem, expDrop, scrDrop, levelSkills,
+				levelReqs, itemDrops, dropRates, intrinsicStatuses, bioShort, bioLong);
 	}
-	
-	
-	
+		
 	public Action getAction(BattleState bs){
-		if(!bs.bs.alliesTargets.isEmpty()){
-			return new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+		int random = (int)(Math.random()*3);
+		Action act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);;
+		if(bs.bs.alliesTargets.isEmpty()){
+			return new Action(this,this,new PassTurn(0),bs);
 		}
 		else{
-			return new Action(this,this,new PassTurn(0),bs);
-
-		}
-		
+			switch (random){
+			case 0:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new Poach(0),bs);
+				break;
+			case 1:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new StandardAttack(0),bs);
+				break;
+			case 2:
+				act = new Action(this,bs.bs.alliesTargets.get((int)(Math.random()*bs.bs.alliesTargets.size())),new ScaryFace(0),bs);
+				break;
+			}
+		}	
+		return act;
 	}
-
-
 }

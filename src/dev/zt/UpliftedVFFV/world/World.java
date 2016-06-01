@@ -1,104 +1,65 @@
 package dev.zt.UpliftedVFFV.world;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.TreeMap;
 
 import dev.zt.UpliftedVFFV.Game;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.tiles.Tile;
+import dev.zt.UpliftedVFFV.tiles.TileSorter;
 import dev.zt.UpliftedVFFV.utils.Utils;
+
+
+//Tentative World class. Unused right now.
+
 
 public class World {
 	
-	private Game game;
+	public WorldManager worldmanager;
 	private int width, height;					//size of world 
-//	private int spawnX, spawnY;					//default start location of player. Only used for testing
+	private int spawnX, spawnY;					//default start location of player. Only used for testing
 	private int numEvents;
-	private int[][] tiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
+	private Tile[][] actualTiles;						//matrix of ints. these correspond to the index of specific tiles in the Tile class
 	public String Worldname;					//name that shows up in nameplate upon entering new location. ""=no nameplate
-	private int nameplate=0;					//controls location of nameplate
 	public int enemyrate, enemynum;
-//	public static TreeMap<Troop, Integer> enemy= new TreeMap<Troop, Integer>(); 
-	public static TreeMap<Integer, Integer> enemy;//= new TreeMap<Integer, Integer>();
-//	public Troop troop = new Troop(0);
-	private BufferedImage window;
-	public World(Game game, String path, String name){
-		this.game = game;
-		this.Worldname=name;
-		enemy = new TreeMap<Integer, Integer>();
-		window = ImageLoader.loadImage("/ui/Window/WindowBlack.png");
-		loadWorld(path);
+	public static TreeMap<Integer, Integer> enemy;
+	
+	public World(String path, int id, int floor){
+		
 	}
 	
 	public void tick(){
-		nameplate++;							//causes nameplate to scroll down initially, than scroll back up.
 		
 	}
 	
-	public void render(Graphics g){
-		
-		//Sets background to black. Change later perhaps to allow for special background/parallax scrolling
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, game.getWidth(), game.getHeight());
-		
-		//renders every tile in the matrix. 	
+	public void render(Graphics g, Game game){
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
 				if(game!=null){
-					getTile(x, y).render(g, (int)(x*Tile.TILEWIDTH - game.getGameCamera().getxOffset()),(int)(y*Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
-					
+					actualTiles[x][y].render(g, (int)(x*Tile.TILEWIDTH - game.getGameCamera().getxOffset()),(int)(y*Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
 				}
+			}
 		}
-		}
-		
-		//renders scrolling nameplate. 
-		if(!this.Worldname.equals("")){
-//			g.setColor(new Color(102, 178,255, 255));
-//			g.setFont(new Font("Chewy", Font.PLAIN, 12));
-//			g.fillRect(550,(int)(.01*(110-(nameplate-10)*(nameplate-10))), 90, 25);
-//			g.setColor(Color.BLACK);
-//			g.drawString(this.Worldname, 552,(int)(20+.01*(110-(nameplate-10)*(nameplate-10))));
-			Utils.drawDialogueBox(g, window, this.Worldname, 15, Color.white, 520, 
-					(int)(.005 * (110 - (nameplate - 10) * (nameplate - 10))), 112, 25, true);
-		}
-		
 	}
 	
-	//used in rendering tiles. searches the array of tiles in the Tile class for a tile that corresponds to the index of a specific x-y coordinate in the world
-	public Tile getTile(int x, int y){
-		Tile t = Tile.tiles[tiles[x][y]];
-		if(t == null)
-			return Tile.black;					
-		return t;
-	}
-	
-	
-	//ran when setting up a new world. is fed a string that corresponds to the text file of a specific map. 
-	//The first 2 numbers in the text file are the height and width of the map
-	//next two numbers are the default spawn location. This is only used in testing
-	//After that is a single number that equals the number of events in the map
-	//Then is a large grid of numbers, each which is the index of a specific tile to be rendered
-	//finally is a list of several triplet of numbers, one for each event. These consist of the event id and x-y location
-	
-	//later, consider adding troop encounters in text files as well to simulate rpg-maker's region stuff
-	private void loadWorld(String path){
+	public void loadWorld(String path, WorldManager worldmanager){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");			
 		width = Utils.parseInt(tokens[0]);
 		height = Utils.parseInt(tokens[1]);
-//		spawnX = Utils.parseInt(tokens[2]);
-//		spawnY = Utils.parseInt(tokens[3]);
+		spawnX = Utils.parseInt(tokens[2]);
+		spawnY = Utils.parseInt(tokens[3]);
 		numEvents = Utils.parseInt(tokens[4]);
-		enemyrate = Utils.parseInt(tokens[5]);
-		enemynum = Utils.parseInt(tokens[6]);
-		tiles = new int[width][height];
+		enemyrate = Utils.parseInt(tokens[6]);
+		enemynum = Utils.parseInt(tokens[7]);
+		actualTiles = new Tile[width][height];
 		for(int y = 0;y<height;y++){
 			for(int x = 0;x < width;x++){
-				tiles[x][y] = Utils.parseInt(tokens[(x+y*width)+7]);
-				
+				actualTiles[x][y] = Tile.getTile(Utils.parseInt(tokens[(x+y*width)+8]));
+			}
+		}
+		for(int y = 0;y<height;y++){
+			for(int x = 0;x < width;x++){
+				TileSorter.adjacencyCheck(actualTiles[x][y], worldmanager, x, y);
 			}
 		}
 		
@@ -106,9 +67,24 @@ public class World {
 	//this fills a treemap with these pairs of integers which is checked in the player class when moving
 		
 		for(int i=0; i<enemynum; i++){
-			enemy.put(Utils.parseInt(tokens[height*width+7+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+8+3*numEvents+2*i]));
+			enemy.put(Utils.parseInt(tokens[height*width+8+3*numEvents+2*i]),Utils.parseInt(tokens[(height*width)+9+3*numEvents+2*i]));
 		}		
-
-		
 	}
+	
+	public TreeMap<Integer, Integer> getEnemies(){
+		return enemy;
+	}
+
+	public String getName(){
+		return this.Worldname;
+	}
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+	
 }

@@ -1,79 +1,60 @@
 package dev.zt.UpliftedVFFV.party;
 
 
-import java.util.ArrayList;
-
 import dev.zt.UpliftedVFFV.ablities.ArcherRoulette;
 import dev.zt.UpliftedVFFV.ablities.BoxCutter;
-import dev.zt.UpliftedVFFV.ablities.Censor;
 import dev.zt.UpliftedVFFV.ablities.DoubleGeneva;
-import dev.zt.UpliftedVFFV.ablities.DustShroud;
-import dev.zt.UpliftedVFFV.ablities.Fade;
-import dev.zt.UpliftedVFFV.ablities.ForceWithin;
+import dev.zt.UpliftedVFFV.ablities.DullRose;
+import dev.zt.UpliftedVFFV.ablities.FerrerBlock;
 import dev.zt.UpliftedVFFV.ablities.HeresHow;
 import dev.zt.UpliftedVFFV.ablities.InvertedSwan;
 import dev.zt.UpliftedVFFV.ablities.PennyBlack;
 import dev.zt.UpliftedVFFV.ablities.Query;
+import dev.zt.UpliftedVFFV.ablities.SindhDak;
 import dev.zt.UpliftedVFFV.ablities.Skills;
 import dev.zt.UpliftedVFFV.ablities.TreskillingYellow;
 import dev.zt.UpliftedVFFV.ablities.TyrianPlum;
-import dev.zt.UpliftedVFFV.gfx.ImageLoader;
 import dev.zt.UpliftedVFFV.ablities.PennyBlue;
+import dev.zt.UpliftedVFFV.inventory.Item;
 import dev.zt.UpliftedVFFV.statusEffects.status;
 
 public class PenPal extends Schmuck{
 
+//	private static final long serialVersionUID = -7556561902401868149L;
 	
+	public final static int startHp=96,startBp=70,startPow=46, startDef=56, startSpd=42, startSkl=63, startLuk=32, startInt=67;
+	public final static int[] startStats = {startHp,startBp,startPow,startDef,startSpd,startSkl,startInt,startLuk};
+	public final static double hpGrowth=23.5, bpGrowth=32.9, powGrowth=3.4, defGrowth=3.3, spdGrowth=3.2, sklGrowth=3.1, intGrowth=4.6, lukGrowth=2.3;
+	public final static double[] statGrowths = {hpGrowth , bpGrowth , powGrowth , defGrowth, spdGrowth , sklGrowth , intGrowth , lukGrowth};
+	public final static int expDrop = 2000;
+	public final static int scrDrop = 0;
+	public final static int baseRed = 5, baseBlue = 25, baseGreen = 25, baseYellow = 5, basePurple = 10, baseVoid = 0;
+	public final static int[] baseElem = {baseRed, baseBlue, baseGreen, baseYellow, basePurple, baseVoid};
+
+	public static String name = "Pen Pal";
+	public static String plural = "Pen Pal";
+	public static String pronoun = "it";
 	
-//	public final static int startHp=42,startBp=40,startPow=15, startDef=17, startSpd=12, startSkl=22, startLuk=25, startInt=16;
-	public final static int[] startStats = {72, 51, 15, 17, 12, 22, 25, 16};
-//	public final static double hpGrowth=1, bpGrowth=2.3, powGrowth=1.4, defGrowth=1.3, spdGrowth=2, sklGrowth=2.1, intGrowth=2.6, lukGrowth=1.3;
-	public final static double[] statGrowths = {1, 2.3, 1.4, 1.3, 2, 2.1, 2.6, 1.3};
-// static int MaxHp,CurrentHp,MaxBp,CurrentBp,BasePow,BuffedPow,BaseDef,BuffedDef,BaseSpd,BuffedSpd,BaseSkl,BuffedSkl,BaseInt,BuffedInt,BaseLuk,BuffedLuk;
-	public int RedRes,BlueRes,GreenRes,YellRes,PurpRes,VoidRes;
-	public final static int[] elemRes = {10,20,20,10,10,0};
-	public static int[] baseStats=startStats;
-	public static int[] buffedStats=baseStats;
-	public static int[] tempStats={startStats[0],startStats[1]};
-	public static int Lvl=1;
-	public int exp=0;
-	public ArrayList<Skills> skills;
-	public ArrayList<status> statuses;
-	public PenPal() {
-		super("Pen Pal",1,ImageLoader.loadImage("/BattleSprites/PenPal.png"),ImageLoader.loadImage("/CharacterBusts/Player-5.png"), startStats, statGrowths, elemRes);
-		calcStats(1);
-		this.bio = "Your very own foreign correspondence. Looks leafy.";
-//		this.levelSkills = new TreeMap<Integer, Skills>();
-//		this.levelSkills.put(2, new PennyBlue(0));
-//		this.levelSkills.put(3, new TreskillingYellow(0));
-//		this.levelSkills.put(5, new TyrianPlum(0));
-//		this.levelSkills.put(8, new HeresHow(0));
-//		this.levelSkills.put(10, new ArcherRoulette(0));
-//		this.levelSkills.put(12, new InvertedSwan(0));
-//		this.levelSkills.put(15, new DoubleGeneva(0));
-//		this.levelSkills.put(21, new PennyBlack(0));
-		super.learnSkill(new BoxCutter(0));
-		super.learnSkill(new Query(0));
-		super.learnSkill(new PennyBlue(0));
-		super.learnSkill(new TreskillingYellow(0));
-		super.learnSkill(new TyrianPlum(0));
-		super.learnSkill(new ArcherRoulette(0));
-		super.learnSkill(new InvertedSwan(0));
-		super.learnSkill(new HeresHow(0));
-		super.learnSkill(new DoubleGeneva(0));
-		super.learnSkill(new PennyBlack(0));
-		
-		super.learnSkill(new Censor(0));
-		super.learnSkill(new ForceWithin(0));
-		super.learnSkill(new Fade(0));
-		super.learnSkill(new DustShroud(0));
-		
+	public static int sprite = 1;
+	public static int menusprite = 2;
+	
+	public static Skills[] levelSkills = {new BoxCutter(0), new Query(0), new PennyBlue(0),	new HeresHow(0),
+			new TreskillingYellow(0),new TyrianPlum(0), new FerrerBlock(0), new ArcherRoulette(0), new InvertedSwan(0),
+			new DullRose(0), new DoubleGeneva(0), new SindhDak(0),new PennyBlack(0)};
+	public static int[] levelReqs = {0,0,1,3,9,15,19,23,29,32,36,40,45};
+//	public static int[] levelReqs = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-		
-		
+	public final static Item[] itemDrops = {};
+	public final static double[] dropRates = {};
+	public final static status[] intrinsicStatuses = {};
+	
+	public final static String bioShort = "Your very own foreign correspondence. Looks leafy.";
+	public final static String bioLong = "";
 
+
+	public PenPal(int level) {
+		super(name, plural, pronoun, level, sprite, menusprite, startStats, statGrowths, baseElem, expDrop, scrDrop, levelSkills,
+				levelReqs,itemDrops, dropRates, intrinsicStatuses, bioShort, bioLong);
 
 	}
-	
-
 }

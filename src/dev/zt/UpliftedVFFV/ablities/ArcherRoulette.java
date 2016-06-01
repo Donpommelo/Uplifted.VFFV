@@ -4,35 +4,47 @@ import dev.zt.UpliftedVFFV.party.Schmuck;
 import dev.zt.UpliftedVFFV.states.BattleState;
 
 public class ArcherRoulette extends Skills {
-
+	
 	public static String name = "Archer Roulette";
-	public static String descr = "User fires a powerful missile\nthat is aimed, but only slightly.";
-	public static String descrShort = "Deals damage to a random\ntarget with preference for\ntarget.";
+	public static String descr = "User produces a powerful projectile. While the user attempts to direct this attack, it may misfire and striking a different enemy than the one intended.";
+	public static String descrShort = "Powerful attack with a chance to hit wrong enemy.";
 	public static int cost = 17;
+	public static int baseAcc = 100; public static int baseCrit = 0;
+	public static boolean canMiss = false; public static boolean canCrit = true;
+	public static int element = 6;	//Physical
+	public static int targetType = 0;	//Any Single Target
 	public ArcherRoulette(int index) {
-		super(index, 0, 6, name, descr, descrShort, cost);
-
+		super(index, targetType, element, name, descr, descrShort, cost, baseAcc, baseCrit, canMiss, canCrit);
 	}
 	
 	public void run(Schmuck perp, Schmuck vic, BattleState bs){	
 		Schmuck target;
-		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
 		if(Math.random()>.5){
-			bs.bp.bt.textList.add(perp.getName()+"'s aim was true!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5)),perp,vic);
+			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*1.5);
+			bs.bp.em.hpChange(damage,perp,vic,6);
 		}
 		else{
-			target = bs.bp.getAlliedTargets(vic).get((int)(Math.random()*bs.bp.getAlliedTargets(vic).size()));
-			bs.bp.bt.textList.add(perp.getName()+"'s aim was was off target!");
-			bs.bp.em.hpChange(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(target.buffedStats[3]*.5)),perp,target);
-			
+			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
+			bs.bp.bt.addScene(perp.getName()+"'s aim was was off target!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, target)*1.25);
+			bs.bp.em.hpChange(damage,perp,target,6);
 		}
 	}
 	
 	public void runCrit(Schmuck perp, Schmuck vic, BattleState bs){	
-		bs.bp.bt.textList.add(perp.getName()+" used Archer Roulette!");	
-		bs.bp.bt.textList.add("A Critical Blow!");	
-		bs.bp.em.hpChange((int)(-(perp.buffedStats[2]*perp.buffedStats[2])/((int)(vic.buffedStats[3]*.5))*(1.5+perp.getCritMulti())),perp,vic);
-	}
-	
+		Schmuck target;
+		if(Math.random()>.5){
+			bs.bp.bt.addScene(perp.getName()+"'s aim was true!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, vic)*(1.5+perp.getCritMulti()-vic.getCritRes())*1.25);
+			bs.bp.em.hpChange(damage,perp,vic,6);
+		}
+		else{
+			target = bs.bp.getSelectableAllies(vic).get((int)(Math.random()*bs.bp.getSelectableAllies(vic).size()));
+			bs.bp.bt.addScene(perp.getName()+"'s aim was was off target!");
+			int damage = (int)(bs.bp.em.logScaleDamage(perp, target)*(1.5+perp.getCritMulti()-target.getCritRes())*1.25);
+			bs.bp.em.hpChange(damage,perp,target,6);
+			}
+		}
+		
 }
